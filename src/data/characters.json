@@ -1,0 +1,4630 @@
+{
+  "丹波光一郎": {
+    "name": "丹波光一郎",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 1,
+        "変化球": 1
+      }
+    }
+  },
+  "多田野樹": {
+    "name": "多田野樹",
+    "position": "捕",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 1,
+        "精神": 1
+      }
+    }
+  },
+  "由井薫": {
+    "name": "由井薫",
+    "position": "捕",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 5,
+        "精神": 15
+      }
+    }
+  },
+  "前園健太": {
+    "name": "前園健太",
+    "position": "一",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 15,
+        "精神": 5
+      }
+    }
+  },
+  "アランレイヴン": {
+    "name": "アランレイヴン",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 9,
+        "敏捷": 9,
+        "変化球": 11
+      }
+    }
+  },
+  "鷹野有紀": {
+    "name": "鷹野有紀",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [
+        "低め◯"
+      ],
+      "stats": {
+        "敏捷": 6,
+        "技術": 6
+      }
+    }
+  },
+  "水狐光世": {
+    "name": "水狐光世",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [
+        "ポーカーフェイス"
+      ],
+      "stats": {
+        "筋力": 9
+      }
+    }
+  },
+  "片倉昌行": {
+    "name": "片倉昌行",
+    "position": "捕",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [
+        "流し打ち"
+      ],
+      "stats": {
+        "変化球": 11,
+        "精神": 11
+      }
+    }
+  },
+  "嶋田栄作": {
+    "name": "嶋田栄作",
+    "position": "三",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [
+        "チャンス"
+      ],
+      "stats": {
+        "敏捷": 8,
+        "技術": 8,
+        "精神": 9
+      }
+    }
+  },
+  "村雨": {
+    "name": "村雨",
+    "position": "外",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [
+        "レーザービーム"
+      ],
+      "stats": {}
+    }
+  },
+  "天王寺": {
+    "name": "天王寺",
+    "position": "外",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [
+        "流し打ち"
+      ],
+      "stats": {
+        "筋力": 3,
+        "敏捷": 3,
+        "技術": 3,
+        "精神": 3
+      }
+    }
+  },
+  "八尺巫女子": {
+    "name": "八尺巫女子",
+    "position": "外",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [
+        "内野安打◯"
+      ],
+      "stats": {
+        "技術": 9
+      }
+    }
+  },
+  "甲斐進撃": {
+    "name": "甲斐進撃",
+    "position": "外",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [
+        "チャンスメーカー"
+      ],
+      "stats": {
+        "筋力": 3,
+        "敏捷": 3,
+        "技術": 3,
+        "変化球": 4,
+        "精神": 4
+      }
+    }
+  },
+  "白ボン": {
+    "name": "白ボン",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 15,
+        "敏捷": 15
+      }
+    }
+  },
+  "乙女": {
+    "name": "乙女",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 15
+      }
+    }
+  },
+  "善斗薫": {
+    "name": "善斗薫",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 15
+      }
+    }
+  },
+  "江暦輝": {
+    "name": "江暦輝",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 14
+      }
+    }
+  },
+  "菊度アイラ": {
+    "name": "菊度アイラ",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 14
+      }
+    }
+  },
+  "佐菜あゆみ": {
+    "name": "佐菜あゆみ",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 18
+      }
+    }
+  },
+  "星井スバル": {
+    "name": "星井スバル",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 9,
+        "変化球": 11
+      }
+    }
+  },
+  "松倉宗光": {
+    "name": "松倉宗光",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 14,
+        "精神": 14
+      }
+    }
+  },
+  "夢城優花": {
+    "name": "夢城優花",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 7,
+        "精神": 7
+      }
+    }
+  },
+  "田村": {
+    "name": "田村",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 9,
+        "精神": 11
+      }
+    }
+  },
+  "銭形乱蔵": {
+    "name": "銭形乱蔵",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 14
+      }
+    }
+  },
+  "純決太郎": {
+    "name": "純決太郎",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 9,
+        "敏捷": 9,
+        "変化球": 11
+      }
+    }
+  },
+  "泊方明日音": {
+    "name": "泊方明日音",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "精神": 18
+      }
+    }
+  },
+  "丸餅太": {
+    "name": "丸餅太",
+    "position": "投",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [
+        "ボーナスなし"
+      ],
+      "stats": {}
+    }
+  },
+  "紙山要": {
+    "name": "紙山要",
+    "position": "捕",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 12
+      }
+    }
+  },
+  "香本富久雄": {
+    "name": "香本富久雄",
+    "position": "捕",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 15
+      }
+    }
+  },
+  "鬼力剛": {
+    "name": "鬼力剛",
+    "position": "捕",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12,
+        "敏捷": 12
+      }
+    }
+  },
+  "海野幸子": {
+    "name": "海野幸子",
+    "position": "捕",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 6,
+        "精神": 7
+      }
+    }
+  },
+  "美園千花": {
+    "name": "美園千花",
+    "position": "捕",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 12,
+        "精神": 14
+      }
+    }
+  },
+  "新島早紀": {
+    "name": "新島早紀",
+    "position": "捕",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "精神": 14
+      }
+    }
+  },
+  "田中まさる": {
+    "name": "田中まさる",
+    "position": "一",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 3,
+        "敏捷": 3,
+        "技術": 3,
+        "変化球": 4,
+        "精神": 4
+      }
+    }
+  },
+  "外藤侠二": {
+    "name": "外藤侠二",
+    "position": "一",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 15
+      }
+    }
+  },
+  "宇渡幹久": {
+    "name": "宇渡幹久",
+    "position": "一",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6
+      }
+    }
+  },
+  "神宮寺光": {
+    "name": "神宮寺光",
+    "position": "一",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 12,
+        "技術": 12
+      }
+    }
+  },
+  "フルハート": {
+    "name": "フルハート",
+    "position": "一",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12
+      }
+    }
+  },
+  "納見新造": {
+    "name": "納見新造",
+    "position": "二",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 9,
+        "変化球": 11
+      }
+    }
+  },
+  "仲居三太": {
+    "name": "仲居三太",
+    "position": "二",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12
+      }
+    }
+  },
+  "浪風芽衣香": {
+    "name": "浪風芽衣香",
+    "position": "二",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 12,
+        "技術": 12
+      }
+    }
+  },
+  "永瀬大河": {
+    "name": "永瀬大河",
+    "position": "二",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 12,
+        "技術": 12
+      }
+    }
+  },
+  "夢城和花": {
+    "name": "夢城和花",
+    "position": "三",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 8,
+        "精神": 9
+      }
+    }
+  },
+  "稲田吾作": {
+    "name": "稲田吾作",
+    "position": "三",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "精神": 7
+      }
+    }
+  },
+  "祝井幸吉": {
+    "name": "祝井幸吉",
+    "position": "三",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 9,
+        "精神": 11
+      }
+    }
+  },
+  "千賀篤志": {
+    "name": "千賀篤志",
+    "position": "三",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 11
+      }
+    }
+  },
+  "鮫島粂太郎": {
+    "name": "鮫島粂太郎",
+    "position": "三",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 13
+      }
+    }
+  },
+  "小嵐リョウ": {
+    "name": "小嵐リョウ",
+    "position": "遊",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 12,
+        "技術": 12
+      }
+    }
+  },
+  "柴田軍平": {
+    "name": "柴田軍平",
+    "position": "遊",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 9,
+        "技術": 9
+      }
+    }
+  },
+  "小田切巧": {
+    "name": "小田切巧",
+    "position": "遊",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 11,
+        "精神": 12
+      }
+    }
+  },
+  "軽井沢大輝": {
+    "name": "軽井沢大輝",
+    "position": "遊",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 12
+      }
+    }
+  },
+  "夏野向日葵": {
+    "name": "夏野向日葵",
+    "position": "遊",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 9,
+        "精神": 11
+      }
+    }
+  },
+  "魁竜司": {
+    "name": "魁竜司",
+    "position": "外",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 8,
+        "技術": 8,
+        "精神": 9
+      }
+    }
+  },
+  "球三郎": {
+    "name": "球三郎",
+    "position": "外",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 11,
+        "精神": 12
+      }
+    }
+  },
+  "大鐘餅太郎": {
+    "name": "大鐘餅太郎",
+    "position": "外",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "技術": 6,
+        "精神": 7
+      }
+    }
+  },
+  "石野まさ夫": {
+    "name": "石野まさ夫",
+    "position": "外",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 12
+      }
+    }
+  },
+  "波佐見駿一": {
+    "name": "波佐見駿一",
+    "position": "外",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 12
+      }
+    }
+  },
+  "反町三次": {
+    "name": "反町三次",
+    "position": "外",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 8,
+        "精神": 9
+      }
+    }
+  },
+  "灰谷充": {
+    "name": "灰谷充",
+    "position": "外",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6
+      }
+    }
+  },
+  "猿山武": {
+    "name": "猿山武",
+    "position": "外",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 9,
+        "精神": 11
+      }
+    }
+  },
+  "三森右京": {
+    "name": "三森右京",
+    "position": "外",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 12
+      }
+    }
+  },
+  "三森左京": {
+    "name": "三森左京",
+    "position": "外",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 12
+      }
+    }
+  },
+  "クロン": {
+    "name": "クロン",
+    "position": "マネージャー",
+    "encounter_map": "スカウ島",
+    "description": "ご機嫌度3で全経験点1.6倍ボーナス"
+  },
+  "片桐恋": {
+    "name": "片桐恋",
+    "position": "マネージャー",
+    "encounter_map": "スカウ島",
+    "description": "筋力&技術&精神1.2倍ボーナス, ご機嫌度に合わせ主人公の基礎値UP＋特殊能力付与"
+  },
+  "ヤンデレ片桐恋": {
+    "name": "ヤンデレ片桐恋",
+    "position": "",
+    "encounter_map": "スカウ島",
+    "rewards": {
+      "skills": [
+        "片桐恋以外のマネを2試合連続起用するとヤンデレ化する。全経験点1.4倍ボーナス",
+        "調子が1段回下がるが主人公の能力UP"
+      ],
+      "stats": {}
+    }
+  },
+  "芹沢茜": {
+    "name": "芹沢茜",
+    "position": "マネージャー",
+    "encounter_map": "スカウ島",
+    "description": "筋力&精神ボナ 味方全員オリ変のキレが上がる キレ緩急勝ち運付与"
+  },
+  "七瀬はるか": {
+    "name": "七瀬はるか",
+    "position": "マネージャー",
+    "encounter_map": "スカウ島",
+    "description": "変化球&精神1.3倍ボーナス, 試合後アイテムランダムに獲得(宝玉が出たという話もあり)"
+  },
+  "嵐山美鈴": {
+    "name": "嵐山美鈴",
+    "position": "マネージャー",
+    "encounter_map": "スカウ島",
+    "description": "敏捷&技術1.3倍ボーナス, スタメン全員にサブポジ付与"
+  },
+  "加藤京子": {
+    "name": "加藤京子",
+    "position": "マネージャー",
+    "encounter_map": "スカウ島",
+    "description": "筋力&敏捷1.3倍ボーナス, 7回以降確定プレイヤー操作になる"
+  },
+  "黒沢愛": {
+    "name": "黒沢愛",
+    "position": "マネージャー",
+    "encounter_map": "スカウ島",
+    "description": "筋力&変化球1.3倍ボーナス, 効果なし"
+  },
+  "忠主七緒": {
+    "name": "忠主七緒",
+    "position": "マネージャー",
+    "encounter_map": "スカウ島",
+    "description": "筋力&精神1.3倍ボーナス, 主人公と味方全員のスタミナUP"
+  },
+  "稲穂亜希": {
+    "name": "稲穂亜希",
+    "position": "マネージャー",
+    "encounter_map": "スカウ島",
+    "description": "筋力&敏捷1.3倍ボーナス, 主人公と味方全員の走力UP"
+  },
+  "栗原舞": {
+    "name": "栗原舞",
+    "position": "マネージャー",
+    "encounter_map": "スカウ島",
+    "description": "筋力&技術1.3倍ボーナス, 主人公と味方全員のミートUP"
+  },
+  "藤崎詩織": {
+    "name": "藤崎詩織",
+    "position": "マネージャー",
+    "encounter_map": "スカウ島",
+    "description": "敏捷&技術1.3倍ボーナス, 質問の回答が正解かどうかによって効果が変わる。ご機嫌度によって効果増減"
+  },
+  "真田俊平": {
+    "name": "真田俊平",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "内角攻め"
+      ],
+      "stats": {
+        "筋力": 8,
+        "技術": 1,
+        "精神": 8
+      }
+    }
+  },
+  "三島優太": {
+    "name": "三島優太",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 5,
+        "技術": 1,
+        "精神": 1
+      }
+    }
+  },
+  "東条秀明": {
+    "name": "東条秀明",
+    "position": "外",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 5,
+        "敏捷": 5,
+        "技術": 5,
+        "変化球": 5,
+        "精神": 5
+      }
+    }
+  },
+  "神高龍": {
+    "name": "神高龍",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "低め◯"
+      ],
+      "stats": {
+        "筋力": 3,
+        "技術": 3,
+        "変化球": 3,
+        "精神": 3
+      }
+    }
+  },
+  "橘みずき": {
+    "name": "橘みずき",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "クロスファイヤー"
+      ],
+      "stats": {
+        "変化球": 7
+      }
+    }
+  },
+  "手塚隆文": {
+    "name": "手塚隆文",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "球速安定"
+      ],
+      "stats": {
+        "変化球": 18
+      }
+    }
+  },
+  "阿畑やすし": {
+    "name": "阿畑やすし",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "回復"
+      ],
+      "stats": {
+        "変化球": 14,
+        "精神": 14
+      }
+    }
+  },
+  "北斗八雲": {
+    "name": "北斗八雲",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "テンポ◯(表示なし)"
+      ],
+      "stats": {
+        "変化球": 18
+      }
+    }
+  },
+  "伊貫大和": {
+    "name": "伊貫大和",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "対ピンチ"
+      ],
+      "stats": {}
+    }
+  },
+  "山口賢": {
+    "name": "山口賢",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "勝ち運"
+      ],
+      "stats": {
+        "変化球": 11
+      }
+    }
+  },
+  "青葉春人": {
+    "name": "青葉春人",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "闘志"
+      ],
+      "stats": {
+        "変化球": 18
+      }
+    }
+  },
+  "水無月要": {
+    "name": "水無月要",
+    "position": "捕",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "サヨナラ男"
+      ],
+      "stats": {
+        "筋力": 13
+      }
+    }
+  },
+  "ブロンコリー": {
+    "name": "ブロンコリー",
+    "position": "二",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "流し打ち"
+      ],
+      "stats": {}
+    }
+  },
+  "円谷一義": {
+    "name": "円谷一義",
+    "position": "二",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "プレッシャーラン"
+      ],
+      "stats": {
+        "技術": 12
+      }
+    }
+  },
+  "番堂長児": {
+    "name": "番堂長児",
+    "position": "三",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "満塁男"
+      ],
+      "stats": {
+        "筋力": 15
+      }
+    }
+  },
+  "小山雅": {
+    "name": "小山雅",
+    "position": "遊",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "意外性"
+      ],
+      "stats": {
+        "精神": 15
+      }
+    }
+  },
+  "尾崎竜介": {
+    "name": "尾崎竜介",
+    "position": "遊",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "粘り打ち"
+      ],
+      "stats": {
+        "技術": 3,
+        "精神": 3
+      }
+    }
+  },
+  "火野勇太郎": {
+    "name": "火野勇太郎",
+    "position": "外",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "チャンス"
+      ],
+      "stats": {
+        "筋力": 6,
+        "技術": 6
+      }
+    }
+  },
+  "柳生鞘花": {
+    "name": "柳生鞘花",
+    "position": "外",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [
+        "粘り打ち"
+      ],
+      "stats": {
+        "筋力": 9,
+        "技術": 9
+      }
+    }
+  },
+  "勇村武士": {
+    "name": "勇村武士",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 11
+      }
+    }
+  },
+  "十六夜瑠菜": {
+    "name": "十六夜瑠菜",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 13
+      }
+    }
+  },
+  "田中山太郎": {
+    "name": "田中山太郎",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 3,
+        "敏捷": 3,
+        "技術": 3,
+        "変化球": 3,
+        "精神": 3
+      }
+    }
+  },
+  "西郷十三": {
+    "name": "西郷十三",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 11,
+        "精神": 12
+      }
+    }
+  },
+  "水野魔太郎": {
+    "name": "水野魔太郎",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 14
+      }
+    }
+  },
+  "桜沢樹": {
+    "name": "桜沢樹",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 8,
+        "技術": 8
+      }
+    }
+  },
+  "鋼毅": {
+    "name": "鋼毅",
+    "position": "投",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "変化球": 9
+      }
+    }
+  },
+  "怒拳礼次": {
+    "name": "怒拳礼次",
+    "position": "捕",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 9,
+        "敏捷": 9
+      }
+    }
+  },
+  "小鷹美麗": {
+    "name": "小鷹美麗",
+    "position": "捕",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 12,
+        "変化球": 14
+      }
+    }
+  },
+  "半田小鉄": {
+    "name": "半田小鉄",
+    "position": "捕",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 15
+      }
+    }
+  },
+  "桜ノ宮総司": {
+    "name": "桜ノ宮総司",
+    "position": "捕",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 15
+      }
+    }
+  },
+  "猪狩進": {
+    "name": "猪狩進",
+    "position": "捕",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 8,
+        "技術": 8,
+        "精神": 9
+      }
+    }
+  },
+  "ピラミッドヘッド": {
+    "name": "ピラミッドヘッド",
+    "position": "一",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 15,
+        "敏捷": 15
+      }
+    }
+  },
+  "矢部門竜雄": {
+    "name": "矢部門竜雄",
+    "position": "一",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12,
+        "技術": 12
+      }
+    }
+  },
+  "実和男": {
+    "name": "実和男",
+    "position": "一",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12,
+        "精神": 14
+      }
+    }
+  },
+  "井関丹作": {
+    "name": "井関丹作",
+    "position": "二",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "精神": 15
+      }
+    }
+  },
+  "大空美代子": {
+    "name": "大空美代子",
+    "position": "三",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12,
+        "精神": 14
+      }
+    }
+  },
+  "草野剣太郎": {
+    "name": "草野剣太郎",
+    "position": "三",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6
+      }
+    }
+  },
+  "御宝金太郎": {
+    "name": "御宝金太郎",
+    "position": "外",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6
+      }
+    }
+  },
+  "美藤千尋": {
+    "name": "美藤千尋",
+    "position": "外",
+    "encounter_map": "試練の洞窟",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 13,
+        "技術": 13
+      }
+    }
+  },
+  "氷上聡里": {
+    "name": "氷上聡里",
+    "position": "マネージャー",
+    "encounter_map": "試練の洞窟",
+    "description": "敏捷&技術1.3倍ボーナス, 危険を察知して出番が増える"
+  },
+  "ラミィ": {
+    "name": "ラミィ",
+    "position": "マネージャー",
+    "encounter_map": "試練の洞窟",
+    "description": "敏捷&精神1.3倍ボーナス, 各試合勝利でご機嫌度分のコツを貰える"
+  },
+  "天宮コノハ": {
+    "name": "天宮コノハ",
+    "position": "マネージャー",
+    "encounter_map": "試練の洞窟",
+    "description": "技術&精神1.3倍ボーナス, 試合後, 落とし物を2つくれる"
+  },
+  "黒戸もね": {
+    "name": "黒戸もね",
+    "position": "マネージャー",
+    "encounter_map": "試練の洞窟",
+    "description": "選択した経験点がご機嫌度1：1倍, ご機嫌度2：1.2倍, ご機嫌度3：1.5倍ボーナス"
+  },
+  "鈴島紫音": {
+    "name": "鈴島紫音",
+    "position": "マネージャー",
+    "encounter_map": "試練の洞窟",
+    "description": "筋力&技術1.3倍ボーナス, 打撃操作を補助してくれる(ご機嫌度関係なくロックオン+1)"
+  },
+  "小井成タマモ": {
+    "name": "小井成タマモ",
+    "position": "マネージャー",
+    "encounter_map": "試練の洞窟",
+    "description": "技術&精神1.3倍ボーナス, 試合中ランダムにボールが飛びやすく/飛びにくくなる"
+  },
+  "戸内聖華": {
+    "name": "戸内聖華",
+    "position": "マネージャー",
+    "encounter_map": "試練の洞窟",
+    "description": "敏捷&変化球1.3倍ボーナス, 投手時は敏捷上限100%, 野手時は変化球上限100%になる(通常は上限70%になる)"
+  },
+  "結城哲也": {
+    "name": "結城哲也",
+    "position": "一",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        "チャンス"
+      ],
+      "stats": {
+        "筋力": 5,
+        "技術": 15
+      }
+    }
+  },
+  "金丸信二": {
+    "name": "金丸信二",
+    "position": "三",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        "対ストレート◯"
+      ],
+      "stats": {
+        "筋力": 1,
+        "技術": 5,
+        "精神": 5
+      }
+    }
+  },
+  "増子透": {
+    "name": "増子透",
+    "position": "三",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 2
+      }
+    }
+  },
+  "白河勝之": {
+    "name": "白河勝之",
+    "position": "遊",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        "バント◯"
+      ],
+      "stats": {
+        "敏捷": 8,
+        "技術": 8,
+        "精神": 8
+      }
+    }
+  },
+  "白州健二郎": {
+    "name": "白州健二郎",
+    "position": "外",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        "いぶし銀"
+      ],
+      "stats": {
+        "技術": 2
+      }
+    }
+  },
+  "涼風希望": {
+    "name": "涼風希望",
+    "position": "投",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        "球持ち◯"
+      ],
+      "stats": {
+        "技術": 6,
+        "変化球": 7
+      }
+    }
+  },
+  "伍歩倫人": {
+    "name": "伍歩倫人",
+    "position": "捕",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        "送球"
+      ],
+      "stats": {
+        "精神": 9
+      }
+    }
+  },
+  "星空星光": {
+    "name": "星空星光",
+    "position": "捕",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        "インコースヒッター"
+      ],
+      "stats": {
+        "敏捷": 6,
+        "技術": 6
+      }
+    }
+  },
+  "銀杏力丸": {
+    "name": "銀杏力丸",
+    "position": "一",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        "マルチ弾"
+      ],
+      "stats": {
+        "筋力": 9
+      }
+    }
+  },
+  "佐部利保英": {
+    "name": "佐部利保英",
+    "position": "二",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        "ケガしにくさ"
+      ],
+      "stats": {
+        "技術": 12
+      }
+    }
+  },
+  "浦賀有也": {
+    "name": "浦賀有也",
+    "position": "二",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        "ローボールヒッター"
+      ],
+      "stats": {
+        "筋力": 11
+      }
+    }
+  },
+  "黒珠真": {
+    "name": "黒珠真",
+    "position": "二",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        "アウトコースヒッター"
+      ],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6
+      }
+    }
+  },
+  "六角錬治": {
+    "name": "六角錬治",
+    "position": "三",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        "バント職人"
+      ],
+      "stats": {
+        "精神": 4
+      }
+    }
+  },
+  "古長衛士": {
+    "name": "古長衛士",
+    "position": "三",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        "プルヒッター"
+      ],
+      "stats": {
+        "筋力": 3,
+        "敏捷": 3,
+        "精神": 3
+      }
+    }
+  },
+  "淡手蒼太": {
+    "name": "淡手蒼太",
+    "position": "外",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        "対エース◯"
+      ],
+      "stats": {
+        "技術": 3
+      }
+    }
+  },
+  "美一式高伊": {
+    "name": "美一式高伊",
+    "position": "投",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 9,
+        "技術": 9,
+        "変化球": 11
+      }
+    }
+  },
+  "梶増人": {
+    "name": "梶増人",
+    "position": "投",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 11,
+        "変化球": 12
+      }
+    }
+  },
+  "太刀川広巳": {
+    "name": "太刀川広巳",
+    "position": "投",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 14
+      }
+    }
+  },
+  "楽垣吾助": {
+    "name": "楽垣吾助",
+    "position": "投",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 14
+      }
+    }
+  },
+  "天城隼": {
+    "name": "天城隼",
+    "position": "投",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 11,
+        "技術": 11
+      }
+    }
+  },
+  "鶴屋勝": {
+    "name": "鶴屋勝",
+    "position": "投",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12,
+        "変化球": 14
+      }
+    }
+  },
+  "大塔俊二": {
+    "name": "大塔俊二",
+    "position": "投",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 18
+      }
+    }
+  },
+  "オクタヴィア": {
+    "name": "オクタヴィア",
+    "position": "投",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 8,
+        "変化球": 9,
+        "精神": 9
+      }
+    }
+  },
+  "松崎トミオ": {
+    "name": "松崎トミオ",
+    "position": "投",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 9,
+        "精神": 11
+      }
+    }
+  },
+  "花鳥千香": {
+    "name": "花鳥千香",
+    "position": "投",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 12,
+        "変化球": 14
+      }
+    }
+  },
+  "有村佐治": {
+    "name": "有村佐治",
+    "position": "捕",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "敏捷": 8
+      }
+    }
+  },
+  "赤原勘八": {
+    "name": "赤原勘八",
+    "position": "捕",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12
+      }
+    }
+  },
+  "水鳥忍": {
+    "name": "水鳥忍",
+    "position": "捕",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 14,
+        "精神": 14
+      }
+    }
+  },
+  "八桐優斗": {
+    "name": "八桐優斗",
+    "position": "捕",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 9,
+        "精神": 11
+      }
+    }
+  },
+  "本場あんこ": {
+    "name": "本場あんこ",
+    "position": "一",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12
+      }
+    }
+  },
+  "川星ほむら": {
+    "name": "川星ほむら",
+    "position": "一",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12,
+        "敏捷": 12
+      }
+    }
+  },
+  "沖野海里": {
+    "name": "沖野海里",
+    "position": "一",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "精神": 9
+      }
+    }
+  },
+  "武秀英": {
+    "name": "武秀英",
+    "position": "一",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "敏捷": 8
+      }
+    }
+  },
+  "茶来元気": {
+    "name": "茶来元気",
+    "position": "二",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 12
+      }
+    }
+  },
+  "館橋水奈都": {
+    "name": "館橋水奈都",
+    "position": "二",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "精神": 18
+      }
+    }
+  },
+  "鎌刈善二": {
+    "name": "鎌刈善二",
+    "position": "二",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 6,
+        "技術": 6
+      }
+    }
+  },
+  "小平陽向": {
+    "name": "小平陽向",
+    "position": "二",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "技術": 6,
+        "精神": 6
+      }
+    }
+  },
+  "須々木清吾": {
+    "name": "須々木清吾",
+    "position": "二",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 11
+      }
+    }
+  },
+  "少豪月剛": {
+    "name": "少豪月剛",
+    "position": "三",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12,
+        "敏捷": 12
+      }
+    }
+  },
+  "江守陽": {
+    "name": "江守陽",
+    "position": "遊",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 9,
+        "技術": 9
+      }
+    }
+  },
+  "金原いずる": {
+    "name": "金原いずる",
+    "position": "外",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 15
+      }
+    }
+  },
+  "志藤玲美": {
+    "name": "志藤玲美",
+    "position": "外",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 13
+      }
+    }
+  },
+  "天音姫恋": {
+    "name": "天音姫恋",
+    "position": "外",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 12
+      }
+    }
+  },
+  "諸井清和": {
+    "name": "諸井清和",
+    "position": "外",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 12,
+        "精神": 14
+      }
+    }
+  },
+  "田団田ダン": {
+    "name": "田団田ダン",
+    "position": "外",
+    "encounter_map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "敏捷": 8
+      }
+    }
+  },
+  "日和ミヨ": {
+    "name": "日和ミヨ",
+    "position": "マネージャー",
+    "encounter_map": "スカウ島東海岸",
+    "description": "技術&精神1.3倍ボーナス, 配線時, ゴーインに再試合を持ちかける"
+  },
+  "泡瀬満里南": {
+    "name": "泡瀬満里南",
+    "position": "マネージャー",
+    "encounter_map": "スカウ島東海岸",
+    "description": "筋力&技術&精神1.2倍ボーナス, かなり有利な風向きになる"
+  },
+  "花鳥風香": {
+    "name": "花鳥風香",
+    "position": "マネージャー",
+    "encounter_map": "スカウ島東海岸",
+    "description": "変化球&精神1.3倍ボーナス, 主人公の活躍次第で...？"
+  },
+  "咲須かのん": {
+    "name": "咲須かのん",
+    "position": "マネージャー",
+    "encounter_map": "スカウ島東海岸",
+    "description": "筋力&敏捷&技術1.2倍ボーナス, 多くの選手をやる気にしてくれる"
+  },
+  "降谷暁": {
+    "name": "降谷暁",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        "重い球"
+      ],
+      "stats": {
+        "筋力": 2,
+        "精神": 5
+      }
+    }
+  },
+  "川上憲史": {
+    "name": "川上憲史",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        "低め◯"
+      ],
+      "stats": {
+        "技術": 1,
+        "変化球": 5
+      }
+    }
+  },
+  "奥村光舟": {
+    "name": "奥村光舟",
+    "position": "捕",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 1,
+        "技術": 1
+      }
+    }
+  },
+  "秋葉一真": {
+    "name": "秋葉一真",
+    "position": "捕",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 4,
+        "敏捷": 4,
+        "技術": 8,
+        "変化球": 4,
+        "精神": 4
+      }
+    }
+  },
+  "伊佐敷純": {
+    "name": "伊佐敷純",
+    "position": "外",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 5,
+        "技術": 5,
+        "精神": 15
+      }
+    }
+  },
+  "蝶野半四郎": {
+    "name": "蝶野半四郎",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        "リリース◯"
+      ],
+      "stats": {
+        "変化球": 11
+      }
+    }
+  },
+  "大豪月": {
+    "name": "大豪月",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        "ポーカーフェイス"
+      ],
+      "stats": {
+        "筋力": 9,
+        "敏捷": 9,
+        "精神": 11
+      }
+    }
+  },
+  "大西ハリソン筋金": {
+    "name": "大西ハリソン筋金",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        "ポーカーフェイス"
+      ],
+      "stats": {
+        "敏捷": 9,
+        "変化球": 11
+      }
+    }
+  },
+  "堺住吉": {
+    "name": "堺住吉",
+    "position": "捕",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        "バント◯"
+      ],
+      "stats": {
+        "技術": 9
+      }
+    }
+  },
+  "織部実留": {
+    "name": "織部実留",
+    "position": "捕",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        "キャッチャー"
+      ],
+      "stats": {
+        "精神": 11
+      }
+    }
+  },
+  "大一万大吉": {
+    "name": "大一万大吉",
+    "position": "一",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        "チャンス"
+      ],
+      "stats": {
+        "筋力": 9
+      }
+    }
+  },
+  "森河岳": {
+    "name": "森河岳",
+    "position": "遊",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        "内野安打◯"
+      ],
+      "stats": {
+        "筋力": 3,
+        "敏捷": 3,
+        "技術": 3
+      }
+    }
+  },
+  "伊能麗示": {
+    "name": "伊能麗示",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 14
+      }
+    }
+  },
+  "覆水武明": {
+    "name": "覆水武明",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "変化球": 6
+      }
+    }
+  },
+  "鞍馬貴史": {
+    "name": "鞍馬貴史",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 6,
+        "技術": 6,
+        "変化球": 6
+      }
+    }
+  },
+  "ゼンザイ": {
+    "name": "ゼンザイ",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 12,
+        "変化球": 14
+      }
+    }
+  },
+  "城山剣一": {
+    "name": "城山剣一",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 9
+      }
+    }
+  },
+  "ホールスアン4世": {
+    "name": "ホールスアン4世",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 9,
+        "変化球": 11
+      }
+    }
+  },
+  "木場嵐士": {
+    "name": "木場嵐士",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "敏捷": 8,
+        "変化球": 9
+      }
+    }
+  },
+  "堂江竜河": {
+    "name": "堂江竜河",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "敏捷": 8,
+        "変化球": 9
+      }
+    }
+  },
+  "久里武尊": {
+    "name": "久里武尊",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 11,
+        "敏捷": 11
+      }
+    }
+  },
+  "雪野楓": {
+    "name": "雪野楓",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "精神": 18
+      }
+    }
+  },
+  "紀乃光一": {
+    "name": "紀乃光一",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 11,
+        "精神": 11
+      }
+    }
+  },
+  "尾根瑛人": {
+    "name": "尾根瑛人",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "変化球": 7
+      }
+    }
+  },
+  "館西勉": {
+    "name": "館西勉",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 11,
+        "精神": 11
+      }
+    }
+  },
+  "猪狩守": {
+    "name": "猪狩守",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 11,
+        "変化球": 12
+      }
+    }
+  },
+  "烏丸剛充": {
+    "name": "烏丸剛充",
+    "position": "投",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12,
+        "変化球": 14
+      }
+    }
+  },
+  "九州": {
+    "name": "九州",
+    "position": "捕",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "精神": 6
+      }
+    }
+  },
+  "非道": {
+    "name": "非道",
+    "position": "捕",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 9,
+        "敏捷": 9
+      }
+    }
+  },
+  "六道聖": {
+    "name": "六道聖",
+    "position": "捕",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "精神": 18
+      }
+    }
+  },
+  "諏訪野聖人": {
+    "name": "諏訪野聖人",
+    "position": "捕",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 12
+      }
+    }
+  },
+  "出井田文飛": {
+    "name": "出井田文飛",
+    "position": "捕",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 15
+      }
+    }
+  },
+  "ナヌーク": {
+    "name": "ナヌーク",
+    "position": "捕",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 11
+      }
+    }
+  },
+  "ヌウビス": {
+    "name": "ヌウビス",
+    "position": "一",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12,
+        "精神": 14
+      }
+    }
+  },
+  "一条一輝": {
+    "name": "一条一輝",
+    "position": "一",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 11
+      }
+    }
+  },
+  "猿": {
+    "name": "猿",
+    "position": "二",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "技術": 6,
+        "精神": 6
+      }
+    }
+  },
+  "ヤーベン": {
+    "name": "ヤーベン",
+    "position": "二",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 9,
+        "技術": 9
+      }
+    }
+  },
+  "ニャプテト": {
+    "name": "ニャプテト",
+    "position": "二",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        "走塁"
+      ],
+      "stats": {
+        "敏捷": 3,
+        "技術": 3
+      }
+    }
+  },
+  "黒衛隆富": {
+    "name": "黒衛隆富",
+    "position": "二",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 11,
+        "精神": 12
+      }
+    }
+  },
+  "上野良人": {
+    "name": "上野良人",
+    "position": "二",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "精神": 12
+      }
+    }
+  },
+  "塚見リフター": {
+    "name": "塚見リフター",
+    "position": "三",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6
+      }
+    }
+  },
+  "輝星也": {
+    "name": "輝星也",
+    "position": "三",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "技術": 6
+      }
+    }
+  },
+  "ネイキッドスネーク": {
+    "name": "ネイキッドスネーク",
+    "position": "遊",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 11,
+        "敏捷": 11,
+        "精神": 12
+      }
+    }
+  },
+  "ザンス": {
+    "name": "ザンス",
+    "position": "遊",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "技術": 6,
+        "精神": 6
+      }
+    }
+  },
+  "大越清亮": {
+    "name": "大越清亮",
+    "position": "遊",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "敏捷": 8
+      }
+    }
+  },
+  "東雲翔也": {
+    "name": "東雲翔也",
+    "position": "遊",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 11,
+        "精神": 12
+      }
+    }
+  },
+  "ギャネンドラ": {
+    "name": "ギャネンドラ",
+    "position": "遊",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 12
+      }
+    }
+  },
+  "六鹿陸": {
+    "name": "六鹿陸",
+    "position": "遊",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        "ボーナスなし"
+      ],
+      "stats": {}
+    }
+  },
+  "矢部田亜希子": {
+    "name": "矢部田亜希子",
+    "position": "外",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 9,
+        "変化球": 11,
+        "精神": 11
+      }
+    }
+  },
+  "ミッキー": {
+    "name": "ミッキー",
+    "position": "外",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 15
+      }
+    }
+  },
+  "辰猪一八": {
+    "name": "辰猪一八",
+    "position": "外",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 9,
+        "敏捷": 9
+      }
+    }
+  },
+  "古羽流登": {
+    "name": "古羽流登",
+    "position": "外",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 15
+      }
+    }
+  },
+  "城井伯斎": {
+    "name": "城井伯斎",
+    "position": "外",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 12
+      }
+    }
+  },
+  "掘杉等": {
+    "name": "掘杉等",
+    "position": "外",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6
+      }
+    }
+  },
+  "カイルモラレス": {
+    "name": "カイルモラレス",
+    "position": "外",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        "カイルモラレス"
+      ],
+      "stats": {}
+    }
+  },
+  "天宮果也乃": {
+    "name": "天宮果也乃",
+    "position": "外",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 15,
+        "技術": 15
+      }
+    }
+  },
+  "紺野美崎": {
+    "name": "紺野美崎",
+    "position": "マネージャー",
+    "encounter_map": "ハナレ島",
+    "description": "全経験点がご機嫌度1だと1.2倍, 2だと1.3倍, 3だと1.5倍ボーナス, 主人公の打席が確定操作"
+  },
+  "四条澄香": {
+    "name": "四条澄香",
+    "position": "マネージャー",
+    "encounter_map": "ハナレ島",
+    "description": "技術&変化球1.3倍ボーナス, 効果なし"
+  },
+  "木場静火": {
+    "name": "木場静火",
+    "position": "マネージャー",
+    "encounter_map": "ハナレ島",
+    "description": "筋力&技術1.3倍ボーナス, 主人公と味方全員の球速UP"
+  },
+  "久根美亜": {
+    "name": "久根美亜",
+    "position": "マネージャー",
+    "encounter_map": "ハナレ島",
+    "description": "筋力&変化球&精神1.2倍ボーナス, ご機嫌度の数だけランダムに試合アイテム効果発動(リモコン除く)"
+  },
+  "倉家凪": {
+    "name": "倉家凪",
+    "position": "マネージャー",
+    "encounter_map": "ハナレ島",
+    "description": "技術&精神1.3倍ボーナス, 相手投手の球種が分かる(ご機嫌度次第)"
+  },
+  "三ツ沢環": {
+    "name": "三ツ沢環",
+    "position": "マネージャー",
+    "encounter_map": "ハナレ島",
+    "description": "敏捷&技術&精神1.2倍ボーナス, 味方の調子を底上げ"
+  },
+  "大谷美衣": {
+    "name": "大谷美衣",
+    "position": "マネージャー",
+    "encounter_map": "ハナレ島",
+    "description": "筋力&技術&変化球1.2倍ボーナス, 主人公と味方全員の赤特効果を消す"
+  },
+  "須神絵久": {
+    "name": "須神絵久",
+    "position": "マネージャー",
+    "encounter_map": "ハナレ島",
+    "description": "筋力&敏捷1.3倍ボーナス, 相手全員調子ふつうからご機嫌度分マイナス"
+  },
+  "本若春陽": {
+    "name": "本若春陽",
+    "position": "マネージャー",
+    "encounter_map": "ハナレ島",
+    "description": "筋力&技術1.3倍ボーナス, チームメイトの獲得経験値ボーナス"
+  },
+  "我間摩夕": {
+    "name": "我間摩夕",
+    "position": "マネージャー",
+    "encounter_map": "ハナレ島",
+    "description": "いいつけ対象がいる時にいいつけ発動。クリアで全経験点1.6倍ボーナス, ご機嫌度高くなるほど相手のCOMレベルが上がる"
+  },
+  "沢村栄純": {
+    "name": "沢村栄純",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        "キレ◯"
+      ],
+      "stats": {
+        "筋力": 1,
+        "変化球": 2
+      }
+    }
+  },
+  "小湊亮介": {
+    "name": "小湊亮介",
+    "position": "二",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 2
+      }
+    }
+  },
+  "小湊春市": {
+    "name": "小湊春市",
+    "position": "二",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        "アベレージヒッター"
+      ],
+      "stats": {
+        "技術": 15,
+        "精神": 1
+      }
+    }
+  },
+  "倉持洋一": {
+    "name": "倉持洋一",
+    "position": "遊",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        "盗塁+5"
+      ],
+      "stats": {
+        "敏捷": 2
+      }
+    }
+  },
+  "ロディブライト": {
+    "name": "ロディブライト",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        "尻上がり"
+      ],
+      "stats": {
+        "筋力": 8,
+        "敏捷": 8,
+        "技術": 8
+      }
+    }
+  },
+  "暮羽鋭次": {
+    "name": "暮羽鋭次",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        "対ピンチ"
+      ],
+      "stats": {
+        "技術": 3,
+        "変化球": 4
+      }
+    }
+  },
+  "早川あおい": {
+    "name": "早川あおい",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        "緩急◯"
+      ],
+      "stats": {
+        "技術": 6,
+        "変化球": 7,
+        "精神": 7
+      }
+    }
+  },
+  "久遠ヒカル": {
+    "name": "久遠ヒカル",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        "リリース◯"
+      ],
+      "stats": {
+        "技術": 12,
+        "変化球": 14
+      }
+    }
+  },
+  "蛇島桐人": {
+    "name": "蛇島桐人",
+    "position": "二",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        "守備職人"
+      ],
+      "stats": {
+        "筋力": 3,
+        "精神": 3
+      }
+    }
+  },
+  "ミンミン": {
+    "name": "ミンミン",
+    "position": "二",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        "意外性"
+      ],
+      "stats": {
+        "敏捷": 9,
+        "技術": 9
+      }
+    }
+  },
+  "才賀侑人": {
+    "name": "才賀侑人",
+    "position": "三",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        "広角打法"
+      ],
+      "stats": {
+        "筋力": 3
+      }
+    }
+  },
+  "六本木優希": {
+    "name": "六本木優希",
+    "position": "遊",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        "守備職人"
+      ],
+      "stats": {
+        "精神": 15
+      }
+    }
+  },
+  "鈴姫健太郎": {
+    "name": "鈴姫健太郎",
+    "position": "遊",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        "逆境◯"
+      ],
+      "stats": {
+        "精神": 12
+      }
+    }
+  },
+  "猛田慶次": {
+    "name": "猛田慶次",
+    "position": "外",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        "チャンス"
+      ],
+      "stats": {
+        "筋力": 6,
+        "精神": 7
+      }
+    }
+  },
+  "七井アレフト": {
+    "name": "七井アレフト",
+    "position": "外",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        "パワーヒッター"
+      ],
+      "stats": {
+        "筋力": 9
+      }
+    }
+  },
+  "八嶋中": {
+    "name": "八嶋中",
+    "position": "外",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        "盗塁"
+      ],
+      "stats": {
+        "技術": 9
+      }
+    }
+  },
+  "九十九宇宙": {
+    "name": "九十九宇宙",
+    "position": "外",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        "レーザービーム"
+      ],
+      "stats": {}
+    }
+  },
+  "雲海和也": {
+    "name": "雲海和也",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "敏捷": 8,
+        "変化球": 9
+      }
+    }
+  },
+  "犬河和音": {
+    "name": "犬河和音",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 18
+      }
+    }
+  },
+  "久方怜": {
+    "name": "久方怜",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 8,
+        "精神": 9
+      }
+    }
+  },
+  "史門泰司": {
+    "name": "史門泰司",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "変化球": 7
+      }
+    }
+  },
+  "須藤零人": {
+    "name": "須藤零人",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 12
+      }
+    }
+  },
+  "アレックス": {
+    "name": "アレックス",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "変化球": 7
+      }
+    }
+  },
+  "真黒綱寛": {
+    "name": "真黒綱寛",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12,
+        "変化球": 14
+      }
+    }
+  },
+  "樽本有太": {
+    "name": "樽本有太",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 12
+      }
+    }
+  },
+  "出井田大輔": {
+    "name": "出井田大輔",
+    "position": "捕",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6
+      }
+    }
+  },
+  "神成尊": {
+    "name": "神成尊",
+    "position": "捕",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "精神": 6
+      }
+    }
+  },
+  "二宮瑞穂": {
+    "name": "二宮瑞穂",
+    "position": "捕",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 13,
+        "敏捷": 13
+      }
+    }
+  },
+  "猫神優": {
+    "name": "猫神優",
+    "position": "捕",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 15
+      }
+    }
+  },
+  "江戸川文楽": {
+    "name": "江戸川文楽",
+    "position": "一",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 15
+      }
+    }
+  },
+  "斬金半馬": {
+    "name": "斬金半馬",
+    "position": "一",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "技術": 6
+      }
+    }
+  },
+  "三本松一": {
+    "name": "三本松一",
+    "position": "一",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12,
+        "精神": 14
+      }
+    }
+  },
+  "パステル": {
+    "name": "パステル",
+    "position": "二",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 15,
+        "技術": 15
+      }
+    }
+  },
+  "千代姫": {
+    "name": "千代姫",
+    "position": "二",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "精神": 9
+      }
+    }
+  },
+  "四条賢二": {
+    "name": "四条賢二",
+    "position": "二",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "精神": 12
+      }
+    }
+  },
+  "東條小次郎": {
+    "name": "東條小次郎",
+    "position": "三",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "敏捷": 8,
+        "精神": 9
+      }
+    }
+  },
+  "武野浩太": {
+    "name": "武野浩太",
+    "position": "三",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "技術": 6
+      }
+    }
+  },
+  "五十嵐権三": {
+    "name": "五十嵐権三",
+    "position": "三",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 9,
+        "敏捷": 9
+      }
+    }
+  },
+  "兼倉洋平": {
+    "name": "兼倉洋平",
+    "position": "三",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12,
+        "敏捷": 12
+      }
+    }
+  },
+  "望戸紅": {
+    "name": "望戸紅",
+    "position": "三",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6
+      }
+    }
+  },
+  "東推八": {
+    "name": "東推八",
+    "position": "遊",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 6,
+        "精神": 6
+      }
+    }
+  },
+  "風薙豹": {
+    "name": "風薙豹",
+    "position": "遊",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "技術": 6,
+        "精神": 6
+      }
+    }
+  },
+  "友沢亮": {
+    "name": "友沢亮",
+    "position": "遊",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "技術": 6,
+        "変化球": 6
+      }
+    }
+  },
+  "ジャベリン五十嵐": {
+    "name": "ジャベリン五十嵐",
+    "position": "遊",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "精神": 6
+      }
+    }
+  },
+  "バット円島": {
+    "name": "バット円島",
+    "position": "遊",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 11,
+        "精神": 12
+      }
+    }
+  },
+  "浮見葉勘": {
+    "name": "浮見葉勘",
+    "position": "遊",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6
+      }
+    }
+  },
+  "郡司知将": {
+    "name": "郡司知将",
+    "position": "外",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 15
+      }
+    }
+  },
+  "エミリ": {
+    "name": "エミリ",
+    "position": "マネージャー",
+    "encounter_map": "スカウ塔空中庭園",
+    "description": "筋力&精神1.3倍ボーナス, 4～6点差までフル打撃操作"
+  },
+  "鴨川しぐれ": {
+    "name": "鴨川しぐれ",
+    "position": "マネージャー",
+    "encounter_map": "スカウ塔空中庭園",
+    "description": "変化球&精神1.3倍ボーナス, 相手のCOM強さダウン"
+  },
+  "雉田直実": {
+    "name": "雉田直実",
+    "position": "マネージャー",
+    "encounter_map": "スカウ塔空中庭園",
+    "description": "技術&変化球1.3倍ボーナス, ランダムにアイテムをご機嫌度分の個数くれる。金特本や基礎コツLv2アイテムも確率で入手"
+  },
+  "津乃田梨亜": {
+    "name": "津乃田梨亜",
+    "position": "マネージャー",
+    "encounter_map": "スカウ塔空中庭園",
+    "description": "筋力&技術1.3ボーナス, 主人公を超強化する"
+  },
+  "明星雪華": {
+    "name": "明星雪華",
+    "position": "マネージャー",
+    "encounter_map": "スカウ塔空中庭園",
+    "description": "筋力&変化球1.3倍ボーナス, 7～9回以降フル操作"
+  },
+  "京野小筆": {
+    "name": "京野小筆",
+    "position": "マネージャー",
+    "encounter_map": "スカウ塔空中庭園",
+    "description": "技術&敏捷1.3倍ボーナス, 主人公の成長サポート"
+  },
+  "姫野カレン": {
+    "name": "姫野カレン",
+    "position": "マネージャー",
+    "encounter_map": "スカウ塔空中庭園",
+    "description": "佐藤太郎で筋力6, 敏捷6, 技術6, 変化球7, 精神7"
+  },
+  "滝川クリス優": {
+    "name": "滝川クリス優",
+    "position": "マネージャー",
+    "encounter_map": "スカウ塔空中庭園",
+    "description": "味方全員の投手能力を大幅に上げる"
+  },
+  "天久光聖": {
+    "name": "天久光聖",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        "キレ◯"
+      ],
+      "stats": {
+        "技術": 5,
+        "変化球": 2
+      }
+    }
+  },
+  "バーリスロセオ": {
+    "name": "バーリスロセオ",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        "対ピンチ"
+      ],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6
+      }
+    }
+  },
+  "日輪暁": {
+    "name": "日輪暁",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        "根性◯"
+      ],
+      "stats": {
+        "筋力": 12
+      }
+    }
+  },
+  "パピヨン": {
+    "name": "パピヨン",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        "回復"
+      ],
+      "stats": {
+        "筋力": 6,
+        "技術": 6,
+        "変化球": 6,
+        "精神": 6
+      }
+    }
+  },
+  "塚見巴": {
+    "name": "塚見巴",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        "荒れ球"
+      ],
+      "stats": {
+        "筋力": 6,
+        "技術": 6
+      }
+    }
+  },
+  "滝本太郎": {
+    "name": "滝本太郎",
+    "position": "一",
+    "encounter_map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        "パワーヒッター"
+      ],
+      "stats": {
+        "筋力": 13
+      }
+    }
+  },
+  "小石川大太": {
+    "name": "小石川大太",
+    "position": "二",
+    "encounter_map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        "流し打ち"
+      ],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "精神": 7
+      }
+    }
+  },
+  "セティーヌ": {
+    "name": "セティーヌ",
+    "position": "外",
+    "encounter_map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        "守備職人"
+      ],
+      "stats": {
+        "精神": 15
+      }
+    }
+  },
+  "アンヌアズナブル": {
+    "name": "アンヌアズナブル",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 18
+      }
+    }
+  },
+  "鈴本大輔": {
+    "name": "鈴本大輔",
+    "position": "投",
+    "encounter_map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 9
+      }
+    }
+  },
+  "清本和重": {
+    "name": "清本和重",
+    "position": "一",
+    "encounter_map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "精神": 6
+      }
+    }
+  },
+  "福家花男": {
+    "name": "福家花男",
+    "position": "三",
+    "encounter_map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "精神": 6
+      }
+    }
+  },
+  "藤堂まひる": {
+    "name": "藤堂まひる",
+    "position": "三",
+    "encounter_map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "精神": 15
+      }
+    }
+  },
+  "宝塚月斗": {
+    "name": "宝塚月斗",
+    "position": "遊",
+    "encounter_map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 6,
+        "技術": 6,
+        "精神": 6
+      }
+    }
+  },
+  "成宮鳴": {
+    "name": "成宮鳴",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "奪三振"
+      ],
+      "stats": {
+        "筋力": 1,
+        "技術": 1,
+        "変化球": 1
+      }
+    }
+  },
+  "御幸一也": {
+    "name": "御幸一也",
+    "position": "捕",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "送球"
+      ],
+      "stats": {
+        "筋力": 5,
+        "技術": 1,
+        "精神": 15
+      }
+    }
+  },
+  "轟雷市": {
+    "name": "轟雷市",
+    "position": "三",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "パワーヒッター"
+      ],
+      "stats": {
+        "筋力": 2,
+        "敏捷": 5,
+        "精神": 5
+      }
+    }
+  },
+  "神谷カルロス俊樹": {
+    "name": "神谷カルロス俊樹",
+    "position": "外",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "走塁"
+      ],
+      "stats": {
+        "筋力": 5,
+        "敏捷": 15
+      }
+    }
+  },
+  "朱雀南赤": {
+    "name": "朱雀南赤",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "ノビ"
+      ],
+      "stats": {
+        "敏捷": 6
+      }
+    }
+  },
+  "テリーマイルマン": {
+    "name": "テリーマイルマン",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "ノビ"
+      ],
+      "stats": {
+        "敏捷": 6
+      }
+    }
+  },
+  "阿麻央真": {
+    "name": "阿麻央真",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "打たれ強さ"
+      ],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "変化球": 7
+      }
+    }
+  },
+  "嵐丸士朗": {
+    "name": "嵐丸士朗",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "根性◯"
+      ],
+      "stats": {
+        "筋力": 9,
+        "変化球": 11
+      }
+    }
+  },
+  "神童裕二郎": {
+    "name": "神童裕二郎",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "投打躍動"
+      ],
+      "stats": {
+        "敏捷": 6,
+        "変化球": 7,
+        "精神": 7
+      }
+    }
+  },
+  "一ノ瀬塔哉": {
+    "name": "一ノ瀬塔哉",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "投打躍動"
+      ],
+      "stats": {
+        "筋力": 9,
+        "変化球": 11
+      }
+    }
+  },
+  "井筒哀樹": {
+    "name": "井筒哀樹",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "重い球"
+      ],
+      "stats": {
+        "変化球": 11
+      }
+    }
+  },
+  "高原曲": {
+    "name": "高原曲",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "重い球"
+      ],
+      "stats": {
+        "精神": 4
+      }
+    }
+  },
+  "神楽坂光彦": {
+    "name": "神楽坂光彦",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "奪三振"
+      ],
+      "stats": {}
+    }
+  },
+  "鳴海悠斗": {
+    "name": "鳴海悠斗",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "キレ◯"
+      ],
+      "stats": {
+        "筋力": 3,
+        "変化球": 3,
+        "精神": 3
+      }
+    }
+  },
+  "マキシマム池田クリスティン": {
+    "name": "マキシマム池田クリスティン",
+    "position": "一",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "パワヒッター"
+      ],
+      "stats": {
+        "筋力": 9
+      }
+    }
+  },
+  "冴木創": {
+    "name": "冴木創",
+    "position": "二",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "盗塁"
+      ],
+      "stats": {
+        "技術": 6
+      }
+    }
+  },
+  "往田真威人": {
+    "name": "往田真威人",
+    "position": "三",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "対ピンチ"
+      ],
+      "stats": {
+        "筋力": 8,
+        "敏捷": 8,
+        "変化球": 9
+      }
+    }
+  },
+  "十六夜満": {
+    "name": "十六夜満",
+    "position": "遊",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "かく乱"
+      ],
+      "stats": {
+        "技術": 11,
+        "精神": 12
+      }
+    }
+  },
+  "DJB-K": {
+    "name": "DJB-K",
+    "position": "外",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [
+        "レーザービーム"
+      ],
+      "stats": {
+        "筋力": 6,
+        "精神": 6
+      }
+    }
+  },
+  "ランスロット": {
+    "name": "ランスロット",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "変化球": 6
+      }
+    }
+  },
+  "アルヴィンロックハート": {
+    "name": "アルヴィンロックハート",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 15,
+        "変化球": 18
+      }
+    }
+  },
+  "ゴウ": {
+    "name": "ゴウ",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "敏捷": 8,
+        "精神": 9
+      }
+    }
+  },
+  "グラビトン新井": {
+    "name": "グラビトン新井",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "敏捷": 8,
+        "変化球": 9
+      }
+    }
+  },
+  "闇野栄剛": {
+    "name": "闇野栄剛",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "変化球": 7
+      }
+    }
+  },
+  "部長": {
+    "name": "部長",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "変化球": 14
+      }
+    }
+  },
+  "猿川捻二": {
+    "name": "猿川捻二",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "技術": 6
+      }
+    }
+  },
+  "犬山堅太郎": {
+    "name": "犬山堅太郎",
+    "position": "投",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 8,
+        "技術": 8,
+        "精神": 9
+      }
+    }
+  },
+  "シュバリエ": {
+    "name": "シュバリエ",
+    "position": "捕",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "技術": 6,
+        "精神": 6
+      }
+    }
+  },
+  "内藤明瑠": {
+    "name": "内藤明瑠",
+    "position": "一",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 12,
+        "敏捷": 12
+      }
+    }
+  },
+  "岸田卓": {
+    "name": "岸田卓",
+    "position": "一",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "敏捷": 8,
+        "技術": 8
+      }
+    }
+  },
+  "ガジェット落合": {
+    "name": "ガジェット落合",
+    "position": "一",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "敏捷": 8,
+        "技術": 8
+      }
+    }
+  },
+  "佐渡摩智": {
+    "name": "佐渡摩智",
+    "position": "二",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 6,
+        "技術": 6
+      }
+    }
+  },
+  "社長": {
+    "name": "社長",
+    "position": "三",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "技術": 6,
+        "精神": 6
+      }
+    }
+  },
+  "雷轟遥登": {
+    "name": "雷轟遥登",
+    "position": "三",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "敏捷": 8,
+        "精神": 9
+      }
+    }
+  },
+  "戸草鏡": {
+    "name": "戸草鏡",
+    "position": "遊",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 6,
+        "技術": 6
+      }
+    }
+  },
+  "灰塚朔夜": {
+    "name": "灰塚朔夜",
+    "position": "遊",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "技術": 6
+      }
+    }
+  },
+  "アルカード": {
+    "name": "アルカード",
+    "position": "外",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 1,
+        "技術": 13
+      }
+    }
+  },
+  "ガルシア": {
+    "name": "ガルシア",
+    "position": "外",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "技術": 6
+      }
+    }
+  },
+  "ボーマンバンガード": {
+    "name": "ボーマンバンガード",
+    "position": "外",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 13
+      }
+    }
+  },
+  "ヴィクターコールドバーグ": {
+    "name": "ヴィクターコールドバーグ",
+    "position": "外",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "技術": 8,
+        "精神": 9
+      }
+    }
+  },
+  "宮田良哉": {
+    "name": "宮田良哉",
+    "position": "外",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "技術": 6
+      }
+    }
+  },
+  "渋谷秀喜": {
+    "name": "渋谷秀喜",
+    "position": "外",
+    "encounter_map": "月面",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 13,
+        "敏捷": 13
+      }
+    }
+  },
+  "神良美砂": {
+    "name": "神良美砂",
+    "position": "マネージャー",
+    "encounter_map": "月面",
+    "description": "敏捷&精神1.3倍ボーナス, 攻撃時指定した打順を操作できる"
+  },
+  "カリーナ": {
+    "name": "カリーナ",
+    "position": "マネージャー",
+    "encounter_map": "月面",
+    "description": "技術&敏捷1.3倍ボーナス, 主人公と味方の守備能力が上がる"
+  },
+  "神埼こりす": {
+    "name": "神埼こりす",
+    "position": "マネージャー",
+    "encounter_map": "月面",
+    "description": "筋力&変化球1.3倍ボーナス, 相手に悪い能力をたくさん付与する"
+  },
+  "虹谷彩理": {
+    "name": "虹谷彩理",
+    "position": "マネージャー",
+    "encounter_map": "月面",
+    "description": "技術&変化球1.3倍ボーナス, 他マネ効果ランダムで発動(ご機嫌度1の効果)"
+  },
+  "NCM-753": {
+    "name": "NCM-753",
+    "position": "マネージャー",
+    "encounter_map": "月面",
+    "description": "筋力&敏捷&精神1.2倍ボーナス, 使ったアイテムを修復"
+  },
+  "守神悠羽": {
+    "name": "守神悠羽",
+    "position": "マネージャー",
+    "encounter_map": "月面",
+    "description": "技術&精神1.3倍ボーナス, 高確率で試合用アイテム効果を発動する"
+  },
+  "光野聖良": {
+    "name": "光野聖良",
+    "position": "マネージャー",
+    "encounter_map": "月面",
+    "description": "筋力&技術1.3倍ボーナス, 勝利した際に追加でスカウの実を貰える"
+  },
+  "本郷正宗": {
+    "name": "本郷正宗",
+    "position": "投",
+    "encounter_map": "月面-カグヤ城内",
+    "rewards": {
+      "skills": [
+        "ノビ"
+      ],
+      "stats": {
+        "筋力": 1,
+        "技術": 1,
+        "変化球": 1,
+        "精神": 5
+      }
+    }
+  },
+  "虹谷誠": {
+    "name": "虹谷誠",
+    "position": "投",
+    "encounter_map": "月面-カグヤ城内",
+    "rewards": {
+      "skills": [
+        "緩急◯"
+      ],
+      "stats": {
+        "技術": 11,
+        "変化球": 12
+      }
+    }
+  },
+  "キリルフォスター": {
+    "name": "キリルフォスター",
+    "position": "投",
+    "encounter_map": "月面-カグヤ城内",
+    "rewards": {
+      "skills": [
+        "ノビ"
+      ],
+      "stats": {
+        "筋力": 3,
+        "敏捷": 3,
+        "技術": 3
+      }
+    }
+  },
+  "ゴエモン": {
+    "name": "ゴエモン",
+    "position": "投",
+    "encounter_map": "月面-カグヤ城内",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 11,
+        "技術": 11,
+        "敏捷": 11
+      }
+    }
+  },
+  "カグヤ": {
+    "name": "カグヤ",
+    "position": "投",
+    "encounter_map": "月面-カグヤ城内",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 15
+      }
+    }
+  },
+  "DJB-78": {
+    "name": "DJB-78",
+    "position": "投",
+    "encounter_map": "月面-カグヤ城内",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "精神": 15
+      }
+    }
+  },
+  "霧崎礼里": {
+    "name": "霧崎礼里",
+    "position": "遊",
+    "encounter_map": "月面-カグヤ城内",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "技術": 6,
+        "精神": 6
+      }
+    }
+  },
+  "黒聖良": {
+    "name": "黒聖良",
+    "position": "外",
+    "encounter_map": "月面-カグヤ城内",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 15
+      }
+    }
+  },
+  "敷上マニィ": {
+    "name": "敷上マニィ",
+    "position": "三",
+    "encounter_map": "月面-カグヤ城内",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 11,
+        "敏捷": 11,
+        "精神": 12
+      }
+    }
+  },
+  "野球マン1号": {
+    "name": "野球マン1号",
+    "position": "投",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [
+        "クロスファイヤー"
+      ],
+      "stats": {
+        "変化球": 18
+      }
+    }
+  },
+  "野球マン2号": {
+    "name": "野球マン2号",
+    "position": "投",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [
+        "流し打ち"
+      ],
+      "stats": {
+        "変化球": 18
+      }
+    }
+  },
+  "野球マスク": {
+    "name": "野球マスク",
+    "position": "投",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [
+        "逃げ球"
+      ],
+      "stats": {
+        "筋力": 11,
+        "敏捷": 11,
+        "技術": 11,
+        "変化球": 12
+      }
+    }
+  },
+  "熱盛": {
+    "name": "熱盛",
+    "position": "投",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [
+        "闘志"
+      ],
+      "stats": {
+        "変化球": 18
+      }
+    }
+  },
+  "響乃こころ": {
+    "name": "響乃こころ",
+    "position": "投",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [
+        "緩急◯"
+      ],
+      "stats": {
+        "変化球": 18
+      }
+    }
+  },
+  "獅乃木琢磨": {
+    "name": "獅乃木琢磨",
+    "position": "投",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [
+        "キレ◯"
+      ],
+      "stats": {
+        "敏捷": 3,
+        "変化球": 3,
+        "精神": 3
+      }
+    }
+  },
+  "ニセプロ：主人公と同じポジション": {
+    "name": "ニセプロ：主人公と同じポジション",
+    "position": "投",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [
+        "ヘッドスライディング"
+      ],
+      "stats": {
+        "筋力": 3,
+        "敏捷": 3,
+        "技術": 3,
+        "変化球": 4,
+        "精神": 4
+      }
+    }
+  },
+  "野球マン3号": {
+    "name": "野球マン3号",
+    "position": "捕",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [
+        "広角打法"
+      ],
+      "stats": {
+        "精神": 15
+      }
+    }
+  },
+  "駒坂瞬": {
+    "name": "駒坂瞬",
+    "position": "遊",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [
+        "アベレージヒッター"
+      ],
+      "stats": {
+        "敏捷": 3,
+        "技術": 3,
+        "精神": 3
+      }
+    }
+  },
+  "戸井鉄男": {
+    "name": "戸井鉄男",
+    "position": "外",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [
+        "アベレージヒッター"
+      ],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "技術": 6,
+        "精神": 6
+      }
+    }
+  },
+  "轟ハルカ": {
+    "name": "轟ハルカ",
+    "position": "外",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [
+        "意外性"
+      ],
+      "stats": {
+        "筋力": 12,
+        "精神": 14
+      }
+    }
+  },
+  "矢倍萌雄": {
+    "name": "矢倍萌雄",
+    "position": "外",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [
+        "ジャイロボール"
+      ],
+      "stats": {
+        "技術": 8,
+        "精神": 9
+      }
+    }
+  },
+  "皇帝": {
+    "name": "皇帝",
+    "position": "投",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 11,
+        "技術": 11,
+        "変化球": 12
+      }
+    }
+  },
+  "明神陽": {
+    "name": "明神陽",
+    "position": "投",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 3,
+        "敏捷": 3,
+        "技術": 3
+      }
+    }
+  },
+  "ジュリアス": {
+    "name": "ジュリアス",
+    "position": "投",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 9,
+        "技術": 9,
+        "変化球": 11
+      }
+    }
+  },
+  "パワ子": {
+    "name": "パワ子",
+    "position": "一",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "精神": 18
+      }
+    }
+  },
+  "野球マン5号": {
+    "name": "野球マン5号",
+    "position": "遊",
+    "encounter_map": "？マス",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "精神": 15
+      }
+    }
+  },
+  "アフロ猪狩": {
+    "name": "アフロ猪狩",
+    "position": "投",
+    "encounter_map": "台風隠し",
+    "rewards": {
+      "skills": [
+        "闘志"
+      ],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "技術": 6,
+        "変化球": 6,
+        "精神": 6
+      }
+    }
+  },
+  "レッド": {
+    "name": "レッド",
+    "position": "投",
+    "encounter_map": "台風隠し",
+    "rewards": {
+      "skills": [
+        "対ピンチ"
+      ],
+      "stats": {
+        "筋力": 3,
+        "敏捷": 3,
+        "技術": 3,
+        "精神": 3
+      }
+    }
+  },
+  "凡田大介": {
+    "name": "凡田大介",
+    "position": "投",
+    "encounter_map": "台風隠し",
+    "rewards": {
+      "skills": [
+        "逃げ球"
+      ],
+      "stats": {
+        "技術": 12
+      }
+    }
+  },
+  "軍導英雄": {
+    "name": "軍導英雄",
+    "position": "一",
+    "encounter_map": "台風隠し",
+    "rewards": {
+      "skills": [
+        "アベレージヒッター"
+      ],
+      "stats": {
+        "筋力": 6,
+        "敏捷": 6,
+        "技術": 6,
+        "精神": 6
+      }
+    }
+  },
+  "水木卓": {
+    "name": "水木卓",
+    "position": "外",
+    "encounter_map": "台風隠し",
+    "rewards": {
+      "skills": [
+        "対左投手"
+      ],
+      "stats": {
+        "筋力": 9,
+        "敏捷": 9
+      }
+    }
+  },
+  "暗黒スバル": {
+    "name": "暗黒スバル",
+    "position": "投",
+    "encounter_map": "台風隠し",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 3,
+        "敏捷": 3,
+        "技術": 3,
+        "変化球": 3
+      }
+    }
+  },
+  "新庄": {
+    "name": "新庄",
+    "position": "投",
+    "encounter_map": "台風隠し",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 15,
+        "技術": 15
+      }
+    }
+  },
+  "倉刈仁志": {
+    "name": "倉刈仁志",
+    "position": "遊",
+    "encounter_map": "台風隠し",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "技術": 6,
+        "精神": 6
+      }
+    }
+  },
+  "中之島幸宏": {
+    "name": "中之島幸宏",
+    "position": "遊",
+    "encounter_map": "台風隠し",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 13,
+        "技術": 13
+      }
+    }
+  },
+  "東優": {
+    "name": "東優",
+    "position": "遊",
+    "encounter_map": "台風隠し",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 8,
+        "敏捷": 8,
+        "技術": 8
+      }
+    }
+  },
+  "佐賀巌": {
+    "name": "佐賀巌",
+    "position": "外",
+    "encounter_map": "台風隠し",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "筋力": 11,
+        "敏捷": 11,
+        "技術": 11
+      }
+    }
+  },
+  "パワプロ": {
+    "name": "パワプロ",
+    "position": "",
+    "encounter_map": "デフォルト",
+    "rewards": {
+      "skills": [],
+      "stats": {}
+    }
+  },
+  "矢部明雄": {
+    "name": "矢部明雄",
+    "position": "外",
+    "encounter_map": "デフォルト",
+    "rewards": {
+      "skills": [],
+      "stats": {}
+    }
+  }
+}

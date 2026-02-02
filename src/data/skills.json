@@ -1,0 +1,1317 @@
+{
+  "球速": {
+    "name": "球速",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "ミート": {
+    "name": "ミート",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "パワー": {
+    "name": "パワー",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "走力": {
+    "name": "走力",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "肩力": {
+    "name": "肩力",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "守備力": {
+    "name": "守備力",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "守備": {
+    "name": "守備",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "捕球": {
+    "name": "捕球",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "コントロール": {
+    "name": "コントロール",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "スタミナ": {
+    "name": "スタミナ",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "弾道": {
+    "name": "弾道",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "選球眼": {
+    "name": "選球眼",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "投手調子安定": {
+    "name": "投手調子安定",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "捕球コツ": {
+    "name": "捕球コツ",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "サブポジ捕手": {
+    "name": "サブポジ捕手",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "サプポジ捕手": {
+    "name": "サプポジ捕手",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "サブポジ一塁": {
+    "name": "サブポジ一塁",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "サブポジ二塁": {
+    "name": "サブポジ二塁",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "サブポジ三塁": {
+    "name": "サブポジ三塁",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "サブポジ遊撃": {
+    "name": "サブポジ遊撃",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "サブポジ外野": {
+    "name": "サブポジ外野",
+    "type": "green",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "スライダー": {
+    "name": "スライダー",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "Hスライダー": {
+    "name": "Hスライダー",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "カーブ": {
+    "name": "カーブ",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "Dカーブ": {
+    "name": "Dカーブ",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "フォーク": {
+    "name": "フォーク",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "Vスライダー": {
+    "name": "Vスライダー",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "シンカー": {
+    "name": "シンカー",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "Hシンカー": {
+    "name": "Hシンカー",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "シュート": {
+    "name": "シュート",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "サークルチェンジ": {
+    "name": "サークルチェンジ",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "チェンジアップ": {
+    "name": "チェンジアップ",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "スラーブ": {
+    "name": "スラーブ",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "ドロップ": {
+    "name": "ドロップ",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "超スローボール": {
+    "name": "超スローボール",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "球種シンカー": {
+    "name": "球種シンカー",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "ヘッスラ": {
+    "name": "ヘッスラ",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "プルヒ": {
+    "name": "プルヒ",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "球持ち": {
+    "name": "球持ち",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "クロスファイアー": {
+    "name": "クロスファイアー",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "国際大会◯": {
+    "name": "国際大会◯",
+    "type": "blue",
+    "description": "Base stat, position, or specific acquisition"
+  },
+  "気迫ヘッド": {
+    "name": "気迫ヘッド",
+    "type": "blue",
+    "description": "きわどいときにベースに頭からすべりこむ"
+  },
+  "スロースターター消す": {
+    "name": "スロースターター消す",
+    "type": "green",
+    "description": "Hint to remove 'Slow Starter' (スロースターター) red skill."
+  },
+  "寸前×を消す": {
+    "name": "寸前×を消す",
+    "type": "green",
+    "description": "Hint to remove 'Collapse in 9th' (寸前×) red skill."
+  },
+  "軽い球を消す": {
+    "name": "軽い球を消す",
+    "type": "green",
+    "description": "Hint to remove 'Light Ball' (軽い球) red skill."
+  },
+  "神の子": {
+    "name": "神の子",
+    "type": "blue",
+    "description": "登板中、味方打者のミート+5、パワー+5"
+  },
+  "ケンカ投法": {
+    "name": "ケンカ投法",
+    "type": "blue",
+    "description": "内角への投球時、コントロールが良くなり球威も大きく上がる"
+  },
+  "草魂": {
+    "name": "草魂",
+    "type": "blue",
+    "description": "動揺状態にほとんどならない"
+  },
+  "世界の代打王": {
+    "name": "世界の代打王",
+    "type": "blue",
+    "description": "代打として打席に立ったとき、ミート+25、パワー+20"
+  },
+  "世界の盗塁王": {
+    "name": "世界の盗塁王",
+    "type": "blue",
+    "description": "盗塁時の走力が大きく上がる。また塁上が一塁または一・三塁の状況で一塁走者のとき、相手投手のコントロール-10、スタミナ消費量増"
+  },
+  "牛若丸": {
+    "name": "牛若丸",
+    "type": "blue",
+    "description": "守備時に送球速度と背走速度が上がり、動き出しも早くなる"
+  },
+  "忍者": {
+    "name": "忍者",
+    "type": "blue",
+    "description": "守備時に送球速度と背走速度が上がり、動き出しも早くなる"
+  },
+  "世界の王": {
+    "name": "世界の王",
+    "type": "blue",
+    "description": "強振して打つと、ホームラン性の打球がかなり出やすくなる。ラインドライブとは一緒につけられない"
+  },
+  "打撃の神様": {
+    "name": "打撃の神様",
+    "type": "blue",
+    "description": "ミート打ちのとき、ヒット性の打球がかなり出やすくなる。"
+  },
+  "小阪ゾーン": {
+    "name": "小阪ゾーン",
+    "type": "blue",
+    "description": "守備時に送球速度と背走速度が上がり、動き出しも早くなる"
+  },
+  "炎のストッパー": {
+    "name": "炎のストッパー",
+    "type": "blue",
+    "description": "スタミナ切れ状態ではなく、自責点0以下で同点か勝っているときにボールが重くなり、動揺状態になりにくくなる。また、相手打者の威圧感無効化"
+  },
+  "大魔神": {
+    "name": "大魔神",
+    "type": "blue",
+    "description": "2番手以降で登板時、相手打者のミート-20、パワー-20"
+  },
+  "ロケットボーイズ": {
+    "name": "ロケットボーイズ",
+    "type": "blue",
+    "description": "平均球速+2km/h"
+  },
+  "幕張の防波堤": {
+    "name": "幕張の防波堤",
+    "type": "blue",
+    "description": "試合終盤でリードしており、走者が生還すると同点か逆転の場面で、球速+2km/h、コントロール+5"
+  },
+  "負けないエース": {
+    "name": "負けないエース",
+    "type": "blue",
+    "description": "登板中、味方打者のパワー+5"
+  },
+  "平成の怪物": {
+    "name": "平成の怪物",
+    "type": "blue",
+    "description": "ストレートのノビが良いかどうか、A〜Gまでの7段階ある"
+  },
+  "雑草魂": {
+    "name": "雑草魂",
+    "type": "blue",
+    "description": "打たれたときに動揺しにくいかどうか、A~Gまでの7段階ある。"
+  },
+  "燃える男": {
+    "name": "燃える男",
+    "type": "blue",
+    "description": "スタミナ切れ状態ではなく、自責点0以下で同点か勝っているときにボールが重くなり、動揺状態になりにくくなる。また、相手打者の威圧感無効化"
+  },
+  "小さな大投手": {
+    "name": "小さな大投手",
+    "type": "blue",
+    "description": "✕〜◎までの4段階あり、◯、◎は体力消費が軽減される"
+  },
+  "アニキ": {
+    "name": "アニキ",
+    "type": "blue",
+    "description": "味方野手のミート+5、パワー+5"
+  },
+  "Mrブルーウェーブ": {
+    "name": "Mrブルーウェーブ",
+    "type": "blue",
+    "description": "味方野手のミート+5、パワー+5"
+  },
+  "Mrドラゴンズ": {
+    "name": "Mrドラゴンズ",
+    "type": "blue",
+    "description": "味方野手のミート+5、パワー+5"
+  },
+  "Mrパーフェクト": {
+    "name": "Mrパーフェクト",
+    "type": "blue",
+    "description": "味方野手のミート+5、パワー+5"
+  },
+  "Mr赤ヘル": {
+    "name": "Mr赤ヘル",
+    "type": "blue",
+    "description": "味方野手のミート+5、パワー+5"
+  },
+  "Mrタイガース": {
+    "name": "Mrタイガース",
+    "type": "blue",
+    "description": "味方野手のミート+5、パワー+5"
+  },
+  "Mrイーグルス": {
+    "name": "Mrイーグルス",
+    "type": "blue",
+    "description": "味方野手のミート+5、パワー+5"
+  },
+  "Mrスワローズ": {
+    "name": "Mrスワローズ",
+    "type": "blue",
+    "description": "味方野手のミート+5、パワー+5"
+  },
+  "Mrホークス": {
+    "name": "Mrホークス",
+    "type": "blue",
+    "description": "味方野手のミート+5、パワー+5"
+  },
+  "Mrファイターズ": {
+    "name": "Mrファイターズ",
+    "type": "blue",
+    "description": "味方野手のミート+5、パワー+5"
+  },
+  "Mrブレーブス": {
+    "name": "Mrブレーブス",
+    "type": "blue",
+    "description": "味方野手のミート+5、パワー+5"
+  },
+  "ミスター": {
+    "name": "ミスター",
+    "type": "blue",
+    "description": "相手投手の球速-2km/h、コントロール-10、スタミナ消費量+15。自分の前の打者のときは、相手投手の球速-2km/h、コントロール-10、スタミナ消費量+10"
+  },
+  "絶好調男": {
+    "name": "絶好調男",
+    "type": "blue",
+    "description": "味方野手のミート+5、パワー+5"
+  },
+  "若大将": {
+    "name": "若大将",
+    "type": "blue",
+    "description": "味方野手のミート+5、パワー+5"
+  },
+  "バックスクリーン男": {
+    "name": "バックスクリーン男",
+    "type": "blue",
+    "description": "強振して打つとホームラン性の打球が出やすくなる"
+  },
+  "小さな大打者": {
+    "name": "小さな大打者",
+    "type": "blue",
+    "description": "ミート打ちのとき、ヒット性の打球が出やすくなる。"
+  },
+  "アライバ": {
+    "name": "アライバ",
+    "type": "blue",
+    "description": "守備時に、送球速度と背走速度が上がる"
+  },
+  "おかわり君": {
+    "name": "おかわり君",
+    "type": "blue",
+    "description": "その試合でホームランを打っているとパワー+10（2本目以降は無効）"
+  },
+  "不惑の大砲": {
+    "name": "不惑の大砲",
+    "type": "blue",
+    "description": "強振して打つとホームラン性の打球が出やすくなる"
+  },
+  "悲劇のエース": {
+    "name": "悲劇のエース",
+    "type": "blue",
+    "description": "登板中、味方打者のパワー-5"
+  },
+  "抜け球": {
+    "name": "抜け球",
+    "type": "blue",
+    "description": "ストレートがときどきシュート方向に曲がる"
+  },
+  "サンデー◯": {
+    "name": "サンデー◯",
+    "type": "blue",
+    "description": "日曜日に能力アップ"
+  },
+  "交流戦◯": {
+    "name": "交流戦◯",
+    "type": "blue",
+    "description": "交流戦時に能力アップ"
+  },
+  "外国人◯": {
+    "name": "外国人◯",
+    "type": "blue",
+    "description": "外国人が相手のときに能力アップ"
+  },
+  "ホーム◯": {
+    "name": "ホーム◯",
+    "type": "blue",
+    "description": "ホームの試合時に能力アップ"
+  },
+  "ビジター◯": {
+    "name": "ビジター◯",
+    "type": "blue",
+    "description": "ビジターでの試合時に能力アップ"
+  },
+  "デイゲーム◯": {
+    "name": "デイゲーム◯",
+    "type": "blue",
+    "description": "デイゲーム時に能力アップ"
+  },
+  "ナイトゲーム◯": {
+    "name": "ナイトゲーム◯",
+    "type": "blue",
+    "description": "ナイトゲーム時に能力アップ"
+  },
+  "ドーム◯": {
+    "name": "ドーム◯",
+    "type": "blue",
+    "description": "ドーム球場で能力アップ"
+  },
+  "フライボールピッチャー": {
+    "name": "フライボールピッチャー",
+    "type": "blue",
+    "description": "相手バッターの弾道がやや上がる"
+  },
+  "トップギア": {
+    "name": "トップギア",
+    "type": "blue",
+    "description": "先発時の1~2回は球速+4km/h、コントロール+13、変化量+2"
+  },
+  "闘魂": {
+    "name": "闘魂",
+    "type": "blue",
+    "description": "スタミナ切れ状態ではなく、リードが2点以内か負けていて自責点2以下の場合、球質が重くなり、動揺状態になりにくくなって打者の威圧感を無効化する"
+  },
+  "超投打躍動": {
+    "name": "超投打躍動",
+    "type": "blue",
+    "description": "投手で出場して2失点以下だとミートとパワーが大きく上がり、1安打以上だとコントロールと変化量が大きく上がる"
+  },
+  "完全燃焼": {
+    "name": "完全燃焼",
+    "type": "blue",
+    "description": "得点圏に走者がいてスタミナ残量約1/3以上のとき、より球質が重く、ノビがよくなりスタミナ消費量が増える"
+  },
+  "ディレイドアーム": {
+    "name": "ディレイドアーム",
+    "type": "blue",
+    "description": "投球時の球持ちがより長くなり、打者からは腕の振りが見えづらく、打ちにくい"
+  },
+  "クロスキャノン": {
+    "name": "クロスキャノン",
+    "type": "blue",
+    "description": "対角線となるコースに投げたとき、球速よりも速く見える"
+  },
+  "暴れ球": {
+    "name": "暴れ球",
+    "type": "blue",
+    "description": "ストレートを投げたとき、よりノビが良くなるが、ブレやすくなる"
+  },
+  "怪童": {
+    "name": "怪童",
+    "type": "blue",
+    "description": "ストレートが球速よりも大幅に速く見える"
+  },
+  "怪物球威": {
+    "name": "怪物球威",
+    "type": "blue",
+    "description": "球質が非常に重くなり、打たれたときの打球が飛びにくくなる"
+  },
+  "ガソリンタンク": {
+    "name": "ガソリンタンク",
+    "type": "blue",
+    "description": "登板後のスタミナ回復が非常に早い"
+  },
+  "ギアチェンジ": {
+    "name": "ギアチェンジ",
+    "type": "blue",
+    "description": "先発時の5回以降、リードが3点以内または同点で走者がいるとき、球速+1km/h、コントロール+10、変化球が打者の近くで変化するようになる"
+  },
+  "強心臓": {
+    "name": "強心臓",
+    "type": "blue",
+    "description": "得点圏に走者がいるとき、球速+2km/h、変化量+3"
+  },
+  "驚異の切れ味": {
+    "name": "驚異の切れ味",
+    "type": "blue",
+    "description": "変化球の曲がり始めが極端に遅くなり、より打者の近くで変化する"
+  },
+  "終盤力": {
+    "name": "終盤力",
+    "type": "blue",
+    "description": "先発時に勝っているか3点差以内で負けているとき、球速+4km/h、コントロール+10、変化量+2"
+  },
+  "勝利の星": {
+    "name": "勝利の星",
+    "type": "blue",
+    "description": "登板中、味方打者のミート+5、パワー+5"
+  },
+  "主砲キラー": {
+    "name": "主砲キラー",
+    "type": "blue",
+    "description": "ミートB以上かパワーA以上の打者が相手のとき、球速+3km/h、変化量+1km/h、さらに変化球が打者の近くで変化するようになる"
+  },
+  "精密機械": {
+    "name": "精密機械",
+    "type": "blue",
+    "description": "ストライクゾーン低めへのコントロールが非常に良くなる。"
+  },
+  "走者釘付": {
+    "name": "走者釘付",
+    "type": "blue",
+    "description": "投球モーションがより速くなる"
+  },
+  "鉄腕": {
+    "name": "鉄腕",
+    "type": "blue",
+    "description": "調子による影響がほとんどない"
+  },
+  "ドクターK": {
+    "name": "ドクターK",
+    "type": "blue",
+    "description": "2ストライクに追い込むと、球速+4km/h、変化量+2"
+  },
+  "ド根性": {
+    "name": "ド根性",
+    "type": "blue",
+    "description": "先発したとき、スタミナ切れになっても能力の減少が早めに止まる"
+  },
+  "内角無双": {
+    "name": "内角無双",
+    "type": "blue",
+    "description": "内角への投球時、コントロールが良くなり球威も大きく上がる"
+  },
+  "ハイスピンジャイロ": {
+    "name": "ハイスピンジャイロ",
+    "type": "blue",
+    "description": "ストレートがジャイロ回転し、球速よりも非常に速く見える"
+  },
+  "左キラー": {
+    "name": "左キラー",
+    "type": "blue",
+    "description": "左打者が相手のとき、球速+3km/h、コントロール+7、スタミナ消費量増"
+  },
+  "不屈の魂": {
+    "name": "不屈の魂",
+    "type": "blue",
+    "description": "動揺状態にほとんどならない"
+  },
+  "変幻自在": {
+    "name": "変幻自在",
+    "type": "blue",
+    "description": "速い球のあとに遅い変化球、またはその逆で投球したとき、ストレートは球速よりもかなり速く見え、変化球は曲がり始めがかなり遅くなる"
+  },
+  "本塁打厳禁": {
+    "name": "本塁打厳禁",
+    "type": "blue",
+    "description": "失投時にど真ん中にいく確率がかなり下がる"
+  },
+  "球界の頭脳": {
+    "name": "球界の頭脳",
+    "type": "blue",
+    "description": "味方投手のコントロール+15、消費スタミナ-11。味方投手が不調または絶不調の場合、球速+2km/h"
+  },
+  "ささやき戦術": {
+    "name": "ささやき戦術",
+    "type": "blue",
+    "description": "捕手のときに得点圏に走者がいると、相手打者のミート-5、パワー-5"
+  },
+  "鉄の壁": {
+    "name": "鉄の壁",
+    "type": "blue",
+    "description": "捕手のとき、本塁クロスプレイの際に走者の「ホーム突入」「重戦車」の発動確率をかなり下げる"
+  },
+  "バズーカ送球": {
+    "name": "バズーカ送球",
+    "type": "blue",
+    "description": "盗塁阻止時の送球がものすごく鋭くなる"
+  },
+  "渾身の決勝打": {
+    "name": "渾身の決勝打",
+    "type": "blue",
+    "description": "同点または負けているときの6回以降、塁上の走者が精悍すれば勝ち越しの場面でミート+12"
+  },
+  "ヒートアップ": {
+    "name": "ヒートアップ",
+    "type": "blue",
+    "description": "ストライクカウントの数ぶん、ミート+8、パワー+8"
+  },
+  "逆襲": {
+    "name": "逆襲",
+    "type": "blue",
+    "description": "前の打席で抑えられた投手が相手のとき、ミート+10、パワー+5"
+  },
+  "安打製造機": {
+    "name": "安打製造機",
+    "type": "blue",
+    "description": "ミート打ちのとき、ヒット性の打球がかなり出やすくなる。"
+  },
+  "アーチスト": {
+    "name": "アーチスト",
+    "type": "blue",
+    "description": "強振して打つと、ホームラン性の打球がかなり出やすくなる。ラインドライブとは一緒につけられない"
+  },
+  "一球入魂": {
+    "name": "一球入魂",
+    "type": "blue",
+    "description": "1ストライクを取られるまで、ミート+15、パワー+15"
+  },
+  "エースキラー": {
+    "name": "エースキラー",
+    "type": "blue",
+    "description": "エース級の投手との対戦時に、ミート+15、パワー+15"
+  },
+  "大番狂わせ": {
+    "name": "大番狂わせ",
+    "type": "blue",
+    "description": "スタメン出場し、5回以降で同点か試合終盤で負けているか同点だと、走者がいるときにパワーがSになる（もとがSだと変化なし）"
+  },
+  "火事場の馬鹿力": {
+    "name": "火事場の馬鹿力",
+    "type": "blue",
+    "description": "試合終盤で負けているとき、ミート+20、パワー+20"
+  },
+  "外角必打": {
+    "name": "外角必打",
+    "type": "blue",
+    "description": "アウトコースのボールを打つのがすごく得意になる。インコースヒッター、内角必打とは一緒につけられない。"
+  },
+  "恐怖の満塁男": {
+    "name": "恐怖の満塁男",
+    "type": "blue",
+    "description": "満塁のとき、ミート+20、パワー+20"
+  },
+  "切り込み隊長": {
+    "name": "切り込み隊長",
+    "type": "blue",
+    "description": "走者がいないとき、ミート+15、パワー+10"
+  },
+  "芸術的流し打ち": {
+    "name": "芸術的流し打ち",
+    "type": "blue",
+    "description": "ミートで流し打ちをしたとき、打球がヒットになりやすい"
+  },
+  "広角砲": {
+    "name": "広角砲",
+    "type": "blue",
+    "description": "流し方向にものすごい強い打球が打てるようになる。プルヒッター、引っ張り屋とは一緒につけられない"
+  },
+  "高速レーザー": {
+    "name": "高速レーザー",
+    "type": "blue",
+    "description": "外野守備時に、軌道が低く非常に速い送球をする"
+  },
+  "高速ベースラン": {
+    "name": "高速ベースラン",
+    "type": "blue",
+    "description": "走塁時（盗塁は除く）の走力が大きく上がり、三塁到達時にヘッドスライディングをしない"
+  },
+  "高球必打": {
+    "name": "高球必打",
+    "type": "blue",
+    "description": "高めのボールを打つのがすごく得意になる。ローボールヒッター、低球必打、とは一緒につけられない"
+  },
+  "左腕キラー": {
+    "name": "左腕キラー",
+    "type": "blue",
+    "description": "左投手が相手のとき、ミート+20、パワー+15"
+  },
+  "勝負師": {
+    "name": "勝負師",
+    "type": "blue",
+    "description": "得点圏に走者がいるとき、ミート+20、パワー+15"
+  },
+  "重戦車": {
+    "name": "重戦車",
+    "type": "blue",
+    "description": "本塁への激しいスライディングで捕手の捕球ミスを狙う"
+  },
+  "ストライク送球": {
+    "name": "ストライク送球",
+    "type": "blue",
+    "description": "送球がすごくそれにくくなる"
+  },
+  "精神的支柱": {
+    "name": "精神的支柱",
+    "type": "blue",
+    "description": "味方投手のコントロール+10、味方打者のミート+10、パワー+5"
+  },
+  "代打の神様": {
+    "name": "代打の神様",
+    "type": "blue",
+    "description": "代打として打席に立ったとき、ミート+25、パワー+20"
+  },
+  "電光石火": {
+    "name": "電光石火",
+    "type": "blue",
+    "description": "盗塁時の走力が大きく上がる。また塁上が一塁または一・三塁の状況で一塁走者のとき、相手投手のコントロール-10、スタミナ消費量増"
+  },
+  "鉄人": {
+    "name": "鉄人",
+    "type": "blue",
+    "description": "ものすごくケガをしにくくなる"
+  },
+  "伝説のサヨナラ男": {
+    "name": "伝説のサヨナラ男",
+    "type": "blue",
+    "description": "サヨナラ勝利になる場面でミート+20、パワー+20"
+  },
+  "低球必打": {
+    "name": "低球必打",
+    "type": "blue",
+    "description": "低めのボールを打つのがすごく得意になる。ハイボールヒッター、高球必打とは一緒につけられない"
+  },
+  "トリックスター": {
+    "name": "トリックスター",
+    "type": "blue",
+    "description": "出塁時、相手投手のスタミナ消費量が上がり、内野の守備力が下がる（塁上にこの能力を持つ走者が増えると効果が高まり、投手のコントロールと変化量も低下）"
+  },
+  "内角必打": {
+    "name": "内角必打",
+    "type": "blue",
+    "description": "インコースのボールを打つのがすごく得意になる。アウトコースヒッター、外角必打とは一緒につけられない"
+  },
+  "引っ張り屋": {
+    "name": "引っ張り屋",
+    "type": "blue",
+    "description": "強振で引っ張るとすごく強い打球が飛ぶようになる。広角打法、広角砲とは一緒につけられない"
+  },
+  "魔術師": {
+    "name": "魔術師",
+    "type": "blue",
+    "description": "守備時に送球速度と背走速度が上がり、動き出しも早くなる"
+  },
+  "メッタ打ち": {
+    "name": "メッタ打ち",
+    "type": "blue",
+    "description": "2安打以上していると3打席目以降はミート+20、パワー+5"
+  },
+  "ロケットスタート": {
+    "name": "ロケットスタート",
+    "type": "blue",
+    "description": "打ってからのスタートダッシュがものすごく速くなる"
+  },
+  "投打躍動": {
+    "name": "投打躍動",
+    "type": "blue",
+    "description": "投手で出場し、2失点以下だとミートとパワーが上がり、1安打以上だとコントロールと変化量が上がる"
+  },
+  "立ち上がり◯": {
+    "name": "立ち上がり◯",
+    "type": "blue",
+    "description": "先発時の1回は球速+4km/h、コントロール+13、変化量+2。2回は球速+2km/h、コントロール+7、変化量+1"
+  },
+  "威圧感": {
+    "name": "威圧感",
+    "type": "blue",
+    "description": "相手投手の球速-2km/h、コントロール-10、スタミナ消費量+15。自分の前の打者のときは、相手投手の球速-2km/h、コントロール-10、スタミナ消費量+10"
+  },
+  "重い球": {
+    "name": "重い球",
+    "type": "blue",
+    "description": "打たれても打球が飛びにくくなる"
+  },
+  "勝ち運": {
+    "name": "勝ち運",
+    "type": "blue",
+    "description": "登板中、味方打者のパワー+5"
+  },
+  "回またぎ◯": {
+    "name": "回またぎ◯",
+    "type": "blue",
+    "description": "リリーフ登板でイニングをまたいでも疲れにくくなる"
+  },
+  "緩急◯": {
+    "name": "緩急◯",
+    "type": "blue",
+    "description": "ストレートと遅い変化球を組み合わせて投球すると能力が上がる。"
+  },
+  "キレ◯": {
+    "name": "キレ◯",
+    "type": "blue",
+    "description": "変化球のキレが良くなる。"
+  },
+  "緊急登板◯": {
+    "name": "緊急登板◯",
+    "type": "blue",
+    "description": "イニング途中での登板時、コントロール+10"
+  },
+  "球速安定": {
+    "name": "球速安定",
+    "type": "blue",
+    "description": "平均球速+2km/h"
+  },
+  "クロスファイヤー": {
+    "name": "クロスファイヤー",
+    "type": "blue",
+    "description": "対角線のコースにストレートを投げたとき、球速よりも速く見える"
+  },
+  "牽制◯": {
+    "name": "牽制◯",
+    "type": "blue",
+    "description": "牽制球を投げるモーションが少し早くなり、悪送球しにくくなる"
+  },
+  "根性◯": {
+    "name": "根性◯",
+    "type": "blue",
+    "description": "先発したとき、スタミナ切れになっても能力の減少がある程度のところで止まる"
+  },
+  "ジャイロボール": {
+    "name": "ジャイロボール",
+    "type": "blue",
+    "description": "ストレートがジャイロ回転し、球速よりも速く見える"
+  },
+  "尻上がり": {
+    "name": "尻上がり",
+    "type": "blue",
+    "description": "先発時、7,8回は球速+2km/h、変化量+1、コントロール+5。9回以降は球速+4km/h、変化量+2、コントロール+10"
+  },
+  "対強打者◯": {
+    "name": "対強打者◯",
+    "type": "blue",
+    "description": "ミートBまたはパワーAの強打者が相手の時、球速+2km/h、変化量+1"
+  },
+  "球持ち◯": {
+    "name": "球持ち◯",
+    "type": "blue",
+    "description": "球持ちが良くなり、投球した際の投球地点の表示が遅くなる"
+  },
+  "対ランナー◯": {
+    "name": "対ランナー◯",
+    "type": "blue",
+    "description": "走者一塁か、一塁・三塁のとき、コントロール+5、スタミナ消費量減"
+  },
+  "打球反応◯": {
+    "name": "打球反応◯",
+    "type": "blue",
+    "description": "ピッチャー返しをさばくのがうまくなる"
+  },
+  "奪三振": {
+    "name": "奪三振",
+    "type": "blue",
+    "description": "打者を2ストライクに追い込むと球速+2km/h、変化量+1"
+  },
+  "闘志": {
+    "name": "闘志",
+    "type": "blue",
+    "description": "スタミナ切れ状態ではなく、自責点0以下で同点か勝っているときにボールが重くなり、動揺状態になりにくくなる。また、相手打者の威圧感無効化"
+  },
+  "ナチュラルシュート": {
+    "name": "ナチュラルシュート",
+    "type": "blue",
+    "description": "常にストレートが微妙にシュート変化する"
+  },
+  "内角攻め": {
+    "name": "内角攻め",
+    "type": "blue",
+    "description": "インコースに投げたときにコントロールが良くなる。"
+  },
+  "逃げ球": {
+    "name": "逃げ球",
+    "type": "blue",
+    "description": "ピッチャーのすっぽ抜けたボールがど真ん中にいきにくくなる"
+  },
+  "低め◯": {
+    "name": "低め◯",
+    "type": "blue",
+    "description": "低めへのコントロールが良くなる。"
+  },
+  "真っスラ": {
+    "name": "真っスラ",
+    "type": "blue",
+    "description": "＜まっすら＞と読む。ストレートを投げると自然に利き手と反対方向に曲がる球種のこと"
+  },
+  "要所◯": {
+    "name": "要所◯",
+    "type": "blue",
+    "description": "試合終盤でリードしており、走者が生還すると同点か逆転の場面で、球速+2km/h、コントロール+5"
+  },
+  "リリース◯": {
+    "name": "リリース◯",
+    "type": "blue",
+    "description": "ストレートと変化球の投球モーションが同じになる。"
+  },
+  "窮地◯": {
+    "name": "窮地◯",
+    "type": "blue",
+    "description": "ストライクカウントの数のぶん、ミート+4、パワー+4"
+  },
+  "リベンジ": {
+    "name": "リベンジ",
+    "type": "blue",
+    "description": "前の打席で抑えられた投手が相手のとき、ミート+10"
+  },
+  "マルチ弾": {
+    "name": "マルチ弾",
+    "type": "blue",
+    "description": "その試合でホームランを打っているとパワー+10（2本目以降は無効）"
+  },
+  "アベレージヒッター": {
+    "name": "アベレージヒッター",
+    "type": "blue",
+    "description": "ミート打ちのとき、ヒット性の打球が出やすくなる。"
+  },
+  "アウトコースヒッター": {
+    "name": "アウトコースヒッター",
+    "type": "blue",
+    "description": "アウトコースのボールを打つのが得意になる。インコースヒッター、内角必打とは一緒につけられない。"
+  },
+  "インコースヒッター": {
+    "name": "インコースヒッター",
+    "type": "blue",
+    "description": "インコースのボールを打つのが得意になる。アウトコースヒッター、外角必打とは一緒につけられない。"
+  },
+  "意外性": {
+    "name": "意外性",
+    "type": "blue",
+    "description": "スタメン出場して5回以降で同点、または試合終盤で負けているか同点だと、走者がいるときにパワーがAになる（もとがA以上だと変化なし）"
+  },
+  "いぶし銀": {
+    "name": "いぶし銀",
+    "type": "blue",
+    "description": "試合終盤に1点差で負けているか同点で、得点圏に走者がいると、ミート打ちをしたときにヒット性の当たりが出やすい"
+  },
+  "固め打ち": {
+    "name": "固め打ち",
+    "type": "blue",
+    "description": "2安打以上していると、3打席目以降はミート+10、パワー+5"
+  },
+  "カット打ち": {
+    "name": "カット打ち",
+    "type": "blue",
+    "description": "2ストライク時にミート打ちをすると、少し振り遅れてもバットに当たりやすい"
+  },
+  "かく乱": {
+    "name": "かく乱",
+    "type": "blue",
+    "description": "出塁時、相手投手のスタミナ消費量が上がり、内野の守備力が下がる（塁上にこの能力を持つ走者が増えると効果が高まり、投手のコントロールと変化量も低下）"
+  },
+  "逆境◯": {
+    "name": "逆境◯",
+    "type": "blue",
+    "description": "試合終盤で負けているとき、ミート+15、パワー+15"
+  },
+  "決勝打": {
+    "name": "決勝打",
+    "type": "blue",
+    "description": "同点または負けているときの6回以降、塁上の走者が生還すれば勝ち越しの場面で、ミート+5"
+  },
+  "高速チャージ": {
+    "name": "高速チャージ",
+    "type": "blue",
+    "description": "バント時に早くボールに追いつく"
+  },
+  "広角打法": {
+    "name": "広角打法",
+    "type": "blue",
+    "description": "流し方向に強い打球が打てるようになる。プルヒッター、引っ張り屋とは一緒につけられない。"
+  },
+  "サヨナラ男": {
+    "name": "サヨナラ男",
+    "type": "blue",
+    "description": "本塁打でサヨナラ勝利の場面でパワー+15、得点圏の走者が精悍すればサヨナラ勝利の場面でミート+15"
+  },
+  "守備職人": {
+    "name": "守備職人",
+    "type": "blue",
+    "description": "守備時に、送球速度と背走速度が上がる"
+  },
+  "初球◯": {
+    "name": "初球◯",
+    "type": "blue",
+    "description": "1ストライクを取られるまで、ミート+10、パワー+5"
+  },
+  "対エース◯": {
+    "name": "対エース◯",
+    "type": "blue",
+    "description": "エース級の投手との対戦時に、ミート+10、パワー+10"
+  },
+  "代打◯": {
+    "name": "代打◯",
+    "type": "blue",
+    "description": "代打として打席に立ったとき、ミート+15、パワー+15"
+  },
+  "ダメ押し": {
+    "name": "ダメ押し",
+    "type": "blue",
+    "description": "4点以上リードしていると、終盤にパワー+10"
+  },
+  "対ストレート◯": {
+    "name": "対ストレート◯",
+    "type": "blue",
+    "description": "ストレートを打つのが上手くなる"
+  },
+  "対変化球◯": {
+    "name": "対変化球◯",
+    "type": "blue",
+    "description": "変化球を打つのがうまくなる"
+  },
+  "チャンスメーカー": {
+    "name": "チャンスメーカー",
+    "type": "blue",
+    "description": "走者がいない時、ミート+10、パワー+5"
+  },
+  "内野安打◯": {
+    "name": "内野安打◯",
+    "type": "blue",
+    "description": "打ってからのスタートダッシュが速くなる。"
+  },
+  "流し打ち": {
+    "name": "流し打ち",
+    "type": "blue",
+    "description": "ミート打ちで流し打ちをするとヒットになりやすい。"
+  },
+  "粘り打ち": {
+    "name": "粘り打ち",
+    "type": "blue",
+    "description": "2ストライクに追い込まれたとき、ミート打ちのミート+10"
+  },
+  "パワーヒッター": {
+    "name": "パワーヒッター",
+    "type": "blue",
+    "description": "強振して打つとホームラン性の打球が出やすくなる"
+  },
+  "ハイボールヒッター": {
+    "name": "ハイボールヒッター",
+    "type": "blue",
+    "description": "高めのボールを打つのが得意になる。ローボールヒッター、低球必打とは一緒につけられない"
+  },
+  "バント◯": {
+    "name": "バント◯",
+    "type": "blue",
+    "description": "バントがゴロになりやすい。"
+  },
+  "バント職人": {
+    "name": "バント職人",
+    "type": "blue",
+    "description": "バントが非常にゴロになりやすい。"
+  },
+  "プレッシャーラン": {
+    "name": "プレッシャーラン",
+    "type": "blue",
+    "description": "併殺になありそうなタイミングで一塁走者が二塁にスライディングしたとき、相手野手の一塁送球が悪送球になることがある"
+  },
+  "プルヒッター": {
+    "name": "プルヒッター",
+    "type": "blue",
+    "description": "強振で引っ張ると強い打球が飛ぶようになる。広角打法、広角砲とは一緒につけられない。"
+  },
+  "ヘッドスライディング": {
+    "name": "ヘッドスライディング",
+    "type": "blue",
+    "description": "きわどいときベースに頭からすべり込む"
+  },
+  "ホーム突入": {
+    "name": "ホーム突入",
+    "type": "blue",
+    "description": "走者のとき、本塁でクロスプレイが発生した際、相手捕手がでボールをこぼすことがある"
+  },
+  "ホーム死守": {
+    "name": "ホーム死守",
+    "type": "blue",
+    "description": "捕手のとき、相手走者の「ホーム突入」および「重戦車」の発生確率を下げる"
+  },
+  "満塁男": {
+    "name": "満塁男",
+    "type": "blue",
+    "description": "満塁のとき、ミート+15、パワー+15"
+  },
+  "ムード◯": {
+    "name": "ムード◯",
+    "type": "blue",
+    "description": "味方野手のミート+5、パワー+5"
+  },
+  "ラインドライブ": {
+    "name": "ラインドライブ",
+    "type": "blue",
+    "description": "強振で打った際にライナー性の打球が出やすくなる（ゴロは除く）。パワーヒッター、アーチストとは一緒につけられない"
+  },
+  "レーザービーム": {
+    "name": "レーザービーム",
+    "type": "blue",
+    "description": "外野守備時に軌道が低く速い送球をする"
+  },
+  "ローボールヒッター": {
+    "name": "ローボールヒッター",
+    "type": "blue",
+    "description": "低めのボールを打つのが得意になる。ハイボールヒッター、高球必打とは一緒につけられない"
+  },
+  "対ランナー×": {
+    "name": "対ランナー×",
+    "type": "blue",
+    "description": "ランナーが一塁、または一・三塁にいるときにピッチャーの能力が下がる"
+  },
+  "一発": {
+    "name": "一発",
+    "type": "blue",
+    "description": "失投時にど真ん中にいく確率が上がる"
+  },
+  "ガラスのハート": {
+    "name": "ガラスのハート",
+    "type": "blue",
+    "description": "打たれるとものすごく動揺しやすくなる"
+  },
+  "軽い球": {
+    "name": "軽い球",
+    "type": "blue",
+    "description": "打たれると打球が飛びやすくなる"
+  },
+  "シュート回転": {
+    "name": "シュート回転",
+    "type": "blue",
+    "description": "ストレートがときどきシュート方向に曲がる"
+  },
+  "四球": {
+    "name": "四球",
+    "type": "blue",
+    "description": "3ボールになると、コントロール-20"
+  },
+  "スロースターター": {
+    "name": "スロースターター",
+    "type": "blue",
+    "description": "先発時の1回は球速-4km/h、コントロール-13、変化量-2。2回は球速-2km/h、コントロール-7、変化量-1"
+  },
+  "寸前": {
+    "name": "寸前",
+    "type": "blue",
+    "description": "最終回または先発時の5回でリードしていると、球速-2km/h、コントロール-10"
+  },
+  "短気": {
+    "name": "短気",
+    "type": "blue",
+    "description": "動揺状態になったとき、コントロール-10"
+  },
+  "ノミの心臓": {
+    "name": "ノミの心臓",
+    "type": "blue",
+    "description": "得点圏に走者がいるとき、変化量-3"
+  },
+  "負け運": {
+    "name": "負け運",
+    "type": "blue",
+    "description": "登板中、味方打者のパワー-5"
+  },
+  "乱調": {
+    "name": "乱調",
+    "type": "blue",
+    "description": "先発登板での3回以降のイニング開始時、確率でコントロール-20"
+  },
+  "エラー": {
+    "name": "エラー",
+    "type": "blue",
+    "description": "得点圏に走者がいるとき、守備時にエラーしやすくなる"
+  },
+  "三振": {
+    "name": "三振",
+    "type": "blue",
+    "description": "2ストライクに追い込まれると、ミート-20（フルカウント時を除く）"
+  },
+  "扇風機": {
+    "name": "扇風機",
+    "type": "blue",
+    "description": "2ストライクに追い込まれると、ミート-30（フルカウント時を除く）"
+  },
+  "併殺": {
+    "name": "併殺",
+    "type": "blue",
+    "description": "ノーアウトあるいは1アウトで一塁ランナーがいるときにゴロを打ちやすくなる"
+  },
+  "ムード✕": {
+    "name": "ムード✕",
+    "type": "blue",
+    "description": "味方野手のミート-5、パワー-5"
+  },
+  "全開": {
+    "name": "全開",
+    "type": "blue",
+    "description": "得点圏に走者がいてスタミナ残量が約半分以上のとき、球質が重くなりノビがよくなりスタミナ消費量が増える"
+  },
+  "悪球打ち": {
+    "name": "悪球打ち",
+    "type": "blue",
+    "description": "ストライクゾーンから外れたボール球にも手が出るようになる"
+  },
+  "荒れ球": {
+    "name": "荒れ球",
+    "type": "blue",
+    "description": "ストレートのブレ幅が通常より大きく、ノビが少しつく"
+  },
+  "ゴロピッチャー": {
+    "name": "ゴロピッチャー",
+    "type": "blue",
+    "description": "相手バッターの弾道がやや下がる"
+  },
+  "力配分": {
+    "name": "力配分",
+    "type": "blue",
+    "description": "パワーE以下の打者か、得点圏に走者が存在してパワーF以下の打者が相手のとき、球速-2km/h、変化量-1、スタミナ消費量増"
+  },
+  "ポーカーフェイス": {
+    "name": "ポーカーフェイス",
+    "type": "blue",
+    "description": "疲れや動揺が表情に出なくなる。闘志とは一緒につけられない"
+  },
+  "打たれ強さ": {
+    "name": "打たれ強さ",
+    "type": "blue",
+    "description": "打たれたときに動揺しにくいかどうか、A~Gまでの7段階ある。"
+  },
+  "回復": {
+    "name": "回復",
+    "type": "blue",
+    "description": "疲れがとれやすいかどうか、A〜Gまでの7段階ある"
+  },
+  "クイック": {
+    "name": "クイック",
+    "type": "blue",
+    "description": "クイックがうまく盗塁がされにくいかどうか、A〜Gの7段階ある"
+  },
+  "対ピンチ": {
+    "name": "対ピンチ",
+    "type": "blue",
+    "description": "得点圏にランナーがいるときに強いかどうか、A〜Gまでの7段階ある"
+  },
+  "対左打者": {
+    "name": "対左打者",
+    "type": "blue",
+    "description": "左のバッターに対して強いかどうか、A〜Gまでの7段階ある"
+  },
+  "ノビ": {
+    "name": "ノビ",
+    "type": "blue",
+    "description": "ストレートのノビが良いかどうか、A〜Gまでの7段階ある"
+  },
+  "キャッチャー": {
+    "name": "キャッチャー",
+    "type": "blue",
+    "description": "ピッチャーの能力をうまく引き出せるかどうか✕〜◎までの4段階ある"
+  },
+  "ケガしにくさ": {
+    "name": "ケガしにくさ",
+    "type": "blue",
+    "description": "✕〜◎までの4段階あり、◯、◎は体力消費が軽減される"
+  },
+  "走塁": {
+    "name": "走塁",
+    "type": "blue",
+    "description": "走塁がうまいかどうか、✕〜◎までの4段階ある"
+  },
+  "送球": {
+    "name": "送球",
+    "type": "blue",
+    "description": "送球がそれにくいかどうか、✕〜◎までの4段階ある"
+  },
+  "対左投手": {
+    "name": "対左投手",
+    "type": "blue",
+    "description": "左のピッチャーに対して強いかどうか、✕〜◎までの4段階ある"
+  },
+  "チャンス": {
+    "name": "チャンス",
+    "type": "blue",
+    "description": "チャンスのときの勝負強さ、✕〜◎までの4段階ある"
+  },
+  "盗塁": {
+    "name": "盗塁",
+    "type": "blue",
+    "description": "盗塁がうまいかどうか、✕〜◎までの4段階ある"
+  }
+}
