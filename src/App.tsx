@@ -1,9 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import { 
   LayoutDashboard, MapPin, CheckCircle2, Search,
-  Star, Trophy, UserPlus, XCircle, Users, Sparkles
+  Trophy, UserPlus, XCircle, Users, Sparkles
 } from 'lucide-react';
 import { cn } from './utils/style';
+import { 
+  normalizeName, 
+  getSortedSkills, 
+  getComboCategory 
+} from './utils/gameLogic';
 
 // Data
 import mapsDataRaw from './data/maps.json';
@@ -18,58 +23,18 @@ const charactersData = charactersDataRaw as Record<string, any>;
 const skillsData = skillsDataRaw as Record<string, any>;
 const characterMapping = characterMappingRaw as any;
 
-// Constants based on your JSON structure
-const SKILL_TYPE = {
-  GOLD: 'gold',
-  BLUE: 'blue', // Assumed based on gold
-  RED: 'red'    // Assumed based on gold
-};
-
-const PRIORITY = {
-  GOLD: 1000,
-  OTHER: 0
-};
-
-/**
- * Data Accessor: Decouples the UI from the exact JSON field names.
- */
-const getSkillInfo = (skillName: string) => {
-  const s = skillsData[skillName];
-  if (!s) return { isGold: false, category: 'unknown', weight: 0 };
-  
-  const isGold = s.type === SKILL_TYPE.GOLD;
-  return {
-    isGold,
-    category: s.category, // e.g., "pitcher"
-    weight: isGold ? PRIORITY.GOLD : PRIORITY.OTHER
-  };
-};
-
 const App: React.FC = () => {
   const [targetComboIdxs, setTargetComboIdxs] = useState<number[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [posFilter, setPosFilter] = useState<string | null>(null);
-
-  const normalize = (name: string) => name?.replace(/[\s\u3000]/g, '') || "";
-
   const [ownedChars, setOwnedChars] = useState<string[]>(() => [
-    normalize('クロン'), normalize('姫野カレン'), normalize('雉田直實')
+    normalizeName('クロン'), normalizeName('姫野カレン'), normalizeName('雉田直實')
   ]);
 
-  // CATEGORY LOGIC - Now using .category
-  const getComboCategory = (combo: any): 'pitcher' | 'fielder' => {
-    const rewards = combo.rewards?.skills || [];
-    const hasPitcherGold = rewards.some((s: any) => {
-      const info = getSkillInfo(s.name);
-      return info.category === 'pitcher' && info.isGold;
-    });
-    return hasPitcherGold ? 'pitcher' : 'fielder';
-  };
-
   const toggleCombo = (names: string[]) => {
-    const targetNNames = names.map(normalize);
+    const targetNNames = names.map(normalizeName);
     const idx = combosData.findIndex(c => {
-      const cNNames = c.char_names?.map(normalize) || [];
+      const cNNames = c.char_names?.map(normalizeName) || [];
       return cNNames.length === targetNNames.length && targetNNames.every(n => cNNames.includes(n));
     });
     if (idx !== -1) {
@@ -80,12 +45,11 @@ const App: React.FC = () => {
   const selectAllByType = (type: 'pitcher' | 'fielder') => {
     const newIdxs = new Set(targetComboIdxs);
     combosData.forEach((combo, idx) => {
-      if (getComboCategory(combo) === type) newIdxs.add(idx);
+      if (getComboCategory(combo, skillsData) === type) newIdxs.add(idx);
     });
     setTargetComboIdxs(Array.from(newIdxs));
   };
 
-  // ANALYSIS & SORTING
   const analysis = useMemo(() => {
     const summary = { pitchers: 0, fielders: 0, managers: 0, skills: [] as any[] };
     const skillMap: Record<string, number> = {};
@@ -96,13 +60,10 @@ const App: React.FC = () => {
       });
     });
 
-    summary.skills = Object.entries(skillMap).map(([name, level]) => {
-      const info = getSkillInfo(name);
-      return { name, level, weight: info.weight, isGold: info.isGold, category: info.category };
-    }).sort((a, b) => b.weight - a.weight || b.level - a.level || a.name.localeCompare(b.name));
+    summary.skills = getSortedSkills(skillMap, skillsData);
 
     ownedChars.forEach(n => {
-      const char = Object.values(charactersData).find(c => normalize(c.name) === n);
+      const char = Object.values(charactersData).find(c => normalizeName(c.name) === n);
       if (char?.position === '投') summary.pitchers++;
       else if (char?.position?.includes('マネ')) summary.managers++;
       else if (char) summary.fielders++;
@@ -117,16 +78,16 @@ const App: React.FC = () => {
       const matchesPos = !posFilter || charactersData[name].position.includes(posFilter);
       return matchesSearch && matchesPos;
     });
-    const comboNames = new Set(combosData.flatMap(c => c.char_names?.map(normalize) || []));
+    const comboNames = new Set(combosData.flatMap(c => c.char_names?.map(normalizeName) || []));
     return {
-      withCombo: all.filter(n => comboNames.has(normalize(n))),
-      noCombo: all.filter(n => !comboNames.has(normalize(n)))
+      withCombo: all.filter(n => comboNames.has(normalizeName(n))),
+      noCombo: all.filter(n => !comboNames.has(normalizeName(n)))
     };
   }, [searchTerm, posFilter]);
 
   return (
     <div className="flex h-screen bg-slate-100 text-[1.15em] text-slate-900 overflow-hidden font-medium">
-      {/* LEFT: LIBRARY */}
+      {/* Sidebar - Characters */}
       <aside className="w-[420px] bg-white border-r border-slate-200 flex flex-col shadow-xl z-20">
         <div className="p-8 border-b border-slate-100 space-y-6">
           <div className="flex items-center gap-3 text-blue-600 font-black text-2xl italic uppercase"><Users /> Characters</div>
@@ -151,22 +112,22 @@ const App: React.FC = () => {
         <div className="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar">
           {libraryGroups.withCombo.map(name => (
             <button 
-              key={name} onClick={() => setOwnedChars(prev => prev.includes(normalize(name)) ? prev.filter(n => n !== normalize(name)) : [...prev, normalize(name)])}
-              className={cn("w-full flex items-center gap-4 p-3 rounded-2xl border-2 transition-all", ownedChars.includes(normalize(name)) ? "bg-emerald-50 border-emerald-200" : "bg-white border-transparent hover:bg-slate-50")}
+              key={name} onClick={() => setOwnedChars(prev => prev.includes(normalizeName(name)) ? prev.filter(n => n !== normalizeName(name)) : [...prev, normalizeName(name)])}
+              className={cn("w-full flex items-center gap-4 p-3 rounded-2xl border-2 transition-all", ownedChars.includes(normalizeName(name)) ? "bg-emerald-50 border-emerald-200" : "bg-white border-transparent hover:bg-slate-50")}
             >
               <div className="w-12 h-12 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 flex-shrink-0">
-                <img src={`/assets/icons_split/${characterMapping.by_name[normalize(name)]?.img_standard}`} className={cn("w-full h-full object-cover", !ownedChars.includes(normalize(name)) && "grayscale opacity-40")} alt="" />
+                <img src={`/assets/icons_split/${characterMapping.by_name[normalizeName(name)]?.img_standard}`} className={cn("w-full h-full object-cover", !ownedChars.includes(normalizeName(name)) && "grayscale opacity-40")} alt="" />
               </div>
               <div className="text-left">
                 <p className="text-[10px] font-black text-slate-400 uppercase">{charactersData[name].position}</p>
-                <p className={cn("text-lg font-black", ownedChars.includes(normalize(name)) ? "text-emerald-700" : "text-slate-700")}>{name}</p>
+                <p className={cn("text-lg font-black", ownedChars.includes(normalizeName(name)) ? "text-emerald-700" : "text-slate-700")}>{name}</p>
               </div>
             </button>
           ))}
         </div>
       </aside>
 
-      {/* CENTER: PLANNER */}
+      {/* Main Content */}
       <main className="flex-1 overflow-y-auto p-10 custom-scrollbar">
         <div className="max-w-5xl mx-auto space-y-12">
           <div className="flex justify-between items-end">
@@ -184,13 +145,13 @@ const App: React.FC = () => {
                 <div className="flex items-center gap-4"><MapPin className="text-blue-600" size={28} /><h2 className="font-black text-3xl italic uppercase">{mapName}</h2></div>
                 <div className="grid gap-6">
                   {data.combo_names?.map((names: string[], cIdx: number) => {
-                    const isSelected = targetComboIdxs.some(idx => combosData[idx]?.char_names?.every((n: any) => names.map(normalize).includes(normalize(n))));
+                    const isSelected = targetComboIdxs.some(idx => combosData[idx]?.char_names?.every((n: any) => names.map(normalizeName).includes(normalizeName(n))));
                     return (
                       <div key={cIdx} onClick={() => toggleCombo(names)} className={cn("flex items-center gap-6 p-6 rounded-[3rem] border-4 bg-white cursor-pointer transition-all", isSelected ? "border-blue-500 shadow-xl" : "border-transparent hover:border-slate-200")}>
                         <div className={cn("w-16 h-16 rounded-[2rem] flex items-center justify-center", isSelected ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-300")}><CheckCircle2 size={32} /></div>
                         <div className="flex gap-6">
                           {names.map(name => (
-                            <img key={name} src={`/assets/icons_split/${characterMapping.by_name[normalize(name)]?.img_standard}`} className={cn("w-20 h-20 rounded-[1.5rem] border-4", ownedChars.includes(normalize(name)) ? "border-emerald-500" : "border-white bg-slate-50 opacity-40")} alt={name} />
+                            <img key={name} src={`/assets/icons_split/${characterMapping.by_name[normalizeName(name)]?.img_standard}`} className={cn("w-20 h-20 rounded-[1.5rem] border-4", ownedChars.includes(normalizeName(name)) ? "border-emerald-500" : "border-white bg-slate-50 opacity-40")} alt={name} />
                           ))}
                         </div>
                       </div>
@@ -203,7 +164,7 @@ const App: React.FC = () => {
         </div>
       </main>
 
-      {/* RIGHT: ANALYSIS (Sorted by weight: gold first) */}
+      {/* Rewards Side Panel */}
       <aside className="w-[420px] bg-slate-900 p-10 flex flex-col text-white shadow-2xl">
         <h3 className="text-amber-500 text-xs font-black tracking-widest uppercase mb-10 italic flex items-center gap-2"><Sparkles size={16} /> Master Rewards</h3>
         

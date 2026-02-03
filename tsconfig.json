@@ -7,8 +7,8 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "bundler", /* 或者用 "node" */
-    "allowImportingTsExtensions": false, /* 除非你使用特定的插件，否則這項通常設為 false */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
