@@ -1,0 +1,43 @@
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  padding: 1em 0;
+}
+
+.skill-card {
+  font-size: 1rem; /* Base 1em */
+  padding: 0.8em 1em;
+  border-radius: 8px;
+  background: #fff;
+  border-left: 6px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Logic Colors */
+.skill-gold { border-left-color: #fbc531; background: #fffcf0; }
+.skill-blue { border-left-color: #00a8ff; background: #f0f8ff; }
+.skill-red  { border-left-color: #e84118; background: #fff5f5; }
+.skill-green { border-left-color: #4cd137; background: #f5fff5; }
+
+.skill-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #2f3640;
+}
+
+.skill-desc {
+  font-size: 1em;
+  margin-top: 0.4em;
+  color: #353b48;
+  line-height: 1.5;
+}
+
+.badge {
+  font-size: 0.7em;
+  background: #dcdde1;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
