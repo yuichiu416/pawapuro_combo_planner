@@ -1,0 +1,42 @@
+{
+  "by_id": {
+    "250": {
+      "id": 250,
+      "name": "郡司知将",
+      "img_standard": "icon_250.png",
+      "img_pos": "icon_250_pos.png"
+    },
+    "332": {
+      "id": 332,
+      "name": "エミリ",
+      "img_standard": "icon_332.png",
+      "img_pos": "icon_332_pos.png"
+    },
+    "316": {
+      "id": 316,
+      "name": "クロン",
+      "img_standard": "icon_316.png",
+      "img_pos": "icon_316_pos.png"
+    }
+  },
+  "by_name": {
+    "郡司知将": {
+      "id": 250,
+      "name": "郡司知将",
+      "img_standard": "icon_250.png",
+      "img_pos": "icon_250_pos.png"
+    },
+    "エミリ": {
+      "id": 332,
+      "name": "エミリ",
+      "img_standard": "icon_332.png",
+      "img_pos": "icon_332_pos.png"
+    },
+    "クロン": {
+      "id": 316,
+      "name": "クロン",
+      "img_standard": "icon_316.png",
+      "img_pos": "icon_316_pos.png"
+    }
+  }
+}

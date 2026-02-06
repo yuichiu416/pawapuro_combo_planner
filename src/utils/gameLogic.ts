@@ -16,7 +16,6 @@ export const normalizeName = (name: string): string =>
 
 /**
  * Extracts skill metadata based on the provided JSON structure.
- * Returns 'universal' as default category if skill is not found.
  */
 export const getSkillInfo = (skillName: string, skillsData: Record<string, any>) => {
   const normalized = normalizeName(skillName);
@@ -35,8 +34,31 @@ export const getSkillInfo = (skillName: string, skillsData: Record<string, any>)
 };
 
 /**
+ * Logic Fix: Filters combos where EVERY required character is present in selectedChars.
+ * Handles whitespace normalization to prevent matching errors.
+ */
+export const getAvailableCombos = (allCombos: any[], selectedChars: string[]) => {
+  if (!allCombos || !selectedChars) return [];
+
+  // 1. Normalize all selected characters once
+  const normalizedSelected = new Set(
+    selectedChars.map(c => normalizeName(c))
+  );
+
+  return allCombos.filter(combo => {
+    // 2. Ensure combo has a valid characters array
+    const requiredChars = combo.characters || combo.char_names || [];
+    
+    if (requiredChars.length === 0) return false;
+
+    // 3. Every single required character must be in the selected Set
+    return requiredChars.every((charName: string) => 
+      normalizedSelected.has(normalizeName(charName))
+    );
+  });
+};
+/**
  * Calculates effective skill levels considering scenario bonuses.
- * In 2024/2025/2026 mechanics, matching a scenario often grants +1 to skill levels.
  */
 export const calculateEffectiveSkills = (
   combo: any, 
@@ -45,7 +67,6 @@ export const calculateEffectiveSkills = (
 ): Record<string, number> => {
   const effectiveSkills: Record<string, number> = {};
   
-  // Verify if any character in the combo belongs to the currently active scenario school
   const hasScenarioBonus = combo.characters?.some((charName: string) => {
     const normalized = normalizeName(charName);
     return charData[normalized]?.school === activeScenario;
@@ -54,7 +75,6 @@ export const calculateEffectiveSkills = (
   const bonus = hasScenarioBonus ? 1 : 0;
 
   combo.rewards?.skills?.forEach((skill: any) => {
-    // Add bonus to the base level defined in the combo
     effectiveSkills[skill.name] = skill.level + bonus;
   });
 
@@ -78,7 +98,6 @@ export const getSortedSkills = (skillMap: Record<string, number>, skillsData: Re
 
 /**
  * Classifies a combo as 'pitcher' or 'fielder'.
- * Returns 'pitcher' only if it provides a gold skill specifically for pitchers.
  */
 export const getComboCategory = (combo: any, skillsData: Record<string, any>): 'pitcher' | 'fielder' => {
   const rewards = combo.rewards?.skills || [];

@@ -1,0 +1,23 @@
+{
+  "パワーヒッター": {
+    "name": "パワーヒッター",
+    "type": "blue",
+    "category": "fielder",
+    "description": "強振して打つとホームラン性の打球が出やすくなる",
+    "isCustom": false
+  },
+  "窮地◯": {
+    "name": "窮地◯",
+    "type": "blue",
+    "category": "fielder",
+    "description": "ストライクカウントの数のぶん、ミート+4、パワー+4",
+    "isCustom": false
+  },
+  "ハイボールヒッター": {
+    "name": "ハイボールヒッター",
+    "type": "blue",
+    "category": "fielder",
+    "description": "高めのボールを打つのが得意になる。ローボールヒッター、低球必打とは一緒につけられない",
+    "isCustom": false
+  }
+}

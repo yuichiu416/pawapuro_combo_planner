@@ -1,0 +1,129 @@
+# Role
+You are a Staff Software Engineer specializing in React, vite, tailwindcss and python
+
+# Task
+I am making a combo planner for Pawapuro 2024-2025.
+I have defined the schema, really just need a frontend to solve the data
+schema examples:
+chatacter_mapping.json:
+```
+{
+  "by_id": {
+    "1": {
+      "id": 1,
+      "name": "パワプロ",
+      "img_standard": "icon_001.png",
+      "img_pos": "icon_001_pos.png"
+    }},
+    "by_name": {
+    "パワプロ": {
+      "id": 1,
+      "name": "パワプロ",
+      "img_standard": "icon_001.png",
+      "img_pos": "icon_001_pos.png"
+    }
+}
+```
+characters.json
+note that the player has a different schema than the manager
+```
+{"天宮果也乃": {
+    "name": "天宮果也乃",
+    "position": "外",
+    "encounter_map": "ハナレ島",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 15,
+        "技術": 15
+      }
+    }
+  },
+  "紺野美崎": {
+    "name": "紺野美崎",
+    "position": "マネージャー",
+    "encounter_map": "ハナレ島",
+    "description": "全経験点がご機嫌度1だと1.2倍, 2だと1.3倍, 3だと1.5倍ボーナス, 主人公の打席が確定操作"
+  }}
+```
+
+combos.json
+```
+{
+  "金丸信二&千代姫": {
+    "chaacters": [
+      "金丸信二",
+      "千代姫"
+    ],
+    "map": "スカウ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "一球入魂",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "初球◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "打たれ強さ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "パワーヒッター",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "勝ち運",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  }
+}
+```
+maps.json
+```{
+    "スカウ島": {
+    "max_combos": 2,
+    "combo_names": [
+      [
+        "金丸信二",
+        "千代姫"
+      ]
+    ]
+  }
+}
+```
+
+skills.json
+```{
+   "神の子": {
+    "name": "神の子",
+    "type": "gold",
+    "category": "pitcher",
+    "description": "登板中、味方打者のミート+5、パワー+5",
+    "isCustom": false
+  }
+}```
+# Context & Constraints
+- Language: English only for code and comments. Note that data source is in Japanese
+- Environment: Latest version of React/Node and all tech stacks I'm using
+- Principles: Follow Clean Code and SOLID principles. Avoid any band-aid fixes; prioritize long-term maintainability.
+- No external libraries unless specified. But feel free to suggest using your knowledge and trending stacks in 2026
+- After each task is completed, confirm with me, then generate a commit message
+- Try to minimize code changes between each commit, unless you think it's necessary to make a big change. Make sure to consult me first.
+- Normally the request can't be done in one exchange so make sure you keep our conversation in memory, you may need to look back 2-3 windows for the full context
+
+# Expected Output
+1. A brief architectural explanation of the solution.
+2. The complete, production-ready code.
+3. Comprehensive Unit Tests covering edge cases.
+4. A commit message summarizing the changes made (only after I say the task is completed)

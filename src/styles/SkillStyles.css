@@ -1,6 +1,6 @@
 /* Base Skill Card */
 .skill-card {
-  font-size: 1rem; /* 1em baseline */
+  font-size: 2rem; /* 1em baseline */
   padding: 0.8em 1em;
   margin-bottom: 0.6em;
   border-radius: 8px;
@@ -17,7 +17,7 @@
 .skill-green{ border-left-color: #2ecc71; background-color: #f5fff8; }
 
 .skill-name {
-  font-size: 1.1em;
+  font-size: 2.2rem;
   font-weight: 800;
   color: #2c3e50;
   display: flex;
@@ -26,14 +26,14 @@
 }
 
 .skill-description {
-  font-size: 1em;
+  font-size: 2em;
   color: #555;
   margin-top: 0.4em;
   line-height: 1.4;
 }
 
 .custom-badge {
-  font-size: 0.7em;
+  font-size: 1.4em;
   background: #eee;
   padding: 2px 6px;
   border-radius: 4px;

@@ -1,8 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { 
+import {
+  getAvailableCombos,
   normalizeName, 
   getSortedSkills, 
-  getComboCategory 
+  getComboCategory,
+  calculateEffectiveSkills,
+  PRIORITY 
 } from '@/utils/gameLogic';
 
 // Mock data for testing
@@ -33,6 +36,7 @@ describe('Logic: Skill Sorting (getSortedSkills)', () => {
     const result = getSortedSkills(skillCounts, mockSkills);
     expect(result[0].name).toBe("走者釘付");
     expect(result[0].isGold).toBe(true);
+    expect(result[0].weight).toBe(PRIORITY.GOLD);
   });
 
   it('should sort by level when skill types are the same', () => {
@@ -50,7 +54,6 @@ describe('Logic: Skill Sorting (getSortedSkills)', () => {
       "B_Skill": 1,
       "A_Skill": 1
     };
-    // Assuming both are blue/not in mock
     const result = getSortedSkills(skillCounts, mockSkills);
     expect(result[0].name).toBe("A_Skill");
   });
@@ -60,6 +63,7 @@ describe('Logic: Skill Sorting (getSortedSkills)', () => {
     const result = getSortedSkills(skillCounts, mockSkills);
     expect(result[0].isGold).toBe(false);
     expect(result[0].category).toBe('universal');
+    expect(result[0].weight).toBe(PRIORITY.OTHER);
   });
 });
 
@@ -79,7 +83,6 @@ describe('Logic: Combo Category (getComboCategory)', () => {
   });
 
   it('should default to fielder for Blue skills even if they are for pitchers', () => {
-    // Only Gold skills trigger the 'pitcher' classification in our current logic
     const combo = {
       rewards: { skills: [{ name: "投手一般", level: 3 }] }
     };
@@ -89,5 +92,43 @@ describe('Logic: Combo Category (getComboCategory)', () => {
   it('should handle combos with no skill rewards', () => {
     const combo = { rewards: { skills: [] } };
     expect(getComboCategory(combo, mockSkills)).toBe('fielder');
+  });
+});
+
+describe('Logic: Effective Skills (calculateEffectiveSkills)', () => {
+  const mockCombo = {
+    characters: ['猪狩守', '矢部明雄'],
+    rewards: { skills: [{ name: '走者釘付', level: 1 }] }
+  };
+  const mockCharData = {
+    '猪狩守': { school: 'パワフル高校' }
+  };
+
+  it('should add +1 level when scenario bonus is active', () => {
+    const result = calculateEffectiveSkills(mockCombo, 'パワフル高校', mockCharData);
+    expect(result['走者釘付']).toBe(2);
+  });
+
+  it('should stay at base level when no scenario match', () => {
+    const result = calculateEffectiveSkills(mockCombo, '他校', mockCharData);
+    expect(result['走者釘付']).toBe(1);
+  });
+
+  it('should handle missing character data in scenario check', () => {
+    const result = calculateEffectiveSkills(mockCombo, 'パワフル高校', {});
+    expect(result['走者釘付']).toBe(1);
+  });
+});
+
+describe('TDD: getAvailableCombos Fix', () => {
+  const mockAllCombos = [
+    { id: 1, name: "Special Training", characters: ["猪狩守", "矢部明雄"] },
+    { id: 2, name: "Solo Combo", characters: ["友沢亮 "] }
+  ];
+
+  it('should match multiple combos if requirements are met', () => {
+    const selected = ["猪狩守", "矢部明雄", "友沢亮"];
+    const result = getAvailableCombos(mockAllCombos, selected);
+    expect(result).toHaveLength(2);
   });
 });

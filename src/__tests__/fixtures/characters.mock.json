@@ -1,0 +1,38 @@
+{
+  "郡司知将": {
+    "name": "郡司知将",
+    "position": "外",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 15
+      }
+    },
+    "description": "Mock description for testing"
+  },
+  "マキシマム池田クリスティン": {
+    "name": "マキシマム池田クリスティン",
+    "position": "一",
+    "encounter_map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [],
+      "stats": {
+        "敏捷": 20
+      }
+    },
+    "description": "Mock description for testing"
+  },
+  "エミリ": {
+    "name": "エミリ",
+    "position": "マネージャー",
+    "encounter_map": "スカウ塔空中庭園",
+    "description": "Mock description for testing"
+  },
+  "クロン": {
+    "name": "クロン",
+    "position": "マネージャー",
+    "encounter_map": "スカウ島",
+    "description": "Mock description for testing"
+  }
+}
