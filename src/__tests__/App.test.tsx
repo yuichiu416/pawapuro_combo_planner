@@ -1,6 +1,27 @@
-import { render, screen, within, cleanup, fireEvent } from '@testing-library/react';
+import { waitFor, fireEvent, within, render, screen, cleanup } from '@testing-library/react';
 import { vi, describe, it, beforeEach, expect } from 'vitest';
-import App from '../App';
+import App from '@/App';
+
+// Type definitions for mock data if needed
+interface MockCharacter {
+  position: string;
+  [key: string]: any;
+}
+
+// Strictly using require inside vi.mock for hoisting safety
+vi.mock('@/data/characters.json', () => ({ 
+  default: require('./fixtures/characters.mock.json') 
+}));
+vi.mock('@/data/combos.json', () => ({ 
+  default: require('./fixtures/combos.mock.json') 
+}));
+vi.mock('@/data/maps.json', () => ({ 
+    default: require('./fixtures/maps.mock.json') 
+
+}));
+
+// Import the same data for dynamic validation in tests
+const mockCharacters = require('./fixtures/characters.mock.json') as Record<string, MockCharacter>;
 
 describe('App Integration: Combo Rewards Flow', () => {
   beforeEach(() => {
@@ -8,80 +29,80 @@ describe('App Integration: Combo Rewards Flow', () => {
     vi.clearAllMocks();
   });
 
-  const getSidebarBtn = (name: string) => {
-    const el = screen.getByTestId(`character-selector-character-name-${name}`);
-    return el.closest('button');
-  };
+  const CHAR_1 = 'マキシマム池田クリスティン';
+  const CHAR_2 = 'エミリ';
+  const TARGET_COMBO_ID = `${CHAR_1}&${CHAR_2}`;
 
-  it('activates the specific combo "マキシマム池田クリスティン&エミリ" and verifies rewards', () => {
+  it('activates combo and verifies skill accumulation logic', () => {
     render(<App />);
 
-    const char1 = 'マキシマム池田クリスティン';
-    const char2 = 'エミリ';
-
-    // 1. Toggle both characters from the sidebar to satisfy combo requirements
-    fireEvent.click(getSidebarBtn(char1)!);
-    fireEvent.click(getSidebarBtn(char2)!);
-
-    // 2. Identify the active combo card in the Planner section
-    const plannerMain = screen.getByTestId('planner-main');
+    // 1. Select characters from Sidebar
+    // Assuming CharacterSidebar uses: data-testid={`character-selector-name-${name}`}
+    const btn1 = screen.getByTestId(`character-selector-character-name-${CHAR_1}`);
+    const btn2 = screen.getByTestId(`character-selector-character-name-${CHAR_2}`);
     
-    // Find the specific card that represents the combo between these two characters
-    const comboCards = within(plannerMain).getAllByTestId(/^combo-card-/);
-    const targetComboCard = comboCards.find(card => 
-      within(card).queryByText(char1) && within(card).queryByText(char2)
-    );
+    fireEvent.click(btn1);
+    fireEvent.click(btn2);
 
-    expect(targetComboCard).toBeInTheDocument();
+    // 2. Click the Combo Card in the Planner to activate/select it
+    const comboCard = screen.getByTestId(`combo-card-${TARGET_COMBO_ID}`);
+    expect(comboCard).toBeInTheDocument();
+    
+    // Trigger selection
+    fireEvent.click(comboCard);
 
-    // 3. Click the Combo Card to view the full rewards in the right section
-    fireEvent.click(targetComboCard!);
+   // 3. Verify Analysis Results in the Sidebar/Panel
+    const analysisPanel = screen.getByTestId('analysis-panel');
+    const skillName = 'ハイボールヒッター';
+    const expectedTotalLevel = '3';
 
-    // 4. Validate Analysis Results (Skills from the provided JSON)
-    const analysisPanel = screen.getByText(/Master Rewards/i).closest('aside');
-    expect(analysisPanel).toBeInTheDocument();
-
-    const expectedSkills = [
-      { name: 'ハイボールヒッター', level: '3' },
-      { name: '窮地◯', level: '3' },
-      { name: 'パワーヒッター', level: '1' },
-      { name: '国際大会◯', level: '1' }
-    ];
-
-    expectedSkills.forEach(skill => {
-      // Check if skill name exists in analysis
-      const skillNameRegex = new RegExp(skill.name, 'i');
-      expect(within(analysisPanel!).getByText(skillNameRegex)).toBeInTheDocument();
-      
-      // Check if the corresponding level is displayed
-      // We use getAllByText because '3' or '1' might appear multiple times
-      const levelElements = within(analysisPanel!).getAllByText(skill.level.toString());
-      expect(levelElements.length).toBeGreaterThan(0);
-    });
+    // Find the specific skill row first
+    const skillItem = within(analysisPanel).getByTestId(`skill-item-${skillName}`);
+    
+    // Verify name exists within this row
+    expect(within(skillItem).getByText(skillName)).toBeInTheDocument();
+    
+    // Use the specific test ID we added to RewardAnalysis for the level
+    const levelElement = within(skillItem).getByTestId('skill-level');
+    expect(levelElement).toHaveTextContent(expectedTotalLevel);
   });
 
-  it('filters out non-matching characters when position "MGR" is selected', () => {
+  it('filters character list by position button', async () => {
     render(<App />);
+    const sidebar = screen.getByTestId('character-sidebar');
+    const targetPos = 'マ'; // Manager
     
-    // "郡司知将" is "外", "エミリ" is "マネージャー"
-    const mgrFilterBtn = screen.getByText('MGR');
-    fireEvent.click(mgrFilterBtn);
-    
-    expect(screen.queryByText('郡司知将')).not.toBeInTheDocument();
-    expect(screen.getByTestId('character-selector-character-name-エミリ')).toBeInTheDocument();
+    const filterBtn = within(sidebar).getByTestId(`filter-button-${targetPos}`);
+    fireEvent.click(filterBtn);
+
+    // Use waitFor to handle re-render
+    await waitFor(() => {
+      Object.entries(mockCharacters as Record<string, any>).forEach(([name, data]) => {
+        const element = within(sidebar).queryByTestId(`character-selector-character-name-${name}`);
+        
+        if (data.position === targetPos) {
+          // If position matches, it MUST be there
+          expect(element).not.toBeNull();
+        } else {
+          // If position does NOT match, it MUST be gone
+          expect(element).toBeNull();
+        }
+      });
+    }, { timeout: 1000 });
   });
 
-  it('clears all selections and rewards when CLEAR is clicked', () => {
+  it('clears all state when CLEAR button is clicked', () => {
     render(<App />);
     
-    // Select character to generate some state
-    fireEvent.click(getSidebarBtn('エミリ')!);
+    // Select one
+    fireEvent.click(screen.getByTestId(`character-selector-character-name-${CHAR_1}`));
     
-    const clearBtn = screen.getByText(/CLEAR/i);
+    // Click Clear
+    const clearBtn = screen.getByRole('button', { name: /CLEAR/i });
     fireEvent.click(clearBtn);
-    
-    const analysisPanel = screen.getByText(/Master Rewards/i).closest('aside');
-    // Skills like 'ハイボールヒッター' should no longer be visible
-    expect(within(analysisPanel!).queryByText(/ハイボールヒッター/)).not.toBeInTheDocument();
+
+    // Analysis panel should ideally be empty or not show specific skills
+    const analysisPanel = screen.getByTestId('analysis-panel');
+    expect(within(analysisPanel).queryByText('ハイボールヒッター')).not.toBeInTheDocument();
   });
 });

@@ -25,13 +25,13 @@
   },
   "エミリ": {
     "name": "エミリ",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ塔空中庭園",
     "description": "Mock description for testing"
   },
   "クロン": {
     "name": "クロン",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ島",
     "description": "Mock description for testing"
   }

@@ -749,13 +749,13 @@
   },
   "クロン": {
     "name": "クロン",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ島",
     "description": "ご機嫌度3で全経験点1.6倍ボーナス"
   },
   "片桐恋": {
     "name": "片桐恋",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ島",
     "description": "筋力&技術&精神1.2倍ボーナス, ご機嫌度に合わせ主人公の基礎値UP＋特殊能力付与"
   },
@@ -773,55 +773,55 @@
   },
   "芹沢茜": {
     "name": "芹沢茜",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ島",
     "description": "筋力&精神ボナ 味方全員オリ変のキレが上がる キレ緩急勝ち運付与"
   },
   "七瀬はるか": {
     "name": "七瀬はるか",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ島",
     "description": "変化球&精神1.3倍ボーナス, 試合後アイテムランダムに獲得(宝玉が出たという話もあり)"
   },
   "嵐山美鈴": {
     "name": "嵐山美鈴",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ島",
     "description": "敏捷&技術1.3倍ボーナス, スタメン全員にサブポジ付与"
   },
   "加藤京子": {
     "name": "加藤京子",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ島",
     "description": "筋力&敏捷1.3倍ボーナス, 7回以降確定プレイヤー操作になる"
   },
   "黒沢愛": {
     "name": "黒沢愛",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ島",
     "description": "筋力&変化球1.3倍ボーナス, 効果なし"
   },
   "忠主七緒": {
     "name": "忠主七緒",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ島",
     "description": "筋力&精神1.3倍ボーナス, 主人公と味方全員のスタミナUP"
   },
   "稲穂亜希": {
     "name": "稲穂亜希",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ島",
     "description": "筋力&敏捷1.3倍ボーナス, 主人公と味方全員の走力UP"
   },
   "栗原舞": {
     "name": "栗原舞",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ島",
     "description": "筋力&技術1.3倍ボーナス, 主人公と味方全員のミートUP"
   },
   "藤崎詩織": {
     "name": "藤崎詩織",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ島",
     "description": "敏捷&技術1.3倍ボーナス, 質問の回答が正解かどうかによって効果が変わる。ご機嫌度によって効果増減"
   },
@@ -1319,43 +1319,43 @@
   },
   "氷上聡里": {
     "name": "氷上聡里",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "試練の洞窟",
     "description": "敏捷&技術1.3倍ボーナス, 危険を察知して出番が増える"
   },
   "ラミィ": {
     "name": "ラミィ",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "試練の洞窟",
     "description": "敏捷&精神1.3倍ボーナス, 各試合勝利でご機嫌度分のコツを貰える"
   },
   "天宮コノハ": {
     "name": "天宮コノハ",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "試練の洞窟",
     "description": "技術&精神1.3倍ボーナス, 試合後, 落とし物を2つくれる"
   },
   "黒戸もね": {
     "name": "黒戸もね",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "試練の洞窟",
     "description": "選択した経験点がご機嫌度1：1倍, ご機嫌度2：1.2倍, ご機嫌度3：1.5倍ボーナス"
   },
   "鈴島紫音": {
     "name": "鈴島紫音",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "試練の洞窟",
     "description": "筋力&技術1.3倍ボーナス, 打撃操作を補助してくれる(ご機嫌度関係なくロックオン+1)"
   },
   "小井成タマモ": {
     "name": "小井成タマモ",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "試練の洞窟",
     "description": "技術&精神1.3倍ボーナス, 試合中ランダムにボールが飛びやすく/飛びにくくなる"
   },
   "戸内聖華": {
     "name": "戸内聖華",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "試練の洞窟",
     "description": "敏捷&変化球1.3倍ボーナス, 投手時は敏捷上限100%, 野手時は変化球上限100%になる(通常は上限70%になる)"
   },
@@ -1917,25 +1917,25 @@
   },
   "日和ミヨ": {
     "name": "日和ミヨ",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ島東海岸",
     "description": "技術&精神1.3倍ボーナス, 配線時, ゴーインに再試合を持ちかける"
   },
   "泡瀬満里南": {
     "name": "泡瀬満里南",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ島東海岸",
     "description": "筋力&技術&精神1.2倍ボーナス, かなり有利な風向きになる"
   },
   "花鳥風香": {
     "name": "花鳥風香",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ島東海岸",
     "description": "変化球&精神1.3倍ボーナス, 主人公の活躍次第で...？"
   },
   "咲須かのん": {
     "name": "咲須かのん",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ島東海岸",
     "description": "筋力&敏捷&技術1.2倍ボーナス, 多くの選手をやる気にしてくれる"
   },
@@ -2632,61 +2632,61 @@
   },
   "紺野美崎": {
     "name": "紺野美崎",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "ハナレ島",
     "description": "全経験点がご機嫌度1だと1.2倍, 2だと1.3倍, 3だと1.5倍ボーナス, 主人公の打席が確定操作"
   },
   "四条澄香": {
     "name": "四条澄香",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "ハナレ島",
     "description": "技術&変化球1.3倍ボーナス, 効果なし"
   },
   "木場静火": {
     "name": "木場静火",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "ハナレ島",
     "description": "筋力&技術1.3倍ボーナス, 主人公と味方全員の球速UP"
   },
   "久根美亜": {
     "name": "久根美亜",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "ハナレ島",
     "description": "筋力&変化球&精神1.2倍ボーナス, ご機嫌度の数だけランダムに試合アイテム効果発動(リモコン除く)"
   },
   "倉家凪": {
     "name": "倉家凪",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "ハナレ島",
     "description": "技術&精神1.3倍ボーナス, 相手投手の球種が分かる(ご機嫌度次第)"
   },
   "三ツ沢環": {
     "name": "三ツ沢環",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "ハナレ島",
     "description": "敏捷&技術&精神1.2倍ボーナス, 味方の調子を底上げ"
   },
   "大谷美衣": {
     "name": "大谷美衣",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "ハナレ島",
     "description": "筋力&技術&変化球1.2倍ボーナス, 主人公と味方全員の赤特効果を消す"
   },
   "須神絵久": {
     "name": "須神絵久",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "ハナレ島",
     "description": "筋力&敏捷1.3倍ボーナス, 相手全員調子ふつうからご機嫌度分マイナス"
   },
   "本若春陽": {
     "name": "本若春陽",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "ハナレ島",
     "description": "筋力&技術1.3倍ボーナス, チームメイトの獲得経験値ボーナス"
   },
   "我間摩夕": {
     "name": "我間摩夕",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "ハナレ島",
     "description": "いいつけ対象がいる時にいいつけ発動。クリアで全経験点1.6倍ボーナス, ご機嫌度高くなるほど相手のCOMレベルが上がる"
   },
@@ -3283,49 +3283,49 @@
   },
   "エミリ": {
     "name": "エミリ",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ塔空中庭園",
     "description": "筋力&精神1.3倍ボーナス, 4～6点差までフル打撃操作"
   },
   "鴨川しぐれ": {
     "name": "鴨川しぐれ",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ塔空中庭園",
     "description": "変化球&精神1.3倍ボーナス, 相手のCOM強さダウン"
   },
   "雉田直実": {
     "name": "雉田直実",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ塔空中庭園",
     "description": "技術&変化球1.3倍ボーナス, ランダムにアイテムをご機嫌度分の個数くれる。金特本や基礎コツLv2アイテムも確率で入手"
   },
   "津乃田梨亜": {
     "name": "津乃田梨亜",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ塔空中庭園",
     "description": "筋力&技術1.3ボーナス, 主人公を超強化する"
   },
   "明星雪華": {
     "name": "明星雪華",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ塔空中庭園",
     "description": "筋力&変化球1.3倍ボーナス, 7～9回以降フル操作"
   },
   "京野小筆": {
     "name": "京野小筆",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ塔空中庭園",
     "description": "技術&敏捷1.3倍ボーナス, 主人公の成長サポート"
   },
   "姫野カレン": {
     "name": "姫野カレン",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ塔空中庭園",
     "description": "佐藤太郎で筋力6, 敏捷6, 技術6, 変化球7, 精神7"
   },
   "滝川クリス優": {
     "name": "滝川クリス優",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "スカウ塔空中庭園",
     "description": "味方全員の投手能力を大幅に上げる"
   },
@@ -4066,43 +4066,43 @@
   },
   "神良美砂": {
     "name": "神良美砂",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "月面",
     "description": "敏捷&精神1.3倍ボーナス, 攻撃時指定した打順を操作できる"
   },
   "カリーナ": {
     "name": "カリーナ",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "月面",
     "description": "技術&敏捷1.3倍ボーナス, 主人公と味方の守備能力が上がる"
   },
   "神埼こりす": {
     "name": "神埼こりす",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "月面",
     "description": "筋力&変化球1.3倍ボーナス, 相手に悪い能力をたくさん付与する"
   },
   "虹谷彩理": {
     "name": "虹谷彩理",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "月面",
     "description": "技術&変化球1.3倍ボーナス, 他マネ効果ランダムで発動(ご機嫌度1の効果)"
   },
   "NCM-753": {
     "name": "NCM-753",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "月面",
     "description": "筋力&敏捷&精神1.2倍ボーナス, 使ったアイテムを修復"
   },
   "守神悠羽": {
     "name": "守神悠羽",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "月面",
     "description": "技術&精神1.3倍ボーナス, 高確率で試合用アイテム効果を発動する"
   },
   "光野聖良": {
     "name": "光野聖良",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "月面",
     "description": "筋力&技術1.3倍ボーナス, 勝利した際に追加でスカウの実を貰える"
   },

@@ -41,7 +41,7 @@ note that the player has a different schema than the manager
   },
   "紺野美崎": {
     "name": "紺野美崎",
-    "position": "マネージャー",
+    "position": "マ",
     "encounter_map": "ハナレ島",
     "description": "全経験点がご機嫌度1だと1.2倍, 2だと1.3倍, 3だと1.5倍ボーナス, 主人公の打席が確定操作"
   }}

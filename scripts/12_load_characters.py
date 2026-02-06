@@ -54,7 +54,7 @@ def run():
             continue
 
         # Override position if manager
-        final_pos = "マネージャー" if is_mgr else pos
+        final_pos = "マ" if is_mgr else pos
 
         # 3. Reward / Description Handling
         reward_raw = cells[2] if len(cells) > 2 and cells[2] != "nan" else ""
