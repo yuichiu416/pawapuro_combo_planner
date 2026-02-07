@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import charactersDataRaw from '@/data/characters.json';
 import combosDataRaw from '@/data/combos.json';
 import mapsDataRaw from '@/data/maps.json';
@@ -8,17 +8,31 @@ import { Character, Combo } from '@/types';
 const charactersData = charactersDataRaw as Record<string, Character>;
 const combosData = combosDataRaw as Record<string, Combo>;
 const mapsData = mapsDataRaw as Record<string, any>;
-const idToNameMapping = charactersMappingRaw as Record<string, string>;
+const charactersMapping = charactersMappingRaw as any;
 
 export const useComboManager = () => {
   const [selectedNames, setSelectedNames] = useState<Set<string>>(new Set());
   const [selectedComboIds, setSelectedComboIds] = useState<Set<string>>(new Set());
 
-  // Correctly mapping IDs to Names and providing data access
   const characterMapping = useMemo(() => ({
-    idToName: idToNameMapping,
+    idToName: charactersMapping,
     data: charactersData
   }), []);
+
+  useEffect(() => {
+    setSelectedComboIds((prev) => {
+      const next = new Set(prev);
+      let changed = false;
+      Object.entries(combosData).forEach(([id, combo]) => {
+        const hasAll = combo.characters.every(name => selectedNames.has(name));
+        if (hasAll && !next.has(id)) {
+          next.add(id);
+          changed = true;
+        }
+      });
+      return changed ? next : prev;
+    });
+  }, [selectedNames]);
 
   const toggleCharacter = (name: string) => {
     setSelectedNames((prev) => {
@@ -30,96 +44,91 @@ export const useComboManager = () => {
   };
 
   const toggleCombo = (comboId: string) => {
-    setSelectedComboIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(comboId)) next.delete(comboId);
-      else next.add(comboId);
-      return next;
+    const targetCombo = combosData[comboId];
+    if (!targetCombo) return;
+
+    setSelectedComboIds((prevCombos) => {
+      const isActivating = !prevCombos.has(comboId);
+      const nextCombos = new Set(prevCombos);
+
+      if (isActivating) {
+        nextCombos.add(comboId);
+        // Add all characters belonging to this combo
+        setSelectedNames((prevNames) => {
+          const nextNames = new Set(prevNames);
+          targetCombo.characters.forEach(c => nextNames.add(c));
+          return nextNames;
+        });
+      } else {
+        nextCombos.delete(comboId);
+        setSelectedNames((prevNames) => {
+          const nextNames = new Set(prevNames);
+          
+          targetCombo.characters.forEach(charName => {
+            const isUsedByOtherActiveCombo = Array.from(nextCombos).some(id => 
+              combosData[id]?.characters.includes(charName)
+            );
+            if (!isUsedByOtherActiveCombo) {
+              nextNames.delete(charName);
+            }
+          });
+          return nextNames;
+        });
+      }
+      return nextCombos;
     });
   };
-
-  const libraryGroups = useMemo(() => {
-    const withCombo: string[] = [];
-    const noCombo: string[] = [];
-    const comboParticipants = new Set(
-      Object.values(combosData).flatMap(c => c.characters)
-    );
-
-    Object.keys(charactersData).forEach(name => {
-      if (comboParticipants.has(name)) withCombo.push(name);
-      else noCombo.push(name);
-    });
-
-    return { withCombo, noCombo };
-  }, []);
-
-  const activeCombos = useMemo(() => {
-    const results: Record<string, Combo> = {};
-    Object.entries(combosData).forEach(([id, combo]) => {
-      const isMet = combo.characters.every(charName => selectedNames.has(charName));
-      if (isMet) results[id] = combo;
-    });
-    return results;
-  }, [selectedNames]);
 
   const analysis = useMemo(() => {
     const stats: Record<string, number> = {};
     const skillsMap: Record<string, number> = {};
-    const MAX_SKILL_LEVEL = 5;
-
+    
     selectedNames.forEach(name => {
       const char = charactersData[name];
-      if (char?.rewards?.stats) {
-        Object.entries(char.rewards.stats).forEach(([stat, val]) => {
-          stats[stat] = (stats[stat] || 0) + val;
-        });
-      }
-    });
-
-    Object.values(activeCombos).forEach(combo => {
-      combo.rewards.skills.forEach(skill => {
-        skillsMap[skill.name] = (skillsMap[skill.name] || 0) + skill.level;
+      char?.rewards?.stats && Object.entries(char.rewards.stats).forEach(([s, v]) => {
+        stats[s] = (stats[s] || 0) + v;
       });
     });
 
-    const skills = Object.entries(skillsMap).map(([name, level]) => ({
-      name,
-      level
-    }));
-
-    const overflowSkills = skills
-      .filter(s => s.level > MAX_SKILL_LEVEL)
-      .map(s => s.name);
-
-    return { stats, skills, overflowSkills };
-  }, [selectedNames, activeCombos]);
-
-  const toggleAllByType = (type: 'pitcher' | 'fielder') => {
-    const next = new Set(selectedNames);
-    Object.entries(charactersData).forEach(([name, char]) => {
-      const isPitcher = char.position === "投";
-      const isManager = char.position === "マ";
-      const isFielder = !isPitcher && !isManager;
-      
-      if ((type === 'pitcher' && isPitcher) || (type === 'fielder' && isFielder)) {
-        next.add(name);
-      }
+    selectedComboIds.forEach(id => {
+      combosData[id]?.rewards?.skills?.forEach(sk => {
+        skillsMap[sk.name] = (skillsMap[sk.name] || 0) + sk.level;
+      });
     });
-    setSelectedNames(next);
-  };
+
+    return {
+      stats,
+      skills: Object.entries(skillsMap).map(([name, level]) => ({ name, level: Math.min(level, 5) })),
+      missingCharacters: Array.from(selectedComboIds).flatMap(id => 
+        combosData[id]?.characters.filter(c => !selectedNames.has(c)) || []
+      ),
+      totalSelectedCombos: selectedComboIds.size
+    };
+  }, [selectedNames, selectedComboIds]);
 
   return {
     ownedChars: selectedNames,
     toggleCharacter,
     selectedComboIds,
     toggleCombo,
-    toggleAllByType,
-    clearAll: () => {
-      setSelectedNames(new Set());
-      setSelectedComboIds(new Set());
+    toggleAllByType: (type: 'pitcher' | 'fielder') => {
+      setSelectedNames(prev => {
+        const next = new Set(prev);
+        Object.entries(charactersData).forEach(([n, c]) => {
+          const isP = c.position === "投" || c.position === "マ";
+          if ((type === 'pitcher' && isP) || (type === 'fielder' && !isP)) next.add(n);
+        });
+        return next;
+      });
     },
+    clearAll: () => { setSelectedNames(new Set()); setSelectedComboIds(new Set()); },
     analysis,
-    libraryGroups,
+    libraryGroups: useMemo(() => {
+      const withC: string[] = [], noC: string[] = [];
+      const participants = new Set(Object.values(combosData).flatMap(c => c.characters));
+      Object.keys(charactersData).forEach(n => participants.has(n) ? withC.push(n) : noC.push(n));
+      return { withCombo: withC, noCombo: noC };
+    }, []),
     mapsData,
     characterMapping
   };
