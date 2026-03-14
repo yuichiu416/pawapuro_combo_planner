@@ -124,19 +124,37 @@ const App: React.FC = () => {
                                 e.stopPropagation(); 
                                 toggleCharacter(name); 
                               }} 
-                              className="flex flex-col items-center gap-2 flex-shrink-0 group"
+                              className="flex flex-col items-center gap-2 flex-shrink-0 group cursor-pointer"
                             >
-                              <img 
-                                src={getImagePath(name, showPositionIcon)} 
+                              <div 
+                                data-testid={`icon-highlight-wrapper-${name}`}
                                 className={cn(
-                                  "w-20 h-20 rounded-[1.5rem] border-4 transition-all object-cover", 
-                                  ownedChars.has(name) ? "border-emerald-500 scale-105" : "border-white bg-slate-50 opacity-40 group-hover:opacity-100"
-                                )} 
-                                alt={name} 
-                              />
+                                  "w-20 h-20 flex-shrink-0 relative rounded-[1.5rem] overflow-hidden transition-all duration-200 border-4",
+                                  // OWNED STATE
+                                  ownedChars.has(name) 
+                                    ? [
+                                        "border-emerald-500 bg-emerald-50 shadow-md",
+                                        "group-hover:border-emerald-300 group-hover:shadow-lg group-hover:brightness-110" 
+                                      ]
+                                    // UNOWNED STATE
+                                    : [
+                                        "border-transparent bg-slate-100 opacity-40",
+                                        "group-hover:opacity-100 group-hover:border-blue-400 group-hover:shadow-lg"
+                                      ]
+                                )}
+                              >
+                                <img 
+                                  src={getImagePath(name, showPositionIcon)} 
+                                  className="absolute inset-0 w-full h-full object-cover" 
+                                  alt={name} 
+                                />
+                              </div>
+
                               <span className={cn(
-                                "text-[12px] font-black uppercase", 
-                                ownedChars.has(name) ? "text-emerald-700" : "text-slate-400"
+                                "text-[12px] font-black uppercase transition-colors duration-200", 
+                                ownedChars.has(name) 
+                                  ? "text-emerald-700 group-hover:text-emerald-500" 
+                                  : "text-slate-400 group-hover:text-blue-600"
                               )}>
                                 {name}
                               </span>

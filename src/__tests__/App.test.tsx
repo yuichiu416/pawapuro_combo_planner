@@ -76,13 +76,18 @@ describe('App Integration: Combo Rewards Flow', () => {
     const charButtonInCombo = within(comboCard).getByTestId(`combo-char-button-${CHAR_1}`);
     
     const sidebarItem = screen.getByTestId(`character-selector-character-name-${CHAR_1}`);
-    const sidebarImg = within(sidebarItem).getByRole('img'); 
+    
+    // Update: Target the wrapper instead of the img directly
+    const sidebarWrapper = within(sidebarItem).getByTestId(`sidebar-icon-wrapper-${CHAR_1}`); 
 
-    expect(sidebarImg).toHaveClass('opacity-40');
+    // Update: Match the new 50% opacity we set for unowned sidebar items
+    expect(sidebarWrapper).toHaveClass('opacity-30');
+    
     await user.click(charButtonInCombo);
 
     await waitFor(() => {
-      expect(sidebarImg).not.toHaveClass('opacity-40');
+      // Should no longer have the dimming class once owned
+      expect(sidebarWrapper).not.toHaveClass('opacity-30');
     });
   });
 
@@ -112,5 +117,46 @@ describe('App Integration: Combo Rewards Flow', () => {
     await user.click(charBtn1); // Set unowned
 
     expect(comboCard).toHaveClass('border-blue-500');
+  });
+});
+
+describe('App UI/UX: Layout Stability', () => {
+  const CHAR_NAME = 'マキシマム池田クリスティン';
+
+  it('applies the high-visibility blue border and slate background when hovering an unowned sidebar icon', async () => {
+    render(<App />);
+    const sidebar = screen.getByTestId('character-sidebar');
+    const sidebarItem = within(sidebar).getByTestId(`character-selector-character-name-${CHAR_NAME}`);
+    
+    // Update: Check for the new slate-100 background on the button itself
+    expect(sidebarItem).toHaveClass('hover:bg-slate-100');
+
+    // Update: Check for the bumped blue-500 color on the wrapper
+    const wrapper = within(sidebarItem).getByTestId(`sidebar-icon-wrapper-${CHAR_NAME}`);
+    expect(wrapper).toHaveClass('group-hover:border-blue-500');
+  });
+
+  it('changes border color when hovering an already owned character', async () => {
+    render(<App />);
+    const charButton = await screen.findByTestId(`combo-char-button-マキシマム池田クリスティン`);
+    
+    // First click to make it owned
+    await userEvent.click(charButton); 
+    
+    const wrapper = within(charButton).getByTestId(/icon-highlight-wrapper/);
+    
+    // Check that it has a hover-specific border color for the owned state
+    expect(wrapper).toHaveClass('group-hover:border-emerald-300');
+  });
+
+  it('shows a high-visibility slate background when hovering an unselected character', async () => {
+    render(<App />);
+    const btn = screen.getByTestId('character-selector-character-name-マキシマム池田クリスティン');
+    
+    // Hover state (modeled via class check)
+    expect(btn).toHaveClass('hover:bg-slate-100');
+    
+    const iconWrapper = within(btn).getByTestId(/sidebar-icon-wrapper/);
+    expect(iconWrapper).toHaveClass('group-hover:border-blue-500');
   });
 });

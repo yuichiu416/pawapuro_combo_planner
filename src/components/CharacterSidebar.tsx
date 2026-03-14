@@ -27,31 +27,58 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
     <div className="space-y-4">
       <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2">{title}</h3>
       <div className="grid gap-2">
-        {names.map(name => (
-          <button
-            key={name}
-            data-testid={`character-selector-character-name-${name}`}
-            onClick={() => onToggle(name)}
-            className="flex items-center gap-4 p-3 rounded-2xl hover:bg-white transition-all group text-left w-full"
-          >
-            <div className="relative">
-              <img 
-                src={getImagePath(name, true)} 
-                alt={name}
-                className={cn(
-                  "w-12 h-12 rounded-xl border-2 transition-all object-cover",
-                  ownedChars.has(name) ? "border-emerald-500 scale-105" : "border-slate-200 opacity-40"
-                )}
-              />
-            </div>
-            <p className={cn(
-              "text-lg font-black",
-              ownedChars.has(name) ? "text-emerald-900" : "text-slate-700"
-            )}>
-              {name}
-            </p>
-          </button>
-        ))}
+{names.map(name => {
+  const isOwned = ownedChars.has(name);
+  
+  return (
+    <button
+      key={name}
+      data-testid={`character-selector-character-name-${name}`}
+      onClick={() => onToggle(name)}
+      className={cn(
+        "flex items-center gap-4 p-3 rounded-2xl transition-all duration-200 group text-left w-full cursor-pointer",
+        isOwned 
+          ? [
+              "bg-emerald-100/70 shadow-sm border border-emerald-200/50", 
+              "hover:bg-emerald-200 hover:border-emerald-400 hover:shadow-md"
+            ]
+          : [
+              // INCREASED UNSELECTED HOVER CONTRAST
+              "bg-transparent border border-transparent", 
+              "hover:bg-slate-100 hover:border-slate-300 hover:shadow-sm" // Changed from bg-white to bg-slate-100
+            ]
+      )}
+    >
+      <div 
+        data-testid={`sidebar-icon-wrapper-${name}`}
+        className={cn(
+          "w-12 h-12 flex-shrink-0 relative rounded-xl overflow-hidden transition-all duration-200 border-2",
+          isOwned 
+            ? "border-emerald-600 bg-white group-hover:border-emerald-500" 
+            : [
+                "border-transparent bg-slate-200 opacity-30",
+                "group-hover:opacity-100 group-hover:border-blue-500 group-hover:scale-105" // Added a tiny scale for extra pop
+              ]
+        )}
+      >
+        <img 
+          src={getImagePath(name, true)} 
+          alt={name}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </div>
+
+      <p className={cn(
+        "text-lg font-black transition-colors duration-200",
+        isOwned 
+          ? "text-emerald-950 group-hover:text-emerald-800" 
+          : "text-slate-600 group-hover:text-blue-600" // Name turns blue on hover to match the icon border
+      )}>
+        {name}
+      </p>
+    </button>
+  );
+})}
       </div>
     </div>
   );
