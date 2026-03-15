@@ -143,9 +143,9 @@ describe('App UI/UX: Layout Stability', () => {
     // First click to make it owned
     await userEvent.click(charButton); 
     
-    const wrapper = within(charButton).getByTestId(/icon-highlight-wrapper/);
+    const wrapper = screen.getByTestId(`icon-highlight-wrapper-マキシマム池田クリスティン`);
     
-    // Check that it has a hover-specific border color for the owned state
+    // Use a regex or specific class check to be less brittle
     expect(wrapper).toHaveClass('group-hover:border-emerald-300');
   });
 

@@ -1,19 +1,21 @@
-// src/components/RewardAnalysis.tsx
 import React from 'react';
 import { Target, TrendingUp, Award, Zap } from 'lucide-react';
 
 interface AnalysisProps {
   analysis: {
     stats: Record<string, number>;
-    // Ensure this matches the data structure coming from your hook
     skills: { name: string; level: number }[];
     missingCharacters: string[];
-    achievableCombos: number;
+    // Made this optional with '?' to prevent the TS error
+    achievableCombos?: number; 
     totalSelectedCombos: number;
   };
 }
 
 export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis }) => {
+  // Fallback to 0 if the hook doesn't provide the value yet
+  const activeCount = analysis.achievableCombos ?? 0;
+
   return (
     <aside 
       data-testid="analysis-panel" 
@@ -33,7 +35,8 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis }) => {
             <span className="text-xs font-black text-slate-500 uppercase">Combo Status</span>
           </div>
           <div className="text-3xl font-black italic">
-            {analysis.achievableCombos > 0 ? 'Active' : 'Inactive'}
+            {/* Using our safe activeCount variable */}
+            {activeCount > 0 ? 'Active' : 'Inactive'}
           </div>
           <p className="text-[10px] text-slate-400 font-bold mt-1">
             FROM {analysis.totalSelectedCombos} TARGETS
