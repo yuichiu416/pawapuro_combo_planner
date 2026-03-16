@@ -36,3 +36,9 @@ raw_data/debug/
 raw_data/icons_pos_split/
 raw_data/icons_final/
 raw_data/icons_pos_final/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
