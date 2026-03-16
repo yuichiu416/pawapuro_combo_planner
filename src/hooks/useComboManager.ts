@@ -3,7 +3,7 @@ import charactersDataRaw from '@/data/characters.json';
 import combosDataRaw from '@/data/combos.json';
 import mapsDataRaw from '@/data/maps.json';
 import charactersMappingRaw from '@/data/character_mapping.json';
-import { Character, Combo } from '@/types';
+import type { Character, Combo } from '@/types';
 
 const charactersData = charactersDataRaw as Record<string, Character>;
 const combosData = combosDataRaw as Record<string, Combo>;

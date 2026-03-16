@@ -5,22 +5,28 @@ import userEvent from '@testing-library/user-event';
 import { vi, describe, it, beforeEach, expect } from 'vitest';
 import App from '@/App';
 
-interface MockCharacter {
-  position: string;
-  [key: string]: any;
-}
+// We do NOT import the mock data at the top anymore.
+// We let the factory handle it using an async import.
 
-vi.mock('@/data/characters.json', () => ({ 
-  default: require('./fixtures/characters.mock.json') 
-}));
-vi.mock('@/data/combos.json', () => ({ 
-  default: require('./fixtures/combos.mock.json') 
-}));
-vi.mock('@/data/maps.json', () => ({ 
-    default: require('./fixtures/maps.mock.json') 
-}));
+vi.mock('@/data/characters.json', () => {
+  return import('./fixtures/characters.mock.json').then(module => ({
+    default: module.default
+  }));
+});
 
-const mockCharacters = require('./fixtures/characters.mock.json') as Record<string, MockCharacter>;
+vi.mock('@/data/combos.json', () => {
+  return import('./fixtures/combos.mock.json').then(module => ({
+    default: module.default
+  }));
+});
+
+vi.mock('@/data/maps.json', () => {
+  return import('./fixtures/maps.mock.json').then(module => ({
+    default: module.default
+  }));
+});
+
+const mockCharacters = import('./fixtures/characters.mock.json') as Record<string, MockCharacter>;
 
 describe('App Integration: Combo Rewards Flow', () => {
   let user: ReturnType<typeof userEvent.setup>;

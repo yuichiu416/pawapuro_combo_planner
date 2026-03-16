@@ -9,3 +9,8 @@
     border-radius: 10px;
   }
 }
+@layer base {
+  button {
+    @apply cursor-pointer;
+  }
+}

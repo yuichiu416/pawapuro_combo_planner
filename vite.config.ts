@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
@@ -21,8 +22,9 @@ export default defineConfig({
     },
   },
   // Vitest configuration for unit testing logic files
-  test: {
+  test: { // This should now be recognized
     globals: true,
     environment: 'jsdom',
+    setupFiles: './src/setupTests.ts',
   },
 });
