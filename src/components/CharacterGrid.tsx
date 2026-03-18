@@ -15,7 +15,9 @@ export const CharacterGrid: React.FC<CharacterGridProps> = ({
   characters, ownedChars, onToggle, getImagePath, showPositionIcon, layout = 'grid'
 }) => {
   return (
-    <div className={cn(
+    <div 
+      data-testid="character-grid"
+      className={cn(
       layout === 'grid' 
         ? "grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6" 
         : "flex gap-8"

@@ -4,16 +4,22 @@ import { MapPin, ChevronDown } from 'lucide-react';
 import { ComboCard } from '@/components/ComboCard';
 import { cn } from '@/utils/style';
 
+// Import the full combo data to get reward details
+import combosDataRaw from '@/data/combos.json';
+
+const combosData = combosDataRaw as Record<string, any>;
+
 interface MapSectionProps {
   mapName: string;
-  combos: string[][];
+  // Note: in your previous version this was string[][], 
+  // but usually it's better to pass IDs if you have a lookup table
+  combos: string[][]; 
   selectedComboIds: Set<string>;
   toggleCombo: (id: string) => void;
   ownedChars: Set<string>;
   toggleCharacter: (name: string) => void;
   getImagePath: (name: string, usePos: boolean) => string;
   showPositionIcon: boolean;
-  // New props from App.tsx
   isExpanded: boolean;
   onToggle: () => void;
 }
@@ -64,11 +70,17 @@ export const MapSection: React.FC<MapSectionProps> = ({
     {isExpanded && (
       <div className="grid gap-6 animate-in fade-in slide-in-from-top-4 duration-300">
         {combos?.map((names) => {
+          // Generate the lookup ID
           const comboId = names.join('&');
+          // Fetch the full combo object to get the rewards property
+          const fullComboData = combosData[comboId];
+
           return (
             <ComboCard 
               key={comboId}
               names={names}
+              // PASS THE REWARDS DATA HERE
+              rewards={fullComboData?.rewards} 
               isSelected={selectedComboIds.has(comboId)}
               onToggleCombo={() => toggleCombo(comboId)}
               {...gridProps}

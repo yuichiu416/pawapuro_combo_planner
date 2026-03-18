@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
 import App from '@/App';
 
@@ -61,5 +62,16 @@ describe('App Integration - Map Expansion', () => {
     // Only that map should be open
     expect(screen.getByTestId('combo-card-Char1&Char2')).toBeInTheDocument();
     expect(screen.queryByTestId('combo-card-Char3&Char4')).not.toBeInTheDocument();
+  });
+
+  it('sidebar button remains accessible after collapse', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    const toggleBtn = screen.getByTestId('sidebar-collapse-btn');
+    
+    await user.click(toggleBtn);
+    
+    // The button should still be in the document and not have display: none
+    expect(toggleBtn).toBeVisible(); 
   });
 });
