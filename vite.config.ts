@@ -4,15 +4,14 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 /**
  * Vite Configuration
  * Includes: React, Tailwind CSS v4, and Path Aliasing.
  */
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
+  plugins: [react(), tailwindcss(), cloudflare()],
   resolve: {
     alias: {
       /** * Maps the '@' symbol to the 'src' directory for cleaner imports.
