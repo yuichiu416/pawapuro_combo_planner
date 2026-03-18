@@ -1,6 +1,6 @@
 // src/__tests__/App.test.tsx
 
-import { waitFor, within, render, screen, cleanup, fireEvent } from '@testing-library/react';
+import { waitFor, within, render, screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { vi, describe, it, beforeEach, expect } from 'vitest';
 import App from '@/App';
@@ -9,24 +9,24 @@ import App from '@/App';
 // We let the factory handle it using an async import.
 
 vi.mock('@/data/characters.json', () => {
-  return import('./fixtures/characters.mock.json').then(module => ({
+  return import('@/__tests__/fixtures/characters.mock.json').then(module => ({
     default: module.default
   }));
 });
 
 vi.mock('@/data/combos.json', () => {
-  return import('./fixtures/combos.mock.json').then(module => ({
+  return import('@/__tests__/fixtures/combos.mock.json').then(module => ({
     default: module.default
   }));
 });
 
 vi.mock('@/data/maps.json', () => {
-  return import('./fixtures/maps.mock.json').then(module => ({
+  return import('@/__tests__/fixtures/maps.mock.json').then(module => ({
     default: module.default
   }));
 });
 
-const mockCharacters = import('./fixtures/characters.mock.json') as Record<string, MockCharacter>;
+const mockCharacters = import('@/__tests__/fixtures/characters.mock.json') as Record<string, MockCharacter>;
 
 describe('App Integration: Combo Rewards Flow', () => {
   let user: ReturnType<typeof userEvent.setup>;

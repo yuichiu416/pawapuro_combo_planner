@@ -17,6 +17,8 @@ const App: React.FC = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [posFilter, setPosFilter] = useState<string | null>(null);
+  // NEW: Add the map filter state here
+  const [mapFilter, setMapFilter] = useState<string | null>(null);
   const [showPositionIcon, setShowPositionIcon] = useState(true);
 
   const getImagePath = (name: string, usePosIcon: boolean) => {
@@ -28,21 +30,28 @@ const App: React.FC = () => {
 
   const filteredLibrary = useMemo(() => {
     const filterFn = (name: string) => {
-      const matchesSearch = name.toLowerCase().includes(searchTerm.toLowerCase());
       const charData = (characters as any)[name];
-      return matchesSearch && (!posFilter || charData?.position === posFilter);
+      const matchesSearch = name.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesPos = !posFilter || charData?.position === posFilter;
+      // NEW: Add the map matching logic
+      const matchesMap = !mapFilter || charData?.encounter_map === mapFilter;
+      
+      return matchesSearch && matchesPos && matchesMap;
     };
+
     return {
       withCombo: libraryGroups.withCombo.filter(filterFn),
       noCombo: libraryGroups.noCombo.filter(filterFn)
     };
-  }, [libraryGroups, searchTerm, posFilter]);
+  }, [libraryGroups, searchTerm, posFilter, mapFilter]); // Added mapFilter to dependencies
 
   return (
     <div className="flex h-screen bg-slate-100 text-[1.15em] text-slate-900 overflow-hidden font-medium">
       <CharacterSidebar 
         searchTerm={searchTerm} setSearchTerm={setSearchTerm}
         posFilter={posFilter} setPosFilter={setPosFilter}
+        // NEW: Pass these props to the Sidebar
+        mapFilter={mapFilter} setMapFilter={setMapFilter}
         groups={filteredLibrary} ownedChars={ownedChars}
         onToggle={toggleCharacter} getImagePath={getImagePath}
       />
