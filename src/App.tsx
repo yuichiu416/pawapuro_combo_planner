@@ -1,4 +1,3 @@
-// src/App.tsx
 import React, { useState, useMemo } from 'react';
 import { useComboManager } from '@/hooks/useComboManager';
 import { CharacterSidebar } from '@/components/CharacterSidebar';
@@ -17,9 +16,33 @@ const App: React.FC = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [posFilter, setPosFilter] = useState<string | null>(null);
-  // NEW: Add the map filter state here
   const [mapFilter, setMapFilter] = useState<string | null>(null);
   const [showPositionIcon, setShowPositionIcon] = useState(true);
+  const [expandedMaps, setExpandedMaps] = useState<Set<string>>(new Set());
+
+  const allExpanded = useMemo(() => {
+    const mapNames = Object.keys(mapsData);
+    if (mapNames.length === 0) return false;
+    return mapNames.every(name => expandedMaps.has(name));
+  }, [expandedMaps, mapsData]);
+
+  const toggleMapExpand = (mapName: string) => {
+    setExpandedMaps(prev => {
+      const next = new Set(prev);
+      if (next.has(mapName)) next.delete(mapName);
+      else next.add(mapName);
+      return next;
+    });
+  };
+
+  const expandAllMaps = () => {
+    setExpandedMaps(new Set(Object.keys(mapsData)));
+  };
+
+  const collapseAllMaps = () => {
+    setExpandedMaps(new Set());
+    setMapFilter(null); // Clear active filter to ensure sections actually close
+  };
 
   const getImagePath = (name: string, usePosIcon: boolean) => {
     const charEntry = characterMapping.idToName?.by_name[name];
@@ -33,24 +56,20 @@ const App: React.FC = () => {
       const charData = (characters as any)[name];
       const matchesSearch = name.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesPos = !posFilter || charData?.position === posFilter;
-      // NEW: Add the map matching logic
       const matchesMap = !mapFilter || charData?.encounter_map === mapFilter;
-      
       return matchesSearch && matchesPos && matchesMap;
     };
-
     return {
       withCombo: libraryGroups.withCombo.filter(filterFn),
       noCombo: libraryGroups.noCombo.filter(filterFn)
     };
-  }, [libraryGroups, searchTerm, posFilter, mapFilter]); // Added mapFilter to dependencies
+  }, [libraryGroups, searchTerm, posFilter, mapFilter]);
 
   return (
     <div className="flex h-screen bg-slate-100 text-[1.15em] text-slate-900 overflow-hidden font-medium">
       <CharacterSidebar 
         searchTerm={searchTerm} setSearchTerm={setSearchTerm}
         posFilter={posFilter} setPosFilter={setPosFilter}
-        // NEW: Pass these props to the Sidebar
         mapFilter={mapFilter} setMapFilter={setMapFilter}
         groups={filteredLibrary} ownedChars={ownedChars}
         onToggle={toggleCharacter} getImagePath={getImagePath}
@@ -63,6 +82,9 @@ const App: React.FC = () => {
             setShowPositionIcon={setShowPositionIcon}
             toggleAllByType={toggleAllByType}
             clearAll={clearAll}
+            onExpandAll={expandAllMaps}
+            onCollapseAll={collapseAllMaps}
+            allExpanded={allExpanded}
           />
 
           <div className="space-y-16">
@@ -77,6 +99,8 @@ const App: React.FC = () => {
                 toggleCharacter={toggleCharacter}
                 getImagePath={getImagePath}
                 showPositionIcon={showPositionIcon}
+                isExpanded={expandedMaps.has(mapName) || mapFilter === mapName}
+                onToggle={() => toggleMapExpand(mapName)}
               />
             ))}
           </div>
