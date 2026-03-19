@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-  ChevronDown, ChevronUp, Trash2, 
+  ChevronDown, ChevronUp, 
   CircleDot, Trophy, UserPlus, 
   ShieldCheck, User, XCircle 
 } from 'lucide-react';

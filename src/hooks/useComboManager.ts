@@ -10,8 +10,11 @@ const combosData = combosDataRaw as Record<string, Combo>;
 const mapsData = mapsDataRaw as Record<string, any>;
 const charactersMapping = charactersMappingRaw as any;
 
+// The Starting 2: Do not count toward positional scouting requirements
+const FIXED_MEMBERS = ["パワプロ", "矢部 明雄"]; 
+
 export const useComboManager = () => {
-  const [selectedNames, setSelectedNames] = useState<Set<string>>(new Set());
+  const [selectedNames, setSelectedNames] = useState<Set<string>>(new Set(FIXED_MEMBERS));
   const [selectedComboIds, setSelectedComboIds] = useState<Set<string>>(new Set());
 
   const characterMapping = useMemo(() => ({
@@ -19,6 +22,7 @@ export const useComboManager = () => {
     data: charactersData
   }), []);
 
+  // Auto-activate combos based on selected characters
   useEffect(() => {
     setSelectedComboIds((prev) => {
       const next = new Set(prev);
@@ -35,6 +39,8 @@ export const useComboManager = () => {
   }, [selectedNames]);
 
   const toggleCharacter = (name: string) => {
+    if (FIXED_MEMBERS.includes(name)) return;
+
     setSelectedNames((prev) => {
       const next = new Set(prev);
       if (next.has(name)) next.delete(name);
@@ -53,7 +59,6 @@ export const useComboManager = () => {
 
       if (isActivating) {
         nextCombos.add(comboId);
-        // Add all characters belonging to this combo
         setSelectedNames((prevNames) => {
           const nextNames = new Set(prevNames);
           targetCombo.characters.forEach(c => nextNames.add(c));
@@ -63,12 +68,11 @@ export const useComboManager = () => {
         nextCombos.delete(comboId);
         setSelectedNames((prevNames) => {
           const nextNames = new Set(prevNames);
-          
           targetCombo.characters.forEach(charName => {
             const isUsedByOtherActiveCombo = Array.from(nextCombos).some(id => 
               combosData[id]?.characters.includes(charName)
             );
-            if (!isUsedByOtherActiveCombo) {
+            if (!isUsedByOtherActiveCombo && !FIXED_MEMBERS.includes(charName)) {
               nextNames.delete(charName);
             }
           });
@@ -82,27 +86,71 @@ export const useComboManager = () => {
   const analysis = useMemo(() => {
     const stats: Record<string, number> = {};
     const skillsMap: Record<string, number> = {};
+    const missingSet = new Set<string>();
     
+    let pCount = 0;
+    let fCount = 0;
+    let mCount = 0;
+
     selectedNames.forEach(name => {
       const char = charactersData[name];
-      char?.rewards?.stats && Object.entries(char.rewards.stats).forEach(([s, v]) => {
-        stats[s] = (stats[s] || 0) + v;
-      });
+      if (!char) return;
+
+      if (char.rewards?.stats) {
+        Object.entries(char.rewards.stats).forEach(([s, v]) => {
+          stats[s] = (stats[s] || 0) + v;
+        });
+      }
+
+      // POSITIONAL LOGIC: Managers don't count toward the 23-scout/25-total limit
+      if (!FIXED_MEMBERS.includes(name)) {
+        const pos = char.position?.trim();
+        if (pos === "マ") mCount++;
+        else if (pos === "投") pCount++;
+        else pCount += 0, fCount++; // Logic check: only Pitchers or Fielders affect scoutCount
+      }
     });
 
     selectedComboIds.forEach(id => {
-      combosData[id]?.rewards?.skills?.forEach(sk => {
+      const combo = combosData[id];
+      combo?.rewards?.skills?.forEach(sk => {
         skillsMap[sk.name] = (skillsMap[sk.name] || 0) + sk.level;
+      });
+      combo?.characters.forEach(c => {
+        if (!selectedNames.has(c)) missingSet.add(c);
       });
     });
 
+    const scoutCount = pCount + fCount;
+    const totalRosterSize = scoutCount + FIXED_MEMBERS.length; // 2 (Fixed) + 23 (Scouts) = 25
+    
+    // VALIDATION RULES
+    const isScoutLimitValid = scoutCount <= 23;
+    const isPValid = pCount >= 6 && pCount <= 8;
+    const isMValid = mCount <= 3;
+
     return {
       stats,
-      skills: Object.entries(skillsMap).map(([name, level]) => ({ name, level: Math.min(level, 5) })),
-      missingCharacters: Array.from(selectedComboIds).flatMap(id => 
-        combosData[id]?.characters.filter(c => !selectedNames.has(c)) || []
-      ),
-      totalSelectedCombos: selectedComboIds.size
+      skills: Object.entries(skillsMap).map(([name, level]) => ({ 
+        name, 
+        level: Math.min(level, 5) 
+      })),
+      missingCharacters: Array.from(missingSet),
+      totalSelectedCombos: selectedComboIds.size,
+      roster: {
+        pitcher: pCount,
+        fielder: fCount,
+        manager: mCount,
+        total: totalRosterSize, 
+        isValid: isScoutLimitValid && isPValid && isMValid,
+        errors: {
+          total: !isScoutLimitValid,
+          pitcher: !isPValid,
+          manager: !isMValid,
+          // Fielder error triggers if total scouts > 23 even if pitchers are okay
+          fielder: scoutCount > 23 && isPValid 
+        }
+      }
     };
   }, [selectedNames, selectedComboIds]);
 
@@ -115,18 +163,28 @@ export const useComboManager = () => {
       setSelectedNames(prev => {
         const next = new Set(prev);
         Object.entries(charactersData).forEach(([n, c]) => {
-          const isP = c.position === "投" || c.position === "マ";
-          if ((type === 'pitcher' && isP) || (type === 'fielder' && !isP)) next.add(n);
+          if (FIXED_MEMBERS.includes(n)) return; 
+          const pos = c.position?.trim();
+          const isPitcher = pos === "投";
+          const isManager = pos === "マ";
+          if (type === 'pitcher' && isPitcher) next.add(n);
+          if (type === 'fielder' && !isPitcher && !isManager) next.add(n);
         });
         return next;
       });
     },
-    clearAll: () => { setSelectedNames(new Set()); setSelectedComboIds(new Set()); },
+    clearAll: () => { 
+      setSelectedNames(new Set(FIXED_MEMBERS)); 
+      setSelectedComboIds(new Set()); 
+    },
     analysis,
     libraryGroups: useMemo(() => {
       const withC: string[] = [], noC: string[] = [];
       const participants = new Set(Object.values(combosData).flatMap(c => c.characters));
-      Object.keys(charactersData).forEach(n => participants.has(n) ? withC.push(n) : noC.push(n));
+      Object.keys(charactersData).forEach(n => {
+        if (FIXED_MEMBERS.includes(n)) return; 
+        participants.has(n) ? withC.push(n) : noC.push(n);
+      });
       return { withCombo: withC, noCombo: noC };
     }, []),
     mapsData,
