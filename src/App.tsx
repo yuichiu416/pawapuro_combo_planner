@@ -71,7 +71,7 @@ const App: React.FC = () => {
     return () => subscription.unsubscribe();
   }, [clearAll]);
 
-  // 2. DATA HYDRATION (Load from Cloud)
+  // 2. DATA HYDRATION
   useEffect(() => {
     if (!isLoggedIn) return;
 
@@ -89,7 +89,6 @@ const App: React.FC = () => {
         if (error) throw error;
 
         if (data) {
-          // Force fresh Set instances to ensure React detects the state update
           if (data.selected_characters) setOwnedChars(new Set(data.selected_characters));
           if (data.selected_combos) setSelectedComboIds(new Set(data.selected_combos));
           
@@ -99,7 +98,6 @@ const App: React.FC = () => {
               minute: '2-digit' 
             }));
           }
-          console.log("✅ Sync complete: Data loaded from cloud.");
         }
       } catch (err) {
         console.error("❌ Hydration Error:", err);
@@ -126,9 +124,6 @@ const App: React.FC = () => {
 
     if (!error) {
       setLastSaved(new Date(now).toLocaleString());
-      console.log("💾 Progress saved to cloud.");
-    } else {
-      console.error("❌ Save Error:", error.message);
     }
     setIsSaving(false);
   };
@@ -175,10 +170,37 @@ const App: React.FC = () => {
       {/* MAIN CONTENT */}
       <main className="flex-1 overflow-y-auto p-10 bg-slate-50 custom-scrollbar">
         <div className="max-w-5xl mx-auto space-y-12">
-          <Header showPositionIcon={showPositionIcon} setShowPositionIcon={setShowPositionIcon} toggleAllByType={toggleAllByType} clearAll={clearAll} onExpandAll={() => setExpandedMaps(new Set(Object.keys(mapsData)))} onCollapseAll={() => setExpandedMaps(new Set())} allExpanded={Object.keys(mapsData).every(n => expandedMaps.has(n))} />
+          <Header 
+            showPositionIcon={showPositionIcon} 
+            setShowPositionIcon={setShowPositionIcon} 
+            toggleAllByType={toggleAllByType} 
+            clearAll={clearAll} 
+            onExpandAll={() => setExpandedMaps(new Set(Object.keys(mapsData)))} 
+            onCollapseAll={() => setExpandedMaps(new Set())} 
+            allExpanded={Object.keys(mapsData).length > 0 && Object.keys(mapsData).every(n => expandedMaps.has(n))} 
+          />
           <div className="space-y-16">
             {Object.entries(mapsData).map(([mapName, data]) => (
-              <MapSection key={mapName} mapName={mapName} combos={data.combo_names} selectedComboIds={selectedComboIds} toggleCombo={toggleCombo} ownedChars={ownedChars} toggleCharacter={toggleCharacter} getImagePath={getImagePath} showPositionIcon={showPositionIcon} isExpanded={expandedMaps.has(mapName) || mapFilter === mapName} onToggle={() => setExpandedMaps(prev => { const n = new Set(prev); n.has(mapName) ? n.delete(mapName) : n.add(mapName); return n; })} />
+              <MapSection 
+                key={mapName} 
+                mapName={mapName} 
+                combos={data.combo_names} 
+                selectedComboIds={selectedComboIds} 
+                toggleCombo={toggleCombo} 
+                ownedChars={ownedChars} 
+                toggleCharacter={toggleCharacter} 
+                getImagePath={getImagePath} 
+                showPositionIcon={showPositionIcon} 
+                
+                progress={analysis?.mapCompletion?.[mapName]} 
+                
+                isExpanded={expandedMaps.has(mapName) || mapFilter === mapName} 
+                onToggle={() => setExpandedMaps(prev => { 
+                  const n = new Set(prev); 
+                  n.has(mapName) ? n.delete(mapName) : n.add(mapName); 
+                  return n; 
+                })} 
+              />
             ))}
           </div>
         </div>
@@ -197,7 +219,6 @@ const App: React.FC = () => {
           <div className="h-full w-[26rem] flex flex-col">
             <div className="p-6 border-b border-slate-100 space-y-4">
               <AuthButton />
-              
               {isLoggedIn && (
                 <div className="space-y-3">
                   <button
@@ -208,7 +229,6 @@ const App: React.FC = () => {
                     {isSaving ? <Loader2 className="animate-spin" size={16} /> : <Save size={16} />}
                     {isSaving ? 'Syncing...' : 'Save Configuration'}
                   </button>
-                  
                   {lastSaved && (
                     <div className="flex items-center justify-center gap-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                       <Clock size={10} />

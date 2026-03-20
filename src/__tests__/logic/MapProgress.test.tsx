@@ -11,7 +11,7 @@ vi.mock('../../hooks/useComboManager', () => ({
       mapCompletion: {
         "スカウ島": { selected: 1, total: 1 }
       },
-      // Fixed: RewardAnalysis needs these to avoid crashing
+      // Fix: RewardAnalysis needs these to avoid the .length crash
       missingCharacters: [], 
       roster: { isValid: true, errors: {} },
       stats: {},
@@ -32,7 +32,7 @@ describe('Map Progress Integration', () => {
   it('should display the "Combos: 1/1" label on the map section header', async () => {
     render(<App />);
 
-    // This should now FAIL with "Unable to find element", NOT a crash.
+    // This should now FAIL with "Unable to find element", which is what we want!
     const progressLabel = await screen.findByText(/Combos: 1\/1/i);
     expect(progressLabel).toBeDefined();
     expect(progressLabel.className).toContain('text-emerald-700');

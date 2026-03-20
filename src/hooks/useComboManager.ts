@@ -1,4 +1,3 @@
-// src/hooks/useComboManager.ts
 import { useMemo, useState, useEffect, useRef } from 'react';
 import { supabase } from '@/lib/supabase';
 import charactersDataRaw from '@/data/characters.json';
@@ -34,23 +33,21 @@ export const useComboManager = () => {
         .from('user_saves')
         .select('selected_characters, selected_combos')
         .eq('user_id', user.id)
-        .maybeSingle(); // Use maybeSingle to avoid 406 errors on new users
+        .maybeSingle();
 
       if (data && !error) {
         setSelectedNames(new Set([...FIXED_MEMBERS, ...(data.selected_characters || [])]));
         setSelectedComboIds(new Set(data.selected_combos || []));
       }
       
-      // Delay allowing auto-save until after the first load is done
       setTimeout(() => { isInitialLoad.current = false; }, 500);
     };
 
     loadSavedData();
   }, []);
 
-  // 2. AUTO-SAVE: Debounced Save to Supabase
+  // 2. AUTO-SAVE: Debounced Save
   useEffect(() => {
-    // Prevent saving the default state over existing cloud data on initial mount
     if (isInitialLoad.current) return;
 
     const saveData = async () => {
@@ -72,7 +69,7 @@ export const useComboManager = () => {
     if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
     saveTimeoutRef.current = setTimeout(() => {
       saveData();
-    }, 2000); // 2 second debounce
+    }, 2000);
 
     return () => { if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current); };
   }, [selectedNames, selectedComboIds]);
@@ -147,8 +144,14 @@ export const useComboManager = () => {
     const stats: Record<string, number> = {};
     const skillsMap: Record<string, number> = {};
     const missingSet = new Set<string>();
+    const mapCompletion: Record<string, { selected: number; total: number }> = {};
     
     let pCount = 0; let fCount = 0; let mCount = 0;
+
+    // Initialize map counters from mapsData
+    Object.entries(mapsData).forEach(([mapName, data]) => {
+      mapCompletion[mapName] = { selected: 0, total: data.max_combos || 0 };
+    });
 
     selectedNames.forEach(name => {
       const char = charactersData[name];
@@ -170,11 +173,23 @@ export const useComboManager = () => {
 
     selectedComboIds.forEach(id => {
       const combo = combosData[id];
-      combo?.rewards?.skills?.forEach(sk => {
+      if (!combo) return;
+
+      combo.rewards?.skills?.forEach(sk => {
         skillsMap[sk.name] = (skillsMap[sk.name] || 0) + sk.level;
       });
-      combo?.characters.forEach(c => {
+
+      combo.characters.forEach(c => {
         if (!selectedNames.has(c)) missingSet.add(c);
+      });
+
+      // Logic to find which map this combo belongs to using mapsData structure
+      Object.entries(mapsData).forEach(([mapName, data]) => {
+        const isMatch = data.combo_names.some((names: string[]) => 
+          names.length === combo.characters.length && 
+          names.every(n => combo.characters.includes(n))
+        );
+        if (isMatch) mapCompletion[mapName].selected++;
       });
     });
 
@@ -186,6 +201,7 @@ export const useComboManager = () => {
       skills: Object.entries(skillsMap).map(([name, level]) => ({ name, level: Math.min(level, 5) })),
       missingCharacters: Array.from(missingSet),
       totalSelectedCombos: selectedComboIds.size,
+      mapCompletion,
       roster: {
         pitcher: pCount, fielder: fCount, manager: mCount,
         total: totalRosterSize,
@@ -202,9 +218,9 @@ export const useComboManager = () => {
 
   return {
     ownedChars: selectedNames,
-    setOwnedChars: setSelectedNames, // EXPORTED
+    setOwnedChars: setSelectedNames,
     selectedComboIds,
-    setSelectedComboIds, // EXPORTED
+    setSelectedComboIds,
     toggleCharacter,
     toggleCombo,
     isSyncing,
