@@ -1,4 +1,5 @@
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect, useRef } from 'react';
+import { supabase } from '@/lib/supabase'; // Assuming you created this file
 import charactersDataRaw from '@/data/characters.json';
 import combosDataRaw from '@/data/combos.json';
 import mapsDataRaw from '@/data/maps.json';
@@ -10,12 +11,60 @@ const combosData = combosDataRaw as Record<string, Combo>;
 const mapsData = mapsDataRaw as Record<string, any>;
 const charactersMapping = charactersMappingRaw as any;
 
-// The Starting 2: Do not count toward positional scouting requirements
-const FIXED_MEMBERS = ["パワプロ", "矢部 明雄"]; 
+const FIXED_MEMBERS = ["パワプロ", "矢部明雄"]; 
 
 export const useComboManager = () => {
   const [selectedNames, setSelectedNames] = useState<Set<string>>(new Set(FIXED_MEMBERS));
   const [selectedComboIds, setSelectedComboIds] = useState<Set<string>>(new Set());
+  const [isSyncing, setIsSyncing] = useState(false);
+  const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // 1. HYDRATION: Load from Supabase on Mount
+  useEffect(() => {
+    const loadSavedData = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      const { data, error } = await supabase
+        .from('user_saves')
+        .select('selected_names, selected_combos')
+        .eq('user_id', user.id)
+        .single();
+
+      if (data && !error) {
+        // We still add FIXED_MEMBERS just in case the save got corrupted
+        setSelectedNames(new Set([...FIXED_MEMBERS, ...data.selected_names]));
+        setSelectedComboIds(new Set(data.selected_combos));
+      }
+    };
+
+    loadSavedData();
+  }, []);
+
+  // 2. AUTO-SAVE: Debounced Save to Supabase
+  useEffect(() => {
+    const saveData = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      setIsSyncing(true);
+      await supabase.from('user_saves').upsert({
+        user_id: user.id,
+        selected_names: Array.from(selectedNames),
+        selected_combos: Array.from(selectedComboIds),
+        updated_at: new Date().toISOString(),
+      });
+      setIsSyncing(false);
+    };
+
+    // Debounce: Wait 1.5 seconds after last change before saving
+    if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+    saveTimeoutRef.current = setTimeout(() => {
+      saveData();
+    }, 1500);
+
+    return () => { if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current); };
+  }, [selectedNames, selectedComboIds]);
 
   const characterMapping = useMemo(() => ({
     idToName: charactersMapping,
@@ -40,7 +89,6 @@ export const useComboManager = () => {
 
   const toggleCharacter = (name: string) => {
     if (FIXED_MEMBERS.includes(name)) return;
-
     setSelectedNames((prev) => {
       const next = new Set(prev);
       if (next.has(name)) next.delete(name);
@@ -102,12 +150,11 @@ export const useComboManager = () => {
         });
       }
 
-      // POSITIONAL LOGIC: Managers don't count toward the 23-scout/25-total limit
       if (!FIXED_MEMBERS.includes(name)) {
         const pos = char.position?.trim();
         if (pos === "マ") mCount++;
         else if (pos === "投") pCount++;
-        else pCount += 0, fCount++; // Logic check: only Pitchers or Fielders affect scoutCount
+        else fCount++; 
       }
     });
 
@@ -122,19 +169,14 @@ export const useComboManager = () => {
     });
 
     const scoutCount = pCount + fCount;
-    const totalRosterSize = scoutCount + FIXED_MEMBERS.length; // 2 (Fixed) + 23 (Scouts) = 25
-    
-    // VALIDATION RULES
+    const totalRosterSize = scoutCount + FIXED_MEMBERS.length;
     const isScoutLimitValid = scoutCount <= 23;
     const isPValid = pCount >= 6 && pCount <= 8;
     const isMValid = mCount <= 3;
 
     return {
       stats,
-      skills: Object.entries(skillsMap).map(([name, level]) => ({ 
-        name, 
-        level: Math.min(level, 5) 
-      })),
+      skills: Object.entries(skillsMap).map(([name, level]) => ({ name, level: Math.min(level, 5) })),
       missingCharacters: Array.from(missingSet),
       totalSelectedCombos: selectedComboIds.size,
       roster: {
@@ -147,7 +189,6 @@ export const useComboManager = () => {
           total: !isScoutLimitValid,
           pitcher: !isPValid,
           manager: !isMValid,
-          // Fielder error triggers if total scouts > 23 even if pitchers are okay
           fielder: scoutCount > 23 && isPValid 
         }
       }
@@ -159,6 +200,7 @@ export const useComboManager = () => {
     toggleCharacter,
     selectedComboIds,
     toggleCombo,
+    isSyncing, // Export this so you can show a "Saving..." spinner in UI
     toggleAllByType: (type: 'pitcher' | 'fielder') => {
       setSelectedNames(prev => {
         const next = new Set(prev);
