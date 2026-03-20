@@ -1,3 +1,4 @@
+// src/components/MapSection.tsx
 import React from 'react';
 import { MapPin, ChevronDown } from 'lucide-react';
 import { ComboCard } from '@/components/ComboCard';
@@ -10,7 +11,7 @@ const combosData = combosDataRaw as Record<string, any>;
 
 interface MapSectionProps {
   mapName: string;
-  combos: string[][]; 
+  combos: string[]; // CHANGED: Now expecting an array of IDs from the parent
   selectedComboIds: Set<string>;
   toggleCombo: (id: string) => void;
   ownedChars: Set<string>;
@@ -20,7 +21,7 @@ interface MapSectionProps {
   isExpanded: boolean;
   onToggle: () => void;
   progress?: { selected: number; total: number };
-} // Fixed: Added missing closing brace
+}
 
 export const MapSection: React.FC<MapSectionProps> = ({
   mapName, 
@@ -32,7 +33,6 @@ export const MapSection: React.FC<MapSectionProps> = ({
   progress,
   ...gridProps
 }) => {
-  // Logic to determine if map is 100% completed
   const isComplete = progress && progress.selected === progress.total && progress.total > 0;
 
   return (
@@ -51,15 +51,14 @@ export const MapSection: React.FC<MapSectionProps> = ({
             <MapPin size={28} />
           </div>
           <div>
-            <h2 className="font-black text-3xl italic uppercase tracking-tight">
+            <h2 className="font-black text-3xl italic uppercase tracking-tight text-slate-900">
               {mapName}
             </h2>
             <div className="flex items-center gap-3">
               <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                {combos?.length || 0} Potential Combos
+                {combos?.length || 0} Matches Found
               </p>
 
-              {/* Progress Label */}
               {progress && (
                 <span className={cn(
                   "text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded transition-all shadow-sm",
@@ -88,15 +87,16 @@ export const MapSection: React.FC<MapSectionProps> = ({
       {/* Expandable Content Container */}
       {isExpanded && (
         <div className="grid gap-6 animate-in fade-in slide-in-from-top-4 duration-300">
-          {combos?.map((names) => {
-            const comboId = names.join('&');
+          {combos?.map((comboId) => {
             const fullComboData = combosData[comboId];
+            if (!fullComboData) return null;
 
             return (
               <ComboCard 
                 key={comboId}
-                names={names}
-                rewards={fullComboData?.rewards} 
+                // We pull the names and rewards directly from the JSON using the ID
+                names={fullComboData.characters}
+                rewards={fullComboData.rewards} 
                 isSelected={selectedComboIds.has(comboId)}
                 onToggleCombo={() => toggleCombo(comboId)}
                 {...gridProps}
@@ -106,7 +106,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
           
           {(!combos || combos.length === 0) && (
             <div className="p-12 border-4 border-dashed border-slate-200 rounded-[3rem] text-center">
-              <p className="font-black text-slate-300 uppercase italic">No Combos Available</p>
+              <p className="font-black text-slate-300 uppercase italic">No Matches in this area</p>
             </div>
           )}
         </div>

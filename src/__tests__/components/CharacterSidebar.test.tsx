@@ -2,6 +2,7 @@
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { CharacterSidebar } from '@/components/CharacterSidebar';
+import userEvent from '@testing-library/user-event';
 
 // 1. Hoist the fixture data
 const { mockData } = await vi.hoisted(async () => {
@@ -68,5 +69,23 @@ describe('CharacterSidebar - Dynamic Map Filtering', () => {
     
     const anyMapButton = screen.getByText('ANY MAP');
     expect(anyMapButton.closest('button')).not.toHaveClass('bg-slate-800');
+  });
+
+  it('maintains map and position filters while searching for a skill', async () => {
+    const user = userEvent.setup();
+    
+    // Setup: Filter by "スカウ島" first
+    render(<CharacterSidebar {...mockProps} mapFilter="スカウ島" searchTerm="" />);
+    
+    const searchInput = screen.getByPlaceholderText(/SEARCH CHARACTER OR SKILL/i);
+    
+    // Action: Search for a skill that only one character in "スカウ島" has
+    await user.type(searchInput, 'パワーヒッター');
+
+    // Assertion:
+    // 1. Character in "スカウ島" with skill shows up
+    expect(screen.getByText('パワプロ')).toBeInTheDocument();
+    // 2. Character in "パワフル島" (even if they have the skill) is hidden by the map filter
+    expect(screen.queryByText('Character B')).not.toBeInTheDocument();
   });
 });

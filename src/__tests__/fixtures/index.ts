@@ -60,7 +60,12 @@ export const mockComboManagerResponse = {
 };
 
 export const createMockComboManager = (overrides = {}) => {
+  const defaultId = "パワプロ&矢部明雄";
+
   return {
+    searchTerm: '',
+    setSearchTerm: vi.fn(),
+    filteredComboIds: [defaultId], // Or a list of all combo IDs if you want them visible by default
     mapsData: mockData.maps,
     characterMapping: mockData.mapping,
     libraryGroups: { withCombo: [], noCombo: [] },

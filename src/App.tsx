@@ -45,11 +45,11 @@ const App: React.FC = () => {
   const { 
     ownedChars, toggleCharacter, selectedComboIds, toggleCombo, toggleAllByType,
     clearAll, analysis, libraryGroups, mapsData, characterMapping,
-    setOwnedChars, setSelectedComboIds 
+    setOwnedChars, setSelectedComboIds,
+    searchTerm, setSearchTerm, filteredComboIds // Now consuming from hook
   } = useComboManager();
 
   // --- UI STATE ---
-  const [searchTerm, setSearchTerm] = useState('');
   const [posFilter, setPosFilter] = useState<string | null>(null);
   const [mapFilter, setMapFilter] = useState<string | null>(null);
   const [showPositionIcon, setShowPositionIcon] = useState(true);
@@ -144,18 +144,35 @@ const App: React.FC = () => {
     return `${BASE_ASSET_PATH}${img}`;
   };
 
+  // Filter library list based on UI filters (Pos/Map)
   const filteredLibrary = useMemo(() => {
     const filterFn = (name: string) => {
       const charData = (characters as any)[name];
-      return name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-             (!posFilter || charData?.position === posFilter) &&
+      return (!posFilter || charData?.position === posFilter) &&
              (!mapFilter || charData?.encounter_map === mapFilter);
     };
     return {
       withCombo: libraryGroups.withCombo.filter(filterFn),
       noCombo: libraryGroups.noCombo.filter(filterFn)
     };
-  }, [libraryGroups, searchTerm, posFilter, mapFilter]);
+  }, [libraryGroups, posFilter, mapFilter]);
+
+  // Filter visible maps based on the combos that survived the hook's search filter
+  const visibleMaps = useMemo(() => {
+    return Object.entries(mapsData).filter(([mapName, data]) => {
+      // 1. Check sidebar map filter first
+      if (mapFilter && mapName !== mapFilter) return false;
+
+      if (!filteredComboIds) return true;
+      
+      // 2. Check if any combo in this map exists in the filtered list
+      return data.combo_names.some((comboNames: string[]) => {
+        // Normalize the array ["CharA", "CharB"] into "CharA&CharB"
+        const id = comboNames.join('&');
+        return filteredComboIds.includes(id);
+      });
+    });
+  }, [mapsData, filteredComboIds, mapFilter]);
 
   return (
     <div className="flex h-screen bg-slate-100 text-[1.15em] text-slate-900 overflow-hidden font-medium">
@@ -207,26 +224,45 @@ const App: React.FC = () => {
             allExpanded={Object.keys(mapsData).length > 0 && Object.keys(mapsData).every(n => expandedMaps.has(n))} 
           />
           <div className="space-y-16">
-            {Object.entries(mapsData).map(([mapName, data]) => (
-              <MapSection 
-                key={mapName} 
-                mapName={mapName} 
-                combos={data.combo_names} 
-                selectedComboIds={selectedComboIds} 
-                toggleCombo={toggleCombo} 
-                ownedChars={ownedChars} 
-                toggleCharacter={toggleCharacter} 
-                getImagePath={getImagePath} 
-                showPositionIcon={showPositionIcon} 
-                progress={analysis?.mapCompletion?.[mapName]} 
-                isExpanded={expandedMaps.has(mapName) || mapFilter === mapName} 
-                onToggle={() => setExpandedMaps(prev => { 
-                  const n = new Set(prev); 
-                  n.has(mapName) ? n.delete(mapName) : n.add(mapName); 
-                  return n; 
-                })} 
-              />
-            ))}
+            {visibleMaps.map(([mapName, data]) => {
+              // Pass only the combos that match the current search
+              const mapCombos = data.combo_names
+                .map((names: string[]) => names.join('&')) // Convert to IDs
+                .filter((id: string) => filteredComboIds?.includes(id)); // Check against search
+              return (
+                <MapSection 
+                  key={mapName} 
+                  mapName={mapName} 
+                  combos={mapCombos}
+                  searchTerm={searchTerm} // Helpful to pass this for auto-expansion
+                  selectedComboIds={selectedComboIds} 
+                  toggleCombo={toggleCombo} 
+                  ownedChars={ownedChars} 
+                  toggleCharacter={toggleCharacter} 
+                  getImagePath={getImagePath} 
+                  showPositionIcon={showPositionIcon} 
+                  progress={analysis?.mapCompletion?.[mapName]} 
+                  // Map expands if searched, filtered via sidebar, or manually toggled
+                  isExpanded={
+                    expandedMaps.has(mapName) || 
+                    mapFilter === mapName || 
+                    (searchTerm?.trim()?.length ?? 0) > 0
+                  }
+                  onToggle={() => setExpandedMaps(prev => { 
+                    const n = new Set(prev); 
+                    n.has(mapName) ? n.delete(mapName) : n.add(mapName); 
+                    return n; 
+                  })} 
+                />
+              );
+            })}
+            
+            {visibleMaps.length === 0 && (
+              <div className="flex flex-col items-center justify-center py-20 text-slate-400 space-y-4">
+                <p className="font-black italic text-xl uppercase tracking-tighter">No matching combos found</p>
+                <button onClick={() => setSearchTerm('')} className="text-blue-600 font-bold text-xs uppercase tracking-widest hover:underline">Clear Search</button>
+              </div>
+            )}
           </div>
         </div>
       </main>

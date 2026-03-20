@@ -1,18 +1,26 @@
-// src/components/CharacterSidebar.tsx
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Search } from 'lucide-react';
 import { cn } from '../utils/style';
 import { POSITIONS } from '@/constants';
-import charactersDataRaw from '@/data/characters.json'; // Importing data to look up maps
+import charactersDataRaw from '@/data/characters.json';
+
+// 1. Static calculation outside the component to prevent re-runs on every render
+const AVAILABLE_MAPS = Array.from(
+  new Set(
+    Object.values(charactersDataRaw)
+      .map((char: any) => char.encounter_map)
+      .filter((map): map is string => Boolean(map))
+  )
+).sort();
 
 interface CharacterSidebarProps {
   searchTerm: string;
   setSearchTerm: (val: string) => void;
   posFilter: string | null;
   setPosFilter: (val: string | null) => void;
-  // State for the map filter itself
   mapFilter: string | null;
   setMapFilter: (val: string | null) => void;
+  // 'groups' should come already filtered from useComboManager
   groups: {
     withCombo: string[];
     noCombo: string[];
@@ -34,84 +42,71 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
   onToggle,
   getImagePath,
 }) => {
-  // 1. Extract unique maps from the entire character library dynamically
-  const availableMaps = useMemo(() => {
-    const maps = Object.values(charactersDataRaw)
-      .map((char: any) => char.encounter_map)
-      .filter((map): map is string => Boolean(map));
-    
-    return Array.from(new Set(maps)).sort();
-  }, []);
 
-  const renderList = (names: string[], title: string) => (
-    <div className="space-y-4">
-      <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2">
-        {title}
-      </h3>
-      <div className="grid gap-2">
-        {names.map((name) => {
-          const isOwned = ownedChars.has(name);
+  const renderList = (names: string[], title: string) => {
+    if (names.length === 0) return null;
 
-          return (
-            <button
-              key={name}
-              data-testid={`character-selector-character-name-${name}`}
-              onClick={() => onToggle(name)}
-              className={cn(
-                "flex items-center gap-4 p-3 rounded-2xl transition-all duration-200 group text-left w-full cursor-pointer",
-                isOwned
-                  ? [
-                      "bg-emerald-100/70 shadow-sm border border-emerald-200/50",
-                      "hover:bg-emerald-200 hover:border-emerald-400 hover:shadow-md",
-                    ]
-                  : [
-                      "bg-transparent border border-transparent",
-                      "hover:bg-slate-100 hover:border-slate-300 hover:shadow-sm",
-                    ]
-              )}
-            >
-              <div
-                data-testid={`sidebar-icon-wrapper-${name}`}
+    return (
+      <div className="space-y-4">
+        <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2">
+          {title}
+        </h3>
+        <div className="grid gap-2">
+          {names.map((name) => {
+            const isOwned = ownedChars.has(name);
+
+            return (
+              <button
+                key={name}
+                data-testid={`character-selector-character-name-${name}`}
+                onClick={() => onToggle(name)}
                 className={cn(
-                  "w-12 h-12 flex-shrink-0 relative rounded-xl overflow-hidden transition-all duration-200 border-2",
+                  "flex items-center gap-4 p-3 rounded-2xl transition-all duration-200 group text-left w-full cursor-pointer",
                   isOwned
-                    ? "border-emerald-600 bg-white group-hover:border-emerald-500"
-                    : [
-                        "border-transparent bg-slate-200 opacity-30",
-                        "group-hover:opacity-100 group-hover:border-blue-500 group-hover:scale-105",
-                      ]
+                    ? "bg-emerald-100/70 shadow-sm border border-emerald-200/50 hover:bg-emerald-200 hover:border-emerald-400"
+                    : "bg-transparent border border-transparent hover:bg-slate-100 hover:border-slate-300"
                 )}
               >
-                <img
-                  src={getImagePath(name, true)}
-                  alt={name}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </div>
+                <div
+                  className={cn(
+                    "w-12 h-12 flex-shrink-0 relative rounded-xl overflow-hidden transition-all duration-200 border-2",
+                    isOwned
+                      ? "border-emerald-600 bg-white group-hover:border-emerald-500"
+                      : "border-transparent bg-slate-200 opacity-30 group-hover:opacity-100 group-hover:border-blue-500 group-hover:scale-105"
+                  )}
+                >
+                  <img
+                    src={getImagePath(name, true)}
+                    alt={name}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
 
-              <p
-                className={cn(
-                  "text-lg font-black transition-colors duration-200",
-                  isOwned
-                    ? "text-emerald-950 group-hover:text-emerald-800"
-                    : "text-slate-600 group-hover:text-blue-600"
-                )}
-              >
-                {name}
-              </p>
-            </button>
-          );
-        })}
+                <p
+                  className={cn(
+                    "text-lg font-black transition-colors duration-200",
+                    isOwned
+                      ? "text-emerald-950 group-hover:text-emerald-800"
+                      : "text-slate-600 group-hover:text-blue-600"
+                  )}
+                >
+                  {name}
+                </p>
+              </button>
+            );
+          })}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <aside
       data-testid="character-sidebar"
       className="w-96 bg-slate-50 border-r border-slate-200 flex flex-col h-full"
     >
-      <div className="p-8 space-y-6">
+      <div className="p-8 space-y-6 shrink-0">
         {/* Search */}
         <div className="relative">
           <Search
@@ -120,10 +115,10 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
           />
           <input
             type="text"
-            placeholder="SEARCH CHARACTER..."
+            placeholder="SEARCH CHARACTER OR SKILL..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-12 pr-4 py-4 bg-white border-2 border-slate-100 rounded-2xl focus:border-blue-500 outline-none font-black text-sm transition-all"
+            className="w-full pl-12 pr-4 py-4 bg-white border-2 border-slate-100 rounded-2xl focus:border-blue-500 outline-none font-black text-sm transition-all shadow-sm"
           />
         </div>
 
@@ -135,7 +130,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
               className={cn(
                 "px-4 py-2 rounded-xl text-[10px] font-black transition-all border-2",
                 !posFilter
-                  ? "bg-blue-600 border-blue-600 text-white shadow-sm"
+                  ? "bg-blue-600 border-blue-600 text-white shadow-md"
                   : "bg-white border-slate-100 text-slate-400 hover:border-slate-200"
               )}
             >
@@ -149,7 +144,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
                 className={cn(
                   "w-10 h-10 rounded-xl text-[10px] font-black transition-all border-2 flex items-center justify-center",
                   posFilter === pos
-                    ? "bg-blue-600 border-blue-600 text-white shadow-sm"
+                    ? "bg-blue-600 border-blue-600 text-white shadow-md"
                     : "bg-white border-slate-100 text-slate-400 hover:border-slate-200"
                 )}
               >
@@ -158,27 +153,27 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             ))}
           </div>
 
-          {/* Dynamic Map Filters - Derived internally from charactersDataRaw */}
+          {/* Map Filters */}
           <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-200/60">
             <button
               onClick={() => setMapFilter(null)}
               className={cn(
                 "px-3 py-2 rounded-xl text-[10px] font-black transition-all border-2",
                 !mapFilter
-                  ? "bg-slate-800 border-slate-800 text-white shadow-sm"
+                  ? "bg-slate-800 border-slate-800 text-white shadow-md"
                   : "bg-white border-slate-100 text-slate-400 hover:border-slate-200"
               )}
             >
               ANY MAP
             </button>
-            {availableMaps.map((mapName) => (
+            {AVAILABLE_MAPS.map((mapName) => (
               <button
                 key={mapName}
                 onClick={() => setMapFilter(mapName === mapFilter ? null : mapName)}
                 className={cn(
                   "px-3 py-2 rounded-xl text-[10px] font-black transition-all border-2",
                   mapFilter === mapName
-                    ? "bg-blue-600 border-blue-600 text-white shadow-sm"
+                    ? "bg-blue-600 border-blue-600 text-white shadow-md"
                     : "bg-white border-slate-100 text-slate-400 hover:border-slate-200"
                 )}
               >
@@ -189,6 +184,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
         </div>
       </div>
 
+      {/* Main List Area */}
       <div className="flex-1 overflow-y-auto px-6 pb-8 space-y-10 custom-scrollbar">
         {renderList(groups.withCombo, "Combo Characters")}
         {renderList(groups.noCombo, "Other Characters")}

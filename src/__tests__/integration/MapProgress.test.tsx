@@ -1,37 +1,46 @@
+// src/__tests__/integration/MapProgress.test.tsx
+
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import App from '../../App';
+import { useComboManager } from '../../hooks/useComboManager';
+import { createMockComboManager } from '../fixtures';
 
-// 1. Hoist the factory from your fixtures
-const { createMockComboManager } = await vi.hoisted(async () => {
-  return await import('../fixtures');
-});
-
-// 2. Surgical Mock: Only override what is relevant to "Progress"
+// 1. Mock the hook
 vi.mock('../../hooks/useComboManager', () => ({
-  useComboManager: () => createMockComboManager({
-    mapsData: {
-      "スカウ島": { combo_names: [["CharA", "CharB"]] }
-    },
-    analysis: {
-      ...createMockComboManager().analysis, // Spread defaults to prevent crashes
-      mapCompletion: {
-        "スカウ島": { selected: 1, total: 1 }
-      }
-    }
-  })
+  useComboManager: vi.fn(),
 }));
 
 describe('Map Progress Integration', () => {
   it('should display the "Combos: 1/1" label on the map section header', async () => {
+    // 2. Setup the mock data surgically using the fixture
+    const mockValue = createMockComboManager({
+      // The Map definition
+      mapsData: {
+        "スカウ島": { 
+          combo_names: [["CharA", "CharB"]],
+          max_combos: 1 
+        }
+      },
+      // The Progress state
+      analysis: {
+        ...createMockComboManager().analysis,
+        mapCompletion: {
+          "スカウ島": { selected: 1, total: 1 }
+        }
+      },
+      // IMPORTANT: The map won't render if it thinks there are no combos to show
+      filteredComboIds: ["CharA&CharB"] 
+    });
+
+    vi.mocked(useComboManager).mockReturnValue(mockValue);
+
     render(<App />);
 
-    // findByText is safer for async content triggered by mocks
-    const progressLabel = await screen.findByText(/Combos: 1\/1/i);
+    // 3. Use a regex to find the text even if it's split into multiple spans
+    const progressLabel = await screen.findByText(/1\/1/i);
     
     expect(progressLabel).toBeInTheDocument();
-    
-    // Check for the "Complete" emerald styling
-    expect(progressLabel).toHaveClass('text-emerald-700');
+    expect(progressLabel.closest('span')).toHaveClass('text-emerald-700');
   });
 });

@@ -18,12 +18,12 @@ const LOCAL_STORAGE_KEY = 'pawapuro_planner_local_v1';
 export const useComboManager = () => {
   const [selectedNames, setSelectedNames] = useState<Set<string>>(new Set(FIXED_MEMBERS));
   const [selectedComboIds, setSelectedComboIds] = useState<Set<string>>(new Set());
+  const [searchTerm, setSearchTerm] = useState('');
   const [isSyncing, setIsSyncing] = useState(false);
   const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isInitialLoad = useRef(true);
 
-  // --- PERSISTENCE HELPERS ---
-  
+  // --- PERSISTENCE ---
   const saveLocally = () => {
     const data = {
       selected_characters: Array.from(selectedNames).filter(n => !FIXED_MEMBERS.includes(n)),
@@ -49,18 +49,14 @@ export const useComboManager = () => {
     return false;
   };
 
-  // 1. HYDRATION: Priority -> Supabase, Fallback -> LocalStorage
   useEffect(() => {
     const loadSavedData = async () => {
       const { data: { user } } = await supabase.auth.getUser();
-      
       if (!user) {
-        // No user? Try loading from browser storage
         loadFromLocalStorage();
         isInitialLoad.current = false;
         return;
       }
-
       const { data, error } = await supabase
         .from('user_saves')
         .select('selected_characters, selected_combos')
@@ -71,76 +67,42 @@ export const useComboManager = () => {
         setSelectedNames(new Set([...FIXED_MEMBERS, ...(data.selected_characters || [])]));
         setSelectedComboIds(new Set(data.selected_combos || []));
       } else {
-        // If logged in but no cloud data, check local as a secondary fallback
         loadFromLocalStorage();
       }
-      
+      // Small buffer to prevent auto-save from firing during hydration
       setTimeout(() => { isInitialLoad.current = false; }, 500);
     };
-
     loadSavedData();
   }, []);
 
-  // 2. AUTO-SAVE: Debounced Cloud Save
   useEffect(() => {
     if (isInitialLoad.current) return;
-
     const saveData = async () => {
       const { data: { user } } = await supabase.auth.getUser();
-      
-      // Always save locally as a background backup, even if logged in
       saveLocally();
-
       if (!user) return;
-
+      
       setIsSyncing(true);
-      const { error } = await supabase.from('user_saves').upsert({
+      await supabase.from('user_saves').upsert({
         user_id: user.id,
         selected_characters: Array.from(selectedNames).filter(n => !FIXED_MEMBERS.includes(n)),
         selected_combos: Array.from(selectedComboIds),
         updated_at: new Date().toISOString(),
       });
-
-      if (error) console.error("Auto-save failed:", error.message);
       setIsSyncing(false);
     };
 
     if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
-    saveTimeoutRef.current = setTimeout(() => {
-      saveData();
-    }, 2000);
-
+    saveTimeoutRef.current = setTimeout(saveData, 2000);
     return () => { if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current); };
   }, [selectedNames, selectedComboIds]);
 
-  // 3. LOGIC & MAPPING
-  const characterMapping = useMemo(() => ({
-    idToName: charactersMapping,
-    data: charactersData
-  }), []);
-
-  // Auto-activate combos logic
-  useEffect(() => {
-    setSelectedComboIds((prev) => {
-      const next = new Set(prev);
-      let changed = false;
-      Object.entries(combosData).forEach(([id, combo]) => {
-        const hasAll = combo.characters.every(name => selectedNames.has(name));
-        if (hasAll && !next.has(id)) {
-          next.add(id);
-          changed = true;
-        }
-      });
-      return changed ? next : prev;
-    });
-  }, [selectedNames]);
-
+  // --- CORE LOGIC ---
   const toggleCharacter = (name: string) => {
     if (FIXED_MEMBERS.includes(name)) return;
     setSelectedNames((prev) => {
       const next = new Set(prev);
-      if (next.has(name)) next.delete(name);
-      else next.add(name);
+      next.has(name) ? next.delete(name) : next.add(name);
       return next;
     });
   };
@@ -155,22 +117,16 @@ export const useComboManager = () => {
 
       if (isActivating) {
         nextCombos.add(comboId);
-        setSelectedNames((prevNames) => {
-          const nextNames = new Set(prevNames);
-          targetCombo.characters.forEach(c => nextNames.add(c));
-          return nextNames;
-        });
+        setSelectedNames(prev => new Set([...prev, ...targetCombo.characters]));
       } else {
         nextCombos.delete(comboId);
         setSelectedNames((prevNames) => {
           const nextNames = new Set(prevNames);
           targetCombo.characters.forEach(charName => {
-            const isUsedByOtherActiveCombo = Array.from(nextCombos).some(id => 
+            const usedByOther = Array.from(nextCombos).some(id => 
               combosData[id]?.characters.includes(charName)
             );
-            if (!isUsedByOtherActiveCombo && !FIXED_MEMBERS.includes(charName)) {
-              nextNames.delete(charName);
-            }
+            if (!usedByOther && !FIXED_MEMBERS.includes(charName)) nextNames.delete(charName);
           });
           return nextNames;
         });
@@ -179,12 +135,61 @@ export const useComboManager = () => {
     });
   };
 
+  // --- SEARCH & FILTER LOGIC ---
+  // This drives which Combos show up on the map
+  const filteredComboIds = useMemo(() => {
+    const allComboEntries = Object.entries(combosData);
+    const lowerSearch = searchTerm.toLowerCase().trim();
+    
+    if (!lowerSearch) return allComboEntries.map(([id]) => id);
+
+    return allComboEntries
+      .filter(([id, combo]) => {
+        const nameMatch = id.toLowerCase().includes(lowerSearch);
+        const charMatch = combo.characters.some(c => c.toLowerCase().includes(lowerSearch));
+        const skillMatch = combo.rewards?.skills?.some(s => 
+          s.name.toLowerCase().includes(lowerSearch)
+        );
+        const itemMatch = combo.rewards?.items?.some(i => 
+            i.name.toLowerCase().includes(lowerSearch)
+        );
+        
+        return nameMatch || charMatch || !!skillMatch || !!itemMatch;
+      })
+      .map(([id]) => id);
+  }, [searchTerm]);
+
+  // This drives the Sidebar lists
+  const libraryGroups = useMemo(() => {
+    const withC: string[] = [], noC: string[] = [];
+    const participants = new Set(Object.values(combosData).flatMap(c => c.characters));
+    const lowerSearch = searchTerm.toLowerCase().trim();
+    const filteredSet = new Set(filteredComboIds);
+
+    Object.keys(charactersData).forEach(name => {
+      if (FIXED_MEMBERS.includes(name)) return; 
+      
+      if (lowerSearch) {
+        const nameMatch = name.toLowerCase().includes(lowerSearch);
+        // Does this character belong to ANY combo that matches the search?
+        const comboMatch = Array.from(filteredSet).some(id => 
+            combosData[id].characters.includes(name)
+        );
+        if (!nameMatch && !comboMatch) return;
+      }
+
+      participants.has(name) ? withC.push(name) : noC.push(name);
+    });
+
+    return { withCombo: withC, noCombo: noC };
+  }, [searchTerm, filteredComboIds]);
+
+  // --- ANALYTICS ---
   const analysis = useMemo(() => {
     const stats: Record<string, number> = {};
     const skillsMap: Record<string, number> = {};
     const missingSet = new Set<string>();
     const mapCompletion: Record<string, { selected: number; total: number }> = {};
-    
     let pCount = 0; let fCount = 0; let mCount = 0;
 
     Object.entries(mapsData).forEach(([mapName, data]) => {
@@ -196,9 +201,7 @@ export const useComboManager = () => {
       if (!char) return;
 
       if (char.rewards?.stats) {
-        Object.entries(char.rewards.stats).forEach(([s, v]) => {
-          stats[s] = (stats[s] || 0) + v;
-        });
+        Object.entries(char.rewards.stats).forEach(([s, v]) => { stats[s] = (stats[s] || 0) + v; });
       }
 
       if (!FIXED_MEMBERS.includes(name)) {
@@ -213,12 +216,12 @@ export const useComboManager = () => {
       const combo = combosData[id];
       if (!combo) return;
 
-      combo.rewards?.skills?.forEach(sk => {
-        skillsMap[sk.name] = (skillsMap[sk.name] || 0) + sk.level;
+      combo.rewards?.skills?.forEach(sk => { 
+        skillsMap[sk.name] = (skillsMap[sk.name] || 0) + sk.level; 
       });
 
-      combo.characters.forEach(c => {
-        if (!selectedNames.has(c)) missingSet.add(c);
+      combo.characters.forEach(c => { 
+        if (!selectedNames.has(c)) missingSet.add(c); 
       });
 
       Object.entries(mapsData).forEach(([mapName, data]) => {
@@ -231,23 +234,27 @@ export const useComboManager = () => {
     });
 
     const scoutCount = pCount + fCount;
-    const totalRosterSize = scoutCount + FIXED_MEMBERS.length;
 
     return {
       stats,
-      skills: Object.entries(skillsMap).map(([name, level]) => ({ name, level: Math.min(level, 5) })),
+      skills: Object.entries(skillsMap).map(([name, level]) => ({ 
+        name, 
+        level: Math.min(level, 5) 
+      })),
       missingCharacters: Array.from(missingSet),
       totalSelectedCombos: selectedComboIds.size,
       mapCompletion,
       roster: {
-        pitcher: pCount, fielder: fCount, manager: mCount,
-        total: totalRosterSize,
+        pitcher: pCount, 
+        fielder: fCount, 
+        manager: mCount,
+        total: scoutCount + FIXED_MEMBERS.length,
         isValid: scoutCount <= 23 && pCount >= 6 && pCount <= 8 && fCount >= 15 && fCount <= 17 && mCount <= 3 ,
-        errors: {
-          total: scoutCount > 23,
-          pitcher: pCount < 6 || pCount > 8,
-          fielder: fCount < 15 || fCount > 17,
-          manager: mCount > 3
+        errors: { 
+          total: scoutCount > 23, 
+          pitcher: pCount < 6 || pCount > 8, 
+          fielder: fCount < 15 || fCount > 17, 
+          manager: mCount > 3 
         }
       }
     };
@@ -258,12 +265,15 @@ export const useComboManager = () => {
     setOwnedChars: setSelectedNames,
     selectedComboIds,
     setSelectedComboIds,
+    searchTerm,
+    setSearchTerm,
+    filteredComboIds, 
     toggleCharacter,
     toggleCombo,
     isSyncing,
     analysis,
     mapsData,
-    characterMapping,
+    characterMapping: { idToName: charactersMapping, data: charactersData },
     saveLocally, 
     clearAll: () => { 
       setSelectedNames(new Set(FIXED_MEMBERS)); 
@@ -276,30 +286,23 @@ export const useComboManager = () => {
         const charsOfType = currentChars.filter(name => {
           const char = charactersData[name];
           if (!char) return false;
-          if (type === 'pitcher') return char.position?.trim() === '投';
-          if (type === 'manager') return char.position?.trim() === 'マ';
-          return char.position?.trim() !== '投' && char.position?.trim() !== 'マ';
+          const pos = char.position?.trim();
+          if (type === 'pitcher') return pos === '投';
+          if (type === 'manager') return pos === 'マ';
+          return pos !== '投' && pos !== 'マ';
         });
 
         const allSelected = charsOfType.every(name => next.has(name));
-        if (allSelected) {
-          charsOfType.forEach(name => {
-            if (!FIXED_MEMBERS.includes(name)) next.delete(name);
-          });
-        } else {
-          charsOfType.forEach(name => next.add(name));
-        }
+        charsOfType.forEach(name => {
+          if (allSelected) { 
+            if (!FIXED_MEMBERS.includes(name)) next.delete(name); 
+          } else {
+            next.add(name);
+          }
+        });
         return next;
       });
     },
-    libraryGroups: useMemo(() => {
-      const withC: string[] = [], noC: string[] = [];
-      const participants = new Set(Object.values(combosData).flatMap(c => c.characters));
-      Object.keys(charactersData).forEach(n => {
-        if (FIXED_MEMBERS.includes(n)) return; 
-        participants.has(n) ? withC.push(n) : noC.push(n);
-      });
-      return { withCombo: withC, noCombo: noC };
-    }, [])
+    libraryGroups
   };
 };

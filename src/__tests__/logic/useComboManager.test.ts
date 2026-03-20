@@ -2,30 +2,36 @@ import { renderHook, act } from '@testing-library/react';
 import { useComboManager } from '../../hooks/useComboManager';
 import { describe, it, expect, vi } from 'vitest';
 
-// 1. MATCH THE HOOK'S FIXED MEMBERS EXACTLY
-// Note: Ensure the spelling matches your actual characters.json (e.g., "矢部 明雄" vs "矢部明雄")
-const FIXED = ["パワプロ", "矢部 明雄"];
-
-vi.mock('@/data/characters.json', () => {
-  const mockChars: any = {};
+// 1. HOIST THE DATA
+// This ensures mock data is ready before the hook is initialized
+const { mockCombos, mockChars, mockMapping } = await vi.hoisted(async () => {
+  const combos = await import('../../data/combos.json');
+  const mapping = await import('../../data/character_mapping.json');
+  
+  const chars: any = {};
   // Generate 10 Pitchers (P1-P10)
-  for (let i = 1; i <= 10; i++) mockChars[`P${i}`] = { position: "投" };
+  for (let i = 1; i <= 10; i++) chars[`P${i}`] = { position: "投" };
   // Generate 20 Fielders (F1-F20)
-  for (let i = 1; i <= 20; i++) mockChars[`F${i}`] = { position: "外" };
+  for (let i = 1; i <= 20; i++) chars[`F${i}`] = { position: "外" };
   // Generate 5 Managers (M1-M5)
-  for (let i = 1; i <= 5; i++) mockChars[`M${i}`] = { position: "マ" };
+  for (let i = 1; i <= 5; i++) chars[`M${i}`] = { position: "マ" };
   
-  // Add Fixed Members
-  mockChars["パワプロ"] = { position: "内" };
-  mockChars["矢部 明雄"] = { position: "外" };
-  
-  return { default: mockChars };
+  // FIXED MEMBERS (Must match your character list)
+  chars["パワプロ"] = { position: "内" };
+  chars["矢部明雄"] = { position: "外" };
+
+  return { 
+    mockCombos: combos.default, 
+    mockChars: chars, 
+    mockMapping: mapping.default 
+  };
 });
 
-// Mock other data to prevent undefined errors
-vi.mock('@/data/combos.json', () => ({ default: {} }));
+// 2. MOCK MODULES
+vi.mock('@/data/characters.json', () => ({ default: mockChars }));
+vi.mock('@/data/combos.json', () => ({ default: mockCombos }));
+vi.mock('@/data/character_mapping.json', () => ({ default: mockMapping }));
 vi.mock('@/data/maps.json', () => ({ default: {} }));
-vi.mock('@/data/character_mapping.json', () => ({ default: {} }));
 
 describe('useComboManager Roster Validation', () => {
   
@@ -44,7 +50,8 @@ describe('useComboManager Roster Validation', () => {
     expect(roster.isValid).toBe(true);
     expect(roster.errors?.pitcher).toBe(false);
   });
-    it('should validate the maximum legal roster (Total 25 characters)', () => {
+
+  it('should validate the maximum legal roster (Total 25 characters)', () => {
     const { result } = renderHook(() => useComboManager());
 
     act(() => {
@@ -58,12 +65,11 @@ describe('useComboManager Roster Validation', () => {
     expect(roster.isValid).toBe(true);
   });
 
-
   it('should fail if Pitchers are below 6', () => {
     const { result } = renderHook(() => useComboManager());
 
     act(() => {
-      // 5 Pitchers + 16 Fielders = 21 Scouts (Total 23 is fine, but Pitcher count is 5)
+      // 5 Pitchers + 16 Fielders = 21 Scouts (Total 23, but Pitcher count is 5)
       for(let i = 1; i <= 5; i++) result.current.toggleCharacter(`P${i}`);
       for(let i = 1; i <= 16; i++) result.current.toggleCharacter(`F${i}`);
     });
@@ -98,18 +104,55 @@ describe('useComboManager Roster Validation', () => {
     });
 
     const { roster } = result.current.analysis;
-    // Managers don't count toward the 25-character cap
-    expect(roster.total).toBe(23); 
+    expect(roster.total).toBe(23); // Managers shouldn't bloat the 25-cap
     expect(roster.manager).toBe(3);
     expect(roster.errors?.manager).toBe(false);
     expect(roster.isValid).toBe(true);
 
-    act(() => {
-      // Add 4th manager -> Should trigger error
-      result.current.toggleCharacter("M4");
-    });
+    act(() => { result.current.toggleCharacter("M4"); });
 
     expect(result.current.analysis.roster.errors?.manager).toBe(true);
     expect(result.current.analysis.roster.isValid).toBe(false);
+  });
+});
+
+describe('useComboManager Logic - Search & Filtering', () => {
+  it('filters by character name', () => {
+    const { result } = renderHook(() => useComboManager());
+    const combos = mockCombos as Record<string, any>;
+
+    const allIds = Object.keys(combos);
+    const targetId = allIds[0];
+    const searchTerm = combos[targetId].characters[0];
+
+    act(() => { result.current.setSearchTerm(searchTerm); });
+    expect(result.current.filteredComboIds).toContain(targetId);
+  });
+
+  it('filters based on skill names deep in rewards', () => {
+    const { result } = renderHook(() => useComboManager());
+    const combos = mockCombos as Record<string, any>;
+    
+    const comboEntry = Object.entries(combos).find(
+      ([_, data]) => data.rewards?.skills && data.rewards.skills.length > 0
+    );
+
+    if (comboEntry) {
+      const [id, data] = comboEntry;
+      const skillName = data.rewards.skills[0].name;
+      act(() => { result.current.setSearchTerm(skillName); });
+      expect(result.current.filteredComboIds).toContain(id);
+    }
+  });
+
+  it('resets when search term is cleared', () => {
+    const { result } = renderHook(() => useComboManager());
+    const totalCount = Object.keys(mockCombos).length;
+
+    act(() => { result.current.setSearchTerm('NON_EXISTENT'); });
+    expect(result.current.filteredComboIds.length).toBe(0);
+
+    act(() => { result.current.setSearchTerm(''); });
+    expect(result.current.filteredComboIds.length).toBe(totalCount);
   });
 });
