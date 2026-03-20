@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 360" width="400" height="360" style="background-color:#ffffff;">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fce067; stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f8c92a; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f4b100; stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="outerGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feFlood flood-color="#0e2a53" flood-opacity="0.3" result="flood"/>
+      <feComposite in="flood" in2="SourceGraphic" operator="in" result="mask"/>
+      <feGaussianBlur in="mask" stdDeviation="3" result="blurredMask"/>
+      <feMerge>
+        <feMergeNode in="blurredMask"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g transform="translate(200, 110)" filter="url(#outerGlow)">
+    <path d="M0,0 M-110, -70 L110, -70 L110, 30 C110, 80 50, 110 0, 120 C-50, 110 -110, 80 -110, 30 Z" 
+          fill="#143464" stroke="#ffffff" stroke-width="4"/>
+    
+    <path d="M0,0 M-100, -60 L100, -60 L100, 30 C100, 75 45, 100 0, 110 C-45, 100 -100, 75 -100, 30 Z" 
+          fill="#ffffff"/>
+
+    <g transform="translate(0, 5)">
+      <g stroke="#2db18e" stroke-width="6" stroke-linecap="round" fill="none">
+        <line x1="0" y1="80" x2="-65" y2="40" />
+        <line x1="0" y1="80" x2="65" y2="40" />
+        <line x1="-65" y1="40" x2="0" y2="10" />
+        <line x1="65" y1="40" x2="0" y2="10" />
+        <line x1="-30" y1="-25" x2="-65" y2="40" />
+        <line x1="30" y1="-25" x2="65" y2="40" />
+      </g>
+      
+      <g fill="#2db18e">
+        <circle cx="0" cy="80" r="14" />
+        <circle cx="-65" cy="40" r="14" />
+        <circle cx="65" cy="40" r="14" />
+        <circle cx="-30" cy="-25" r="14" />
+        <circle cx="30" cy="-25" r="14" />
+        <circle cx="0" cy="10" r="14" />
+      </g>
+    </g>
+
+    <g transform="translate(0, -30)">
+      <polygon points="0,-48 14,-15 47,-15 20,7 30,40 0,20 -30,40 -20,7 -47,-15 -14,-15" 
+               fill="#143464" />
+      <polygon points="0,-40 11,-12 39,-12 17,6 25,33 0,16 -25,33 -17,6 -39,-12 -11,-12" 
+               fill="url(#goldGradient)" />
+    </g>
+  </g>
+
+  <g transform="translate(200, 275)">
+    <g filter="url(#outerGlow)">
+      <path d="M-190,-40 C-190,-60 190,-60 190,-40 L190,40 C190,60 -190,60 -190,40 Z" fill="#143464" />
+      
+      <text x="0" y="20" font-family="Arial Black, Helvetica, sans-serif" font-weight="bold" font-size="62" 
+            text-anchor="middle" fill="url(#goldGradient)" stroke="#ffffff" stroke-width="2" letter-spacing="-1">
+        PAWAPURO
+      </text>
+      
+      <text x="0" y="52" font-family="Arial Black, Helvetica, sans-serif" font-weight="bold" font-size="22" 
+            text-anchor="middle" fill="url(#ffffff)" letter-spacing="0.5">
+        COMBO PLANNER
+      </text>
+    </g>
+  </g>
+</svg>

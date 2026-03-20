@@ -12,9 +12,14 @@ export const AuthButton = () => {
   useEffect(() => {
     // 1. Initial Session Check
     const initializeAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      setUser(session?.user ?? null);
-      setLoading(false);
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        setUser(session?.user ?? null);
+      } catch (err) {
+        console.error("Auth initialization failed:", err);
+      } finally {
+        setLoading(false);
+      }
     };
 
     initializeAuth();
@@ -37,7 +42,7 @@ export const AuthButton = () => {
         provider: 'google',
         options: {
           // Explicitly redirect to local dev
-          redirectTo: 'http://localhost:5173',
+          redirectTo: window.location.origin, // More flexible than hardcoded localhost
         },
       });
       if (error) throw error;
@@ -47,7 +52,11 @@ export const AuthButton = () => {
   };
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
+    try {
+      await supabase.auth.signOut();
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
   };
 
   // 1. LOADING STATE
@@ -62,15 +71,20 @@ export const AuthButton = () => {
 
   // 2. LOGGED IN STATE
   if (user) {
+    // Pre-calculate metadata safely
+    const avatarUrl = user.user_metadata?.avatar_url;
+    const fullName = user.user_metadata?.full_name || user.email?.split('@')[0] || 'USER';
+
     return (
       <div className="flex items-center justify-between p-3 bg-slate-900 rounded-2xl text-white shadow-lg border border-slate-800">
         <div className="flex items-center gap-3 overflow-hidden">
           <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center overflow-hidden border border-slate-700 shrink-0">
-            {user.user_metadata.avatar_url ? (
+            {avatarUrl ? (
               <img 
-                src={user.user_metadata.avatar_url} 
+                src={avatarUrl} 
                 alt="avatar" 
                 referrerPolicy="no-referrer"
+                className="w-full h-full object-cover"
               />
             ) : (
               <UserIcon size={16} />
@@ -79,7 +93,7 @@ export const AuthButton = () => {
           <div className="flex flex-col overflow-hidden">
             <span className="text-[10px] font-black text-blue-400 uppercase tracking-tighter">Connected</span>
             <span className="text-[11px] font-black truncate max-w-[100px] leading-tight">
-              {user.user_metadata.full_name || 'USER'}
+              {fullName}
             </span>
           </div>
         </div>

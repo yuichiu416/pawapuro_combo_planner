@@ -28,7 +28,7 @@ describe('useComboManager Roster Validation', () => {
     // 21 scouts + 2 fixed = 23 total
     expect(roster.total).toBe(23); 
     expect(roster.isValid).toBe(true);
-    expect(roster.errors.pitcher).toBe(false);
+    expect(roster.errors?.pitcher).toBe(false);
   });
 
   it('should validate the maximum legal roster (8P, 15F or 6P, 17F)', () => {
@@ -54,7 +54,7 @@ describe('useComboManager Roster Validation', () => {
       for(let i = 1; i <= 16; i++) result.current.toggleCharacter(`F${i}`);
     });
 
-    expect(result.current.analysis.roster.errors.pitcher).toBe(true);
+    expect(result.current.analysis.roster.errors?.pitcher).toBe(true);
     expect(result.current.analysis.roster.isValid).toBe(false);
   });
 
@@ -68,7 +68,7 @@ describe('useComboManager Roster Validation', () => {
     });
 
     expect(result.current.analysis.roster.total).toBe(26);
-    expect(result.current.analysis.roster.errors.total).toBe(true);
+    expect(result.current.analysis.roster.errors?.total).toBe(true);
     expect(result.current.analysis.roster.isValid).toBe(false);
   });
 
@@ -94,7 +94,7 @@ describe('useComboManager Roster Validation', () => {
       result.current.toggleCharacter("M4");
     });
 
-    expect(result.current.analysis.roster.errors.manager).toBe(true);
+    expect(result.current.analysis.roster.errors?.manager).toBe(true);
     expect(result.current.analysis.roster.isValid).toBe(false);
   });
 });

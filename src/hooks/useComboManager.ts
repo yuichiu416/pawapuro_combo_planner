@@ -1,5 +1,6 @@
+// src/hooks/useComboManager.ts
 import { useMemo, useState, useEffect, useRef } from 'react';
-import { supabase } from '@/lib/supabase'; // Assuming you created this file
+import { supabase } from '@/lib/supabase';
 import charactersDataRaw from '@/data/characters.json';
 import combosDataRaw from '@/data/combos.json';
 import mapsDataRaw from '@/data/maps.json';
@@ -18,24 +19,30 @@ export const useComboManager = () => {
   const [selectedComboIds, setSelectedComboIds] = useState<Set<string>>(new Set());
   const [isSyncing, setIsSyncing] = useState(false);
   const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isInitialLoad = useRef(true);
 
   // 1. HYDRATION: Load from Supabase on Mount
   useEffect(() => {
     const loadSavedData = async () => {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      if (!user) {
+        isInitialLoad.current = false;
+        return;
+      }
 
       const { data, error } = await supabase
         .from('user_saves')
-        .select('selected_names, selected_combos')
+        .select('selected_characters, selected_combos')
         .eq('user_id', user.id)
-        .single();
+        .maybeSingle(); // Use maybeSingle to avoid 406 errors on new users
 
       if (data && !error) {
-        // We still add FIXED_MEMBERS just in case the save got corrupted
-        setSelectedNames(new Set([...FIXED_MEMBERS, ...data.selected_names]));
-        setSelectedComboIds(new Set(data.selected_combos));
+        setSelectedNames(new Set([...FIXED_MEMBERS, ...(data.selected_characters || [])]));
+        setSelectedComboIds(new Set(data.selected_combos || []));
       }
+      
+      // Delay allowing auto-save until after the first load is done
+      setTimeout(() => { isInitialLoad.current = false; }, 500);
     };
 
     loadSavedData();
@@ -43,29 +50,34 @@ export const useComboManager = () => {
 
   // 2. AUTO-SAVE: Debounced Save to Supabase
   useEffect(() => {
+    // Prevent saving the default state over existing cloud data on initial mount
+    if (isInitialLoad.current) return;
+
     const saveData = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
 
       setIsSyncing(true);
-      await supabase.from('user_saves').upsert({
+      const { error } = await supabase.from('user_saves').upsert({
         user_id: user.id,
-        selected_names: Array.from(selectedNames),
+        selected_characters: Array.from(selectedNames),
         selected_combos: Array.from(selectedComboIds),
         updated_at: new Date().toISOString(),
       });
+
+      if (error) console.error("Auto-save failed:", error.message);
       setIsSyncing(false);
     };
 
-    // Debounce: Wait 1.5 seconds after last change before saving
     if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
     saveTimeoutRef.current = setTimeout(() => {
       saveData();
-    }, 1500);
+    }, 2000); // 2 second debounce
 
     return () => { if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current); };
   }, [selectedNames, selectedComboIds]);
 
+  // 3. LOGIC & MAPPING
   const characterMapping = useMemo(() => ({
     idToName: charactersMapping,
     data: charactersData
@@ -136,9 +148,7 @@ export const useComboManager = () => {
     const skillsMap: Record<string, number> = {};
     const missingSet = new Set<string>();
     
-    let pCount = 0;
-    let fCount = 0;
-    let mCount = 0;
+    let pCount = 0; let fCount = 0; let mCount = 0;
 
     selectedNames.forEach(name => {
       const char = charactersData[name];
@@ -170,9 +180,6 @@ export const useComboManager = () => {
 
     const scoutCount = pCount + fCount;
     const totalRosterSize = scoutCount + FIXED_MEMBERS.length;
-    const isScoutLimitValid = scoutCount <= 23;
-    const isPValid = pCount >= 6 && pCount <= 8;
-    const isMValid = mCount <= 3;
 
     return {
       stats,
@@ -180,16 +187,14 @@ export const useComboManager = () => {
       missingCharacters: Array.from(missingSet),
       totalSelectedCombos: selectedComboIds.size,
       roster: {
-        pitcher: pCount,
-        fielder: fCount,
-        manager: mCount,
-        total: totalRosterSize, 
-        isValid: isScoutLimitValid && isPValid && isMValid,
+        pitcher: pCount, fielder: fCount, manager: mCount,
+        total: totalRosterSize,
+        isValid: scoutCount <= 23 && pCount >= 6 && pCount <= 8 && fCount >= 15 && fCount <= 17 && mCount <= 3 ,
         errors: {
-          total: !isScoutLimitValid,
-          pitcher: !isPValid,
-          manager: !isMValid,
-          fielder: scoutCount > 23 && isPValid 
+          total: scoutCount > 23,
+          pitcher: pCount < 6 || pCount > 8,
+          fielder: fCount < 15 || fCount > 17,
+          manager: mCount > 3
         }
       }
     };
@@ -197,29 +202,19 @@ export const useComboManager = () => {
 
   return {
     ownedChars: selectedNames,
-    toggleCharacter,
+    setOwnedChars: setSelectedNames, // EXPORTED
     selectedComboIds,
+    setSelectedComboIds, // EXPORTED
+    toggleCharacter,
     toggleCombo,
-    isSyncing, // Export this so you can show a "Saving..." spinner in UI
-    toggleAllByType: (type: 'pitcher' | 'fielder') => {
-      setSelectedNames(prev => {
-        const next = new Set(prev);
-        Object.entries(charactersData).forEach(([n, c]) => {
-          if (FIXED_MEMBERS.includes(n)) return; 
-          const pos = c.position?.trim();
-          const isPitcher = pos === "投";
-          const isManager = pos === "マ";
-          if (type === 'pitcher' && isPitcher) next.add(n);
-          if (type === 'fielder' && !isPitcher && !isManager) next.add(n);
-        });
-        return next;
-      });
-    },
+    isSyncing,
+    analysis,
+    mapsData,
+    characterMapping,
     clearAll: () => { 
       setSelectedNames(new Set(FIXED_MEMBERS)); 
       setSelectedComboIds(new Set()); 
     },
-    analysis,
     libraryGroups: useMemo(() => {
       const withC: string[] = [], noC: string[] = [];
       const participants = new Set(Object.values(combosData).flatMap(c => c.characters));
@@ -228,8 +223,6 @@ export const useComboManager = () => {
         participants.has(n) ? withC.push(n) : noC.push(n);
       });
       return { withCombo: withC, noCombo: noC };
-    }, []),
-    mapsData,
-    characterMapping
+    }, [])
   };
 };
