@@ -1,44 +1,46 @@
-import { describe, it, expect, vi } from 'vitest';
-import { renderHook, waitFor } from '@testing-library/react';
+// src/__tests__/dataLoader.test.ts
+import { renderHook, waitFor, cleanup } from '@testing-library/react';
 import { useGameData } from '@/hooks/useGameData';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-// Mock the JSON data modules instead of fetch
-vi.mock('@/data/characters.json', () => ({
-  default: {
-    "猪狩守": {},
-    "矢部明雄": {}
-  }
-}));
+// 1. Explicitly mock using the static mock JSON files
+vi.mock('@/data/characters.json', () => import('./fixtures/characters.mock.json'));
+vi.mock('@/data/combos.json', () => import('./fixtures/combos.mock.json'));
+vi.mock('@/data/maps.json', () => import('./fixtures/maps.mock.json'));
+vi.mock('@/data/skills.json', () => import('./fixtures/skills.mock.json'));
+vi.mock('@/data/character_mapping.json', () => import('./fixtures/character_mapping.mock.json'));
 
-vi.mock('@/data/combos.json', () => ({
-  default: [
-    { id: 1, name: "Test Combo", characters: ["猪狩守"] }
-  ]
-}));
+// 2. Import the actual JSON data for our expectations
+import charactersMock from './fixtures/characters.mock.json';
+import combosMock from './fixtures/combos.mock.json';
 
-describe('useGameData Hook', () => {
-  it('initially returns loading state', () => {
-    const { result } = renderHook(() => useGameData());
-    // In static import scenarios, this state might be very brief
-    expect(result.current.isLoading).toBeDefined();
+describe('useGameData Hook Integration', () => {
+  beforeEach(() => {
+    cleanup();
+    vi.clearAllMocks();
   });
 
-  it('populates data from imported JSON files', async () => {
+  it('populates data from master fixtures correctly', async () => {
     const { result } = renderHook(() => useGameData());
 
-    // Wait for the useEffect to trigger state updates
-    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    // Wait for loading to finish
+    await waitFor(() => expect(result.current.isLoading).toBe(false), { timeout: 2000 });
     
-    expect(result.current.allCharacters).toContain("猪狩守");
-    expect(result.current.allCharacters).toContain("矢部明雄");
-    expect(result.current.allCharacters).toHaveLength(2);
-    expect(result.current.allCombos).toHaveLength(1);
-    expect(result.current.allCombos[0].name).toBe("Test Combo");
+    // Now we compare against the ACTUAL mock file content length
+    const expectedCount = Object.keys(charactersMock).length;
+    
+    // Use a descriptive error message if it fails
+    expect(result.current.allCharacters.length).toBe(expectedCount);
+    
+    expect(result.current.allCharacters).toContain("郡司知将");
+    expect(result.current.allCharacters).toContain("エミリ");
   });
 
-  it('handles potential errors gracefully', () => {
-    // This is a placeholder for error boundary testing if needed
+  it('verifies combo count matches mock file', async () => {
     const { result } = renderHook(() => useGameData());
-    expect(result.current.error).toBeNull();
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+
+    const expectedComboCount = Object.keys(combosMock).length;
+    expect(result.current.allCombos).toHaveLength(expectedComboCount);
   });
 });

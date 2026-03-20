@@ -13,20 +13,28 @@ import characters from '@/data/characters.json';
 
 const BASE_ASSET_PATH = '/assets/icons_split/';
 
-const Logo = () => (
-  <div className="flex items-center gap-3 px-6 py-8 shrink-0">
-    <div className="w-10 h-10 flex items-center justify-center">
+// --- SUB-COMPONENTS ---
+
+const Logo = ({ isCollapsed }: { isCollapsed: boolean }) => (
+  <div className={cn(
+    "flex items-center py-8 shrink-0 transition-all duration-300",
+    isCollapsed ? "justify-center px-0" : "gap-3 px-6"
+  )}>
+    <div className="w-10 h-10 flex items-center justify-center shrink-0">
       <img 
         src="/assets/logo.png" 
-        alt="Pawapuro Planner Logo" 
+        alt="Logo" 
         className="w-full h-full object-contain" 
       />
     </div>
-    <div className="flex flex-col">
-      <span className="font-black italic text-xl tracking-tighter text-slate-900 uppercase leading-none">
+    <div className={cn(
+      "flex flex-col transition-all duration-300 origin-left",
+      isCollapsed ? "w-0 opacity-0 scale-x-0 hidden" : "w-auto opacity-100 scale-x-100"
+    )}>
+      <span className="font-black italic text-xl tracking-tighter text-slate-900 uppercase leading-none whitespace-nowrap">
         Pawapuro
       </span>
-      <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest">
+      <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest whitespace-nowrap">
         2024 Planner
       </span>
     </div>
@@ -153,17 +161,36 @@ const App: React.FC = () => {
     <div className="flex h-screen bg-slate-100 text-[1.15em] text-slate-900 overflow-hidden font-medium">
       
       {/* LEFT SIDEBAR */}
-      <aside className={cn("relative bg-white border-r border-slate-200 transition-all duration-300 flex flex-col z-20", isSidebarCollapsed ? "w-0 border-r-0" : "w-[24rem]")}>
-        <Logo />
+      <aside className={cn(
+        "relative bg-white border-r border-slate-200 transition-all duration-300 flex flex-col z-20", 
+        isSidebarCollapsed ? "w-20" : "w-[24rem]"
+      )}>
+        <Logo isCollapsed={isSidebarCollapsed} />
+        
         <button
           data-testid="sidebar-collapse-btn"
           onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-          className={cn("absolute top-12 z-50 w-8 h-8 bg-white border border-slate-200 rounded-full flex items-center justify-center text-slate-400 shadow-md", isSidebarCollapsed ? "left-2" : "-right-4")}
+          className="absolute top-12 -right-4 z-50 w-8 h-8 bg-white border border-slate-200 rounded-full flex items-center justify-center text-slate-400 shadow-md hover:text-blue-600 transition-colors"
         >
           {isSidebarCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
         </button>
-        <div className={cn("h-full w-[24rem] overflow-hidden transition-opacity", isSidebarCollapsed ? "opacity-0 pointer-events-none" : "opacity-100")}>
-          <CharacterSidebar searchTerm={searchTerm} setSearchTerm={setSearchTerm} posFilter={posFilter} setPosFilter={setPosFilter} mapFilter={mapFilter} setMapFilter={setMapFilter} groups={filteredLibrary} ownedChars={ownedChars} onToggle={toggleCharacter} getImagePath={getImagePath} />
+
+        <div className={cn(
+          "h-full w-[24rem] overflow-hidden transition-opacity duration-300", 
+          isSidebarCollapsed ? "opacity-0 pointer-events-none" : "opacity-100"
+        )}>
+          <CharacterSidebar 
+            searchTerm={searchTerm} 
+            setSearchTerm={setSearchTerm} 
+            posFilter={posFilter} 
+            setPosFilter={setPosFilter} 
+            mapFilter={mapFilter} 
+            setMapFilter={setMapFilter} 
+            groups={filteredLibrary} 
+            ownedChars={ownedChars} 
+            onToggle={toggleCharacter} 
+            getImagePath={getImagePath} 
+          />
         </div>
       </aside>
 
@@ -191,9 +218,7 @@ const App: React.FC = () => {
                 toggleCharacter={toggleCharacter} 
                 getImagePath={getImagePath} 
                 showPositionIcon={showPositionIcon} 
-                
                 progress={analysis?.mapCompletion?.[mapName]} 
-                
                 isExpanded={expandedMaps.has(mapName) || mapFilter === mapName} 
                 onToggle={() => setExpandedMaps(prev => { 
                   const n = new Set(prev); 
@@ -207,10 +232,16 @@ const App: React.FC = () => {
       </main>
       
       {/* RIGHT SIDEBAR */}
-      <aside className={cn("relative bg-white border-l border-slate-200 transition-all duration-300 flex flex-col z-20", isAnalysisCollapsed ? "w-0 border-l-0" : "w-[26rem]")}>
+      <aside className={cn(
+        "relative bg-white border-l border-slate-200 transition-all duration-300 flex flex-col z-20", 
+        isAnalysisCollapsed ? "w-0 border-l-0" : "w-[26rem]"
+      )}>
         <button 
           onClick={() => setIsAnalysisCollapsed(!isAnalysisCollapsed)}
-          className={cn("absolute top-12 z-50 w-8 h-8 bg-white border border-slate-200 rounded-full flex items-center justify-center text-slate-400 shadow-md", isAnalysisCollapsed ? "right-2" : "-left-4")}
+          className={cn(
+            "absolute top-12 z-50 w-8 h-8 bg-white border border-slate-200 rounded-full flex items-center justify-center text-slate-400 shadow-md hover:text-blue-600 transition-colors", 
+            isAnalysisCollapsed ? "right-2" : "-left-4"
+          )}
         >
           {isAnalysisCollapsed ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
         </button>

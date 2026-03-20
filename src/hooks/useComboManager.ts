@@ -1,3 +1,4 @@
+// src/hooks/useComboManager.ts
 import { useMemo, useState, useEffect, useRef } from 'react';
 import { supabase } from '@/lib/supabase';
 import charactersDataRaw from '@/data/characters.json';
@@ -12,6 +13,7 @@ const mapsData = mapsDataRaw as Record<string, any>;
 const charactersMapping = charactersMappingRaw as any;
 
 const FIXED_MEMBERS = ["パワプロ", "矢部明雄"]; 
+const LOCAL_STORAGE_KEY = 'pawapuro_planner_local_v1';
 
 export const useComboManager = () => {
   const [selectedNames, setSelectedNames] = useState<Set<string>>(new Set(FIXED_MEMBERS));
@@ -20,11 +22,41 @@ export const useComboManager = () => {
   const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isInitialLoad = useRef(true);
 
-  // 1. HYDRATION: Load from Supabase on Mount
+  // --- PERSISTENCE HELPERS ---
+  
+  const saveLocally = () => {
+    const data = {
+      selected_characters: Array.from(selectedNames).filter(n => !FIXED_MEMBERS.includes(n)),
+      selected_combos: Array.from(selectedComboIds),
+      updated_at: new Date().toISOString()
+    };
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+    return data.updated_at;
+  };
+
+  const loadFromLocalStorage = () => {
+    const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (saved) {
+      try {
+        const { selected_characters, selected_combos } = JSON.parse(saved);
+        setSelectedNames(new Set([...FIXED_MEMBERS, ...(selected_characters || [])]));
+        setSelectedComboIds(new Set(selected_combos || []));
+        return true;
+      } catch (e) {
+        console.error("Failed to parse local storage", e);
+      }
+    }
+    return false;
+  };
+
+  // 1. HYDRATION: Priority -> Supabase, Fallback -> LocalStorage
   useEffect(() => {
     const loadSavedData = async () => {
       const { data: { user } } = await supabase.auth.getUser();
+      
       if (!user) {
+        // No user? Try loading from browser storage
+        loadFromLocalStorage();
         isInitialLoad.current = false;
         return;
       }
@@ -38,6 +70,9 @@ export const useComboManager = () => {
       if (data && !error) {
         setSelectedNames(new Set([...FIXED_MEMBERS, ...(data.selected_characters || [])]));
         setSelectedComboIds(new Set(data.selected_combos || []));
+      } else {
+        // If logged in but no cloud data, check local as a secondary fallback
+        loadFromLocalStorage();
       }
       
       setTimeout(() => { isInitialLoad.current = false; }, 500);
@@ -46,18 +81,22 @@ export const useComboManager = () => {
     loadSavedData();
   }, []);
 
-  // 2. AUTO-SAVE: Debounced Save
+  // 2. AUTO-SAVE: Debounced Cloud Save
   useEffect(() => {
     if (isInitialLoad.current) return;
 
     const saveData = async () => {
       const { data: { user } } = await supabase.auth.getUser();
+      
+      // Always save locally as a background backup, even if logged in
+      saveLocally();
+
       if (!user) return;
 
       setIsSyncing(true);
       const { error } = await supabase.from('user_saves').upsert({
         user_id: user.id,
-        selected_characters: Array.from(selectedNames),
+        selected_characters: Array.from(selectedNames).filter(n => !FIXED_MEMBERS.includes(n)),
         selected_combos: Array.from(selectedComboIds),
         updated_at: new Date().toISOString(),
       });
@@ -80,7 +119,7 @@ export const useComboManager = () => {
     data: charactersData
   }), []);
 
-  // Auto-activate combos based on selected characters
+  // Auto-activate combos logic
   useEffect(() => {
     setSelectedComboIds((prev) => {
       const next = new Set(prev);
@@ -148,7 +187,6 @@ export const useComboManager = () => {
     
     let pCount = 0; let fCount = 0; let mCount = 0;
 
-    // Initialize map counters from mapsData
     Object.entries(mapsData).forEach(([mapName, data]) => {
       mapCompletion[mapName] = { selected: 0, total: data.max_combos || 0 };
     });
@@ -183,7 +221,6 @@ export const useComboManager = () => {
         if (!selectedNames.has(c)) missingSet.add(c);
       });
 
-      // Logic to find which map this combo belongs to using mapsData structure
       Object.entries(mapsData).forEach(([mapName, data]) => {
         const isMatch = data.combo_names.some((names: string[]) => 
           names.length === combo.characters.length && 
@@ -227,9 +264,33 @@ export const useComboManager = () => {
     analysis,
     mapsData,
     characterMapping,
+    saveLocally, 
     clearAll: () => { 
       setSelectedNames(new Set(FIXED_MEMBERS)); 
       setSelectedComboIds(new Set()); 
+      localStorage.removeItem(LOCAL_STORAGE_KEY);
+    },
+    toggleAllByType: (type: 'pitcher' | 'fielder' | 'manager', currentChars: string[]) => {
+      setSelectedNames(prev => {
+        const next = new Set(prev);
+        const charsOfType = currentChars.filter(name => {
+          const char = charactersData[name];
+          if (!char) return false;
+          if (type === 'pitcher') return char.position?.trim() === '投';
+          if (type === 'manager') return char.position?.trim() === 'マ';
+          return char.position?.trim() !== '投' && char.position?.trim() !== 'マ';
+        });
+
+        const allSelected = charsOfType.every(name => next.has(name));
+        if (allSelected) {
+          charsOfType.forEach(name => {
+            if (!FIXED_MEMBERS.includes(name)) next.delete(name);
+          });
+        } else {
+          charsOfType.forEach(name => next.add(name));
+        }
+        return next;
+      });
     },
     libraryGroups: useMemo(() => {
       const withC: string[] = [], noC: string[] = [];

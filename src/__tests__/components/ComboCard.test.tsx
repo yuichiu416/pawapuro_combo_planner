@@ -1,17 +1,17 @@
 // src/__tests__/components/ComboCard.test.tsx
-import { render, screen } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { render, screen, cleanup } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { ComboCard } from '@/components/ComboCard';
 
-// 1. Mock the skills database
+// 1. Use vi.hoisted to import your master fixtures before the mocks run
+const { mockData } = await vi.hoisted(async () => {
+  const { mockData } = await import('../fixtures');
+  return { mockData };
+});
+
+// 2. Mock the skills database using your fixture data
 vi.mock('@/data/skills.json', () => ({
-  default: {
-    "パワーヒッター": {
-      "name": "パワーヒッター",
-      "description": "強振で飛距離が伸びる",
-      "type": "normal"
-    }
-  }
+  default: mockData.skills
 }));
 
 describe('ComboCard Rewards Display', () => {
@@ -23,6 +23,7 @@ describe('ComboCard Rewards Display', () => {
     toggleCharacter: vi.fn(),
     getImagePath: () => 'test-path.png',
     showPositionIcon: true,
+    // We can pull these values directly from our combo fixture if we want
     rewards: {
       skills: [
         { name: "パワーヒッター", level: 3, verified: true }
@@ -30,33 +31,46 @@ describe('ComboCard Rewards Display', () => {
     }
   };
 
+  beforeEach(() => {
+    cleanup();
+    vi.clearAllMocks();
+  });
+
   it('should display the skill name and its level', () => {
     render(<ComboCard {...mockProps} />);
-    // This WILL fail because the current ComboCard only renders the CharacterGrid
-    const skillBadge = screen.getByText(/パワーヒッター/i);
-    expect(skillBadge).toBeInTheDocument();
+    
+    // Checks for the skill name from our rewards prop
+    expect(screen.getByText(/パワーヒッター/i)).toBeInTheDocument();
     expect(screen.getByText(/LV.3/i)).toBeInTheDocument();
   });
 
-  it('should display the skill description from the database', () => {
+  it('should display the skill description from the mocked database', () => {
     render(<ComboCard {...mockProps} />);
-    // This WILL fail because the description is not in the component at all
-    expect(screen.getByText("強振で飛距離が伸びる")).toBeInTheDocument();
+    
+    /** * This looks up "パワーヒッター" in your mockData.skills fixture.
+     * Ensure your fixtures.ts has: 
+     * skills: { "パワーヒッター": { description: "強振で飛距離が伸びる", ... } }
+     */
+    const expectedDesc = mockData.skills["パワーヒッター"].description;
+    expect(screen.getByText(expectedDesc)).toBeInTheDocument();
   });
-  // src/__tests__/components/ComboCard.test.tsx
-it('renders characters to the left of the skill rewards', () => {
-  render(<ComboCard {...mockProps} />);
-  
-  const charSection = screen.getByTestId(/character-grid/i);
-  const skillSection = screen.getByText(/Combo Rewards/i);
-  
-  // Basic check: Character grid should appear before the rewards in the DOM
-  expect(charSection.compareDocumentPosition(skillSection)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
-});
 
-it('applies truncation to long skill descriptions', () => {
-  render(<ComboCard {...mockProps} />);
-  const description = screen.getByText("強振で飛距離が伸びる");
-  expect(description).toHaveClass('truncate');
-});
+  it('renders characters to the left of the skill rewards', () => {
+    render(<ComboCard {...mockProps} />);
+    
+    // Note: Ensure your ComboCard has data-testid="character-grid"
+    const charSection = screen.getByTestId(/character-grid/i);
+    const rewardHeader = screen.getByText(/Combo Rewards/i);
+    
+    // Verifies layout order
+    expect(charSection.compareDocumentPosition(rewardHeader)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+  });
+
+  it('applies truncation to long skill descriptions', () => {
+    render(<ComboCard {...mockProps} />);
+    const description = screen.getByText(mockData.skills["パワーヒッター"].description);
+    
+    // Verifies that Tailwind's truncate class is applied for UI consistency
+    expect(description).toHaveClass('truncate');
+  });
 });

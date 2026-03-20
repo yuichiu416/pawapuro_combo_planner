@@ -1,30 +1,26 @@
+// src/__tests__/components/App.test.tsx
 import { render, screen } from '@testing-library/react';
-import App from '../../App';
 import { describe, it, expect, vi } from 'vitest';
+import App from '@/App';
 
-vi.mock('../../hooks/useComboManager', () => ({
-  useComboManager: () => ({
+// 1. Hoist the factory from fixtures
+const { createMockComboManager } = await vi.hoisted(async () => {
+  return await import('../fixtures');
+});
+
+// 2. Mock with precise overrides
+vi.mock('@/hooks/useComboManager', () => ({
+  useComboManager: () => createMockComboManager({
     mapsData: {
       "スカウ島": { combo_names: [["CharA", "CharB"]] }
     },
     analysis: {
+      // We only override the part we are actually testing
+      ...createMockComboManager().analysis, 
       mapCompletion: {
         "スカウ島": { selected: 1, total: 1 }
-      },
-      // Fixed: RewardAnalysis needs these to avoid crashing
-      missingCharacters: [], 
-      roster: { isValid: true, errors: {} },
-      stats: {},
-      skills: []
-    },
-    ownedChars: new Set(),
-    selectedComboIds: new Set(),
-    libraryGroups: { withCombo: [], noCombo: [] },
-    characterMapping: { idToName: { by_name: {} } },
-    clearAll: vi.fn(),
-    setOwnedChars: vi.fn(),
-    setSelectedComboIds: vi.fn(),
-    toggleAllByType: vi.fn()
+      }
+    }
   })
 }));
 
@@ -32,9 +28,10 @@ describe('Map Progress Integration', () => {
   it('should display the "Combos: 1/1" label on the map section header', async () => {
     render(<App />);
 
-    // This should now FAIL with "Unable to find element", NOT a crash.
+    // findByText handles the async render of the mock data
     const progressLabel = await screen.findByText(/Combos: 1\/1/i);
-    expect(progressLabel).toBeDefined();
-    expect(progressLabel.className).toContain('text-emerald-700');
+    
+    expect(progressLabel).toBeInTheDocument();
+    expect(progressLabel).toHaveClass('text-emerald-700');
   });
 });
