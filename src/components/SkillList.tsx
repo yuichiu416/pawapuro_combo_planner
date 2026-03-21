@@ -65,11 +65,6 @@ const SkillList: React.FC = () => {
                   <h4 className="font-black text-slate-800 text-lg">
                     {skill.name}
                   </h4>
-                  {skill.isCustom && (
-                    <span className="text-[9px] bg-amber-100 text-amber-600 px-2 py-0.5 rounded-full font-black tracking-tighter italic">
-                      CUSTOM
-                    </span>
-                  )}
                 </div>
                 <p className="text-sm text-slate-500 font-medium leading-relaxed mt-1">
                   {skill.description}

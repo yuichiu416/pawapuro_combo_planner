@@ -3,14 +3,12 @@ import os
 import re
 import sys
 
-# Hard-coded values take priority
 MANUAL_SKILLS = {
     "天才": {
         "name": "天才",
         "type": "gold",
         "category": "all",
-        "description": "All stats significantly increased.",
-        "isCustom": True
+        "description": "All stats significantly increased."
     }
 }
 
@@ -77,8 +75,7 @@ def parse_file():
                         "name": name,
                         "type": current_type,
                         "category": current_pos,
-                        "description": desc,
-                        "isCustom": False
+                        "description": desc
                     }
 
         # Merge Manual Data

@@ -1,32 +1,23 @@
 {
   "マキシマム池田クリスティン&エミリ": {
-    "characters": [
-      "マキシマム池田クリスティン",
-      "エミリ"
-    ],
+    "characters": ["マキシマム池田クリスティン", "エミリ"],
     "map": "スカウ塔空中庭園",
     "rewards": {
       "skills": [
-        {
-          "name": "ハイボールヒッター",
-          "level": 3,
-          "verified": true
-        },
-        {
-          "name": "窮地◯",
-          "level": 3,
-          "verified": true
-        },
-        {
-          "name": "パワーヒッター",
-          "level": 1,
-          "verified": true
-        },
-        {
-          "name": "国際大会◯",
-          "level": 1,
-          "verified": true
-        }
+        { "name": "金特1", "level": 3, "verified": true },
+        { "name": "窮地◯", "level": 3, "verified": true },
+        { "name": "パワーヒッター", "level": 1, "verified": true }
+      ],
+      "stats": {}
+    }
+  },
+  "金丸信二&東条秀明": {
+    "characters": ["金丸信二", "東条秀明"],
+    "map": "パワフルタウン",
+    "rewards": {
+      "skills": [
+        { "name": "広角打法", "level": 5, "verified": true },
+        { "name": "一球入魂", "level": 1, "verified": true }
       ],
       "stats": {}
     }

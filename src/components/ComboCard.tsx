@@ -1,3 +1,4 @@
+//src/components/ComboCard.tsx
 import React from 'react';
 import { CheckCircle2, Star, BadgeCheck } from 'lucide-react';
 import { cn } from '../utils/style';
@@ -14,20 +15,34 @@ interface ComboCardProps {
   toggleCharacter: (name: string) => void;
   getImagePath: (name: string, usePos: boolean) => string;
   showPositionIcon: boolean;
+  searchTerm?: string;
   rewards?: {
     skills: Array<{ name: string; level: number; verified?: boolean }>;
   };
 }
 
 export const ComboCard: React.FC<ComboCardProps> = ({
-  names, isSelected, onToggleCombo, ownedChars, toggleCharacter, 
-  getImagePath, showPositionIcon, rewards
+  names, 
+  isSelected, 
+  onToggleCombo, 
+  ownedChars, 
+  toggleCharacter, 
+  getImagePath, 
+  showPositionIcon, 
+  searchTerm = '', 
+  rewards
 }) => {
+
+  const isMatch = (text: string) => {
+    const term = searchTerm.toLowerCase().trim();
+    if (!term) return false;
+    return text.toLowerCase().includes(term);
+  };
+
   return (
     <div 
       data-testid={`combo-card-${names.join('&')}`}
       onClick={(e) => {
-        // Prevent toggle if clicking a specific character icon
         if ((e.target as HTMLElement).closest('button')) return;
         onToggleCombo();
       }} 
@@ -44,7 +59,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
         <CheckCircle2 size={24} />
       </div>
 
-      {/* 2. CHARACTERS (Left Side) */}
+      {/* 2. CHARACTERS */}
       <div className="shrink-0 flex items-center border-r border-slate-100 pr-6">
         <CharacterGrid 
           characters={names}
@@ -56,34 +71,49 @@ export const ComboCard: React.FC<ComboCardProps> = ({
         />
       </div>
 
-      {/* 3. REWARDS (Middle Section - Scroll Protected) */}
+      {/* 3. REWARDS */}
       <div className="flex-1 flex flex-col gap-2 min-w-0 overflow-hidden">
         <div className="flex items-center gap-2">
           <Star size={10} className="text-amber-400 fill-amber-400" />
           <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">Combo Rewards</span>
         </div>
         
-        <div className="space-y-1.5 overflow-hidden">
+        <div className="space-y-1 overflow-hidden">
           {rewards?.skills?.map((sk, idx) => {
             const detail = skillsData[sk.name];
             const isGold = detail?.type === 'gold';
+            const hasHit = isMatch(sk.name);
 
             return (
-              <div key={`${sk.name}-${idx}`} className="flex items-center gap-3 min-w-0">
+              <div 
+                key={`${sk.name}-${idx}`} 
+                className={cn(
+                  "flex items-center gap-3 px-2 py-1 rounded-xl transition-all duration-200 border-2",
+                  // Full row background/border swap on hit
+                  hasHit 
+                    ? "bg-red-50 border-red-200 ring-1 ring-red-100" 
+                    : "bg-transparent border-transparent"
+                )}
+              >
                 {/* Skill Badge */}
                 <div className={cn(
                   "px-2 py-0.5 rounded-lg text-[9px] font-black shrink-0 border uppercase flex items-center gap-1",
-                  isGold 
-                    ? "bg-amber-50 border-amber-200 text-amber-700 shadow-sm" 
-                    : "bg-blue-50 border-blue-100 text-blue-700"
+                  hasHit 
+                    ? "bg-red-600 border-red-600 text-white" // Badge turns solid red on hit
+                    : isGold 
+                      ? "bg-amber-50 border-amber-200 text-amber-700" 
+                      : "bg-blue-50 border-blue-100 text-blue-700"
                 )}>
-                  {sk.verified && <BadgeCheck size={10} className="text-emerald-500" />}
-                  {sk.name} <span className="opacity-60">LV.{sk.level}</span>
+                  {sk.verified && <BadgeCheck size={10} className={hasHit ? "text-white" : "text-emerald-500"} />}
+                  {sk.name} <span className={hasHit ? "text-white/70" : "opacity-60"}>LV.{sk.level}</span>
                 </div>
                 
-                {/* Description - Folded/Truncated */}
+                {/* Description */}
                 <p 
-                  className="text-[11px] font-bold text-slate-500 truncate flex-1 italic" 
+                  className={cn(
+                    "text-[11px] font-bold truncate flex-1 italic transition-colors",
+                    hasHit ? "text-red-900" : "text-slate-500"
+                  )} 
                   title={detail?.description}
                 >
                   {detail?.description || '---'}

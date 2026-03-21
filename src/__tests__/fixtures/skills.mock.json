@@ -1,23 +1,7 @@
 {
-  "パワーヒッター": {
-    "name": "パワーヒッター",
-    "type": "blue",
-    "category": "fielder",
-    "description": "強振して打つとホームラン性の打球が出やすくなる",
-    "isCustom": false
-  },
-  "窮地◯": {
-    "name": "窮地◯",
-    "type": "blue",
-    "category": "fielder",
-    "description": "ストライクカウントの数のぶん、ミート+4、パワー+4",
-    "isCustom": false
-  },
-  "ハイボールヒッター": {
-    "name": "ハイボールヒッター",
-    "type": "blue",
-    "category": "fielder",
-    "description": "高めのボールを打つのが得意になる。ローボールヒッター、低球必打とは一緒につけられない",
-    "isCustom": false
-  }
+  "パワーヒッター": { "name": "パワーヒッター", "type": "gold", "category": "fielder", "description": "強振ホームラン..." },
+  "一球入魂": { "name": "一球入魂", "type": "gold", "category": "fielder", "description": "初球に魂を..." },
+  "金特1": { "name": "金特1", "type": "blue", "category": "fielder", "description": "高めのボール..." },
+  "広角打法": { "name": "広角打法", "type": "blue", "category": "fielder", "description": "流し方向に..." },
+  "窮地◯": { "name": "窮地◯", "type": "blue", "category": "fielder", "description": "ストライクカウント..." }
 }

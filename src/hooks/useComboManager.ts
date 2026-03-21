@@ -4,12 +4,14 @@ import { supabase } from '@/lib/supabase';
 import charactersDataRaw from '@/data/characters.json';
 import combosDataRaw from '@/data/combos.json';
 import mapsDataRaw from '@/data/maps.json';
+import skillsDataRaw from '@/data/skills.json'; // Added for sorting logic
 import charactersMappingRaw from '@/data/character_mapping.json';
 import type { Character, Combo } from '@/types';
 
 const charactersData = charactersDataRaw as Record<string, Character>;
 const combosData = combosDataRaw as Record<string, Combo>;
 const mapsData = mapsDataRaw as Record<string, any>;
+const skillsData = skillsDataRaw as Record<string, any>;
 const charactersMapping = charactersMappingRaw as any;
 
 const FIXED_MEMBERS = ["パワプロ", "矢部明雄"]; 
@@ -69,7 +71,6 @@ export const useComboManager = () => {
       } else {
         loadFromLocalStorage();
       }
-      // Small buffer to prevent auto-save from firing during hydration
       setTimeout(() => { isInitialLoad.current = false; }, 500);
     };
     loadSavedData();
@@ -136,7 +137,6 @@ export const useComboManager = () => {
   };
 
   // --- SEARCH & FILTER LOGIC ---
-  // This drives which Combos show up on the map
   const filteredComboIds = useMemo(() => {
     const allComboEntries = Object.entries(combosData);
     const lowerSearch = searchTerm.toLowerCase().trim();
@@ -159,7 +159,6 @@ export const useComboManager = () => {
       .map(([id]) => id);
   }, [searchTerm]);
 
-  // This drives the Sidebar lists
   const libraryGroups = useMemo(() => {
     const withC: string[] = [], noC: string[] = [];
     const participants = new Set(Object.values(combosData).flatMap(c => c.characters));
@@ -171,7 +170,6 @@ export const useComboManager = () => {
       
       if (lowerSearch) {
         const nameMatch = name.toLowerCase().includes(lowerSearch);
-        // Does this character belong to ANY combo that matches the search?
         const comboMatch = Array.from(filteredSet).some(id => 
             combosData[id].characters.includes(name)
         );
@@ -237,10 +235,23 @@ export const useComboManager = () => {
 
     return {
       stats,
-      skills: Object.entries(skillsMap).map(([name, level]) => ({ 
-        name, 
-        level: Math.min(level, 5) 
-      })),
+      skills: Object.entries(skillsMap)
+        .map(([name, level]) => ({ 
+          name, 
+          level: Math.min(level, 5),
+          type: skillsData[name]?.type || 'normal' // Look up skill type for sorting
+        }))
+        .sort((a, b) => {
+          // Priority 1: Gold skills at the top
+          if (a.type === 'gold' && b.type !== 'gold') return -1;
+          if (a.type !== 'gold' && b.type === 'gold') return 1;
+          
+          // Priority 2: Higher level skills first
+          if (b.level !== a.level) return b.level - a.level;
+          
+          // Priority 3: Alphabetical order
+          return a.name.localeCompare(b.name);
+        }),
       missingCharacters: Array.from(missingSet),
       totalSelectedCombos: selectedComboIds.size,
       mapCompletion,

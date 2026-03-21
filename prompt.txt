@@ -109,8 +109,7 @@ skills.json
     "name": "神の子",
     "type": "gold",
     "category": "pitcher",
-    "description": "登板中、味方打者のミート+5、パワー+5",
-    "isCustom": false
+    "description": "登板中、味方打者のミート+5、パワー+5"
   }
 }```
 # Context & Constraints

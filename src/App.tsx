@@ -32,10 +32,10 @@ const Logo = ({ isCollapsed }: { isCollapsed: boolean }) => (
       isCollapsed ? "w-0 opacity-0 scale-x-0 hidden" : "w-auto opacity-100 scale-x-100"
     )}>
       <span className="font-black italic text-xl tracking-tighter text-slate-900 uppercase leading-none whitespace-nowrap">
-        Pawapuro
+        Pawapuro 2024-2025
       </span>
       <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest whitespace-nowrap">
-        2024 Planner
+        Combo Planner
       </span>
     </div>
   </div>
