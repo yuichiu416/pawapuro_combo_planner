@@ -31,9 +31,11 @@ interface AnalysisProps {
 export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis }) => {
   const { stats, skills, missingCharacters, roster } = analysis;
 
+  const goldSkillsCount = skills.filter(s => skillsData[s.name]?.type === 'gold').length;
+
   return (
     <div className="h-full flex flex-col p-6 bg-slate-50 gap-4 overflow-hidden">
-      {/* 1. HEADER (Title Only) */}
+      {/* 1. HEADER */}
       <div className="flex items-center justify-between shrink-0">
         <h2 className="text-xl font-black italic uppercase flex items-center gap-2 text-slate-800 tracking-tight">
           <TrendingUp className="text-blue-600 w-5 h-5" /> Analysis
@@ -43,7 +45,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis }) => {
       {/* 2. ROSTER STATUS */}
       <section className="shrink-0 grid grid-cols-4 gap-2">
         {[
-          { label: 'Total', val: roster.total, max: '/25', err: roster.errors?.total },
+          { label: 'Total', val: roster.total + roster.manager, max: '/28', err: roster.errors?.total },
           { label: 'Pitch', val: roster.pitcher, max: '/6-8', err: roster.errors?.pitcher },
           { label: 'Field', val: roster.fielder, max: '/15+', err: roster.errors?.fielder },
           { label: 'Mgr', val: roster.manager, max: '/3', err: roster.errors?.manager },
@@ -85,19 +87,20 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis }) => {
         </div>
       </section>
 
-      {/* 4. ACTIVE SKILLS */}
+      {/* 4. ACTIVE SKILLS (COMPACTED) */}
       <section className="flex-grow flex flex-col min-h-0 bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-        <div className="p-4 border-b border-slate-50 bg-slate-50/50 flex justify-between items-center shrink-0">
+        <div className="p-3 border-b border-slate-50 bg-slate-50/50 flex justify-between items-center shrink-0">
           <div className="flex items-center gap-2">
-            <Award size={16} className="text-blue-500" />
-            <span className="text-xs font-black text-slate-700 uppercase tracking-tight">Active Skills</span>
+            <Award size={14} className="text-blue-500" />
+            <span className="text-[11px] font-black text-slate-700 uppercase tracking-tight">Active Skills</span>
           </div>
-          <span className="px-2 py-0.5 bg-blue-100 text-blue-600 text-[10px] font-black rounded-lg">
-            {skills.length}
+          
+          <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-[9px] font-black rounded-lg border border-amber-200">
+            {goldSkillsCount} 金特
           </span>
         </div>
         
-        <div className="flex-1 overflow-y-auto p-3 space-y-2 custom-scrollbar">
+        <div className="flex-1 overflow-y-auto p-2 space-y-1 custom-scrollbar">
           {skills.length > 0 ? (
             skills.map((skill) => {
               const isGold = skillsData[skill.name]?.type === 'gold';
@@ -105,16 +108,17 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis }) => {
                 <div 
                   key={skill.name} 
                   className={cn(
-                    "flex justify-between items-center p-3 rounded-xl border transition-all",
-                    isGold ? "bg-amber-50 border-amber-200" : "bg-white border-slate-100"
+                    "flex justify-between items-center py-1.5 px-3 rounded-xl border transition-all",
+                    isGold ? "bg-amber-50 border-amber-100" : "bg-white border-slate-50"
                   )}
                 >
-                  <span className={cn("text-xs font-black truncate pr-2", isGold ? "text-amber-900" : "text-slate-700")}>
+                  <span className={cn("text-[11px] font-black truncate pr-2 font-sans", isGold ? "text-amber-900" : "text-slate-600")}>
                     {skill.name}
                   </span>
+                  {/* Compact Level Tag */}
                   <div className={cn(
-                    "px-2 py-1 text-[10px] font-black rounded-lg border shrink-0 italic tracking-tighter",
-                    isGold ? "bg-amber-500 border-amber-600 text-white" : "bg-blue-600 border-blue-700 text-white"
+                    "px-1.5 py-0.5 text-[9px] font-black rounded-md italic tracking-tighter shrink-0",
+                    isGold ? "bg-amber-500 text-white" : "bg-slate-100 text-slate-500"
                   )}>
                     LV{skill.level}
                   </div>
@@ -122,9 +126,9 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis }) => {
               );
             })
           ) : (
-            <div className="h-full flex flex-col items-center justify-center opacity-30 py-10">
-              <Award size={40} className="mb-2 text-slate-400" />
-              <p className="text-[10px] font-black uppercase italic text-slate-500">No Skills Active</p>
+            <div className="h-full flex flex-col items-center justify-center opacity-30 py-6">
+              <Award size={32} className="mb-2 text-slate-400" />
+              <p className="text-[9px] font-black uppercase italic text-slate-500">No Skills Active</p>
             </div>
           )}
         </div>

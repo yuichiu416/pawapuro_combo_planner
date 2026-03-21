@@ -15,7 +15,7 @@ const BASE_ASSET_PATH = '/assets/icons_split/';
 
 const Logo = ({ isCollapsed }: { isCollapsed: boolean }) => (
   <div className={cn(
-    "flex items-center py-8 shrink-0 transition-all duration-300", 
+    "flex items-center pt-4 pb-2 shrink-0 transition-all duration-300",
     isCollapsed ? "justify-center px-0" : "gap-3 px-6"
   )}>
     <div className="w-10 h-10 flex items-center justify-center shrink-0">

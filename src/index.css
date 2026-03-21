@@ -1,4 +1,21 @@
+/* 1. The Import must stay at the very top */
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap');
 @import "tailwindcss";
+
+@theme {
+  /* 2. Map the Tailwind 'sans' variable to the Google Font name */
+  --font-sans: "Zen Kaku Gothic New", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html, body {
+    /* 3. Force the font and clean up the rendering */
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
 
 @layer utilities {
   .custom-scrollbar::-webkit-scrollbar {
