@@ -1,10 +1,28 @@
 {
   "by_id": {
+    "1": {
+      "id": 157,
+      "name": "阿畑やすし",
+      "img_standard": "icon_157.png",
+      "img_pos": "icon_157_pos.png"
+    },
+    "2": {
+      "id": 158,
+      "name": "猪狩守",
+      "img_standard": "icon_158.png",
+      "img_pos": "icon_158_pos.png"
+    },
     "250": {
       "id": 250,
       "name": "郡司知将",
       "img_standard": "icon_250.png",
       "img_pos": "icon_250_pos.png"
+    },
+    "316": {
+      "id": 316,
+      "name": "クロン",
+      "img_standard": "icon_316.png",
+      "img_pos": "icon_316_pos.png"
     },
     "332": {
       "id": 332,
@@ -12,11 +30,11 @@
       "img_standard": "icon_332.png",
       "img_pos": "icon_332_pos.png"
     },
-    "316": {
-      "id": 316,
-      "name": "クロン",
-      "img_standard": "icon_316.png",
-      "img_pos": "icon_316_pos.png"
+    "333": {
+      "id": 333,
+      "name": "進藤カレン",
+      "img_standard": "icon_333.png",
+      "img_pos": "icon_333_pos.png"
     }
   },
   "by_name": {
@@ -37,6 +55,20 @@
       "name": "クロン",
       "img_standard": "icon_316.png",
       "img_pos": "icon_316_pos.png"
+    },
+    "進藤カレン": {
+      "id": 333,
+      "name": "進藤カレン",
+      "img_standard": "icon_333.png",
+      "img_pos": "icon_333_pos.png"
+    },
+    "阿畑やすし": {
+      "id": 157,
+      "name": "阿畑やすし"
+    },
+    "猪狩守": {
+      "id": 158,
+      "name": "猪狩守"
     }
   }
 }

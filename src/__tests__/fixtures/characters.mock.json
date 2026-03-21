@@ -1,38 +1,10 @@
 {
-  "郡司知将": {
-    "name": "郡司知将",
-    "position": "外",
-    "encounter_map": "スカウ塔空中庭園",
-    "rewards": {
-      "skills": [],
-      "stats": {
-        "敏捷": 15
-      }
-    },
-    "description": "Mock description for testing"
-  },
-  "マキシマム池田クリスティン": {
-    "name": "マキシマム池田クリスティン",
-    "position": "一",
-    "encounter_map": "スカウ塔空中庭園",
-    "rewards": {
-      "skills": [],
-      "stats": {
-        "敏捷": 20
-      }
-    },
-    "description": "Mock description for testing"
-  },
-  "エミリ": {
-    "name": "エミリ",
-    "position": "マ",
-    "encounter_map": "月面",
-    "description": "Mock description for testing"
-  },
-  "クロン": {
-    "name": "クロン",
-    "position": "マ",
-    "encounter_map": "月面",
-    "description": "Mock description for testing"
-  }
+  "郡司知将": { "name": "郡司知将", "position": "外", "encounter_map": "スカウ塔空中庭園", "rewards": { "stats": { "敏捷": 15 } } },
+  "マキシマム池田クリスティン": { "name": "マキシマム池田クリスティン", "position": "一", "encounter_map": "スカウ塔空中庭園", "rewards": { "stats": { "敏捷": 20 } } },
+  "エミリ": { "name": "エミリ", "position": "マ", "encounter_map": "月面" },
+  "進藤カレン": { "name": "進藤カレン", "position": "マ", "encounter_map": "月面" },
+  "金丸信二": { "name": "金丸信二", "position": "三", "encounter_map": "パワフルタウン" },
+  "東条秀明": { "name": "東条秀明", "position": "三", "encounter_map": "パワフルタウン" },
+  "猪狩守": { "name": "猪狩守", "position": "投", "encounter_map": "スタジアム" },
+  "阿畑やすし": { "name": "阿畑やすし", "position": "投", "encounter_map": "スタジアム" }
 }

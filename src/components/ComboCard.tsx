@@ -1,6 +1,6 @@
-//src/components/ComboCard.tsx
+// src/components/ComboCard.tsx
 import React from 'react';
-import { CheckCircle2, Star, BadgeCheck } from 'lucide-react';
+import { CheckCircle2, Star, BadgeCheck, UserPlus } from 'lucide-react';
 import { cn } from '../utils/style';
 import { CharacterGrid } from './CharacterGrid';
 import skillsDataRaw from '@/data/skills.json';
@@ -13,6 +13,7 @@ interface ComboCardProps {
   onToggleCombo: () => void;
   ownedChars: Set<string>;
   toggleCharacter: (name: string) => void;
+  onAddCharacters: (names: string[]) => void; // ✨ New Prop
   getImagePath: (name: string, usePos: boolean) => string;
   showPositionIcon: boolean;
   searchTerm?: string;
@@ -27,11 +28,15 @@ export const ComboCard: React.FC<ComboCardProps> = ({
   onToggleCombo, 
   ownedChars, 
   toggleCharacter, 
+  onAddCharacters, // ✨ Destructure new prop
   getImagePath, 
   showPositionIcon, 
   searchTerm = '', 
   rewards
 }) => {
+  // Check which characters from this combo are missing from the roster
+  const missingChars = names.filter(name => !ownedChars.has(name));
+  const hasMissing = missingChars.length > 0;
 
   const isMatch = (text: string) => {
     const term = searchTerm.toLowerCase().trim();
@@ -43,11 +48,12 @@ export const ComboCard: React.FC<ComboCardProps> = ({
     <div 
       data-testid={`combo-card-${names.join('&')}`}
       onClick={(e) => {
+        // Prevent toggle if clicking a button inside the card
         if ((e.target as HTMLElement).closest('button')) return;
         onToggleCombo();
       }} 
       className={cn(
-        "flex items-center gap-6 p-6 rounded-[2.5rem] border-4 bg-white cursor-pointer transition-all hover:shadow-lg overflow-hidden", 
+        "flex items-center gap-6 p-6 rounded-[2.5rem] border-4 bg-white cursor-pointer transition-all hover:shadow-lg overflow-hidden relative", 
         isSelected ? "border-blue-500 shadow-xl" : "border-transparent hover:border-slate-200"
       )}
     >
@@ -73,9 +79,23 @@ export const ComboCard: React.FC<ComboCardProps> = ({
 
       {/* 3. REWARDS */}
       <div className="flex-1 flex flex-col gap-2 min-w-0 overflow-hidden">
-        <div className="flex items-center gap-2">
-          <Star size={10} className="text-amber-400 fill-amber-400" />
-          <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">Combo Rewards</span>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Star size={10} className="text-amber-400 fill-amber-400" />
+            <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">Combo Rewards</span>
+          </div>
+          {isSelected && hasMissing && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onAddCharacters(missingChars);
+              }}
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-black uppercase rounded-xl transition-all shadow-md active:scale-95 animate-in fade-in zoom-in duration-200"
+            >
+              <UserPlus size={12} />
+              Add {missingChars.length} to Roster
+            </button>
+          )}
         </div>
         
         <div className="space-y-1 overflow-hidden">
@@ -89,17 +109,15 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                 key={`${sk.name}-${idx}`} 
                 className={cn(
                   "flex items-center gap-3 px-2 py-1 rounded-xl transition-all duration-200 border-2",
-                  // Full row background/border swap on hit
                   hasHit 
                     ? "bg-red-50 border-red-200 ring-1 ring-red-100" 
                     : "bg-transparent border-transparent"
                 )}
               >
-                {/* Skill Badge */}
                 <div className={cn(
                   "px-2 py-0.5 rounded-lg text-[9px] font-black shrink-0 border uppercase flex items-center gap-1",
                   hasHit 
-                    ? "bg-red-600 border-red-600 text-white" // Badge turns solid red on hit
+                    ? "bg-red-600 border-red-600 text-white" 
                     : isGold 
                       ? "bg-amber-50 border-amber-200 text-amber-700" 
                       : "bg-blue-50 border-blue-100 text-blue-700"
@@ -108,7 +126,6 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                   {sk.name} <span className={hasHit ? "text-white/70" : "opacity-60"}>LV.{sk.level}</span>
                 </div>
                 
-                {/* Description */}
                 <p 
                   className={cn(
                     "text-[11px] font-bold truncate flex-1 italic transition-colors",

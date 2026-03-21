@@ -1,14 +1,19 @@
+// src/components/Header.tsx
 import React from 'react';
 import { 
   ChevronDown, ChevronUp, 
-  CircleDot, Trophy, UserPlus, 
-  ShieldCheck, User, XCircle 
+  CircleDot, UserPlus, 
+  ShieldCheck, User, XCircle,
+  UserCheck,
+  Users // ✨ Added for "Show All" state
 } from 'lucide-react';
 import { cn } from '@/utils/style';
 
 interface HeaderProps {
   showPositionIcon: boolean;
   setShowPositionIcon: (val: boolean) => void;
+  filterRelatedOnly: boolean;
+  toggleRelatedFilter: () => void;
   toggleAllByType: (type: 'pitcher' | 'fielder') => void;
   clearAll: () => void;
   onExpandAll: () => void;
@@ -19,6 +24,8 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   showPositionIcon, 
   setShowPositionIcon,
+  filterRelatedOnly,
+  toggleRelatedFilter,
   toggleAllByType, 
   clearAll,
   onExpandAll, 
@@ -67,22 +74,36 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Bottom Row: Utility Controls */}
-      <div className="flex items-center py-3 px-1 border-t border-slate-200/60">
-        <div className="flex items-center gap-3">
-          <button 
-            onClick={() => setShowPositionIcon(!showPositionIcon)} 
-            className={cn(
-              "px-4 py-2 border-2 rounded-xl text-[10px] font-black flex items-center gap-2 transition-all uppercase", 
-              showPositionIcon 
-                ? "bg-white border-slate-200 text-slate-600 hover:border-slate-300" 
-                : "bg-blue-600 border-blue-600 text-white shadow-md shadow-blue-200"
-            )}
-          >
-            {showPositionIcon ? <ShieldCheck size={14} /> : <User size={14} />} 
-            {showPositionIcon ? "POS ICON" : "NO. ICON"}
-          </button>
-        </div>
+      <div className="flex items-center py-3 px-1 border-t border-slate-200/60 gap-3">
+        {/* Toggle 1: Position Icons */}
+        <button 
+          onClick={() => setShowPositionIcon(!showPositionIcon)} 
+          className={cn(
+            "px-4 py-2 border-2 rounded-xl text-[10px] font-black flex items-center gap-2 transition-all uppercase", 
+            showPositionIcon 
+              ? "bg-white border-slate-200 text-slate-600 hover:border-slate-300" 
+              : "bg-blue-600 border-blue-600 text-white shadow-md shadow-blue-200"
+          )}
+        >
+          {showPositionIcon ? <ShieldCheck size={14} /> : <User size={14} />} 
+          {showPositionIcon ? "POS ICON" : "NO. ICON"}
+        </button>
 
+        {/* ✨ Toggle 2: Owned Related Filter & Batch Select */}
+        <button 
+          onClick={toggleRelatedFilter} 
+          className={cn(
+            "px-4 py-2 border-2 rounded-xl text-[10px] font-black flex items-center gap-2 transition-all uppercase", 
+            !filterRelatedOnly 
+              ? "bg-white border-slate-200 text-slate-600 hover:border-slate-300" 
+              : "bg-emerald-600 border-emerald-600 text-white shadow-md shadow-emerald-200"
+          )}
+        >
+          {filterRelatedOnly ? <Users size={14} /> : <UserCheck size={14} />}
+          {filterRelatedOnly ? "SHOW ALL" : "OWNED RELATED"}
+        </button>
+
+        {/* Expand/Collapse All */}
         <button 
           onClick={allExpanded ? onCollapseAll : onExpandAll}
           className="ml-auto flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-xl text-[10px] font-black uppercase text-slate-600 hover:bg-slate-200 transition-all min-w-[140px] justify-center active:scale-95"

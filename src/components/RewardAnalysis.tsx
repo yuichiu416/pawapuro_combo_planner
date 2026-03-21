@@ -31,7 +31,10 @@ interface AnalysisProps {
   getImagePath: (name: string, usePosIcon: boolean) => string;
 }
 
-export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath }) => {
+export const RewardAnalysis: React.FC<AnalysisProps> = ({ 
+  analysis, 
+  getImagePath
+}) => {
   const { stats, skills, missingCharacters, roster } = analysis;
 
   const goldSkillsCount = skills.filter(s => skillsData[s.name]?.type === 'gold').length;
@@ -90,12 +93,12 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
         </div>
       </section>
 
-      {/* 4. ACTIVE SKILLS */}
+      {/* 4. VISIBLE SKILLS */}
       <section className="flex-grow flex flex-col min-h-0 bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
         <div className="p-3 border-b border-slate-50 bg-slate-50/50 flex justify-between items-center shrink-0">
           <div className="flex items-center gap-2">
             <Award size={14} className="text-blue-500" />
-            <span className="text-[11px] font-black text-slate-700 uppercase tracking-tight">Active Skills</span>
+            <span className="text-[11px] font-black text-slate-700 uppercase tracking-tight">Visible Skills</span>
           </div>
           <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-[9px] font-black rounded-lg border border-amber-200">
             {goldSkillsCount} 金特
@@ -129,18 +132,22 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
           ) : (
             <div className="h-full flex flex-col items-center justify-center opacity-30 py-6">
               <Award size={32} className="mb-2 text-slate-400" />
-              <p className="text-[9px] font-black uppercase italic text-slate-500">No Skills Active</p>
+              <p className="text-[9px] font-black uppercase italic text-slate-500 text-center px-4">
+                No Skills in current view
+              </p>
             </div>
           )}
         </div>
       </section>
 
-      {/* 5. MISSING CHARACTERS SECTION */}
+      {/* 5. MISSING CHARACTERS SECTION (Warning Only) */}
       {missingCharacters.length > 0 && (
         <section className="shrink-0 flex flex-col min-h-0 bg-rose-50/50 border border-rose-100 rounded-3xl overflow-hidden">
-          <div className="p-3 bg-rose-50 flex items-center gap-2 shrink-0 border-b border-rose-100">
-            <AlertCircle size={14} className="text-rose-500" />
-            <span className="text-[10px] font-black text-rose-600 uppercase tracking-tighter">Missing for Combos</span>
+          <div className="p-3 bg-rose-50 flex items-center justify-between shrink-0 border-b border-rose-100">
+            <div className="flex items-center gap-2">
+              <AlertCircle size={14} className="text-rose-500" />
+              <span className="text-[10px] font-black text-rose-600 uppercase tracking-tighter">Missing (In Preview)</span>
+            </div>
           </div>
           
           <div className="p-2 space-y-1 overflow-y-auto max-h-[160px] custom-scrollbar-rose">

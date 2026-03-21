@@ -74,6 +74,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             return (
               <button
                 key={name}
+                data-testid={`sidebar-char-${name}`}
                 onClick={() => onToggle(name)}
                 className={cn(
                   "flex items-center gap-4 p-2.5 rounded-2xl transition-all duration-200 group text-left w-full border-2",
@@ -82,7 +83,6 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
                     : "bg-white border-transparent hover:border-slate-200 shadow-sm"
                 )}
               >
-                {/* LARGER AVATAR FOR LIST */}
                 <div className={cn(
                   "w-12 h-12 flex-shrink-0 relative rounded-xl overflow-hidden border-2",
                   isOwned ? "border-emerald-600 bg-white" : "border-slate-200 bg-slate-50 opacity-60 group-hover:opacity-100"
@@ -131,6 +131,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
               {rosterSlots.map((charName, i) => (
                 <button 
                   key={charName ? `slot-${charName}` : `empty-${i}`} 
+                  data-testid={charName ? `roster-slot-${charName}` : `roster-empty-${i}`}
                   disabled={!charName}
                   onClick={() => charName && onToggle(charName)}
                   className={cn(

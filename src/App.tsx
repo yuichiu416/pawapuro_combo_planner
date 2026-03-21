@@ -1,6 +1,6 @@
 // src/App.tsx
 import React, { useState, useMemo, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Save, Loader2, Clock } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Save, Loader2, Clock, SearchX } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import { useComboManager } from '@/hooks/useComboManager';
 import { CharacterSidebar } from '@/components/CharacterSidebar';
@@ -36,7 +36,7 @@ const Logo = ({ isCollapsed }: { isCollapsed: boolean }) => (
 );
 
 const App: React.FC = () => {
-  // --- DATA & LOGIC ---
+  // --- DATA & LOGIC FROM HOOK ---
   const { 
     ownedChars, 
     toggleCharacter, 
@@ -49,7 +49,9 @@ const App: React.FC = () => {
     characterMapping,
     searchTerm, 
     setSearchTerm, 
-    filteredComboIds,
+    filteredComboIds = [], 
+    filterRelatedOnly,
+    toggleRelatedFilter,
     handleSave, 
     isSyncing, 
     lastSaved,
@@ -95,14 +97,22 @@ const App: React.FC = () => {
   const allMapNames = useMemo(() => Object.keys(mapsData), [mapsData]);
   const allExpanded = expandedMaps.size === allMapNames.length && allMapNames.length > 0;
 
+  // --- AUTO-EXPAND LOGIC ---
+  const handleToggleRelated = () => {
+    const nextValue = !filterRelatedOnly;
+    toggleRelatedFilter(); // Call hook logic
+    
+    // If we are turning the filter ON, expand all maps so the user (and the test) can see them
+    if (nextValue) {
+      setExpandedMaps(new Set(allMapNames));
+    }
+  };
+
   return (
-    // Changed to flex-col to allow footer to sit at the bottom of the viewport
     <div className="flex flex-col h-screen bg-slate-100 text-[1.15em] text-slate-900 overflow-hidden font-medium">
-      
-      {/* TOP SECTION: Sidebars + Main Content */}
       <div className="flex flex-1 overflow-hidden">
         
-        {/* LEFT SIDEBAR */}
+        {/* LEFT SIDEBAR: Character Selection */}
         <aside className={cn(
           "relative bg-white border-r border-slate-200 transition-all duration-300 flex flex-col z-20", 
           isSidebarCollapsed ? "w-20" : "w-[24rem]"
@@ -134,12 +144,14 @@ const App: React.FC = () => {
           </div>
         </aside>
 
-        {/* MAIN SCROLL AREA */}
+        {/* MAIN CONTENT: Combo Maps */}
         <main className="flex-1 overflow-y-auto p-10 bg-slate-50 custom-scrollbar">
           <div className="max-w-5xl mx-auto space-y-12">
             <Header 
               showPositionIcon={showPositionIcon} 
               setShowPositionIcon={setShowPositionIcon} 
+              filterRelatedOnly={filterRelatedOnly}
+              toggleRelatedFilter={handleToggleRelated} // USE WRAPPER
               toggleAllByType={toggleAllByType} 
               clearAll={clearAll} 
               onExpandAll={() => setExpandedMaps(new Set(allMapNames))} 
@@ -150,9 +162,10 @@ const App: React.FC = () => {
             <div className="space-y-16">
               {Object.entries(mapsData).map(([mapName, data]) => {
                 const mapCombos = data.combo_names
-                  .map((n: string[]) => n.join('&'))
-                  .filter((id: string) => filteredComboIds?.includes(id));
+                  .map((names: string[]) => names.join('&'))
+                  .filter((id: string) => filteredComboIds.includes(id));
 
+                if (filterRelatedOnly && mapCombos.length === 0) return null;
                 if (mapFilter && mapName !== mapFilter) return null;
                 
                 return (
@@ -177,11 +190,21 @@ const App: React.FC = () => {
                   />
                 );
               })}
+
+              {filterRelatedOnly && filteredComboIds.length === 0 && (
+                <div className="flex flex-col items-center justify-center py-24 bg-white/50 rounded-[3rem] border-4 border-dashed border-slate-200">
+                  <div className="bg-slate-200 p-4 rounded-full text-slate-400 mb-4">
+                    <SearchX size={32} />
+                  </div>
+                  <h3 className="text-xl font-black italic uppercase text-slate-400 tracking-tight">No related combos</h3>
+                  <p className="text-sm font-bold text-slate-400/80 uppercase tracking-widest mt-1">Select characters from the left to see their possible combos</p>
+                </div>
+              )}
             </div>
           </div>
         </main>
         
-        {/* RIGHT SIDEBAR */}
+        {/* RIGHT SIDEBAR: Analysis & Sync */}
         <aside className={cn(
           "relative bg-white border-l border-slate-200 transition-all duration-300 flex flex-col z-20", 
           isAnalysisCollapsed ? "w-0 border-l-0" : "w-[26rem]"
@@ -230,7 +253,6 @@ const App: React.FC = () => {
         </aside>
       </div>
 
-      {/* FULL WIDTH FOOTER: Now sits outside the main content area */}
       <Footer />
     </div>
   );
