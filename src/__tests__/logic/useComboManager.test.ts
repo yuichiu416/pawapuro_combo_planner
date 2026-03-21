@@ -1,6 +1,7 @@
-import { renderHook, act } from '@testing-library/react';
+import { renderHook, act, waitFor } from '@testing-library/react';
 import { useComboManager } from '../../hooks/useComboManager';
 import { describe, it, expect, vi } from 'vitest';
+import { supabase } from '@/lib/supabase';
 
 // 1. HOIST THE DATA
 const { mockCombos, mockChars, mockMapping, mockSkills } = await vi.hoisted(async () => {
@@ -49,6 +50,25 @@ vi.mock('@/data/combos.json', () => ({ default: mockCombos }));
 vi.mock('@/data/character_mapping.json', () => ({ default: mockMapping }));
 vi.mock('@/data/skills.json', () => ({ default: mockSkills }));
 vi.mock('@/data/maps.json', () => ({ default: {} }));
+
+// 3. MOCK SUPABASE
+vi.mock('@/lib/supabase', () => ({
+  supabase: {
+    auth: {
+      getSession: vi.fn(),
+    },
+    from: vi.fn(() => ({
+      select: vi.fn(() => ({
+        eq: vi.fn(() => ({
+          maybeSingle: vi.fn(),
+        })),
+      })),
+      upsert: vi.fn(),
+    })),
+  },
+}));
+
+const LOCAL_STORAGE_KEY = 'pawapuro_planner_local_v1';
 
 describe('useComboManager Roster Validation', () => {
   it('should validate the minimum legal roster (6P, 15F scouts)', () => {
@@ -165,5 +185,83 @@ describe('useComboManager Analysis Sorting Logic', () => {
 
     expect(indexKoukaku).toBeLessThan(indexKyuchi);
     expect(blueSkills[indexKoukaku].level).toBe(5);
+  });
+});
+
+describe('useComboManager Persistence - Cloud & Local', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    window.localStorage.clear();
+  });
+
+  it('should save to LocalStorage when handleSave is called without a session', async () => {
+    (supabase.auth.getSession as any).mockResolvedValue({ data: { session: null } });
+    const { result } = renderHook(() => useComboManager());
+
+    act(() => {
+      result.current.toggleCharacter('P1');
+    });
+
+    await act(async () => {
+      await result.current.handleSave();
+    });
+
+    const stored = JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY) || '{}');
+    expect(stored.characters).toContain('P1');
+    expect(stored.characters).not.toContain('パワプロ'); // Fixed members filtered out
+  });
+
+  it('should save to Supabase when handleSave is called with a session', async () => {
+    const mockUser = { id: 'test-user-id' };
+    (supabase.auth.getSession as any).mockResolvedValue({ data: { session: { user: mockUser } } });
+    
+    const upsertSpy = vi.fn().mockResolvedValue({ error: null });
+    (supabase.from as any).mockReturnValue({ upsert: upsertSpy });
+
+    const { result } = renderHook(() => useComboManager());
+
+    act(() => {
+      result.current.toggleCharacter('F1');
+    });
+
+    await act(async () => {
+      await result.current.handleSave();
+    });
+
+    expect(upsertSpy).toHaveBeenCalledWith(expect.objectContaining({
+      user_id: 'test-user-id',
+      selected_characters: ['F1']
+    }));
+  });
+
+  it('should wipe state AND local storage on clearAll', async () => {
+    const { result } = renderHook(() => useComboManager());
+
+    act(() => {
+      result.current.toggleCharacter('P1');
+      window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ characters: ['P1'] }));
+    });
+
+    act(() => {
+      result.current.clearAll();
+    });
+
+    expect(result.current.ownedChars.has('P1')).toBe(false);
+    expect(result.current.ownedChars.has('パワプロ')).toBe(true); // Fixed member stays
+    expect(window.localStorage.getItem(LOCAL_STORAGE_KEY)).toBeNull();
+  });
+
+  it('should hydrate from LocalStorage for guests', async () => {
+    (supabase.auth.getSession as any).mockResolvedValue({ data: { session: null } });
+    
+    const savedData = { characters: ['M1'], combos: [] };
+    window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(savedData));
+
+    const { result } = renderHook(() => useComboManager());
+
+    // Wait for the hydrate useEffect
+    await waitFor(() => {
+      expect(result.current.ownedChars.has('M1')).toBe(true);
+    });
   });
 });
