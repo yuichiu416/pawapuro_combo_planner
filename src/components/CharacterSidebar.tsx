@@ -112,7 +112,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={14} />
             <input
               type="text"
-              placeholder="SEARCH CHARACTERS..."
+              placeholder="SEARCH A CHARACTER OR SKILL"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:border-blue-500 outline-none font-black text-[11px] italic"
@@ -167,14 +167,14 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             >
               <div className="flex items-center gap-1.5">
                 <MapPin size={12} className={mapFilter ? "text-blue-600" : ""} />
-                Location: {mapFilter || "Any"}
+                Location: {mapFilter || "ANY MAP"}
               </div>
               {isMapExpanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
             </button>
             
             {isMapExpanded && (
               <div className="flex flex-wrap gap-1 mt-2 max-h-32 overflow-y-auto pr-1 py-1 custom-scrollbar">
-                <button onClick={() => setMapFilter(null)} className={cn("px-2 py-1 rounded-lg text-[9px] font-black border uppercase", !mapFilter ? "bg-slate-800 border-slate-800 text-white shadow-sm" : "bg-white text-slate-400")}>ANY</button>
+                <button onClick={() => setMapFilter(null)} className={cn("px-2 py-1 rounded-lg text-[9px] font-black border uppercase", !mapFilter ? "bg-slate-800 border-slate-800 text-white shadow-sm" : "bg-white text-slate-400")}>ANY MAP</button>
                 {AVAILABLE_MAPS.map((map) => (
                   <button key={map} onClick={() => setMapFilter(map === mapFilter ? null : map)} className={cn("px-2 py-1 rounded-lg text-[9px] font-black border transition-all truncate max-w-[100px]", mapFilter === map ? "bg-blue-600 border-blue-600 text-white shadow-sm" : "bg-white text-slate-400 hover:border-slate-300")}>{map}</button>
                 ))}

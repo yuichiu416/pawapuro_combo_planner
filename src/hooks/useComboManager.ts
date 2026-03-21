@@ -190,18 +190,40 @@ export const useComboManager = () => {
       setSelectedComboIds(new Set()); 
       localStorage.removeItem(LOCAL_STORAGE_KEY); // Ensures guest data is also wiped
     }, []),
-    toggleAllByType: (type: 'pitcher' | 'fielder' | 'manager', currentChars: string[]) => {
-      setSelectedNames(prev => {
-        const next = new Set(prev);
-        const charsOfType = currentChars.filter(n => {
-          const pos = charactersData[n]?.position?.trim();
-          return type === 'pitcher' ? pos === '投' : type === 'manager' ? pos === 'マ' : (pos !== '投' && pos !== 'マ');
+    toggleAllByType: (type: 'pitcher' | 'fielder') => {
+    const targetType = type === 'pitcher' ? 'pitcher' : 'fielder';
+    
+    // 1. Find all combo IDs that give a Gold Skill for this type
+    const goldComboIds = Object.entries(combosData)
+      .filter(([_, combo]) => {
+        return combo.rewards?.skills?.some(skill => {
+          const detail = skillsData[skill.name];
+          // Must be a gold skill AND match the requested type
+          return detail?.type === 'gold' && detail?.category === targetType;
         });
-        const allSel = charsOfType.every(n => next.has(n));
-        charsOfType.forEach(n => { if (allSel) { if (!FIXED_MEMBERS.includes(n)) next.delete(n); } else next.add(n); });
-        return next;
+      })
+      .map(([id]) => id);
+
+    if (goldComboIds.length === 0) return;
+
+    // 2. Determine if we are selecting or deselecting
+    // If all identified gold combos are already selected, we turn them off.
+    // Otherwise, we turn them all on.
+    const allAlreadySelected = goldComboIds.every(id => selectedComboIds.has(id));
+
+    if (allAlreadySelected) {
+      // DESELECT: We need to reuse your existing toggleCombo logic for each ID
+      // or manually batch the removal to handle character dependencies.
+      goldComboIds.forEach(id => {
+        if (selectedComboIds.has(id)) toggleCombo(id);
       });
-    },
+    } else {
+      // SELECT: Add all missing gold combos
+      goldComboIds.forEach(id => {
+        if (!selectedComboIds.has(id)) toggleCombo(id);
+      });
+    }
+  },
     libraryGroups: useMemo(() => {
       const withC: string[] = [], noC: string[] = [], search = searchTerm.toLowerCase().trim();
       const participants = new Set(Object.values(combosData).flatMap(c => c.characters));

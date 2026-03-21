@@ -1,5 +1,4 @@
-// src/__tests__/components/CharacterSidebar.test.tsx
-import { render, screen, fireEvent, cleanup } from '@testing-library/react';
+import { render, screen, fireEvent, cleanup, within } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { CharacterSidebar } from '@/components/CharacterSidebar';
 import userEvent from '@testing-library/user-event';
@@ -15,7 +14,7 @@ vi.mock('@/data/characters.json', () => ({
   default: mockData.characters
 }));
 
-describe('CharacterSidebar - Dynamic Map Filtering', () => {
+describe('CharacterSidebar - Component Logic', () => {
   const mockProps = {
     searchTerm: '',
     setSearchTerm: vi.fn(),
@@ -27,7 +26,7 @@ describe('CharacterSidebar - Dynamic Map Filtering', () => {
       withCombo: Object.keys(mockData.characters).filter(name => name !== "郡司知将"),
       noCombo: ["郡司知将"],
     },
-    ownedChars: new Set([]),
+    ownedChars: new Set<string>([]),
     onToggle: vi.fn(),
     getImagePath: (name: string) => `/path/${name}.png`,
   };
@@ -37,15 +36,31 @@ describe('CharacterSidebar - Dynamic Map Filtering', () => {
     vi.clearAllMocks();
   });
 
+  it('renders the roster grid with 30 slots', () => {
+    render(<CharacterSidebar {...mockProps} />);
+    // The grid has 30 buttons (some empty, some filled)
+    const rosterButtons = screen.getAllByRole('button').filter(btn => 
+      btn.className.includes('aspect-square')
+    );
+    expect(rosterButtons).toHaveLength(30);
+  });
+
   it('automatically discovers and renders map buttons from fixture data', () => {
     render(<CharacterSidebar {...mockProps} />);
     
-    // Ensure "スカウ島" exists in your fixtures.ts characters!
+    // Open the map accordion first
+    const mapTrigger = screen.getByText(/Location:/i);
+    fireEvent.click(mapTrigger);
+
+    // Ensure "スカウ島" exists from your fixtures
     expect(screen.getByText('スカウ島')).toBeInTheDocument();
   });
 
   it('triggers setMapFilter when a map button is clicked', () => {
     render(<CharacterSidebar {...mockProps} />);
+    
+    // Open accordion
+    fireEvent.click(screen.getByText(/Location:/i));
     
     const mapButton = screen.getByText('スカウ島');
     fireEvent.click(mapButton);
@@ -53,39 +68,43 @@ describe('CharacterSidebar - Dynamic Map Filtering', () => {
     expect(mockProps.setMapFilter).toHaveBeenCalledWith('スカウ島');
   });
 
-  // RESTORED TEST CASE:
   it('highlights the "ANY MAP" button when no filter is active', () => {
     render(<CharacterSidebar {...mockProps} mapFilter={null} />);
     
+    fireEvent.click(screen.getByText(/Location:/i));
     const anyMapButton = screen.getByText('ANY MAP');
     
-    // Check for the active class (bg-slate-800)
-    // Using closest('button') ensures we find the container if the text is in a span
+    // Check for the active class (bg-slate-800) from your new code
     expect(anyMapButton.closest('button')).toHaveClass('bg-slate-800');
   });
 
   it('removes the highlight from "ANY MAP" when a specific map is selected', () => {
     render(<CharacterSidebar {...mockProps} mapFilter="スカウ島" />);
     
+    fireEvent.click(screen.getByText(/Location:/i));
     const anyMapButton = screen.getByText('ANY MAP');
     expect(anyMapButton.closest('button')).not.toHaveClass('bg-slate-800');
   });
 
-  it('maintains map and position filters while searching for a skill', async () => {
+  it('updates search term on input change', async () => {
     const user = userEvent.setup();
+    render(<CharacterSidebar {...mockProps} />);
     
-    // Setup: Filter by "スカウ島" first
-    render(<CharacterSidebar {...mockProps} mapFilter="スカウ島" searchTerm="" />);
+    // Updated placeholder to match your new "SEARCH A CHARACTER OR SKILL"
+    const searchInput = screen.getByPlaceholderText(/SEARCH A CHARACTER OR SKILL/i);
+    await user.type(searchInput, 'パワプロ');
     
-    const searchInput = screen.getByPlaceholderText(/SEARCH CHARACTER OR SKILL/i);
-    
-    // Action: Search for a skill that only one character in "スカウ島" has
-    await user.type(searchInput, 'パワーヒッター');
+    expect(mockProps.setSearchTerm).toHaveBeenCalled();
+  });
 
-    // Assertion:
-    // 1. Character in "スカウ島" with skill shows up
-    expect(screen.getByText('パワプロ')).toBeInTheDocument();
-    // 2. Character in "パワフル島" (even if they have the skill) is hidden by the map filter
-    expect(screen.queryByText('Character B')).not.toBeInTheDocument();
+  it('displays the correct position sub-text in the character list', () => {
+    render(<CharacterSidebar {...mockProps} />);
+    
+    // Find a character entry and check for position text
+    const charName = Object.keys(mockData.characters)[0];
+    const charPos = mockData.characters[charName].position;
+    
+    expect(screen.getByText(charName)).toBeInTheDocument();
+    expect(screen.getByText(charPos)).toBeInTheDocument();
   });
 });

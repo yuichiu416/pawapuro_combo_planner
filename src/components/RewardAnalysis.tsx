@@ -76,7 +76,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis }) => {
         <div className="grid grid-cols-2 gap-x-4 gap-y-1">
           {Object.entries(stats).length > 0 ? (
             Object.entries(stats).map(([stat, val]) => (
-              <div key={stat} className="flex justify-between items-baseline border-b border-emerald-100/30 pb-0.5">
+              <div key={stat} className="flex justify-between items-baseline border-b border-emerald-100/30 pb-0.5 ">
                 <span className="text-[10px] font-bold text-slate-500 uppercase">{stat}</span>
                 <span className="text-xs font-black text-emerald-700">+{val}</span>
               </div>
