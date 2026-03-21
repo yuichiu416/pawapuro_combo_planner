@@ -108,7 +108,8 @@ const App: React.FC = () => {
           isSidebarCollapsed ? "w-20" : "w-[24rem]"
         )}>
           <Logo isCollapsed={isSidebarCollapsed} />
-          <button 
+          <button
+            data-testid="sidebar-collapse-btn"
             onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)} 
             className="absolute top-12 -right-4 z-50 w-8 h-8 bg-white border border-slate-200 rounded-full flex items-center justify-center shadow-md hover:text-blue-600 transition-colors"
           >
@@ -219,7 +220,10 @@ const App: React.FC = () => {
                 </div>
               </div>
               <div className="flex-1 overflow-y-auto custom-scrollbar">
-                <RewardAnalysis analysis={analysis} />
+                <RewardAnalysis
+                  analysis={analysis}
+                  getImagePath={getImagePath}
+                />
               </div>
             </div>
           )}

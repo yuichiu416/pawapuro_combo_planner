@@ -26,13 +26,13 @@
   "エミリ": {
     "name": "エミリ",
     "position": "マ",
-    "encounter_map": "スカウ塔空中庭園",
+    "encounter_map": "月面",
     "description": "Mock description for testing"
   },
   "クロン": {
     "name": "クロン",
     "position": "マ",
-    "encounter_map": "スカウ島",
+    "encounter_map": "月面",
     "description": "Mock description for testing"
   }
 }

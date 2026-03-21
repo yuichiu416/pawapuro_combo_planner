@@ -24,7 +24,7 @@ const generateGenericCharacters = () => {
 };
 
 export const mockData = {
-  characters: generateGenericCharacters(),
+  characters: { ...generateGenericCharacters(), ...characters },
   combos,
   maps,
   skills,
