@@ -1,7 +1,38 @@
 {
-  "パワーヒッター": { "name": "パワーヒッター", "type": "gold", "category": "fielder", "description": "強振ホームラン..." },
-  "一球入魂": { "name": "一球入魂", "type": "gold", "category": "fielder", "description": "初球に魂を..." },
-  "金特1": { "name": "金特1", "type": "blue", "category": "fielder", "description": "高めのボール..." },
-  "広角打法": { "name": "広角打法", "type": "blue", "category": "fielder", "description": "流し方向に..." },
-  "窮地◯": { "name": "窮地◯", "type": "blue", "category": "fielder", "description": "ストライクカウント..." }
+  "パワーヒッター": { 
+    "name": "パワーヒッター", 
+    "type": "gold", 
+    "category": "fielder", 
+    "description": "強振ホームランがすごく打ちやすくなる" 
+  },
+  "一球入魂": { 
+    "name": "一球入魂", 
+    "type": "gold", 
+    "category": "fielder", 
+    "description": "初球に魂を込めてフルスイングする" 
+  },
+  "怪童": { 
+    "name": "怪童", 
+    "type": "gold", 
+    "category": "pitcher", 
+    "description": "ストレートのノビが最高クラスになる" 
+  },
+  "精密機械": { 
+    "name": "精密機械", 
+    "type": "gold", 
+    "category": "pitcher", 
+    "description": "低めへの制球力が最高クラスになる" 
+  },
+  "広角打法": { 
+    "name": "広角打法", 
+    "type": "blue", 
+    "category": "fielder", 
+    "description": "流し方向に強い打球が打てる" 
+  },
+  "ノビ◯": { 
+    "name": "ノビ◯", 
+    "type": "blue", 
+    "category": "pitcher", 
+    "description": "ストレートのキレが良くなる" 
+  }
 }

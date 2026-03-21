@@ -173,9 +173,20 @@ export const useComboManager = () => {
     setSearchTerm,
     filteredComboIds: useMemo(() => {
       const search = searchTerm.toLowerCase().trim();
-      return Object.entries(combosData).filter(([id, combo]) => 
-        !search || id.toLowerCase().includes(search) || combo.characters.some(c => c.toLowerCase().includes(search)) || combo.rewards?.skills?.some(s => s.name.toLowerCase().includes(search))
-      ).map(([id]) => id);
+      if (!search) return Object.keys(combosData);
+
+      return Object.entries(combosData)
+        .filter(([id, combo]) => {
+          const nameMatch = id.toLowerCase().includes(search);
+          const charMatch = combo.characters.some(c => c.toLowerCase().includes(search));
+          // FIXED: Ensure we check the .name property of each skill in the rewards array
+          const skillMatch = combo.rewards?.skills?.some(s => 
+            s.name.toLowerCase().includes(search)
+          );
+          
+          return nameMatch || charMatch || skillMatch;
+        })
+        .map(([id]) => id);
     }, [searchTerm]),
     toggleCharacter,
     toggleCombo,
