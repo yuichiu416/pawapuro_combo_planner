@@ -44,7 +44,7 @@ describe('Owned Related Filter - Discovery Flow', () => {
     render(<App />);
 
     const searchInput = screen.getByPlaceholderText(/SEARCH/i);
-    const filterBtn = screen.getByRole('button', { name: /OWNED RELATED/i });
+    const filterBtn = screen.getByRole('button', { name: /ALL COMBOS/i });
 
     // 1. ADD CHARACTER (Abata)
     await user.type(searchInput, '阿畑');
@@ -71,7 +71,7 @@ describe('Owned Related Filter - Multi-Character Discovery', () => {
       render(<App />);
 
       const searchInput = screen.getByPlaceholderText(/SEARCH/i);
-      const filterBtn = screen.getByRole('button', { name: /OWNED RELATED/i });
+      const filterBtn = screen.getByRole('button', { name: /ALL COMBOS/i });
 
       // 1. ADD CHARACTER A (猪狩守)
       await user.type(searchInput, '猪狩守');

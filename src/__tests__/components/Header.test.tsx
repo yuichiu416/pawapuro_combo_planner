@@ -40,7 +40,7 @@ describe('Header Component', () => {
     expect(mockProps.clearAll).toHaveBeenCalled();
   });
 
-  it('toggles position icon visibility setting', () => {
+  it('toggles POSITION ICON visibility setting', () => {
     render(<Header {...mockProps} />);
     const toggleBtn = screen.getByText(/POS ICON/i);
     fireEvent.click(toggleBtn);
