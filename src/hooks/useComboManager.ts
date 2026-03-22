@@ -23,6 +23,14 @@ export const useComboManager = () => {
   const [filterRelatedOnly, setFilterRelatedOnly] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
   const [lastSaved, setLastSaved] = useState<string | null>(null);
+  
+  // ✨ Global Font Scaling State
+  const [fontScale, setFontScale] = useState(1.0);
+
+  // Apply scale to document root so rem units scale app-wide
+  useEffect(() => {
+    document.documentElement.style.fontSize = `${fontScale * 100}%`;
+  }, [fontScale]);
 
   useEffect(() => {
     const hydrate = async () => {
@@ -99,22 +107,22 @@ export const useComboManager = () => {
     setFilterRelatedOnly(prev => !prev);
   }, []);
 
-  // --- DERIVED DATA ---
+  const adjustFont = useCallback((delta: number) => {
+    setFontScale(prev => {
+      const next = Math.min(Math.max(prev + delta, 0.8), 1.5);
+      return parseFloat(next.toFixed(1));
+    });
+  }, []);
 
-  // 1. FILTERED COMBO IDS
   const filteredComboIds = useMemo(() => {
     const search = searchTerm.toLowerCase().trim();
-    
     return Object.entries(combosData)
       .filter(([_, combo]) => {
         const comboId = combo.characters.join('&');
-        
-        const nameMatch = comboId.toLowerCase().includes(search);
-        const charMatch = combo.characters.some(c => c.toLowerCase().includes(search));
-        const skillMatch = combo.rewards?.skills?.some(s => 
-          s.name.toLowerCase().includes(search)
-        );
-        const passesSearch = !search || nameMatch || charMatch || skillMatch;
+        const passesSearch = !search || 
+          comboId.toLowerCase().includes(search) || 
+          combo.characters.some(c => c.toLowerCase().includes(search)) ||
+          combo.rewards?.skills?.some(s => s.name.toLowerCase().includes(search));
 
         const passesRelated = !filterRelatedOnly || 
           combo.characters.some(char => selectedNames.has(char));
@@ -127,23 +135,17 @@ export const useComboManager = () => {
   const addAllMissingToRoster = useCallback(() => {
     const missingInView = new Set<string>();
     const visibleIds = new Set(filteredComboIds);
-
     selectedComboIds.forEach(id => {
       if (visibleIds.has(id)) {
-        // Find the combo object to get its participants
         const combo = Object.values(combosData).find(c => c.characters.join('&') === id);
         combo?.characters.forEach(char => {
           if (!selectedNames.has(char)) missingInView.add(char);
         });
       }
     });
-
-    if (missingInView.size > 0) {
-      setSelectedNames(prev => new Set([...prev, ...missingInView]));
-    }
+    if (missingInView.size > 0) setSelectedNames(prev => new Set([...prev, ...missingInView]));
   }, [selectedNames, selectedComboIds, filteredComboIds]);
 
-  // 2. ANALYSIS
   const analysis = useMemo(() => {
     const stats: Record<string, number> = {};
     const skillsMap: Record<string, number> = {};
@@ -158,11 +160,7 @@ export const useComboManager = () => {
     selectedNames.forEach(name => {
       const char = charactersData[name];
       if (!char) return;
-      if (char.rewards?.stats) {
-        Object.entries(char.rewards.stats).forEach(([s, v]) => { 
-          stats[s] = (stats[s] || 0) + v; 
-        });
-      }
+      if (char.rewards?.stats) Object.entries(char.rewards.stats).forEach(([s, v]) => { stats[s] = (stats[s] || 0) + v; });
       if (!FIXED_MEMBERS.includes(name)) {
         const pos = char.position?.trim();
         if (pos === "マ") mCount++; else if (pos === "投") pCount++; else fCount++;
@@ -172,63 +170,41 @@ export const useComboManager = () => {
     const visibleFilteredIds = new Set(filteredComboIds);
     selectedComboIds.forEach(id => {
       if (!visibleFilteredIds.has(id)) return;
-
       const combo = Object.values(combosData).find(c => c.characters.join('&') === id);
       if (!combo) return;
-      
-      combo.rewards?.skills?.forEach(sk => { 
-        skillsMap[sk.name] = (skillsMap[sk.name] || 0) + sk.level; 
-      });
-
-      combo.characters.forEach(c => { 
-        if (!selectedNames.has(c)) missingSet.add(c); 
-      });
-
+      combo.rewards?.skills?.forEach(sk => { skillsMap[sk.name] = (skillsMap[sk.name] || 0) + sk.level; });
+      combo.characters.forEach(c => { if (!selectedNames.has(c)) missingSet.add(c); });
       Object.entries(mapsData).forEach(([mapName, data]) => {
-        if (data.combo_names.some((names: string[]) => names.join('&') === id)) {
-          mapCompletion[mapName].selected++;
-        }
+        if (data.combo_names.some((names: string[]) => names.join('&') === id)) mapCompletion[mapName].selected++;
       });
     });
-
-    const sortedSkills = Object.entries(skillsMap).map(([name, level]) => ({
-      name,
-      level: Math.min(level, 5),
-      type: skillsData[name]?.type || 'normal'
-    })).sort((a, b) => {
-      if (a.type === 'gold' && b.type !== 'gold') return -1;
-      if (a.type !== 'gold' && b.type === 'gold') return 1;
-      return b.level - a.level;
-    });
-
-    const rosterErrors = {
-      pitcher: pCount > 8 || pCount < 6,
-      fielder: fCount > 17 || fCount < 15,
-      manager: mCount > 3,
-      total: (pCount + fCount) > 23
-    };
 
     return {
       stats,
-      skills: sortedSkills,
+      skills: Object.entries(skillsMap).map(([name, level]) => ({ 
+        name, 
+        level: Math.min(level, 5), 
+        type: skillsData[name]?.type || 'normal' 
+      })).sort((a, b) => b.level - a.level),
       missingCharacters: Array.from(missingSet),
-      totalSelectedCombos: selectedComboIds.size,
-      mapCompletion,
-      roster: {
-        pitcher: pCount, fielder: fCount, manager: mCount,
-        total: pCount + fCount + FIXED_MEMBERS.length,
-        errors: rosterErrors,
-        isValid: !rosterErrors.pitcher && !rosterErrors.fielder && !rosterErrors.manager && !rosterErrors.total
-      }
+      roster: { pitcher: pCount, fielder: fCount, manager: mCount, total: pCount + fCount + FIXED_MEMBERS.length }
     };
   }, [selectedNames, selectedComboIds, filteredComboIds]);
 
-  const clearAll = useCallback(() => { 
-    setSelectedNames(new Set(FIXED_MEMBERS)); 
-    setSelectedComboIds(new Set()); 
-    setFilterRelatedOnly(false);
-    localStorage.removeItem(LOCAL_STORAGE_KEY);
-  }, []);
+  const libraryGroups = useMemo(() => {
+    const withC: string[] = [];
+    const noC: string[] = [];
+    const search = searchTerm.toLowerCase().trim();
+    const participants = new Set(Object.values(combosData).flatMap(c => c.characters));
+
+    Object.keys(charactersData).forEach(name => {
+      if (FIXED_MEMBERS.includes(name)) return;
+      if (search && !name.toLowerCase().includes(search)) return;
+      participants.has(name) ? withC.push(name) : noC.push(name);
+    });
+
+    return { withCombo: withC, noCombo: noC };
+  }, [searchTerm]);
 
   return {
     ownedChars: selectedNames,
@@ -245,42 +221,27 @@ export const useComboManager = () => {
     lastSaved,
     handleSave,
     analysis,
+    fontScale,
+    adjustFont,
+    libraryGroups,
     mapsData,
     characterMapping: { idToName: charactersMapping, data: charactersData },
-    clearAll,
+    clearAll: () => {
+        setSelectedNames(new Set(FIXED_MEMBERS));
+        setSelectedComboIds(new Set());
+    },
     toggleAllByType: (type: 'pitcher' | 'fielder') => {
       const targetType = type === 'pitcher' ? 'pitcher' : 'fielder';
-      const goldCombos = Object.values(combosData)
-        .filter((combo) => {
-          return combo.rewards?.skills?.some(skill => {
-            const detail = skillsData[skill.name];
-            return detail?.type === 'gold' && detail?.category === targetType;
-          });
-        })
-        .map((combo) => combo.characters.join('&'));
-
+      const goldCombos = Object.values(combosData).filter(c => 
+        c.rewards?.skills?.some(s => skillsData[s.name]?.type === 'gold' && skillsData[s.name]?.category === targetType)
+      ).map(c => c.characters.join('&'));
       if (goldCombos.length === 0) return;
-
-      const allAlreadySelected = goldCombos.every(id => selectedComboIds.has(id));
-
+      const allSelected = goldCombos.every(id => selectedComboIds.has(id));
       setSelectedComboIds(prev => {
         const next = new Set(prev);
-        if (allAlreadySelected) {
-          goldCombos.forEach(id => next.delete(id));
-        } else {
-          goldCombos.forEach(id => next.add(id));
-        }
+        goldCombos.forEach(id => allSelected ? next.delete(id) : next.add(id));
         return next;
       });
-    },
-    libraryGroups: useMemo(() => {
-      const withC: string[] = [], noC: string[] = [], search = searchTerm.toLowerCase().trim();
-      const participants = new Set(Object.values(combosData).flatMap(c => c.characters));
-      Object.keys(charactersData).forEach(name => {
-        if (FIXED_MEMBERS.includes(name) || (search && !name.toLowerCase().includes(search))) return;
-        participants.has(name) ? withC.push(name) : noC.push(name);
-      });
-      return { withCombo: withC, noCombo: noC };
-    }, [searchTerm])
+    }
   };
 };

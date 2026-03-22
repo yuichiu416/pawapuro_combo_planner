@@ -66,7 +66,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
     if (names.length === 0) return null;
     return (
       <div className="space-y-3">
-        <h3 className="text-[11px] font-black text-slate-400 uppercase tracking-widest px-4 italic">{title}</h3>
+        <h3 className="text-base font-black text-slate-400 uppercase tracking-widest px-4 italic">{title}</h3>
         <div className="grid gap-1.5 px-3">
           {names.map((name) => {
             const isOwned = ownedChars.has(name);
@@ -90,10 +90,10 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
                   <img src={getImagePath(name, true)} alt={name} className="absolute inset-0 w-full h-full object-cover" />
                 </div>
                 <div className="min-w-0">
-                  <p className={cn("text-sm font-blacktracking-tighter truncate", isOwned ? "text-emerald-950" : "text-slate-700")}>
+                  <p className={cn("text-base font-blacktracking-tighter truncate", isOwned ? "text-emerald-950" : "text-slate-700")}>
                     {name}
                   </p>
-                  <p className="text-[10px] font-bold text-slate-400 uppercase">{data?.position || 'Manager'}</p>
+                  <p className="text-sm font-bold text-slate-400 uppercase">{data?.position || 'Manager'}</p>
                 </div>
               </button>
             );
@@ -115,15 +115,15 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
               placeholder="SEARCH A CHARACTER OR SKILL"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:border-blue-500 outline-none font-black text-[11px] italic"
+              className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:border-blue-500 outline-none font-black text-base italic"
             />
           </div>
 
           {/* COMPACTED ROSTER GRID (6 Cols) */}
           <div className="space-y-1.5 bg-slate-900 p-2.5 rounded-2xl shadow-xl">
             <div className="flex justify-between items-center px-1">
-              <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Active Roster</span>
-              <span className={cn("text-[10px] font-black italic", ownedChars.size > 28 ? "text-rose-400" : "text-emerald-400")}>
+              <span className="text-sm font-black text-slate-500 uppercase tracking-widest">Active Roster</span>
+              <span className={cn("text-sm font-black italic", ownedChars.size > 28 ? "text-rose-400" : "text-emerald-400")}>
                 {ownedChars.size} / 28
               </span>
             </div>
@@ -154,9 +154,9 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
 
           {/* Filters */}
           <div className="flex flex-wrap gap-1">
-            <button onClick={() => setPosFilter(null)} className={cn("px-2 py-1 rounded-lg text-[9px] font-black border uppercase transition-all", !posFilter ? "bg-blue-600 border-blue-600 text-white shadow-md scale-105" : "bg-white text-slate-400")}>ALL</button>
+            <button onClick={() => setPosFilter(null)} className={cn("px-2 py-1 rounded-lg text-sm font-black border uppercase transition-all", !posFilter ? "bg-blue-600 border-blue-600 text-white shadow-md scale-105" : "bg-white text-slate-400")}>ALL</button>
             {POSITIONS.map((pos) => (
-              <button key={pos} onClick={() => setPosFilter(pos === posFilter ? null : pos)} className={cn("w-7 h-7 rounded-lg text-[10px] font-black border flex items-center justify-center transition-all", posFilter === pos ? "bg-blue-600 border-blue-600 text-white shadow-md scale-105" : "bg-white text-slate-400 hover:border-slate-300")}>{pos}</button>
+              <button key={pos} onClick={() => setPosFilter(pos === posFilter ? null : pos)} className={cn("w-7 h-7 rounded-lg text-sm font-black border flex items-center justify-center transition-all", posFilter === pos ? "bg-blue-600 border-blue-600 text-white shadow-md scale-105" : "bg-white text-slate-400 hover:border-slate-300")}>{pos}</button>
             ))}
           </div>
 
@@ -164,7 +164,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
           <div className="border-t border-slate-100 pt-2">
             <button 
               onClick={() => setIsMapExpanded(!isMapExpanded)}
-              className="flex items-center justify-between w-full text-[10px] font-black text-slate-600 hover:text-slate-800 transition-colors uppercase"
+              className="flex items-center justify-between w-full text-sm font-black text-slate-600 hover:text-slate-800 transition-colors uppercase"
             >
               <div className="flex items-center gap-1.5">
                 <MapPin size={12} className={mapFilter ? "text-blue-600" : ""} />
@@ -175,9 +175,9 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             
             {isMapExpanded && (
               <div className="flex flex-wrap gap-1 mt-2 max-h-32 overflow-y-auto pr-1 py-1 custom-scrollbar">
-                <button onClick={() => setMapFilter(null)} className={cn("px-2 py-1 rounded-lg text-[9px] font-black border uppercase", !mapFilter ? "bg-slate-800 border-slate-800 text-white shadow-sm" : "bg-white text-slate-400")}>ANY MAP</button>
+                <button onClick={() => setMapFilter(null)} className={cn("px-2 py-1 rounded-lg text-sm font-black border uppercase", !mapFilter ? "bg-slate-800 border-slate-800 text-white shadow-sm" : "bg-white text-slate-400")}>ANY MAP</button>
                 {AVAILABLE_MAPS.map((map) => (
-                  <button key={map} onClick={() => setMapFilter(map === mapFilter ? null : map)} className={cn("px-2 py-1 rounded-lg text-[9px] font-black border transition-all truncate max-w-[100px]", mapFilter === map ? "bg-blue-600 border-blue-600 text-white shadow-sm" : "bg-white text-slate-400 hover:border-slate-300")}>{map}</button>
+                  <button key={map} onClick={() => setMapFilter(map === mapFilter ? null : map)} className={cn("px-2 py-1 rounded-lg text-sm font-black border transition-all truncate max-w-[100px]", mapFilter === map ? "bg-blue-600 border-blue-600 text-white shadow-sm" : "bg-white text-slate-400 hover:border-slate-300")}>{map}</button>
                 ))}
               </div>
             )}

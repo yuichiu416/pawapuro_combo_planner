@@ -24,10 +24,10 @@ const Logo = ({ isCollapsed }: { isCollapsed: boolean }) => (
     </div>
     {!isCollapsed && (
       <div className="flex flex-col animate-in fade-in slide-in-from-left-2 duration-300">
-        <span className="font-black italic text-xl tracking-tighter text-slate-900 uppercase leading-none whitespace-nowrap">
+        <span className="font-black italic text-2xl tracking-tighter text-slate-900 uppercase leading-none whitespace-nowrap">
           Pawapuro 2024-2025
         </span>
-        <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest whitespace-nowrap">
+        <span className="text-sm font-bold text-blue-600 uppercase tracking-widest whitespace-nowrap">
           Combo Planner
         </span>
       </div>
@@ -55,7 +55,9 @@ const App: React.FC = () => {
     handleSave, 
     isSyncing, 
     lastSaved,
-    libraryGroups
+    libraryGroups = { withCombo: [], noCombo: [] },
+    fontScale = 1.0,
+    adjustFont,
   } = useComboManager();
 
   // --- UI STATE ---
@@ -83,11 +85,14 @@ const App: React.FC = () => {
   };
 
   const filteredLibrary = useMemo(() => {
+    if (!libraryGroups?.withCombo) return { withCombo: [], noCombo: [] };
+
     const filterFn = (name: string) => {
       const charData = (characters as any)[name];
       return (!posFilter || charData?.position === posFilter) && 
              (!mapFilter || charData?.encounter_map === mapFilter);
     };
+
     return { 
       withCombo: libraryGroups.withCombo.filter(filterFn), 
       noCombo: libraryGroups.noCombo.filter(filterFn) 
@@ -97,19 +102,19 @@ const App: React.FC = () => {
   const allMapNames = useMemo(() => Object.keys(mapsData), [mapsData]);
   const allExpanded = expandedMaps.size === allMapNames.length && allMapNames.length > 0;
 
-  // --- AUTO-EXPAND LOGIC ---
   const handleToggleRelated = () => {
     const nextValue = !filterRelatedOnly;
-    toggleRelatedFilter(); // Call hook logic
-    
-    // If we are turning the filter ON, expand all maps so the user (and the test) can see them
+    toggleRelatedFilter(); 
     if (nextValue) {
       setExpandedMaps(new Set(allMapNames));
     }
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-100 text-[1.15em] text-slate-900 overflow-hidden font-medium">
+    <div 
+      className="flex flex-col h-screen bg-slate-100 text-slate-900 overflow-hidden font-medium" 
+      style={{ fontSize: `${fontScale}rem` }}
+    >
       <div className="flex flex-1 overflow-hidden">
         
         {/* LEFT SIDEBAR: Character Selection */}
@@ -118,13 +123,20 @@ const App: React.FC = () => {
           isSidebarCollapsed ? "w-20" : "w-[24rem]"
         )}>
           <Logo isCollapsed={isSidebarCollapsed} />
+          
+          {/* ✨ High-Contrast Charcoal Tab Button */}
           <button
             data-testid="sidebar-collapse-btn"
             onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)} 
-            className="absolute top-12 -right-4 z-50 w-8 h-8 bg-white border border-slate-200 rounded-full flex items-center justify-center shadow-md hover:text-blue-600 transition-colors"
+            className={cn(
+              "absolute top-12 -right-4 z-50 w-8 h-8 flex items-center justify-center transition-all duration-200",
+              "bg-slate-800 text-white rounded-full shadow-md hover:bg-slate-900 hover:scale-110 active:scale-95",
+              "border-2 border-white"
+            )}
           >
-            {isSidebarCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+            {isSidebarCollapsed ? <ChevronRight size={18} strokeWidth={3} /> : <ChevronLeft size={18} strokeWidth={3} />}
           </button>
+
           <div className={cn(
             "h-full w-[24rem] overflow-hidden transition-opacity duration-300", 
             isSidebarCollapsed ? "opacity-0 pointer-events-none" : "opacity-100"
@@ -151,12 +163,14 @@ const App: React.FC = () => {
               showPositionIcon={showPositionIcon} 
               setShowPositionIcon={setShowPositionIcon} 
               filterRelatedOnly={filterRelatedOnly}
-              toggleRelatedFilter={handleToggleRelated} // USE WRAPPER
+              toggleRelatedFilter={handleToggleRelated} 
               toggleAllByType={toggleAllByType} 
               clearAll={clearAll} 
               onExpandAll={() => setExpandedMaps(new Set(allMapNames))} 
               onCollapseAll={() => setExpandedMaps(new Set())} 
               allExpanded={allExpanded} 
+              fontScale={fontScale}
+              onAdjustFont={adjustFont}
             />
 
             <div className="space-y-16">
@@ -196,8 +210,8 @@ const App: React.FC = () => {
                   <div className="bg-slate-200 p-4 rounded-full text-slate-400 mb-4">
                     <SearchX size={32} />
                   </div>
-                  <h3 className="text-xl font-black italic uppercase text-slate-400 tracking-tight">No related combos</h3>
-                  <p className="text-sm font-bold text-slate-400/80 uppercase tracking-widest mt-1">Select characters from the left to see their possible combos</p>
+                  <h3 className="text-2xl font-black italic uppercase text-slate-400 tracking-tight">No related combos</h3>
+                  <p className="text-base font-bold text-slate-400/80 uppercase tracking-widest mt-1">Select characters from the left to see their possible combos</p>
                 </div>
               )}
             </div>
@@ -209,14 +223,18 @@ const App: React.FC = () => {
           "relative bg-white border-l border-slate-200 transition-all duration-300 flex flex-col z-20", 
           isAnalysisCollapsed ? "w-0 border-l-0" : "w-[26rem]"
         )}>
+          
+          {/* ✨ High-Contrast Charcoal Tab Button */}
           <button 
             onClick={() => setIsAnalysisCollapsed(!isAnalysisCollapsed)} 
             className={cn(
-              "absolute top-12 z-50 w-8 h-8 bg-white border border-slate-200 rounded-full flex items-center justify-center shadow-md hover:text-blue-600 transition-colors", 
+              "absolute top-12 z-50 w-8 h-8 flex items-center justify-center transition-all duration-200",
+              "bg-slate-800 text-white rounded-full shadow-md hover:bg-slate-900 hover:scale-110 active:scale-95",
+              "border-2 border-white",
               isAnalysisCollapsed ? "right-2" : "-left-4"
             )}
           >
-            {isAnalysisCollapsed ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
+            {isAnalysisCollapsed ? <ChevronLeft size={18} strokeWidth={3} /> : <ChevronRight size={18} strokeWidth={3} />}
           </button>
 
           {!isAnalysisCollapsed && (
@@ -228,7 +246,7 @@ const App: React.FC = () => {
                     onClick={handleSave} 
                     disabled={isSyncing} 
                     className={cn(
-                      "w-full flex items-center justify-center gap-2 p-3 rounded-2xl font-black italic uppercase text-xs transition-all shadow-lg active:scale-95 disabled:opacity-50", 
+                      "w-full flex items-center justify-center gap-2 p-3 rounded-2xl font-black italic uppercase text-sm transition-all shadow-lg active:scale-95 disabled:opacity-50", 
                       isLoggedIn ? "bg-blue-600 text-white hover:bg-blue-700 shadow-blue-100" : "bg-slate-800 text-white hover:bg-slate-900 shadow-slate-200"
                     )}
                   >
@@ -236,7 +254,7 @@ const App: React.FC = () => {
                     {isSyncing ? 'Saving...' : isLoggedIn ? 'Cloud Sync' : 'Save Locally'}
                   </button>
                   {lastSaved && (
-                    <div className="flex items-center justify-center gap-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                    <div className="flex items-center justify-center gap-1.5 text-sm font-bold text-slate-400 uppercase tracking-widest">
                       <Clock size={10} /> Last synced: {lastSaved}
                     </div>
                   )}

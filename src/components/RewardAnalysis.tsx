@@ -43,7 +43,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
     <div className="h-full flex flex-col p-6 bg-slate-50 gap-4 overflow-hidden">
       {/* 1. HEADER */}
       <div className="flex items-center justify-between shrink-0">
-        <h2 className="text-xl font-black italic uppercase flex items-center gap-2 text-slate-800 tracking-tight">
+        <h2 className="text-2xl font-black italic uppercase flex items-center gap-2 text-slate-800 tracking-tight">
           <TrendingUp className="text-blue-600 w-5 h-5" /> Analysis
         </h2>
       </div>
@@ -63,11 +63,11 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
               item.err ? "border-rose-400 bg-rose-50" : "border-slate-200"
             )}
           >
-            <span className={cn("text-[9px] font-black uppercase leading-none mb-1", item.err ? "text-rose-500" : "text-slate-400")}>
+            <span className={cn("text-sm font-black uppercase leading-none mb-1", item.err ? "text-rose-500" : "text-slate-400")}>
               {item.label}
             </span>
-            <span className={cn("text-lg font-black italic leading-none", item.err ? "text-rose-600" : "text-slate-800")}>
-              {item.val}<span className="text-[10px] font-normal text-slate-300 ml-0.5">{item.max}</span>
+            <span className={cn("text-xl font-black italic leading-none", item.err ? "text-rose-600" : "text-slate-800")}>
+              {item.val}<span className="text-sm font-normal text-slate-300 ml-0.5">{item.max}</span>
             </span>
           </div>
         ))}
@@ -77,30 +77,30 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
       <section className="shrink-0 p-3 bg-emerald-50/50 border border-emerald-100 rounded-2xl">
         <div className="flex items-center gap-2 mb-2">
           <Zap size={14} className="text-emerald-500" />
-          <span className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Total Stats</span>
+          <span className="text-sm font-black text-emerald-600 uppercase tracking-widest">Total Stats</span>
         </div>
         <div className="grid grid-cols-2 gap-x-4 gap-y-1">
           {Object.entries(stats).length > 0 ? (
             Object.entries(stats).map(([stat, val]) => (
               <div key={stat} className="flex justify-between items-baseline border-b border-emerald-100/30 pb-0.5 ">
-                <span className="text-[10px] font-bold text-slate-500 uppercase">{stat}</span>
-                <span className="text-xs font-black text-emerald-700">+{val}</span>
+                <span className="text-sm font-bold text-slate-500 uppercase">{stat}</span>
+                <span className="text-sm font-black text-emerald-700">+{val}</span>
               </div>
             ))
           ) : (
-            <p className="col-span-2 text-[9px] text-slate-400 font-bold italic text-center py-1 uppercase">No active bonuses</p>
+            <p className="col-span-2 text-sm text-slate-400 font-bold italic text-center py-1 uppercase">No active bonuses</p>
           )}
         </div>
       </section>
 
-      {/* 4. VISIBLE SKILLS */}
+      {/* 4. Earned Skills */}
       <section className="flex-grow flex flex-col min-h-0 bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
         <div className="p-3 border-b border-slate-50 bg-slate-50/50 flex justify-between items-center shrink-0">
           <div className="flex items-center gap-2">
             <Award size={14} className="text-blue-500" />
-            <span className="text-[11px] font-black text-slate-700 uppercase tracking-tight">Visible Skills</span>
+            <span className="text-base font-black text-slate-700 uppercase tracking-tight">Earned Skills</span>
           </div>
-          <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-[9px] font-black rounded-lg border border-amber-200">
+          <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-sm font-black rounded-lg border border-amber-200">
             {goldSkillsCount} 金特
           </span>
         </div>
@@ -117,11 +117,11 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
                     isGold ? "bg-amber-50 border-amber-100" : "bg-white border-slate-50"
                   )}
                 >
-                  <span className={cn("text-[11px] font-black pr-2 font-sans truncate", isGold ? "text-amber-900" : "text-slate-600")}>
+                  <span className={cn("text-base font-black pr-2 font-sans truncate", isGold ? "text-amber-900" : "text-slate-600")}>
                     {skill.name}
                   </span>
                   <div className={cn(
-                    "px-1.5 py-0.5 text-[9px] font-black rounded-md italic tracking-tighter shrink-0",
+                    "px-1.5 py-0.5 text-sm font-black rounded-md italic tracking-tighter shrink-0",
                     isGold ? "bg-amber-500 text-white" : "bg-slate-100 text-slate-500"
                   )}>
                     LV{skill.level}
@@ -132,7 +132,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
           ) : (
             <div className="h-full flex flex-col items-center justify-center opacity-30 py-6">
               <Award size={32} className="mb-2 text-slate-400" />
-              <p className="text-[9px] font-black uppercase italic text-slate-500 text-center px-4">
+              <p className="text-sm font-black uppercase italic text-slate-500 text-center px-4">
                 No Skills in current view
               </p>
             </div>
@@ -146,7 +146,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
           <div className="p-3 bg-rose-50 flex items-center justify-between shrink-0 border-b border-rose-100">
             <div className="flex items-center gap-2">
               <AlertCircle size={14} className="text-rose-500" />
-              <span className="text-[10px] font-black text-rose-600 uppercase tracking-tighter">Missing (In Preview)</span>
+              <span className="text-sm font-black text-rose-600 uppercase tracking-tighter">Missing (In Preview)</span>
             </div>
           </div>
           
@@ -166,14 +166,14 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
                         onError={(e) => (e.currentTarget.src = "/assets/icons_split/placeholder.png")}
                       />
                     </div>
-                    <span className="text-[10px] font-bold text-slate-700 truncate uppercase tracking-tight">
+                    <span className="text-sm font-bold text-slate-700 truncate uppercase tracking-tight">
                       {char}
                     </span>
                   </div>
                   
                   <div className="flex items-center gap-1 px-1.5 py-0.5 bg-rose-100 rounded-md shrink-0 border border-rose-200/50">
                     <MapPin size={8} className="text-rose-500" />
-                    <span className="text-[8px] font-black italic text-rose-600 uppercase tracking-tighter">
+                    <span className="text-sm font-black italic text-rose-600 uppercase tracking-tighter">
                       {mapName}
                     </span>
                   </div>

@@ -90,8 +90,8 @@ export const AuthButton = () => {
             )}
           </div>
           <div className="flex flex-col overflow-hidden">
-            <span className="text-[10px] font-black text-blue-400 uppercase tracking-tighter">Connected</span>
-            <span className="text-[11px] font-black truncate max-w-[100px] leading-tight">
+            <span className="text-sm font-black text-blue-400 uppercase tracking-tighter">Connected</span>
+            <span className="text-base font-black truncate max-w-[100px] leading-tight">
               {fullName}
             </span>
           </div>
@@ -111,7 +111,7 @@ export const AuthButton = () => {
   return (
     <button
       onClick={handleLogin}
-      className="w-full flex items-center justify-center gap-3 p-4 bg-white border-2 border-slate-100 rounded-3xl font-black italic uppercase text-xs hover:border-blue-200 hover:bg-blue-50 transition-all shadow-sm group"
+      className="w-full flex items-center justify-center gap-3 p-4 bg-white border-2 border-slate-100 rounded-3xl font-black italic uppercase text-sm hover:border-blue-200 hover:bg-blue-50 transition-all shadow-sm group"
     >
       <LogIn size={18} className="text-blue-600 group-hover:scale-110 transition-transform" />
       Sign in with Google

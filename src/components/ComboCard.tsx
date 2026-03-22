@@ -79,7 +79,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5">
             <Star size={8} className="text-amber-400 fill-amber-400" />
-            <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Combo Rewards</span>
+            <span className="text-sm font-black text-slate-400 uppercase tracking-widest">Combo Rewards</span>
           </div>
           {isSelected && hasMissing && (
             <button
@@ -87,7 +87,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                 e.stopPropagation();
                 onAddCharacters(missingChars);
               }}
-              className="flex items-center gap-1 px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-[9px] font-black uppercase rounded-lg transition-all shadow-sm active:scale-95"
+              className="flex items-center gap-1 px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-black uppercase rounded-lg transition-all shadow-sm active:scale-95"
             >
               <UserPlus size={10} />
               Add {missingChars.length}
@@ -112,7 +112,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                 )}
               >
                 <div className={cn(
-                  "px-1.5 py-0.5 rounded-md text-[8px] font-black shrink-0 border uppercase flex items-center gap-1",
+                  "px-1.5 py-0.5 rounded-md text-sm font-black shrink-0 border uppercase flex items-center gap-1",
                   hasHit 
                     ? "bg-red-600 border-red-600 text-white" 
                     : isGold 
@@ -125,7 +125,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                 
                 <p 
                   className={cn(
-                    "text-[10px] font-bold truncate flex-1 transition-colors",
+                    "text-sm font-bold truncate flex-1 transition-colors",
                     hasHit ? "text-red-900" : "text-slate-500"
                   )} 
                   title={detail?.description}

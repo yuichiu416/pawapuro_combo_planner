@@ -40,7 +40,7 @@ const SkillList: React.FC = () => {
 
       {/* Results Count */}
       <div className="px-2 flex justify-between items-center">
-        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+        <span className="text-sm font-black text-slate-400 uppercase tracking-widest">
           Found {filteredSkills.length} Skills
         </span>
       </div>
@@ -54,7 +54,7 @@ const SkillList: React.FC = () => {
               className="group flex items-start gap-4 p-5 bg-white border-2 border-slate-100 rounded-2xl hover:border-blue-200 hover:shadow-md transition-all duration-200"
             >
               <div className={cn(
-                "mt-1 px-3 py-1 rounded-lg text-[10px] font-black uppercase whitespace-nowrap", 
+                "mt-1 px-3 py-1 rounded-lg text-sm font-black uppercase whitespace-nowrap", 
                 getSkillTypeStyle(skill.type)
               )}>
                 {skill.type || 'UNKNOWN'}
@@ -62,11 +62,11 @@ const SkillList: React.FC = () => {
               
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <h4 className="font-black text-slate-800 text-lg">
+                  <h4 className="font-black text-slate-800 text-xl">
                     {skill.name}
                   </h4>
                 </div>
-                <p className="text-sm text-slate-500 font-medium leading-relaxed mt-1">
+                <p className="text-base text-slate-500 font-medium leading-relaxed mt-1">
                   {skill.description}
                 </p>
               </div>

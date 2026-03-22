@@ -51,7 +51,7 @@ export const CharacterGrid: React.FC<CharacterGridProps> = ({
               />
             </div>
             <span className={cn(
-              "text-[12px] font-black uppercase transition-colors duration-200", 
+              "text-lg font-black uppercase transition-colors duration-200", 
               isOwned ? "text-emerald-700 group-hover:text-emerald-500" : "text-slate-400 group-hover:text-blue-600"
             )}>
               {name}

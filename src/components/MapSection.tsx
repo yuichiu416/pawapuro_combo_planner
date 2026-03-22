@@ -55,13 +55,13 @@ export const MapSection: React.FC<MapSectionProps> = ({
               {mapName}
             </h2>
             <div className="flex items-center gap-3">
-              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+              <p className="text-sm font-black text-slate-400 uppercase tracking-widest">
                 {combos?.length || 0} Matches Found
               </p>
 
               {progress && (
                 <span className={cn(
-                  "text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded transition-all shadow-sm",
+                  "text-sm font-black uppercase tracking-widest px-2 py-0.5 rounded transition-all shadow-sm",
                   isComplete 
                     ? "bg-emerald-100 text-emerald-700 ring-1 ring-emerald-200" 
                     : "bg-blue-50 text-blue-600 ring-1 ring-blue-100"
