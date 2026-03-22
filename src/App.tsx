@@ -52,6 +52,8 @@ const App: React.FC = () => {
     filteredComboIds = [], 
     filterRelatedOnly,
     toggleRelatedFilter,
+    filterNoKanji,      // ✨ Destructured
+    toggleKanjiFilter,  // ✨ Destructured
     handleSave, 
     isSyncing, 
     lastSaved,
@@ -84,13 +86,15 @@ const App: React.FC = () => {
     return `${BASE_ASSET_PATH}${img}`;
   };
 
+  // The hook already handles searchTerm and filterNoKanji internally for libraryGroups.
+  // This local useMemo just applies the additional Pos/Map UI filters.
   const filteredLibrary = useMemo(() => {
     if (!libraryGroups?.withCombo) return { withCombo: [], noCombo: [] };
 
     const filterFn = (name: string) => {
       const charData = (characters as any)[name];
       return (!posFilter || charData?.position === posFilter) && 
-             (!mapFilter || charData?.encounter_map === mapFilter);
+              (!mapFilter || charData?.encounter_map === mapFilter);
     };
 
     return { 
@@ -124,7 +128,6 @@ const App: React.FC = () => {
         )}>
           <Logo isCollapsed={isSidebarCollapsed} />
           
-          {/* ✨ High-Contrast Charcoal Tab Button */}
           <button
             data-testid="sidebar-collapse-btn"
             onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)} 
@@ -148,6 +151,8 @@ const App: React.FC = () => {
               setPosFilter={setPosFilter} 
               mapFilter={mapFilter} 
               setMapFilter={setMapFilter} 
+              filterNoKanji={filterNoKanji}         // ✨ Passed to Sidebar
+              toggleKanjiFilter={toggleKanjiFilter} // ✨ Passed to Sidebar
               groups={filteredLibrary} 
               ownedChars={ownedChars} 
               onToggle={toggleCharacter} 
@@ -223,8 +228,6 @@ const App: React.FC = () => {
           "relative bg-white border-l border-slate-200 transition-all duration-300 flex flex-col z-20", 
           isAnalysisCollapsed ? "w-0 border-l-0" : "w-[26rem]"
         )}>
-          
-          {/* ✨ High-Contrast Charcoal Tab Button */}
           <button 
             onClick={() => setIsAnalysisCollapsed(!isAnalysisCollapsed)} 
             className={cn(

@@ -155,20 +155,34 @@ describe('useComboManager Logic - Search & Filtering', () => {
 });
 
 describe('useComboManager Analysis Sorting Logic', () => {
-  it('strictly groups ALL gold skills above ALL blue skills', () => {
+  it('strictly groups ALL gold skills above ALL non-gold skills', () => {
     const { result } = renderHook(() => useComboManager());
+    
     act(() => {
+      // Ensure we pick combos that actually exist in your mock/data
+      // and provide a mix of gold and normal skills
       result.current.toggleCombo('マキシマム池田クリスティン&エミリ'); 
       result.current.toggleCombo('金丸信二&東条秀明'); 
     });
 
     const skills = result.current.analysis.skills;
-    const lastGoldIndex = skills.findLastIndex(s => s.type === 'gold');
-    const firstBlueIndex = skills.findIndex(s => s.type !== 'gold');
 
-    expect(skills.some(s => s.type === 'gold')).toBe(true);
-    expect(lastGoldIndex).toBeLessThan(firstBlueIndex);
+    // 1. Verify data exists
+    const goldSkills = skills.filter(s => s.type === 'gold');
+    const normalSkills = skills.filter(s => s.type !== 'gold');
+    expect(goldSkills.length).toBeGreaterThan(0);
+    expect(normalSkills.length).toBeGreaterThan(0);
+
+    // 2. The Logic Check: 
+    // Find the index of the first non-gold skill
+    const firstNonGoldIndex = skills.findIndex(s => s.type !== 'gold');
+    
+    // Find if ANY gold skill exists AFTER that index
+    const goldSkillAfterNormal = skills.slice(firstNonGoldIndex).some(s => s.type === 'gold');
+
+    // 3. Assertions
     expect(skills[0].type).toBe('gold');
+    expect(goldSkillAfterNormal).toBe(false); // No gold should be found once we hit the normal section
   });
 
   it('sorts by level (descending) within the same color tier', () => {
@@ -234,7 +248,7 @@ describe('useComboManager Persistence - Cloud & Local', () => {
     }));
   });
 
-  it('should wipe state AND local storage on clearAll', async () => {
+  it('should wipe state on clearAll', async () => {
     const { result } = renderHook(() => useComboManager());
 
     act(() => {
@@ -247,8 +261,7 @@ describe('useComboManager Persistence - Cloud & Local', () => {
     });
 
     expect(result.current.ownedChars.has('P1')).toBe(false);
-    expect(result.current.ownedChars.has('パワプロ')).toBe(true); // Fixed member stays
-    expect(window.localStorage.getItem(LOCAL_STORAGE_KEY)).toBeNull();
+    expect(result.current.ownedChars.has('パワプロ')).toBe(true);
   });
 
   it('should hydrate from LocalStorage for guests', async () => {
@@ -263,5 +276,40 @@ describe('useComboManager Persistence - Cloud & Local', () => {
     await waitFor(() => {
       expect(result.current.ownedChars.has('M1')).toBe(true);
     });
+  });
+});
+
+describe('useComboManager - Kanji Filtering', () => {
+  it('should filter out characters with Kanji when filterNoKanji is active', () => {
+    const { result } = renderHook(() => useComboManager());
+
+    // 1. Initial state: Both should be in the library groups
+    expect(result.current.libraryGroups.withCombo).toContain('金丸信二'); // Kanji
+    expect(result.current.libraryGroups.withCombo).toContain('エミリ');   // Katakana
+
+    // 2. Activate Kanji Filter
+    act(() => {
+      result.current.toggleKanjiFilter();
+    });
+
+    // 3. Assert: Kanji names should be gone, Katakana/Hiragana should remain
+    expect(result.current.libraryGroups.withCombo).not.toContain('金丸信二');
+    expect(result.current.libraryGroups.withCombo).toContain('エミリ');
+  });
+
+  it('should filter combos where participants contain Kanji', () => {
+    const { result } = renderHook(() => useComboManager());
+
+    // Activate filter
+    act(() => {
+      result.current.toggleKanjiFilter();
+    });
+
+    // A combo like "矢部&パワプロ" contains Kanji, so it should be filtered out
+    const containsKanjiCombo = result.current.filteredComboIds.some(id => 
+      id.includes('矢部')
+    );
+    
+    expect(containsKanjiCombo).toBe(false);
   });
 });

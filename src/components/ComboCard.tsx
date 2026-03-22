@@ -62,8 +62,12 @@ export const ComboCard: React.FC<ComboCardProps> = ({
       )}>
         <CheckCircle2 size={24} />
       </div>
-      {/* 2. CHARACTERS */}
-      <div className="shrink-0 flex items-center border-r border-slate-100 pr-4">
+
+      {/* 2. CHARACTERS SECTION - Added data-testid for layout tests */}
+      <div 
+        data-testid="character-section"
+        className="shrink-0 flex items-center border-r border-slate-100 pr-4"
+      >
         <CharacterGrid 
           characters={names}
           ownedChars={ownedChars}
@@ -74,13 +78,14 @@ export const ComboCard: React.FC<ComboCardProps> = ({
         />
       </div>
 
-      {/* 3. REWARDS - Tightened internal gaps */}
+      {/* 3. REWARDS SECTION */}
       <div className="flex-1 flex flex-col gap-1.5 min-w-0 overflow-hidden">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5">
             <Star size={8} className="text-amber-400 fill-amber-400" />
             <span className="text-sm font-black text-slate-400 uppercase tracking-widest">Combo Rewards</span>
           </div>
+          
           {isSelected && hasMissing && (
             <button
               onClick={(e) => {
@@ -104,6 +109,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
             return (
               <div 
                 key={`${sk.name}-${idx}`} 
+                data-testid={`skill-row-${sk.name}`}
                 className={cn(
                   "flex items-center gap-2 px-1.5 py-0.5 rounded-lg transition-all border",
                   hasHit 
@@ -111,14 +117,17 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                     : "bg-transparent border-transparent"
                 )}
               >
-                <div className={cn(
-                  "px-1.5 py-0.5 rounded-md text-sm font-black shrink-0 border uppercase flex items-center gap-1",
-                  hasHit 
-                    ? "bg-red-600 border-red-600 text-white" 
-                    : isGold 
-                      ? "bg-amber-50 border-amber-200 text-amber-700" 
-                      : "bg-blue-50 border-blue-100 text-blue-700"
-                )}>
+                <div 
+                  data-testid={`skill-badge-${sk.name}`}
+                  className={cn(
+                    "px-1.5 py-0.5 rounded-md text-sm font-black shrink-0 border uppercase flex items-center gap-1",
+                    hasHit 
+                      ? "bg-red-600 border-red-600 text-white" 
+                      : isGold 
+                        ? "bg-amber-50 border-amber-200 text-amber-700" 
+                        : "bg-blue-50 border-blue-100 text-blue-700"
+                  )}
+                >
                   {sk.verified && <BadgeCheck size={10} className={hasHit ? "text-white" : "text-emerald-500"} />}
                   {sk.name} <span className={hasHit ? "text-white/70" : "opacity-60"}>L{sk.level}</span>
                 </div>

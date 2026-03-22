@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Search, ChevronDown, ChevronRight, MapPin, X } from 'lucide-react';
+import { Search, ChevronDown, ChevronRight, MapPin, X, Languages } from 'lucide-react';
 import { cn } from '../utils/style';
 import { POSITIONS } from '@/constants';
 import charactersDataRaw from '@/data/characters.json';
@@ -26,6 +26,8 @@ interface CharacterSidebarProps {
   setPosFilter: (val: string | null) => void;
   mapFilter: string | null;
   setMapFilter: (val: string | null) => void;
+  filterNoKanji: boolean;         // ✨ New Prop
+  toggleKanjiFilter: () => void;  // ✨ New Prop
   groups: { withCombo: string[]; noCombo: string[] };
   ownedChars: Set<string>;
   onToggle: (name: string) => void;
@@ -39,6 +41,8 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
   setPosFilter,
   mapFilter,
   setMapFilter,
+  filterNoKanji,
+  toggleKanjiFilter,
   groups,
   ownedChars,
   onToggle,
@@ -90,7 +94,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
                   <img src={getImagePath(name, true)} alt={name} className="absolute inset-0 w-full h-full object-cover" />
                 </div>
                 <div className="min-w-0">
-                  <p className={cn("text-base font-blacktracking-tighter truncate", isOwned ? "text-emerald-950" : "text-slate-700")}>
+                  <p className={cn("text-base font-black tracking-tighter truncate", isOwned ? "text-emerald-950" : "text-slate-700")}>
                     {name}
                   </p>
                   <p className="text-sm font-bold text-slate-400 uppercase">{data?.position || 'Manager'}</p>
@@ -115,15 +119,15 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
               placeholder="SEARCH A CHARACTER OR SKILL"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:border-blue-500 outline-none font-black text-base italic"
+              className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:border-blue-500 outline-none font-black text-base italic uppercase"
             />
           </div>
 
-          {/* COMPACTED ROSTER GRID (6 Cols) */}
+          {/* ROSTER GRID */}
           <div className="space-y-1.5 bg-slate-900 p-2.5 rounded-2xl shadow-xl">
             <div className="flex justify-between items-center px-1">
               <span className="text-sm font-black text-slate-500 uppercase tracking-widest">Active Roster</span>
-              <span className={cn("text-sm font-black italic", ownedChars.size > 28 ? "text-rose-400" : "text-emerald-400")}>
+              <span className={cn("text-sm font-black italic", ownedChars.size > 25 ? "text-rose-400" : "text-emerald-400")}>
                 {ownedChars.size} / 28
               </span>
             </div>
@@ -131,7 +135,6 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
               {rosterSlots.map((charName, i) => (
                 <button 
                   key={charName ? `slot-${charName}` : `empty-${i}`} 
-                  data-testid={charName ? `roster-slot-${charName}` : `roster-empty-${i}`}
                   disabled={!charName}
                   onClick={() => charName && onToggle(charName)}
                   className={cn(
@@ -152,11 +155,45 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             </div>
           </div>
 
-          {/* Filters */}
-          <div className="flex flex-wrap gap-1">
-            <button onClick={() => setPosFilter(null)} className={cn("px-2 py-1 rounded-lg text-sm font-black border uppercase transition-all", !posFilter ? "bg-blue-600 border-blue-600 text-white shadow-md scale-105" : "bg-white text-slate-400")}>ALL</button>
+          {/* Filters Area */}
+          <div className="flex flex-wrap items-center gap-1.5">
+            {/* Kanji Filter Toggle */}
+            <button 
+              onClick={toggleKanjiFilter}
+              title="Toggle Katakana Only"
+              className={cn(
+                "w-8 h-8 rounded-lg text-sm font-black border flex items-center justify-center transition-all",
+                filterNoKanji 
+                  ? "bg-purple-600 border-purple-600 text-white shadow-md scale-105" 
+                  : "bg-white text-slate-400 border-slate-200 hover:border-slate-300"
+              )}
+            >
+              ア
+            </button>
+
+            <div className="w-[1px] h-6 bg-slate-200 mx-0.5" />
+
+            <button 
+              onClick={() => setPosFilter(null)} 
+              className={cn(
+                "px-2.5 h-8 rounded-lg text-xs font-black border uppercase transition-all", 
+                !posFilter ? "bg-blue-600 border-blue-600 text-white shadow-md" : "bg-white text-slate-400 border-slate-200"
+              )}
+            >
+              ALL
+            </button>
+            
             {POSITIONS.map((pos) => (
-              <button key={pos} onClick={() => setPosFilter(pos === posFilter ? null : pos)} className={cn("w-7 h-7 rounded-lg text-sm font-black border flex items-center justify-center transition-all", posFilter === pos ? "bg-blue-600 border-blue-600 text-white shadow-md scale-105" : "bg-white text-slate-400 hover:border-slate-300")}>{pos}</button>
+              <button 
+                key={pos} 
+                onClick={() => setPosFilter(pos === posFilter ? null : pos)} 
+                className={cn(
+                  "w-8 h-8 rounded-lg text-xs font-black border flex items-center justify-center transition-all", 
+                  posFilter === pos ? "bg-blue-600 border-blue-600 text-white shadow-md scale-105" : "bg-white text-slate-400 border-slate-200 hover:border-slate-300"
+                )}
+              >
+                {pos}
+              </button>
             ))}
           </div>
 
@@ -175,9 +212,9 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             
             {isMapExpanded && (
               <div className="flex flex-wrap gap-1 mt-2 max-h-32 overflow-y-auto pr-1 py-1 custom-scrollbar">
-                <button onClick={() => setMapFilter(null)} className={cn("px-2 py-1 rounded-lg text-sm font-black border uppercase", !mapFilter ? "bg-slate-800 border-slate-800 text-white shadow-sm" : "bg-white text-slate-400")}>ANY MAP</button>
+                <button onClick={() => setMapFilter(null)} className={cn("px-2 py-1 rounded-lg text-sm font-black border uppercase", !mapFilter ? "bg-slate-800 border-slate-800 text-white shadow-sm" : "bg-white text-slate-400 border-slate-200")}>ANY MAP</button>
                 {AVAILABLE_MAPS.map((map) => (
-                  <button key={map} onClick={() => setMapFilter(map === mapFilter ? null : map)} className={cn("px-2 py-1 rounded-lg text-sm font-black border transition-all truncate max-w-[100px]", mapFilter === map ? "bg-blue-600 border-blue-600 text-white shadow-sm" : "bg-white text-slate-400 hover:border-slate-300")}>{map}</button>
+                  <button key={map} onClick={() => setMapFilter(map === mapFilter ? null : map)} className={cn("px-2 py-1 rounded-lg text-sm font-black border transition-all truncate max-w-[100px]", mapFilter === map ? "bg-blue-600 border-blue-600 text-white shadow-sm" : "bg-white text-slate-400 border-slate-200 hover:border-slate-300")}>{map}</button>
                 ))}
               </div>
             )}

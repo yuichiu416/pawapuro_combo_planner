@@ -15,21 +15,21 @@ const charactersMapping = charactersMappingRaw as any;
 
 const FIXED_MEMBERS = ["パワプロ", "矢部明雄"]; 
 const LOCAL_STORAGE_KEY = 'pawapuro_planner_local_v1';
+const KANJI_REGEX = /[\u4e00-\u9faf]/;
 
 export const useComboManager = () => {
   const [selectedNames, setSelectedNames] = useState<Set<string>>(new Set(FIXED_MEMBERS));
   const [selectedComboIds, setSelectedComboIds] = useState<Set<string>>(new Set());
   const [searchTerm, setSearchTerm] = useState('');
   const [filterRelatedOnly, setFilterRelatedOnly] = useState(false);
+  const [filterNoKanji, setFilterNoKanji] = useState(false); // ✨ New State
   const [isSyncing, setIsSyncing] = useState(false);
   const [lastSaved, setLastSaved] = useState<string | null>(null);
-  
-  // ✨ Global Font Scaling State
   const [fontScale, setFontScale] = useState(1.0);
 
-  // Apply scale to document root so rem units scale app-wide
+  // Apply font scale to document root
   useEffect(() => {
-    document.documentElement.style.fontSize = `${fontScale * 100}%`;
+    document.documentElement.style.fontSize = `${Math.round(fontScale * 100)}%`;
   }, [fontScale]);
 
   useEffect(() => {
@@ -107,6 +107,10 @@ export const useComboManager = () => {
     setFilterRelatedOnly(prev => !prev);
   }, []);
 
+  const toggleKanjiFilter = useCallback(() => {
+    setFilterNoKanji(prev => !prev);
+  }, []);
+
   const adjustFont = useCallback((delta: number) => {
     setFontScale(prev => {
       const next = Math.min(Math.max(prev + delta, 0.8), 1.5);
@@ -119,6 +123,7 @@ export const useComboManager = () => {
     return Object.entries(combosData)
       .filter(([_, combo]) => {
         const comboId = combo.characters.join('&');
+        
         const passesSearch = !search || 
           comboId.toLowerCase().includes(search) || 
           combo.characters.some(c => c.toLowerCase().includes(search)) ||
@@ -127,10 +132,14 @@ export const useComboManager = () => {
         const passesRelated = !filterRelatedOnly || 
           combo.characters.some(char => selectedNames.has(char));
 
-        return passesSearch && passesRelated;
+        // ✨ Kanji Check for Combos
+        const passesKanji = !filterNoKanji || 
+          combo.characters.every(char => !KANJI_REGEX.test(char));
+
+        return passesSearch && passesRelated && passesKanji;
       })
       .map(([_, combo]) => combo.characters.join('&')); 
-  }, [searchTerm, filterRelatedOnly, selectedNames]);
+  }, [searchTerm, filterRelatedOnly, selectedNames, filterNoKanji]);
 
   const addAllMissingToRoster = useCallback(() => {
     const missingInView = new Set<string>();
@@ -179,32 +188,44 @@ export const useComboManager = () => {
       });
     });
 
+    const sortedSkills = Object.entries(skillsMap).map(([name, level]) => ({ 
+      name, 
+      level: Math.min(level, 5), 
+      type: skillsData[name]?.type || 'normal' 
+    })).sort((a, b) => {
+      if (a.type === 'gold' && b.type !== 'gold') return -1;
+      if (a.type !== 'gold' && b.type === 'gold') return 1;
+      return b.level - a.level;
+    });
+
+    const rosterErrors = {
+      pitcher: pCount > 8 || pCount < 6,
+      fielder: fCount > 17 || fCount < 15,
+      manager: mCount > 3,
+      total: (pCount + fCount) > 23
+    };
+
     return {
       stats,
-      skills: Object.entries(skillsMap).map(([name, level]) => ({ 
-        name, 
-        level: Math.min(level, 5), 
-        type: skillsData[name]?.type || 'normal' 
-      })).sort((a, b) => b.level - a.level),
+      skills: sortedSkills,
       missingCharacters: Array.from(missingSet),
-      roster: { pitcher: pCount, fielder: fCount, manager: mCount, total: pCount + fCount + FIXED_MEMBERS.length }
+      totalSelectedCombos: selectedComboIds.size,
+      mapCompletion,
+      roster: { 
+        pitcher: pCount, fielder: fCount, manager: mCount,
+        total: pCount + fCount + FIXED_MEMBERS.length,
+        errors: rosterErrors,
+        isValid: !rosterErrors.pitcher && !rosterErrors.fielder && !rosterErrors.manager && !rosterErrors.total
+      }
     };
   }, [selectedNames, selectedComboIds, filteredComboIds]);
 
-  const libraryGroups = useMemo(() => {
-    const withC: string[] = [];
-    const noC: string[] = [];
-    const search = searchTerm.toLowerCase().trim();
-    const participants = new Set(Object.values(combosData).flatMap(c => c.characters));
-
-    Object.keys(charactersData).forEach(name => {
-      if (FIXED_MEMBERS.includes(name)) return;
-      if (search && !name.toLowerCase().includes(search)) return;
-      participants.has(name) ? withC.push(name) : noC.push(name);
-    });
-
-    return { withCombo: withC, noCombo: noC };
-  }, [searchTerm]);
+  const clearAll = useCallback(() => { 
+    setSelectedNames(new Set(FIXED_MEMBERS)); 
+    setSelectedComboIds(new Set()); 
+    setFilterRelatedOnly(false);
+    setFilterNoKanji(false);
+  }, []);
 
   return {
     ownedChars: selectedNames,
@@ -213,6 +234,8 @@ export const useComboManager = () => {
     setSearchTerm,
     filterRelatedOnly,
     toggleRelatedFilter,
+    filterNoKanji,      // ✨ Exported
+    toggleKanjiFilter,  // ✨ Exported
     filteredComboIds,
     toggleCharacter,
     toggleCombo,
@@ -223,18 +246,18 @@ export const useComboManager = () => {
     analysis,
     fontScale,
     adjustFont,
-    libraryGroups,
     mapsData,
     characterMapping: { idToName: charactersMapping, data: charactersData },
-    clearAll: () => {
-        setSelectedNames(new Set(FIXED_MEMBERS));
-        setSelectedComboIds(new Set());
-    },
+    clearAll,
     toggleAllByType: (type: 'pitcher' | 'fielder') => {
       const targetType = type === 'pitcher' ? 'pitcher' : 'fielder';
       const goldCombos = Object.values(combosData).filter(c => 
-        c.rewards?.skills?.some(s => skillsData[s.name]?.type === 'gold' && skillsData[s.name]?.category === targetType)
+        c.rewards?.skills?.some(s => {
+          const detail = skillsData[s.name];
+          return detail?.type === 'gold' && detail?.category === targetType;
+        })
       ).map(c => c.characters.join('&'));
+      
       if (goldCombos.length === 0) return;
       const allSelected = goldCombos.every(id => selectedComboIds.has(id));
       setSelectedComboIds(prev => {
@@ -242,6 +265,21 @@ export const useComboManager = () => {
         goldCombos.forEach(id => allSelected ? next.delete(id) : next.add(id));
         return next;
       });
-    }
+    },
+    libraryGroups: useMemo(() => {
+      const withC: string[] = [], noC: string[] = [], search = searchTerm.toLowerCase().trim();
+      const participants = new Set(Object.values(combosData).flatMap(c => c.characters));
+      
+      Object.keys(charactersData).forEach(name => {
+        if (FIXED_MEMBERS.includes(name)) return;
+        if (search && !name.toLowerCase().includes(search)) return;
+        
+        // ✨ Kanji Check for Library
+        if (filterNoKanji && KANJI_REGEX.test(name)) return;
+
+        participants.has(name) ? withC.push(name) : noC.push(name);
+      });
+      return { withCombo: withC, noCombo: noC };
+    }, [searchTerm, filterNoKanji])
   };
 };

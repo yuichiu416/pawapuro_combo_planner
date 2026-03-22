@@ -34,5 +34,11 @@
     "type": "blue", 
     "category": "pitcher", 
     "description": "ストレートのキレが良くなる" 
+  },
+  "窮地◯": { 
+    "name": "窮地◯", 
+    "type": "blue", 
+    "category": "pitcher", 
+    "description": "ストライクカウントの数のぶん、ミート+4、パワー+4" 
   }
 }

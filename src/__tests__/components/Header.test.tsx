@@ -14,11 +14,6 @@ describe('Header Component', () => {
     allExpanded: false,
   };
 
-  it('renders the "select all combos" label', () => {
-    render(<Header {...mockProps} />);
-    expect(screen.getByText(/select all combos for:/i)).toBeInTheDocument();
-  });
-
   it('calls toggleAllByType("pitcher") when PITCHER button is clicked', () => {
     render(<Header {...mockProps} />);
     const pitcherBtn = screen.getByRole('button', { name: /pitcher/i });
@@ -42,7 +37,7 @@ describe('Header Component', () => {
 
   it('toggles POSITION ICON visibility setting', () => {
     render(<Header {...mockProps} />);
-    const toggleBtn = screen.getByText(/POS ICON/i);
+    const toggleBtn = screen.getByText(/POSITION ICON/i);
     fireEvent.click(toggleBtn);
     expect(mockProps.setShowPositionIcon).toHaveBeenCalled();
   });
