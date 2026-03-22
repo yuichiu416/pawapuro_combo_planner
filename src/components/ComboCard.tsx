@@ -129,7 +129,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                   )}
                 >
                   {sk.verified && <BadgeCheck size={10} className={hasHit ? "text-white" : "text-emerald-500"} />}
-                  {sk.name} <span className={hasHit ? "text-white/70" : "opacity-60"}>L{sk.level}</span>
+                  {sk.name} <span className={hasHit ? "text-white/70" : "opacity-60"}>Lv{sk.level}</span>
                 </div>
                 
                 <p 

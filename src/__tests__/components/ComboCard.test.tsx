@@ -41,8 +41,8 @@ describe('ComboCard Rewards Display & Search Highlighting', () => {
   it('should display the skill name and correctly formatted level', () => {
     render(<ComboCard {...mockProps} />);
     expect(screen.getByText(/パワーヒッター/i)).toBeInTheDocument();
-    // Component renders "L3", so we check for L followed by the level
-    expect(screen.getByText(/L3/i)).toBeInTheDocument();
+    // Component renders "Lv3", so we check for Lv followed by the level
+    expect(screen.getByText(/Lv3/i)).toBeInTheDocument();
   });
 
   it('should display the skill description from the mocked database', () => {

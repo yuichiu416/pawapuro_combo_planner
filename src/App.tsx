@@ -52,8 +52,8 @@ const App: React.FC = () => {
     filteredComboIds = [], 
     filterRelatedOnly,
     toggleRelatedFilter,
-    filterNoKanji,      // ✨ Destructured
-    toggleKanjiFilter,  // ✨ Destructured
+    filterNoKanji,      
+    toggleKanjiFilter,  
     handleSave, 
     isSyncing, 
     lastSaved,
@@ -86,8 +86,23 @@ const App: React.FC = () => {
     return `${BASE_ASSET_PATH}${img}`;
   };
 
-  // The hook already handles searchTerm and filterNoKanji internally for libraryGroups.
-  // This local useMemo just applies the additional Pos/Map UI filters.
+  /**
+   * Defensive handler for adding characters from a combo.
+   * Handles both "CharA&CharB" (string) or ["CharA", "CharB"] (array).
+   */
+  const handleAddCharacters = (input: string | string[]) => {
+    const names = typeof input === 'string' ? input.split('&') : input;
+    
+    if (!Array.isArray(names)) return;
+
+    names.forEach(name => {
+      // Only toggle if the character isn't already in the roster
+      if (!ownedChars.has(name)) {
+        toggleCharacter(name);
+      }
+    });
+  };
+
   const filteredLibrary = useMemo(() => {
     if (!libraryGroups?.withCombo) return { withCombo: [], noCombo: [] };
 
@@ -151,8 +166,8 @@ const App: React.FC = () => {
               setPosFilter={setPosFilter} 
               mapFilter={mapFilter} 
               setMapFilter={setMapFilter} 
-              filterNoKanji={filterNoKanji}         // ✨ Passed to Sidebar
-              toggleKanjiFilter={toggleKanjiFilter} // ✨ Passed to Sidebar
+              filterNoKanji={filterNoKanji}        
+              toggleKanjiFilter={toggleKanjiFilter} 
               groups={filteredLibrary} 
               ownedChars={ownedChars} 
               onToggle={toggleCharacter} 
@@ -197,6 +212,7 @@ const App: React.FC = () => {
                     toggleCombo={toggleCombo} 
                     ownedChars={ownedChars} 
                     toggleCharacter={toggleCharacter} 
+                    onAddCharacters={handleAddCharacters} // ✨ Linked logic
                     getImagePath={getImagePath} 
                     showPositionIcon={showPositionIcon} 
                     progress={analysis?.mapCompletion?.[mapName]} 
