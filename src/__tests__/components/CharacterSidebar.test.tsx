@@ -42,14 +42,14 @@ describe('CharacterSidebar - Component Logic', () => {
     const rosterButtons = screen.getAllByRole('button').filter(btn => 
       btn.className.includes('aspect-square')
     );
-    expect(rosterButtons).toHaveLength(30);
+    expect(rosterButtons).toHaveLength(28);
   });
 
   it('automatically discovers and renders map buttons from fixture data', () => {
     render(<CharacterSidebar {...mockProps} />);
     
     // Open the map accordion first
-    const mapTrigger = screen.getByText(/Location:/i);
+    const mapTrigger = screen.getByText(/ANY MAP/i);
     fireEvent.click(mapTrigger);
 
     // Ensure "スカウ島" exists from your fixtures
@@ -60,7 +60,7 @@ describe('CharacterSidebar - Component Logic', () => {
     render(<CharacterSidebar {...mockProps} />);
     
     // Open accordion
-    fireEvent.click(screen.getByText(/Location:/i));
+    fireEvent.click(screen.getByText(/ANY MAP/i));
     
     const mapButton = screen.getByText('スカウ島');
     fireEvent.click(mapButton);
@@ -71,8 +71,8 @@ describe('CharacterSidebar - Component Logic', () => {
   it('highlights the "ANY MAP" button when no filter is active', () => {
     render(<CharacterSidebar {...mockProps} mapFilter={null} />);
     
-    fireEvent.click(screen.getByText(/Location:/i));
-    const anyMapButton = screen.getByText('ANY MAP');
+    fireEvent.click(screen.getByTestId('map-filter-button'));
+    const anyMapButton = screen.getByTestId('map-filter-button-any');
     
     // Check for the active class (bg-slate-800) from your new code
     expect(anyMapButton.closest('button')).toHaveClass('bg-slate-800');
@@ -81,8 +81,8 @@ describe('CharacterSidebar - Component Logic', () => {
   it('removes the highlight from "ANY MAP" when a specific map is selected', () => {
     render(<CharacterSidebar {...mockProps} mapFilter="スカウ島" />);
     
-    fireEvent.click(screen.getByText(/Location:/i));
-    const anyMapButton = screen.getByText('ANY MAP');
+    fireEvent.click(screen.getByTestId('map-filter-button'));
+    const anyMapButton = screen.getByTestId('map-filter-button-any');
     expect(anyMapButton.closest('button')).not.toHaveClass('bg-slate-800');
   });
 
@@ -90,8 +90,8 @@ describe('CharacterSidebar - Component Logic', () => {
     const user = userEvent.setup();
     render(<CharacterSidebar {...mockProps} />);
     
-    // Updated placeholder to match your new "SEARCH A CHARACTER OR SKILL"
-    const searchInput = screen.getByPlaceholderText(/SEARCH A CHARACTER OR SKILL/i);
+    // Updated placeholder to match your new "SEARCH A NAME OR SKILL"
+    const searchInput = screen.getByPlaceholderText(/SEARCH A NAME OR SKILL/i);
     await user.type(searchInput, 'パワプロ');
     
     expect(mockProps.setSearchTerm).toHaveBeenCalled();

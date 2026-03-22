@@ -313,3 +313,24 @@ describe('useComboManager - Kanji Filtering', () => {
     expect(containsKanjiCombo).toBe(false);
   });
 });
+
+it('manages owned characters correctly', () => {
+  const { result } = renderHook(() => useComboManager());
+
+  // Initial state should be empty
+  expect(result.current.ownedChars.size).toBe(2);
+
+  // Add a character
+  act(() => {
+    result.current.toggleCharacter('豬狩守');
+  });
+
+  expect(result.current.ownedChars.has('豬狩守')).toBe(true);
+  expect(result.current.ownedChars.size).toBe(3);
+
+  // Remove the character
+  act(() => {
+    result.current.toggleCharacter('豬狩守');
+  });
+  expect(result.current.ownedChars.has('豬狩守')).toBe(false);
+});

@@ -8,7 +8,7 @@
     "build": "tsc --noEmit && vite build",
     "lint": "eslint .",
     "preview": "npm run build && wrangler dev",
-    "test": "vitest",
+    "test": "cross-env DEBUG_PRINT_LIMIT=1000 vitest",
     "coverage": "vitest run --coverage",
     "deploy": "npm run build && wrangler deploy",
     "prepare": "husky install"
@@ -38,6 +38,7 @@
     "@typescript-eslint/parser": "^8.53.0",
     "@vitejs/plugin-react": "^5.1.1",
     "autoprefixer": "^10.4.24",
+    "cross-env": "^10.1.0",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",

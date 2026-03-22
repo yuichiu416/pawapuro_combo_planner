@@ -1,4 +1,3 @@
-// src/components/ComboCard.tsx
 import React from 'react';
 import { CheckCircle2, Star, BadgeCheck, UserPlus } from 'lucide-react';
 import { cn } from '../utils/style';
@@ -51,22 +50,27 @@ export const ComboCard: React.FC<ComboCardProps> = ({
         onToggleCombo();
       }} 
       className={cn(
-        "flex items-center gap-4 p-4 rounded-[1.5rem] border-2 bg-white cursor-pointer transition-all hover:shadow-md overflow-hidden relative", 
+        "flex flex-col lg:flex-row lg:items-center gap-4 p-4 rounded-[1.5rem] border-2 bg-white cursor-pointer transition-all hover:shadow-md overflow-hidden relative", 
         isSelected ? "border-blue-500 bg-blue-50/30" : "border-transparent hover:border-slate-200"
       )}
     >
-      {/* 1. SELECTION INDICATOR */}
-      <div className={cn(
-        "w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-all", 
-        isSelected ? "bg-blue-600 text-white shadow-lg shadow-blue-100" : "bg-slate-100 text-slate-300"
-      )}>
-        <CheckCircle2 size={24} />
+      {/* 1. SELECTION INDICATOR & MOBILE LAYOUT HELPER */}
+      <div className="flex items-center lg:block shrink-0 gap-3">
+        <div className={cn(
+          "w-10 h-10 md:w-12 md:h-12 rounded-2xl flex items-center justify-center shrink-0 transition-all", 
+          isSelected ? "bg-blue-600 text-white shadow-lg shadow-blue-100" : "bg-slate-100 text-slate-300"
+        )}>
+          <CheckCircle2 size={24} />
+        </div>
+        
+        {/* Mobile-only visible divider or title can go here if needed, 
+            currently using lg:flex-row to handle flow */}
       </div>
 
-      {/* 2. CHARACTERS SECTION - Added data-testid for layout tests */}
+      {/* 2. CHARACTERS SECTION */}
       <div 
         data-testid="character-section"
-        className="shrink-0 flex items-center border-r border-slate-100 pr-4"
+        className="shrink-0 flex items-center justify-center lg:justify-start border-b lg:border-b-0 lg:border-r border-slate-100 pb-4 lg:pb-0 lg:pr-4"
       >
         <CharacterGrid 
           characters={names}
@@ -83,7 +87,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5">
             <Star size={8} className="text-amber-400 fill-amber-400" />
-            <span className="text-sm font-black text-slate-400 uppercase tracking-widest">Combo Rewards</span>
+            <span className="text-xs md:text-sm font-black text-slate-400 uppercase tracking-widest">Combo Rewards</span>
           </div>
           
           {isSelected && hasMissing && (
@@ -92,7 +96,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                 e.stopPropagation();
                 onAddCharacters(missingChars);
               }}
-              className="flex items-center gap-1 px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-black uppercase rounded-lg transition-all shadow-sm active:scale-95"
+              className="flex items-center gap-1 px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs md:text-sm font-black uppercase rounded-lg transition-all shadow-sm active:scale-95"
             >
               <UserPlus size={10} />
               Add {missingChars.length}
@@ -100,7 +104,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
           )}
         </div>
         
-        <div className="space-y-0.5 overflow-hidden">
+        <div className="space-y-1 overflow-hidden">
           {rewards?.skills?.map((sk, idx) => {
             const detail = skillsData[sk.name];
             const isGold = detail?.type === 'gold';
@@ -111,7 +115,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                 key={`${sk.name}-${idx}`} 
                 data-testid={`skill-row-${sk.name}`}
                 className={cn(
-                  "flex items-center gap-2 px-1.5 py-0.5 rounded-lg transition-all border",
+                  "flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg transition-all border",
                   hasHit 
                     ? "bg-red-50 border-red-200" 
                     : "bg-transparent border-transparent"
@@ -120,7 +124,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                 <div 
                   data-testid={`skill-badge-${sk.name}`}
                   className={cn(
-                    "px-1.5 py-0.5 rounded-md text-sm font-black shrink-0 border uppercase flex items-center gap-1",
+                    "px-1.5 py-0.5 rounded-md text-xs md:text-sm font-black shrink-0 border uppercase flex items-center gap-1 w-fit",
                     hasHit 
                       ? "bg-red-600 border-red-600 text-white" 
                       : isGold 
@@ -134,7 +138,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                 
                 <p 
                   className={cn(
-                    "text-sm font-bold truncate flex-1 transition-colors",
+                    "text-xs md:text-sm font-bold truncate flex-1 transition-colors",
                     hasHit ? "text-red-900" : "text-slate-500"
                   )} 
                   title={detail?.description}

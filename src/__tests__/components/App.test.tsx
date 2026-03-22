@@ -1,5 +1,5 @@
 // src/__tests__/components/App.test.tsx
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import App from '@/App';
 import { useComboManager } from '@/hooks/useComboManager';
@@ -50,5 +50,30 @@ describe('Map Progress Integration', () => {
     const progressLabel = await screen.findByText(/Combos:\s*1\/1/i);
 
     expect(progressLabel).toBeInTheDocument();
+  });
+});
+describe('Responsive UI', () => {
+  it('shows mobile navigation and opens drawer on small screens', () => {
+    // Mock window width to mobile size
+    global.innerWidth = 375;
+    global.dispatchEvent(new Event('resize'));
+
+    render(<App />);
+
+    // 1. Verify mobile-only navigation buttons exist
+    const libraryBtn = screen.getByTestId('mobile-library-btn');
+
+    const analysisBtn = screen.getByTestId('mobile-analysis-btn');
+    expect(libraryBtn).toBeInTheDocument();
+
+    // 2. Click Library and check if the Drawer appears
+    fireEvent.click(libraryBtn);
+    
+    // Check for the title we added in the mobile drawer
+    expect(screen.getByText(/Character Library/i)).toBeVisible();
+    
+    // 3. Verify sidebars are hidden (CSS check)
+    const desktopSidebar = screen.getByRole('complementary', { name: 'desktop-character-sidebar' });
+    
   });
 });

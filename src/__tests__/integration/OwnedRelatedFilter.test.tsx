@@ -1,5 +1,5 @@
 // src/__tests__/integration/OwnedRelatedFilter.test.tsx
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import App from '@/App';
@@ -10,11 +10,12 @@ describe('Owned Related Filter - Discovery Flow', () => {
     const user = userEvent.setup();
     render(<App />);
 
-    const searchInput = screen.getByPlaceholderText(/SEARCH/i);
+    const desktopSidebar = screen.getByRole('complementary', { name: 'desktop-character-sidebar' });
+    const searchInput = within(desktopSidebar).getByPlaceholderText(/SEARCH A NAME OR SKILL/i);
     const filterBtn = screen.getByRole('button', { name: /ALL COMBOS/i });
 
     await user.type(searchInput, '御幸');
-    const charButton = await screen.findByTestId('sidebar-char-御幸一也');
+    const charButton = await within(desktopSidebar).findByTestId('sidebar-char-御幸一也');
     await user.click(charButton);
 
     await user.clear(searchInput);
@@ -33,16 +34,17 @@ describe('Owned Related Filter - Multi-Character Discovery', () => {
       const user = userEvent.setup(); // Use userEvent for better event simulation
       render(<App />);
 
-      const searchInput = screen.getByPlaceholderText(/SEARCH/i);
+      const desktopSidebar = screen.getByRole('complementary', { name: 'desktop-character-sidebar' });
+      const searchInput = within(desktopSidebar).getByPlaceholderText(/SEARCH A NAME OR SKILL/i);
       const filterBtn = screen.getByRole('button', { name: /ALL COMBOS/i });
 
       await user.type(searchInput, '皇帝');
-      const charA = await screen.findByTestId('sidebar-char-皇帝');
+      const charA = await within(desktopSidebar).findByTestId('sidebar-char-皇帝');
       await user.click(charA);
 
       await user.clear(searchInput);
       await user.type(searchInput, '成宮');
-      const charC = await screen.findByTestId('sidebar-char-成宮鳴');
+      const charC = await within(desktopSidebar).findByTestId('sidebar-char-成宮鳴');
       await user.click(charC);
 
       await user.clear(searchInput);
@@ -51,7 +53,7 @@ describe('Owned Related Filter - Multi-Character Discovery', () => {
       expect(await screen.findByTestId('combo-card-御幸一也&皇帝')).toBeInTheDocument();
       expect(await screen.findByTestId('combo-card-御幸一也&成宮鳴')).toBeInTheDocument();
 
-      const charA_toRemove = screen.getByTestId('sidebar-char-皇帝');
+      const charA_toRemove = within(desktopSidebar).getByTestId('sidebar-char-皇帝');
       await user.click(charA_toRemove); 
 
       await waitFor(() => {

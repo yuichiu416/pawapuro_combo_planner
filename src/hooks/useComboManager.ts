@@ -1,3 +1,4 @@
+// src/hooks/useComboManager.ts
 import { useMemo, useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
 import charactersDataRaw from '@/data/characters.json';
@@ -132,11 +133,7 @@ export const useComboManager = () => {
         const passesRelated = !filterRelatedOnly || 
           combo.characters.some(char => selectedNames.has(char));
 
-        // ✨ Kanji Check for Combos
-        const passesKanji = !filterNoKanji || 
-          combo.characters.every(char => !KANJI_REGEX.test(char));
-
-        return passesSearch && passesRelated && passesKanji;
+        return passesSearch && passesRelated;
       })
       .map(([_, combo]) => combo.characters.join('&')); 
   }, [searchTerm, filterRelatedOnly, selectedNames, filterNoKanji]);
