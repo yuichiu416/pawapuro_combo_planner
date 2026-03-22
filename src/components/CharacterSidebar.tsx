@@ -90,7 +90,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
                   <img src={getImagePath(name, true)} alt={name} className="absolute inset-0 w-full h-full object-cover" />
                 </div>
                 <div className="min-w-0">
-                  <p className={cn("text-sm font-black italic tracking-tighter truncate", isOwned ? "text-emerald-950" : "text-slate-700")}>
+                  <p className={cn("text-sm font-blacktracking-tighter truncate", isOwned ? "text-emerald-950" : "text-slate-700")}>
                     {name}
                   </p>
                   <p className="text-[10px] font-bold text-slate-400 uppercase">{data?.position || 'Manager'}</p>

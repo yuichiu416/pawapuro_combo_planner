@@ -13,7 +13,7 @@ interface ComboCardProps {
   onToggleCombo: () => void;
   ownedChars: Set<string>;
   toggleCharacter: (name: string) => void;
-  onAddCharacters: (names: string[]) => void; // ✨ New Prop
+  onAddCharacters: (names: string[]) => void;
   getImagePath: (name: string, usePos: boolean) => string;
   showPositionIcon: boolean;
   searchTerm?: string;
@@ -28,13 +28,12 @@ export const ComboCard: React.FC<ComboCardProps> = ({
   onToggleCombo, 
   ownedChars, 
   toggleCharacter, 
-  onAddCharacters, // ✨ Destructure new prop
+  onAddCharacters,
   getImagePath, 
   showPositionIcon, 
   searchTerm = '', 
   rewards
 }) => {
-  // Check which characters from this combo are missing from the roster
   const missingChars = names.filter(name => !ownedChars.has(name));
   const hasMissing = missingChars.length > 0;
 
@@ -48,13 +47,12 @@ export const ComboCard: React.FC<ComboCardProps> = ({
     <div 
       data-testid={`combo-card-${names.join('&')}`}
       onClick={(e) => {
-        // Prevent toggle if clicking a button inside the card
         if ((e.target as HTMLElement).closest('button')) return;
         onToggleCombo();
       }} 
       className={cn(
-        "flex items-center gap-6 p-6 rounded-[2.5rem] border-4 bg-white cursor-pointer transition-all hover:shadow-lg overflow-hidden relative", 
-        isSelected ? "border-blue-500 shadow-xl" : "border-transparent hover:border-slate-200"
+        "flex items-center gap-4 p-4 rounded-[1.5rem] border-2 bg-white cursor-pointer transition-all hover:shadow-md overflow-hidden relative", 
+        isSelected ? "border-blue-500 bg-blue-50/30" : "border-transparent hover:border-slate-200"
       )}
     >
       {/* 1. SELECTION INDICATOR */}
@@ -64,9 +62,8 @@ export const ComboCard: React.FC<ComboCardProps> = ({
       )}>
         <CheckCircle2 size={24} />
       </div>
-
       {/* 2. CHARACTERS */}
-      <div className="shrink-0 flex items-center border-r border-slate-100 pr-6">
+      <div className="shrink-0 flex items-center border-r border-slate-100 pr-4">
         <CharacterGrid 
           characters={names}
           ownedChars={ownedChars}
@@ -77,12 +74,12 @@ export const ComboCard: React.FC<ComboCardProps> = ({
         />
       </div>
 
-      {/* 3. REWARDS */}
-      <div className="flex-1 flex flex-col gap-2 min-w-0 overflow-hidden">
+      {/* 3. REWARDS - Tightened internal gaps */}
+      <div className="flex-1 flex flex-col gap-1.5 min-w-0 overflow-hidden">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Star size={10} className="text-amber-400 fill-amber-400" />
-            <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">Combo Rewards</span>
+          <div className="flex items-center gap-1.5">
+            <Star size={8} className="text-amber-400 fill-amber-400" />
+            <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Combo Rewards</span>
           </div>
           {isSelected && hasMissing && (
             <button
@@ -90,15 +87,15 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                 e.stopPropagation();
                 onAddCharacters(missingChars);
               }}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-black uppercase rounded-xl transition-all shadow-md active:scale-95 animate-in fade-in zoom-in duration-200"
+              className="flex items-center gap-1 px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-[9px] font-black uppercase rounded-lg transition-all shadow-sm active:scale-95"
             >
-              <UserPlus size={12} />
-              Add {missingChars.length} to Roster
+              <UserPlus size={10} />
+              Add {missingChars.length}
             </button>
           )}
         </div>
         
-        <div className="space-y-1 overflow-hidden">
+        <div className="space-y-0.5 overflow-hidden">
           {rewards?.skills?.map((sk, idx) => {
             const detail = skillsData[sk.name];
             const isGold = detail?.type === 'gold';
@@ -108,14 +105,14 @@ export const ComboCard: React.FC<ComboCardProps> = ({
               <div 
                 key={`${sk.name}-${idx}`} 
                 className={cn(
-                  "flex items-center gap-3 px-2 py-1 rounded-xl transition-all duration-200 border-2",
+                  "flex items-center gap-2 px-1.5 py-0.5 rounded-lg transition-all border",
                   hasHit 
-                    ? "bg-red-50 border-red-200 ring-1 ring-red-100" 
+                    ? "bg-red-50 border-red-200" 
                     : "bg-transparent border-transparent"
                 )}
               >
                 <div className={cn(
-                  "px-2 py-0.5 rounded-lg text-[9px] font-black shrink-0 border uppercase flex items-center gap-1",
+                  "px-1.5 py-0.5 rounded-md text-[8px] font-black shrink-0 border uppercase flex items-center gap-1",
                   hasHit 
                     ? "bg-red-600 border-red-600 text-white" 
                     : isGold 
@@ -123,12 +120,12 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                       : "bg-blue-50 border-blue-100 text-blue-700"
                 )}>
                   {sk.verified && <BadgeCheck size={10} className={hasHit ? "text-white" : "text-emerald-500"} />}
-                  {sk.name} <span className={hasHit ? "text-white/70" : "opacity-60"}>LV.{sk.level}</span>
+                  {sk.name} <span className={hasHit ? "text-white/70" : "opacity-60"}>L{sk.level}</span>
                 </div>
                 
                 <p 
                   className={cn(
-                    "text-[11px] font-bold truncate flex-1 italic transition-colors",
+                    "text-[10px] font-bold truncate flex-1 transition-colors",
                     hasHit ? "text-red-900" : "text-slate-500"
                   )} 
                   title={detail?.description}
@@ -138,9 +135,6 @@ export const ComboCard: React.FC<ComboCardProps> = ({
               </div>
             );
           })}
-          {(!rewards?.skills || rewards.skills.length === 0) && (
-             <span className="text-[10px] font-bold text-slate-300 italic uppercase">No skills recorded</span>
-          )}
         </div>
       </div>
     </div>
