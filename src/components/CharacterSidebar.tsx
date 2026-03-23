@@ -65,11 +65,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
   ariaLabel,
 }) => {
   const [isMapExpanded, setIsMapExpanded] = useState(false);
-
-  // New State: Track which character is currently being previewed in the roster
   const [selectedPreview, setSelectedPreview] = useState<string | null>(null);
-
-  // New State: Track the last removed character for the Undo feature
   const [lastRemoved, setLastRemoved] = useState<string | null>(null);
   const [showUndo, setShowUndo] = useState(false);
 
@@ -89,12 +85,10 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
   const sortedWithCombo = useMemo(() => sortChars(groups.withCombo), [groups.withCombo]);
   const sortedNoCombo = useMemo(() => sortChars(groups.noCombo), [groups.noCombo]);
 
-  // Create fixed 28 slots for the visual roster grid
   const rosterSlots = Array(28)
     .fill(null)
     .map((_, i) => sortedRoster[i] || null);
 
-  // Handle the actual removal and trigger the undo toast
   const handleConfirmRemove = (name: string) => {
     onToggle(name);
     setLastRemoved(name);
@@ -102,7 +96,6 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
     setSelectedPreview(null);
   };
 
-  // Restore the last removed character
   const handleUndo = () => {
     if (lastRemoved) {
       onToggle(lastRemoved);
@@ -111,7 +104,6 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
     }
   };
 
-  // Auto-hide the Undo toast after 5 seconds
   useEffect(() => {
     if (showUndo) {
       const timer = setTimeout(() => setShowUndo(false), 5000);
@@ -201,7 +193,6 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
               </span>
             </div>
 
-            {/* Grid of 28 slots */}
             <div className="grid grid-cols-7 gap-1">
               {rosterSlots.map((charName, i) => (
                 <button
@@ -236,7 +227,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             </div>
           </div>
 
-          {/* PREVIEW PANEL (Appears when a roster character is clicked) */}
+          {/* PREVIEW PANEL */}
           {selectedPreview && (
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-2.5 flex items-center justify-between animate-in zoom-in-95 duration-150">
               <div className="flex items-center gap-2">
@@ -248,14 +239,14 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
                 </div>
                 <div>
                   <p className="text-xs font-black text-blue-900 leading-none">{selectedPreview}</p>
-                  <p className="text-[xs] font-bold text-blue-600 uppercase mt-0.5">
+                  <p className="text-xs font-bold text-blue-600 uppercase mt-0.5">
                     {CHAR_DATA[selectedPreview]?.position || 'Manager'}
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => handleConfirmRemove(selectedPreview)}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-md text-[xs] font-black transition-colors"
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-md text-xs font-black transition-colors"
               >
                 <X size={12} strokeWidth={3} />
                 REMOVE
@@ -384,26 +375,32 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
         {renderList(sortedNoCombo, 'Other Characters')}
       </div>
 
-      {/* Undo Notification Toast */}
+      {/* Undo Notification Toast - Improved Visuals */}
       {showUndo && (
         <div
           data-testid="undo-toast"
-          className="absolute bottom-6 left-4 right-4 z-[40] animate-in fade-in slide-in-from-bottom-2"
+          className="absolute bottom-6 left-4 right-4 z-[50] animate-in fade-in slide-in-from-bottom-4 duration-300"
         >
-          <div className="bg-blue-600 text-white rounded-xl shadow-lg px-4 py-3 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Info size={16} />
-              {/* Use a clear label for the status */}
-              <span className="text-xs font-black uppercase italic tracking-wider">
-                Removed {lastRemoved}
-              </span>
+          <div className="bg-slate-900/95 backdrop-blur-md text-white rounded-2xl shadow-2xl px-4 py-3.5 flex items-center justify-between border border-slate-700/50">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                <Info size={18} className="text-blue-400" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs font-black text-slate-400 uppercase tracking-tighter leading-none">
+                  Roster Updated
+                </span>
+                <span className="text-sm font-bold tracking-tight">Removed {lastRemoved}</span>
+              </div>
             </div>
+
             <button
               onClick={handleUndo}
               aria-label="Undo"
-              className="flex items-center gap-1.5 px-3 py-1 bg-white/20 hover:bg-white/30 rounded-lg text-[xs] font-black uppercase transition-all"
+              className="flex items-center gap-2 px-4 py-2 bg-white text-slate-950 hover:bg-blue-50 rounded-xl text-xs font-black uppercase transition-all active:scale-95 shadow-sm"
             >
-              <RotateCcw size={14} /> Undo
+              <RotateCcw size={14} strokeWidth={3} />
+              Undo
             </button>
           </div>
         </div>

@@ -96,7 +96,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
       <section className="shrink-0 p-3 bg-emerald-50/50 border border-emerald-100 rounded-xl shadow-sm">
         <div className="flex items-center gap-1.5 mb-2">
           <Zap size={12} className="text-emerald-500 fill-emerald-500" />
-          <span className="text-[xs] font-black text-emerald-600 uppercase tracking-widest leading-none">
+          <span className="text-xs font-black text-emerald-600 uppercase tracking-widest leading-none">
             Total Stats
           </span>
         </div>
@@ -107,14 +107,12 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
                 key={stat}
                 className="flex justify-between items-baseline border-b border-emerald-100/30"
               >
-                <span className="text-[xs] font-bold text-slate-500 uppercase truncate">
-                  {stat}
-                </span>
+                <span className="text-xs font-bold text-slate-500 uppercase truncate">{stat}</span>
                 <span className="text-xs font-black text-emerald-700">+{val}</span>
               </div>
             ))
           ) : (
-            <p className="col-span-2 text-[xs] text-slate-400 font-bold italic text-center uppercase leading-none">
+            <p className="col-span-2 text-xs text-slate-400 font-bold italic text-center uppercase leading-none">
               No bonuses
             </p>
           )}
@@ -130,7 +128,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
               Earned Skills
             </span>
           </div>
-          <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-[xs] font-black rounded-full border border-amber-200">
+          <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-black rounded-full border border-amber-200">
             {goldSkillsCount} 金特
           </span>
         </div>
@@ -176,7 +174,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
           <div className="px-3 py-1.5 bg-rose-50/80 flex items-center justify-between shrink-0 border-b border-rose-100">
             <div className="flex items-center gap-1.5">
               <AlertCircle size={12} className="text-rose-500" />
-              <span className="text-[xs] font-black text-rose-600 uppercase tracking-tighter">
+              <span className="text-xs font-black text-rose-600 uppercase tracking-tighter">
                 Missing Characters
               </span>
             </div>
@@ -202,7 +200,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
                         }
                       />
                     </div>
-                    <span className="text-[xs] font-black text-slate-700 truncate uppercase tracking-tight">
+                    <span className="text-xs font-black text-slate-700 truncate uppercase tracking-tight">
                       {char}
                     </span>
                   </div>

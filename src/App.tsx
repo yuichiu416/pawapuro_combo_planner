@@ -344,7 +344,7 @@ const App: React.FC = () => {
 
                 <div
                   className={cn(
-                    'text-[xs] font-bold text-slate-400 text-right uppercase tracking-widest leading-none',
+                    'text-xs font-bold text-slate-400 text-right uppercase tracking-widest leading-none',
                     !lastSaved && 'invisible',
                   )}
                 >
