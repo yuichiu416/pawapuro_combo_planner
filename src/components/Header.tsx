@@ -1,14 +1,16 @@
-import React from 'react';
+// src/components/Header.tsx
+
 import {
   ChevronDown,
   ChevronUp,
   CircleDot,
-  XCircle,
-  Plus,
-  Minus,
-  Save,
   Loader2,
+  Minus,
+  Plus,
+  Save,
+  XCircle,
 } from 'lucide-react';
+import type React from 'react';
 import { cn } from '@/utils/style';
 import { AuthButton } from './AuthButton';
 
@@ -24,7 +26,6 @@ interface HeaderProps {
   allExpanded: boolean;
   fontScale: number;
   onAdjustFont: (delta: number) => void;
-  // Added back for the Mobile Sync logic
   isLoggedIn: boolean;
   isSyncing: boolean;
   handleSave: () => void;
@@ -46,6 +47,10 @@ export const Header: React.FC<HeaderProps> = ({
   isSyncing,
   handleSave,
 }) => {
+  // Base font sizes in rem for scaling
+  const baseLabelSize = 0.75; // text-xs
+  const baseButtonSize = 0.875; // text-sm (md scale)
+
   return (
     <header className="space-y-6">
       {/* Top Row: Brand & Main Actions */}
@@ -60,7 +65,7 @@ export const Header: React.FC<HeaderProps> = ({
             </h1>
           </div>
 
-          {/* MOBILE ONLY SYNC: Only visible on small screens */}
+          {/* MOBILE ONLY SYNC */}
           <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={handleSave}
@@ -76,22 +81,35 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2 md:gap-3">
+        <div className="flex items-center gap-2 md:gap-3 w-full lg:w-auto">
+          {/* Label: Fixed the missing style attribute here */}
+          <span
+            className="hidden lg:inline text-xs font-black text-slate-800 uppercase tracking-widest whitespace-nowrap"
+            style={{ fontSize: `${baseLabelSize * fontScale}rem` }}
+          >
+            Select all combos for:
+          </span>
+
           <button
             onClick={() => toggleAllByType('pitcher')}
-            className="flex-1 lg:flex-none px-4 md:px-6 py-2.5 md:py-3 bg-white border-2 border-slate-100 rounded-2xl text-xs md:text-sm font-black uppercase hover:border-blue-400 hover:text-blue-600 transition-all shadow-sm active:scale-95"
+            style={{ fontSize: `${baseButtonSize * fontScale}rem` }}
+            className="flex-1 lg:flex-none flex items-center justify-center gap-2 px-4 md:px-6 py-2.5 md:py-3 bg-white border-2 border-slate-100 rounded-2xl font-black uppercase hover:border-blue-400 hover:text-blue-600 transition-all shadow-sm active:scale-95"
           >
             PITCHER
           </button>
+
           <button
             onClick={() => toggleAllByType('fielder')}
-            className="flex-1 lg:flex-none px-4 md:px-6 py-2.5 md:py-3 bg-white border-2 border-slate-100 rounded-2xl text-xs md:text-sm font-black uppercase hover:border-orange-400 hover:text-orange-600 transition-all shadow-sm active:scale-95"
+            style={{ fontSize: `${baseButtonSize * fontScale}rem` }}
+            className="flex-1 lg:flex-none flex items-center justify-center gap-2 px-4 md:px-6 py-2.5 md:py-3 bg-white border-2 border-slate-100 rounded-2xl font-black uppercase hover:border-orange-400 hover:text-orange-600 transition-all shadow-sm active:scale-95"
           >
             FIELDER
           </button>
+
           <button
             onClick={clearAll}
-            className="flex items-center justify-center gap-2 px-4 md:px-5 py-2.5 md:py-3 bg-rose-500 text-white rounded-2xl text-xs md:text-sm font-black uppercase hover:bg-rose-600 transition-all shadow-md active:scale-95"
+            style={{ fontSize: `${baseButtonSize * fontScale}rem` }}
+            className="flex items-center justify-center gap-2 px-4 md:px-5 py-2.5 md:py-3 bg-rose-500 text-white rounded-2xl font-black uppercase hover:bg-rose-600 transition-all shadow-md active:scale-95"
           >
             <XCircle size={14} /> CLEAR
           </button>
@@ -102,8 +120,9 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="flex flex-wrap items-center py-3 px-1 border-t border-slate-200/60 gap-3">
         <button
           onClick={() => setShowPositionIcon(!showPositionIcon)}
+          style={{ fontSize: `${baseButtonSize * fontScale}rem` }}
           className={cn(
-            'px-3 md:px-4 py-2 border-2 rounded-xl text-xs md:text-sm font-black transition-all uppercase',
+            'px-3 md:px-4 py-2 border-2 rounded-xl font-black transition-all uppercase',
             showPositionIcon
               ? 'bg-white border-slate-200 text-slate-600'
               : 'bg-blue-600 border-blue-600 text-white shadow-md shadow-blue-200',
@@ -114,8 +133,9 @@ export const Header: React.FC<HeaderProps> = ({
 
         <button
           onClick={toggleRelatedFilter}
+          style={{ fontSize: `${baseButtonSize * fontScale}rem` }}
           className={cn(
-            'px-3 md:px-4 py-2 border-2 rounded-xl text-xs md:text-sm font-black transition-all uppercase',
+            'px-3 md:px-4 py-2 border-2 rounded-xl font-black transition-all uppercase',
             !filterRelatedOnly
               ? 'bg-white border-slate-200 text-slate-600'
               : 'bg-emerald-600 border-emerald-600 text-white shadow-md shadow-emerald-200',
@@ -132,7 +152,10 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <Minus size={14} />
           </button>
-          <div className="px-1 md:px-2 text-xs md:text-sm font-black text-slate-500 min-w-[32px] md:min-w-[40px] text-center">
+          <div
+            className="px-1 md:px-2 font-black text-slate-500 min-w-[32px] md:min-w-[40px] text-center"
+            style={{ fontSize: `${baseLabelSize * fontScale}rem` }}
+          >
             {Math.round((fontScale || 1) * 100)}%
           </div>
           <button
@@ -146,7 +169,8 @@ export const Header: React.FC<HeaderProps> = ({
 
         <button
           onClick={allExpanded ? onCollapseAll : onExpandAll}
-          className="ml-auto flex items-center gap-2 px-3 md:px-4 py-2 bg-slate-100 rounded-xl text-xs md:text-sm font-black uppercase text-slate-600 hover:bg-slate-200 transition-all min-w-[120px] md:min-w-[140px] justify-center active:scale-95"
+          style={{ fontSize: `${baseButtonSize * fontScale}rem` }}
+          className="ml-auto flex items-center gap-2 px-3 md:px-4 py-2 bg-slate-100 rounded-xl font-black uppercase text-slate-600 hover:bg-slate-200 transition-all min-w-[120px] md:min-w-[140px] justify-center active:scale-95"
         >
           {allExpanded ? (
             <>

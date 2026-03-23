@@ -196,6 +196,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             <div className="grid grid-cols-7 gap-1">
               {rosterSlots.map((charName, i) => (
                 <button
+                  data-testid={`active-roaster-${charName || `empty-${i}`}`}
                   key={charName ? `slot-${charName}` : `empty-${i}`}
                   disabled={!charName}
                   onClick={() =>
@@ -245,6 +246,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
                 </div>
               </div>
               <button
+                data-testid={`remove-btn-${selectedPreview}`}
                 onClick={() => handleConfirmRemove(selectedPreview)}
                 className="flex items-center gap-1.5 px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-md text-xs font-black transition-colors"
               >
@@ -332,7 +334,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
           {isMapExpanded && (
             <div className="flex flex-wrap gap-1 p-2 bg-slate-50 rounded-xl border border-slate-200 animate-in fade-in slide-in-from-top-1">
               <button
-                data-testid={`map-filter-button-any`}
+                data-testid="map-filter-button-any"
                 onClick={() => {
                   setMapFilter(null);
                   setIsMapExpanded(false);
@@ -375,11 +377,11 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
         {renderList(sortedNoCombo, 'Other Characters')}
       </div>
 
-      {/* Undo Notification Toast - Improved Visuals */}
+      {/* Undo Notification Toast */}
       {showUndo && (
         <div
           data-testid="undo-toast"
-          className="absolute bottom-6 left-4 right-4 z-[50] animate-in fade-in slide-in-from-bottom-4 duration-300"
+          className="absolute bottom-[300px] md:bottom-6 left-4 right-4 z-[50] animate-in fade-in slide-in-from-bottom-4 duration-300"
         >
           <div className="bg-slate-900/95 backdrop-blur-md text-white rounded-2xl shadow-2xl px-4 py-3.5 flex items-center justify-between border border-slate-700/50">
             <div className="flex items-center gap-3">
@@ -393,7 +395,6 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
                 <span className="text-sm font-bold tracking-tight">Removed {lastRemoved}</span>
               </div>
             </div>
-
             <button
               onClick={handleUndo}
               aria-label="Undo"

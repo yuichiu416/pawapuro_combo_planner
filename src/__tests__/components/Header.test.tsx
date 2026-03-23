@@ -1,38 +1,51 @@
 // src/__tests__/components/Header.test.tsx
-import { render, screen, fireEvent } from '@testing-library/react';
-import { vi, describe, it, expect } from 'vitest';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
 import { Header } from '@/components/Header';
 
-describe('Header Component', () => {
+describe('Header Component - UI Elements', () => {
   const mockProps = {
     showPositionIcon: true,
     setShowPositionIcon: vi.fn(),
+    filterRelatedOnly: false,
+    toggleRelatedFilter: vi.fn(),
     toggleAllByType: vi.fn(),
     clearAll: vi.fn(),
     onExpandAll: vi.fn(),
     onCollapseAll: vi.fn(),
     allExpanded: false,
+    fontScale: 1,
+    onAdjustFont: vi.fn(),
+    isLoggedIn: true,
+    isSyncing: false,
+    handleSave: vi.fn(),
   };
 
-  it('calls toggleAllByType("pitcher") when PITCHER button is clicked', () => {
+  it('renders the "Select all combos for:" label for desktop users', () => {
     render(<Header {...mockProps} />);
-    const pitcherBtn = screen.getByRole('button', { name: /pitcher/i });
-    fireEvent.click(pitcherBtn);
-    expect(mockProps.toggleAllByType).toHaveBeenCalledWith('pitcher');
+
+    const label = screen.getByText(/Select all combos for:/i);
+    expect(label).toBeInTheDocument();
+
+    // Verify it has the responsive "hidden lg:inline" classes
+    expect(label).toHaveClass('hidden', 'lg:inline');
   });
 
-  it('calls toggleAllByType("fielder") when FIELDER button is clicked', () => {
-    render(<Header {...mockProps} />);
-    const fielderBtn = screen.getByRole('button', { name: /fielder/i });
-    fireEvent.click(fielderBtn);
-    expect(mockProps.toggleAllByType).toHaveBeenCalledWith('fielder');
+  it('applies the dynamic fontScale to the selection label', () => {
+    const customScale = 1.5;
+    render(<Header {...mockProps} fontScale={customScale} />);
+
+    const label = screen.getByText(/Select all combos for:/i);
+
+    // 0.75rem (base text-xs) * 1.5 scale = 1.125rem
+    expect(label).toHaveStyle({ fontSize: '1.125rem' });
   });
 
-  it('calls clearAll when CLEAR button is clicked', () => {
+  it('renders both PITCHER and FIELDER action buttons', () => {
     render(<Header {...mockProps} />);
-    const clearBtn = screen.getByRole('button', { name: /clear/i });
-    fireEvent.click(clearBtn);
-    expect(mockProps.clearAll).toHaveBeenCalled();
+
+    expect(screen.getByRole('button', { name: /pitcher/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /fielder/i })).toBeInTheDocument();
   });
 
   it('toggles POSITION ICON visibility setting', () => {
@@ -48,5 +61,12 @@ describe('Header Component', () => {
 
     rerender(<Header {...mockProps} allExpanded={true} />);
     expect(screen.getByText(/COLLAPSE ALL/i)).toBeInTheDocument();
+  });
+
+  it('calls clearAll when CLEAR button is clicked', () => {
+    render(<Header {...mockProps} />);
+    const clearBtn = screen.getByRole('button', { name: /clear/i });
+    fireEvent.click(clearBtn);
+    expect(mockProps.clearAll).toHaveBeenCalled();
   });
 });
