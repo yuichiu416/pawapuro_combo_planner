@@ -45,7 +45,7 @@ export const useComboManager = () => {
           if (data) {
             loadedChars = data.selected_characters || [];
             loadedCombos = data.selected_combos || [];
-            if (data.updated_at) setLastSaved(new Date(data.updated_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+            if (data.updated_at) setLastSaved(new Date(data.updated_at).toLocaleString([], { hour: '2-digit', minute: '2-digit' }));
           }
         } else {
           const saved = localStorage.getItem(LOCAL_STORAGE_KEY);

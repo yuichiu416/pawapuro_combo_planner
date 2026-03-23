@@ -39,7 +39,6 @@ const Logo = ({ isCollapsed }: { isCollapsed: boolean }) => (
 );
 
 const App: React.FC = () => {
-  // --- DATA & LOGIC FROM HOOK ---
   const { 
     ownedChars, toggleCharacter, selectedComboIds, toggleCombo, 
     toggleAllByType, clearAll, analysis, mapsData, characterMapping,
@@ -49,17 +48,12 @@ const App: React.FC = () => {
     fontScale = 1.0, adjustFont,
   } = useComboManager();
 
-  // --- UI STATE ---
   const [posFilter, setPosFilter] = useState<string | null>(null);
   const [mapFilter, setMapFilter] = useState<string | null>(null);
   const [showPositionIcon, setShowPositionIcon] = useState(true);
   const [expandedMaps, setExpandedMaps] = useState<Set<string>>(new Set());
-  
-  // Desktop Sidebar State
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isAnalysisCollapsed, setIsAnalysisCollapsed] = useState(false);
-  
-  // Mobile Responsive State
   const [activeMobileTab, setActiveMobileTab] = useState<'roster' | 'planner' | 'analysis'>('planner');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -115,7 +109,7 @@ const App: React.FC = () => {
     >
       <div className="flex flex-1 overflow-hidden relative">
         
-        {/* LEFT SIDEBAR: Character Selection (Hidden on Mobile) */}
+        {/* LEFT SIDEBAR (Desktop Only) */}
         <aside className={cn(
           "hidden lg:flex relative bg-white border-r border-slate-200 transition-all duration-300 flex-col z-20", 
           isSidebarCollapsed ? "w-20" : "w-[24rem]"
@@ -207,7 +201,6 @@ const App: React.FC = () => {
                   />
                 );
               })}
-
               {filterRelatedOnly && filteredComboIds.length === 0 && (
                 <div className="flex flex-col items-center justify-center py-20 bg-white/50 rounded-3xl border-2 border-dashed border-slate-200 px-6 text-center">
                   <SearchX size={32} className="text-slate-300 mb-4" />
@@ -219,7 +212,7 @@ const App: React.FC = () => {
           </div>
         </main>
         
-        {/* RIGHT SIDEBAR: Analysis (Hidden on Mobile) */}
+        {/* RIGHT SIDEBAR (Desktop Only) */}
         <aside className={cn(
           "hidden lg:flex relative bg-white border-l border-slate-200 transition-all duration-300 flex-col z-20", 
           isAnalysisCollapsed ? "w-0 border-l-0" : "w-[26rem]"
@@ -232,16 +225,33 @@ const App: React.FC = () => {
           </button>
           {!isAnalysisCollapsed && (
             <div className="h-full w-[26rem] flex flex-col">
-              <div className="p-6 border-b space-y-4 bg-slate-50/50">
-                <AuthButton />
-                <button 
-                  onClick={handleSave} disabled={isSyncing} 
-                  className="w-full flex items-center justify-center gap-2 p-3 rounded-2xl font-black italic uppercase text-sm bg-slate-800 text-white hover:bg-slate-900 transition-all active:scale-95 disabled:opacity-50 shadow-lg"
-                >
-                  {isSyncing ? <Loader2 className="animate-spin" size={16} /> : <Save size={16} />}
-                  {isSyncing ? 'Saving...' : isLoggedIn ? 'Cloud Sync' : 'Save Locally'}
-                </button>
-                {lastSaved && <div className="text-xs font-bold text-slate-400 text-center uppercase tracking-widest leading-none"><Clock size={10} className="inline mr-1"/> Last: {lastSaved}</div>}
+              <div className="px-6 py-3 space-y-2 bg-slate-50/50">
+                <div className="flex flex-row items-center gap-3">
+                  <button 
+                    onClick={handleSave} 
+                    disabled={isSyncing} 
+                    className={cn(
+                      "flex-1 flex items-center justify-center gap-2 h-11 rounded-xl font-black italic uppercase text-xs tracking-wider transition-all active:scale-95 disabled:opacity-50 shadow-sm",
+                      isLoggedIn 
+                        ? "bg-blue-600 text-white hover:bg-blue-700 shadow-blue-100" 
+                        : "bg-slate-800 text-white hover:bg-slate-900"
+                    )}
+                  >
+                    {isSyncing ? <Loader2 className="animate-spin" size={16} /> : <Save size={16} />}
+                    <span className="truncate">
+                      {isSyncing ? 'Syncing...' : isLoggedIn ? 'Cloud Sync' : 'Save Locally'}
+                    </span>
+                  </button>
+                  <AuthButton />
+                </div>
+
+                <div className={cn(
+                  "text-[10px] font-bold text-slate-400 text-right uppercase tracking-widest leading-none",
+                  !lastSaved && "invisible"
+                )}>
+                  <Clock size={8} className="inline mr-1 -mt-0.5"/> 
+                  Last saved: {lastSaved || "Placeholder"}
+                </div>
               </div>
               <div className="flex-1 overflow-y-auto custom-scrollbar">
                 <RewardAnalysis analysis={analysis} getImagePath={getImagePath} />
@@ -256,19 +266,31 @@ const App: React.FC = () => {
           activeMobileTab === 'analysis' ? "opacity-100 visible" : "opacity-0 invisible"
         )} onClick={() => setActiveMobileTab('planner')}>
           <div className={cn(
-            "absolute right-0 top-0 h-full w-[90%] max-w-sm bg-white shadow-2xl transition-transform duration-300",
+            "absolute right-0 top-0 h-full w-[90%] max-w-sm bg-white shadow-2xl transition-transform duration-300 flex flex-col",
             activeMobileTab === 'analysis' ? "translate-x-0" : "translate-x-full"
           )} onClick={e => e.stopPropagation()}>
-            <div className="p-4 border-b flex justify-between items-center">
-              <span className="font-black italic uppercase tracking-tighter">Reward Analysis</span>
+            <div className="p-4 border-b flex justify-between items-center shrink-0">
+              <span className="font-black italic uppercase tracking-tighter text-lg">Reward Analysis</span>
               <button onClick={() => setActiveMobileTab('planner')} className="p-2 bg-slate-100 rounded-full"><X size={20}/></button>
             </div>
-            <div className="p-4 border-b bg-slate-50">
-               <button onClick={handleSave} className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-blue-600 text-white font-black italic uppercase text-xs shadow-md">
-                 <Save size={14} /> Sync Data
-               </button>
+            
+            {/* MOBILE SYNC ROW */}
+            <div className="p-4 bg-slate-50 border-b flex items-center gap-3 shrink-0">
+              <AuthButton />
+              <button 
+                onClick={handleSave} 
+                disabled={isSyncing}
+                className={cn(
+                  "flex-1 flex items-center justify-center gap-2 h-11 rounded-xl font-black italic uppercase text-xs transition-all shadow-md active:scale-95",
+                  isLoggedIn ? "bg-blue-600 text-white" : "bg-slate-800 text-white"
+                )}
+              >
+                {isSyncing ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
+                {isSyncing ? 'Saving' : 'Save'}
+              </button>
             </div>
-            <div className="h-full overflow-y-auto pb-32">
+
+            <div className="flex-1 overflow-y-auto pb-32">
               <RewardAnalysis analysis={analysis} getImagePath={getImagePath} />
             </div>
           </div>
@@ -301,7 +323,6 @@ const App: React.FC = () => {
   );
 };
 
-// --- Subcomponents for Mobile ---
 const MobileNavBtn = ({ active, onClick, icon, label }: { active: boolean, onClick: () => void, icon: React.ReactNode, label: string }) => (
   <button
     data-testid={`mobile-${label.toLowerCase().replace(/\s+/g, '-')}-btn`}

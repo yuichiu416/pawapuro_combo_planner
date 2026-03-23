@@ -1,5 +1,5 @@
 // src/components/RewardAnalysis.tsx
-import React, { useMemo } from 'react'; // Added useMemo
+import React, { useMemo } from 'react';
 import { TrendingUp, Award, Zap, AlertCircle, MapPin } from 'lucide-react';
 import { cn } from '@/utils/style';
 import skillsDataRaw from '@/data/skills.json';
@@ -37,20 +37,17 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
 }) => {
   const { stats, skills, missingCharacters, roster } = analysis;
 
-  // 1. IMPROVED SORTING LOGIC
+  // SORTING LOGIC: Gold first, then Level, then Name
   const sortedSkills = useMemo(() => {
     return [...skills].sort((a, b) => {
       const isAGold = skillsData[a.name]?.type === 'gold';
       const isBGold = skillsData[b.name]?.type === 'gold';
 
-      // Sort by Type (Gold first)
       if (isAGold && !isBGold) return -1;
       if (!isAGold && isBGold) return 1;
 
-      // Sort by Level (Highest first)
       if (a.level !== b.level) return b.level - a.level;
 
-      // Sort Alphabetically
       return a.name.localeCompare(b.name);
     });
   }, [skills]);
@@ -58,8 +55,8 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
   const goldSkillsCount = skills.filter(s => skillsData[s.name]?.type === 'gold').length;
 
   return (
-    <div className="h-full flex flex-col p-6 bg-slate-50 gap-4 overflow-hidden">
-      {/* HEADER & ROSTER STATUS (No changes) */}
+    <div className="h-full flex flex-col p-6 pt-0 bg-slate-50 gap-4 overflow-hidden">
+      {/* HEADER & ROSTER STATUS */}
       <div className="flex items-center justify-between shrink-0">
         <h2 className="text-2xl font-black italic uppercase flex items-center gap-2 text-slate-800 tracking-tight">
           <TrendingUp className="text-blue-600 w-5 h-5" /> Analysis
@@ -90,7 +87,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
         ))}
       </section>
 
-      {/* STATS SECTION (No changes) */}
+      {/* STATS SECTION */}
       <section className="shrink-0 p-3 bg-emerald-50/50 border border-emerald-100 rounded-2xl">
         <div className="flex items-center gap-2 mb-2">
           <Zap size={14} className="text-emerald-500" />
@@ -110,7 +107,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
         </div>
       </section>
 
-      {/* 4. EARNED SKILLS (Updated to use sortedSkills) */}
+      {/* EARNED SKILLS */}
       <section className="flex-grow flex flex-col min-h-0 bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
         <div className="p-3 border-b border-slate-50 bg-slate-50/50 flex justify-between items-center shrink-0">
           <div className="flex items-center gap-2">
@@ -157,7 +154,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
         </div>
       </section>
 
-      {/* MISSING CHARACTERS SECTION (No changes) */}
+      {/* MISSING CHARACTERS SECTION */}
       {missingCharacters.length > 0 && (
         <section className="shrink-0 flex flex-col min-h-0 bg-rose-50/50 border border-rose-100 rounded-3xl overflow-hidden">
           <div className="p-3 bg-rose-50 flex items-center justify-between shrink-0 border-b border-rose-100">
