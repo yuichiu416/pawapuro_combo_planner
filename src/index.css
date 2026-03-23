@@ -1,33 +1,107 @@
-/* 1. The Import must stay at the very top */
+/* src/index.css */
 @import url("https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap");
 @import "tailwindcss";
 
 @theme {
-  /* 2. Map the Tailwind 'sans' variable to the Google Font name */
-  --font-sans: "Zen Kaku Gothic New", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Zen Kaku Gothic New", "Hiragino Sans", "Meiryo", sans-serif;
 }
 
 @layer base {
-  html,
-  body {
-    /* 3. Force the font and clean up the rendering */
+  /* Ensure consistent font family across all elements */
+  *,
+  ::before,
+  ::after {
     font-family: var(--font-sans);
+  }
+
+  html {
+    /* Smooth transition for fontScale adjustments in useComboManager */
+    transition: font-size 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Font feature settings for better Japanese text rendering */
+    font-feature-settings: "palt";
+    @apply bg-slate-100 text-slate-900;
+  }
+
+  button {
+    /* Global button interactions */
+    @apply cursor-pointer transition-all active:scale-95;
   }
 }
 
 @layer utilities {
+  /* Refined custom scrollbar for better UI integration */
   .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
   }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #334155;
+    background: #cbd5e1; /* slate-300 */
     border-radius: 10px;
+    border: 1px solid transparent;
+    background-clip: content-box;
   }
-}
-@layer base {
-  button {
-    @apply cursor-pointer;
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8; /* slate-400 */
+  }
+
+  /* Animation utility classes for Preview Panels and Undo Toasts */
+  .animate-in {
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .fade-in {
+    animation-name: fadeIn;
+  }
+
+  .slide-in-from-bottom {
+    animation-name: slideInBottom;
+  }
+
+  .slide-in-from-left {
+    animation-name: slideInLeft;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInBottom {
+    from {
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-1rem);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
 }

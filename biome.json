@@ -1,61 +1,64 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.5/schema.json",
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
-  },
-  "assist": {
-    "enabled": true,
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
-    }
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true
-    }
-  },
-  "formatter": {
-    "enabled": true,
-    "formatWithErrors": false,
-    "indentStyle": "space",
-    "indentWidth": 2,
-    "lineEnding": "lf",
-    "lineWidth": 100,
-    "attributePosition": "auto"
-  },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "single",
-      "jsxQuoteStyle": "double",
-      "trailingCommas": "all",
-      "semicolons": "always",
-      "arrowParentheses": "always"
-    }
-  },
-  "css": {
-    "parser": {
-      "cssModules": true
-    },
-    "linter": {
-      "enabled": true
-    },
-    "formatter": {
-      "enabled": true
-    }
-  },
-  "overrides": [
-    {
-      "includes": ["**/*.css"],
-      "css": {
-        "parser": {
-          "tailwindDirectives": true
-        }
-      }
-    }
-  ]
+	"$schema": "https://biomejs.dev/schemas/2.4.5/schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true
+		}
+	},
+	"formatter": {
+		"enabled": true,
+		"formatWithErrors": true,
+		"indentStyle": "space",
+		"indentWidth": 2,
+		"lineEnding": "lf",
+		"lineWidth": 100,
+		"attributePosition": "auto"
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"trailingCommas": "all",
+			"semicolons": "always",
+			"arrowParentheses": "always"
+		}
+	},
+	"css": {
+		"parser": {
+			"cssModules": true
+		},
+		"linter": {
+			"enabled": true
+		},
+		"formatter": {
+			"enabled": true
+		}
+	},
+	"overrides": [
+		{
+			"includes": ["**/*.css"],
+			"css": {
+				"parser": {
+					"tailwindDirectives": true
+				}
+			}
+		}
+	],
+	"files": {
+		"ignoreUnknown": false,
+		"includes": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.css", "src/**/*.json"]
+	}
 }

@@ -1,11 +1,11 @@
 // src/hooks/useComboManager.ts
 import { useMemo, useState, useEffect, useCallback } from 'react';
-import { supabase } from '@/lib/supabase';
+import charactersMappingRaw from '@/data/character_mapping.json';
 import charactersDataRaw from '@/data/characters.json';
 import combosDataRaw from '@/data/combos.json';
 import mapsDataRaw from '@/data/maps.json';
 import skillsDataRaw from '@/data/skills.json';
-import charactersMappingRaw from '@/data/character_mapping.json';
+import { supabase } from '@/lib/supabase';
 import type { Character, Combo } from '@/types';
 
 const charactersData = charactersDataRaw as Record<string, Character>;

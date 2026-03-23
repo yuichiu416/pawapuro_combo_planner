@@ -1,10 +1,13 @@
 // src/components/CharacterSidebar.tsx
-import React, { useMemo, useState } from 'react';
-import { Search, ChevronDown, ChevronRight, MapPin, X } from 'lucide-react';
-import { cn } from '../utils/style';
+
+import { ChevronDown, ChevronRight, Info, MapPin, RotateCcw, Search, X } from 'lucide-react';
+import type React from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { POSITIONS } from '@/constants';
 import charactersDataRaw from '@/data/characters.json';
+import { cn } from '../utils/style';
 
+// Order mapping for sorting characters by position
 const POSITION_ORDER: Record<string, number> = {
   投: 1,
   捕: 2,
@@ -21,6 +24,7 @@ const POSITION_ORDER: Record<string, number> = {
 
 const CHAR_DATA = charactersDataRaw as Record<string, any>;
 
+// Extract unique map names from character data
 const AVAILABLE_MAPS = Array.from(
   new Set(
     Object.values(charactersDataRaw)
@@ -62,6 +66,14 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
 }) => {
   const [isMapExpanded, setIsMapExpanded] = useState(false);
 
+  // New State: Track which character is currently being previewed in the roster
+  const [selectedPreview, setSelectedPreview] = useState<string | null>(null);
+
+  // New State: Track the last removed character for the Undo feature
+  const [lastRemoved, setLastRemoved] = useState<string | null>(null);
+  const [showUndo, setShowUndo] = useState(false);
+
+  // Helper to sort character names based on position and ID
   const sortChars = (names: string[]) => {
     return [...names].sort((a, b) => {
       const dataA = CHAR_DATA[a];
@@ -76,9 +88,36 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
   const sortedRoster = useMemo(() => sortChars(Array.from(ownedChars)), [ownedChars]);
   const sortedWithCombo = useMemo(() => sortChars(groups.withCombo), [groups.withCombo]);
   const sortedNoCombo = useMemo(() => sortChars(groups.noCombo), [groups.noCombo]);
+
+  // Create fixed 28 slots for the visual roster grid
   const rosterSlots = Array(28)
     .fill(null)
     .map((_, i) => sortedRoster[i] || null);
+
+  // Handle the actual removal and trigger the undo toast
+  const handleConfirmRemove = (name: string) => {
+    onToggle(name);
+    setLastRemoved(name);
+    setShowUndo(true);
+    setSelectedPreview(null);
+  };
+
+  // Restore the last removed character
+  const handleUndo = () => {
+    if (lastRemoved) {
+      onToggle(lastRemoved);
+      setLastRemoved(null);
+      setShowUndo(false);
+    }
+  };
+
+  // Auto-hide the Undo toast after 5 seconds
+  useEffect(() => {
+    if (showUndo) {
+      const timer = setTimeout(() => setShowUndo(false), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [showUndo]);
 
   const renderList = (names: string[], title: string) => {
     if (names.length === 0) return null;
@@ -140,13 +179,13 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
 
   return (
     <aside
-      className="w-full bg-slate-50 border-r border-slate-200 flex flex-col h-full overflow-hidden"
+      className="w-full bg-slate-50 border-r border-slate-200 flex flex-col h-full overflow-hidden relative"
       role="complementary"
       aria-label={ariaLabel}
     >
       <div className="shrink-0 bg-white border-b border-slate-200 shadow-sm">
         <div className="p-3 space-y-2.5">
-          {/* ENLARGED OWNED CHARACTERS (ACTIVE ROSTER) */}
+          {/* ACTIVE ROSTER SECTION */}
           <div className="space-y-1.5 bg-slate-900 p-3 rounded-xl shadow-inner border border-slate-800">
             <div className="flex justify-between items-center px-1">
               <span className="text-xs font-black text-slate-500 uppercase tracking-widest">
@@ -161,30 +200,34 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
                 {ownedChars.size} / 28
               </span>
             </div>
+
+            {/* Grid of 28 slots */}
             <div className="grid grid-cols-7 gap-1">
               {rosterSlots.map((charName, i) => (
                 <button
                   key={charName ? `slot-${charName}` : `empty-${i}`}
                   disabled={!charName}
-                  onClick={() => charName && onToggle(charName)}
+                  onClick={() =>
+                    charName && setSelectedPreview(charName === selectedPreview ? null : charName)
+                  }
                   className={cn(
                     'aspect-square rounded-md border flex items-center justify-center overflow-hidden transition-all relative group/slot',
                     charName
-                      ? 'border-slate-600 bg-slate-800 hover:border-rose-500 hover:scale-105'
+                      ? cn(
+                          'bg-slate-800',
+                          selectedPreview === charName
+                            ? 'border-blue-400 ring-2 ring-blue-400/50 scale-105 z-20'
+                            : 'border-slate-600 hover:border-slate-400',
+                        )
                       : 'border-slate-800/50 bg-slate-900/40',
                   )}
                 >
                   {charName ? (
-                    <>
-                      <img
-                        src={getImagePath(charName, true)}
-                        alt={charName}
-                        className="w-full h-full object-cover z-10 group-hover/slot:opacity-30"
-                      />
-                      <div className="absolute inset-0 z-20 opacity-0 group-hover/slot:opacity-100 flex items-center justify-center">
-                        <X size={14} className="text-rose-500 stroke-[3px]" />
-                      </div>
-                    </>
+                    <img
+                      src={getImagePath(charName, true)}
+                      alt={charName}
+                      className="w-full h-full object-cover z-10"
+                    />
                   ) : (
                     <div className="w-1 h-1 bg-slate-800 rounded-full" />
                   )}
@@ -193,9 +236,37 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             </div>
           </div>
 
-          {/* Position Filters Area */}
+          {/* PREVIEW PANEL (Appears when a roster character is clicked) */}
+          {selectedPreview && (
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-2.5 flex items-center justify-between animate-in zoom-in-95 duration-150">
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded border border-blue-300 bg-white overflow-hidden">
+                  <img
+                    src={getImagePath(selectedPreview, true)}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <p className="text-xs font-black text-blue-900 leading-none">{selectedPreview}</p>
+                  <p className="text-[xs] font-bold text-blue-600 uppercase mt-0.5">
+                    {CHAR_DATA[selectedPreview]?.position || 'Manager'}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => handleConfirmRemove(selectedPreview)}
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-md text-[xs] font-black transition-colors"
+              >
+                <X size={12} strokeWidth={3} />
+                REMOVE
+              </button>
+            </div>
+          )}
+
+          {/* Filters Area */}
           <div className="flex flex-wrap items-center gap-1">
             <button
+              aria-label="No Kanji"
               onClick={toggleKanjiFilter}
               className={cn(
                 'w-7 h-7 rounded-lg text-sm font-black border flex items-center justify-center transition-all',
@@ -270,7 +341,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
           {isMapExpanded && (
             <div className="flex flex-wrap gap-1 p-2 bg-slate-50 rounded-xl border border-slate-200 animate-in fade-in slide-in-from-top-1">
               <button
-                data-testid="map-filter-button-any"
+                data-testid={`map-filter-button-any`}
                 onClick={() => {
                   setMapFilter(null);
                   setIsMapExpanded(false);
@@ -307,10 +378,36 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
         </div>
       </div>
 
+      {/* Main List Area */}
       <div className="flex-1 overflow-y-auto py-3 space-y-6 custom-scrollbar">
         {renderList(sortedWithCombo, 'Available Combo Partners')}
         {renderList(sortedNoCombo, 'Other Characters')}
       </div>
+
+      {/* Undo Notification Toast */}
+      {showUndo && (
+        <div
+          data-testid="undo-toast"
+          className="absolute bottom-6 left-4 right-4 z-[40] animate-in fade-in slide-in-from-bottom-2"
+        >
+          <div className="bg-blue-600 text-white rounded-xl shadow-lg px-4 py-3 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Info size={16} />
+              {/* Use a clear label for the status */}
+              <span className="text-xs font-black uppercase italic tracking-wider">
+                Removed {lastRemoved}
+              </span>
+            </div>
+            <button
+              onClick={handleUndo}
+              aria-label="Undo"
+              className="flex items-center gap-1.5 px-3 py-1 bg-white/20 hover:bg-white/30 rounded-lg text-[xs] font-black uppercase transition-all"
+            >
+              <RotateCcw size={14} /> Undo
+            </button>
+          </div>
+        </div>
+      )}
     </aside>
   );
 };

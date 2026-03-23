@@ -1,17 +1,17 @@
 // src/components/MapSection.tsx
-import React from 'react';
-import { MapPin, ChevronDown } from 'lucide-react';
+
+import { ChevronDown, MapPin } from 'lucide-react';
+import type React from 'react';
 import { ComboCard } from '@/components/ComboCard';
+import combosDataRaw from '@/data/combos.json';
 import { cn } from '@/utils/style';
 
-// Import the full combo data to get reward details
-import combosDataRaw from '@/data/combos.json';
-
+// Cast raw JSON data to a Record for O(1) lookup speed
 const combosData = combosDataRaw as Record<string, any>;
 
 interface MapSectionProps {
   mapName: string;
-  combos: string[]; // CHANGED: Now expecting an array of IDs from the parent
+  combos: string[]; // List of combo IDs filtered by parent
   selectedComboIds: Set<string>;
   toggleCombo: (id: string) => void;
   ownedChars: Set<string>;
@@ -25,7 +25,7 @@ interface MapSectionProps {
 
 export const MapSection: React.FC<MapSectionProps> = ({
   mapName,
-  combos,
+  combos = [], // Default to empty array
   selectedComboIds,
   toggleCombo,
   isExpanded,
@@ -37,7 +37,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
 
   return (
     <section className="space-y-8">
-      {/* Clickable Header */}
+      {/* Clickable Header for Toggling Expansion */}
       <div
         onClick={onToggle}
         className="flex items-center justify-between group cursor-pointer select-none"
@@ -49,6 +49,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
               isExpanded
                 ? 'bg-blue-100 text-blue-600'
                 : 'bg-slate-200 text-slate-500 group-hover:bg-slate-300',
+              // Highlight green if all combos in this map are selected
               isComplete && !isExpanded && 'bg-emerald-100 text-emerald-600',
             )}
           >
@@ -60,7 +61,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
             </h2>
             <div className="flex items-center gap-3">
               <p className="text-sm font-black text-slate-400 uppercase tracking-widest">
-                {combos?.length || 0} Matches Found
+                {combos.length} Matches Found
               </p>
 
               {progress && (
@@ -92,17 +93,17 @@ export const MapSection: React.FC<MapSectionProps> = ({
         </div>
       </div>
 
-      {/* Expandable Content Container */}
+      {/* Expandable Content Container with Slide Animation */}
       {isExpanded && (
         <div className="grid gap-6 animate-in fade-in slide-in-from-top-4 duration-300">
-          {combos?.map((comboId) => {
+          {combos.map((comboId) => {
             const fullComboData = combosData[comboId];
             if (!fullComboData) return null;
 
             return (
               <ComboCard
                 key={comboId}
-                // We pull the names and rewards directly from the JSON using the ID
+                // Mapping data from global JSON to individual cards
                 names={fullComboData.characters}
                 rewards={fullComboData.rewards}
                 isSelected={selectedComboIds.has(comboId)}
@@ -112,7 +113,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
             );
           })}
 
-          {(!combos || combos.length === 0) && (
+          {combos.length === 0 && (
             <div className="p-12 border-4 border-dashed border-slate-200 rounded-[3rem] text-center">
               <p className="font-black text-slate-300 uppercase italic">No Matches in this area</p>
             </div>

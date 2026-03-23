@@ -1,8 +1,9 @@
 // src/components/AuthButton.tsx
-import React, { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase';
+
 import type { User } from '@supabase/supabase-js';
 import { LogIn, LogOut, User as UserIcon } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { supabase } from '@/lib/supabase';
 import { cn } from '@/utils/style';
 
 export const AuthButton = () => {
@@ -99,7 +100,7 @@ export const AuthButton = () => {
   return (
     <button
       onClick={handleLogin}
-      className="h-11 px-4 flex items-center justify-center gap-2 bg-white border border-slate-200 rounded-xl font-bold uppercase text-[10px] tracking-wider text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-all active:scale-95 shrink-0"
+      className="h-11 px-4 flex items-center justify-center gap-2 bg-white border border-slate-200 rounded-xl font-bold uppercase text-[xs] tracking-wider text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-all active:scale-95 shrink-0"
     >
       <LogIn size={14} className="text-blue-600" />
       Sign In

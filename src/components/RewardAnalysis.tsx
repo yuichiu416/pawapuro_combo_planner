@@ -1,9 +1,11 @@
 // src/components/RewardAnalysis.tsx
-import React, { useMemo } from 'react';
-import { Award, Zap, AlertCircle, MapPin } from 'lucide-react';
-import { cn } from '@/utils/style';
-import skillsDataRaw from '@/data/skills.json';
+
+import { AlertCircle, Award, MapPin, Zap } from 'lucide-react';
+import type React from 'react';
+import { useMemo } from 'react';
 import charactersDataRaw from '@/data/characters.json';
+import skillsDataRaw from '@/data/skills.json';
+import { cn } from '@/utils/style';
 
 const skillsData = skillsDataRaw as Record<string, any>;
 const charactersData = charactersDataRaw as Record<string, any>;
@@ -71,8 +73,8 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
           >
             <span
               className={cn(
-                'text-[9px] font-black uppercase leading-none mb-0.5',
-                item.err ? 'text-rose-500' : 'text-slate-400',
+                'text-xs font-black uppercase leading-none mb-0.5',
+                item.err ? 'text-rose-500' : 'text-slate-500',
               )}
             >
               {item.label}
@@ -80,11 +82,11 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
             <span
               className={cn(
                 'text-base font-black italic leading-none',
-                item.err ? 'text-rose-600' : 'text-slate-800',
+                item.err ? 'text-rose-600' : 'text-slate-00',
               )}
             >
               {item.val}
-              <span className="text-[9px] font-normal text-slate-300 ml-0.5">{item.max}</span>
+              <span className="text-xs font-normal text-slate-800 ml-0.5">{item.max}</span>
             </span>
           </div>
         ))}
@@ -94,7 +96,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
       <section className="shrink-0 p-3 bg-emerald-50/50 border border-emerald-100 rounded-xl shadow-sm">
         <div className="flex items-center gap-1.5 mb-2">
           <Zap size={12} className="text-emerald-500 fill-emerald-500" />
-          <span className="text-[10px] font-black text-emerald-600 uppercase tracking-widest leading-none">
+          <span className="text-[xs] font-black text-emerald-600 uppercase tracking-widest leading-none">
             Total Stats
           </span>
         </div>
@@ -105,14 +107,14 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
                 key={stat}
                 className="flex justify-between items-baseline border-b border-emerald-100/30"
               >
-                <span className="text-[10px] font-bold text-slate-500 uppercase truncate">
+                <span className="text-[xs] font-bold text-slate-500 uppercase truncate">
                   {stat}
                 </span>
                 <span className="text-xs font-black text-emerald-700">+{val}</span>
               </div>
             ))
           ) : (
-            <p className="col-span-2 text-[10px] text-slate-400 font-bold italic text-center uppercase leading-none">
+            <p className="col-span-2 text-[xs] text-slate-400 font-bold italic text-center uppercase leading-none">
               No bonuses
             </p>
           )}
@@ -124,11 +126,11 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
         <div className="px-3 py-2 border-b border-slate-50 bg-slate-50/50 flex justify-between items-center shrink-0">
           <div className="flex items-center gap-1.5">
             <Award size={14} className="text-blue-500" />
-            <span className="text-xs font-black text-slate-700 uppercase tracking-tight">
+            <span className="text-sm font-black text-slate-700 uppercase tracking-tight">
               Earned Skills
             </span>
           </div>
-          <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-black rounded-full border border-amber-200">
+          <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-[xs] font-black rounded-full border border-amber-200">
             {goldSkillsCount} 金特
           </span>
         </div>
@@ -154,7 +156,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
                 </span>
                 <div
                   className={cn(
-                    'px-1.5 py-0.5 text-[9px] font-black rounded-md italic shrink-0',
+                    'px-1.5 py-0.5 text-xs font-black rounded-md italic shrink-0',
                     isGold
                       ? 'bg-amber-500 text-white'
                       : 'bg-slate-100 text-slate-400 border border-slate-200/50',
@@ -174,7 +176,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
           <div className="px-3 py-1.5 bg-rose-50/80 flex items-center justify-between shrink-0 border-b border-rose-100">
             <div className="flex items-center gap-1.5">
               <AlertCircle size={12} className="text-rose-500" />
-              <span className="text-[10px] font-black text-rose-600 uppercase tracking-tighter">
+              <span className="text-[xs] font-black text-rose-600 uppercase tracking-tighter">
                 Missing Characters
               </span>
             </div>
@@ -200,13 +202,13 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
                         }
                       />
                     </div>
-                    <span className="text-[10px] font-black text-slate-700 truncate uppercase tracking-tight">
+                    <span className="text-[xs] font-black text-slate-700 truncate uppercase tracking-tight">
                       {char}
                     </span>
                   </div>
                   <div className="flex items-center gap-1 px-1.5 py-0.5 bg-rose-100/50 rounded-lg shrink-0 border border-rose-200/40">
                     <MapPin size={8} className="text-rose-500" />
-                    <span className="text-[9px] font-black italic text-rose-600 uppercase tracking-tighter">
+                    <span className="text-xs font-black italic text-rose-600 uppercase tracking-tighter">
                       {mapName}
                     </span>
                   </div>

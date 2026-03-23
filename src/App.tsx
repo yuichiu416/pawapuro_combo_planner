@@ -1,27 +1,29 @@
 // src/App.tsx
-import React, { useState, useMemo, useEffect } from 'react';
+
 import {
+  BarChart3,
   ChevronLeft,
   ChevronRight,
-  Save,
-  Loader2,
   Clock,
+  List,
+  Loader2,
+  Save,
   SearchX,
   Users,
-  List,
-  BarChart3,
   X,
 } from 'lucide-react';
-import { supabase } from '@/lib/supabase';
-import { useComboManager } from '@/hooks/useComboManager';
-import { CharacterSidebar } from '@/components/CharacterSidebar';
-import { RewardAnalysis } from '@/components/RewardAnalysis';
-import { MapSection } from '@/components/MapSection';
-import { Header } from '@/components/Header';
+import type React from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AuthButton } from '@/components/AuthButton';
+import { CharacterSidebar } from '@/components/CharacterSidebar';
 import { Footer } from '@/components/Footer';
-import { cn } from '@/utils/style';
+import { Header } from '@/components/Header';
+import { MapSection } from '@/components/MapSection';
+import { RewardAnalysis } from '@/components/RewardAnalysis';
 import characters from '@/data/characters.json';
+import { useComboManager } from '@/hooks/useComboManager';
+import { supabase } from '@/lib/supabase';
+import { cn } from '@/utils/style';
 
 const BASE_ASSET_PATH = '/assets/icons_split/';
 
@@ -161,6 +163,9 @@ const App: React.FC = () => {
               isSidebarCollapsed && 'opacity-0 pointer-events-none',
             )}
           >
+            {/* Integrated updated CharacterSidebar:
+              onToggle here handles both adding from lists and removal via preview panel 
+            */}
             <CharacterSidebar
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
@@ -339,7 +344,7 @@ const App: React.FC = () => {
 
                 <div
                   className={cn(
-                    'text-[10px] font-bold text-slate-400 text-right uppercase tracking-widest leading-none',
+                    'text-[xs] font-bold text-slate-400 text-right uppercase tracking-widest leading-none',
                     !lastSaved && 'invisible',
                   )}
                 >
@@ -354,7 +359,7 @@ const App: React.FC = () => {
           )}
         </aside>
 
-        {/* MOBILE DRAWER: Analysis (No Sync Row here, handled in Header) */}
+        {/* MOBILE DRAWER: Analysis */}
         <div
           className={cn(
             'lg:hidden fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-sm transition-opacity duration-300',
