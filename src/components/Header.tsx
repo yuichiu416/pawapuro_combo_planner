@@ -2,9 +2,10 @@ import React from 'react';
 import { 
   ChevronDown, ChevronUp, 
   CircleDot, XCircle,
-  Plus, Minus
+  Plus, Minus, Save, Loader2
 } from 'lucide-react';
 import { cn } from '@/utils/style';
+import { AuthButton } from './AuthButton';
 
 interface HeaderProps {
   showPositionIcon: boolean;
@@ -18,6 +19,10 @@ interface HeaderProps {
   allExpanded: boolean;
   fontScale: number;
   onAdjustFont: (delta: number) => void;
+  // Added back for the Mobile Sync logic
+  isLoggedIn: boolean;
+  isSyncing: boolean;
+  handleSave: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -31,19 +36,39 @@ export const Header: React.FC<HeaderProps> = ({
   onCollapseAll, 
   allExpanded,
   fontScale,
-  onAdjustFont
+  onAdjustFont,
+  isLoggedIn,
+  isSyncing,
+  handleSave
 }) => {
   return (
     <header className="space-y-6">
       {/* Top Row: Brand & Main Actions */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="bg-blue-600 p-2 rounded-xl text-white shadow-lg shadow-blue-200">
-            <CircleDot size={24} />
+        <div className="flex items-center justify-between w-full lg:w-auto">
+          <div className="flex items-center gap-3">
+            <div className="bg-blue-600 p-2 rounded-xl text-white shadow-lg shadow-blue-200 shrink-0">
+              <CircleDot size={24} />
+            </div>
+            <h1 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-slate-900 leading-none">
+              Planner
+            </h1>
           </div>
-          <h1 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-slate-900">
-            Planner
-          </h1>
+
+          {/* MOBILE ONLY SYNC: Only visible on small screens */}
+          <div className="flex lg:hidden items-center gap-2">
+            <button 
+              onClick={handleSave} 
+              disabled={isSyncing} 
+              className={cn(
+                "flex items-center justify-center w-10 h-10 rounded-xl transition-all active:scale-95 disabled:opacity-50 shadow-sm",
+                isLoggedIn ? "bg-blue-600 text-white" : "bg-slate-800 text-white"
+              )}
+            >
+              {isSyncing ? <Loader2 className="animate-spin" size={18} /> : <Save size={18} />}
+            </button>
+            <AuthButton />
+          </div>
         </div>
 
         <div className="flex flex-wrap items-center gap-2 md:gap-3">

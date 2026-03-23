@@ -174,6 +174,7 @@ const App: React.FC = () => {
               onExpandAll={() => setExpandedMaps(new Set(allMapNames))} 
               onCollapseAll={() => setExpandedMaps(new Set())} 
               allExpanded={allExpanded} fontScale={fontScale} onAdjustFont={adjustFont}
+              isLoggedIn={isLoggedIn} isSyncing={isSyncing} handleSave={handleSave}
             />
 
             <div className="space-y-12 md:space-y-16">
@@ -212,7 +213,7 @@ const App: React.FC = () => {
           </div>
         </main>
         
-        {/* RIGHT SIDEBAR (Desktop Only) */}
+        {/* RIGHT SIDEBAR (Desktop Only: Sync & Auth live here) */}
         <aside className={cn(
           "hidden lg:flex relative bg-white border-l border-slate-200 transition-all duration-300 flex-col z-20", 
           isAnalysisCollapsed ? "w-0 border-l-0" : "w-[26rem]"
@@ -225,7 +226,7 @@ const App: React.FC = () => {
           </button>
           {!isAnalysisCollapsed && (
             <div className="h-full w-[26rem] flex flex-col">
-              <div className="px-6 py-3 space-y-2 bg-slate-50/50">
+              <div className="px-6 py-3 space-y-2 bg-slate-50/50 border-b border-slate-200/50">
                 <div className="flex flex-row items-center gap-3">
                   <button 
                     onClick={handleSave} 
@@ -250,7 +251,7 @@ const App: React.FC = () => {
                   !lastSaved && "invisible"
                 )}>
                   <Clock size={8} className="inline mr-1 -mt-0.5"/> 
-                  Last saved: {lastSaved || "Placeholder"}
+                  Last saved: {lastSaved || "Just now"}
                 </div>
               </div>
               <div className="flex-1 overflow-y-auto custom-scrollbar">
@@ -260,7 +261,7 @@ const App: React.FC = () => {
           )}
         </aside>
 
-        {/* MOBILE DRAWER: Analysis */}
+        {/* MOBILE DRAWER: Analysis (No Sync Row here, handled in Header) */}
         <div className={cn(
           "lg:hidden fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-sm transition-opacity duration-300",
           activeMobileTab === 'analysis' ? "opacity-100 visible" : "opacity-0 invisible"
@@ -272,22 +273,6 @@ const App: React.FC = () => {
             <div className="p-4 border-b flex justify-between items-center shrink-0">
               <span className="font-black italic uppercase tracking-tighter text-lg">Reward Analysis</span>
               <button onClick={() => setActiveMobileTab('planner')} className="p-2 bg-slate-100 rounded-full"><X size={20}/></button>
-            </div>
-            
-            {/* MOBILE SYNC ROW */}
-            <div className="p-4 bg-slate-50 border-b flex items-center gap-3 shrink-0">
-              <AuthButton />
-              <button 
-                onClick={handleSave} 
-                disabled={isSyncing}
-                className={cn(
-                  "flex-1 flex items-center justify-center gap-2 h-11 rounded-xl font-black italic uppercase text-xs transition-all shadow-md active:scale-95",
-                  isLoggedIn ? "bg-blue-600 text-white" : "bg-slate-800 text-white"
-                )}
-              >
-                {isSyncing ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
-                {isSyncing ? 'Saving' : 'Save'}
-              </button>
             </div>
 
             <div className="flex-1 overflow-y-auto pb-32">
