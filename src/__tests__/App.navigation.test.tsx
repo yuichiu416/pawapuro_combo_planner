@@ -19,15 +19,15 @@ vi.mock('@/hooks/useComboManager', () => ({
       expandedMaps,
       isSidebarCollapsed,
       setIsSidebarCollapsed: () => setIsSidebarCollapsed(!isSidebarCollapsed),
-      onToggle: (mapName: string) => { 
-        setExpandedMaps(prev => {
+      onToggle: (mapName: string) => {
+        setExpandedMaps((prev) => {
           const next = new Set(prev);
           next.has(mapName) ? next.delete(mapName) : next.add(mapName);
           return next;
         });
-      }
+      },
     });
-  }
+  },
 }));
 
 describe('App Integration - Map Expansion', () => {
@@ -53,7 +53,7 @@ describe('App Integration - Map Expansion', () => {
 
   it('should expand a specific map when clicked via Sidebar', async () => {
     render(<App />);
-    const sidebarBtn = screen.getAllByText('スカウ島')[0]; 
+    const sidebarBtn = screen.getAllByText('スカウ島')[0];
     await user.click(sidebarBtn);
 
     expect(await screen.findByTestId('combo-card-パワプロ&矢部明雄')).toBeInTheDocument();
@@ -66,7 +66,7 @@ describe('App Integration - Map Expansion', () => {
 
     expect(sidebarContainer).toHaveClass('w-[24rem]');
     await user.click(toggleBtn);
-    
+
     await waitFor(() => {
       expect(sidebarContainer).toHaveClass('w-20');
       expect(sidebarContainer).not.toHaveClass('w-[24rem]');

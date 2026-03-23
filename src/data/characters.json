@@ -65,9 +65,7 @@
     "position": "投",
     "encounter_map": "スカウ島",
     "rewards": {
-      "skills": [
-        "低め◯"
-      ],
+      "skills": ["低め◯"],
       "stats": {
         "敏捷": 6,
         "技術": 6
@@ -79,9 +77,7 @@
     "position": "投",
     "encounter_map": "スカウ島",
     "rewards": {
-      "skills": [
-        "ポーカーフェイス"
-      ],
+      "skills": ["ポーカーフェイス"],
       "stats": {
         "筋力": 9
       }
@@ -92,9 +88,7 @@
     "position": "捕",
     "encounter_map": "スカウ島",
     "rewards": {
-      "skills": [
-        "流し打ち"
-      ],
+      "skills": ["流し打ち"],
       "stats": {
         "変化球": 11,
         "精神": 11
@@ -106,9 +100,7 @@
     "position": "三",
     "encounter_map": "スカウ島",
     "rewards": {
-      "skills": [
-        "チャンス"
-      ],
+      "skills": ["チャンス"],
       "stats": {
         "敏捷": 8,
         "技術": 8,
@@ -121,9 +113,7 @@
     "position": "外",
     "encounter_map": "スカウ島",
     "rewards": {
-      "skills": [
-        "レーザービーム"
-      ],
+      "skills": ["レーザービーム"],
       "stats": {}
     }
   },
@@ -132,9 +122,7 @@
     "position": "外",
     "encounter_map": "スカウ島",
     "rewards": {
-      "skills": [
-        "流し打ち"
-      ],
+      "skills": ["流し打ち"],
       "stats": {
         "筋力": 3,
         "敏捷": 3,
@@ -148,9 +136,7 @@
     "position": "外",
     "encounter_map": "スカウ島",
     "rewards": {
-      "skills": [
-        "内野安打◯"
-      ],
+      "skills": ["内野安打◯"],
       "stats": {
         "技術": 9
       }
@@ -161,9 +147,7 @@
     "position": "外",
     "encounter_map": "スカウ島",
     "rewards": {
-      "skills": [
-        "チャンスメーカー"
-      ],
+      "skills": ["チャンスメーカー"],
       "stats": {
         "筋力": 3,
         "敏捷": 3,
@@ -328,9 +312,7 @@
     "position": "投",
     "encounter_map": "スカウ島",
     "rewards": {
-      "skills": [
-        "ボーナスなし"
-      ],
+      "skills": ["ボーナスなし"],
       "stats": {}
     }
   },
@@ -830,9 +812,7 @@
     "position": "投",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "内角攻め"
-      ],
+      "skills": ["内角攻め"],
       "stats": {
         "筋力": 8,
         "技術": 1,
@@ -873,9 +853,7 @@
     "position": "投",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "低め◯"
-      ],
+      "skills": ["低め◯"],
       "stats": {
         "筋力": 3,
         "技術": 3,
@@ -889,9 +867,7 @@
     "position": "投",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "クロスファイヤー"
-      ],
+      "skills": ["クロスファイヤー"],
       "stats": {
         "変化球": 7
       }
@@ -902,9 +878,7 @@
     "position": "投",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "球速安定"
-      ],
+      "skills": ["球速安定"],
       "stats": {
         "変化球": 18
       }
@@ -915,9 +889,7 @@
     "position": "投",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "回復"
-      ],
+      "skills": ["回復"],
       "stats": {
         "変化球": 14,
         "精神": 14
@@ -929,9 +901,7 @@
     "position": "投",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "テンポ◯(表示なし)"
-      ],
+      "skills": ["テンポ◯(表示なし)"],
       "stats": {
         "変化球": 18
       }
@@ -942,9 +912,7 @@
     "position": "投",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "対ピンチ"
-      ],
+      "skills": ["対ピンチ"],
       "stats": {}
     }
   },
@@ -953,9 +921,7 @@
     "position": "投",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "勝ち運"
-      ],
+      "skills": ["勝ち運"],
       "stats": {
         "変化球": 11
       }
@@ -966,9 +932,7 @@
     "position": "投",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "闘志"
-      ],
+      "skills": ["闘志"],
       "stats": {
         "変化球": 18
       }
@@ -979,9 +943,7 @@
     "position": "捕",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "サヨナラ男"
-      ],
+      "skills": ["サヨナラ男"],
       "stats": {
         "筋力": 13
       }
@@ -992,9 +954,7 @@
     "position": "二",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "流し打ち"
-      ],
+      "skills": ["流し打ち"],
       "stats": {}
     }
   },
@@ -1003,9 +963,7 @@
     "position": "二",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "プレッシャーラン"
-      ],
+      "skills": ["プレッシャーラン"],
       "stats": {
         "技術": 12
       }
@@ -1016,9 +974,7 @@
     "position": "三",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "満塁男"
-      ],
+      "skills": ["満塁男"],
       "stats": {
         "筋力": 15
       }
@@ -1029,9 +985,7 @@
     "position": "遊",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "意外性"
-      ],
+      "skills": ["意外性"],
       "stats": {
         "精神": 15
       }
@@ -1042,9 +996,7 @@
     "position": "遊",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "粘り打ち"
-      ],
+      "skills": ["粘り打ち"],
       "stats": {
         "技術": 3,
         "精神": 3
@@ -1056,9 +1008,7 @@
     "position": "外",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "チャンス"
-      ],
+      "skills": ["チャンス"],
       "stats": {
         "筋力": 6,
         "技術": 6
@@ -1070,9 +1020,7 @@
     "position": "外",
     "encounter_map": "試練の洞窟",
     "rewards": {
-      "skills": [
-        "粘り打ち"
-      ],
+      "skills": ["粘り打ち"],
       "stats": {
         "筋力": 9,
         "技術": 9
@@ -1364,9 +1312,7 @@
     "position": "一",
     "encounter_map": "スカウ島東海岸",
     "rewards": {
-      "skills": [
-        "チャンス"
-      ],
+      "skills": ["チャンス"],
       "stats": {
         "筋力": 5,
         "技術": 15
@@ -1378,9 +1324,7 @@
     "position": "三",
     "encounter_map": "スカウ島東海岸",
     "rewards": {
-      "skills": [
-        "対ストレート◯"
-      ],
+      "skills": ["対ストレート◯"],
       "stats": {
         "筋力": 1,
         "技術": 5,
@@ -1404,9 +1348,7 @@
     "position": "遊",
     "encounter_map": "スカウ島東海岸",
     "rewards": {
-      "skills": [
-        "バント◯"
-      ],
+      "skills": ["バント◯"],
       "stats": {
         "敏捷": 8,
         "技術": 8,
@@ -1419,9 +1361,7 @@
     "position": "外",
     "encounter_map": "スカウ島東海岸",
     "rewards": {
-      "skills": [
-        "いぶし銀"
-      ],
+      "skills": ["いぶし銀"],
       "stats": {
         "技術": 2
       }
@@ -1432,9 +1372,7 @@
     "position": "投",
     "encounter_map": "スカウ島東海岸",
     "rewards": {
-      "skills": [
-        "球持ち◯"
-      ],
+      "skills": ["球持ち◯"],
       "stats": {
         "技術": 6,
         "変化球": 7
@@ -1446,9 +1384,7 @@
     "position": "捕",
     "encounter_map": "スカウ島東海岸",
     "rewards": {
-      "skills": [
-        "送球"
-      ],
+      "skills": ["送球"],
       "stats": {
         "精神": 9
       }
@@ -1459,9 +1395,7 @@
     "position": "捕",
     "encounter_map": "スカウ島東海岸",
     "rewards": {
-      "skills": [
-        "インコースヒッター"
-      ],
+      "skills": ["インコースヒッター"],
       "stats": {
         "敏捷": 6,
         "技術": 6
@@ -1473,9 +1407,7 @@
     "position": "一",
     "encounter_map": "スカウ島東海岸",
     "rewards": {
-      "skills": [
-        "マルチ弾"
-      ],
+      "skills": ["マルチ弾"],
       "stats": {
         "筋力": 9
       }
@@ -1486,9 +1418,7 @@
     "position": "二",
     "encounter_map": "スカウ島東海岸",
     "rewards": {
-      "skills": [
-        "ケガしにくさ"
-      ],
+      "skills": ["ケガしにくさ"],
       "stats": {
         "技術": 12
       }
@@ -1499,9 +1429,7 @@
     "position": "二",
     "encounter_map": "スカウ島東海岸",
     "rewards": {
-      "skills": [
-        "ローボールヒッター"
-      ],
+      "skills": ["ローボールヒッター"],
       "stats": {
         "筋力": 11
       }
@@ -1512,9 +1440,7 @@
     "position": "二",
     "encounter_map": "スカウ島東海岸",
     "rewards": {
-      "skills": [
-        "アウトコースヒッター"
-      ],
+      "skills": ["アウトコースヒッター"],
       "stats": {
         "筋力": 6,
         "敏捷": 6
@@ -1526,9 +1452,7 @@
     "position": "三",
     "encounter_map": "スカウ島東海岸",
     "rewards": {
-      "skills": [
-        "バント職人"
-      ],
+      "skills": ["バント職人"],
       "stats": {
         "精神": 4
       }
@@ -1539,9 +1463,7 @@
     "position": "三",
     "encounter_map": "スカウ島東海岸",
     "rewards": {
-      "skills": [
-        "プルヒッター"
-      ],
+      "skills": ["プルヒッター"],
       "stats": {
         "筋力": 3,
         "敏捷": 3,
@@ -1554,9 +1476,7 @@
     "position": "外",
     "encounter_map": "スカウ島東海岸",
     "rewards": {
-      "skills": [
-        "対エース◯"
-      ],
+      "skills": ["対エース◯"],
       "stats": {
         "技術": 3
       }
@@ -1944,9 +1864,7 @@
     "position": "投",
     "encounter_map": "ハナレ島",
     "rewards": {
-      "skills": [
-        "重い球"
-      ],
+      "skills": ["重い球"],
       "stats": {
         "筋力": 2,
         "精神": 5
@@ -1958,9 +1876,7 @@
     "position": "投",
     "encounter_map": "ハナレ島",
     "rewards": {
-      "skills": [
-        "低め◯"
-      ],
+      "skills": ["低め◯"],
       "stats": {
         "技術": 1,
         "変化球": 5
@@ -2012,9 +1928,7 @@
     "position": "投",
     "encounter_map": "ハナレ島",
     "rewards": {
-      "skills": [
-        "リリース◯"
-      ],
+      "skills": ["リリース◯"],
       "stats": {
         "変化球": 11
       }
@@ -2025,9 +1939,7 @@
     "position": "投",
     "encounter_map": "ハナレ島",
     "rewards": {
-      "skills": [
-        "ポーカーフェイス"
-      ],
+      "skills": ["ポーカーフェイス"],
       "stats": {
         "筋力": 9,
         "敏捷": 9,
@@ -2040,9 +1952,7 @@
     "position": "投",
     "encounter_map": "ハナレ島",
     "rewards": {
-      "skills": [
-        "ポーカーフェイス"
-      ],
+      "skills": ["ポーカーフェイス"],
       "stats": {
         "敏捷": 9,
         "変化球": 11
@@ -2054,9 +1964,7 @@
     "position": "捕",
     "encounter_map": "ハナレ島",
     "rewards": {
-      "skills": [
-        "バント◯"
-      ],
+      "skills": ["バント◯"],
       "stats": {
         "技術": 9
       }
@@ -2067,9 +1975,7 @@
     "position": "捕",
     "encounter_map": "ハナレ島",
     "rewards": {
-      "skills": [
-        "キャッチャー"
-      ],
+      "skills": ["キャッチャー"],
       "stats": {
         "精神": 11
       }
@@ -2080,9 +1986,7 @@
     "position": "一",
     "encounter_map": "ハナレ島",
     "rewards": {
-      "skills": [
-        "チャンス"
-      ],
+      "skills": ["チャンス"],
       "stats": {
         "筋力": 9
       }
@@ -2093,9 +1997,7 @@
     "position": "遊",
     "encounter_map": "ハナレ島",
     "rewards": {
-      "skills": [
-        "内野安打◯"
-      ],
+      "skills": ["内野安打◯"],
       "stats": {
         "筋力": 3,
         "敏捷": 3,
@@ -2407,9 +2309,7 @@
     "position": "二",
     "encounter_map": "ハナレ島",
     "rewards": {
-      "skills": [
-        "走塁"
-      ],
+      "skills": ["走塁"],
       "stats": {
         "敏捷": 3,
         "技術": 3
@@ -2531,9 +2431,7 @@
     "position": "遊",
     "encounter_map": "ハナレ島",
     "rewards": {
-      "skills": [
-        "ボーナスなし"
-      ],
+      "skills": ["ボーナスなし"],
       "stats": {}
     }
   },
@@ -2612,9 +2510,7 @@
     "position": "外",
     "encounter_map": "ハナレ島",
     "rewards": {
-      "skills": [
-        "カイルモラレス"
-      ],
+      "skills": ["カイルモラレス"],
       "stats": {}
     }
   },
@@ -2695,9 +2591,7 @@
     "position": "投",
     "encounter_map": "スカウ塔空中庭園",
     "rewards": {
-      "skills": [
-        "キレ◯"
-      ],
+      "skills": ["キレ◯"],
       "stats": {
         "筋力": 1,
         "変化球": 2
@@ -2720,9 +2614,7 @@
     "position": "二",
     "encounter_map": "スカウ塔空中庭園",
     "rewards": {
-      "skills": [
-        "アベレージヒッター"
-      ],
+      "skills": ["アベレージヒッター"],
       "stats": {
         "技術": 15,
         "精神": 1
@@ -2734,9 +2626,7 @@
     "position": "遊",
     "encounter_map": "スカウ塔空中庭園",
     "rewards": {
-      "skills": [
-        "盗塁+5"
-      ],
+      "skills": ["盗塁+5"],
       "stats": {
         "敏捷": 2
       }
@@ -2747,9 +2637,7 @@
     "position": "投",
     "encounter_map": "スカウ塔空中庭園",
     "rewards": {
-      "skills": [
-        "尻上がり"
-      ],
+      "skills": ["尻上がり"],
       "stats": {
         "筋力": 8,
         "敏捷": 8,
@@ -2762,9 +2650,7 @@
     "position": "投",
     "encounter_map": "スカウ塔空中庭園",
     "rewards": {
-      "skills": [
-        "対ピンチ"
-      ],
+      "skills": ["対ピンチ"],
       "stats": {
         "技術": 3,
         "変化球": 4
@@ -2776,9 +2662,7 @@
     "position": "投",
     "encounter_map": "スカウ塔空中庭園",
     "rewards": {
-      "skills": [
-        "緩急◯"
-      ],
+      "skills": ["緩急◯"],
       "stats": {
         "技術": 6,
         "変化球": 7,
@@ -2791,9 +2675,7 @@
     "position": "投",
     "encounter_map": "スカウ塔空中庭園",
     "rewards": {
-      "skills": [
-        "リリース◯"
-      ],
+      "skills": ["リリース◯"],
       "stats": {
         "技術": 12,
         "変化球": 14
@@ -2805,9 +2687,7 @@
     "position": "二",
     "encounter_map": "スカウ塔空中庭園",
     "rewards": {
-      "skills": [
-        "守備職人"
-      ],
+      "skills": ["守備職人"],
       "stats": {
         "筋力": 3,
         "精神": 3
@@ -2819,9 +2699,7 @@
     "position": "二",
     "encounter_map": "スカウ塔空中庭園",
     "rewards": {
-      "skills": [
-        "意外性"
-      ],
+      "skills": ["意外性"],
       "stats": {
         "敏捷": 9,
         "技術": 9
@@ -2833,9 +2711,7 @@
     "position": "三",
     "encounter_map": "スカウ塔空中庭園",
     "rewards": {
-      "skills": [
-        "広角打法"
-      ],
+      "skills": ["広角打法"],
       "stats": {
         "筋力": 3
       }
@@ -2846,9 +2722,7 @@
     "position": "遊",
     "encounter_map": "スカウ塔空中庭園",
     "rewards": {
-      "skills": [
-        "守備職人"
-      ],
+      "skills": ["守備職人"],
       "stats": {
         "精神": 15
       }
@@ -2859,9 +2733,7 @@
     "position": "遊",
     "encounter_map": "スカウ塔空中庭園",
     "rewards": {
-      "skills": [
-        "逆境◯"
-      ],
+      "skills": ["逆境◯"],
       "stats": {
         "精神": 12
       }
@@ -2872,9 +2744,7 @@
     "position": "外",
     "encounter_map": "スカウ塔空中庭園",
     "rewards": {
-      "skills": [
-        "チャンス"
-      ],
+      "skills": ["チャンス"],
       "stats": {
         "筋力": 6,
         "精神": 7
@@ -2886,9 +2756,7 @@
     "position": "外",
     "encounter_map": "スカウ塔空中庭園",
     "rewards": {
-      "skills": [
-        "パワーヒッター"
-      ],
+      "skills": ["パワーヒッター"],
       "stats": {
         "筋力": 9
       }
@@ -2899,9 +2767,7 @@
     "position": "外",
     "encounter_map": "スカウ塔空中庭園",
     "rewards": {
-      "skills": [
-        "盗塁"
-      ],
+      "skills": ["盗塁"],
       "stats": {
         "技術": 9
       }
@@ -2912,9 +2778,7 @@
     "position": "外",
     "encounter_map": "スカウ塔空中庭園",
     "rewards": {
-      "skills": [
-        "レーザービーム"
-      ],
+      "skills": ["レーザービーム"],
       "stats": {}
     }
   },
@@ -3334,9 +3198,7 @@
     "position": "投",
     "encounter_map": "スカウ塔空中庭園(空中マップ)",
     "rewards": {
-      "skills": [
-        "キレ◯"
-      ],
+      "skills": ["キレ◯"],
       "stats": {
         "技術": 5,
         "変化球": 2
@@ -3348,9 +3210,7 @@
     "position": "投",
     "encounter_map": "スカウ塔空中庭園(空中マップ)",
     "rewards": {
-      "skills": [
-        "対ピンチ"
-      ],
+      "skills": ["対ピンチ"],
       "stats": {
         "筋力": 6,
         "敏捷": 6
@@ -3362,9 +3222,7 @@
     "position": "投",
     "encounter_map": "スカウ塔空中庭園(空中マップ)",
     "rewards": {
-      "skills": [
-        "根性◯"
-      ],
+      "skills": ["根性◯"],
       "stats": {
         "筋力": 12
       }
@@ -3375,9 +3233,7 @@
     "position": "投",
     "encounter_map": "スカウ塔空中庭園(空中マップ)",
     "rewards": {
-      "skills": [
-        "回復"
-      ],
+      "skills": ["回復"],
       "stats": {
         "筋力": 6,
         "技術": 6,
@@ -3391,9 +3247,7 @@
     "position": "投",
     "encounter_map": "スカウ塔空中庭園(空中マップ)",
     "rewards": {
-      "skills": [
-        "荒れ球"
-      ],
+      "skills": ["荒れ球"],
       "stats": {
         "筋力": 6,
         "技術": 6
@@ -3405,9 +3259,7 @@
     "position": "一",
     "encounter_map": "スカウ塔空中庭園(空中マップ)",
     "rewards": {
-      "skills": [
-        "パワーヒッター"
-      ],
+      "skills": ["パワーヒッター"],
       "stats": {
         "筋力": 13
       }
@@ -3418,9 +3270,7 @@
     "position": "二",
     "encounter_map": "スカウ塔空中庭園(空中マップ)",
     "rewards": {
-      "skills": [
-        "流し打ち"
-      ],
+      "skills": ["流し打ち"],
       "stats": {
         "筋力": 6,
         "敏捷": 6,
@@ -3433,9 +3283,7 @@
     "position": "外",
     "encounter_map": "スカウ塔空中庭園(空中マップ)",
     "rewards": {
-      "skills": [
-        "守備職人"
-      ],
+      "skills": ["守備職人"],
       "stats": {
         "精神": 15
       }
@@ -3518,9 +3366,7 @@
     "position": "投",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "奪三振"
-      ],
+      "skills": ["奪三振"],
       "stats": {
         "筋力": 1,
         "技術": 1,
@@ -3533,9 +3379,7 @@
     "position": "捕",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "送球"
-      ],
+      "skills": ["送球"],
       "stats": {
         "筋力": 5,
         "技術": 1,
@@ -3548,9 +3392,7 @@
     "position": "三",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "パワーヒッター"
-      ],
+      "skills": ["パワーヒッター"],
       "stats": {
         "筋力": 2,
         "敏捷": 5,
@@ -3563,9 +3405,7 @@
     "position": "外",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "走塁"
-      ],
+      "skills": ["走塁"],
       "stats": {
         "筋力": 5,
         "敏捷": 15
@@ -3577,9 +3417,7 @@
     "position": "投",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "ノビ"
-      ],
+      "skills": ["ノビ"],
       "stats": {
         "敏捷": 6
       }
@@ -3590,9 +3428,7 @@
     "position": "投",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "ノビ"
-      ],
+      "skills": ["ノビ"],
       "stats": {
         "敏捷": 6
       }
@@ -3603,9 +3439,7 @@
     "position": "投",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "打たれ強さ"
-      ],
+      "skills": ["打たれ強さ"],
       "stats": {
         "筋力": 6,
         "敏捷": 6,
@@ -3618,9 +3452,7 @@
     "position": "投",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "根性◯"
-      ],
+      "skills": ["根性◯"],
       "stats": {
         "筋力": 9,
         "変化球": 11
@@ -3632,9 +3464,7 @@
     "position": "投",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "投打躍動"
-      ],
+      "skills": ["投打躍動"],
       "stats": {
         "敏捷": 6,
         "変化球": 7,
@@ -3647,9 +3477,7 @@
     "position": "投",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "投打躍動"
-      ],
+      "skills": ["投打躍動"],
       "stats": {
         "筋力": 9,
         "変化球": 11
@@ -3661,9 +3489,7 @@
     "position": "投",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "重い球"
-      ],
+      "skills": ["重い球"],
       "stats": {
         "変化球": 11
       }
@@ -3674,9 +3500,7 @@
     "position": "投",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "重い球"
-      ],
+      "skills": ["重い球"],
       "stats": {
         "精神": 4
       }
@@ -3687,9 +3511,7 @@
     "position": "投",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "奪三振"
-      ],
+      "skills": ["奪三振"],
       "stats": {}
     }
   },
@@ -3698,9 +3520,7 @@
     "position": "投",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "キレ◯"
-      ],
+      "skills": ["キレ◯"],
       "stats": {
         "筋力": 3,
         "変化球": 3,
@@ -3713,9 +3533,7 @@
     "position": "一",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "パワヒッター"
-      ],
+      "skills": ["パワヒッター"],
       "stats": {
         "筋力": 9
       }
@@ -3726,9 +3544,7 @@
     "position": "二",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "盗塁"
-      ],
+      "skills": ["盗塁"],
       "stats": {
         "技術": 6
       }
@@ -3739,9 +3555,7 @@
     "position": "三",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "対ピンチ"
-      ],
+      "skills": ["対ピンチ"],
       "stats": {
         "筋力": 8,
         "敏捷": 8,
@@ -3754,9 +3568,7 @@
     "position": "遊",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "かく乱"
-      ],
+      "skills": ["かく乱"],
       "stats": {
         "技術": 11,
         "精神": 12
@@ -3768,9 +3580,7 @@
     "position": "外",
     "encounter_map": "月面",
     "rewards": {
-      "skills": [
-        "レーザービーム"
-      ],
+      "skills": ["レーザービーム"],
       "stats": {
         "筋力": 6,
         "精神": 6
@@ -4111,9 +3921,7 @@
     "position": "投",
     "encounter_map": "月面-カグヤ城内",
     "rewards": {
-      "skills": [
-        "ノビ"
-      ],
+      "skills": ["ノビ"],
       "stats": {
         "筋力": 1,
         "技術": 1,
@@ -4127,9 +3935,7 @@
     "position": "投",
     "encounter_map": "月面-カグヤ城内",
     "rewards": {
-      "skills": [
-        "緩急◯"
-      ],
+      "skills": ["緩急◯"],
       "stats": {
         "技術": 11,
         "変化球": 12
@@ -4141,9 +3947,7 @@
     "position": "投",
     "encounter_map": "月面-カグヤ城内",
     "rewards": {
-      "skills": [
-        "ノビ"
-      ],
+      "skills": ["ノビ"],
       "stats": {
         "筋力": 3,
         "敏捷": 3,
@@ -4229,9 +4033,7 @@
     "position": "投",
     "encounter_map": "？マス",
     "rewards": {
-      "skills": [
-        "クロスファイヤー"
-      ],
+      "skills": ["クロスファイヤー"],
       "stats": {
         "変化球": 18
       }
@@ -4242,9 +4044,7 @@
     "position": "投",
     "encounter_map": "？マス",
     "rewards": {
-      "skills": [
-        "流し打ち"
-      ],
+      "skills": ["流し打ち"],
       "stats": {
         "変化球": 18
       }
@@ -4255,9 +4055,7 @@
     "position": "投",
     "encounter_map": "？マス",
     "rewards": {
-      "skills": [
-        "逃げ球"
-      ],
+      "skills": ["逃げ球"],
       "stats": {
         "筋力": 11,
         "敏捷": 11,
@@ -4271,9 +4069,7 @@
     "position": "投",
     "encounter_map": "？マス",
     "rewards": {
-      "skills": [
-        "闘志"
-      ],
+      "skills": ["闘志"],
       "stats": {
         "変化球": 18
       }
@@ -4284,9 +4080,7 @@
     "position": "投",
     "encounter_map": "？マス",
     "rewards": {
-      "skills": [
-        "緩急◯"
-      ],
+      "skills": ["緩急◯"],
       "stats": {
         "変化球": 18
       }
@@ -4297,9 +4091,7 @@
     "position": "投",
     "encounter_map": "？マス",
     "rewards": {
-      "skills": [
-        "キレ◯"
-      ],
+      "skills": ["キレ◯"],
       "stats": {
         "敏捷": 3,
         "変化球": 3,
@@ -4312,9 +4104,7 @@
     "position": "投",
     "encounter_map": "？マス",
     "rewards": {
-      "skills": [
-        "ヘッドスライディング"
-      ],
+      "skills": ["ヘッドスライディング"],
       "stats": {
         "筋力": 3,
         "敏捷": 3,
@@ -4329,9 +4119,7 @@
     "position": "捕",
     "encounter_map": "？マス",
     "rewards": {
-      "skills": [
-        "広角打法"
-      ],
+      "skills": ["広角打法"],
       "stats": {
         "精神": 15
       }
@@ -4342,9 +4130,7 @@
     "position": "遊",
     "encounter_map": "？マス",
     "rewards": {
-      "skills": [
-        "アベレージヒッター"
-      ],
+      "skills": ["アベレージヒッター"],
       "stats": {
         "敏捷": 3,
         "技術": 3,
@@ -4357,9 +4143,7 @@
     "position": "外",
     "encounter_map": "？マス",
     "rewards": {
-      "skills": [
-        "アベレージヒッター"
-      ],
+      "skills": ["アベレージヒッター"],
       "stats": {
         "筋力": 6,
         "敏捷": 6,
@@ -4373,9 +4157,7 @@
     "position": "外",
     "encounter_map": "？マス",
     "rewards": {
-      "skills": [
-        "意外性"
-      ],
+      "skills": ["意外性"],
       "stats": {
         "筋力": 12,
         "精神": 14
@@ -4387,9 +4169,7 @@
     "position": "外",
     "encounter_map": "？マス",
     "rewards": {
-      "skills": [
-        "ジャイロボール"
-      ],
+      "skills": ["ジャイロボール"],
       "stats": {
         "技術": 8,
         "精神": 9
@@ -4462,9 +4242,7 @@
     "position": "投",
     "encounter_map": "台風隠し",
     "rewards": {
-      "skills": [
-        "闘志"
-      ],
+      "skills": ["闘志"],
       "stats": {
         "筋力": 6,
         "敏捷": 6,
@@ -4479,9 +4257,7 @@
     "position": "投",
     "encounter_map": "台風隠し",
     "rewards": {
-      "skills": [
-        "対ピンチ"
-      ],
+      "skills": ["対ピンチ"],
       "stats": {
         "筋力": 3,
         "敏捷": 3,
@@ -4495,9 +4271,7 @@
     "position": "投",
     "encounter_map": "台風隠し",
     "rewards": {
-      "skills": [
-        "逃げ球"
-      ],
+      "skills": ["逃げ球"],
       "stats": {
         "技術": 12
       }
@@ -4508,9 +4282,7 @@
     "position": "一",
     "encounter_map": "台風隠し",
     "rewards": {
-      "skills": [
-        "アベレージヒッター"
-      ],
+      "skills": ["アベレージヒッター"],
       "stats": {
         "筋力": 6,
         "敏捷": 6,
@@ -4524,9 +4296,7 @@
     "position": "外",
     "encounter_map": "台風隠し",
     "rewards": {
-      "skills": [
-        "対左投手"
-      ],
+      "skills": ["対左投手"],
       "stats": {
         "筋力": 9,
         "敏捷": 9

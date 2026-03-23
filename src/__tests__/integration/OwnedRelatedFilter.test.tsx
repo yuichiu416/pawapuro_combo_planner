@@ -31,35 +31,38 @@ describe('Owned Related Filter - Discovery Flow', () => {
 
 describe('Owned Related Filter - Multi-Character Discovery', () => {
   it('displays combos for all owned characters simultaneously and handles partial removal', async () => {
-      const user = userEvent.setup(); // Use userEvent for better event simulation
-      render(<App />);
+    const user = userEvent.setup(); // Use userEvent for better event simulation
+    render(<App />);
 
-      const desktopSidebar = screen.getByRole('complementary', { name: 'desktop-character-sidebar' });
-      const searchInput = within(desktopSidebar).getByPlaceholderText(/SEARCH A NAME OR SKILL/i);
-      const filterBtn = screen.getByRole('button', { name: /ALL COMBOS/i });
+    const desktopSidebar = screen.getByRole('complementary', { name: 'desktop-character-sidebar' });
+    const searchInput = within(desktopSidebar).getByPlaceholderText(/SEARCH A NAME OR SKILL/i);
+    const filterBtn = screen.getByRole('button', { name: /ALL COMBOS/i });
 
-      await user.type(searchInput, '皇帝');
-      const charA = await within(desktopSidebar).findByTestId('sidebar-char-皇帝');
-      await user.click(charA);
+    await user.type(searchInput, '皇帝');
+    const charA = await within(desktopSidebar).findByTestId('sidebar-char-皇帝');
+    await user.click(charA);
 
-      await user.clear(searchInput);
-      await user.type(searchInput, '成宮');
-      const charC = await within(desktopSidebar).findByTestId('sidebar-char-成宮鳴');
-      await user.click(charC);
+    await user.clear(searchInput);
+    await user.type(searchInput, '成宮');
+    const charC = await within(desktopSidebar).findByTestId('sidebar-char-成宮鳴');
+    await user.click(charC);
 
-      await user.clear(searchInput);
-      await user.click(filterBtn);
+    await user.clear(searchInput);
+    await user.click(filterBtn);
 
-      expect(await screen.findByTestId('combo-card-御幸一也&皇帝')).toBeInTheDocument();
-      expect(await screen.findByTestId('combo-card-御幸一也&成宮鳴')).toBeInTheDocument();
+    expect(await screen.findByTestId('combo-card-御幸一也&皇帝')).toBeInTheDocument();
+    expect(await screen.findByTestId('combo-card-御幸一也&成宮鳴')).toBeInTheDocument();
 
-      const charA_toRemove = within(desktopSidebar).getByTestId('sidebar-char-皇帝');
-      await user.click(charA_toRemove); 
+    const charA_toRemove = within(desktopSidebar).getByTestId('sidebar-char-皇帝');
+    await user.click(charA_toRemove);
 
-      await waitFor(() => {
+    await waitFor(
+      () => {
         expect(screen.queryByTestId('combo-card-御幸一也&皇帝')).not.toBeInTheDocument();
-      }, { timeout: 3000 });
+      },
+      { timeout: 3000 },
+    );
 
-      expect(screen.getByTestId('combo-card-御幸一也&成宮鳴')).toBeInTheDocument();
+    expect(screen.getByTestId('combo-card-御幸一也&成宮鳴')).toBeInTheDocument();
   });
 });

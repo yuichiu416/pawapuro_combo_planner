@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 
-import { cloudflare } from "@cloudflare/vite-plugin";
+import { cloudflare } from '@cloudflare/vite-plugin';
 
 /**
  * Vite Configuration
@@ -21,7 +21,8 @@ export default defineConfig({
     },
   },
   // Vitest configuration for unit testing logic files
-  test: { // This should now be recognized
+  test: {
+    // This should now be recognized
     globals: true,
     environment: 'jsdom',
     setupFiles: './src/setupTests.ts',

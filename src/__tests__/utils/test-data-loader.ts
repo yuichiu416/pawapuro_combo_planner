@@ -13,10 +13,4 @@ export const getMockCharacterList = () => {
   return Object.values(charactersMock);
 };
 
-export {
-  charactersMock,
-  combosMock,
-  mappingMock,
-  skillsMock,
-  mapsMock
-};
+export { charactersMock, combosMock, mappingMock, skillsMock, mapsMock };

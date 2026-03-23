@@ -4,12 +4,10 @@
  */
 export const getCategorizedChars = (characters: any, combos: any[], positionFilter: string) => {
   // Extract all unique character names involved in any combo
-  const comboCharNames = new Set(
-    combos.flatMap(c => c.char_names.map((n: string) => n.trim()))
-  );
-  
+  const comboCharNames = new Set(combos.flatMap((c) => c.char_names.map((n: string) => n.trim())));
+
   // Filter characters based on the selected position (pitcher, catcher, etc.)
-  const filteredNames = Object.keys(characters).filter(name => {
+  const filteredNames = Object.keys(characters).filter((name) => {
     if (positionFilter === 'all') return true;
     return characters[name].position === positionFilter;
   });
@@ -17,7 +15,7 @@ export const getCategorizedChars = (characters: any, combos: any[], positionFilt
   const hasCombo: string[] = [];
   const noCombo: string[] = [];
 
-  filteredNames.forEach(name => {
+  filteredNames.forEach((name) => {
     if (comboCharNames.has(name.trim())) {
       hasCombo.push(name);
     } else {

@@ -11,26 +11,26 @@ const { createMockComboManager } = await vi.hoisted(async () => {
 
 // 2. IMPORTANT: Mock the hook as a Vitest mock function
 vi.mock('@/hooks/useComboManager', () => ({
-  useComboManager: vi.fn() // Set it as a mock function here
+  useComboManager: vi.fn(), // Set it as a mock function here
 }));
 
 describe('Map Progress Integration', () => {
   it('should display the "Combos: 1/1" label on the map section header', async () => {
-    const mockComboId = "パワプロ&矢部明雄";
-    
+    const mockComboId = 'パワプロ&矢部明雄';
+
     vi.mocked(useComboManager).mockReturnValue({
       ...createMockComboManager(),
       searchTerm: '',
       filteredComboIds: [mockComboId],
       mapsData: {
-        "スカウ島": { combo_names: [["パワプロ", "矢部明雄"]] }
+        スカウ島: { combo_names: [['パワプロ', '矢部明雄']] },
       },
       analysis: {
         // 1. Spread existing analysis from fixture if available
         ...createMockComboManager().analysis,
         // 2. Ensure mapCompletion is set for this test
         mapCompletion: {
-          "スカウ島": { selected: 1, total: 1 }
+          スカウ島: { selected: 1, total: 1 },
         },
         // 3. ADD THIS: Provide a valid roster fallback so RewardAnalysis doesn't crash
         roster: {
@@ -39,13 +39,13 @@ describe('Map Progress Integration', () => {
           fielder: 0,
           manager: 0,
           total: 0,
-          errors: { total: false, pitcher: false, fielder: false, manager: false }
-        }
-      }
+          errors: { total: false, pitcher: false, fielder: false, manager: false },
+        },
+      },
     } as any);
 
     render(<App />);
-    
+
     // Use a regex with findByText to handle potential nested elements
     const progressLabel = await screen.findByText(/Combos:\s*1\/1/i);
 
@@ -68,12 +68,11 @@ describe('Responsive UI', () => {
 
     // 2. Click Library and check if the Drawer appears
     fireEvent.click(libraryBtn);
-    
+
     // Check for the title we added in the mobile drawer
     expect(screen.getByText(/Character Library/i)).toBeVisible();
-    
+
     // 3. Verify sidebars are hidden (CSS check)
     const desktopSidebar = screen.getByRole('complementary', { name: 'desktop-character-sidebar' });
-    
   });
 });

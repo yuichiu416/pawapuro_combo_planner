@@ -39,7 +39,7 @@ export function useGameData() {
       // Transform { "CharA&CharB": { ... } } -> [ { id: "CharA&CharB", ... } ]
       const comboEntries: ComboEntry[] = Object.entries(combosDataRaw).map(([key, value]) => ({
         id: key,
-        ...(value as any)
+        ...(value as any),
       }));
 
       if (isMounted) {

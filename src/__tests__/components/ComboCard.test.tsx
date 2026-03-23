@@ -11,7 +11,7 @@ const { mockData } = await vi.hoisted(async () => {
 
 // 2. Mock the skills database
 vi.mock('@/data/skills.json', () => ({
-  default: mockData.skills
+  default: mockData.skills,
 }));
 
 describe('ComboCard Rewards Display & Search Highlighting', () => {
@@ -26,10 +26,10 @@ describe('ComboCard Rewards Display & Search Highlighting', () => {
     showPositionIcon: true,
     rewards: {
       skills: [
-        { name: "パワーヒッター", level: 3, verified: true },
-        { name: "広角打法", level: 1, verified: false }
-      ]
-    }
+        { name: 'パワーヒッター', level: 3, verified: true },
+        { name: '広角打法', level: 1, verified: false },
+      ],
+    },
   };
 
   beforeEach(() => {
@@ -47,7 +47,7 @@ describe('ComboCard Rewards Display & Search Highlighting', () => {
 
   it('should display the skill description from the mocked database', () => {
     render(<ComboCard {...mockProps} />);
-    const expectedDesc = mockData.skills["パワーヒッター"].description;
+    const expectedDesc = mockData.skills['パワーヒッター'].description;
     expect(screen.getByText(expectedDesc)).toBeInTheDocument();
   });
 
@@ -69,7 +69,7 @@ describe('ComboCard Rewards Display & Search Highlighting', () => {
     expect(matchingRow).toHaveClass('border-red-200');
 
     // Verify Description Text color
-    const description = screen.getByText(mockData.skills["パワーヒッター"].description);
+    const description = screen.getByText(mockData.skills['パワーヒッター'].description);
     expect(description).toHaveClass('text-red-900');
   });
 
@@ -82,7 +82,7 @@ describe('ComboCard Rewards Display & Search Highlighting', () => {
     // Should maintain default blue styling (for normal skills), NOT red
     expect(nonMatchingBadge).not.toHaveClass('bg-red-600');
     expect(nonMatchingBadge).toHaveClass('bg-blue-50');
-    
+
     // Row should be transparent, not red
     expect(nonMatchingRow).not.toHaveClass('bg-red-50');
     expect(nonMatchingRow).toHaveClass('border-transparent');
@@ -90,7 +90,7 @@ describe('ComboCard Rewards Display & Search Highlighting', () => {
 
   it('is case-insensitive and handles Japanese partial matches', () => {
     render(<ComboCard {...mockProps} searchTerm="ヒッター" />);
-    
+
     const matchingBadge = screen.getByTestId('skill-badge-パワーヒッター');
     expect(matchingBadge).toHaveClass('bg-red-600');
   });
@@ -98,27 +98,27 @@ describe('ComboCard Rewards Display & Search Highlighting', () => {
   // --- LAYOUT & UI CONSISTENCY ---
   it('renders characters to the left of the skill rewards', () => {
     render(<ComboCard {...mockProps} />);
-    
+
     // 1. Grab the two main layout containers by their IDs
     const characterSection = screen.getByTestId('character-section');
     // We find the reward container by traversing up from the "Combo Rewards" text
     const rewardSection = screen.getByText(/Combo Rewards/i).closest('div');
-    
+
     // 2. Safety check: Ensure both are found
     expect(characterSection).toBeInTheDocument();
     expect(rewardSection).toBeInTheDocument();
 
     // 3. Verify DOM Order
-    // Node.DOCUMENT_POSITION_FOLLOWING (4) means rewardSection is physically 
+    // Node.DOCUMENT_POSITION_FOLLOWING (4) means rewardSection is physically
     // located after characterSection in the HTML.
     const position = characterSection.compareDocumentPosition(rewardSection!);
-    
+
     expect(position & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
   it('applies truncation to long skill descriptions', () => {
     render(<ComboCard {...mockProps} />);
-    const description = screen.getByText(mockData.skills["パワーヒッター"].description);
+    const description = screen.getByText(mockData.skills['パワーヒッター'].description);
     expect(description).toHaveClass('truncate');
   });
 });

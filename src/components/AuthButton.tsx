@@ -12,10 +12,12 @@ export const AuthButton = () => {
   useEffect(() => {
     const initializeAuth = async () => {
       try {
-        const { data: { session } } = await supabase.auth.getSession();
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
         setUser(session?.user ?? null);
       } catch (err) {
-        console.error("Auth initialization failed:", err);
+        console.error('Auth initialization failed:', err);
       } finally {
         setLoading(false);
       }
@@ -23,7 +25,9 @@ export const AuthButton = () => {
 
     initializeAuth();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
       setLoading(false);
     });
@@ -39,7 +43,7 @@ export const AuthButton = () => {
       });
       if (error) throw error;
     } catch (error: any) {
-      console.error("Login failed:", error.message);
+      console.error('Login failed:', error.message);
     }
   };
 
@@ -47,7 +51,7 @@ export const AuthButton = () => {
     try {
       await supabase.auth.signOut();
     } catch (err) {
-      console.error("Logout failed:", err);
+      console.error('Logout failed:', err);
     }
   };
 
@@ -61,15 +65,15 @@ export const AuthButton = () => {
   // 2. LOGGED IN STATE (Circular Avatar)
   if (user) {
     const avatarUrl = user.user_metadata?.avatar_url;
-    
+
     return (
       <div className="group relative w-11 h-11 shrink-0">
         <div className="w-full h-full rounded-full border-2 border-slate-200 p-0.5 transition-all group-hover:border-blue-500 bg-white shadow-sm overflow-hidden">
           <div className="w-full h-full rounded-full bg-slate-100 flex items-center justify-center overflow-hidden">
             {avatarUrl ? (
-              <img 
-                src={avatarUrl} 
-                alt="profile" 
+              <img
+                src={avatarUrl}
+                alt="profile"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
               />
@@ -78,9 +82,9 @@ export const AuthButton = () => {
             )}
           </div>
         </div>
-        
+
         {/* Hover Logout Overlay */}
-        <button 
+        <button
           onClick={handleLogout}
           className="absolute inset-0 flex items-center justify-center bg-slate-900/80 rounded-full opacity-0 group-hover:opacity-100 transition-all text-white backdrop-blur-[1px]"
           title="Sign Out"

@@ -12,9 +12,9 @@ describe('Combo Addition Integration', () => {
     fireEvent.click(mapHeader.closest('div')!);
 
     // 2. Find and click the ComboCard
-    const skillName = "球界の頭脳";
+    const skillName = '球界の頭脳';
     const nameElement = await screen.findByText(skillName);
-    const comboCard = nameElement.closest('div'); 
+    const comboCard = nameElement.closest('div');
     fireEvent.click(comboCard!);
 
     // 3. Find and click the ADD button
@@ -22,7 +22,7 @@ describe('Combo Addition Integration', () => {
     expect(addButton).toBeInTheDocument();
 
     const sidebar = screen.getByRole('complementary', { name: 'mobile-character-sidebar' });
-    
+
     // Use 'within' to only look for text inside the sidebar
     const initialRosterCount = within(sidebar).getByText(/ \/ 28/);
     const initialText = initialRosterCount.textContent;

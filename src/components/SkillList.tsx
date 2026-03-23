@@ -11,15 +11,15 @@ const SkillList: React.FC = () => {
   // Use Memo for performance and to handle dictionary-to-array conversion
   const filteredSkills = useMemo(() => {
     if (!skillsData) return [];
-    
+
     const skillEntries = Object.values(skillsData);
     const term = searchTerm.toLowerCase().trim();
 
     if (!term) return skillEntries;
 
-    return skillEntries.filter(skill => {
-      const name = (skill?.name ?? "").toLowerCase();
-      const description = (skill?.description ?? "").toLowerCase();
+    return skillEntries.filter((skill) => {
+      const name = (skill?.name ?? '').toLowerCase();
+      const description = (skill?.description ?? '').toLowerCase();
       return name.includes(term) || description.includes(term);
     });
   }, [searchTerm]);
@@ -49,22 +49,22 @@ const SkillList: React.FC = () => {
       <div className="grid grid-cols-1 gap-3">
         {filteredSkills.length > 0 ? (
           filteredSkills.map((skill, idx) => (
-            <div 
-              key={`${skill.name}-${idx}`} 
+            <div
+              key={`${skill.name}-${idx}`}
               className="group flex items-start gap-4 p-5 bg-white border-2 border-slate-100 rounded-2xl hover:border-blue-200 hover:shadow-md transition-all duration-200"
             >
-              <div className={cn(
-                "mt-1 px-3 py-1 rounded-lg text-sm font-black uppercase whitespace-nowrap", 
-                getSkillTypeStyle(skill.type)
-              )}>
+              <div
+                className={cn(
+                  'mt-1 px-3 py-1 rounded-lg text-sm font-black uppercase whitespace-nowrap',
+                  getSkillTypeStyle(skill.type),
+                )}
+              >
                 {skill.type || 'UNKNOWN'}
               </div>
-              
+
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <h4 className="font-black text-slate-800 text-xl">
-                    {skill.name}
-                  </h4>
+                  <h4 className="font-black text-slate-800 text-xl">{skill.name}</h4>
                 </div>
                 <p className="text-base text-slate-500 font-medium leading-relaxed mt-1">
                   {skill.description}

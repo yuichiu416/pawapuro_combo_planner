@@ -11,14 +11,26 @@
   border-radius: 8px;
   background: #fff;
   border-left: 6px solid #ccc;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 /* Logic Colors */
-.skill-gold { border-left-color: #fbc531; background: #fffcf0; }
-.skill-blue { border-left-color: #00a8ff; background: #f0f8ff; }
-.skill-red  { border-left-color: #e84118; background: #fff5f5; }
-.skill-green { border-left-color: #4cd137; background: #f5fff5; }
+.skill-gold {
+  border-left-color: #fbc531;
+  background: #fffcf0;
+}
+.skill-blue {
+  border-left-color: #00a8ff;
+  background: #f0f8ff;
+}
+.skill-red {
+  border-left-color: #e84118;
+  background: #fff5f5;
+}
+.skill-green {
+  border-left-color: #4cd137;
+  background: #f5fff5;
+}
 
 .skill-name {
   font-size: 2.2rem;

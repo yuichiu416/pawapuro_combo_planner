@@ -25,15 +25,15 @@ describe('useGameData Hook Integration', () => {
 
     // Wait for loading to finish
     await waitFor(() => expect(result.current.isLoading).toBe(false), { timeout: 2000 });
-    
+
     // Now we compare against the ACTUAL mock file content length
     const expectedCount = Object.keys(charactersMock).length;
-    
+
     // Use a descriptive error message if it fails
     expect(result.current.allCharacters.length).toBe(expectedCount);
-    
-    expect(result.current.allCharacters).toContain("郡司知将");
-    expect(result.current.allCharacters).toContain("エミリ");
+
+    expect(result.current.allCharacters).toContain('郡司知将');
+    expect(result.current.allCharacters).toContain('エミリ');
   });
 
   it('verifies combo count matches mock file', async () => {

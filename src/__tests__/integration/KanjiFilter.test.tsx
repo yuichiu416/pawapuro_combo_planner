@@ -8,7 +8,7 @@ describe('Kanji Filter Regression Test', () => {
     render(<App />);
 
     // 1. Identify our targets
-    const kanjiChar = "御幸一也"; 
+    const kanjiChar = '御幸一也';
     const desktopSidebar = screen.getByRole('complementary', { name: 'desktop-character-sidebar' });
     const kanjiFilterBtn = within(desktopSidebar).getByText('ア'); // The purple toggle
 
@@ -30,10 +30,10 @@ describe('Kanji Filter Regression Test', () => {
     // even though the character is hidden in the sidebar list.
     const comboCard = await screen.findByText(new RegExp(kanjiChar, 'i'));
     expect(comboCard).toBeInTheDocument();
-    
+
     // 6. Action: Toggle Filter OFF
     fireEvent.click(kanjiFilterBtn);
-    
+
     // 7. Verification C: Character reappears in sidebar
     expect(within(desktopSidebar).getByText(kanjiChar)).toBeInTheDocument();
   });

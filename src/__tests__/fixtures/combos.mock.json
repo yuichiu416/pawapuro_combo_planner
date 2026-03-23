@@ -2,36 +2,25 @@
   "マキシマム池田クリスティン&エミリ": {
     "characters": ["マキシマム池田クリスティン", "エミリ"],
     "rewards": {
-      "skills": [
-        { "name": "パワーヒッター", "level": 3 },
-        { "name": "窮地◯", "level": 3 }
-      ]
+      "skills": [{ "name": "パワーヒッター", "level": 3 }, { "name": "窮地◯", "level": 3 }]
     }
   },
   "金丸信二&東条秀明": {
     "characters": ["金丸信二", "東条秀明"],
     "rewards": {
-      "skills": [
-        { "name": "一球入魂", "level": 1 },
-        { "name": "広角打法", "level": 5 }
-      ]
+      "skills": [{ "name": "一球入魂", "level": 1 }, { "name": "広角打法", "level": 5 }]
     }
   },
   "猪狩守&阿畑やすし": {
     "characters": ["猪狩守", "阿畑やすし"],
     "rewards": {
-      "skills": [
-        { "name": "怪童", "level": 3 }
-      ]
+      "skills": [{ "name": "怪童", "level": 3 }]
     }
   },
   "阿畑やすし&進藤カレン": {
     "characters": ["阿畑やすし", "進藤カレン"],
     "rewards": {
-      "skills": [
-        { "name": "オリジナル変化球", "level": 3 },
-        { "name": "威圧感", "level": 1 }
-      ]
+      "skills": [{ "name": "オリジナル変化球", "level": 3 }, { "name": "威圧感", "level": 1 }]
     }
   }
 }

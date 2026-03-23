@@ -22,18 +22,18 @@ interface ComboCardProps {
 }
 
 export const ComboCard: React.FC<ComboCardProps> = ({
-  names, 
-  isSelected, 
-  onToggleCombo, 
-  ownedChars, 
-  toggleCharacter, 
+  names,
+  isSelected,
+  onToggleCombo,
+  ownedChars,
+  toggleCharacter,
   onAddCharacters,
-  getImagePath, 
-  showPositionIcon, 
-  searchTerm = '', 
-  rewards
+  getImagePath,
+  showPositionIcon,
+  searchTerm = '',
+  rewards,
 }) => {
-  const missingChars = names.filter(name => !ownedChars.has(name));
+  const missingChars = names.filter((name) => !ownedChars.has(name));
   const hasMissing = missingChars.length > 0;
 
   const isMatch = (text: string) => {
@@ -43,36 +43,40 @@ export const ComboCard: React.FC<ComboCardProps> = ({
   };
 
   return (
-    <div 
+    <div
       data-testid={`combo-card-${names.join('&')}`}
       onClick={(e) => {
         if ((e.target as HTMLElement).closest('button')) return;
         onToggleCombo();
-      }} 
+      }}
       className={cn(
-        "flex flex-col lg:flex-row lg:items-center gap-4 p-4 rounded-[1.5rem] border-2 bg-white cursor-pointer transition-all hover:shadow-md overflow-hidden relative", 
-        isSelected ? "border-blue-500 bg-blue-50/30" : "border-transparent hover:border-slate-200"
+        'flex flex-col lg:flex-row lg:items-center gap-4 p-4 rounded-[1.5rem] border-2 bg-white cursor-pointer transition-all hover:shadow-md overflow-hidden relative',
+        isSelected ? 'border-blue-500 bg-blue-50/30' : 'border-transparent hover:border-slate-200',
       )}
     >
       {/* 1. SELECTION INDICATOR & MOBILE LAYOUT HELPER */}
       <div className="flex items-center lg:block shrink-0 gap-3">
-        <div className={cn(
-          "w-10 h-10 md:w-12 md:h-12 rounded-2xl flex items-center justify-center shrink-0 transition-all", 
-          isSelected ? "bg-blue-600 text-white shadow-lg shadow-blue-100" : "bg-slate-100 text-slate-300"
-        )}>
+        <div
+          className={cn(
+            'w-10 h-10 md:w-12 md:h-12 rounded-2xl flex items-center justify-center shrink-0 transition-all',
+            isSelected
+              ? 'bg-blue-600 text-white shadow-lg shadow-blue-100'
+              : 'bg-slate-100 text-slate-300',
+          )}
+        >
           <CheckCircle2 size={24} />
         </div>
-        
+
         {/* Mobile-only visible divider or title can go here if needed, 
             currently using lg:flex-row to handle flow */}
       </div>
 
       {/* 2. CHARACTERS SECTION */}
-      <div 
+      <div
         data-testid="character-section"
         className="shrink-0 flex items-center justify-center lg:justify-start border-b lg:border-b-0 lg:border-r border-slate-100 pb-4 lg:pb-0 lg:pr-4"
       >
-        <CharacterGrid 
+        <CharacterGrid
           characters={names}
           ownedChars={ownedChars}
           onToggle={toggleCharacter}
@@ -87,9 +91,11 @@ export const ComboCard: React.FC<ComboCardProps> = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5">
             <Star size={8} className="text-amber-400 fill-amber-400" />
-            <span className="text-xs md:text-sm font-black text-slate-400 uppercase tracking-widest">Combo Rewards</span>
+            <span className="text-xs md:text-sm font-black text-slate-400 uppercase tracking-widest">
+              Combo Rewards
+            </span>
           </div>
-          
+
           {isSelected && hasMissing && (
             <button
               onClick={(e) => {
@@ -103,7 +109,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
             </button>
           )}
         </div>
-        
+
         <div className="space-y-1 overflow-hidden">
           {rewards?.skills?.map((sk, idx) => {
             const detail = skillsData[sk.name];
@@ -111,36 +117,37 @@ export const ComboCard: React.FC<ComboCardProps> = ({
             const hasHit = isMatch(sk.name);
 
             return (
-              <div 
-                key={`${sk.name}-${idx}`} 
+              <div
+                key={`${sk.name}-${idx}`}
                 data-testid={`skill-row-${sk.name}`}
                 className={cn(
-                  "flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg transition-all border",
-                  hasHit 
-                    ? "bg-red-50 border-red-200" 
-                    : "bg-transparent border-transparent"
+                  'flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg transition-all border',
+                  hasHit ? 'bg-red-50 border-red-200' : 'bg-transparent border-transparent',
                 )}
               >
-                <div 
+                <div
                   data-testid={`skill-badge-${sk.name}`}
                   className={cn(
-                    "px-1.5 py-0.5 rounded-md text-xs md:text-sm font-black shrink-0 border uppercase flex items-center gap-1 w-fit",
-                    hasHit 
-                      ? "bg-red-600 border-red-600 text-white" 
-                      : isGold 
-                        ? "bg-amber-50 border-amber-200 text-amber-700" 
-                        : "bg-blue-50 border-blue-100 text-blue-700"
+                    'px-1.5 py-0.5 rounded-md text-xs md:text-sm font-black shrink-0 border uppercase flex items-center gap-1 w-fit',
+                    hasHit
+                      ? 'bg-red-600 border-red-600 text-white'
+                      : isGold
+                        ? 'bg-amber-50 border-amber-200 text-amber-700'
+                        : 'bg-blue-50 border-blue-100 text-blue-700',
                   )}
                 >
-                  {sk.verified && <BadgeCheck size={10} className={hasHit ? "text-white" : "text-emerald-500"} />}
-                  {sk.name} <span className={hasHit ? "text-white/70" : "opacity-60"}>Lv{sk.level}</span>
+                  {sk.verified && (
+                    <BadgeCheck size={10} className={hasHit ? 'text-white' : 'text-emerald-500'} />
+                  )}
+                  {sk.name}{' '}
+                  <span className={hasHit ? 'text-white/70' : 'opacity-60'}>Lv{sk.level}</span>
                 </div>
-                
-                <p 
+
+                <p
                   className={cn(
-                    "text-xs md:text-sm font-bold truncate flex-1 transition-colors",
-                    hasHit ? "text-red-900" : "text-slate-500"
-                  )} 
+                    'text-xs md:text-sm font-bold truncate flex-1 transition-colors',
+                    hasHit ? 'text-red-900' : 'text-slate-500',
+                  )}
                   title={detail?.description}
                 >
                   {detail?.description || '---'}

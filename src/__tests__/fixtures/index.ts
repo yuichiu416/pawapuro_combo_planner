@@ -9,16 +9,19 @@ import { vi } from 'vitest';
 // Helper to generate a standardized set of "Generic" characters for limit testing
 const generateGenericCharacters = () => {
   const chars: Record<string, any> = {
-    "パワプロ": { name: "パワプロ", position: "内", encounter_map: "スカウ島" },
-    "矢部明雄": { name: "矢部明雄", position: "外", encounter_map: "スカウ島" },
+    パワプロ: { name: 'パワプロ', position: '内', encounter_map: 'スカウ島' },
+    矢部明雄: { name: '矢部明雄', position: '外', encounter_map: 'スカウ島' },
   };
 
   // 10 Pitchers (P1-P10)
-  for (let i = 1; i <= 10; i++) chars[`P${i}`] = { name: `P${i}`, position: "投", encounter_map: "スカウ島" };
+  for (let i = 1; i <= 10; i++)
+    chars[`P${i}`] = { name: `P${i}`, position: '投', encounter_map: 'スカウ島' };
   // 20 Fielders (F1-F20)
-  for (let i = 1; i <= 20; i++) chars[`F${i}`] = { name: `F${i}`, position: "外", encounter_map: "スカウ島" };
+  for (let i = 1; i <= 20; i++)
+    chars[`F${i}`] = { name: `F${i}`, position: '外', encounter_map: 'スカウ島' };
   // 5 Managers (M1-M5)
-  for (let i = 1; i <= 5; i++) chars[`M${i}`] = { name: `M${i}`, position: "マ", encounter_map: "スカウ島" };
+  for (let i = 1; i <= 5; i++)
+    chars[`M${i}`] = { name: `M${i}`, position: 'マ', encounter_map: 'スカウ島' };
 
   return chars;
 };
@@ -28,7 +31,7 @@ export const mockData = {
   combos,
   maps,
   skills,
-  mapping
+  mapping,
 };
 
 // src/__tests__/fixtures.ts
@@ -39,10 +42,14 @@ export const mockComboManagerResponse = {
     skills: [],
     missingCharacters: [],
     mapCompletion: {},
-    roster: { 
-      total: 0, pitcher: 0, fielder: 0, manager: 0, isValid: true,
-      errors: { total: false, pitcher: false, fielder: false, manager: false }
-    }
+    roster: {
+      total: 0,
+      pitcher: 0,
+      fielder: 0,
+      manager: 0,
+      isValid: true,
+      errors: { total: false, pitcher: false, fielder: false, manager: false },
+    },
   },
   ownedChars: new Set(),
   selectedComboIds: new Set(),
@@ -60,7 +67,7 @@ export const mockComboManagerResponse = {
 };
 
 export const createMockComboManager = (overrides = {}) => {
-  const defaultId = "パワプロ&矢部明雄";
+  const defaultId = 'パワプロ&矢部明雄';
 
   return {
     searchTerm: '',
@@ -74,12 +81,16 @@ export const createMockComboManager = (overrides = {}) => {
       skills: [],
       missingCharacters: [],
       mapCompletion: {},
-      roster: { 
-        total: 2, pitcher: 0, fielder: 0, manager: 0, isValid: true,
-        errors: { total: false, pitcher: false, fielder: false, manager: false }
-      }
+      roster: {
+        total: 2,
+        pitcher: 0,
+        fielder: 0,
+        manager: 0,
+        isValid: true,
+        errors: { total: false, pitcher: false, fielder: false, manager: false },
+      },
     },
-    ownedChars: new Set(["パワプロ", "矢部明雄"]),
+    ownedChars: new Set(['パワプロ', '矢部明雄']),
     selectedComboIds: new Set(),
     isSyncing: false,
     isSidebarCollapsed: false,

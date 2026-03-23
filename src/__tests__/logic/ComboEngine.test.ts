@@ -33,13 +33,13 @@ describe('Combo Manager Logic Engine', () => {
     });
 
     // Match the skill name from your combos.mock.json
-    const phSkill = result.current.analysis.skills.find(s => s.name === 'パワーヒッター');
-    
+    const phSkill = result.current.analysis.skills.find((s) => s.name === 'パワーヒッター');
+
     // Assertion logic
     if (phSkill && phSkill.level > 5) {
       expect(result.current.analysis.overflowSkills).toContain('パワーヒッター');
     }
-    
+
     expect(result.current.ownedChars.size).toBeGreaterThan(0);
   });
 

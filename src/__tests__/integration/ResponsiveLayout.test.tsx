@@ -31,12 +31,12 @@ describe('Responsive Layout & Tab Regression', () => {
 
   it('closes the drawer when clicking the X button', () => {
     render(<App />);
-    
+
     // Open it first
     fireEvent.click(screen.getByTestId('mobile-library-btn'));
-    
+
     // Find the X button inside the mobile drawer
-    const closeBtn = screen.getByTestId("mobile-character-sidebar-close-btn");
+    const closeBtn = screen.getByTestId('mobile-character-sidebar-close-btn');
     fireEvent.click(closeBtn);
 
     const drawerOverlay = screen.getByLabelText('mobile-character-sidebar').closest('.fixed');
@@ -45,7 +45,7 @@ describe('Responsive Layout & Tab Regression', () => {
 
   it('switches to Analysis view on mobile', () => {
     render(<App />);
-    
+
     const analysisTabBtn = screen.getByTestId('mobile-analysis-btn');
     fireEvent.click(analysisTabBtn);
 

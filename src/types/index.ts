@@ -16,7 +16,7 @@ export interface Character {
   position: Position;
   encounter_map: string;
   rewards?: CharacterRewards; // Optional because Managers don't have this
-  description?: string;      // Managers have this
+  description?: string; // Managers have this
 }
 
 export interface CharacterMapping {

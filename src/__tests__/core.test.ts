@@ -1,21 +1,15 @@
 import { describe, it, expect } from 'vitest';
-import { 
-  normalizeName, 
-  getSkillInfo, 
-  getSortedSkills, 
-  getComboCategory 
-} from '@/utils/gameLogic';
+import { normalizeName, getSkillInfo, getSortedSkills, getComboCategory } from '@/utils/gameLogic';
 
 // Standardized Mock Data for the Baseline
 const mockSkillsData = {
-  "走者釘付": { type: "gold", category: "pitcher" },
-  "サブポジ捕手": { type: "gold", category: "fielder" },
-  "打たれ強さ": { type: "blue", category: "pitcher" },
-  "回復": { type: "blue", category: "universal" }
+  走者釘付: { type: 'gold', category: 'pitcher' },
+  サブポジ捕手: { type: 'gold', category: 'fielder' },
+  打たれ強さ: { type: 'blue', category: 'pitcher' },
+  回復: { type: 'blue', category: 'universal' },
 };
 
 describe('Core Engine: Baseline Tests', () => {
-
   describe('Normalization', () => {
     it('should handle various space types in names', () => {
       expect(normalizeName(' 猪狩 守 ')).toBe('猪狩守');
@@ -45,29 +39,29 @@ describe('Core Engine: Baseline Tests', () => {
   describe('Advanced Sorting (The Heart of the App)', () => {
     it('should sort by: Gold > Level > Alphabetical', () => {
       const input = {
-        "回復": 5,          // Blue, Lv 5
-        "走者釘付": 1,      // Gold, Lv 1
-        "サブポジ捕手": 3   // Gold, Lv 3
+        回復: 5, // Blue, Lv 5
+        走者釘付: 1, // Gold, Lv 1
+        サブポジ捕手: 3, // Gold, Lv 3
       };
 
       const result = getSortedSkills(input, mockSkillsData);
 
       // 1st: Gold & Higher Level
-      expect(result[0].name).toBe("サブポジ捕手");
+      expect(result[0].name).toBe('サブポジ捕手');
       // 2nd: Gold & Lower Level
-      expect(result[1].name).toBe("走者釘付");
+      expect(result[1].name).toBe('走者釘付');
       // 3rd: Blue (even if higher level)
-      expect(result[2].name).toBe("回復");
+      expect(result[2].name).toBe('回復');
     });
   });
 
   describe('Combo Categorization', () => {
     it('should tag combo as pitcher ONLY if it gives a Pitcher Gold skill', () => {
       const pitcherCombo = {
-        rewards: { skills: [{ name: "走者釘付", level: 1 }] }
+        rewards: { skills: [{ name: '走者釘付', level: 1 }] },
       };
       const fielderCombo = {
-        rewards: { skills: [{ name: "打たれ強さ", level: 3 }] } // Blue pitcher skill
+        rewards: { skills: [{ name: '打たれ強さ', level: 3 }] }, // Blue pitcher skill
       };
 
       expect(getComboCategory(pitcherCombo, mockSkillsData)).toBe('pitcher');
