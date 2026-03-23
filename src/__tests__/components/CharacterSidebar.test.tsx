@@ -96,7 +96,7 @@ describe('CharacterSidebar - Logic & Interactions', () => {
     const toast = await screen.findByTestId('undo-toast');
 
     // Check for the specific Tailwind classes we added to fix the mobile layout
-    expect(toast.className).toContain('bottom-[300px]');
+    expect(toast.className).toContain('top-[00px]');
     expect(toast.className).toContain('md:bottom-6');
   });
 });

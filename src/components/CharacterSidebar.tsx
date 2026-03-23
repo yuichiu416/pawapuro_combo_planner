@@ -381,7 +381,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
       {showUndo && (
         <div
           data-testid="undo-toast"
-          className="absolute bottom-[300px] md:bottom-6 left-4 right-4 z-[50] animate-in fade-in slide-in-from-bottom-4 duration-300"
+          className="absolute top-[00px] md:bottom-6 left-4 right-4 z-[50] animate-in fade-in slide-in-from-bottom-4 duration-300"
         >
           <div className="bg-slate-900/95 backdrop-blur-md text-white rounded-2xl shadow-2xl px-4 py-3.5 flex items-center justify-between border border-slate-700/50">
             <div className="flex items-center gap-3">
