@@ -1,5 +1,4 @@
 // src/App.tsx
-
 import {
   BarChart3,
   ChevronLeft,
@@ -39,8 +38,8 @@ const Logo = ({ isCollapsed }: { isCollapsed: boolean }) => (
     </div>
     {!isCollapsed && (
       <div className="flex flex-col animate-in fade-in slide-in-from-left-2 duration-300">
-        <span className="font-black italic text-xl md:text-2xl tracking-tighter text-slate-900 uppercase leading-none whitespace-nowrap">
-          Pawapuro 2024-2025
+        <span className="font-black text-xl md:text-2xl tracking-tighter text-black uppercase leading-none whitespace-nowrap">
+          PowerPro 2024-2025
         </span>
         <span className="text-xs md:text-sm font-bold text-blue-600 uppercase tracking-widest whitespace-nowrap">
           Combo Planner
@@ -138,11 +137,11 @@ const App: React.FC = () => {
 
   return (
     <div
-      className="flex flex-col h-screen bg-slate-100 text-slate-900 overflow-hidden font-medium"
+      className="flex flex-col h-screen bg-slate-100 text-black overflow-hidden font-medium"
       style={{ fontSize: `${fontScale}rem` }}
     >
       <div className="flex flex-1 overflow-hidden relative">
-        {/* LEFT SIDEBAR (Desktop Only) */}
+        {/* LEFT SIDEBAR (Desktop) */}
         <aside
           className={cn(
             'hidden lg:flex relative bg-white border-r border-slate-200 transition-all duration-300 flex-col z-20',
@@ -163,9 +162,6 @@ const App: React.FC = () => {
               isSidebarCollapsed && 'opacity-0 pointer-events-none',
             )}
           >
-            {/* Integrated updated CharacterSidebar:
-              onToggle here handles both adding from lists and removal via preview panel 
-            */}
             <CharacterSidebar
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
@@ -179,7 +175,7 @@ const App: React.FC = () => {
               ownedChars={ownedChars}
               onToggle={toggleCharacter}
               getImagePath={getImagePath}
-              ariaLabel={'desktop-character-sidebar'}
+              testId="desktop-character-sidebar" // Fixed: Changed from ariaLabel to testId
             />
           </div>
         </aside>
@@ -200,7 +196,10 @@ const App: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-4 border-b flex justify-between items-center">
-              <span className="font-black italic uppercase tracking-tighter">
+              <span
+                data-testid="mobile-drawer-title-library"
+                className="font-black uppercase tracking-tighter"
+              >
                 Character Library
               </span>
               <button
@@ -224,7 +223,7 @@ const App: React.FC = () => {
               ownedChars={ownedChars}
               onToggle={toggleCharacter}
               getImagePath={getImagePath}
-              ariaLabel={'mobile-character-sidebar'}
+              testId="mobile-character-sidebar" // Fixed: Changed from ariaLabel to testId
             />
           </div>
         </div>
@@ -266,6 +265,7 @@ const App: React.FC = () => {
                 return (
                   <MapSection
                     key={mapName}
+                    data-testid={`map-progress-${mapName}`}
                     mapName={mapName}
                     combos={mapCombos}
                     searchTerm={searchTerm}
@@ -290,11 +290,9 @@ const App: React.FC = () => {
               })}
               {filterRelatedOnly && filteredComboIds.length === 0 && (
                 <div className="flex flex-col items-center justify-center py-20 bg-white/50 rounded-3xl border-2 border-dashed border-slate-200 px-6 text-center">
-                  <SearchX size={32} className="text-slate-300 mb-4" />
-                  <h3 className="text-xl font-black italic uppercase text-slate-400">
-                    No related combos
-                  </h3>
-                  <p className="text-sm font-bold text-slate-400/80 uppercase mt-1">
+                  <SearchX size={32} className="text-black mb-4" />
+                  <h3 className="text-xl font-black uppercase text-black">No related combos</h3>
+                  <p className="text-sm font-bold text-black/80 uppercase mt-1">
                     Try selecting more characters
                   </p>
                 </div>
@@ -303,7 +301,7 @@ const App: React.FC = () => {
           </div>
         </main>
 
-        {/* RIGHT SIDEBAR (Desktop Only: Sync & Auth live here) */}
+        {/* RIGHT SIDEBAR (Analysis) */}
         <aside
           className={cn(
             'hidden lg:flex relative bg-white border-l border-slate-200 transition-all duration-300 flex-col z-20',
@@ -324,7 +322,7 @@ const App: React.FC = () => {
                     onClick={handleSave}
                     disabled={isSyncing}
                     className={cn(
-                      'flex-1 flex items-center justify-center gap-2 h-11 rounded-xl font-black italic uppercase text-xs tracking-wider transition-all active:scale-95 disabled:opacity-50 shadow-sm',
+                      'flex-1 flex items-center justify-center gap-2 h-11 rounded-xl font-black uppercase text-xs tracking-wider transition-all active:scale-95 disabled:opacity-50 shadow-sm',
                       isLoggedIn
                         ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-100'
                         : 'bg-slate-800 text-white hover:bg-slate-900',
@@ -344,7 +342,7 @@ const App: React.FC = () => {
 
                 <div
                   className={cn(
-                    'text-xs font-bold text-slate-400 text-right uppercase tracking-widest leading-none',
+                    'text-xs font-bold text-black text-right uppercase tracking-widest leading-none',
                     !lastSaved && 'invisible',
                   )}
                 >
@@ -375,9 +373,7 @@ const App: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-4 border-b flex justify-between items-center shrink-0">
-              <span className="font-black italic uppercase tracking-tighter text-lg">
-                Reward Analysis
-              </span>
+              <span className="font-black uppercase tracking-tighter text-lg">Reward Analysis</span>
               <button
                 onClick={() => setActiveMobileTab('planner')}
                 className="p-2 bg-slate-100 rounded-full"
@@ -392,7 +388,7 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        {/* MOBILE NAVIGATION BAR */}
+        {/* MOBILE NAVIGATION */}
         <nav className="lg:hidden fixed bottom-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-md border-t border-slate-200 z-[90] flex items-center justify-around px-6 pb-2">
           <MobileNavBtn
             active={activeMobileTab === 'roster'}
@@ -437,7 +433,7 @@ const MobileNavBtn = ({
     onClick={onClick}
     className={cn(
       'flex flex-col items-center gap-1 transition-all duration-300',
-      active ? 'text-blue-600 scale-110' : 'text-slate-400',
+      active ? 'text-blue-600 scale-110' : 'text-black',
     )}
   >
     <div
@@ -445,7 +441,7 @@ const MobileNavBtn = ({
     >
       {icon}
     </div>
-    <span className="text-xs font-black italic uppercase tracking-wider">{label}</span>
+    <span className="text-xs font-black uppercase tracking-wider">{label}</span>
   </button>
 );
 

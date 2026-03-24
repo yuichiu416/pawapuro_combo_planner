@@ -1,6 +1,6 @@
 // src/__tests__/integration/ResponsiveLayout.test.tsx
-import { render, screen, fireEvent, within } from '@testing-library/react';
-import { expect, it, describe, beforeEach } from 'vitest';
+import { fireEvent, render, screen, within } from '@testing-library/react';
+import { beforeEach, describe, expect, it } from 'vitest';
 import App from '@/App';
 
 describe('Responsive Layout & Tab Regression', () => {
@@ -39,7 +39,7 @@ describe('Responsive Layout & Tab Regression', () => {
     const closeBtn = screen.getByTestId('mobile-character-sidebar-close-btn');
     fireEvent.click(closeBtn);
 
-    const drawerOverlay = screen.getByLabelText('mobile-character-sidebar').closest('.fixed');
+    const drawerOverlay = screen.getByTestId('mobile-character-sidebar').closest('.fixed');
     expect(drawerOverlay).toHaveClass('invisible');
   });
 

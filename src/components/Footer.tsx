@@ -1,5 +1,5 @@
-import React from 'react';
 import { Bug } from 'lucide-react';
+import type React from 'react';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -9,18 +9,16 @@ export const Footer: React.FC = () => {
       <div className="flex flex-row justify-between items-center max-w-full mx-auto">
         {/* Left: Branding & Copy */}
         <div className="flex items-center gap-3">
-          <span className="text-sm font-black tracking-tighter text-slate-900 uppercase">
-            Pawapuro Planner{' '}
-            <span className="text-slate-400 ml-1 not-italic font-bold">v1.2.0</span>
+          <span className="text-sm font-black tracking-tighter text-black uppercase">
+            パワプロ 2024-2025 Combo Planner{' '}
+            <span className="text-black ml-1 not-font-bold">v1.2.0</span>
           </span>
-          <span className="text-slate-200">|</span>
-          <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">
-            © {currentYear}
-          </p>
+          <span className="text-black">|</span>
+          <p className="text-sm font-bold text-black uppercase tracking-widest">© {currentYear}</p>
         </div>
 
         {/* Center: Legal Disclaimer (Condensed) */}
-        <p className="hidden lg:block text-sm text-slate-400 uppercase font-medium tracking-tight">
+        <p className="hidden lg:block text-sm text-black uppercase font-medium tracking-tight">
           Unofficial fan project. Assets property of Konami Digital Entertainment.
         </p>
 
@@ -30,7 +28,7 @@ export const Footer: React.FC = () => {
             href="https://tally.so/r/44jMPB"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-sm font-black text-slate-600 hover:text-rose-500 transition-colors uppercase italic group"
+            className="flex items-center gap-1.5 text-sm font-black text-black hover:text-rose-500 transition-colors uppercase group"
           >
             <Bug size={12} className="group-hover:animate-bounce" />
             Report a Bug or Request a Feature
@@ -39,7 +37,7 @@ export const Footer: React.FC = () => {
             href="https://github.com/your-username/repo"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-400 hover:text-slate-900 transition-colors"
+            className="text-black hover:text-black transition-colors"
           ></a>
         </div>
       </div>

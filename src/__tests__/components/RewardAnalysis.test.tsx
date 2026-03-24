@@ -1,14 +1,16 @@
 // src/components/__tests__/RewardAnalysis.test.tsx
-import { render, screen } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { RewardAnalysis } from '@/components/RewardAnalysis';
-import { mockData } from '@/__tests__/fixtures/index';
-import { describe, it, expect, vi } from 'vitest';
 
 describe('RewardAnalysis UI Logic', () => {
-  // Mock function for the required getImagePath prop
   const mockGetImagePath = vi.fn((name: string) => `/assets/${name}.png`);
 
-  it('correctly maps a missing character to their encounter map', () => {
+  beforeEach(() => {
+    cleanup();
+  });
+
+  it('correctly displays a missing character and their encounter map using test IDs', () => {
     const mockAnalysis = {
       stats: {},
       skills: [],
@@ -24,24 +26,26 @@ describe('RewardAnalysis UI Logic', () => {
       },
     };
 
-    // Passed the mockGetImagePath prop here
     render(<RewardAnalysis analysis={mockAnalysis} getImagePath={mockGetImagePath} />);
 
-    // Check for the Character Name
-    expect(screen.getByText(/クロン/i)).toBeInTheDocument();
+    // 1. Verify the character row exists
+    const charRow = screen.getByTestId('missing-char-row-クロン');
+    expect(charRow).toBeInTheDocument();
+    expect(charRow).toHaveTextContent('クロン');
 
-    // Check for the Map Name
-    // Based on your mapping logic, if "クロン" isn't in mockData, it might show "Unknown" or "???"
-    // depending on which version of the logic we are running.
-    expect(screen.getByText(/スカウ島|Unknown|\?\?\?/i)).toBeInTheDocument();
+    // 2. Verify the map location specifically within that character's context
+    const mapBadge = screen.getByTestId('missing-char-map-クロン');
+    // Using a regex match for the content since it could be the map name or a fallback
+    expect(mapBadge.textContent).toMatch(/スカウ島|Unknown|\?\?\?/i);
   });
 
-  it('displays ??? or Unknown when a character map is missing from the data', () => {
+  it('displays fallback text when a character map is missing from the data', () => {
+    const charName = 'NonExistentChar';
     const mockAnalysis = {
       stats: {},
       skills: [],
       totalSelectedCombos: 1,
-      missingCharacters: ['NonExistentChar'],
+      missingCharacters: [charName],
       roster: {
         total: 0,
         pitcher: 0,
@@ -54,7 +58,32 @@ describe('RewardAnalysis UI Logic', () => {
 
     render(<RewardAnalysis analysis={mockAnalysis} getImagePath={mockGetImagePath} />);
 
-    // Checks for the fallback string
-    expect(screen.getByText(/Unknown|\?\?\?/i)).toBeInTheDocument();
+    const mapBadge = screen.getByTestId(`missing-char-map-${charName}`);
+
+    // Explicitly check for the fallback string via test ID
+    expect(mapBadge.textContent).toMatch(/Unknown|\?\?\?/i);
+  });
+
+  it('renders the correct number of missing character items', () => {
+    const mockAnalysis = {
+      stats: {},
+      skills: [],
+      missingCharacters: ['CharA', 'CharB'],
+      totalSelectedCombos: 1,
+      roster: {
+        total: 2,
+        pitcher: 0,
+        fielder: 0,
+        manager: 0,
+        isValid: true,
+        errors: { total: false, pitcher: false, fielder: false, manager: false },
+      },
+    };
+
+    render(<RewardAnalysis analysis={mockAnalysis} getImagePath={mockGetImagePath} />);
+
+    // Verify list length by querying all test IDs starting with the prefix
+    const rows = screen.getAllByTestId(/^missing-char-row-/);
+    expect(rows).toHaveLength(2);
   });
 });

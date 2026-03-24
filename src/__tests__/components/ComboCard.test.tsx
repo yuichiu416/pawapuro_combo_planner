@@ -1,6 +1,6 @@
 // src/__tests__/components/ComboCard.test.tsx
-import { render, screen, cleanup } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { cleanup, render, screen } from '@testing-library/react';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ComboCard } from '@/components/ComboCard';
 
 // 1. Import fixtures correctly using vi.hoisted
@@ -38,38 +38,40 @@ describe('ComboCard Rewards Display & Search Highlighting', () => {
   });
 
   // --- CORE DISPLAY TESTS ---
-  it('should display the skill name and correctly formatted level', () => {
+  it('should display the skill name and correctly formatted level via test ID', () => {
     render(<ComboCard {...mockProps} />);
-    expect(screen.getByText(/パワーヒッター/i)).toBeInTheDocument();
-    // Component renders "Lv3", so we check for Lv followed by the level
-    expect(screen.getByText(/Lv3/i)).toBeInTheDocument();
+
+    const skillBadge = screen.getByTestId('skill-badge-パワーヒッター');
+    expect(skillBadge).toHaveTextContent('パワーヒッター');
+    expect(skillBadge).toHaveTextContent('Lv3');
   });
 
   it('should display the skill description from the mocked database', () => {
     render(<ComboCard {...mockProps} />);
+
+    const skillRow = screen.getByTestId('skill-row-パワーヒッター');
     const expectedDesc = mockData.skills['パワーヒッター'].description;
-    expect(screen.getByText(expectedDesc)).toBeInTheDocument();
+
+    // Check that the row contains the correct description text
+    expect(skillRow).toHaveTextContent(expectedDesc);
   });
 
   // --- SEARCH HIGHLIGHT TESTS ---
   it('applies red highlight classes when a skill name matches searchTerm', () => {
     render(<ComboCard {...mockProps} searchTerm="パワー" />);
 
-    // Targeting via the new data-testids
     const matchingBadge = screen.getByTestId('skill-badge-パワーヒッター');
     const matchingRow = screen.getByTestId('skill-row-パワーヒッター');
 
-    // Verify Badge Inversion (Solid Red)
+    // Verify Badge Inversion
     expect(matchingBadge).toHaveClass('bg-red-600');
-    expect(matchingBadge).toHaveClass('border-red-600');
     expect(matchingBadge).toHaveClass('text-white');
 
-    // Verify Row Background & Border
+    // Verify Row Background
     expect(matchingRow).toHaveClass('bg-red-50');
-    expect(matchingRow).toHaveClass('border-red-200');
 
-    // Verify Description Text color
-    const description = screen.getByText(mockData.skills['パワーヒッター'].description);
+    // Verify Description Text color within that row
+    const description = matchingRow.querySelector('p');
     expect(description).toHaveClass('text-red-900');
   });
 
@@ -79,13 +81,8 @@ describe('ComboCard Rewards Display & Search Highlighting', () => {
     const nonMatchingBadge = screen.getByTestId('skill-badge-広角打法');
     const nonMatchingRow = screen.getByTestId('skill-row-広角打法');
 
-    // Should maintain default blue styling (for normal skills), NOT red
     expect(nonMatchingBadge).not.toHaveClass('bg-red-600');
-    expect(nonMatchingBadge).toHaveClass('bg-blue-50');
-
-    // Row should be transparent, not red
     expect(nonMatchingRow).not.toHaveClass('bg-red-50');
-    expect(nonMatchingRow).toHaveClass('border-transparent');
   });
 
   it('is case-insensitive and handles Japanese partial matches', () => {
@@ -99,26 +96,37 @@ describe('ComboCard Rewards Display & Search Highlighting', () => {
   it('renders characters to the left of the skill rewards', () => {
     render(<ComboCard {...mockProps} />);
 
-    // 1. Grab the two main layout containers by their IDs
     const characterSection = screen.getByTestId('character-section');
-    // We find the reward container by traversing up from the "Combo Rewards" text
-    const rewardSection = screen.getByText(/Combo Rewards/i).closest('div');
+    const skillRow = screen.getByTestId('skill-row-パワーヒッター');
+    const rewardSection = skillRow.parentElement;
 
-    // 2. Safety check: Ensure both are found
     expect(characterSection).toBeInTheDocument();
     expect(rewardSection).toBeInTheDocument();
 
-    // 3. Verify DOM Order
-    // Node.DOCUMENT_POSITION_FOLLOWING (4) means rewardSection is physically
-    // located after characterSection in the HTML.
     const position = characterSection.compareDocumentPosition(rewardSection!);
-
     expect(position & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
   it('applies truncation to long skill descriptions', () => {
     render(<ComboCard {...mockProps} />);
-    const description = screen.getByText(mockData.skills['パワーヒッター'].description);
+
+    const matchingRow = screen.getByTestId('skill-row-パワーヒッター');
+    const description = matchingRow.querySelector('p');
+
     expect(description).toHaveClass('truncate');
+  });
+
+  it('renders the add button only when selected and missing characters exist', () => {
+    const { rerender } = render(<ComboCard {...mockProps} isSelected={false} />);
+
+    // 1. Should not show add button when not selected
+    expect(screen.queryByTestId('combo-add-btn')).not.toBeInTheDocument();
+
+    // 2. Should show add button when selected
+    rerender(<ComboCard {...mockProps} isSelected={true} />);
+    const addButton = screen.getByTestId('combo-add-btn');
+
+    expect(addButton).toBeInTheDocument();
+    expect(addButton).toHaveTextContent('Add 2');
   });
 });

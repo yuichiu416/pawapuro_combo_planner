@@ -1,8 +1,10 @@
-import React from 'react';
-import { CheckCircle2, Star, BadgeCheck, UserPlus } from 'lucide-react';
+// src/components/ComboCard.tsx
+
+import { BadgeCheck, CheckCircle2, Star, UserPlus } from 'lucide-react';
+import type React from 'react';
+import skillsDataRaw from '@/data/skills.json';
 import { cn } from '../utils/style';
 import { CharacterGrid } from './CharacterGrid';
-import skillsDataRaw from '@/data/skills.json';
 
 const skillsData = skillsDataRaw as Record<string, any>;
 
@@ -35,6 +37,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
 }) => {
   const missingChars = names.filter((name) => !ownedChars.has(name));
   const hasMissing = missingChars.length > 0;
+  const comboId = names.join('&');
 
   const isMatch = (text: string) => {
     const term = searchTerm.toLowerCase().trim();
@@ -44,7 +47,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
 
   return (
     <div
-      data-testid={`combo-card-${names.join('&')}`}
+      data-testid={`combo-card-${comboId}`}
       onClick={(e) => {
         if ((e.target as HTMLElement).closest('button')) return;
         onToggleCombo();
@@ -54,21 +57,18 @@ export const ComboCard: React.FC<ComboCardProps> = ({
         isSelected ? 'border-blue-500 bg-blue-50/30' : 'border-transparent hover:border-slate-200',
       )}
     >
-      {/* 1. SELECTION INDICATOR & MOBILE LAYOUT HELPER */}
+      {/* 1. SELECTION INDICATOR */}
       <div className="flex items-center lg:block shrink-0 gap-3">
         <div
           className={cn(
             'w-10 h-10 md:w-12 md:h-12 rounded-2xl flex items-center justify-center shrink-0 transition-all',
             isSelected
               ? 'bg-blue-600 text-white shadow-lg shadow-blue-100'
-              : 'bg-slate-100 text-slate-300',
+              : 'bg-slate-100 text-black',
           )}
         >
           <CheckCircle2 size={24} />
         </div>
-
-        {/* Mobile-only visible divider or title can go here if needed, 
-            currently using lg:flex-row to handle flow */}
       </div>
 
       {/* 2. CHARACTERS SECTION */}
@@ -91,13 +91,14 @@ export const ComboCard: React.FC<ComboCardProps> = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5">
             <Star size={8} className="text-amber-400 fill-amber-400" />
-            <span className="text-xs md:text-sm font-black text-slate-400 uppercase tracking-widest">
+            <span className="text-xs md:text-sm font-black text-black uppercase tracking-widest">
               Combo Rewards
             </span>
           </div>
 
           {isSelected && hasMissing && (
             <button
+              data-testid="combo-add-btn"
               onClick={(e) => {
                 e.stopPropagation();
                 onAddCharacters(missingChars);
@@ -146,7 +147,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                 <p
                   className={cn(
                     'text-xs md:text-sm font-bold truncate flex-1 transition-colors',
-                    hasHit ? 'text-red-900' : 'text-slate-500',
+                    hasHit ? 'text-red-900' : 'text-black',
                   )}
                   title={detail?.description}
                 >

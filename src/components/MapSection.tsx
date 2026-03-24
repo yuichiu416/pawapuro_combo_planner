@@ -6,12 +6,11 @@ import { ComboCard } from '@/components/ComboCard';
 import combosDataRaw from '@/data/combos.json';
 import { cn } from '@/utils/style';
 
-// Cast raw JSON data to a Record for O(1) lookup speed
 const combosData = combosDataRaw as Record<string, any>;
 
 interface MapSectionProps {
   mapName: string;
-  combos: string[]; // List of combo IDs filtered by parent
+  combos: string[];
   selectedComboIds: Set<string>;
   toggleCombo: (id: string) => void;
   ownedChars: Set<string>;
@@ -25,7 +24,7 @@ interface MapSectionProps {
 
 export const MapSection: React.FC<MapSectionProps> = ({
   mapName,
-  combos = [], // Default to empty array
+  combos = [],
   selectedComboIds,
   toggleCombo,
   isExpanded,
@@ -36,10 +35,11 @@ export const MapSection: React.FC<MapSectionProps> = ({
   const isComplete = progress && progress.selected === progress.total && progress.total > 0;
 
   return (
-    <section className="space-y-8">
+    <section className="space-y-8" data-testid={`map-section-${mapName}`}>
       {/* Clickable Header for Toggling Expansion */}
       <div
         onClick={onToggle}
+        data-testid={`map-trigger-${mapName}`}
         className="flex items-center justify-between group cursor-pointer select-none"
       >
         <div className="flex items-center gap-4">
@@ -48,24 +48,22 @@ export const MapSection: React.FC<MapSectionProps> = ({
               'p-3 rounded-2xl transition-colors',
               isExpanded
                 ? 'bg-blue-100 text-blue-600'
-                : 'bg-slate-200 text-slate-500 group-hover:bg-slate-300',
-              // Highlight green if all combos in this map are selected
+                : 'bg-slate-200 text-black group-hover:bg-slate-300',
               isComplete && !isExpanded && 'bg-emerald-100 text-emerald-600',
             )}
           >
             <MapPin size={28} />
           </div>
           <div>
-            <h2 className="font-black text-3xl italic uppercase tracking-tight text-slate-900">
-              {mapName}
-            </h2>
+            <h2 className="font-black text-3xl uppercase tracking-tight text-black">{mapName}</h2>
             <div className="flex items-center gap-3">
-              <p className="text-sm font-black text-slate-400 uppercase tracking-widest">
+              <p className="text-sm font-black text-black uppercase tracking-widest">
                 {combos.length} Matches Found
               </p>
 
               {progress && (
                 <span
+                  data-testid={`map-progress-${mapName}`}
                   className={cn(
                     'text-sm font-black uppercase tracking-widest px-2 py-0.5 rounded transition-all shadow-sm',
                     isComplete
@@ -85,7 +83,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
             'w-12 h-12 flex items-center justify-center rounded-full border-2 transition-all',
             isExpanded
               ? 'border-blue-200 text-blue-600 rotate-180'
-              : 'border-slate-200 text-slate-400 group-hover:border-slate-300 group-hover:text-slate-600',
+              : 'border-slate-200 text-black group-hover:border-slate-300 group-hover:text-black',
             isComplete && !isExpanded && 'border-emerald-200 text-emerald-500',
           )}
         >
@@ -93,7 +91,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
         </div>
       </div>
 
-      {/* Expandable Content Container with Slide Animation */}
+      {/* Expandable Content Container */}
       {isExpanded && (
         <div className="grid gap-6 animate-in fade-in slide-in-from-top-4 duration-300">
           {combos.map((comboId) => {
@@ -103,7 +101,6 @@ export const MapSection: React.FC<MapSectionProps> = ({
             return (
               <ComboCard
                 key={comboId}
-                // Mapping data from global JSON to individual cards
                 names={fullComboData.characters}
                 rewards={fullComboData.rewards}
                 isSelected={selectedComboIds.has(comboId)}
@@ -115,7 +112,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
 
           {combos.length === 0 && (
             <div className="p-12 border-4 border-dashed border-slate-200 rounded-[3rem] text-center">
-              <p className="font-black text-slate-300 uppercase italic">No Matches in this area</p>
+              <p className="font-black text-black uppercase italic">No Matches in this area</p>
             </div>
           )}
         </div>

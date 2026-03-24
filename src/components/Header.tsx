@@ -60,7 +60,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="bg-blue-600 p-2 rounded-xl text-white shadow-lg shadow-blue-200 shrink-0">
               <CircleDot size={24} />
             </div>
-            <h1 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-slate-900 leading-none">
+            <h1 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-black leading-none">
               Planner
             </h1>
           </div>
@@ -84,7 +84,7 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center gap-2 md:gap-3 w-full lg:w-auto">
           {/* Label: Fixed the missing style attribute here */}
           <span
-            className="hidden lg:inline text-xs font-black text-slate-800 uppercase tracking-widest whitespace-nowrap"
+            className="hidden lg:inline text-xs font-black text-black uppercase tracking-widest whitespace-nowrap"
             style={{ fontSize: `${baseLabelSize * fontScale}rem` }}
           >
             Select all combos for:
@@ -124,7 +124,7 @@ export const Header: React.FC<HeaderProps> = ({
           className={cn(
             'px-3 md:px-4 py-2 border-2 rounded-xl font-black transition-all uppercase',
             showPositionIcon
-              ? 'bg-white border-slate-200 text-slate-600'
+              ? 'bg-white border-slate-200 text-black'
               : 'bg-blue-600 border-blue-600 text-white shadow-md shadow-blue-200',
           )}
         >
@@ -137,7 +137,7 @@ export const Header: React.FC<HeaderProps> = ({
           className={cn(
             'px-3 md:px-4 py-2 border-2 rounded-xl font-black transition-all uppercase',
             !filterRelatedOnly
-              ? 'bg-white border-slate-200 text-slate-600'
+              ? 'bg-white border-slate-200 text-black'
               : 'bg-emerald-600 border-emerald-600 text-white shadow-md shadow-emerald-200',
           )}
         >
@@ -148,12 +148,12 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={() => onAdjustFont(-0.1)}
             aria-label="Decrease font size"
-            className="w-7 h-7 md:w-8 md:h-8 flex items-center justify-center hover:bg-white rounded-lg transition-all text-slate-600 active:scale-90"
+            className="w-7 h-7 md:w-8 md:h-8 flex items-center justify-center hover:bg-white rounded-lg transition-all text-black active:scale-90"
           >
             <Minus size={14} />
           </button>
           <div
-            className="px-1 md:px-2 font-black text-slate-500 min-w-[32px] md:min-w-[40px] text-center"
+            className="px-1 md:px-2 font-black text-black min-w-[32px] md:min-w-[40px] text-center"
             style={{ fontSize: `${baseLabelSize * fontScale}rem` }}
           >
             {Math.round((fontScale || 1) * 100)}%
@@ -161,7 +161,7 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={() => onAdjustFont(0.1)}
             aria-label="Increase font size"
-            className="w-7 h-7 md:w-8 md:h-8 flex items-center justify-center hover:bg-white rounded-lg transition-all text-slate-600 active:scale-90"
+            className="w-7 h-7 md:w-8 md:h-8 flex items-center justify-center hover:bg-white rounded-lg transition-all text-black active:scale-90"
           >
             <Plus size={14} />
           </button>
@@ -170,7 +170,7 @@ export const Header: React.FC<HeaderProps> = ({
         <button
           onClick={allExpanded ? onCollapseAll : onExpandAll}
           style={{ fontSize: `${baseButtonSize * fontScale}rem` }}
-          className="ml-auto flex items-center gap-2 px-3 md:px-4 py-2 bg-slate-100 rounded-xl font-black uppercase text-slate-600 hover:bg-slate-200 transition-all min-w-[120px] md:min-w-[140px] justify-center active:scale-95"
+          className="ml-auto flex items-center gap-2 px-3 md:px-4 py-2 bg-slate-100 rounded-xl font-black uppercase text-black hover:bg-slate-200 transition-all min-w-[120px] md:min-w-[140px] justify-center active:scale-95"
         >
           {allExpanded ? (
             <>
@@ -178,7 +178,7 @@ export const Header: React.FC<HeaderProps> = ({
             </>
           ) : (
             <>
-              <ChevronDown size={14} className="text-slate-400" /> EXPAND ALL
+              <ChevronDown size={14} className="text-black" /> EXPAND ALL
             </>
           )}
         </button>

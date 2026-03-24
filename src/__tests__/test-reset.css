@@ -1,0 +1,17 @@
+/* src/__tests__/test-reset.css */
+
+/* Force-disable all animations and transitions.
+  Using raw CSS instead of @apply to ensure compatibility with Tailwind v4 
+  and to guarantee these styles take precedence in JSDOM.
+*/
+*,
+*::before,
+*::after {
+  animation-delay: 0s !important;
+  animation-duration: 0s !important;
+  animation-iteration-count: 1 !important;
+  transition-delay: 0s !important;
+  transition-duration: 0s !important;
+  transition-property: none !important;
+  animation-fill-mode: forwards !important;
+}

@@ -1,7 +1,7 @@
 import { renderHook, act, waitFor } from '@testing-library/react';
-import { useComboManager } from '../../hooks/useComboManager';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { supabase } from '@/lib/supabase';
+import { useComboManager } from '../../hooks/useComboManager';
 
 // 1. HOIST THE DATA
 const { mockCombos, mockChars, mockMapping, mockSkills } = await vi.hoisted(async () => {
@@ -68,7 +68,7 @@ vi.mock('@/lib/supabase', () => ({
   },
 }));
 
-const LOCAL_STORAGE_KEY = 'pawapuro_planner_local_v1';
+const LOCAL_STORAGE_KEY = 'パワプロ_planner_local_v1';
 
 describe('useComboManager Roster Validation', () => {
   it('should validate the minimum legal roster (6P, 15F scouts)', () => {

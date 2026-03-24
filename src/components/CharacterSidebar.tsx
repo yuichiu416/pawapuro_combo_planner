@@ -1,13 +1,21 @@
 // src/components/CharacterSidebar.tsx
 
-import { ChevronDown, ChevronRight, Info, MapPin, RotateCcw, Search, X } from 'lucide-react';
+import {
+  ChevronDown,
+  ChevronRight,
+  Compass,
+  Info,
+  MapPin,
+  RotateCcw,
+  Search,
+  X,
+} from 'lucide-react';
 import type React from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import { POSITIONS } from '@/constants';
 import charactersDataRaw from '@/data/characters.json';
 import { cn } from '../utils/style';
 
-// Order mapping for sorting characters by position
 const POSITION_ORDER: Record<string, number> = {
   投: 1,
   捕: 2,
@@ -24,15 +32,6 @@ const POSITION_ORDER: Record<string, number> = {
 
 const CHAR_DATA = charactersDataRaw as Record<string, any>;
 
-// Extract unique map names from character data
-const AVAILABLE_MAPS = Array.from(
-  new Set(
-    Object.values(charactersDataRaw)
-      .map((char: any) => char.encounter_map)
-      .filter((map): map is string => Boolean(map)),
-  ),
-);
-
 interface CharacterSidebarProps {
   searchTerm: string;
   setSearchTerm: (val: string) => void;
@@ -46,7 +45,7 @@ interface CharacterSidebarProps {
   ownedChars: Set<string>;
   onToggle: (name: string) => void;
   getImagePath: (name: string, usePos: boolean) => string;
-  ariaLabel?: string;
+  testId?: string;
 }
 
 export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
@@ -62,14 +61,23 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
   ownedChars,
   onToggle,
   getImagePath,
-  ariaLabel,
+  testId = 'character-sidebar',
 }) => {
   const [isMapExpanded, setIsMapExpanded] = useState(false);
   const [selectedPreview, setSelectedPreview] = useState<string | null>(null);
   const [lastRemoved, setLastRemoved] = useState<string | null>(null);
   const [showUndo, setShowUndo] = useState(false);
 
-  // Helper to sort character names based on position and ID
+  const AVAILABLE_MAPS = useMemo(() => {
+    return Array.from(
+      new Set(
+        Object.values(CHAR_DATA)
+          .map((char: any) => char.encounter_map)
+          .filter((map): map is string => Boolean(map)),
+      ),
+    );
+  }, []);
+
   const sortChars = (names: string[]) => {
     return [...names].sort((a, b) => {
       const dataA = CHAR_DATA[a];
@@ -114,8 +122,11 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
   const renderList = (names: string[], title: string) => {
     if (names.length === 0) return null;
     return (
-      <div className="space-y-1.5">
-        <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest px-4 italic leading-none">
+      <div
+        className="space-y-1.5"
+        data-testid={`${testId}-list-${title.replace(/\s+/g, '-').toLowerCase()}`}
+      >
+        <h3 className="text-xs font-black text-black uppercase tracking-widest px-4 leading-none">
           {title}
         </h3>
         <div className="grid gap-1 px-3">
@@ -124,21 +135,21 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             const data = CHAR_DATA[name];
             return (
               <button
-                data-testid={`sidebar-char-${name}`}
+                data-testid={`${testId}-char-${name}`}
                 key={name}
                 onClick={() => onToggle(name)}
                 className={cn(
-                  'flex items-center gap-2 p-1.5 rounded-lg transition-all duration-200 group text-left w-full border',
+                  'flex items-center gap-3 p-2 rounded-xl transition-all duration-200 group text-left w-full border',
                   isOwned
-                    ? 'bg-emerald-50 border-emerald-300 shadow-sm'
+                    ? 'bg-blue-50 border-blue-200 shadow-sm ring-1 ring-blue-100/50'
                     : 'bg-white border-transparent hover:border-slate-200 shadow-sm',
                 )}
               >
                 <div
                   className={cn(
-                    'w-10 h-10 flex-shrink-0 relative rounded overflow-hidden border',
+                    'w-11 h-11 flex-shrink-0 relative rounded-lg overflow-hidden border',
                     isOwned
-                      ? 'border-emerald-600 bg-white'
+                      ? 'border-blue-500 bg-white shadow-sm'
                       : 'border-slate-200 bg-slate-50 opacity-70 group-hover:opacity-100',
                   )}
                 >
@@ -148,17 +159,27 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                 </div>
-                <div className="min-w-0">
-                  <p
-                    className={cn(
-                      'text-sm font-black tracking-tighter leading-tight',
-                      isOwned ? 'text-emerald-950' : 'text-slate-700',
-                    )}
-                  >
-                    {name}
-                  </p>
-                  <p className="text-xs font-bold text-slate-400 uppercase leading-none">
-                    {data?.position || 'Manager'}
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <p
+                      className={cn(
+                        'text-sm font-black tracking-tighter leading-tight',
+                        isOwned ? 'text-blue-950' : 'text-black',
+                      )}
+                    >
+                      {name}
+                    </p>
+                    <span
+                      className={cn(
+                        'text-xs font-black px-1 rounded uppercase',
+                        isOwned ? 'bg-blue-600 text-white' : 'bg-slate-200 text-slate-600',
+                      )}
+                    >
+                      {data?.position || 'MGR'}
+                    </span>
+                  </div>
+                  <p className="text-xs font-bold text-slate-400 uppercase leading-none mt-1 flex items-center gap-1">
+                    <Compass size={10} /> {data?.encounter_map || 'Unknown Map'}
                   </p>
                 </div>
               </button>
@@ -173,17 +194,18 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
     <aside
       className="w-full bg-slate-50 border-r border-slate-200 flex flex-col h-full overflow-hidden relative"
       role="complementary"
-      aria-label={ariaLabel}
+      aria-label={testId}
+      data-testid={testId}
     >
       <div className="shrink-0 bg-white border-b border-slate-200 shadow-sm">
         <div className="p-3 space-y-2.5">
-          {/* ACTIVE ROSTER SECTION */}
           <div className="space-y-1.5 bg-slate-900 p-3 rounded-xl shadow-inner border border-slate-800">
             <div className="flex justify-between items-center px-1">
-              <span className="text-xs font-black text-slate-500 uppercase tracking-widest">
+              <span className="text-xs font-black text-white uppercase tracking-widest">
                 Active Roster
               </span>
               <span
+                data-testid={`${testId}-roster-count`}
                 className={cn(
                   'text-sm font-black italic',
                   ownedChars.size > 25 ? 'text-rose-400' : 'text-emerald-400',
@@ -196,7 +218,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             <div className="grid grid-cols-7 gap-1">
               {rosterSlots.map((charName, i) => (
                 <button
-                  data-testid={`active-roaster-${charName || `empty-${i}`}`}
+                  data-testid={`${testId}-roster-${charName || `slot-empty-${i}`}`}
                   key={charName ? `slot-${charName}` : `empty-${i}`}
                   disabled={!charName}
                   onClick={() =>
@@ -228,9 +250,11 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             </div>
           </div>
 
-          {/* DYNAMIC FEEDBACK AREA: NO FIXED HEIGHT WRAPPER */}
           {selectedPreview && !showUndo && (
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-2.5 flex items-center justify-between animate-in zoom-in-95 duration-150">
+            <div
+              data-testid={`${testId}-roster-preview-box`}
+              className="bg-blue-50 border border-blue-200 rounded-lg p-2.5 flex items-center justify-between animate-in zoom-in-95 duration-150"
+            >
               <div className="flex items-center gap-2">
                 <div className="w-10 h-10 rounded border border-blue-300 bg-white overflow-hidden">
                   <img
@@ -247,7 +271,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
                 </div>
               </div>
               <button
-                data-testid={`remove-btn-${selectedPreview}`}
+                data-testid={`${testId}-remove-btn-${selectedPreview}`}
                 onClick={() => handleConfirmRemove(selectedPreview)}
                 className="flex items-center gap-1.5 px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-md text-xs font-black transition-colors"
               >
@@ -259,16 +283,18 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
 
           {showUndo && (
             <div
-              data-testid="undo-toast"
-              className="top-[00px] md:bottom-6 z-[50] animate-in fade-in zoom-in-95 duration-300"
+              data-testid={`${testId}-undo-toast`}
+              className="z-[50] animate-in fade-in zoom-in-95 duration-300"
             >
               <div className="bg-slate-900/95 backdrop-blur-md text-white rounded-lg shadow-2xl px-3 py-2.5 flex items-center justify-between border border-slate-700/50">
                 <div className="flex items-center gap-3 min-w-0">
                   <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0">
-                    <Info size={16} className="text-blue-400" />
+                    <span className="text-blue-400">
+                      <Info size={16} />
+                    </span>
                   </div>
                   <div className="flex flex-col min-w-0">
-                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-tighter leading-none">
+                    <span className="text-xs font-black text-white uppercase tracking-tighter leading-none">
                       Roster Updated
                     </span>
                     <span className="text-xs font-bold tracking-tight truncate">
@@ -277,9 +303,10 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
                   </div>
                 </div>
                 <button
+                  data-testid={`${testId}-undo-button`}
                   onClick={handleUndo}
                   aria-label="Undo"
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-white text-slate-950 hover:bg-blue-50 rounded-md text-xs font-black uppercase transition-all active:scale-95 shadow-sm shrink-0 ml-2"
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-white text-black hover:bg-blue-50 rounded-md text-xs font-black uppercase transition-all active:scale-95 shadow-sm shrink-0 ml-2"
                 >
                   <RotateCcw size={12} strokeWidth={3} />
                   Undo
@@ -288,41 +315,42 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             </div>
           )}
 
-          {/* Filters Area */}
-          <div className="flex flex-wrap items-center gap-1">
+          <div className="flex items-center gap-1">
             <button
-              aria-label="No Kanji"
+              data-testid={`${testId}-kanji-filter-toggle`}
               onClick={toggleKanjiFilter}
               className={cn(
                 'w-7 h-7 rounded-lg text-sm font-black border flex items-center justify-center transition-all',
                 filterNoKanji
                   ? 'bg-purple-600 border-purple-600 text-white shadow-sm'
-                  : 'bg-white text-slate-400 border-slate-200 hover:border-slate-300',
+                  : 'bg-white text-black border-slate-200 hover:border-slate-300',
               )}
             >
               ア
             </button>
             <div className="w-[1px] h-5 bg-slate-200 mx-0.5" />
             <button
+              data-testid={`${testId}-pos-filter-all`}
               onClick={() => setPosFilter(null)}
               className={cn(
-                'px-2 h-7 rounded-lg text-sm font-black border uppercase transition-all',
+                'px-2 h-7 rounded-lg text-xs font-black border uppercase transition-all',
                 !posFilter
                   ? 'bg-blue-600 border-blue-600 text-white shadow-sm'
-                  : 'bg-white text-slate-400 border-slate-200',
+                  : 'bg-white text-black border-slate-200',
               )}
             >
               ALL
             </button>
             {POSITIONS.map((pos) => (
               <button
+                data-testid={`${testId}-pos-filter-${pos}`}
                 key={pos}
                 onClick={() => setPosFilter(pos === posFilter ? null : pos)}
                 className={cn(
-                  'w-7 h-7 rounded-lg text-sm font-black border flex items-center justify-center transition-all',
+                  'w-7 h-7 rounded-lg text-xs font-black border flex items-center justify-center transition-all',
                   posFilter === pos
                     ? 'bg-blue-600 border-blue-600 text-white shadow-sm scale-105'
-                    : 'bg-white text-slate-400 border-slate-200 hover:border-slate-300',
+                    : 'bg-white text-black border-slate-200 hover:border-slate-300',
                 )}
               >
                 {pos}
@@ -330,16 +358,15 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             ))}
           </div>
 
-          {/* Map & Search Row */}
           <div className="flex gap-1.5 pt-0.5">
             <button
-              data-testid="map-filter-button"
+              data-testid={`${testId}-map-filter-trigger`}
               onClick={() => setIsMapExpanded(!isMapExpanded)}
               className={cn(
                 'flex items-center gap-1 px-2 h-8 rounded-lg text-xs font-black border uppercase transition-all shrink-0',
                 !mapFilter
                   ? 'bg-slate-800 border-slate-800 text-white'
-                  : 'bg-white text-slate-500 border-slate-200',
+                  : 'bg-white text-black border-slate-200',
               )}
             >
               <MapPin size={10} className={mapFilter ? 'text-blue-400' : ''} />
@@ -348,11 +375,11 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
 
             <div className="relative flex-1 group">
               <Search
-                className="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500"
+                className="absolute left-2.5 top-1/2 -translate-y-1/2 text-black group-focus-within:text-blue-500"
                 size={12}
               />
               <input
-                data-testid="character-search-input"
+                data-testid={`${testId}-character-search-input`}
                 type="text"
                 placeholder="SEARCH A NAME OR SKILL"
                 value={searchTerm}
@@ -362,27 +389,27 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             </div>
           </div>
 
-          {/* Map Popover */}
           {isMapExpanded && (
-            <div className="flex flex-wrap gap-1 p-2 bg-slate-50 rounded-xl border border-slate-200 animate-in fade-in slide-in-from-top-1">
+            <div
+              data-testid={`${testId}-map-filter-popover`}
+              className="flex flex-wrap gap-1 p-2 bg-slate-50 rounded-xl border border-slate-200 animate-in fade-in slide-in-from-top-1"
+            >
               <button
-                data-testid="map-filter-button-any"
+                data-testid={`${testId}-map-filter-option-any`}
                 onClick={() => {
                   setMapFilter(null);
                   setIsMapExpanded(false);
                 }}
                 className={cn(
                   'px-2 py-1 rounded-md text-xs font-black border uppercase transition-all',
-                  !mapFilter
-                    ? 'bg-slate-800 border-slate-800 text-white'
-                    : 'bg-white text-slate-400',
+                  !mapFilter ? 'bg-slate-800 border-slate-800 text-white' : 'bg-white text-black',
                 )}
               >
                 ANY MAP
               </button>
               {AVAILABLE_MAPS.map((map) => (
                 <button
-                  data-testid={`map-filter-button-${map}`}
+                  data-testid={`${testId}-map-filter-option-${map}`}
                   key={map}
                   onClick={() => {
                     setMapFilter(map);
@@ -392,7 +419,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
                     'px-2 py-1 rounded-md text-xs font-black border uppercase transition-all',
                     mapFilter === map
                       ? 'bg-blue-600 border-blue-600 text-white'
-                      : 'bg-white text-slate-400',
+                      : 'bg-white text-black',
                   )}
                 >
                   {map}
@@ -403,7 +430,6 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
         </div>
       </div>
 
-      {/* Main List Area */}
       <div className="flex-1 overflow-y-auto py-3 space-y-6 custom-scrollbar">
         {renderList(sortedWithCombo, 'Available Combo Partners')}
         {renderList(sortedNoCombo, 'Other Characters')}

@@ -1,6 +1,5 @@
 // src/__tests__/components/CharacterSidebar.test.tsx
-
-import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CharacterSidebar } from '@/components/CharacterSidebar';
 
@@ -12,6 +11,7 @@ vi.mock('@/data/characters.json', () => ({
 }));
 
 const TEST_CHAR = '金丸信二';
+const BASE_ID = 'desktop-character-sidebar';
 
 const mockProps = {
   searchTerm: '',
@@ -29,6 +29,7 @@ const mockProps = {
   ownedChars: new Set<string>([]),
   onToggle: vi.fn(),
   getImagePath: (name: string) => `/path/${name}.png`,
+  testId: BASE_ID,
 };
 
 describe('CharacterSidebar - Style & Logic Regression', () => {
@@ -39,46 +40,39 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
 
   it('updates search term when typing in the search input', () => {
     render(<CharacterSidebar {...mockProps} />);
-    const searchInput = screen.getByPlaceholderText(/SEARCH A NAME OR SKILL/i);
+    const searchInput = screen.getByTestId(`${BASE_ID}-character-search-input`);
 
     fireEvent.change(searchInput, { target: { value: 'Aoba' } });
     expect(mockProps.setSearchTerm).toHaveBeenCalledWith('Aoba');
   });
+
   it('completes the full remove-and-undo flow', async () => {
     const propsWithChar = { ...mockProps, ownedChars: new Set([TEST_CHAR]) };
     render(<CharacterSidebar {...propsWithChar} />);
 
-    // 1. Select the character to show the preview
-    fireEvent.click(screen.getByTestId(`active-roaster-${TEST_CHAR}`));
+    const slot = screen.getByTestId(`${BASE_ID}-roster-${TEST_CHAR}`);
+    fireEvent.click(slot);
 
-    // 2. Click the Remove button in the Preview Panel
-    const removeBtn = await screen.findByTestId(`remove-btn-${TEST_CHAR}`);
+    const removeBtn = await screen.findByTestId(`${BASE_ID}-remove-btn-${TEST_CHAR}`);
     fireEvent.click(removeBtn);
 
-    // 3. Verify onToggle was called for removal
     expect(mockProps.onToggle).toHaveBeenCalledWith(TEST_CHAR);
 
-    // 4. Wait for the Undo Toast to appear
-    const toast = await screen.findByTestId('undo-toast');
+    const toast = await screen.findByTestId(`${BASE_ID}-undo-toast`);
     expect(within(toast).getByText(new RegExp(`Removed ${TEST_CHAR}`, 'i'))).toBeInTheDocument();
 
-    // 5. Click Undo
-    const undoBtn = within(toast).getByRole('button', { name: /undo/i });
+    const undoBtn = within(toast).getByTestId(`${BASE_ID}-undo-button`);
     fireEvent.click(undoBtn);
 
-    await waitFor(() => {
-      expect(screen.queryByTestId('undo-toast')).not.toBeInTheDocument();
-    });
+    expect(mockProps.onToggle).toHaveBeenCalledTimes(2);
   });
 
   it('triggers map filtering correctly', async () => {
     render(<CharacterSidebar {...mockProps} />);
 
-    // Open map popover
-    fireEvent.click(screen.getByTestId('map-filter-button'));
-    // Find and click a map button
-    const mapButton = await screen.findByTestId(`map-filter-button-パワフル高校`);
-    fireEvent.click(mapButton);
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-map-filter-trigger`));
+    const mapOption = await screen.findByTestId(`${BASE_ID}-map-filter-option-パワフル高校`);
+    fireEvent.click(mapOption);
 
     expect(mockProps.setMapFilter).toHaveBeenCalledWith('パワフル高校');
   });
@@ -87,51 +81,47 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
     const propsWithChar = { ...mockProps, ownedChars: new Set([TEST_CHAR]) };
     render(<CharacterSidebar {...propsWithChar} />);
 
-    // Open preview
-    fireEvent.click(screen.getByTestId(`active-roaster-${TEST_CHAR}`));
-    const removeBtn = screen.getByTestId(`remove-btn-${TEST_CHAR}`);
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-roster-${TEST_CHAR}`));
+    const removeBtn = screen.getByTestId(`${BASE_ID}-remove-btn-${TEST_CHAR}`);
     fireEvent.click(removeBtn);
 
-    const toastContainer = await screen.findByTestId('undo-toast');
-
-    // Style check: Ensure z-index and animations are preserved
+    const toastContainer = await screen.findByTestId(`${BASE_ID}-undo-toast`);
     expect(toastContainer).toHaveClass('z-[50]', 'animate-in', 'fade-in');
 
-    // Verify toast inner styles (dark glass effect)
     const toastInner = toastContainer.querySelector('.bg-slate-900\\/95');
     expect(toastInner).toHaveClass('backdrop-blur-md', 'text-white');
 
-    // Undo button check
-    const undoBtn = within(toastContainer).getByRole('button', { name: /undo/i });
-    expect(undoBtn).toHaveClass('bg-white', 'text-slate-950');
+    const undoBtn = within(toastContainer).getByTestId(`${BASE_ID}-undo-button`);
+    expect(undoBtn).toHaveClass('bg-white', 'text-black');
   });
 
   it('checks Active Roster slot highlighting', () => {
     const propsWithChar = { ...mockProps, ownedChars: new Set([TEST_CHAR]) };
     render(<CharacterSidebar {...propsWithChar} />);
 
-    const slot = screen.getByTestId(`active-roaster-${TEST_CHAR}`);
+    const slot = screen.getByTestId(`${BASE_ID}-roster-${TEST_CHAR}`);
     fireEvent.click(slot);
 
-    // Assert visual feedback classes
     expect(slot).toHaveClass('border-blue-400', 'ring-2', 'scale-105');
   });
 
   it('validates map popover toggle and selection logic', async () => {
     render(<CharacterSidebar {...mockProps} />);
 
-    const mapBtn = screen.getByTestId('map-filter-button');
-    fireEvent.click(mapBtn);
+    // Click trigger to expand
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-map-filter-trigger`));
+
+    // Corrected ID to include -filter-
+    const mapPopover = screen.getByTestId(`${BASE_ID}-map-filter-popover`);
+    expect(mapPopover).toHaveClass('bg-slate-50', 'border-slate-200');
 
     const mapName = 'パワフル高校';
-    const mapOption = screen.getByTestId(`map-filter-button-${mapName}`);
-
-    expect(mapOption.parentElement).toHaveClass('bg-slate-50', 'border-slate-200');
+    const mapOption = screen.getByTestId(`${BASE_ID}-map-filter-option-${mapName}`);
 
     fireEvent.click(mapOption);
     expect(mockProps.setMapFilter).toHaveBeenCalledWith(mapName);
 
-    // Popover should close
-    expect(screen.queryByTestId(`map-filter-button-${mapName}`)).not.toBeInTheDocument();
+    // Check popover is removed from DOM after selection
+    expect(screen.queryByTestId(`${BASE_ID}-map-filter-popover`)).not.toBeInTheDocument();
   });
 });

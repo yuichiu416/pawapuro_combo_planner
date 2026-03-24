@@ -1,7 +1,8 @@
-import React, { useState, useMemo } from 'react';
 import { Search } from 'lucide-react';
-import { cn, getSkillTypeStyle } from '../utils/style';
+import type React from 'react';
+import { useMemo, useState } from 'react';
 import skillsDataRaw from '../data/skills.json';
+import { cn, getSkillTypeStyle } from '../utils/style';
 
 const skillsData = skillsDataRaw as Record<string, any>;
 
@@ -28,7 +29,7 @@ const SkillList: React.FC = () => {
     <div className="space-y-6">
       {/* Search Bar */}
       <div className="relative">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-black" size={20} />
         <input
           type="text"
           placeholder="Search skills by name or description..."
@@ -40,7 +41,7 @@ const SkillList: React.FC = () => {
 
       {/* Results Count */}
       <div className="px-2 flex justify-between items-center">
-        <span className="text-sm font-black text-slate-400 uppercase tracking-widest">
+        <span className="text-sm font-black text-black uppercase tracking-widest">
           Found {filteredSkills.length} Skills
         </span>
       </div>
@@ -64,9 +65,9 @@ const SkillList: React.FC = () => {
 
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <h4 className="font-black text-slate-800 text-xl">{skill.name}</h4>
+                  <h4 className="font-black text-black text-xl">{skill.name}</h4>
                 </div>
-                <p className="text-base text-slate-500 font-medium leading-relaxed mt-1">
+                <p className="text-base text-black font-medium leading-relaxed mt-1">
                   {skill.description}
                 </p>
               </div>
@@ -74,7 +75,7 @@ const SkillList: React.FC = () => {
           ))
         ) : (
           <div className="py-20 text-center bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200">
-            <p className="text-slate-400 font-bold italic">No matching skills found...</p>
+            <p className="text-black font-bold italic">No matching skills found...</p>
           </div>
         )}
       </div>

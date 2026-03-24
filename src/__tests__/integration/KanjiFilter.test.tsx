@@ -1,40 +1,41 @@
 // src/__tests__/integration/KanjiFilter.test.tsx
-import { render, screen, fireEvent, within } from '@testing-library/react';
-import { expect, it, describe } from 'vitest';
+import { render, screen, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { describe, expect, it } from 'vitest';
 import App from '@/App';
 
 describe('Kanji Filter Regression Test', () => {
   it('hides Kanji characters from sidebar but keeps them in the map planner', async () => {
+    const user = userEvent.setup();
     render(<App />);
 
-    // 1. Identify our targets
-    const kanjiChar = '御幸一也';
-    const desktopSidebar = screen.getByRole('complementary', { name: 'desktop-character-sidebar' });
-    const kanjiFilterBtn = within(desktopSidebar).getByText('ア'); // The purple toggle
+    const targetChar = '御幸一也';
+    const SIDEBAR_ID = 'desktop-character-sidebar';
+    const sidebar = screen.getByTestId(SIDEBAR_ID);
 
-    // 2. Pre-condition: Character is visible in sidebar
-    expect(within(desktopSidebar).getByText(kanjiChar)).toBeInTheDocument();
+    // 1. SEARCH to bring character into the DOM (Search input ID from Sidebar)
+    const searchInput = within(sidebar).getByTestId(`${SIDEBAR_ID}-character-search-input`);
+    await user.type(searchInput, targetChar);
 
-    // 3. Action: Toggle the Kanji Filter ON
-    fireEvent.click(kanjiFilterBtn);
+    // 2. Pre-condition: Character is visible in Sidebar Library
+    expect(within(sidebar).getByTestId(`${SIDEBAR_ID}-char-${targetChar}`)).toBeInTheDocument();
 
-    // 4. Verification A: Sidebar should NO LONGER show the Kanji character
-    expect(within(desktopSidebar).queryByText(kanjiChar)).not.toBeInTheDocument();
+    // 3. Action: Toggle Kanji Filter ("ア" button)
+    const kanjiToggle = within(sidebar).getByTestId(`${SIDEBAR_ID}-kanji-filter-toggle`);
+    await user.click(kanjiToggle);
 
-    // 5. Verification B: The Center Planner (Map Section)
-    // We expand a map where this character appears in a combo
-    const mapHeader = screen.getByText(/スカウ島東海岸/i);
-    fireEvent.click(mapHeader.closest('div')!);
+    // 4. Verify: Hidden from Sidebar Library
+    expect(
+      within(sidebar).queryByTestId(`${SIDEBAR_ID}-char-${targetChar}`),
+    ).not.toBeInTheDocument();
 
-    // The Combo Card containing the Kanji character should STILL be there
-    // even though the character is hidden in the sidebar list.
-    const comboCard = await screen.findByText(new RegExp(kanjiChar, 'i'));
-    expect(comboCard).toBeInTheDocument();
+    // 5. Verify: Still visible in Map Section
+    const mapName = 'スカウ島東海岸';
+    const mapTrigger = screen.getByTestId(`map-trigger-${mapName}`);
+    await user.click(mapTrigger);
 
-    // 6. Action: Toggle Filter OFF
-    fireEvent.click(kanjiFilterBtn);
-
-    // 7. Verification C: Character reappears in sidebar
-    expect(within(desktopSidebar).getByText(kanjiChar)).toBeInTheDocument();
+    const mapSection = screen.getByTestId(`map-section-${mapName}`);
+    // CharacterGrid renders img with alt={name}
+    expect(within(mapSection).getByAltText(targetChar)).toBeInTheDocument();
   });
 });

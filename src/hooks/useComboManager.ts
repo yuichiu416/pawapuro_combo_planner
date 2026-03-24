@@ -1,5 +1,5 @@
 // src/hooks/useComboManager.ts
-import { useMemo, useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import charactersMappingRaw from '@/data/character_mapping.json';
 import charactersDataRaw from '@/data/characters.json';
 import combosDataRaw from '@/data/combos.json';
@@ -15,7 +15,7 @@ const skillsData = skillsDataRaw as Record<string, any>;
 const charactersMapping = charactersMappingRaw as any;
 
 const FIXED_MEMBERS = ['パワプロ', '矢部明雄'];
-const LOCAL_STORAGE_KEY = 'pawapuro_planner_local_v1';
+const LOCAL_STORAGE_KEY = 'パワプロ_planner_local_v1';
 const KANJI_REGEX = /[\u4e00-\u9faf]/;
 
 export const useComboManager = () => {

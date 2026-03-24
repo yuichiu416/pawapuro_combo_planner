@@ -25,7 +25,7 @@
     text-rendering: optimizeLegibility;
     /* Font feature settings for better Japanese text rendering */
     font-feature-settings: "palt";
-    @apply bg-slate-100 text-slate-900;
+    @apply bg-slate-100 text-black;
   }
 
   button {

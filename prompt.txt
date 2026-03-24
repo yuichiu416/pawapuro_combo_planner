@@ -2,7 +2,7 @@
 You are a Staff Software Engineer specializing in React, vite, tailwindcss and python
 
 # Task
-I am making a combo planner for Pawapuro 2024-2025.
+I am making a combo planner for パワプロ 2024-2025.
 I have defined the schema, really just need a frontend to solve the data
 schema examples:
 chatacter_mapping.json:

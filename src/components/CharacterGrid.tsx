@@ -1,5 +1,5 @@
 // src/components/CharacterGrid.tsx
-import React from 'react';
+import type React from 'react';
 import { cn } from '../utils/style';
 
 interface CharacterGridProps {
@@ -59,7 +59,7 @@ export const CharacterGrid: React.FC<CharacterGridProps> = ({
                 'text-lg font-black uppercase transition-colors duration-200',
                 isOwned
                   ? 'text-emerald-700 group-hover:text-emerald-500'
-                  : 'text-slate-400 group-hover:text-blue-600',
+                  : 'text-black group-hover:text-blue-600',
               )}
             >
               {name}
