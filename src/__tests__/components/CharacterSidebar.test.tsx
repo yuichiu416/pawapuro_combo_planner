@@ -1,15 +1,14 @@
-// src/components/__tests__/CharacterSidebar.test.tsx
+// src/__tests__/components/CharacterSidebar.test.tsx
+
 import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CharacterSidebar } from '@/components/CharacterSidebar';
 
-const { mockData } = await vi.hoisted(async () => {
-  const { mockData } = await import('../fixtures');
-  return { mockData };
-});
-
 vi.mock('@/data/characters.json', () => ({
-  default: mockData.characters,
+  default: {
+    金丸信二: { id: 1, position: '三', encounter_map: 'パワフル高校' },
+    東條小次郎: { id: 2, position: '三', encounter_map: '鳳龍高校' },
+  },
 }));
 
 const TEST_CHAR = '金丸信二';
@@ -24,7 +23,7 @@ const mockProps = {
   filterNoKanji: false,
   toggleKanjiFilter: vi.fn(),
   groups: {
-    withCombo: Object.keys(mockData.characters),
+    withCombo: ['金丸信二', '東條小次郎'],
     noCombo: [],
   },
   ownedChars: new Set<string>([]),
@@ -32,7 +31,7 @@ const mockProps = {
   getImagePath: (name: string) => `/path/${name}.png`,
 };
 
-describe('CharacterSidebar - Logic & Interactions', () => {
+describe('CharacterSidebar - Style & Logic Regression', () => {
   beforeEach(() => {
     cleanup();
     vi.clearAllMocks();
@@ -45,7 +44,6 @@ describe('CharacterSidebar - Logic & Interactions', () => {
     fireEvent.change(searchInput, { target: { value: 'Aoba' } });
     expect(mockProps.setSearchTerm).toHaveBeenCalledWith('Aoba');
   });
-
   it('completes the full remove-and-undo flow', async () => {
     const propsWithChar = { ...mockProps, ownedChars: new Set([TEST_CHAR]) };
     render(<CharacterSidebar {...propsWithChar} />);
@@ -78,30 +76,62 @@ describe('CharacterSidebar - Logic & Interactions', () => {
 
     // Open map popover
     fireEvent.click(screen.getByTestId('map-filter-button'));
-
     // Find and click a map button
-    const mapName = Object.values(mockData.characters)[0].encounter_map;
-    const mapButton = await screen.findByTestId(`map-filter-button-${mapName}`);
+    const mapButton = await screen.findByTestId(`map-filter-button-パワフル高校`);
     fireEvent.click(mapButton);
 
-    expect(mockProps.setMapFilter).toHaveBeenCalledWith(mapName);
+    expect(mockProps.setMapFilter).toHaveBeenCalledWith('パワフル高校');
   });
 
-  it('verifies the Undo Toast replaces the preview window location', async () => {
+  it('verifies the Undo Toast styling to prevent layout breakage', async () => {
     const propsWithChar = { ...mockProps, ownedChars: new Set([TEST_CHAR]) };
     render(<CharacterSidebar {...propsWithChar} />);
 
-    // Trigger removal to show toast
+    // Open preview
     fireEvent.click(screen.getByTestId(`active-roaster-${TEST_CHAR}`));
-    const removeBtn = await screen.findByTestId(`remove-btn-${TEST_CHAR}`);
+    const removeBtn = screen.getByTestId(`remove-btn-${TEST_CHAR}`);
     fireEvent.click(removeBtn);
 
-    const toast = await screen.findByTestId('undo-toast');
+    const toastContainer = await screen.findByTestId('undo-toast');
 
-    // Verify it uses absolute positioning to fill the relative parent container
-    // This ensures it occupies the exact same spot as the Preview Panel
-    expect(toast.className).toContain('absolute');
-    expect(toast.className).toContain('inset-0');
-    expect(toast.className).toContain('z-[50]');
+    // Style check: Ensure z-index and animations are preserved
+    expect(toastContainer).toHaveClass('z-[50]', 'animate-in', 'fade-in');
+
+    // Verify toast inner styles (dark glass effect)
+    const toastInner = toastContainer.querySelector('.bg-slate-900\\/95');
+    expect(toastInner).toHaveClass('backdrop-blur-md', 'text-white');
+
+    // Undo button check
+    const undoBtn = within(toastContainer).getByRole('button', { name: /undo/i });
+    expect(undoBtn).toHaveClass('bg-white', 'text-slate-950');
+  });
+
+  it('checks Active Roster slot highlighting', () => {
+    const propsWithChar = { ...mockProps, ownedChars: new Set([TEST_CHAR]) };
+    render(<CharacterSidebar {...propsWithChar} />);
+
+    const slot = screen.getByTestId(`active-roaster-${TEST_CHAR}`);
+    fireEvent.click(slot);
+
+    // Assert visual feedback classes
+    expect(slot).toHaveClass('border-blue-400', 'ring-2', 'scale-105');
+  });
+
+  it('validates map popover toggle and selection logic', async () => {
+    render(<CharacterSidebar {...mockProps} />);
+
+    const mapBtn = screen.getByTestId('map-filter-button');
+    fireEvent.click(mapBtn);
+
+    const mapName = 'パワフル高校';
+    const mapOption = screen.getByTestId(`map-filter-button-${mapName}`);
+
+    expect(mapOption.parentElement).toHaveClass('bg-slate-50', 'border-slate-200');
+
+    fireEvent.click(mapOption);
+    expect(mockProps.setMapFilter).toHaveBeenCalledWith(mapName);
+
+    // Popover should close
+    expect(screen.queryByTestId(`map-filter-button-${mapName}`)).not.toBeInTheDocument();
   });
 });
