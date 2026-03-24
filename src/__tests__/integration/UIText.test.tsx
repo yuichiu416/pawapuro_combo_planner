@@ -40,8 +40,8 @@ describe('UI text regression', () => {
       .soft(screen.queryByTestId('filter-label-position-icon'))
       .toHaveTextContent('POSITION ICON');
     expect(screen.queryByTestId('filter-button-all')).toHaveTextContent('ALL COMBOS');
-    expect(screen.queryByTestId('filter-button-pitcher')).toHaveTextContent('PITCHER');
-    expect(screen.queryByTestId('filter-button-fielder')).toHaveTextContent('FIELDER');
+    expect(screen.queryByTestId('filter-button-pitcher')).toHaveTextContent('投手金特');
+    expect(screen.queryByTestId('filter-button-fielder')).toHaveTextContent('野手金特');
     expect(screen.queryByTestId('filter-button-clear')).toHaveTextContent('CLEAR');
 
     // Right Side Stats/Sync Section

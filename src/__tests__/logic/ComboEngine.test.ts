@@ -1,10 +1,6 @@
-import { describe, it, expect, vi } from 'vitest';
-import { renderHook, act } from '@testing-library/react';
+import { act, renderHook } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
 import { useComboManager } from '@/hooks/useComboManager';
-
-// DO NOT reference these variables inside vi.mock factory directly
-import mockCharacters from '../fixtures/characters.mock.json';
-import mockCombos from '../fixtures/combos.mock.json';
 
 // Use factory functions that return the imported data
 // This works because the actual resolution happens when the module is required

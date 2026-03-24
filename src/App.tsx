@@ -76,6 +76,10 @@ const App: React.FC = () => {
     libraryGroups = { withCombo: [], noCombo: [] },
     fontScale = 1.0,
     adjustFont,
+    // Added for declarative filtering
+    goldFilter,
+    toggleGoldFilter,
+    typeFilter,
   } = useComboManager();
 
   const [posFilter, setPosFilter] = useState<string | null>(null);
@@ -178,7 +182,7 @@ const App: React.FC = () => {
               ownedChars={ownedChars}
               onToggle={toggleCharacter}
               getImagePath={getImagePath}
-              testId="desktop-character-sidebar" // Fixed: Changed from ariaLabel to testId
+              testId="desktop-character-sidebar"
             />
           </div>
         </aside>
@@ -226,7 +230,7 @@ const App: React.FC = () => {
               ownedChars={ownedChars}
               onToggle={toggleCharacter}
               getImagePath={getImagePath}
-              testId="mobile-character-sidebar" // Fixed: Changed from ariaLabel to testId
+              testId="mobile-character-sidebar"
             />
           </div>
         </div>
@@ -255,6 +259,9 @@ const App: React.FC = () => {
               isLoggedIn={isLoggedIn}
               isSyncing={isSyncing}
               handleSave={handleSave}
+              goldFilter={goldFilter}
+              toggleGoldFilter={toggleGoldFilter}
+              typeFilter={typeFilter}
             />
 
             <div className="space-y-12 md:space-y-16">

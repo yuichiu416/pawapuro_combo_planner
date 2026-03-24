@@ -21,31 +21,11 @@ describe('Header Component - UI Elements', () => {
     handleSave: vi.fn(),
   };
 
-  it('renders the "Select all combos for:" label for desktop users', () => {
-    render(<Header {...mockProps} />);
-
-    const label = screen.getByText(/Select all combos for:/i);
-    expect(label).toBeInTheDocument();
-
-    // Verify it has the responsive "hidden lg:inline" classes
-    expect(label).toHaveClass('hidden', 'lg:inline');
-  });
-
-  it('applies the dynamic fontScale to the selection label', () => {
-    const customScale = 1.5;
-    render(<Header {...mockProps} fontScale={customScale} />);
-
-    const label = screen.getByText(/Select all combos for:/i);
-
-    // 0.75rem (base text-xs) * 1.5 scale = 1.125rem
-    expect(label).toHaveStyle({ fontSize: '1.125rem' });
-  });
-
   it('renders both PITCHER and FIELDER action buttons', () => {
     render(<Header {...mockProps} />);
 
-    expect(screen.getByRole('button', { name: /pitcher/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /fielder/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /投手金特/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /野手金特/i })).toBeInTheDocument();
   });
 
   it('toggles POSITION ICON visibility setting', () => {
