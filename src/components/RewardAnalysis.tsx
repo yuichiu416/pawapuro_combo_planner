@@ -140,11 +140,13 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
         data-testid={`${testId}-stats-section`}
       >
         <div
-          className="px-4 py-3 border-b border-slate-50 bg-slate-50/50 flex items-center shrink-0"
+          className="px-4 py-3 border-b border-slate-50 bg-slate-50/50 flex items-center justify-between shrink-0"
           data-testid={`${testId}-combo-reward`}
         >
-          <Award size={14} className="text-blue-600 mr-2" />
-          <span className="text-xs font-black text-slate-900 uppercase">Combo rewards</span>
+          <div className="flex items-center">
+            <Award size={14} className="text-blue-600 mr-2" />
+            <span className="text-xs font-black text-slate-900 uppercase">Combo rewards</span>
+          </div>
           <div className="px-2 py-0.5 bg-amber-400 rounded-full shadow-sm shadow-amber-200">
             <span className="text-xs font-black text-amber-950 uppercase leading-none">
               {goldSkillsCount} 金特
