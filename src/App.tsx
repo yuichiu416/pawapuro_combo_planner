@@ -38,8 +38,11 @@ const Logo = ({ isCollapsed }: { isCollapsed: boolean }) => (
     </div>
     {!isCollapsed && (
       <div className="flex flex-col animate-in fade-in slide-in-from-left-2 duration-300">
-        <span className="font-black text-xl md:text-2xl tracking-tighter text-black uppercase leading-none whitespace-nowrap">
-          PowerPro 2024-2025
+        <span
+          data-testid="pawapuro_title_text"
+          className="font-black text-xl md:text-2xl tracking-tighter text-black uppercase leading-none whitespace-nowrap"
+        >
+          パワプロ 2024-2025
         </span>
         <span className="text-xs md:text-sm font-bold text-blue-600 uppercase tracking-widest whitespace-nowrap">
           Combo Planner
@@ -319,6 +322,7 @@ const App: React.FC = () => {
               <div className="px-6 py-3 space-y-2 bg-slate-50/50 border-b border-slate-200/50">
                 <div className="flex flex-row items-center gap-3">
                   <button
+                    data-testid="sync-status-label"
                     onClick={handleSave}
                     disabled={isSyncing}
                     className={cn(
@@ -351,7 +355,11 @@ const App: React.FC = () => {
                 </div>
               </div>
               <div className="flex-1 overflow-y-auto custom-scrollbar">
-                <RewardAnalysis analysis={analysis} getImagePath={getImagePath} />
+                <RewardAnalysis
+                  analysis={analysis}
+                  getImagePath={getImagePath}
+                  testId="desktop-reward-analysis"
+                />
               </div>
             </div>
           )}
@@ -383,7 +391,11 @@ const App: React.FC = () => {
             </div>
 
             <div className="flex-1 overflow-y-auto pb-32">
-              <RewardAnalysis analysis={analysis} getImagePath={getImagePath} />
+              <RewardAnalysis
+                analysis={analysis}
+                getImagePath={getImagePath}
+                testId="mobile-reward-analysis"
+              />
             </div>
           </div>
         </div>

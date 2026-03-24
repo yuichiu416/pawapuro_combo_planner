@@ -30,9 +30,10 @@ interface AnalysisProps {
     };
   };
   getImagePath: (name: string, usePosIcon: boolean) => string;
+  testId: string;
 }
 
-export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath }) => {
+export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath, testId }) => {
   const { stats, skills, missingCharacters, roster } = analysis;
 
   const sortedSkills = useMemo(() => {
@@ -95,10 +96,10 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
 
       {/* 2. TOTAL STATS */}
       <section className="shrink-0 p-3 bg-slate-900 rounded-2xl shadow-xl shadow-slate-200/50 text-white">
-        <div className="flex items-center gap-2 mb-2.5">
+        <div className="flex items-center gap-2 mb-2.5" data-testid={`${testId}-stats-bonus-title`}>
           <Zap size={12} className="text-blue-400 fill-blue-400" />
           <span className="text-xs font-black uppercase tracking-[0.15em] text-blue-100/80">
-            Total Attribute Bonus
+            Total Attribute Exp
           </span>
         </div>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -120,12 +121,15 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({ analysis, getImagePath
       </section>
 
       {/* 3. EARNED SKILLS */}
-      <section className="flex-[2] flex flex-col min-h-0 bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+      <section
+        className="flex-[2] flex flex-col min-h-0 bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden foo"
+        data-testid={`${testId}-combo-rewards`}
+      >
         <div className="px-4 py-3 border-b border-slate-50 bg-slate-50/50 flex justify-between items-center shrink-0">
           <div className="flex items-center gap-2">
             <Award size={14} className="text-blue-600" />
             <span className="text-xs font-black text-slate-900 uppercase tracking-wide">
-              Active Skills
+              Combo rewards
             </span>
           </div>
           <div className="px-2 py-0.5 bg-amber-400 rounded-full shadow-sm shadow-amber-200">

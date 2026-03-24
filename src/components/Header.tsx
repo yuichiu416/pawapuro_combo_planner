@@ -91,6 +91,7 @@ export const Header: React.FC<HeaderProps> = ({
           </span>
 
           <button
+            data-testid="filter-button-pitcher"
             onClick={() => toggleAllByType('pitcher')}
             style={{ fontSize: `${baseButtonSize * fontScale}rem` }}
             className="flex-1 lg:flex-none flex items-center justify-center gap-2 px-4 md:px-6 py-2.5 md:py-3 bg-white border-2 border-slate-100 rounded-2xl font-black uppercase hover:border-blue-400 hover:text-blue-600 transition-all shadow-sm active:scale-95"
@@ -99,6 +100,7 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
 
           <button
+            data-testid="filter-button-fielder"
             onClick={() => toggleAllByType('fielder')}
             style={{ fontSize: `${baseButtonSize * fontScale}rem` }}
             className="flex-1 lg:flex-none flex items-center justify-center gap-2 px-4 md:px-6 py-2.5 md:py-3 bg-white border-2 border-slate-100 rounded-2xl font-black uppercase hover:border-orange-400 hover:text-orange-600 transition-all shadow-sm active:scale-95"
@@ -107,6 +109,7 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
 
           <button
+            data-testid="filter-button-clear"
             onClick={clearAll}
             style={{ fontSize: `${baseButtonSize * fontScale}rem` }}
             className="flex items-center justify-center gap-2 px-4 md:px-5 py-2.5 md:py-3 bg-rose-500 text-white rounded-2xl font-black uppercase hover:bg-rose-600 transition-all shadow-md active:scale-95"
@@ -119,6 +122,7 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Bottom Row: Utility Controls */}
       <div className="flex flex-wrap items-center py-3 px-1 border-t border-slate-200/60 gap-3">
         <button
+          data-testid="filter-label-position-icon"
           onClick={() => setShowPositionIcon(!showPositionIcon)}
           style={{ fontSize: `${baseButtonSize * fontScale}rem` }}
           className={cn(
@@ -132,6 +136,7 @@ export const Header: React.FC<HeaderProps> = ({
         </button>
 
         <button
+          data-testid="filter-button-all"
           onClick={toggleRelatedFilter}
           style={{ fontSize: `${baseButtonSize * fontScale}rem` }}
           className={cn(
@@ -168,6 +173,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         <button
+          data-testid="expand-all-button"
           onClick={allExpanded ? onCollapseAll : onExpandAll}
           style={{ fontSize: `${baseButtonSize * fontScale}rem` }}
           className="ml-auto flex items-center gap-2 px-3 md:px-4 py-2 bg-slate-100 rounded-xl font-black uppercase text-black hover:bg-slate-200 transition-all min-w-[120px] md:min-w-[140px] justify-center active:scale-95"

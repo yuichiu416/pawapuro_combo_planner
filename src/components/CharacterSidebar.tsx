@@ -199,7 +199,10 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
     >
       <div className="shrink-0 bg-white border-b border-slate-200 shadow-sm">
         <div className="p-3 space-y-2.5">
-          <div className="space-y-1.5 bg-slate-900 p-3 rounded-xl shadow-inner border border-slate-800">
+          <div
+            className="space-y-1.5 bg-slate-900 p-3 rounded-xl shadow-inner border border-slate-800"
+            data-testid="active-roster"
+          >
             <div className="flex justify-between items-center px-1">
               <span className="text-xs font-black text-white uppercase tracking-widest">
                 Active Roster
