@@ -60,15 +60,6 @@ export const Header: React.FC<HeaderProps> = ({
     <header className="space-y-6">
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div className="flex items-center justify-between w-full lg:w-auto">
-          <div className="flex items-center gap-3">
-            <div className="bg-blue-600 p-2 rounded-xl text-white shadow-lg shadow-blue-200 shrink-0">
-              <CircleDot size={24} />
-            </div>
-            <h1 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-black leading-none">
-              Planner
-            </h1>
-          </div>
-
           <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={handleSave}

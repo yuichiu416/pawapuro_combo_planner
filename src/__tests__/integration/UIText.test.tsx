@@ -45,7 +45,7 @@ describe('UI text regression', () => {
     expect(screen.queryByTestId('filter-button-clear')).toHaveTextContent('CLEAR');
 
     // Right Side Stats/Sync Section
-    expect(screen.queryByTestId('sync-status-label')).toHaveTextContent('Save Locally');
+    expect(screen.queryByTestId('sync-status-btn')).toHaveTextContent('Save Locally');
     expect
       .soft(screen.queryByTestId(`${REWARD_ANALYSIS_TEST_ID}-stats-bonus-title`))
       .toHaveTextContent('Total Attribute Exp');
@@ -63,7 +63,7 @@ describe('UI text regression', () => {
 
   it('renders specific combo reward headers on desktop', () => {
     render(<App />);
-    const rewardBox = screen.queryByTestId('desktop-reward-analysis-combo-rewards');
+    const rewardBox = screen.queryByTestId('desktop-reward-analysis-combo-reward');
     expect(rewardBox).toHaveTextContent('Combo rewards');
     expect(rewardBox).toHaveTextContent('0 金特');
     expect(rewardBox).toHaveTextContent('金特');
@@ -77,7 +77,7 @@ describe('UI text regression', () => {
 
     it('renders specific combo reward headers on mobile', () => {
       render(<App />);
-      const rewardBox = screen.queryByTestId('mobile-reward-analysis-combo-rewards');
+      const rewardBox = screen.queryByTestId('mobile-reward-analysis-stats-section');
       expect(rewardBox).toHaveTextContent('Combo rewards');
       expect(rewardBox).toHaveTextContent('0 金特');
       expect(rewardBox).toHaveTextContent('金特');

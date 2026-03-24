@@ -109,12 +109,6 @@ export const MapSection: React.FC<MapSectionProps> = ({
               />
             );
           })}
-
-          {combos.length === 0 && (
-            <div className="p-12 border-4 border-dashed border-slate-200 rounded-[3rem] text-center">
-              <p className="font-black text-black uppercase italic">No Matches in this area</p>
-            </div>
-          )}
         </div>
       )}
     </section>

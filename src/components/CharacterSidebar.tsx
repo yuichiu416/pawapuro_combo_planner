@@ -178,7 +178,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
                       {data?.position || 'MGR'}
                     </span>
                   </div>
-                  <p className="text-xs font-bold text-slate-400 uppercase leading-none mt-1 flex items-center gap-1">
+                  <p className="text-xs font-bold text-black uppercase leading-none mt-1 flex items-center gap-1">
                     <Compass size={10} /> {data?.encounter_map || 'Unknown Map'}
                   </p>
                 </div>

@@ -56,7 +56,7 @@ describe('Responsive UI', () => {
 
     render(<App />);
 
-    const libraryBtn = screen.getByTestId('mobile-library-btn');
+    const libraryBtn = screen.getByTestId('mobile-nav-library-btn');
     expect(libraryBtn).toBeInTheDocument();
 
     fireEvent.click(libraryBtn);

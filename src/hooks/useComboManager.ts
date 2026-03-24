@@ -25,9 +25,9 @@ export const useComboManager = () => {
   const [filterRelatedOnly, setFilterRelatedOnly] = useState(false);
   const [filterNoKanji, setFilterNoKanji] = useState(false);
 
-  // Filtering States for Gold and Type
   const [goldFilter, setGoldFilter] = useState<'pitcher' | 'fielder' | null>(null);
   const [typeFilter, setTypeFilter] = useState<'pitcher' | 'fielder' | null>(null);
+  const [activeSkillFilter, setActiveSkillFilter] = useState<string | null>(null);
 
   const [isSyncing, setIsSyncing] = useState(false);
   const [lastSaved, setLastSaved] = useState<string | null>(null);
@@ -89,14 +89,12 @@ export const useComboManager = () => {
         data: { session },
       } = await supabase.auth.getSession();
       if (session?.user) {
-        await supabase
-          .from('user_saves')
-          .upsert({
-            user_id: session.user.id,
-            selected_characters: charArray,
-            selected_combos: comboArray,
-            updated_at: now,
-          });
+        await supabase.from('user_saves').upsert({
+          user_id: session.user.id,
+          selected_characters: charArray,
+          selected_combos: comboArray,
+          updated_at: now,
+        });
       } else {
         localStorage.setItem(
           LOCAL_STORAGE_KEY,
@@ -138,11 +136,17 @@ export const useComboManager = () => {
     (type: 'pitcher' | 'fielder') => setTypeFilter((prev) => (prev === type ? null : type)),
     [],
   );
+  const toggleSkillFilter = useCallback(
+    (skillName: string) => setActiveSkillFilter((prev) => (prev === skillName ? null : skillName)),
+    [],
+  );
+  const adjustFont = useCallback(
+    (delta: number) =>
+      setFontScale((prev) => parseFloat(Math.min(Math.max(prev + delta, 0.8), 1.5).toFixed(1))),
+    [],
+  );
 
-  const adjustFont = useCallback((delta: number) => {
-    setFontScale((prev) => parseFloat(Math.min(Math.max(prev + delta, 0.8), 1.5).toFixed(1)));
-  }, []);
-
+  // Filter logic for UI visibility (Middle section)
   const filteredComboIds = useMemo(() => {
     const search = searchTerm.toLowerCase().trim();
     return Object.entries(combosData)
@@ -153,43 +157,28 @@ export const useComboManager = () => {
           comboId.toLowerCase().includes(search) ||
           combo.characters.some((c) => c.toLowerCase().includes(search)) ||
           combo.rewards?.skills?.some((s) => s.name.toLowerCase().includes(search));
-
         const passesRelated =
           !filterRelatedOnly || combo.characters.some((char) => selectedNames.has(char));
-
         const passesGold =
           !goldFilter ||
           combo.rewards?.skills?.some((s) => {
             const detail = skillsData[s.name];
             return detail?.type === 'gold' && detail?.category === goldFilter;
           });
-
         const passesType =
           !typeFilter ||
           combo.rewards?.skills?.some((s) => {
             const detail = skillsData[s.name];
             return detail?.category === typeFilter;
           });
-
-        return passesSearch && passesRelated && passesGold && passesType;
+        const passesSkill =
+          !activeSkillFilter || combo.rewards?.skills?.some((s) => s.name === activeSkillFilter);
+        return passesSearch && passesRelated && passesGold && passesType && passesSkill;
       })
       .map(([_, combo]) => combo.characters.join('&'));
-  }, [searchTerm, filterRelatedOnly, selectedNames, goldFilter, typeFilter]);
+  }, [searchTerm, filterRelatedOnly, selectedNames, goldFilter, typeFilter, activeSkillFilter]);
 
-  const addAllMissingToRoster = useCallback(() => {
-    const missingInView = new Set<string>();
-    const visibleIds = new Set(filteredComboIds);
-    selectedComboIds.forEach((id) => {
-      if (visibleIds.has(id)) {
-        const combo = Object.values(combosData).find((c) => c.characters.join('&') === id);
-        combo?.characters.forEach((char) => {
-          if (!selectedNames.has(char)) missingInView.add(char);
-        });
-      }
-    });
-    if (missingInView.size > 0) setSelectedNames((prev) => new Set([...prev, ...missingInView]));
-  }, [selectedNames, selectedComboIds, filteredComboIds]);
-
+  // Global Analysis (Right panel) - CALCULATE EVERYTHING REGARDLESS OF FILTER
   const analysis = useMemo(() => {
     const stats: Record<string, number> = {};
     const skillsMap: Record<string, number> = {};
@@ -203,13 +192,15 @@ export const useComboManager = () => {
       mapCompletion[mapName] = { selected: 0, total: data.max_combos || 0 };
     });
 
+    // 1. Process character-specific stats and roster counts
     selectedNames.forEach((name) => {
       const char = charactersData[name];
       if (!char) return;
-      if (char.rewards?.stats)
+      if (char.rewards?.stats) {
         Object.entries(char.rewards.stats).forEach(([s, v]) => {
           stats[s] = (stats[s] || 0) + v;
         });
+      }
       if (!FIXED_MEMBERS.includes(name)) {
         const pos = char.position?.trim();
         if (pos === 'マ') mCount++;
@@ -218,17 +209,19 @@ export const useComboManager = () => {
       }
     });
 
-    const visibleFilteredIds = new Set(filteredComboIds);
+    // 2. Process ALL selected combos (Uncoupled from filteredComboIds)
     selectedComboIds.forEach((id) => {
-      if (!visibleFilteredIds.has(id)) return; // 重要：保持你原始檔案的過濾邏輯
       const combo = Object.values(combosData).find((c) => c.characters.join('&') === id);
       if (!combo) return;
+
       combo.rewards?.skills?.forEach((sk) => {
         skillsMap[sk.name] = (skillsMap[sk.name] || 0) + sk.level;
       });
+
       combo.characters.forEach((c) => {
         if (!selectedNames.has(c)) missingSet.add(c);
       });
+
       Object.entries(mapsData).forEach(([mapName, data]) => {
         if (data.combo_names.some((names: string[]) => names.join('&') === id))
           mapCompletion[mapName].selected++;
@@ -241,13 +234,12 @@ export const useComboManager = () => {
         level: Math.min(level, 5),
         type: skillsData[name]?.type || 'normal',
       }))
-      .sort((a, b) =>
-        a.type === 'gold' && b.type !== 'gold'
-          ? -1
-          : a.type !== 'gold' && b.type === 'gold'
-            ? 1
-            : b.level - a.level,
-      );
+      .sort((a, b) => {
+        if (a.type === 'gold' && b.type !== 'gold') return -1;
+        if (a.type !== 'gold' && b.type === 'gold') return 1;
+        if (a.level !== b.level) return b.level - a.level;
+        return a.name.localeCompare(b.name);
+      });
 
     const rosterErrors = {
       pitcher: pCount > 8 || pCount < 6,
@@ -268,14 +260,10 @@ export const useComboManager = () => {
         manager: mCount,
         total: pCount + fCount + FIXED_MEMBERS.length,
         errors: rosterErrors,
-        isValid:
-          !rosterErrors.pitcher &&
-          !rosterErrors.fielder &&
-          !rosterErrors.manager &&
-          !rosterErrors.total,
+        isValid: !Object.values(rosterErrors).some(Boolean),
       },
     };
-  }, [selectedNames, selectedComboIds, filteredComboIds]);
+  }, [selectedNames, selectedComboIds]); // Removed dependency on filteredComboIds
 
   const clearAll = useCallback(() => {
     setSelectedNames(new Set(FIXED_MEMBERS));
@@ -284,6 +272,7 @@ export const useComboManager = () => {
     setFilterNoKanji(false);
     setGoldFilter(null);
     setTypeFilter(null);
+    setActiveSkillFilter(null);
   }, []);
 
   return {
@@ -298,11 +287,12 @@ export const useComboManager = () => {
     goldFilter,
     toggleGoldFilter,
     typeFilter,
-    toggleAllByType: toggleTypeFilter, // 確保 Header.tsx 呼叫不會報錯
+    toggleAllByType: toggleTypeFilter,
+    activeSkillFilter,
+    onToggleSkillFilter: toggleSkillFilter,
     filteredComboIds,
     toggleCharacter,
     toggleCombo,
-    addAllMissingToRoster,
     isSyncing,
     lastSaved,
     handleSave,

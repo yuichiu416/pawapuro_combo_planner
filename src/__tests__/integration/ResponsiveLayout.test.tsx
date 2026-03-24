@@ -21,7 +21,7 @@ describe('Responsive Layout & Tab Regression', () => {
     expect(drawerOverlay).toHaveClass('invisible');
 
     // 2. Click the Library Nav Button
-    const libraryTabBtn = screen.getByTestId('mobile-library-btn');
+    const libraryTabBtn = screen.getByTestId('mobile-nav-library-btn');
     fireEvent.click(libraryTabBtn);
 
     // 3. Verification: Drawer should now be visible
@@ -33,7 +33,7 @@ describe('Responsive Layout & Tab Regression', () => {
     render(<App />);
 
     // Open it first
-    fireEvent.click(screen.getByTestId('mobile-library-btn'));
+    fireEvent.click(screen.getByTestId('mobile-nav-library-btn'));
 
     // Find the X button inside the mobile drawer
     const closeBtn = screen.getByTestId('mobile-character-sidebar-close-btn');
@@ -46,7 +46,7 @@ describe('Responsive Layout & Tab Regression', () => {
   it('switches to Analysis view on mobile', () => {
     render(<App />);
 
-    const analysisTabBtn = screen.getByTestId('mobile-analysis-btn');
+    const analysisTabBtn = screen.getByTestId('mobile-nav-analysis-btn');
     fireEvent.click(analysisTabBtn);
 
     const analysisDrawer = screen.getByText(/Reward Analysis/i).closest('.fixed');

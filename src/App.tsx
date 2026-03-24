@@ -76,10 +76,11 @@ const App: React.FC = () => {
     libraryGroups = { withCombo: [], noCombo: [] },
     fontScale = 1.0,
     adjustFont,
-    // Added for declarative filtering
     goldFilter,
     toggleGoldFilter,
     typeFilter,
+    activeSkillFilter,
+    onToggleSkillFilter,
   } = useComboManager();
 
   const [posFilter, setPosFilter] = useState<string | null>(null);
@@ -146,10 +147,12 @@ const App: React.FC = () => {
     <div
       className="flex flex-col h-screen bg-slate-100 text-black overflow-hidden font-medium"
       style={{ fontSize: `${fontScale}rem` }}
+      data-testid="app-container"
     >
       <div className="flex flex-1 overflow-hidden relative">
         {/* LEFT SIDEBAR (Desktop) */}
         <aside
+          data-testid="desktop-sidebar-container"
           className={cn(
             'hidden lg:flex relative bg-white border-r border-slate-200 transition-all duration-300 flex-col z-20',
             isSidebarCollapsed ? 'w-20' : 'w-[24rem]',
@@ -189,6 +192,7 @@ const App: React.FC = () => {
 
         {/* MOBILE DRAWER: Roster */}
         <div
+          data-testid="mobile-roster-drawer-overlay"
           className={cn(
             'lg:hidden fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-sm transition-opacity duration-300',
             activeMobileTab === 'roster' ? 'opacity-100 visible' : 'opacity-0 invisible',
@@ -237,6 +241,7 @@ const App: React.FC = () => {
 
         {/* MAIN CONTENT */}
         <main
+          data-testid="main-content-area"
           className={cn(
             'flex-1 overflow-y-auto bg-slate-50 custom-scrollbar transition-all pb-24 lg:pb-10',
             activeMobileTab === 'planner' ? 'block' : 'hidden lg:block',
@@ -275,7 +280,7 @@ const App: React.FC = () => {
                 return (
                   <MapSection
                     key={mapName}
-                    data-testid={`map-progress-${mapName}`}
+                    data-testid={`map-section-${mapName}`}
                     mapName={mapName}
                     combos={mapCombos}
                     searchTerm={searchTerm}
@@ -299,7 +304,10 @@ const App: React.FC = () => {
                 );
               })}
               {filterRelatedOnly && filteredComboIds.length === 0 && (
-                <div className="flex flex-col items-center justify-center py-20 bg-white/50 rounded-3xl border-2 border-dashed border-slate-200 px-6 text-center">
+                <div
+                  data-testid="no-results-placeholder"
+                  className="flex flex-col items-center justify-center py-20 bg-white/50 rounded-3xl border-2 border-dashed border-slate-200 px-6 text-center"
+                >
                   <SearchX size={32} className="text-black mb-4" />
                   <h3 className="text-xl font-black uppercase text-black">No related combos</h3>
                   <p className="text-sm font-bold text-black/80 uppercase mt-1">
@@ -313,12 +321,14 @@ const App: React.FC = () => {
 
         {/* RIGHT SIDEBAR (Analysis) */}
         <aside
+          data-testid="desktop-analysis-sidebar"
           className={cn(
             'hidden lg:flex relative bg-white border-l border-slate-200 transition-all duration-300 flex-col z-20',
             isAnalysisCollapsed ? 'w-0 border-l-0' : 'w-[26rem]',
           )}
         >
           <button
+            data-testid="analysis-collapse-btn"
             onClick={() => setIsAnalysisCollapsed(!isAnalysisCollapsed)}
             className="absolute top-12 -left-4 z-50 w-8 h-8 flex items-center justify-center bg-slate-800 text-white rounded-full border-2 border-white shadow-md hover:scale-110 transition-transform"
           >
@@ -329,7 +339,7 @@ const App: React.FC = () => {
               <div className="px-6 py-3 space-y-2 bg-slate-50/50 border-b border-slate-200/50">
                 <div className="flex flex-row items-center gap-3">
                   <button
-                    data-testid="sync-status-label"
+                    data-testid="sync-status-btn"
                     onClick={handleSave}
                     disabled={isSyncing}
                     className={cn(
@@ -352,6 +362,7 @@ const App: React.FC = () => {
                 </div>
 
                 <div
+                  data-testid="last-saved-timestamp"
                   className={cn(
                     'text-xs font-bold text-black text-right uppercase tracking-widest leading-none',
                     !lastSaved && 'invisible',
@@ -366,6 +377,8 @@ const App: React.FC = () => {
                   analysis={analysis}
                   getImagePath={getImagePath}
                   testId="desktop-reward-analysis"
+                  activeSkillFilter={activeSkillFilter}
+                  onToggleSkillFilter={onToggleSkillFilter}
                 />
               </div>
             </div>
@@ -374,6 +387,7 @@ const App: React.FC = () => {
 
         {/* MOBILE DRAWER: Analysis */}
         <div
+          data-testid="mobile-analysis-drawer-overlay"
           className={cn(
             'lg:hidden fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-sm transition-opacity duration-300',
             activeMobileTab === 'analysis' ? 'opacity-100 visible' : 'opacity-0 invisible',
@@ -390,6 +404,7 @@ const App: React.FC = () => {
             <div className="p-4 border-b flex justify-between items-center shrink-0">
               <span className="font-black uppercase tracking-tighter text-lg">Reward Analysis</span>
               <button
+                data-testid="mobile-analysis-close-btn"
                 onClick={() => setActiveMobileTab('planner')}
                 className="p-2 bg-slate-100 rounded-full"
               >
@@ -402,13 +417,18 @@ const App: React.FC = () => {
                 analysis={analysis}
                 getImagePath={getImagePath}
                 testId="mobile-reward-analysis"
+                activeSkillFilter={activeSkillFilter}
+                onToggleSkillFilter={onToggleSkillFilter}
               />
             </div>
           </div>
         </div>
 
         {/* MOBILE NAVIGATION */}
-        <nav className="lg:hidden fixed bottom-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-md border-t border-slate-200 z-[90] flex items-center justify-around px-6 pb-2">
+        <nav
+          data-testid="mobile-navbar"
+          className="lg:hidden fixed bottom-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-md border-t border-slate-200 z-[90] flex items-center justify-around px-6 pb-2"
+        >
           <MobileNavBtn
             active={activeMobileTab === 'roster'}
             onClick={() => setActiveMobileTab('roster')}
@@ -448,7 +468,7 @@ const MobileNavBtn = ({
   label: string;
 }) => (
   <button
-    data-testid={`mobile-${label.toLowerCase().replace(/\s+/g, '-')}-btn`}
+    data-testid={`mobile-nav-${label.toLowerCase().replace(/\s+/g, '-')}-btn`}
     onClick={onClick}
     className={cn(
       'flex flex-col items-center gap-1 transition-all duration-300',
