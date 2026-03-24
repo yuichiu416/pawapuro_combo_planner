@@ -178,7 +178,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
       <div className="shrink-0 bg-white border-b border-slate-200 shadow-sm">
         <div className="p-3 space-y-2.5">
           {/* ACTIVE ROSTER SECTION */}
-          <div className="space-y-1.5 bg-slate-900 p-3 rounded-xl shadow-inner border border-slate-800">
+          <div className="space-y-1.5 bg-emerald-400 p-3 rounded-xl shadow-inner border border-slate-800">
             <div className="flex justify-between items-center px-1">
               <span className="text-xs font-black text-slate-500 uppercase tracking-widest">
                 Active Roster
@@ -228,33 +228,70 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
             </div>
           </div>
 
-          {/* PREVIEW PANEL */}
-          {selectedPreview && (
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-2.5 flex items-center justify-between animate-in zoom-in-95 duration-150">
-              <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded border border-blue-300 bg-white overflow-hidden">
-                  <img
-                    src={getImagePath(selectedPreview, true)}
-                    className="w-full h-full object-cover"
-                  />
+          {/* PREVIEW & TOAST AREA - Moved into a relative container for alignment */}
+          <div className="relative min-h-[52px]">
+            {/* PREVIEW PANEL */}
+            {selectedPreview && (
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-2.5 flex items-center justify-between animate-in zoom-in-95 duration-150">
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 rounded border border-blue-300 bg-white overflow-hidden">
+                    <img
+                      src={getImagePath(selectedPreview, true)}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-xs font-black text-blue-900 leading-none">
+                      {selectedPreview}
+                    </p>
+                    <p className="text-xs font-bold text-blue-600 uppercase mt-0.5">
+                      {CHAR_DATA[selectedPreview]?.position || 'Manager'}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-xs font-black text-blue-900 leading-none">{selectedPreview}</p>
-                  <p className="text-xs font-bold text-blue-600 uppercase mt-0.5">
-                    {CHAR_DATA[selectedPreview]?.position || 'Manager'}
-                  </p>
+                <button
+                  data-testid={`remove-btn-${selectedPreview}`}
+                  onClick={() => handleConfirmRemove(selectedPreview)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-md text-xs font-black transition-colors"
+                >
+                  <X size={12} strokeWidth={3} />
+                  REMOVE
+                </button>
+              </div>
+            )}
+
+            {/* Undo Notification Toast - Positioned inside the area */}
+            {showUndo && (
+              <div
+                data-testid="undo-toast"
+                className="absolute inset-0 z-[50] animate-in fade-in zoom-in-95 duration-300"
+              >
+                <div className="bg-slate-900/95 backdrop-blur-md text-white rounded-lg shadow-2xl px-3 py-2 flex items-center justify-between border border-slate-700/50 h-full">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0">
+                      <Info size={16} className="text-blue-400" />
+                    </div>
+                    <div className="flex flex-col min-w-0">
+                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-tighter leading-none">
+                        Roster Updated
+                      </span>
+                      <span className="text-xs font-bold tracking-tight truncate">
+                        Removed {lastRemoved}
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    onClick={handleUndo}
+                    aria-label="Undo"
+                    className="flex items-center gap-1.5 px-3 py-1.5 bg-white text-slate-950 hover:bg-blue-50 rounded-md text-xs font-black uppercase transition-all active:scale-95 shadow-sm shrink-0"
+                  >
+                    <RotateCcw size={12} strokeWidth={3} />
+                    Undo
+                  </button>
                 </div>
               </div>
-              <button
-                data-testid={`remove-btn-${selectedPreview}`}
-                onClick={() => handleConfirmRemove(selectedPreview)}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-md text-xs font-black transition-colors"
-              >
-                <X size={12} strokeWidth={3} />
-                REMOVE
-              </button>
-            </div>
-          )}
+            )}
+          </div>
 
           {/* Filters Area */}
           <div className="flex flex-wrap items-center gap-1">
@@ -376,36 +413,6 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = ({
         {renderList(sortedWithCombo, 'Available Combo Partners')}
         {renderList(sortedNoCombo, 'Other Characters')}
       </div>
-
-      {/* Undo Notification Toast */}
-      {showUndo && (
-        <div
-          data-testid="undo-toast"
-          className="absolute top-[00px] md:bottom-6 left-4 right-4 z-[50] animate-in fade-in slide-in-from-bottom-4 duration-300"
-        >
-          <div className="bg-slate-900/95 backdrop-blur-md text-white rounded-2xl shadow-2xl px-4 py-3.5 flex items-center justify-between border border-slate-700/50">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
-                <Info size={18} className="text-blue-400" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xs font-black text-slate-400 uppercase tracking-tighter leading-none">
-                  Roster Updated
-                </span>
-                <span className="text-sm font-bold tracking-tight">Removed {lastRemoved}</span>
-              </div>
-            </div>
-            <button
-              onClick={handleUndo}
-              aria-label="Undo"
-              className="flex items-center gap-2 px-4 py-2 bg-white text-slate-950 hover:bg-blue-50 rounded-xl text-xs font-black uppercase transition-all active:scale-95 shadow-sm"
-            >
-              <RotateCcw size={14} strokeWidth={3} />
-              Undo
-            </button>
-          </div>
-        </div>
-      )}
     </aside>
   );
 };

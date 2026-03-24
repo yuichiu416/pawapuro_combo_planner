@@ -45,16 +45,17 @@ describe('CharacterSidebar - Logic & Interactions', () => {
     fireEvent.change(searchInput, { target: { value: 'Aoba' } });
     expect(mockProps.setSearchTerm).toHaveBeenCalledWith('Aoba');
   });
+
   it('completes the full remove-and-undo flow', async () => {
     const propsWithChar = { ...mockProps, ownedChars: new Set([TEST_CHAR]) };
     render(<CharacterSidebar {...propsWithChar} />);
 
-    // 1. Select the character from the Active Roster grid
-    fireEvent.click(screen.getByTestId(`sidebar-char-${TEST_CHAR}`));
+    // 1. Select the character to show the preview
     fireEvent.click(screen.getByTestId(`active-roaster-${TEST_CHAR}`));
 
-    // 2. Wait for the Preview Panel to render the Remove button
-    fireEvent.click(screen.getByTestId(`remove-btn-${TEST_CHAR}`));
+    // 2. Click the Remove button in the Preview Panel
+    const removeBtn = await screen.findByTestId(`remove-btn-${TEST_CHAR}`);
+    fireEvent.click(removeBtn);
 
     // 3. Verify onToggle was called for removal
     expect(mockProps.onToggle).toHaveBeenCalledWith(TEST_CHAR);
@@ -78,7 +79,7 @@ describe('CharacterSidebar - Logic & Interactions', () => {
     // Open map popover
     fireEvent.click(screen.getByTestId('map-filter-button'));
 
-    // Find and click a map button (using findBy to handle the popover animation/render)
+    // Find and click a map button
     const mapName = Object.values(mockData.characters)[0].encounter_map;
     const mapButton = await screen.findByTestId(`map-filter-button-${mapName}`);
     fireEvent.click(mapButton);
@@ -86,17 +87,21 @@ describe('CharacterSidebar - Logic & Interactions', () => {
     expect(mockProps.setMapFilter).toHaveBeenCalledWith(mapName);
   });
 
-  it('verifies responsive positioning of the Undo Toast', async () => {
+  it('verifies the Undo Toast replaces the preview window location', async () => {
     const propsWithChar = { ...mockProps, ownedChars: new Set([TEST_CHAR]) };
     render(<CharacterSidebar {...propsWithChar} />);
-    fireEvent.click(screen.getByTestId(`sidebar-char-${TEST_CHAR}`));
+
+    // Trigger removal to show toast
     fireEvent.click(screen.getByTestId(`active-roaster-${TEST_CHAR}`));
-    fireEvent.click(screen.getByTestId(`remove-btn-${TEST_CHAR}`));
+    const removeBtn = await screen.findByTestId(`remove-btn-${TEST_CHAR}`);
+    fireEvent.click(removeBtn);
 
     const toast = await screen.findByTestId('undo-toast');
 
-    // Check for the specific Tailwind classes we added to fix the mobile layout
-    expect(toast.className).toContain('top-[00px]');
-    expect(toast.className).toContain('md:bottom-6');
+    // Verify it uses absolute positioning to fill the relative parent container
+    // This ensures it occupies the exact same spot as the Preview Panel
+    expect(toast.className).toContain('absolute');
+    expect(toast.className).toContain('inset-0');
+    expect(toast.className).toContain('z-[50]');
   });
 });
