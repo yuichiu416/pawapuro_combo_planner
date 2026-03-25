@@ -15,6 +15,6 @@ describe('CharacterGrid Component', () => {
     render(<CharacterGrid {...mockProps} />);
     const button = screen.getByTestId(/combo-char-button/);
     // button.firstChild should be our icon-highlight-wrapper
-    expect(button.firstChild).toHaveClass('opacity-50');
+    expect(button.firstChild).toHaveClass('opacity-60');
   });
 });

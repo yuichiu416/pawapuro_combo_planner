@@ -28,7 +28,7 @@ export const RewardAnalysis: React.FC<RewardAnalysisProps> = ({
           <h3 className="text-xs font-black text-black uppercase tracking-widest">
             Reward Summary
           </h3>
-          <span className="text-[10px] font-black bg-slate-200 px-1.5 py-0.5 rounded text-slate-600 uppercase">
+          <span className="text-xs font-black bg-slate-200 px-1.5 py-0.5 rounded text-slate-600 uppercase">
             {sortedSkills.length} Skills
           </span>
         </div>

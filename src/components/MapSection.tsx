@@ -58,7 +58,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
             <h2 className="font-black text-3xl uppercase tracking-tight text-black">{mapName}</h2>
             <div className="flex items-center gap-3">
               <p className="text-sm font-black text-black uppercase tracking-widest">
-                {combos.length} Matches Found
+                {combos.length} Combos Found
               </p>
 
               {progress && (

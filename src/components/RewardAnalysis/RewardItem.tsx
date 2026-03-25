@@ -42,7 +42,7 @@ export const RewardItem: React.FC<RewardItemProps> = ({
         <p className="text-xs font-black uppercase tracking-tight leading-none mb-1">{skill}</p>
         <p
           className={cn(
-            'text-[10px] font-bold uppercase',
+            'text-xs font-bold uppercase',
             isActive ? 'text-blue-100' : 'text-slate-400',
           )}
         >

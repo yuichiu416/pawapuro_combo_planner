@@ -14,13 +14,13 @@ describe('Combo Type Filters (Pitcher/Fielder) - Static Data Validation', () => 
     // 2. Verify button state (Active)
     expect(pitcherBtn).toHaveClass('bg-amber-500');
 
-    // 3. Verify exact Matches Found counts (Based on Screenshot 1)
+    // 3. Verify exact COMBOS FOUND counts (Based on Screenshot 1)
     const expectedMatches = [
-      { name: 'スカウ島', count: '4 MATCHES FOUND' },
-      { name: 'スカウ島東海岸', count: '8 MATCHES FOUND' },
-      { name: 'ハナレ島', count: '11 MATCHES FOUND' },
-      { name: 'スカウ塔空中庭園', count: '7 MATCHES FOUND' },
-      { name: 'スカウ塔空中庭園(空中マップ)', count: '6 MATCHES FOUND' },
+      { name: 'スカウ島', count: '4 COMBOS FOUND' },
+      { name: 'スカウ島東海岸', count: '8 COMBOS FOUND' },
+      { name: 'ハナレ島', count: '11 COMBOS FOUND' },
+      { name: 'スカウ塔空中庭園', count: '7 COMBOS FOUND' },
+      { name: 'スカウ塔空中庭園(空中マップ)', count: '6 COMBOS FOUND' },
     ];
 
     expectedMatches.forEach((map) => {
@@ -39,13 +39,13 @@ describe('Combo Type Filters (Pitcher/Fielder) - Static Data Validation', () => 
     // 2. Verify button state (Active)
     expect(fielderBtn).toHaveClass('bg-amber-500');
 
-    // 3. Verify exact Matches Found counts (Based on Screenshot 2)
+    // 3. Verify exact COMBOS FOUND counts (Based on Screenshot 2)
     const expectedMatches = [
-      { name: 'スカウ島', count: '8 MATCHES FOUND' },
-      { name: 'スカウ島東海岸', count: '11 MATCHES FOUND' },
-      { name: 'ハナレ島', count: '13 MATCHES FOUND' },
-      { name: 'スカウ塔空中庭園', count: '16 MATCHES FOUND' },
-      { name: 'スカウ塔空中庭園(空中マップ)', count: '7 MATCHES FOUND' },
+      { name: 'スカウ島', count: '8 COMBOS FOUND' },
+      { name: 'スカウ島東海岸', count: '11 COMBOS FOUND' },
+      { name: 'ハナレ島', count: '13 COMBOS FOUND' },
+      { name: 'スカウ塔空中庭園', count: '16 COMBOS FOUND' },
+      { name: 'スカウ塔空中庭園(空中マップ)', count: '7 COMBOS FOUND' },
     ];
 
     expectedMatches.forEach((map) => {
@@ -72,6 +72,6 @@ describe('Combo Type Filters (Pitcher/Fielder) - Static Data Validation', () => 
 
     // Verify that the count for Scouter Island is no longer the filtered '4'
     const scouterIsland = screen.getByTestId('map-trigger-スカウ島');
-    expect(scouterIsland).not.toHaveTextContent('4 MATCHES FOUND');
+    expect(scouterIsland).not.toHaveTextContent('4 COMBOS FOUND');
   });
 });
