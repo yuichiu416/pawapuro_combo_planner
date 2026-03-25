@@ -1,5 +1,4 @@
 // src/App.tsx
-
 import { ChevronLeft, ChevronRight, Clock, Loader2, Save, SearchX } from 'lucide-react';
 import type React from 'react';
 import { useEffect, useMemo, useState } from 'react';
@@ -203,7 +202,10 @@ const App: React.FC = () => {
                     showPositionIcon={showPositionIcon}
                     progress={manager.analysis?.mapCompletion?.[mapName]}
                     isExpanded={
-                      expandedMaps.has(mapName) || mapFilter === mapName || !!manager.searchTerm
+                      expandedMaps.has(mapName) ||
+                      mapFilter === mapName ||
+                      !!manager.searchTerm ||
+                      !!manager.activeSkillFilter
                     }
                     onToggle={() =>
                       setExpandedMaps((prev) => {

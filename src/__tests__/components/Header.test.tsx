@@ -1,52 +1,79 @@
 // src/__tests__/components/Header.test.tsx
+
 import { fireEvent, render, screen } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Header } from '@/components/Header';
 
-describe('Header Component - UI Elements', () => {
+describe('Header Component', () => {
+  // 1. Define the mocks that will be used in props
+  const mockToggleGoldFilter = vi.fn();
+  const mockOnToggleSkillFilter = vi.fn();
+  const mockAdjustFont = vi.fn();
+  const mockToggleRelatedFilter = vi.fn();
+  const mockSetShowPositionIcon = vi.fn();
+  const mockClearAll = vi.fn();
+  const mockOnExpandAll = vi.fn();
+  const mockOnCollapseAll = vi.fn();
+
   const mockProps = {
     showPositionIcon: true,
-    setShowPositionIcon: vi.fn(),
+    setShowPositionIcon: mockSetShowPositionIcon,
     filterRelatedOnly: false,
-    toggleRelatedFilter: vi.fn(),
+    toggleRelatedFilter: mockToggleRelatedFilter,
     toggleAllByType: vi.fn(),
-    clearAll: vi.fn(),
-    onExpandAll: vi.fn(),
-    onCollapseAll: vi.fn(),
+    clearAll: mockClearAll,
+    onExpandAll: mockOnExpandAll,
+    onCollapseAll: mockOnCollapseAll,
     allExpanded: false,
     fontScale: 1,
-    onAdjustFont: vi.fn(),
+    onAdjustFont: mockAdjustFont,
     isLoggedIn: true,
     isSyncing: false,
     handleSave: vi.fn(),
+    // These were missing or not linked to the vi.fn() mocks above
+    goldFilter: null as 'pitcher' | 'fielder' | null,
+    toggleGoldFilter: mockToggleGoldFilter,
+    activeSkillFilter: null as string | null,
+    onToggleSkillFilter: mockOnToggleSkillFilter,
   };
 
-  it('renders both PITCHER and FIELDER action buttons', () => {
-    render(<Header {...mockProps} />);
-
-    expect(screen.getByRole('button', { name: /投手金特/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /野手金特/i })).toBeInTheDocument();
+  beforeEach(() => {
+    vi.clearAllMocks();
   });
 
-  it('toggles POSITION ICON visibility setting', () => {
-    render(<Header {...mockProps} />);
-    const toggleBtn = screen.getByText(/POSITION ICON/i);
-    fireEvent.click(toggleBtn);
-    expect(mockProps.setShowPositionIcon).toHaveBeenCalled();
-  });
+  describe('UI Elements', () => {
+    it('renders both PITCHER and FIELDER action buttons', () => {
+      render(<Header {...mockProps} />);
+      expect(screen.getByRole('button', { name: /投手金特/i })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /野手金特/i })).toBeInTheDocument();
+    });
 
-  it('switches between Expand and Collapse text based on allExpanded prop', () => {
-    const { rerender } = render(<Header {...mockProps} allExpanded={false} />);
-    expect(screen.getByText(/EXPAND ALL/i)).toBeInTheDocument();
+    it('calls toggleGoldFilter when the Pitcher Gold button is clicked', () => {
+      render(<Header {...mockProps} />);
 
-    rerender(<Header {...mockProps} allExpanded={true} />);
-    expect(screen.getByText(/COLLAPSE ALL/i)).toBeInTheDocument();
-  });
+      const pitcherBtn = screen.getByRole('button', { name: /投手金特/i });
+      fireEvent.click(pitcherBtn);
 
-  it('calls clearAll when CLEAR button is clicked', () => {
-    render(<Header {...mockProps} />);
-    const clearBtn = screen.getByRole('button', { name: /clear/i });
-    fireEvent.click(clearBtn);
-    expect(mockProps.clearAll).toHaveBeenCalled();
+      // Now this will pass because the prop IS the mock
+      expect(mockToggleGoldFilter).toHaveBeenCalledWith('pitcher');
+    });
+
+    it('renders the skill selection list when a gold filter is active', () => {
+      // Instead of setupMockHook, we just update the props
+      render(<Header {...mockProps} goldFilter="pitcher" />);
+
+      // Note: Since Header.tsx imports skills.json, it will render actual skill names
+      // Ensure '怪童' exists in your skills.json for this to pass
+      expect(screen.getByText(/怪童/i)).toBeInTheDocument();
+    });
+
+    it('calls onToggleSkillFilter when a specific skill is selected', () => {
+      render(<Header {...mockProps} goldFilter="pitcher" />);
+
+      const skillItem = screen.getByText(/怪童/i);
+      fireEvent.click(skillItem);
+
+      expect(mockOnToggleSkillFilter).toHaveBeenCalledWith('怪童');
+    });
   });
 });

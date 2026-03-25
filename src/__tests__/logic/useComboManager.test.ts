@@ -1,5 +1,6 @@
+// src/hooks/__tests__/useComboManager.test.ts
 import { act, renderHook, waitFor } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { supabase } from '@/lib/supabase';
 import { useComboManager } from '../../hooks/useComboManager';
 
@@ -12,6 +13,7 @@ const { mockCombos, mockChars, mockMapping, mockSkills } = await vi.hoisted(asyn
   const skills = {
     パワーヒッター: { name: 'パワーヒッター', type: 'gold', category: 'fielder' },
     一球入魂: { name: '一球入魂', type: 'gold', category: 'fielder' },
+    怪童: { name: '怪童', type: 'gold', category: 'pitcher' },
     ハイボールヒッター: { name: 'ハイボールヒッター', type: 'blue', category: 'fielder' },
     広角打法: { name: '広角打法', type: 'blue', category: 'fielder' },
     '窮地◯': { name: '窮地◯', type: 'blue', category: 'fielder' },
@@ -161,6 +163,39 @@ describe('useComboManager Logic - Search & Filtering', () => {
       result.current.setSearchTerm('');
     });
     expect(result.current.filteredComboIds.length).toBe(totalCount);
+  });
+});
+
+describe('useComboManager Logic - Gold Skill Selection', () => {
+  it('should reset activeSkillFilter when switching goldFilter category', () => {
+    const { result } = renderHook(() => useComboManager());
+    act(() => {
+      result.current.toggleGoldFilter('pitcher');
+    });
+    act(() => {
+      result.current.onToggleSkillFilter('怪童');
+    });
+    expect(result.current.activeSkillFilter).toBe('怪童');
+
+    act(() => {
+      result.current.toggleGoldFilter('fielder');
+    });
+    expect(result.current.goldFilter).toBe('fielder');
+    expect(result.current.activeSkillFilter).toBeNull();
+  });
+
+  it('should filter combos correctly when activeSkillFilter is applied', () => {
+    const { result } = renderHook(() => useComboManager());
+    act(() => {
+      result.current.onToggleSkillFilter('一球入魂');
+    });
+
+    const allFilteredHaveSkill = result.current.filteredComboIds.every((id) => {
+      const combo = mockCombos[id as keyof typeof mockCombos];
+      return combo?.rewards?.skills?.some((s: any) => s.name === '一球入魂');
+    });
+    expect(allFilteredHaveSkill).toBe(true);
+    expect(result.current.filteredComboIds.length).toBeGreaterThan(0);
   });
 });
 

@@ -141,16 +141,23 @@ export const useComboManager = () => {
 
   const toggleRelatedFilter = useCallback(() => setFilterRelatedOnly((p) => !p), []);
   const toggleKanjiFilter = useCallback(() => setFilterNoKanji((p) => !p), []);
-  const toggleGoldFilter = useCallback(
-    (type: FilterType) => setGoldFilter((p) => (p === type ? null : type)),
-    [],
-  );
+
+  const toggleGoldFilter = useCallback((type: FilterType) => {
+    setGoldFilter((p) => {
+      const next = p === type ? null : type;
+      // Reset specific skill filter when changing categories or turning filter off
+      setActiveSkillFilter(null);
+      return next;
+    });
+  }, []);
+
   const toggleTypeFilter = useCallback(
     (type: FilterType) => setTypeFilter((p) => (p === type ? null : type)),
     [],
   );
+
   const toggleSkillFilter = useCallback(
-    (skill: string) => setActiveSkillFilter((p) => (p === skill ? null : skill)),
+    (skill: string | null) => setActiveSkillFilter((p) => (p === skill ? null : skill)),
     [],
   );
 
@@ -191,7 +198,6 @@ export const useComboManager = () => {
         return passesSearch && passesRelated && passesGold && passesType && passesSkill;
       })
       .map(([_, combo]) => {
-        // Sort individual combo rewards before returning
         if (combo.rewards?.skills) {
           combo.rewards.skills.sort((a, b) => {
             const typeA = skillsData[a.name]?.type || 'normal';

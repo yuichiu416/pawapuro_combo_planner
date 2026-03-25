@@ -1,16 +1,8 @@
 // src/components/Header.tsx
-import {
-  ChevronDown,
-  ChevronUp,
-  CircleDot,
-  Loader2,
-  Minus,
-  Plus,
-  Save,
-  Star,
-  XCircle,
-} from 'lucide-react';
+import { ChevronDown, ChevronUp, Loader2, Minus, Plus, Save, Star, XCircle } from 'lucide-react';
 import type React from 'react';
+import { useMemo } from 'react';
+import skillsData from '@/data/skills.json';
 import { cn } from '@/utils/style';
 import { AuthButton } from './AuthButton';
 
@@ -20,7 +12,7 @@ interface HeaderProps {
   filterRelatedOnly: boolean;
   toggleRelatedFilter: () => void;
   toggleAllByType: (type: 'pitcher' | 'fielder') => void;
-  typeFilter: 'pitcher' | 'fielder' | null; // Added
+  typeFilter: 'pitcher' | 'fielder' | null;
   clearAll: () => void;
   onExpandAll: () => void;
   onCollapseAll: () => void;
@@ -32,6 +24,8 @@ interface HeaderProps {
   handleSave: () => void;
   goldFilter: 'pitcher' | 'fielder' | null;
   toggleGoldFilter: (type: 'pitcher' | 'fielder') => void;
+  activeSkillFilter: string | null;
+  onToggleSkillFilter: (skill: string | null) => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -39,8 +33,6 @@ export const Header: React.FC<HeaderProps> = ({
   setShowPositionIcon,
   filterRelatedOnly,
   toggleRelatedFilter,
-  toggleAllByType,
-  typeFilter,
   clearAll,
   onExpandAll,
   onCollapseAll,
@@ -52,9 +44,20 @@ export const Header: React.FC<HeaderProps> = ({
   handleSave,
   goldFilter,
   toggleGoldFilter,
+  activeSkillFilter,
+  onToggleSkillFilter,
 }) => {
   const baseLabelSize = 0.75;
   const baseButtonSize = 0.875;
+
+  // Extract available gold skills based on the current goldFilter category
+  const availableGoldSkills = useMemo(() => {
+    if (!goldFilter) return [];
+    return Object.values(skillsData)
+      .filter((s: any) => s.type === 'gold' && s.category === goldFilter)
+      .map((s: any) => s.name)
+      .sort((a, b) => a.localeCompare(b));
+  }, [goldFilter]);
 
   return (
     <header className="space-y-6">
@@ -115,8 +118,42 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
+      {/* Gold Skill Selection List - Appears when a gold filter is active */}
+      {goldFilter && (
+        <div className="animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="flex flex-wrap gap-2 p-3 bg-white rounded-2xl border-2 border-amber-100 shadow-sm">
+            <button
+              onClick={() => onToggleSkillFilter(null)}
+              style={{ fontSize: `${baseButtonSize * fontScale * 0.9}rem` }}
+              className={cn(
+                'px-3 py-1.5 rounded-lg font-bold transition-all border-2 uppercase',
+                !activeSkillFilter
+                  ? 'bg-amber-500 border-amber-500 text-white shadow-sm'
+                  : 'bg-slate-50 border-slate-100 text-slate-500 hover:border-slate-200',
+              )}
+            >
+              ALL
+            </button>
+            {availableGoldSkills.map((skill) => (
+              <button
+                key={skill}
+                onClick={() => onToggleSkillFilter(skill)}
+                style={{ fontSize: `${baseButtonSize * fontScale * 0.9}rem` }}
+                className={cn(
+                  'px-3 py-1.5 rounded-lg font-bold transition-all border-2',
+                  activeSkillFilter === skill
+                    ? 'bg-blue-600 border-blue-600 text-white shadow-sm'
+                    : 'bg-white border-slate-100 text-slate-600 hover:border-slate-300',
+                )}
+              >
+                {skill}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className="flex flex-wrap items-center py-3 px-1 border-t border-slate-200/60 gap-3">
-        {/* ... Other utility buttons remain identical ... */}
         <button
           data-testid="filter-label-position-icon"
           onClick={() => setShowPositionIcon(!showPositionIcon)}
@@ -145,7 +182,6 @@ export const Header: React.FC<HeaderProps> = ({
           {filterRelatedOnly ? 'OWNED RELATED' : 'ALL COMBOS'}
         </button>
 
-        {/* Font controls and Expand/Collapse remain the same */}
         <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 ml-auto">
           <button
             onClick={() => onAdjustFont(-0.1)}
