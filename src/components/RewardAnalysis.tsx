@@ -158,6 +158,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
           {sortedSkills.map((skill) => {
             const isGold = skillsData[skill.name]?.type === 'gold';
             const isActive = activeSkillFilter === skill.name;
+            const isOverLimit = skill.level > 5;
 
             return (
               <button
@@ -195,11 +196,18 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
                 </div>
                 <div
                   className={cn(
-                    'px-2 py-0.5 text-xs font-black rounded italic border',
-                    isGold
-                      ? 'bg-amber-500 text-white border-amber-400'
-                      : 'bg-slate-100 text-slate-500 border-slate-200/50',
-                    isActive && 'bg-blue-600 text-white border-blue-400 scale-110 shadow-blue-200',
+                    'px-2 py-0.5 text-xs font-black rounded italic border transition-all',
+                    isOverLimit
+                      ? 'animate-[bounce_0.5s_ease-in-out_2] border-rose-400 text-rose-600 bg-rose-50'
+                      : isGold
+                        ? 'bg-amber-500 text-white border-amber-400'
+                        : 'bg-slate-100 text-slate-500 border-slate-200/50',
+                    isActive &&
+                      !isOverLimit &&
+                      'bg-blue-600 text-white border-blue-400 scale-110 shadow-blue-200',
+                    isActive &&
+                      isOverLimit &&
+                      'bg-rose-600 text-white border-rose-400 scale-110 shadow-rose-200',
                   )}
                 >
                   LV{skill.level}

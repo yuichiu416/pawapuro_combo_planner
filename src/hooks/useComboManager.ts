@@ -231,7 +231,7 @@ export const useComboManager = () => {
     const sortedSkills = Object.entries(skillsMap)
       .map(([name, level]) => ({
         name,
-        level: Math.min(level, 5),
+        level,
         type: skillsData[name]?.type || 'normal',
       }))
       .sort((a, b) => {

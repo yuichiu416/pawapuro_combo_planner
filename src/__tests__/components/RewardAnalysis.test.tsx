@@ -161,3 +161,65 @@ describe('RewardAnalysis UI Logic', () => {
     expect(pitchCard).toHaveClass('border-rose-300', 'bg-rose-50');
   });
 });
+
+const mockAnalysis = {
+  stats: {},
+  skills: [
+    { name: 'Power Hit', level: 6 }, // Over limit
+    { name: 'Golden Arm', level: 3 }, // Normal gold
+  ],
+  missingCharacters: [],
+  roster: {
+    pitcher: 0,
+    fielder: 0,
+    manager: 0,
+    total: 0,
+    errors: {},
+  },
+};
+
+const defaultProps = {
+  analysis: mockAnalysis,
+  getImagePath: (name: string) => `/path/${name}.png`,
+  testId: 'reward-analysis',
+  activeSkillFilter: null,
+  onToggleSkillFilter: vi.fn(),
+};
+
+describe('RewardAnalysis Level Warning', () => {
+  it('should apply rose warning classes and bounce animation when level is > 5', () => {
+    render(<RewardAnalysis {...defaultProps} />);
+
+    // Find the LV6 badge for Power Hit
+    const overLimitBadge = screen.getByText('LV6');
+
+    // Check for the specific warning classes added in the previous step
+    expect(overLimitBadge.className).toContain('text-rose-600');
+    expect(overLimitBadge.className).toContain('border-rose-400');
+    expect(overLimitBadge.className).toContain('bg-rose-50');
+
+    // Verify the custom bounce animation is present
+    expect(overLimitBadge.className).toContain('animate-[bounce_0.5s_ease-in-out_2]');
+  });
+
+  it('should apply blue rose styling when an over-limit skill is active', () => {
+    render(<RewardAnalysis {...defaultProps} activeSkillFilter="Power Hit" />);
+
+    const activeOverLimitBadge = screen.getByText('LV6');
+
+    // Should combine active state with rose warning colors
+    expect(activeOverLimitBadge.className).toContain('bg-rose-600');
+    expect(activeOverLimitBadge.className).toContain('text-white');
+    expect(activeOverLimitBadge.className).toContain('scale-110');
+  });
+
+  it('should NOT apply warning classes to skills at or below level 5', () => {
+    render(<RewardAnalysis {...defaultProps} />);
+
+    const normalBadge = screen.getByText('LV3');
+
+    // Should use standard gold or slate colors, not rose
+    expect(normalBadge.className).not.toContain('text-rose-600');
+    expect(normalBadge.className).not.toContain('animate-bounce');
+  });
+});
