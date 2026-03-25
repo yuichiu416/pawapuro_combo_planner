@@ -28,7 +28,7 @@ export const RosterGrid: React.FC<RosterGridProps> = ({
       <span
         data-testid={`${testId}-roster-count`}
         className={cn(
-          'text-sm font-black italic',
+          'text-sm font-black',
           ownedChars.size > 25 ? 'text-rose-400' : 'text-emerald-400',
         )}
       >

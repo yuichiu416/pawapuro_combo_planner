@@ -96,7 +96,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
             <div className="flex items-baseline gap-0.5">
               <span
                 className={cn(
-                  'text-lg font-black italic tracking-tighter',
+                  'text-lg font-black tracking-tighter',
                   item.err ? 'text-rose-600' : 'text-slate-900',
                 )}
               >
@@ -196,7 +196,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
                 </div>
                 <div
                   className={cn(
-                    'px-2 py-0.5 text-xs font-black rounded italic border transition-all',
+                    'px-2 py-0.5 text-xs font-black rounded border transition-all',
                     isOverLimit
                       ? 'animate-[bounce_0.5s_ease-in-out_2] border-rose-400 text-rose-600 bg-rose-50'
                       : isGold

@@ -65,12 +65,7 @@ export const useComboManager = () => {
             loadedChars = data.selected_characters || [];
             loadedCombos = data.selected_combos || [];
             if (data.updated_at) {
-              setLastSaved(
-                new Date(data.updated_at).toLocaleString([], {
-                  hour: '2-digit',
-                  minute: '2-digit',
-                }),
-              );
+              setLastSaved(new Date(data.updated_at).toLocaleString());
             }
           }
         } else {
@@ -163,14 +158,13 @@ export const useComboManager = () => {
     setFontScale((prev) => parseFloat(Math.min(Math.max(prev + delta, 0.8), 1.5).toFixed(1)));
   }, []);
 
-  // --- Memo: Filtering Logic ---
+  // --- Memo: Filtering & Sorting Logic ---
   const filteredComboIds = useMemo(() => {
     const search = searchTerm.toLowerCase().trim();
 
     return Object.entries(combosData)
       .filter(([_, combo]) => {
         const comboId = combo.characters.join('&');
-
         const passesSearch =
           !search ||
           comboId.toLowerCase().includes(search) ||
@@ -196,7 +190,19 @@ export const useComboManager = () => {
 
         return passesSearch && passesRelated && passesGold && passesType && passesSkill;
       })
-      .map(([_, combo]) => combo.characters.join('&'));
+      .map(([_, combo]) => {
+        // Sort individual combo rewards before returning
+        if (combo.rewards?.skills) {
+          combo.rewards.skills.sort((a, b) => {
+            const typeA = skillsData[a.name]?.type || 'normal';
+            const typeB = skillsData[b.name]?.type || 'normal';
+            if (typeA === 'gold' && typeB !== 'gold') return -1;
+            if (typeA !== 'gold' && typeB === 'gold') return 1;
+            return b.level - a.level || a.name.localeCompare(b.name);
+          });
+        }
+        return combo.characters.join('&');
+      });
   }, [searchTerm, filterRelatedOnly, selectedNames, goldFilter, typeFilter, activeSkillFilter]);
 
   // --- Memo: Global Analysis ---
@@ -209,22 +215,18 @@ export const useComboManager = () => {
       fCount = 0,
       mCount = 0;
 
-    // Initialize map counters
     Object.entries(mapsData).forEach(([mapName, data]) => {
       mapCompletion[mapName] = { selected: 0, total: data.max_combos || 0 };
     });
 
-    // Roster logic
     selectedNames.forEach((name) => {
       const char = charactersData[name];
       if (!char) return;
-
       if (char.rewards?.stats) {
         Object.entries(char.rewards.stats).forEach(([s, v]) => {
           stats[s] = (stats[s] || 0) + (v as number);
         });
       }
-
       if (!FIXED_MEMBERS.includes(name)) {
         const pos = char.position?.trim();
         if (pos === 'マ') mCount++;
@@ -233,19 +235,15 @@ export const useComboManager = () => {
       }
     });
 
-    // Combo logic
     selectedComboIds.forEach((id) => {
       const combo = Object.values(combosData).find((c) => c.characters.join('&') === id);
       if (!combo) return;
-
       combo.rewards?.skills?.forEach((sk) => {
         skillsMap[sk.name] = (skillsMap[sk.name] || 0) + sk.level;
       });
-
       combo.characters.forEach((c) => {
         if (!selectedNames.has(c)) missingSet.add(c);
       });
-
       Object.entries(mapsData).forEach(([mapName, data]) => {
         if (data.combo_names.some((names: string[]) => names.join('&') === id)) {
           mapCompletion[mapName].selected++;
@@ -289,7 +287,6 @@ export const useComboManager = () => {
     };
   }, [selectedNames, selectedComboIds]);
 
-  // --- Memo: Library Groups ---
   const libraryGroups = useMemo(() => {
     const withC: string[] = [];
     const noC: string[] = [];
@@ -300,10 +297,8 @@ export const useComboManager = () => {
       if (FIXED_MEMBERS.includes(name)) return;
       if (search && !name.toLowerCase().includes(search)) return;
       if (filterNoKanji && KANJI_REGEX.test(name)) return;
-
       participants.has(name) ? withC.push(name) : noC.push(name);
     });
-
     return { withCombo: withC, noCombo: noC };
   }, [searchTerm, filterNoKanji]);
 
