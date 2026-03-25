@@ -32,7 +32,8 @@ export const useComboManager = () => {
   const [filterNoKanji, setFilterNoKanji] = useState(false);
   const [goldFilter, setGoldFilter] = useState<FilterType>(null);
   const [typeFilter, setTypeFilter] = useState<FilterType>(null);
-  const [activeSkillFilter, setActiveSkillFilter] = useState<string | null>(null);
+  // Updated to array for multiple selection (A or B)
+  const [activeSkillFilters, setActiveSkillFilters] = useState<string[]>([]);
 
   // --- State: System ---
   const [isSyncing, setIsSyncing] = useState(false);
@@ -145,8 +146,8 @@ export const useComboManager = () => {
   const toggleGoldFilter = useCallback((type: FilterType) => {
     setGoldFilter((p) => {
       const next = p === type ? null : type;
-      // Reset specific skill filter when changing categories or turning filter off
-      setActiveSkillFilter(null);
+      // Clear specific skill filters when changing major categories
+      setActiveSkillFilters([]);
       return next;
     });
   }, []);
@@ -156,10 +157,12 @@ export const useComboManager = () => {
     [],
   );
 
-  const toggleSkillFilter = useCallback(
-    (skill: string | null) => setActiveSkillFilter((p) => (p === skill ? null : skill)),
-    [],
-  );
+  const toggleSkillFilter = useCallback((skill: string | null) => {
+    setActiveSkillFilters((prev) => {
+      if (skill === null) return [];
+      return prev.includes(skill) ? prev.filter((s) => s !== skill) : [...prev, skill];
+    });
+  }, []);
 
   const adjustFont = useCallback((delta: number) => {
     setFontScale((prev) => parseFloat(Math.min(Math.max(prev + delta, 0.8), 1.5).toFixed(1)));
@@ -192,8 +195,10 @@ export const useComboManager = () => {
           !typeFilter ||
           combo.rewards?.skills?.some((s) => skillsData[s.name]?.category === typeFilter);
 
+        // OR logic: passes if combo has ANY of the selected skills
         const passesSkill =
-          !activeSkillFilter || combo.rewards?.skills?.some((s) => s.name === activeSkillFilter);
+          activeSkillFilters.length === 0 ||
+          combo.rewards?.skills?.some((s) => activeSkillFilters.includes(s.name));
 
         return passesSearch && passesRelated && passesGold && passesType && passesSkill;
       })
@@ -209,7 +214,7 @@ export const useComboManager = () => {
         }
         return combo.characters.join('&');
       });
-  }, [searchTerm, filterRelatedOnly, selectedNames, goldFilter, typeFilter, activeSkillFilter]);
+  }, [searchTerm, filterRelatedOnly, selectedNames, goldFilter, typeFilter, activeSkillFilters]);
 
   // --- Memo: Global Analysis ---
   const analysis = useMemo(() => {
@@ -315,7 +320,7 @@ export const useComboManager = () => {
     setFilterNoKanji(false);
     setGoldFilter(null);
     setTypeFilter(null);
-    setActiveSkillFilter(null);
+    setActiveSkillFilters([]);
   }, []);
 
   return {
@@ -331,7 +336,7 @@ export const useComboManager = () => {
     toggleGoldFilter,
     typeFilter,
     toggleAllByType: toggleTypeFilter,
-    activeSkillFilter,
+    activeSkillFilters,
     onToggleSkillFilter: toggleSkillFilter,
     filteredComboIds,
     toggleCharacter,

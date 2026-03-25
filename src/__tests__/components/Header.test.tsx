@@ -30,10 +30,10 @@ describe('Header Component', () => {
     isLoggedIn: true,
     isSyncing: false,
     handleSave: vi.fn(),
-    // These were missing or not linked to the vi.fn() mocks above
     goldFilter: null as 'pitcher' | 'fielder' | null,
     toggleGoldFilter: mockToggleGoldFilter,
-    activeSkillFilter: null as string | null,
+    // Updated to array to match new implementation
+    activeSkillFilters: [] as string[],
     onToggleSkillFilter: mockOnToggleSkillFilter,
   };
 
@@ -54,15 +54,12 @@ describe('Header Component', () => {
       const pitcherBtn = screen.getByRole('button', { name: /投手金特/i });
       fireEvent.click(pitcherBtn);
 
-      // Now this will pass because the prop IS the mock
       expect(mockToggleGoldFilter).toHaveBeenCalledWith('pitcher');
     });
 
     it('renders the skill selection list when a gold filter is active', () => {
-      // Instead of setupMockHook, we just update the props
       render(<Header {...mockProps} goldFilter="pitcher" />);
 
-      // Note: Since Header.tsx imports skills.json, it will render actual skill names
       // Ensure '怪童' exists in your skills.json for this to pass
       expect(screen.getByText(/怪童/i)).toBeInTheDocument();
     });
@@ -74,6 +71,15 @@ describe('Header Component', () => {
       fireEvent.click(skillItem);
 
       expect(mockOnToggleSkillFilter).toHaveBeenCalledWith('怪童');
+    });
+
+    it('highlights selected skills in the list', () => {
+      // Test that the array inclusion logic works for UI styling
+      render(<Header {...mockProps} goldFilter="pitcher" activeSkillFilters={['怪童']} />);
+
+      const skillItem = screen.getByText(/怪童/i);
+      // Check for the active class (bg-blue-600) defined in Header.tsx
+      expect(skillItem).toHaveClass('bg-blue-600');
     });
   });
 });

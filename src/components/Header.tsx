@@ -24,7 +24,7 @@ interface HeaderProps {
   handleSave: () => void;
   goldFilter: 'pitcher' | 'fielder' | null;
   toggleGoldFilter: (type: 'pitcher' | 'fielder') => void;
-  activeSkillFilter: string | null;
+  activeSkillFilters: string[]; // Changed to array
   onToggleSkillFilter: (skill: string | null) => void;
 }
 
@@ -44,7 +44,7 @@ export const Header: React.FC<HeaderProps> = ({
   handleSave,
   goldFilter,
   toggleGoldFilter,
-  activeSkillFilter,
+  activeSkillFilters,
   onToggleSkillFilter,
 }) => {
   const baseLabelSize = 0.75;
@@ -118,7 +118,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* Gold Skill Selection List - Appears when a gold filter is active */}
+      {/* Gold Skill Selection List */}
       {goldFilter && (
         <div className="animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="flex flex-wrap gap-2 p-3 bg-white rounded-2xl border-2 border-amber-100 shadow-sm">
@@ -127,7 +127,7 @@ export const Header: React.FC<HeaderProps> = ({
               style={{ fontSize: `${baseButtonSize * fontScale * 0.9}rem` }}
               className={cn(
                 'px-3 py-1.5 rounded-lg font-bold transition-all border-2 uppercase',
-                !activeSkillFilter
+                activeSkillFilters.length === 0
                   ? 'bg-amber-500 border-amber-500 text-white shadow-sm'
                   : 'bg-slate-50 border-slate-100 text-slate-500 hover:border-slate-200',
               )}
@@ -141,7 +141,7 @@ export const Header: React.FC<HeaderProps> = ({
                 style={{ fontSize: `${baseButtonSize * fontScale * 0.9}rem` }}
                 className={cn(
                   'px-3 py-1.5 rounded-lg font-bold transition-all border-2',
-                  activeSkillFilter === skill
+                  activeSkillFilters.includes(skill)
                     ? 'bg-blue-600 border-blue-600 text-white shadow-sm'
                     : 'bg-white border-slate-100 text-slate-600 hover:border-slate-300',
                 )}

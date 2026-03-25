@@ -167,7 +167,7 @@ describe('useComboManager Logic - Search & Filtering', () => {
 });
 
 describe('useComboManager Logic - Gold Skill Selection', () => {
-  it('should reset activeSkillFilter when switching goldFilter category', () => {
+  it('should reset activeSkillFilters when switching goldFilter category', () => {
     const { result } = renderHook(() => useComboManager());
     act(() => {
       result.current.toggleGoldFilter('pitcher');
@@ -175,26 +175,27 @@ describe('useComboManager Logic - Gold Skill Selection', () => {
     act(() => {
       result.current.onToggleSkillFilter('怪童');
     });
-    expect(result.current.activeSkillFilter).toBe('怪童');
+    expect(result.current.activeSkillFilters).toContain('怪童');
 
     act(() => {
       result.current.toggleGoldFilter('fielder');
     });
     expect(result.current.goldFilter).toBe('fielder');
-    expect(result.current.activeSkillFilter).toBeNull();
+    expect(result.current.activeSkillFilters).toEqual([]);
   });
 
-  it('should filter combos correctly when activeSkillFilter is applied', () => {
+  it('should filter combos correctly when multiple activeSkillFilters are applied (OR logic)', () => {
     const { result } = renderHook(() => useComboManager());
     act(() => {
       result.current.onToggleSkillFilter('一球入魂');
+      result.current.onToggleSkillFilter('怪童');
     });
 
-    const allFilteredHaveSkill = result.current.filteredComboIds.every((id) => {
+    const allFilteredPass = result.current.filteredComboIds.every((id) => {
       const combo = mockCombos[id as keyof typeof mockCombos];
-      return combo?.rewards?.skills?.some((s: any) => s.name === '一球入魂');
+      return combo?.rewards?.skills?.some((s: any) => s.name === '一球入魂' || s.name === '怪童');
     });
-    expect(allFilteredHaveSkill).toBe(true);
+    expect(allFilteredPass).toBe(true);
     expect(result.current.filteredComboIds.length).toBeGreaterThan(0);
   });
 });
@@ -204,30 +205,22 @@ describe('useComboManager Analysis Sorting Logic', () => {
     const { result } = renderHook(() => useComboManager());
 
     act(() => {
-      // Ensure we pick combos that actually exist in your mock/data
-      // and provide a mix of gold and normal skills
       result.current.toggleCombo('マキシマム池田クリスティン&エミリ');
       result.current.toggleCombo('金丸信二&東条秀明');
     });
 
     const skills = result.current.analysis.skills;
 
-    // 1. Verify data exists
     const goldSkills = skills.filter((s) => s.type === 'gold');
     const normalSkills = skills.filter((s) => s.type !== 'gold');
     expect(goldSkills.length).toBeGreaterThan(0);
     expect(normalSkills.length).toBeGreaterThan(0);
 
-    // 2. The Logic Check:
-    // Find the index of the first non-gold skill
     const firstNonGoldIndex = skills.findIndex((s) => s.type !== 'gold');
-
-    // Find if ANY gold skill exists AFTER that index
     const goldSkillAfterNormal = skills.slice(firstNonGoldIndex).some((s) => s.type === 'gold');
 
-    // 3. Assertions
     expect(skills[0].type).toBe('gold');
-    expect(goldSkillAfterNormal).toBe(false); // No gold should be found once we hit the normal section
+    expect(goldSkillAfterNormal).toBe(false);
   });
 
   it('sorts by level (descending) within the same color tier', () => {
@@ -267,7 +260,7 @@ describe('useComboManager Persistence - Cloud & Local', () => {
 
     const stored = JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY) || '{}');
     expect(stored.characters).toContain('P1');
-    expect(stored.characters).not.toContain('パワプロ'); // Fixed members filtered out
+    expect(stored.characters).not.toContain('パワプロ');
   });
 
   it('should save to Supabase when handleSave is called with a session', async () => {
@@ -319,7 +312,6 @@ describe('useComboManager Persistence - Cloud & Local', () => {
 
     const { result } = renderHook(() => useComboManager());
 
-    // Wait for the hydrate useEffect
     await waitFor(() => {
       expect(result.current.ownedChars.has('M1')).toBe(true);
     });
@@ -330,16 +322,13 @@ describe('useComboManager - Kanji Filtering', () => {
   it('should filter out characters with Kanji when filterNoKanji is active', () => {
     const { result } = renderHook(() => useComboManager());
 
-    // 1. Initial state: Both should be in the library groups
-    expect(result.current.libraryGroups.withCombo).toContain('金丸信二'); // Kanji
-    expect(result.current.libraryGroups.withCombo).toContain('エミリ'); // Katakana
+    expect(result.current.libraryGroups.withCombo).toContain('金丸信二');
+    expect(result.current.libraryGroups.withCombo).toContain('エミリ');
 
-    // 2. Activate Kanji Filter
     act(() => {
       result.current.toggleKanjiFilter();
     });
 
-    // 3. Assert: Kanji names should be gone, Katakana/Hiragana should remain
     expect(result.current.libraryGroups.withCombo).not.toContain('金丸信二');
     expect(result.current.libraryGroups.withCombo).toContain('エミリ');
   });
@@ -347,14 +336,11 @@ describe('useComboManager - Kanji Filtering', () => {
   it('should filter combos where participants contain Kanji', () => {
     const { result } = renderHook(() => useComboManager());
 
-    // Activate filter
     act(() => {
       result.current.toggleKanjiFilter();
     });
 
-    // A combo like "矢部&パワプロ" contains Kanji, so it should be filtered out
     const containsKanjiCombo = result.current.filteredComboIds.some((id) => id.includes('矢部'));
-
     expect(containsKanjiCombo).toBe(false);
   });
 });
@@ -362,10 +348,8 @@ describe('useComboManager - Kanji Filtering', () => {
 it('manages owned characters correctly', () => {
   const { result } = renderHook(() => useComboManager());
 
-  // Initial state should be empty
   expect(result.current.ownedChars.size).toBe(2);
 
-  // Add a character
   act(() => {
     result.current.toggleCharacter('豬狩守');
   });
@@ -373,7 +357,6 @@ it('manages owned characters correctly', () => {
   expect(result.current.ownedChars.has('豬狩守')).toBe(true);
   expect(result.current.ownedChars.size).toBe(3);
 
-  // Remove the character
   act(() => {
     result.current.toggleCharacter('豬狩守');
   });
