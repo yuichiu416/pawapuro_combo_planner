@@ -8,13 +8,13 @@ describe('App UI: Icon Toggle Logic', () => {
     cleanup();
   });
 
-  it('switches between POSITION ICON and NO. ICON labels correctly', async () => {
+  it('switches between POS ICON and NO. ICON labels correctly', async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    // 1. Initial State: POSITION ICON should be active (assuming default true)
+    // 1. Initial State: POS ICON should be active (assuming default true)
     const toggleBtn = screen.getByRole('button', { name: /ICON/i });
-    expect(toggleBtn).toHaveTextContent(/POSITION ICON/i);
+    expect(toggleBtn).toHaveTextContent(/POS ICON/i);
     expect(toggleBtn).toHaveClass('bg-white');
 
     // 2. Click to switch to NO. ICON
@@ -24,7 +24,7 @@ describe('App UI: Icon Toggle Logic', () => {
 
     // 3. Click to revert
     await user.click(toggleBtn);
-    expect(toggleBtn).toHaveTextContent(/POSITION ICON/i);
+    expect(toggleBtn).toHaveTextContent(/POS ICON/i);
   });
 });
 describe('Timestamp UI Integration', () => {

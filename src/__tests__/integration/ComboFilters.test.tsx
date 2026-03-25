@@ -8,7 +8,7 @@ describe('Combo Type Filters (Pitcher/Fielder) - Static Data Validation', () => 
     render(<App />);
 
     // 1. Click PITCHER filter button
-    const pitcherBtn = screen.getByTestId('filter-button-pitcher');
+    const pitcherBtn = screen.getByTestId('filter-pitcher-btn');
     fireEvent.click(pitcherBtn);
 
     // 2. Verify button state (Active)
@@ -33,7 +33,7 @@ describe('Combo Type Filters (Pitcher/Fielder) - Static Data Validation', () => 
     render(<App />);
 
     // 1. Click FIELDER filter button
-    const fielderBtn = screen.getByTestId('filter-button-fielder');
+    const fielderBtn = screen.getByTestId('filter-fielder-btn');
     fireEvent.click(fielderBtn);
 
     // 2. Verify button state (Active)
@@ -57,8 +57,8 @@ describe('Combo Type Filters (Pitcher/Fielder) - Static Data Validation', () => 
   it('resets match counts when CLEAR is clicked', () => {
     render(<App />);
 
-    const pitcherBtn = screen.getByTestId('filter-button-pitcher');
-    const clearBtn = screen.getByTestId('filter-button-clear');
+    const pitcherBtn = screen.getByTestId('filter-pitcher-btn');
+    const clearBtn = screen.getByTestId('filter-clear-btn');
 
     // Apply filter
     fireEvent.click(pitcherBtn);

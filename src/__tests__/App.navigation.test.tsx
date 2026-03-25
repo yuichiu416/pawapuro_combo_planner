@@ -1,7 +1,7 @@
-import { render, screen, cleanup, waitFor } from '@testing-library/react';
+import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
 import React, { useState } from 'react';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import App from '@/App';
 
 // 1. Hoist the fixture factory
@@ -42,10 +42,10 @@ describe('App Integration - Map Expansion', () => {
     render(<App />);
     expect(screen.queryByTestId('combo-card-パワプロ&矢部明雄')).not.toBeInTheDocument();
 
-    await user.click(screen.getByRole('button', { name: /EXPAND ALL/i }));
+    await user.click(screen.getByTestId('expand-collapse-toggle-btn'));
     expect(await screen.findByTestId('combo-card-パワプロ&矢部明雄')).toBeInTheDocument();
 
-    await user.click(screen.getByRole('button', { name: /COLLAPSE ALL/i }));
+    await user.click(screen.getByTestId('expand-collapse-toggle-btn'));
     await waitFor(() => {
       expect(screen.queryByTestId('combo-card-パワプロ&矢部明雄')).not.toBeInTheDocument();
     });

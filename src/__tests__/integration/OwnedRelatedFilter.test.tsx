@@ -13,7 +13,7 @@ describe('Owned Related Filter - Discovery Flow', () => {
 
     const desktopSidebar = screen.getByRole('complementary', { name: SIDEBAR_ID });
     const searchInput = within(desktopSidebar).getByTestId(`${SIDEBAR_ID}-character-search-input`);
-    const filterBtn = screen.getByRole('button', { name: /ALL COMBOS/i });
+    const filterBtn = screen.getByTestId('owned-or-all-characters-combo-btn');
 
     await user.type(searchInput, '御幸');
     // Updated ID to include desktop-character-sidebar prefix
@@ -38,7 +38,7 @@ describe('Owned Related Filter - Multi-Character Discovery', () => {
 
     const desktopSidebar = screen.getByRole('complementary', { name: SIDEBAR_ID });
     const searchInput = within(desktopSidebar).getByTestId(`${SIDEBAR_ID}-character-search-input`);
-    const filterBtn = screen.getByRole('button', { name: /ALL COMBOS/i });
+    const filterBtn = screen.getByTestId('owned-or-all-characters-combo-btn');
 
     await user.type(searchInput, '皇帝');
     // Updated ID to include desktop-character-sidebar prefix

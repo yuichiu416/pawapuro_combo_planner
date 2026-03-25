@@ -1,13 +1,13 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { expect, it, describe, vi } from 'vitest';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
 import App from '@/App';
 
 describe('Font Scaling System', () => {
   it('updates document root font size when scaling buttons are clicked', () => {
     render(<App />);
 
-    const increaseBtn = screen.getByLabelText(/Increase font size/i);
-    const decreaseBtn = screen.getByLabelText(/Decrease font size/i);
+    const increaseBtn = screen.getByTestId('font-increase-btn');
+    const decreaseBtn = screen.getByTestId('font-decrease-btn');
 
     // Initial check (100% / 1.0)
     expect(document.documentElement.style.fontSize).toBe('100%');
@@ -25,7 +25,7 @@ describe('Font Scaling System', () => {
 
   it('caps scaling between 80% and 150%', () => {
     render(<App />);
-    const increaseBtn = screen.getByLabelText(/Increase font size/i);
+    const increaseBtn = screen.getByTestId('font-increase-btn');
 
     // Click 10 times
     for (let i = 0; i < 10; i++) {

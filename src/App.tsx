@@ -100,7 +100,7 @@ const App: React.FC = () => {
         <aside
           data-testid="desktop-sidebar-container"
           className={cn(
-            'hidden lg:flex relative bg-white border-r border-slate-200 transition-all duration-300 flex-col z-20',
+            'hidden lg:flex relative bg-white border-r border-slate-200 transition-all duration-300 flex-col z-40',
             isSidebarCollapsed ? 'w-20' : 'w-[24rem]',
           )}
         >
@@ -153,7 +153,7 @@ const App: React.FC = () => {
         <main
           data-testid="main-content-area"
           className={cn(
-            'flex-1 overflow-y-auto bg-slate-50 custom-scrollbar transition-all pb-24 lg:pb-10 p-4 md:p-8 lg:p-10',
+            'flex-1 overflow-y-auto bg-slate-50 custom-scrollbar transition-all pb-24 lg:pb-10',
             activeMobileTab === 'planner' ? 'block' : 'hidden lg:block',
           )}
         >
@@ -173,7 +173,7 @@ const App: React.FC = () => {
               onAdjustFont={manager.adjustFont}
             />
 
-            <div className="space-y-12 md:space-y-16">
+            <div className="space-y-12 md:space-y-16 z-0">
               {Object.entries(manager.mapsData).map(([mapName, data]) => {
                 const mapCombos = data.combo_names
                   .map((names: string[]) => names.join('&'))
@@ -234,7 +234,7 @@ const App: React.FC = () => {
         <aside
           data-testid="desktop-analysis-sidebar"
           className={cn(
-            'hidden lg:flex relative bg-white border-l border-slate-200 transition-all duration-300 flex-col z-20',
+            'hidden lg:flex relative bg-white border-l border-slate-200 transition-all duration-300 flex-col z-40',
             isAnalysisCollapsed ? 'w-0 border-l-0' : 'w-[26rem]',
           )}
         >

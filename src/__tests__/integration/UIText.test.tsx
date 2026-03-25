@@ -33,16 +33,16 @@ describe('UI text regression', () => {
       .toBe('ALL');
 
     // Planner Main Content & Header
-    expect(screen.queryByTestId('expand-all-button')).toHaveTextContent('EXPAND ALL');
+    expect(screen.queryByTestId('expand-collapse-toggle-btn')).toHaveTextContent('EXPAND');
 
     // Planner Filters/Controls
     expect
-      .soft(screen.queryByTestId('filter-label-position-icon'))
-      .toHaveTextContent('POSITION ICON');
-    expect(screen.queryByTestId('filter-button-all')).toHaveTextContent('ALL COMBOS');
-    expect(screen.queryByTestId('filter-button-pitcher')).toHaveTextContent('投手金特');
-    expect(screen.queryByTestId('filter-button-fielder')).toHaveTextContent('野手金特');
-    expect(screen.queryByTestId('filter-button-clear')).toHaveTextContent('CLEAR');
+      .soft(screen.queryByTestId('toggle-position-number-icon-btn'))
+      .toHaveTextContent('POS ICON');
+    expect(screen.queryByTestId('owned-or-all-characters-combo-btn')).toHaveTextContent('ALL');
+    expect(screen.queryByTestId('filter-pitcher-btn')).toHaveTextContent('投手金特');
+    expect(screen.queryByTestId('filter-fielder-btn')).toHaveTextContent('野手金特');
+    expect(screen.queryByTestId('filter-clear-btn')).toHaveTextContent('CLEAR');
 
     // Right Side Stats/Sync Section
     expect(screen.queryByTestId('sync-status-btn')).toHaveTextContent('Save Locally');
