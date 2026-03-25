@@ -23,7 +23,7 @@ interface AnalysisProps {
     };
   };
   getImagePath: (name: string, usePosIcon: boolean) => string;
-  testId: string;
+  testId: string; // This should be "desktop-reward-analysis" or "mobile-reward-analysis"
   activeSkillFilter: string | null;
   onToggleSkillFilter: (skillName: string) => void;
 }
@@ -37,13 +37,6 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
 }) => {
   const { stats, skills, missingCharacters, roster } = analysis;
 
-  /**
-   * Sorting Logic:
-   * 1. Gold skills on top
-   * 2. Descending level
-   * 3. Alphabetical name
-   * NOTE: Do not filter here to ensure the right panel list remains stable.
-   */
   const sortedSkills = useMemo(() => {
     return [...skills].sort((a, b) => {
       const typeA = skillsData[a.name]?.type || 'normal';
@@ -65,7 +58,10 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
       data-testid={testId}
     >
       {/* 1. ROSTER STATUS */}
-      <section className="shrink-0 grid grid-cols-4 gap-1.5">
+      <section
+        className="shrink-0 grid grid-cols-4 gap-1.5"
+        data-testid={`${testId}-roster-section`}
+      >
         {[
           {
             label: 'Total',
@@ -109,7 +105,10 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
       </section>
 
       {/* 2. TOTAL STATS */}
-      <section className="shrink-0 p-3 bg-slate-900 rounded-2xl shadow-xl text-white">
+      <section
+        className="shrink-0 p-3 bg-slate-900 rounded-2xl shadow-xl text-white"
+        data-testid={`${testId}-stats-section`}
+      >
         <div className="flex items-center gap-2 mb-2.5" data-testid={`${testId}-stats-bonus-title`}>
           <Zap size={12} className="text-blue-400 fill-blue-400" />
           <span className="text-xs font-black uppercase tracking-[0.15em] text-blue-100/80">
@@ -134,10 +133,10 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
         </div>
       </section>
 
-      {/* 3. EARNED SKILLS - Always show full list */}
+      {/* 3. EARNED SKILLS / COMBO REWARDS */}
       <section
         className="flex-[2] flex flex-col min-h-0 bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden"
-        data-testid={`${testId}-stats-section`}
+        data-testid={`${testId}-combo-reward-section`}
       >
         <div
           className="px-4 py-3 border-b border-slate-50 bg-slate-50/50 flex items-center justify-between shrink-0"
@@ -170,7 +169,6 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
                   'w-full flex justify-between items-center py-2 px-3 rounded-xl border transition-all duration-200 group relative shadow-sm',
                   isGold ? 'bg-amber-50/50 border-amber-100' : 'bg-white border-slate-50',
                   'hover:border-blue-200 hover:bg-blue-50/30 hover:translate-x-1',
-                  // Highlight when selected, but do not hide other skills
                   isActive &&
                     'ring-2 ring-blue-500 border-blue-500 bg-blue-50/80 translate-x-1 z-10 shadow-md',
                 )}
@@ -220,7 +218,10 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
 
       {/* 4. MISSING CHARACTERS */}
       {missingCharacters.length > 0 && (
-        <section className="flex-1 flex flex-col min-h-0 bg-rose-50/20 border border-rose-100 rounded-3xl overflow-hidden">
+        <section
+          className="flex-1 flex flex-col min-h-0 bg-rose-50/20 border border-rose-100 rounded-3xl overflow-hidden"
+          data-testid={`${testId}-missing-characters-section`}
+        >
           <div className="px-4 py-2 bg-rose-50/50 border-b border-rose-100">
             <div className="flex items-center gap-2">
               <AlertCircle size={14} className="text-rose-500" />

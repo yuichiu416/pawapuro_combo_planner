@@ -1,30 +1,29 @@
 // src/__tests__/components/ComboCard.test.tsx
-
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ComboCard } from '@/components/ComboCard';
 
-// 1. Import fixtures correctly using vi.hoisted
-const { mockData } = await vi.hoisted(async () => {
-  const { mockData } = await import('../fixtures');
-  return { mockData };
-});
-
-// 2. Mock the skills database
+// Mock the skills database for consistent testing
 vi.mock('@/data/skills.json', () => ({
-  default: mockData.skills,
+  default: {
+    パワーヒッター: { description: 'Increases power significantly', type: 'gold' },
+    広角打法: { description: 'Better contact hitting', type: 'normal' },
+    Contact: { description: 'Better contact hitting', type: 'normal' },
+  },
 }));
 
-describe('ComboCard Rewards Display & Search Highlighting', () => {
+describe('ComboCard: Comprehensive Logic & UI Tests', () => {
   const mockProps = {
-    names: ['金丸信二', 'ダイジョーブ博士'], // One short, one long
+    names: ['金丸信二', 'ダイジョーブ博士'], // One short (4), one long (8)
     isSelected: false,
     onToggleCombo: vi.fn(),
     ownedChars: new Set<string>(['金丸信二']),
     toggleCharacter: vi.fn(),
     onAddCharacters: vi.fn(),
+    setSelectedPreview: vi.fn(), // New Preview Architecture
     getImagePath: (name: string) => `test-path-${name}.png`,
     showPositionIcon: true,
+    searchTerm: '',
     rewards: {
       skills: [
         { name: 'パワーヒッター', level: 3, verified: true },
@@ -38,7 +37,7 @@ describe('ComboCard Rewards Display & Search Highlighting', () => {
     vi.clearAllMocks();
   });
 
-  // --- TYPOGRAPHY & JAPANESE WRAPPING ---
+  // --- 1. TYPOGRAPHY & JAPANESE WRAPPING (Restored) ---
   it('applies strict Japanese line breaking and anywhere wrapping to names', () => {
     render(<ComboCard {...mockProps} />);
     const longName = screen.getByText('ダイジョーブ博士');
@@ -54,32 +53,43 @@ describe('ComboCard Rewards Display & Search Highlighting', () => {
     // Short name (< 8) -> text-base
     expect(screen.getByText('金丸信二')).toHaveClass('text-base');
 
-    // Long name (> 8) -> text-sm
+    // Long name (>= 8) -> text-sm
     expect(screen.getByText('ダイジョーブ博士')).toHaveClass('text-sm');
   });
 
-  // --- CORE DISPLAY TESTS ---
-  it('should display the skill name and correctly formatted level via test ID', () => {
+  // --- 2. CORE DISPLAY & OWNERSHIP ---
+  it('renders character names and ownership state correctly', () => {
+    render(<ComboCard {...mockProps} />);
+
+    // Emerald for owned
+    expect(screen.getByText('金丸信二')).toHaveClass('text-emerald-700');
+    // Slate for unowned
+    expect(screen.getByText('ダイジョーブ博士')).toHaveClass('text-slate-900');
+  });
+
+  it('should display the skill name, level, and verified badge', () => {
     render(<ComboCard {...mockProps} />);
 
     const skillBadge = screen.getByTestId('skill-badge-パワーヒッター');
     expect(skillBadge).toHaveTextContent('パワーヒッター');
     expect(skillBadge).toHaveTextContent('Lv3');
+
+    // Check for Gold styling based on mock
+    expect(skillBadge).toHaveClass('bg-amber-100');
   });
 
-  it('should display the skill description without truncation', () => {
+  it('should display the skill description without truncation (Restored)', () => {
     render(<ComboCard {...mockProps} />);
 
     const skillRow = screen.getByTestId('skill-row-パワーヒッター');
     const description = skillRow.querySelector('p');
 
-    // We removed 'truncate' today to allow text to wrap
     expect(description).not.toHaveClass('truncate');
     expect(description).toHaveClass('break-words');
     expect(description).toHaveClass('leading-tight');
   });
 
-  // --- SEARCH HIGHLIGHT TESTS ---
+  // --- 3. SEARCH HIGHLIGHT TESTS ---
   it('applies red highlight classes when a skill name matches searchTerm', () => {
     render(<ComboCard {...mockProps} searchTerm="パワー" />);
 
@@ -93,48 +103,60 @@ describe('ComboCard Rewards Display & Search Highlighting', () => {
     expect(description).toHaveClass('text-red-900');
   });
 
-  // --- LAYOUT & UI CONSISTENCY ---
-  it('renders characters in a centered vertical column on desktop', () => {
+  // --- 4. INTERACTION & PREVIEW LOGIC ---
+  it('calls onToggleCombo when the card body is clicked', () => {
     render(<ComboCard {...mockProps} />);
-    const characterSection = screen.getByTestId('character-section');
+    const comboId = mockProps.names.join('&');
+    const card = screen.getByTestId(`combo-card-${comboId}`);
 
-    // Ensure the section is centered as requested
-    expect(characterSection).toHaveClass('flex-col');
-    expect(characterSection).toHaveClass('items-center');
-    expect(characterSection).toHaveClass('lg:w-[220px]');
+    fireEvent.click(card);
+    expect(mockProps.onToggleCombo).toHaveBeenCalled();
   });
 
-  it('removes the checkbox icon but keeps selection styling', () => {
-    const { container } = render(<ComboCard {...mockProps} isSelected={true} />);
+  it('triggers character preview when clicking the avatar button (Updated)', () => {
+    render(<ComboCard {...mockProps} />);
+    const avatar = screen.getByAltText('金丸信二').closest('button');
 
-    // Check for border and ring
-    const card = container.firstChild as HTMLElement;
-    expect(card).toHaveClass('border-blue-600');
-    expect(card).toHaveClass('ring-1');
+    if (avatar) fireEvent.click(avatar);
 
-    // Ensure Lucide check icon is gone
-    const checkbox = container.querySelector('svg.lucide-check-circle-2');
-    expect(checkbox).not.toBeInTheDocument();
+    // Verified: Now calls Preview, not Toggle
+    expect(mockProps.setSelectedPreview).toHaveBeenCalledWith('金丸信二');
+    expect(mockProps.toggleCharacter).not.toHaveBeenCalled();
   });
 
-  it('renders the add button only when selected and missing characters exist', () => {
+  it('renders the add button and triggers onAddCharacters correctly', () => {
     const { rerender } = render(<ComboCard {...mockProps} isSelected={false} />);
-
     expect(screen.queryByTestId('combo-add-btn')).not.toBeInTheDocument();
 
     rerender(<ComboCard {...mockProps} isSelected={true} />);
     const addButton = screen.getByTestId('combo-add-btn');
 
-    // One char is owned (金丸信二), so "Add 1" (ダイジョーブ博士)
-    expect(addButton).toBeInTheDocument();
+    // Only 1 char is missing (ダイジョーブ博士)
     expect(addButton).toHaveTextContent('Add 1');
+
+    fireEvent.click(addButton);
+    expect(mockProps.onAddCharacters).toHaveBeenCalledWith(['ダイジョーブ博士']);
   });
 
-  it('triggers character toggle when clicking the avatar button', () => {
+  // --- 5. LAYOUT CONSISTENCY ---
+  it('renders characters in a centered vertical column on desktop', () => {
     render(<ComboCard {...mockProps} />);
-    const avatar = screen.getByAltText('金丸信二').closest('button');
+    const characterSection = screen.getByTestId('character-section');
 
-    if (avatar) fireEvent.click(avatar);
-    expect(mockProps.toggleCharacter).toHaveBeenCalledWith('金丸信二');
+    expect(characterSection).toHaveClass('flex-col');
+    expect(characterSection).toHaveClass('items-center');
+    expect(characterSection).toHaveClass('lg:w-[220px]');
+  });
+
+  it('applies selection styling without rendering a checkbox icon', () => {
+    const { container } = render(<ComboCard {...mockProps} isSelected={true} />);
+    const card = container.firstChild as HTMLElement;
+
+    expect(card).toHaveClass('border-blue-600');
+    expect(card).toHaveClass('ring-1');
+
+    // Ensure Lucide check icon is NOT present
+    const checkbox = container.querySelector('svg.lucide-check-circle-2');
+    expect(checkbox).not.toBeInTheDocument();
   });
 });

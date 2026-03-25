@@ -1,10 +1,9 @@
 // src/components/CharacterSidebar.tsx
-
-import { Info, RotateCcw, X } from 'lucide-react';
+import { Info, Plus, RotateCcw, X } from 'lucide-react';
 import type React from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import charactersDataRaw from '@/data/characters.json';
-
+import { cn } from '@/utils/style';
 import { CharacterItem } from './CharacterItem';
 import { FilterBar } from './FilterBar';
 import { RosterGrid } from './RosterGrid';
@@ -37,15 +36,27 @@ interface CharacterSidebarProps {
   ownedChars: Set<string>;
   onToggle: (name: string) => void;
   getImagePath: (name: string, usePos: boolean) => string;
+  selectedPreview: string | null;
+  setSelectedPreview: (val: string | null) => void;
   testId?: string;
 }
 
 export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
-  const { testId = 'character-sidebar' } = props;
+  const { testId = 'character-sidebar', selectedPreview, setSelectedPreview } = props;
   const [isMapExpanded, setIsMapExpanded] = useState(false);
-  const [selectedPreview, setSelectedPreview] = useState<string | null>(null);
-  const [lastRemoved, setLastRemoved] = useState<string | null>(null);
+  const [lastAction, setLastAction] = useState<{ name: string; type: 'add' | 'remove' } | null>(
+    null,
+  );
   const [showUndo, setShowUndo] = useState(false);
+
+  // Sync internal UI state with external prop changes
+  useEffect(() => {
+    if (selectedPreview) {
+      setShowUndo(false);
+    }
+  }, [selectedPreview]);
+
+  const isPreviewOwned = selectedPreview ? props.ownedChars.has(selectedPreview) : false;
 
   const sortChars = (names: string[]) => {
     return [...names].sort((a, b) => {
@@ -67,6 +78,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
       ),
     [],
   );
+
   const rosterSlots = useMemo(() => {
     const sorted = sortChars(Array.from(props.ownedChars));
     return Array(28)
@@ -74,25 +86,28 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
       .map((_, i) => sorted[i] || null);
   }, [props.ownedChars]);
 
-  useEffect(() => {
-    if (showUndo) {
-      const timer = setTimeout(() => setShowUndo(false), 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [showUndo]);
+  const handleSelectPreview = (name: string | null) => {
+    setSelectedPreview(name);
+  };
 
-  const handleConfirmRemove = (name: string) => {
+  const handleConfirmAction = (name: string, type: 'add' | 'remove') => {
     props.onToggle(name);
-    setLastRemoved(name);
+    setLastAction({ name, type });
     setShowUndo(true);
     setSelectedPreview(null);
+  };
+
+  const handleUndo = () => {
+    if (lastAction) {
+      props.onToggle(lastAction.name);
+      setShowUndo(false);
+      setLastAction(null);
+    }
   };
 
   return (
     <aside
       className="w-full bg-slate-50 border-r border-slate-200 flex flex-col h-full overflow-hidden relative"
-      role="complementary"
-      aria-label={testId}
       data-testid={testId}
     >
       <div className="shrink-0 bg-white border-b border-slate-200 shadow-sm p-3 space-y-2.5">
@@ -100,18 +115,26 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
           ownedChars={props.ownedChars}
           rosterSlots={rosterSlots}
           selectedPreview={selectedPreview}
-          setSelectedPreview={setSelectedPreview}
+          setSelectedPreview={handleSelectPreview}
           getImagePath={props.getImagePath}
           testId={testId}
         />
 
-        {selectedPreview && !showUndo && (
+        {selectedPreview && (
           <div
             data-testid={`${testId}-roster-preview-box`}
-            className="bg-blue-50 border border-blue-200 rounded-lg p-2.5 flex items-center justify-between animate-in zoom-in-95 duration-150"
+            className={cn(
+              'border rounded-lg p-2.5 flex items-center justify-between animate-in zoom-in-95 duration-150',
+              isPreviewOwned ? 'bg-blue-50 border-blue-200' : 'bg-emerald-50 border-emerald-200',
+            )}
           >
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded border border-blue-300 bg-white overflow-hidden">
+              <div
+                className={cn(
+                  'w-10 h-10 rounded border overflow-hidden bg-white',
+                  isPreviewOwned ? 'border-blue-300' : 'border-emerald-300',
+                )}
+              >
                 <img
                   src={props.getImagePath(selectedPreview, true)}
                   className="w-full h-full object-cover"
@@ -119,48 +142,79 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                 />
               </div>
               <div>
-                <p className="text-xs font-black text-blue-900 leading-none">{selectedPreview}</p>
-                <p className="text-xs font-bold text-blue-600 uppercase mt-0.5">
+                <p
+                  className={cn(
+                    'text-xs font-black leading-none',
+                    isPreviewOwned ? 'text-blue-900' : 'text-emerald-900',
+                  )}
+                >
+                  {selectedPreview}
+                </p>
+                <p
+                  className={cn(
+                    'text-xs font-bold uppercase mt-0.5',
+                    isPreviewOwned ? 'text-blue-600' : 'text-emerald-600',
+                  )}
+                >
                   {CHAR_DATA[selectedPreview]?.position || 'Manager'}
                 </p>
               </div>
             </div>
-            <button
-              data-testid={`${testId}-remove-btn-${selectedPreview}`}
-              onClick={() => handleConfirmRemove(selectedPreview)}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-md text-xs font-black transition-colors"
-            >
-              <X size={12} strokeWidth={3} /> REMOVE
-            </button>
+
+            <div className="flex items-center gap-2">
+              {isPreviewOwned ? (
+                <button
+                  key="remove-btn"
+                  data-testid={`${testId}-remove-btn-${selectedPreview}`}
+                  onClick={() => handleConfirmAction(selectedPreview, 'remove')}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-md text-xs font-black transition-colors"
+                >
+                  <X size={12} strokeWidth={3} />
+                  REMOVE
+                </button>
+              ) : (
+                <button
+                  key="add-btn"
+                  data-testid={`${testId}-add-btn-${selectedPreview}`}
+                  onClick={() => handleConfirmAction(selectedPreview, 'add')}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md text-xs font-black transition-colors"
+                >
+                  <Plus size={12} strokeWidth={3} />
+                  ADD
+                </button>
+              )}
+              <button
+                onClick={() => setSelectedPreview(null)}
+                className="p-1.5 hover:bg-slate-200 rounded-md transition-colors text-slate-400"
+              >
+                <X size={14} />
+              </button>
+            </div>
           </div>
         )}
 
-        {showUndo && (
+        {showUndo && !selectedPreview && (
           <div
             data-testid={`${testId}-undo-toast`}
-            className="z-[50] animate-in fade-in zoom-in-95 duration-300"
+            className="animate-in fade-in zoom-in-95 duration-300"
           >
             <div className="bg-slate-900/95 backdrop-blur-md text-white rounded-lg shadow-2xl px-3 py-2.5 flex items-center justify-between border border-slate-700/50">
               <div className="flex items-center gap-3 min-w-0">
                 <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0">
-                  <Info size={16} className="text-blue-400" />
+                  <span className="text-blue-400 font-bold">!</span>
                 </div>
                 <div className="flex flex-col min-w-0">
                   <span className="text-xs font-black text-white uppercase tracking-tighter leading-none">
                     Roster Updated
                   </span>
                   <span className="text-xs font-bold tracking-tight truncate">
-                    Removed {lastRemoved}
+                    {lastAction?.type === 'add' ? 'Added' : 'Removed'} {lastAction?.name}
                   </span>
                 </div>
               </div>
               <button
+                onClick={handleUndo}
                 data-testid={`${testId}-undo-button`}
-                aria-label="Undo"
-                onClick={() => {
-                  props.onToggle(lastRemoved!);
-                  setShowUndo(false);
-                }}
                 className="flex items-center gap-1.5 px-3 py-1.5 bg-white text-black hover:bg-blue-50 rounded-md text-xs font-black uppercase shadow-sm ml-2"
               >
                 <RotateCcw size={12} strokeWidth={3} /> Undo
@@ -199,10 +253,10 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                       key={name}
                       name={name}
                       isOwned={props.ownedChars.has(name)}
-                      onToggle={props.onToggle}
+                      onToggle={() => handleSelectPreview(name)}
                       getImagePath={props.getImagePath}
                       data={CHAR_DATA[name]}
-                      testId={testId}
+                      testId={`${testId}-char-${name}`}
                     />
                   ))}
                 </div>

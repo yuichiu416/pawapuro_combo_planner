@@ -1,7 +1,7 @@
 // src/App.tsx
 import { ChevronLeft, ChevronRight, Clock, Loader2, Save, SearchX } from 'lucide-react';
 import type React from 'react';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AuthButton } from '@/components/AuthButton';
 import { CharacterSidebar } from '@/components/CharacterSidebar';
 import { Footer } from '@/components/Footer';
@@ -17,7 +17,11 @@ import { cn } from '@/utils/style';
 
 const BASE_ASSET_PATH = '/assets/icons_split/';
 
-const Logo = ({ isCollapsed }: { isCollapsed: boolean }) => (
+interface LogoProps {
+  isCollapsed: boolean;
+}
+
+const Logo: React.FC<LogoProps> = ({ isCollapsed }) => (
   <div
     className={cn(
       'flex items-center pt-4 pb-2 shrink-0 transition-all duration-300',
@@ -55,7 +59,17 @@ const App: React.FC = () => {
     'planner',
   );
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [selectedPreview, setSelectedPreview] = useState<string | null>(null);
 
+  /**
+   * Wrapper function to synchronize character selection/preview
+   * across different sections (Map, Reward Analysis, Sidebar).
+   */
+  const handleSetSelectedPreview = useCallback((name: string | null) => {
+    setSelectedPreview(name);
+  }, []);
+
+  // Auth session management
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => setIsLoggedIn(!!session));
     const {
@@ -64,27 +78,37 @@ const App: React.FC = () => {
     return () => subscription.unsubscribe();
   }, []);
 
+  /**
+   * Resolves the correct image path based on character name and position icon setting.
+   */
   const getImagePath = (name: string, usePosIcon: boolean) => {
-    const charEntry = manager.characterMapping.idToName?.by_name[name];
+    const mapping = manager.characterMapping?.idToName?.by_name;
+    const charEntry = mapping ? (mapping as any)[name] : null;
     let img = charEntry?.img_standard || 'placeholder.png';
     if (usePosIcon && img !== 'placeholder.png') img = img.replace('.png', '_pos.png');
     return `${BASE_ASSET_PATH}${img}`;
   };
 
+  /**
+   * Filters the character library based on search term, position, and map filters.
+   */
   const filteredLibrary = useMemo(() => {
-    if (!manager.libraryGroups?.withCombo) return { withCombo: [], noCombo: [] };
+    if (!manager.libraryGroups) return { withCombo: [], noCombo: [] };
     const filterFn = (name: string) => {
       const charData = (characters as any)[name];
-      return (
-        (!posFilter || charData?.position === posFilter) &&
-        (!mapFilter || charData?.encounter_map === mapFilter)
-      );
+      const matchesSearch =
+        !manager.searchTerm ||
+        name.toLowerCase().includes(manager.searchTerm.toLowerCase()) ||
+        charData?.position?.toLowerCase().includes(manager.searchTerm.toLowerCase());
+      const matchesPos = !posFilter || charData?.position === posFilter;
+      const matchesMap = !mapFilter || charData?.encounter_map === mapFilter;
+      return matchesSearch && matchesPos && matchesMap;
     };
     return {
-      withCombo: manager.libraryGroups.withCombo.filter(filterFn),
-      noCombo: manager.libraryGroups.noCombo.filter(filterFn),
+      withCombo: (manager.libraryGroups.withCombo || []).filter(filterFn),
+      noCombo: (manager.libraryGroups.noCombo || []).filter(filterFn),
     };
-  }, [manager.libraryGroups, posFilter, mapFilter]);
+  }, [manager.libraryGroups, manager.searchTerm, posFilter, mapFilter]);
 
   const allMapNames = useMemo(() => Object.keys(manager.mapsData), [manager.mapsData]);
   const allExpanded = expandedMaps.size === allMapNames.length && allMapNames.length > 0;
@@ -96,7 +120,7 @@ const App: React.FC = () => {
       data-testid="app-container"
     >
       <div className="flex flex-1 overflow-hidden relative">
-        {/* LEFT SIDEBAR (Desktop) */}
+        {/* Desktop Sidebar: Character Roster & Library */}
         <aside
           data-testid="desktop-sidebar-container"
           className={cn(
@@ -112,9 +136,16 @@ const App: React.FC = () => {
           >
             {isSidebarCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
           </button>
-          {!isSidebarCollapsed && (
+          <div
+            className={cn(
+              'flex-1 overflow-hidden transition-opacity duration-200',
+              isSidebarCollapsed ? 'opacity-0 invisible h-0' : 'opacity-100 visible h-full',
+            )}
+          >
             <CharacterSidebar
               {...manager}
+              selectedPreview={selectedPreview}
+              setSelectedPreview={handleSetSelectedPreview}
               posFilter={posFilter}
               setPosFilter={setPosFilter}
               mapFilter={mapFilter}
@@ -124,10 +155,10 @@ const App: React.FC = () => {
               getImagePath={getImagePath}
               testId="desktop-character-sidebar"
             />
-          )}
+          </div>
         </aside>
 
-        {/* MOBILE DRAWER: Roster */}
+        {/* Mobile Left Drawer: Roster access on smaller screens */}
         <MobileDrawer
           isOpen={activeMobileTab === 'roster'}
           onClose={() => setActiveMobileTab('planner')}
@@ -138,6 +169,8 @@ const App: React.FC = () => {
         >
           <CharacterSidebar
             {...manager}
+            selectedPreview={selectedPreview}
+            setSelectedPreview={handleSetSelectedPreview}
             posFilter={posFilter}
             setPosFilter={setPosFilter}
             mapFilter={mapFilter}
@@ -149,7 +182,7 @@ const App: React.FC = () => {
           />
         </MobileDrawer>
 
-        {/* MAIN CONTENT */}
+        {/* Main Content: Map Sections and Combo Planner */}
         <main
           data-testid="main-content-area"
           className={cn(
@@ -157,7 +190,7 @@ const App: React.FC = () => {
             activeMobileTab === 'planner' ? 'block' : 'hidden lg:block',
           )}
         >
-          <div className="max-w-7xl mx-auto space-y-8 md:space-y-12">
+          <div className="max-w-7xl mx-auto space-y-8 md:space-y-12 p-4 md:p-8">
             <Header
               {...manager}
               showPositionIcon={showPositionIcon}
@@ -173,9 +206,9 @@ const App: React.FC = () => {
               onAdjustFont={manager.adjustFont}
             />
 
-            <div className="space-y-12 md:space-y-16 z-0">
+            <div className="space-y-12 md:space-y-16">
               {Object.entries(manager.mapsData).map(([mapName, data]) => {
-                const mapCombos = data.combo_names
+                const mapCombos = ((data as any).combo_names || [])
                   .map((names: string[]) => names.join('&'))
                   .filter((id: string) => manager.filteredComboIds.includes(id));
 
@@ -192,6 +225,7 @@ const App: React.FC = () => {
                     toggleCombo={manager.toggleCombo}
                     ownedChars={manager.ownedChars}
                     toggleCharacter={manager.toggleCharacter}
+                    onSelectPreview={handleSetSelectedPreview}
                     onAddCharacters={(input) => {
                       const names = typeof input === 'string' ? input.split('&') : input;
                       names.forEach(
@@ -205,7 +239,8 @@ const App: React.FC = () => {
                       expandedMaps.has(mapName) ||
                       mapFilter === mapName ||
                       !!manager.searchTerm ||
-                      !!manager.activeSkillFilter
+                      (manager.activeSkillFilters && manager.activeSkillFilters.length > 0) ||
+                      manager.filterRelatedOnly
                     }
                     onToggle={() =>
                       setExpandedMaps((prev) => {
@@ -230,7 +265,7 @@ const App: React.FC = () => {
           </div>
         </main>
 
-        {/* RIGHT SIDEBAR (Analysis) */}
+        {/* Desktop Right Sidebar: Reward Analysis */}
         <aside
           data-testid="desktop-analysis-sidebar"
           className={cn(
@@ -245,57 +280,51 @@ const App: React.FC = () => {
           >
             {isAnalysisCollapsed ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
           </button>
-          {!isAnalysisCollapsed && (
-            <div className="h-full w-[26rem] flex flex-col">
-              <div className="px-6 py-3 space-y-2 bg-slate-50/50 border-b border-slate-200/50">
-                <div className="flex flex-row items-center gap-3">
-                  <button
-                    data-testid="sync-status-btn"
-                    onClick={manager.handleSave}
-                    disabled={manager.isSyncing}
-                    className={cn(
-                      'flex-1 flex items-center justify-center gap-2 h-11 rounded-xl font-black uppercase text-xs transition-all active:scale-95 disabled:opacity-50 shadow-sm',
-                      isLoggedIn ? 'bg-blue-600 text-white' : 'bg-slate-800 text-white',
-                    )}
-                  >
-                    {manager.isSyncing ? (
-                      <Loader2 className="animate-spin" size={16} />
-                    ) : (
-                      <Save size={16} />
-                    )}
-                    <span>
-                      {manager.isSyncing
-                        ? 'Syncing...'
-                        : isLoggedIn
-                          ? 'Cloud Sync'
-                          : 'Save Locally'}
-                    </span>
-                  </button>
-                  <AuthButton />
-                </div>
-                <div
-                  data-testid="last-saved-timestamp"
+          <div className={cn('h-full w-[26rem] flex flex-col', isAnalysisCollapsed && 'hidden')}>
+            <div className="px-6 py-3 space-y-2 bg-slate-50/50 border-b border-slate-200/50">
+              <div className="flex flex-row items-center gap-3">
+                <button
+                  data-testid="sync-status-btn"
+                  onClick={manager.handleSave}
+                  disabled={manager.isSyncing}
                   className={cn(
-                    'text-xs font-bold text-black text-right uppercase tracking-widest leading-none',
-                    !manager.lastSaved && 'invisible',
+                    'flex-1 flex items-center justify-center gap-2 h-11 rounded-xl font-black uppercase text-xs transition-all active:scale-95 disabled:opacity-50 shadow-sm',
+                    isLoggedIn ? 'bg-blue-600 text-white' : 'bg-slate-800 text-white',
                   )}
                 >
-                  <Clock size={8} className="inline mr-1 -mt-0.5" />
-                  Last saved: {manager.lastSaved || 'Just now'}
-                </div>
+                  {manager.isSyncing ? (
+                    <Loader2 className="animate-spin" size={16} />
+                  ) : (
+                    <Save size={16} />
+                  )}
+                  <span>
+                    {manager.isSyncing ? 'Syncing...' : isLoggedIn ? 'Cloud Sync' : 'Save Locally'}
+                  </span>
+                </button>
+                <AuthButton />
               </div>
-              <div className="flex-1 overflow-y-auto custom-scrollbar">
-                <RewardAnalysis
-                  {...manager}
-                  getImagePath={getImagePath}
-                  testId="desktop-reward-analysis"
-                />
+              <div
+                data-testid="last-saved-timestamp"
+                className={cn(
+                  'text-xs font-bold text-black text-right uppercase tracking-widest leading-none',
+                  !manager.lastSaved && 'invisible',
+                )}
+              >
+                <Clock size={8} className="inline mr-1 -mt-0.5" />
+                Last saved: {manager.lastSaved || 'Just now'}
               </div>
             </div>
-          )}
+            <div className="flex-1 overflow-y-auto custom-scrollbar">
+              <RewardAnalysis
+                {...manager}
+                getImagePath={getImagePath}
+                testId="desktop-reward-analysis"
+              />
+            </div>
+          </div>
         </aside>
 
-        {/* MOBILE DRAWER: Analysis */}
+        {/* Mobile Right Drawer: Analysis access on smaller screens */}
         <MobileDrawer
           isOpen={activeMobileTab === 'analysis'}
           onClose={() => setActiveMobileTab('planner')}

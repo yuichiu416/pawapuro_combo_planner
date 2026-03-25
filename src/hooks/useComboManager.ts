@@ -32,7 +32,6 @@ export const useComboManager = () => {
   const [filterNoKanji, setFilterNoKanji] = useState(false);
   const [goldFilter, setGoldFilter] = useState<FilterType>(null);
   const [typeFilter, setTypeFilter] = useState<FilterType>(null);
-  // Updated to array for multiple selection (A or B)
   const [activeSkillFilters, setActiveSkillFilters] = useState<string[]>([]);
 
   // --- State: System ---
@@ -49,9 +48,9 @@ export const useComboManager = () => {
   useEffect(() => {
     const hydrate = async () => {
       try {
-        const {
-          data: { session },
-        } = await supabase.auth.getSession();
+        const sessionResponse = await supabase.auth.getSession();
+        const session = sessionResponse?.data?.session;
+
         let loadedChars: string[] = [];
         let loadedCombos: string[] = [];
 
@@ -72,9 +71,13 @@ export const useComboManager = () => {
         } else {
           const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
           if (saved) {
-            const parsed = JSON.parse(saved);
-            loadedChars = parsed.characters || [];
-            loadedCombos = parsed.combos || [];
+            try {
+              const parsed = JSON.parse(saved);
+              loadedChars = parsed?.characters || [];
+              loadedCombos = parsed?.combos || [];
+            } catch (parseError) {
+              console.warn('Failed to parse local storage, using defaults');
+            }
           }
         }
         setSelectedNames(new Set([...FIXED_MEMBERS, ...loadedChars]));
@@ -94,9 +97,9 @@ export const useComboManager = () => {
     const now = new Date().toISOString();
 
     try {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+      const sessionResponse = await supabase.auth.getSession();
+      const session = sessionResponse?.data?.session;
+
       if (session?.user) {
         await supabase.from('user_saves').upsert({
           user_id: session.user.id,
@@ -146,7 +149,6 @@ export const useComboManager = () => {
   const toggleGoldFilter = useCallback((type: FilterType) => {
     setGoldFilter((p) => {
       const next = p === type ? null : type;
-      // Clear specific skill filters when changing major categories
       setActiveSkillFilters([]);
       return next;
     });
@@ -195,7 +197,6 @@ export const useComboManager = () => {
           !typeFilter ||
           combo.rewards?.skills?.some((s) => skillsData[s.name]?.category === typeFilter);
 
-        // OR logic: passes if combo has ANY of the selected skills
         const passesSkill =
           activeSkillFilters.length === 0 ||
           combo.rewards?.skills?.some((s) => activeSkillFilters.includes(s.name));

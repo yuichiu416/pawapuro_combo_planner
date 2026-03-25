@@ -15,3 +15,15 @@ afterEach(() => {
 
 // Mock window.scrollTo since JSDOM doesn't implement it
 window.scrollTo = vi.fn();
+
+// import { configure } from '@testing-library/react';
+
+// configure({
+//   getElementError: (message) => {
+//     const error = new Error(message);
+//     error.name = 'TestingLibraryElementError';
+//     // By returning an error without the second 'container' argument,
+//     // RTL won't append the DOM tree.
+//     return error;
+//   },
+// });

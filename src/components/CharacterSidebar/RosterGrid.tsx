@@ -21,7 +21,7 @@ export const RosterGrid: React.FC<RosterGridProps> = ({
 }) => (
   <div
     className="space-y-1.5 bg-slate-900 p-3 rounded-xl shadow-inner border border-slate-800"
-    data-testid="active-roster"
+    data-testid={`${testId}-active-roster`} // Updated to use parent testId for consistency
   >
     <div className="flex justify-between items-center px-1">
       <span className="text-xs font-black text-white uppercase tracking-widest">Active Roster</span>
@@ -36,11 +36,15 @@ export const RosterGrid: React.FC<RosterGridProps> = ({
       </span>
     </div>
 
-    <div className="grid grid-cols-7 gap-1">
+    <div className="grid grid-cols-7 gap-1" data-testid={`${testId}-roster-grid`}>
       {rosterSlots.map((charName, i) => (
         <button
-          data-testid={`${testId}-roster-${charName || `slot-empty-${i}`}`}
+          // Ensure empty slots have a predictable ID for testing empty states
+          data-testid={
+            charName ? `${testId}-roster-item-${charName}` : `${testId}-roster-slot-empty-${i}`
+          }
           key={charName ? `slot-${charName}` : `empty-${i}`}
+          // Keep disabled to prevent interaction with empty slots
           disabled={!charName}
           onClick={() =>
             charName && setSelectedPreview(charName === selectedPreview ? null : charName)

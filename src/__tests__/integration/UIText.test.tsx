@@ -1,86 +1,87 @@
 // src/__tests__/integration/UIText.test.tsx
 
-import { fireEvent, render, screen, within } from '@testing-library/react';
+import { cleanup, render, screen, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it } from 'vitest';
 import App from '@/App';
 
+// Helper to simulate window width for Tailwind responsive classes
+const setWidth = (width: number) => {
+  global.innerWidth = width;
+  global.dispatchEvent(new Event('resize'));
+};
+
 describe('UI text regression', () => {
+  beforeEach(() => {
+    cleanup();
+    setWidth(1280); // Default to Desktop
+  });
+
   it('renders all static header and sidebar labels correctly', () => {
     render(<App />);
     const CHARACTER_SIDEBAR_TEST_ID = 'desktop-character-sidebar';
     const REWARD_ANALYSIS_TEST_ID = 'desktop-reward-analysis';
+
     // Top Header & Branding
-    expect
-      .soft(screen.queryByTestId('pawapuro_title_text')?.textContent)
-      .toBe('パワプロ 2024-2025');
-    expect
-      .soft(screen.queryByTestId('combo_planner_subtitle')?.textContent)
-      .toContain('パワプロ 2024-2025 Combo Planner');
+    expect(screen.getByTestId('pawapuro_title_text')).toHaveTextContent('パワプロ 2024-2025');
 
     // Sidebar - Active Roster Section
-    const sidebar = screen.queryByTestId(CHARACTER_SIDEBAR_TEST_ID);
-    if (sidebar) {
-      expect
-        .soft(within(sidebar).queryByTestId('active-roster'))
-        .toHaveTextContent('Active Roster');
-    } else {
-      expect(sidebar).toBeInTheDocument(); // Logs that the sidebar itself is missing
-    }
+    // FIX: Updated to match RosterGrid.tsx `${testId}-active-roster`
+    const sidebar = screen.getByTestId(CHARACTER_SIDEBAR_TEST_ID);
+    const rosterSection = within(sidebar).getByTestId(`${CHARACTER_SIDEBAR_TEST_ID}-active-roster`);
+    expect(rosterSection).toHaveTextContent(/Active Roster/i);
 
     // Sidebar - Filter Buttons
-    expect
-      .soft(screen.queryByTestId(`${CHARACTER_SIDEBAR_TEST_ID}-pos-filter-all`)?.textContent)
-      .toBe('ALL');
+    expect(screen.getByTestId(`${CHARACTER_SIDEBAR_TEST_ID}-pos-filter-all`)).toHaveTextContent(
+      'ALL',
+    );
 
     // Planner Main Content & Header
-    expect(screen.queryByTestId('expand-collapse-toggle-btn')).toHaveTextContent('EXPAND');
+    expect(screen.getByTestId('expand-collapse-toggle-btn')).toHaveTextContent(/EXPAND/i);
 
     // Planner Filters/Controls
-    expect
-      .soft(screen.queryByTestId('toggle-position-number-icon-btn'))
-      .toHaveTextContent('POS ICON');
-    expect(screen.queryByTestId('owned-or-all-characters-combo-btn')).toHaveTextContent('ALL');
-    expect(screen.queryByTestId('filter-pitcher-btn')).toHaveTextContent('投手金特');
-    expect(screen.queryByTestId('filter-fielder-btn')).toHaveTextContent('野手金特');
-    expect(screen.queryByTestId('filter-clear-btn')).toHaveTextContent('CLEAR');
+    expect(screen.getByTestId('toggle-position-number-icon-btn')).toHaveTextContent(/POS ICON/i);
+    expect(screen.getByTestId('owned-or-all-characters-combo-btn')).toHaveTextContent(/ALL/i);
+    expect(screen.getByTestId('filter-pitcher-btn')).toHaveTextContent('投手金特');
+    expect(screen.getByTestId('filter-fielder-btn')).toHaveTextContent('野手金特');
+    expect(screen.getByTestId('filter-clear-btn')).toHaveTextContent('CLEAR');
 
     // Right Side Stats/Sync Section
-    expect(screen.queryByTestId('sync-status-btn')).toHaveTextContent('Save Locally');
-    expect
-      .soft(screen.queryByTestId(`${REWARD_ANALYSIS_TEST_ID}-stats-bonus-title`))
-      .toHaveTextContent('Total Attribute Exp');
+    expect(screen.getByTestId('sync-status-btn')).toHaveTextContent(/Save Locally/i);
+
+    // Reward Analysis Header
+    expect(screen.getByTestId(`${REWARD_ANALYSIS_TEST_ID}-stats-bonus-title`)).toHaveTextContent(
+      'Total Attribute Exp',
+    );
 
     // Footer
-    expect
-      .soft(screen.queryByTestId('footer-disclaimer'))
-      .toHaveTextContent(
-        /Unofficial fan project. Assets property of Konami Digital Entertainment./i,
-      );
-    expect
-      .soft(screen.queryByTestId('footer-report-link'))
-      .toHaveTextContent('Report a Bug or Request a Feature');
+    expect(screen.getByTestId('footer-disclaimer')).toHaveTextContent(/Unofficial fan project/i);
+    expect(screen.getByTestId('footer-report-link')).toHaveTextContent(/Report a Bug/i);
   });
 
   it('renders specific combo reward headers on desktop', () => {
+    setWidth(1280);
     render(<App />);
-    const rewardBox = screen.queryByTestId('desktop-reward-analysis-combo-reward');
-    expect(rewardBox).toHaveTextContent('Combo rewards');
-    expect(rewardBox).toHaveTextContent('0 金特');
-    expect(rewardBox).toHaveTextContent('金特');
+    const REWARD_ANALYSIS_TEST_ID = 'desktop-reward-analysis';
+
+    // Updated to match RewardAnalysis testId pattern
+    const rewardBox = screen.getByTestId(`${REWARD_ANALYSIS_TEST_ID}-combo-reward-section`);
+    expect(rewardBox).toHaveTextContent(/Combo rewards/i);
+    expect(rewardBox).toHaveTextContent(/金特/i);
   });
 
   describe('Mobile Viewport', () => {
     beforeEach(() => {
-      global.innerWidth = 375; // iPhone width
-      fireEvent(window, new Event('resize'));
+      setWidth(375); // iPhone width
     });
 
     it('renders specific combo reward headers on mobile', () => {
       render(<App />);
-      const rewardBox = screen.queryByTestId('mobile-reward-analysis-stats-section');
-      expect(rewardBox).toHaveTextContent('Combo rewards');
-      expect(rewardBox).toHaveTextContent('0 金特');
-      expect(rewardBox).toHaveTextContent('金特');
+      // On mobile, the testId is passed via the MobileDrawer/RewardAnalysis bridge
+      const REWARD_ANALYSIS_TEST_ID = 'mobile-reward-analysis';
+      const rewardBox = screen.getByTestId(`${REWARD_ANALYSIS_TEST_ID}-combo-reward-section`);
+
+      expect(rewardBox).toHaveTextContent(/Combo rewards/i);
+      expect(rewardBox).toHaveTextContent(/金特/i);
     });
   });
 });

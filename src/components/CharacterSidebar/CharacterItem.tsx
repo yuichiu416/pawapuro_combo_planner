@@ -22,7 +22,7 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({
 }) => {
   return (
     <button
-      data-testid={`${testId}-char-${name}`}
+      data-testid={testId}
       onClick={() => onToggle(name)}
       className={cn(
         'flex items-center gap-3 p-2 rounded-xl transition-all duration-200 group text-left w-full border',
@@ -48,7 +48,6 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({
 
       <div className="min-w-0 flex-1">
         <div className="flex items-center justify-between gap-2">
-          {/* Left-aligned text with break-words safety */}
           <p
             className={cn(
               'text-sm font-black tracking-tighter leading-tight flex-1 break-words text-left',

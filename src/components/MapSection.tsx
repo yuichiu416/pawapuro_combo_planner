@@ -1,5 +1,4 @@
 // src/components/MapSection.tsx
-
 import { ChevronDown, MapPin } from 'lucide-react';
 import type React from 'react';
 import { ComboCard } from '@/components/ComboCard';
@@ -19,6 +18,7 @@ interface MapSectionProps {
   showPositionIcon: boolean;
   isExpanded: boolean;
   onToggle: () => void;
+  onSelectPreview: (name: string | null) => void;
   progress?: { selected: number; total: number };
 }
 
@@ -29,6 +29,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
   toggleCombo,
   isExpanded,
   onToggle,
+  onSelectPreview,
   progress,
   ...gridProps
 }) => {
@@ -105,6 +106,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
                 rewards={fullComboData.rewards}
                 isSelected={selectedComboIds.has(comboId)}
                 onToggleCombo={() => toggleCombo(comboId)}
+                setSelectedPreview={onSelectPreview}
                 {...gridProps}
               />
             );

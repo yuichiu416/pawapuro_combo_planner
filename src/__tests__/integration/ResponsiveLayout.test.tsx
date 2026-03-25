@@ -14,7 +14,7 @@ describe('Responsive Layout & Tab Regression', () => {
     render(<App />);
 
     // 1. Initial State: Planner is visible, Library is hidden
-    const mobileSidebar = screen.getByLabelText('mobile-character-sidebar');
+    const mobileSidebar = screen.getByTestId('mobile-character-sidebar');
     // It should be in the DOM but hidden via CSS (translate-x-full or opacity-0)
     // We check the parent drawer visibility
     const drawerOverlay = mobileSidebar.closest('.fixed');

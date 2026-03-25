@@ -14,6 +14,7 @@ interface ComboCardProps {
   ownedChars: Set<string>;
   toggleCharacter: (name: string) => void;
   onAddCharacters: (names: string[]) => void;
+  setSelectedPreview: (name: string | null) => void;
   getImagePath: (name: string, usePos: boolean) => string;
   showPositionIcon: boolean;
   searchTerm?: string;
@@ -29,6 +30,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
   ownedChars,
   toggleCharacter,
   onAddCharacters,
+  setSelectedPreview,
   getImagePath,
   showPositionIcon,
   searchTerm = '',
@@ -69,9 +71,10 @@ export const ComboCard: React.FC<ComboCardProps> = ({
             return (
               <div key={name} className="flex flex-col items-center gap-1.5">
                 <button
+                  data-testid={`combo-card-${name}`}
                   onClick={(e) => {
                     e.stopPropagation();
-                    toggleCharacter(name);
+                    setSelectedPreview(name);
                   }}
                   className={cn(
                     'w-11 h-11 md:w-13 md:h-13 relative rounded-xl overflow-hidden border-2 transition-all shrink-0',
@@ -91,7 +94,6 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                   className={cn(
                     'font-black leading-[1.2] text-center transition-colors',
                     'max-w-[100px] [overflow-wrap:anywhere] [line-break:strict]',
-                    // FIX: Changed to >= 8 to include "ダイジョーブ博士"
                     name.length >= 8 ? 'text-sm' : 'text-base',
                     isOwned ? 'text-emerald-700' : 'text-slate-900',
                   )}

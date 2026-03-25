@@ -65,7 +65,7 @@ describe('Responsive UI', () => {
     expect(screen.getByTestId('mobile-drawer-title-library')).toBeVisible();
 
     // Updated: Verify sidebar using the aria-label assigned in App.tsx
-    const desktopSidebar = screen.getByRole('complementary', { name: 'desktop-character-sidebar' });
+    const desktopSidebar = screen.getByTestId('desktop-character-sidebar');
     expect(desktopSidebar).toBeInTheDocument();
   });
 });
