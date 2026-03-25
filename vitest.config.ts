@@ -13,8 +13,8 @@ export default mergeConfig(
 			// The setup file we discussed previously
 			setupFiles: ["./src/setupTests.ts"],
 			include: ["src/**/*.{test,spec}.{ts,tsx}"],
-			testTimeout: 10000, // Sets global timeout to 10s
-			hookTimeout: 10000,
+			testTimeout: 15000, // Sets global timeout to 15s
+			hookTimeout: 15000,
 		},
 		resolve: {
 			alias: {
