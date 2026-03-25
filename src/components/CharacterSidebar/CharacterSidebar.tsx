@@ -4,11 +4,10 @@ import { Info, RotateCcw, X } from 'lucide-react';
 import type React from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import charactersDataRaw from '@/data/characters.json';
-import { cn } from '../utils/style';
 
-import { CharacterItem } from './CharacterSidebar/CharacterItem';
-import { FilterBar } from './CharacterSidebar/FilterBar';
-import { RosterGrid } from './CharacterSidebar/RosterGrid';
+import { CharacterItem } from './CharacterItem';
+import { FilterBar } from './FilterBar';
+import { RosterGrid } from './RosterGrid';
 
 const POSITION_ORDER: Record<string, number> = {
   投: 1,

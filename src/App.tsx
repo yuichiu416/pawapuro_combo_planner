@@ -1,16 +1,6 @@
 // src/App.tsx
-import {
-  BarChart3,
-  ChevronLeft,
-  ChevronRight,
-  Clock,
-  List,
-  Loader2,
-  Save,
-  SearchX,
-  Users,
-  X,
-} from 'lucide-react';
+
+import { ChevronLeft, ChevronRight, Clock, Loader2, Save, SearchX } from 'lucide-react';
 import type React from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import { AuthButton } from '@/components/AuthButton';
@@ -18,6 +8,8 @@ import { CharacterSidebar } from '@/components/CharacterSidebar';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { MapSection } from '@/components/MapSection';
+import { MobileDrawer } from '@/components/MobileDrawer';
+import { MobileNavigation } from '@/components/MobileNavigation';
 import { RewardAnalysis } from '@/components/RewardAnalysis';
 import characters from '@/data/characters.json';
 import { useComboManager } from '@/hooks/useComboManager';
@@ -53,36 +45,7 @@ const Logo = ({ isCollapsed }: { isCollapsed: boolean }) => (
 );
 
 const App: React.FC = () => {
-  const {
-    ownedChars,
-    toggleCharacter,
-    selectedComboIds,
-    toggleCombo,
-    toggleAllByType,
-    clearAll,
-    analysis,
-    mapsData,
-    characterMapping,
-    searchTerm,
-    setSearchTerm,
-    filteredComboIds = [],
-    filterRelatedOnly,
-    toggleRelatedFilter,
-    filterNoKanji,
-    toggleKanjiFilter,
-    handleSave,
-    isSyncing,
-    lastSaved,
-    libraryGroups = { withCombo: [], noCombo: [] },
-    fontScale = 1.0,
-    adjustFont,
-    goldFilter,
-    toggleGoldFilter,
-    typeFilter,
-    activeSkillFilter,
-    onToggleSkillFilter,
-  } = useComboManager();
-
+  const manager = useComboManager();
   const [posFilter, setPosFilter] = useState<string | null>(null);
   const [mapFilter, setMapFilter] = useState<string | null>(null);
   const [showPositionIcon, setShowPositionIcon] = useState(true);
@@ -98,29 +61,19 @@ const App: React.FC = () => {
     supabase.auth.getSession().then(({ data: { session } }) => setIsLoggedIn(!!session));
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setIsLoggedIn(!!session);
-    });
+    } = supabase.auth.onAuthStateChange((_event, session) => setIsLoggedIn(!!session));
     return () => subscription.unsubscribe();
   }, []);
 
   const getImagePath = (name: string, usePosIcon: boolean) => {
-    const charEntry = characterMapping.idToName?.by_name[name];
+    const charEntry = manager.characterMapping.idToName?.by_name[name];
     let img = charEntry?.img_standard || 'placeholder.png';
     if (usePosIcon && img !== 'placeholder.png') img = img.replace('.png', '_pos.png');
     return `${BASE_ASSET_PATH}${img}`;
   };
 
-  const handleAddCharacters = (input: string | string[]) => {
-    const names = typeof input === 'string' ? input.split('&') : input;
-    if (!Array.isArray(names)) return;
-    names.forEach((name) => {
-      if (!ownedChars.has(name)) toggleCharacter(name);
-    });
-  };
-
   const filteredLibrary = useMemo(() => {
-    if (!libraryGroups?.withCombo) return { withCombo: [], noCombo: [] };
+    if (!manager.libraryGroups?.withCombo) return { withCombo: [], noCombo: [] };
     const filterFn = (name: string) => {
       const charData = (characters as any)[name];
       return (
@@ -129,24 +82,18 @@ const App: React.FC = () => {
       );
     };
     return {
-      withCombo: libraryGroups.withCombo.filter(filterFn),
-      noCombo: libraryGroups.noCombo.filter(filterFn),
+      withCombo: manager.libraryGroups.withCombo.filter(filterFn),
+      noCombo: manager.libraryGroups.noCombo.filter(filterFn),
     };
-  }, [libraryGroups, posFilter, mapFilter]);
+  }, [manager.libraryGroups, posFilter, mapFilter]);
 
-  const allMapNames = useMemo(() => Object.keys(mapsData), [mapsData]);
+  const allMapNames = useMemo(() => Object.keys(manager.mapsData), [manager.mapsData]);
   const allExpanded = expandedMaps.size === allMapNames.length && allMapNames.length > 0;
-
-  const handleToggleRelated = () => {
-    const nextValue = !filterRelatedOnly;
-    toggleRelatedFilter();
-    if (nextValue) setExpandedMaps(new Set(allMapNames));
-  };
 
   return (
     <div
       className="flex flex-col h-screen bg-slate-100 text-black overflow-hidden font-medium"
-      style={{ fontSize: `${fontScale}rem` }}
+      style={{ fontSize: `${manager.fontScale}rem` }}
       data-testid="app-container"
     >
       <div className="flex flex-1 overflow-hidden relative">
@@ -166,133 +113,98 @@ const App: React.FC = () => {
           >
             {isSidebarCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
           </button>
-          <div
-            className={cn(
-              'h-full w-[24rem] overflow-hidden',
-              isSidebarCollapsed && 'opacity-0 pointer-events-none',
-            )}
-          >
+          {!isSidebarCollapsed && (
             <CharacterSidebar
-              searchTerm={searchTerm}
-              setSearchTerm={setSearchTerm}
+              {...manager}
               posFilter={posFilter}
               setPosFilter={setPosFilter}
               mapFilter={mapFilter}
               setMapFilter={setMapFilter}
-              filterNoKanji={filterNoKanji}
-              toggleKanjiFilter={toggleKanjiFilter}
               groups={filteredLibrary}
-              ownedChars={ownedChars}
-              onToggle={toggleCharacter}
+              onToggle={manager.toggleCharacter}
               getImagePath={getImagePath}
               testId="desktop-character-sidebar"
             />
-          </div>
+          )}
         </aside>
 
         {/* MOBILE DRAWER: Roster */}
-        <div
-          data-testid="mobile-roster-drawer-overlay"
-          className={cn(
-            'lg:hidden fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-sm transition-opacity duration-300',
-            activeMobileTab === 'roster' ? 'opacity-100 visible' : 'opacity-0 invisible',
-          )}
-          onClick={() => setActiveMobileTab('planner')}
+        <MobileDrawer
+          isOpen={activeMobileTab === 'roster'}
+          onClose={() => setActiveMobileTab('planner')}
+          title="Character Library"
+          side="left"
+          testId="mobile-character-sidebar"
+          titleTestId="mobile-drawer-title-library"
         >
-          <div
-            className={cn(
-              'absolute left-0 top-0 h-full w-[85%] max-w-sm bg-white shadow-2xl transition-transform duration-300',
-              activeMobileTab === 'roster' ? 'translate-x-0' : '-translate-x-full',
-            )}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="p-4 border-b flex justify-between items-center">
-              <span
-                data-testid="mobile-drawer-title-library"
-                className="font-black uppercase tracking-tighter"
-              >
-                Character Library
-              </span>
-              <button
-                data-testid="mobile-character-sidebar-close-btn"
-                onClick={() => setActiveMobileTab('planner')}
-                className="p-2 bg-slate-100 rounded-full"
-              >
-                <X size={20} />
-              </button>
-            </div>
-            <CharacterSidebar
-              searchTerm={searchTerm}
-              setSearchTerm={setSearchTerm}
-              posFilter={posFilter}
-              setPosFilter={setPosFilter}
-              mapFilter={mapFilter}
-              setMapFilter={setMapFilter}
-              filterNoKanji={filterNoKanji}
-              toggleKanjiFilter={toggleKanjiFilter}
-              groups={filteredLibrary}
-              ownedChars={ownedChars}
-              onToggle={toggleCharacter}
-              getImagePath={getImagePath}
-              testId="mobile-character-sidebar"
-            />
-          </div>
-        </div>
+          <CharacterSidebar
+            {...manager}
+            posFilter={posFilter}
+            setPosFilter={setPosFilter}
+            mapFilter={mapFilter}
+            setMapFilter={setMapFilter}
+            groups={filteredLibrary}
+            onToggle={manager.toggleCharacter}
+            getImagePath={getImagePath}
+            testId="mobile-character-sidebar"
+          />
+        </MobileDrawer>
 
         {/* MAIN CONTENT */}
         <main
           data-testid="main-content-area"
           className={cn(
-            'flex-1 overflow-y-auto bg-slate-50 custom-scrollbar transition-all pb-24 lg:pb-10',
+            'flex-1 overflow-y-auto bg-slate-50 custom-scrollbar transition-all pb-24 lg:pb-10 p-4 md:p-8 lg:p-10',
             activeMobileTab === 'planner' ? 'block' : 'hidden lg:block',
-            'p-4 md:p-8 lg:p-10',
           )}
         >
           <div className="max-w-7xl mx-auto space-y-8 md:space-y-12">
             <Header
+              {...manager}
               showPositionIcon={showPositionIcon}
               setShowPositionIcon={setShowPositionIcon}
-              filterRelatedOnly={filterRelatedOnly}
-              toggleRelatedFilter={handleToggleRelated}
-              toggleAllByType={toggleAllByType}
-              clearAll={clearAll}
+              toggleRelatedFilter={() => {
+                manager.toggleRelatedFilter();
+                if (!manager.filterRelatedOnly) setExpandedMaps(new Set(allMapNames));
+              }}
               onExpandAll={() => setExpandedMaps(new Set(allMapNames))}
               onCollapseAll={() => setExpandedMaps(new Set())}
               allExpanded={allExpanded}
-              fontScale={fontScale}
-              onAdjustFont={adjustFont}
               isLoggedIn={isLoggedIn}
-              isSyncing={isSyncing}
-              handleSave={handleSave}
-              goldFilter={goldFilter}
-              toggleGoldFilter={toggleGoldFilter}
-              typeFilter={typeFilter}
+              onAdjustFont={manager.adjustFont}
             />
 
             <div className="space-y-12 md:space-y-16">
-              {Object.entries(mapsData).map(([mapName, data]) => {
+              {Object.entries(manager.mapsData).map(([mapName, data]) => {
                 const mapCombos = data.combo_names
                   .map((names: string[]) => names.join('&'))
-                  .filter((id: string) => filteredComboIds.includes(id));
-                if (filterRelatedOnly && mapCombos.length === 0) return null;
+                  .filter((id: string) => manager.filteredComboIds.includes(id));
+
+                if (manager.filterRelatedOnly && mapCombos.length === 0) return null;
                 if (mapFilter && mapName !== mapFilter) return null;
 
                 return (
                   <MapSection
                     key={mapName}
-                    data-testid={`map-section-${mapName}`}
                     mapName={mapName}
                     combos={mapCombos}
-                    searchTerm={searchTerm}
-                    selectedComboIds={selectedComboIds}
-                    toggleCombo={toggleCombo}
-                    ownedChars={ownedChars}
-                    toggleCharacter={toggleCharacter}
-                    onAddCharacters={handleAddCharacters}
+                    searchTerm={manager.searchTerm}
+                    selectedComboIds={manager.selectedComboIds}
+                    toggleCombo={manager.toggleCombo}
+                    ownedChars={manager.ownedChars}
+                    toggleCharacter={manager.toggleCharacter}
+                    onAddCharacters={(input) => {
+                      const names = typeof input === 'string' ? input.split('&') : input;
+                      names.forEach(
+                        (n) => !manager.ownedChars.has(n) && manager.toggleCharacter(n),
+                      );
+                    }}
                     getImagePath={getImagePath}
                     showPositionIcon={showPositionIcon}
-                    progress={analysis?.mapCompletion?.[mapName]}
-                    isExpanded={expandedMaps.has(mapName) || mapFilter === mapName || !!searchTerm}
+                    progress={manager.analysis?.mapCompletion?.[mapName]}
+                    isExpanded={
+                      expandedMaps.has(mapName) || mapFilter === mapName || !!manager.searchTerm
+                    }
                     onToggle={() =>
                       setExpandedMaps((prev) => {
                         const n = new Set(prev);
@@ -303,16 +215,13 @@ const App: React.FC = () => {
                   />
                 );
               })}
-              {filterRelatedOnly && filteredComboIds.length === 0 && (
+              {manager.filterRelatedOnly && manager.filteredComboIds.length === 0 && (
                 <div
                   data-testid="no-results-placeholder"
                   className="flex flex-col items-center justify-center py-20 bg-white/50 rounded-3xl border-2 border-dashed border-slate-200 px-6 text-center"
                 >
                   <SearchX size={32} className="text-black mb-4" />
                   <h3 className="text-xl font-black uppercase text-black">No related combos</h3>
-                  <p className="text-sm font-bold text-black/80 uppercase mt-1">
-                    Try selecting more characters
-                  </p>
                 </div>
               )}
             </div>
@@ -340,45 +249,44 @@ const App: React.FC = () => {
                 <div className="flex flex-row items-center gap-3">
                   <button
                     data-testid="sync-status-btn"
-                    onClick={handleSave}
-                    disabled={isSyncing}
+                    onClick={manager.handleSave}
+                    disabled={manager.isSyncing}
                     className={cn(
-                      'flex-1 flex items-center justify-center gap-2 h-11 rounded-xl font-black uppercase text-xs tracking-wider transition-all active:scale-95 disabled:opacity-50 shadow-sm',
-                      isLoggedIn
-                        ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-100'
-                        : 'bg-slate-800 text-white hover:bg-slate-900',
+                      'flex-1 flex items-center justify-center gap-2 h-11 rounded-xl font-black uppercase text-xs transition-all active:scale-95 disabled:opacity-50 shadow-sm',
+                      isLoggedIn ? 'bg-blue-600 text-white' : 'bg-slate-800 text-white',
                     )}
                   >
-                    {isSyncing ? (
+                    {manager.isSyncing ? (
                       <Loader2 className="animate-spin" size={16} />
                     ) : (
                       <Save size={16} />
                     )}
-                    <span className="truncate">
-                      {isSyncing ? 'Syncing...' : isLoggedIn ? 'Cloud Sync' : 'Save Locally'}
+                    <span>
+                      {manager.isSyncing
+                        ? 'Syncing...'
+                        : isLoggedIn
+                          ? 'Cloud Sync'
+                          : 'Save Locally'}
                     </span>
                   </button>
                   <AuthButton />
                 </div>
-
                 <div
                   data-testid="last-saved-timestamp"
                   className={cn(
                     'text-xs font-bold text-black text-right uppercase tracking-widest leading-none',
-                    !lastSaved && 'invisible',
+                    !manager.lastSaved && 'invisible',
                   )}
                 >
                   <Clock size={8} className="inline mr-1 -mt-0.5" />
-                  Last saved: {lastSaved || 'Just now'}
+                  Last saved: {manager.lastSaved || 'Just now'}
                 </div>
               </div>
               <div className="flex-1 overflow-y-auto custom-scrollbar">
                 <RewardAnalysis
-                  analysis={analysis}
+                  {...manager}
                   getImagePath={getImagePath}
                   testId="desktop-reward-analysis"
-                  activeSkillFilter={activeSkillFilter}
-                  onToggleSkillFilter={onToggleSkillFilter}
                 />
               </div>
             </div>
@@ -386,68 +294,21 @@ const App: React.FC = () => {
         </aside>
 
         {/* MOBILE DRAWER: Analysis */}
-        <div
-          data-testid="mobile-analysis-drawer-overlay"
-          className={cn(
-            'lg:hidden fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-sm transition-opacity duration-300',
-            activeMobileTab === 'analysis' ? 'opacity-100 visible' : 'opacity-0 invisible',
-          )}
-          onClick={() => setActiveMobileTab('planner')}
+        <MobileDrawer
+          isOpen={activeMobileTab === 'analysis'}
+          onClose={() => setActiveMobileTab('planner')}
+          title="Reward Analysis"
+          side="right"
+          testId="mobile-analysis"
         >
-          <div
-            className={cn(
-              'absolute right-0 top-0 h-full w-[90%] max-w-sm bg-white shadow-2xl transition-transform duration-300 flex flex-col',
-              activeMobileTab === 'analysis' ? 'translate-x-0' : 'translate-x-full',
-            )}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="p-4 border-b flex justify-between items-center shrink-0">
-              <span className="font-black uppercase tracking-tighter text-lg">Reward Analysis</span>
-              <button
-                data-testid="mobile-analysis-close-btn"
-                onClick={() => setActiveMobileTab('planner')}
-                className="p-2 bg-slate-100 rounded-full"
-              >
-                <X size={20} />
-              </button>
-            </div>
+          <RewardAnalysis
+            {...manager}
+            getImagePath={getImagePath}
+            testId="mobile-reward-analysis"
+          />
+        </MobileDrawer>
 
-            <div className="flex-1 overflow-y-auto pb-32">
-              <RewardAnalysis
-                analysis={analysis}
-                getImagePath={getImagePath}
-                testId="mobile-reward-analysis"
-                activeSkillFilter={activeSkillFilter}
-                onToggleSkillFilter={onToggleSkillFilter}
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* MOBILE NAVIGATION */}
-        <nav
-          data-testid="mobile-navbar"
-          className="lg:hidden fixed bottom-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-md border-t border-slate-200 z-[90] flex items-center justify-around px-6 pb-2"
-        >
-          <MobileNavBtn
-            active={activeMobileTab === 'roster'}
-            onClick={() => setActiveMobileTab('roster')}
-            icon={<Users size={22} />}
-            label="Library"
-          />
-          <MobileNavBtn
-            active={activeMobileTab === 'planner'}
-            onClick={() => setActiveMobileTab('planner')}
-            icon={<List size={22} />}
-            label="Planner"
-          />
-          <MobileNavBtn
-            active={activeMobileTab === 'analysis'}
-            onClick={() => setActiveMobileTab('analysis')}
-            icon={<BarChart3 size={22} />}
-            label="Analysis"
-          />
-        </nav>
+        <MobileNavigation activeTab={activeMobileTab} onTabChange={setActiveMobileTab} />
       </div>
       <div className="hidden lg:block">
         <Footer />
@@ -455,33 +316,5 @@ const App: React.FC = () => {
     </div>
   );
 };
-
-const MobileNavBtn = ({
-  active,
-  onClick,
-  icon,
-  label,
-}: {
-  active: boolean;
-  onClick: () => void;
-  icon: React.ReactNode;
-  label: string;
-}) => (
-  <button
-    data-testid={`mobile-nav-${label.toLowerCase().replace(/\s+/g, '-')}-btn`}
-    onClick={onClick}
-    className={cn(
-      'flex flex-col items-center gap-1 transition-all duration-300',
-      active ? 'text-blue-600 scale-110' : 'text-black',
-    )}
-  >
-    <div
-      className={cn('p-2 rounded-xl transition-colors', active ? 'bg-blue-50' : 'bg-transparent')}
-    >
-      {icon}
-    </div>
-    <span className="text-xs font-black uppercase tracking-wider">{label}</span>
-  </button>
-);
 
 export default App;
