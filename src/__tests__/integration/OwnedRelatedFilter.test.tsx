@@ -34,8 +34,8 @@ describe('Owned Related Filter - Discovery Flow', () => {
     await user.clear(searchInput);
     await user.click(filterBtn);
 
-    const combo1 = await screen.findByTestId('combo-card-御幸一也&成宮鳴');
-    const combo2 = await screen.findByTestId('combo-card-御幸一也&皇帝');
+    const combo1 = await screen.findByTestId('combo-card-container-御幸一也&成宮鳴');
+    const combo2 = await screen.findByTestId('combo-card-container-御幸一也&皇帝');
 
     expect(combo1).toBeInTheDocument();
     expect(combo2).toBeInTheDocument();
@@ -79,8 +79,8 @@ describe('Owned Related Filter - Multi-Character Discovery', () => {
     await user.click(filterBtn);
 
     // Assert both combos are visible
-    expect(await screen.findByTestId('combo-card-御幸一也&皇帝')).toBeInTheDocument();
-    expect(await screen.findByTestId('combo-card-御幸一也&成宮鳴')).toBeInTheDocument();
+    expect(await screen.findByTestId('combo-card-container-御幸一也&皇帝')).toBeInTheDocument();
+    expect(await screen.findByTestId('combo-card-container-御幸一也&成宮鳴')).toBeInTheDocument();
 
     // Remove 皇帝 from the active roster
     const charA_toRemove = within(desktopSidebar).getByTestId(`${SIDEBAR_ID}-roster-item-皇帝`);
@@ -91,13 +91,13 @@ describe('Owned Related Filter - Multi-Character Discovery', () => {
     // Verify the specific combo is removed
     await waitFor(
       () => {
-        const missingCombo = screen.queryByTestId('combo-card-御幸一也&皇帝');
+        const missingCombo = screen.queryByTestId('combo-card-container-御幸一也&皇帝');
         expect(missingCombo).not.toBeInTheDocument();
       },
       { timeout: 3000 },
     );
 
     // Ensure the other owned character's combo stays
-    expect(screen.getByTestId('combo-card-御幸一也&成宮鳴')).toBeInTheDocument();
+    expect(screen.getByTestId('combo-card-container-御幸一也&成宮鳴')).toBeInTheDocument();
   });
 });

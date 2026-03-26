@@ -36,7 +36,7 @@ describe('Character Preview and Roster Synchronization', () => {
 
     // 3. Now that isExpanded is true, the ComboCard and its characters are rendered.
     const charName = '千代姫';
-    const mapCharBtn = await screen.findByTestId(`combo-card-${charName}`);
+    const mapCharBtn = await screen.findByTestId(`combo-card-character-icon-btn-${charName}`);
 
     // 4. Click the character on the map
     await user.click(mapCharBtn);
@@ -79,7 +79,7 @@ describe('Character Preview and Roster Synchronization', () => {
     await user.click(screen.getByTestId(`map-trigger-${mapName}`));
 
     const otherChar = '千代姫';
-    const mapCharBtn = await screen.findByTestId(`combo-card-${otherChar}`);
+    const mapCharBtn = await screen.findByTestId(`combo-card-character-icon-btn-${otherChar}`);
     await user.click(mapCharBtn);
 
     // 3. Toast should be gone, Preview Box should be back for the new char

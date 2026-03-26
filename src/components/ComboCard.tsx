@@ -1,5 +1,4 @@
 // src/components/ComboCard.tsx
-
 import { BadgeCheck, Star, UserPlus } from 'lucide-react';
 import type React from 'react';
 import skillsDataRaw from '@/data/skills.json';
@@ -48,7 +47,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
 
   return (
     <div
-      data-testid={`combo-card-${comboId}`}
+      data-testid={`combo-card-container-${comboId}`}
       onClick={(e) => {
         if ((e.target as HTMLElement).closest('button')) return;
         onToggleCombo();
@@ -65,13 +64,13 @@ export const ComboCard: React.FC<ComboCardProps> = ({
         data-testid="character-section"
         className="flex-none lg:w-[220px] flex flex-col items-center justify-center border-b lg:border-b-0 lg:border-r border-slate-100 pb-2 lg:pb-0 lg:pr-5"
       >
-        <div className="flex flex-row items-start justify-center gap-x-5 gap-y-2 flex-wrap w-full">
+        <div className="flex flex-row items-start justify-center gap-x-4 w-full flex-nowrap">
           {names.map((name) => {
             const isOwned = ownedChars.has(name);
             return (
-              <div key={name} className="flex flex-col items-center gap-1.5">
+              <div key={name} className="flex flex-col items-center gap-1.5 min-w-0 flex-1">
                 <button
-                  data-testid={`combo-card-${name}`}
+                  data-testid={`combo-card-character-icon-btn-${name}`}
                   onClick={(e) => {
                     e.stopPropagation();
                     setSelectedPreview(name);
@@ -89,12 +88,12 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                     alt={name}
                   />
                 </button>
-
                 <p
+                  data-testid={`combo-card-p-${name}`}
                   className={cn(
-                    'font-black leading-[1.2] text-center transition-colors',
-                    'max-w-[100px] [overflow-wrap:anywhere] [line-break:strict]',
-                    name.length >= 8 ? 'text-sm' : 'text-base',
+                    'font-black leading-[1.1] text-center transition-colors',
+                    'w-full [overflow-wrap:anywhere] [line-break:strict] break-words whitespace-normal',
+                    'text-base',
                     isOwned ? 'text-emerald-700' : 'text-slate-900',
                   )}
                 >

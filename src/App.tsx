@@ -61,15 +61,10 @@ const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedPreview, setSelectedPreview] = useState<string | null>(null);
 
-  /**
-   * Wrapper function to synchronize character selection/preview
-   * across different sections (Map, Reward Analysis, Sidebar).
-   */
   const handleSetSelectedPreview = useCallback((name: string | null) => {
     setSelectedPreview(name);
   }, []);
 
-  // Auth session management
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => setIsLoggedIn(!!session));
     const {
@@ -78,9 +73,6 @@ const App: React.FC = () => {
     return () => subscription.unsubscribe();
   }, []);
 
-  /**
-   * Resolves the correct image path based on character name and position icon setting.
-   */
   const getImagePath = (name: string, usePosIcon: boolean) => {
     const mapping = manager.characterMapping?.idToName?.by_name;
     const charEntry = mapping ? (mapping as any)[name] : null;
@@ -89,9 +81,6 @@ const App: React.FC = () => {
     return `${BASE_ASSET_PATH}${img}`;
   };
 
-  /**
-   * Filters the character library based on search term, position, and map filters.
-   */
   const filteredLibrary = useMemo(() => {
     if (!manager.libraryGroups) return { withCombo: [], noCombo: [] };
     const filterFn = (name: string) => {
@@ -120,7 +109,6 @@ const App: React.FC = () => {
       data-testid="app-container"
     >
       <div className="flex flex-1 overflow-hidden relative">
-        {/* Desktop Sidebar: Character Roster & Library */}
         <aside
           data-testid="desktop-sidebar-container"
           className={cn(
@@ -158,7 +146,6 @@ const App: React.FC = () => {
           </div>
         </aside>
 
-        {/* Mobile Left Drawer: Roster access on smaller screens */}
         <MobileDrawer
           isOpen={activeMobileTab === 'roster'}
           onClose={() => setActiveMobileTab('planner')}
@@ -182,7 +169,6 @@ const App: React.FC = () => {
           />
         </MobileDrawer>
 
-        {/* Main Content: Map Sections and Combo Planner */}
         <main
           data-testid="main-content-area"
           className={cn(
@@ -265,7 +251,6 @@ const App: React.FC = () => {
           </div>
         </main>
 
-        {/* Desktop Right Sidebar: Reward Analysis */}
         <aside
           data-testid="desktop-analysis-sidebar"
           className={cn(
@@ -324,7 +309,6 @@ const App: React.FC = () => {
           </div>
         </aside>
 
-        {/* Mobile Right Drawer: Analysis access on smaller screens */}
         <MobileDrawer
           isOpen={activeMobileTab === 'analysis'}
           onClose={() => setActiveMobileTab('planner')}

@@ -8,7 +8,6 @@ import skillsDataRaw from '@/data/skills.json';
 import { supabase } from '@/lib/supabase';
 import type { Character, Combo } from '@/types';
 
-// Types & Constants
 const charactersData = charactersDataRaw as Record<string, Character>;
 const combosData = combosDataRaw as Record<string, Combo>;
 const mapsData = mapsDataRaw as Record<string, any>;
@@ -22,35 +21,29 @@ const KANJI_REGEX = /[\u4e00-\u9faf]/;
 type FilterType = 'pitcher' | 'fielder' | null;
 
 export const useComboManager = () => {
-  // --- State: Selections ---
   const [selectedNames, setSelectedNames] = useState<Set<string>>(new Set(FIXED_MEMBERS));
   const [selectedComboIds, setSelectedComboIds] = useState<Set<string>>(new Set());
-
-  // --- State: Filters & UI ---
   const [searchTerm, setSearchTerm] = useState('');
   const [filterRelatedOnly, setFilterRelatedOnly] = useState(false);
   const [filterNoKanji, setFilterNoKanji] = useState(false);
   const [goldFilter, setGoldFilter] = useState<FilterType>(null);
   const [typeFilter, setTypeFilter] = useState<FilterType>(null);
   const [activeSkillFilters, setActiveSkillFilters] = useState<string[]>([]);
-
-  // --- State: System ---
+  const [isGoldMenuOpen, setIsGoldMenuOpen] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
   const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [fontScale, setFontScale] = useState(1.0);
 
-  // --- Effect: Font Scaling ---
   useEffect(() => {
     document.documentElement.style.fontSize = `${Math.round(fontScale * 100)}%`;
   }, [fontScale]);
 
-  // --- Effect: Hydration ---
   useEffect(() => {
     const hydrate = async () => {
       try {
-        const sessionResponse = await supabase.auth.getSession();
-        const session = sessionResponse?.data?.session;
-
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
         let loadedChars: string[] = [];
         let loadedCombos: string[] = [];
 
@@ -60,7 +53,6 @@ export const useComboManager = () => {
             .select('*')
             .eq('user_id', session.user.id)
             .maybeSingle();
-
           if (data) {
             loadedChars = data.selected_characters || [];
             loadedCombos = data.selected_combos || [];
@@ -89,17 +81,15 @@ export const useComboManager = () => {
     hydrate();
   }, []);
 
-  // --- Callbacks: Persistence ---
   const handleSave = useCallback(async () => {
     setIsSyncing(true);
     const charArray = Array.from(selectedNames).filter((n) => !FIXED_MEMBERS.includes(n));
     const comboArray = Array.from(selectedComboIds);
     const now = new Date().toISOString();
-
     try {
-      const sessionResponse = await supabase.auth.getSession();
-      const session = sessionResponse?.data?.session;
-
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
       if (session?.user) {
         await supabase.from('user_saves').upsert({
           user_id: session.user.id,
@@ -125,7 +115,45 @@ export const useComboManager = () => {
     }
   }, [selectedNames, selectedComboIds]);
 
-  // --- Callbacks: Toggles ---
+  // Logic Fix: Only close the visual menu and clear skill sub-filters.
+  // Keep goldFilter so the combo list doesn't jump.
+  const closeGoldMenu = useCallback(() => {
+    setIsGoldMenuOpen(false);
+    setActiveSkillFilters([]);
+  }, []);
+
+  const toggleGoldFilter = useCallback(
+    (type: FilterType) => {
+      // If ALL is clicked (null), we close drawer AND reset filter
+      if (type === null) {
+        setIsGoldMenuOpen(false);
+        setGoldFilter(null);
+        setActiveSkillFilters([]);
+        return;
+      }
+
+      setGoldFilter((current) => {
+        // If menu is closed, open it.
+        if (!isGoldMenuOpen) {
+          setIsGoldMenuOpen(true);
+          if (current !== type) setActiveSkillFilters([]);
+          return type;
+        }
+        // If menu is open and we click the same type, just close the drawer.
+        // We DO NOT set goldFilter to null here so the list stays filtered.
+        if (current === type) {
+          setIsGoldMenuOpen(false);
+          setActiveSkillFilters([]);
+          return type;
+        }
+        // Switching between Pitcher/Fielder while open
+        setActiveSkillFilters([]);
+        return type;
+      });
+    },
+    [isGoldMenuOpen],
+  );
+
   const toggleCharacter = useCallback((name: string) => {
     if (FIXED_MEMBERS.includes(name)) return;
     setSelectedNames((prev) => {
@@ -145,35 +173,27 @@ export const useComboManager = () => {
 
   const toggleRelatedFilter = useCallback(() => setFilterRelatedOnly((p) => !p), []);
   const toggleKanjiFilter = useCallback(() => setFilterNoKanji((p) => !p), []);
-
-  const toggleGoldFilter = useCallback((type: FilterType) => {
-    setGoldFilter((p) => {
-      const next = p === type ? null : type;
-      setActiveSkillFilters([]);
-      return next;
-    });
-  }, []);
-
   const toggleTypeFilter = useCallback(
     (type: FilterType) => setTypeFilter((p) => (p === type ? null : type)),
     [],
   );
 
   const toggleSkillFilter = useCallback((skill: string | null) => {
-    setActiveSkillFilters((prev) => {
-      if (skill === null) return [];
-      return prev.includes(skill) ? prev.filter((s) => s !== skill) : [...prev, skill];
-    });
+    setActiveSkillFilters((prev) =>
+      skill === null
+        ? []
+        : prev.includes(skill)
+          ? prev.filter((s) => s !== skill)
+          : [...prev, skill],
+    );
   }, []);
 
   const adjustFont = useCallback((delta: number) => {
     setFontScale((prev) => parseFloat(Math.min(Math.max(prev + delta, 0.8), 1.5).toFixed(1)));
   }, []);
 
-  // --- Memo: Filtering & Sorting Logic ---
   const filteredComboIds = useMemo(() => {
     const search = searchTerm.toLowerCase().trim();
-
     return Object.entries(combosData)
       .filter(([_, combo]) => {
         const comboId = combo.characters.join('&');
@@ -182,25 +202,20 @@ export const useComboManager = () => {
           comboId.toLowerCase().includes(search) ||
           combo.characters.some((c) => c.toLowerCase().includes(search)) ||
           combo.rewards?.skills?.some((s) => s.name.toLowerCase().includes(search));
-
         const passesRelated =
           !filterRelatedOnly || combo.characters.some((char) => selectedNames.has(char));
-
         const passesGold =
           !goldFilter ||
           combo.rewards?.skills?.some((s) => {
             const detail = skillsData[s.name];
             return detail?.type === 'gold' && detail?.category === goldFilter;
           });
-
         const passesType =
           !typeFilter ||
           combo.rewards?.skills?.some((s) => skillsData[s.name]?.category === typeFilter);
-
         const passesSkill =
           activeSkillFilters.length === 0 ||
           combo.rewards?.skills?.some((s) => activeSkillFilters.includes(s.name));
-
         return passesSearch && passesRelated && passesGold && passesType && passesSkill;
       })
       .map(([_, combo]) => {
@@ -217,7 +232,6 @@ export const useComboManager = () => {
       });
   }, [searchTerm, filterRelatedOnly, selectedNames, goldFilter, typeFilter, activeSkillFilters]);
 
-  // --- Memo: Global Analysis ---
   const analysis = useMemo(() => {
     const stats: Record<string, number> = {};
     const skillsMap: Record<string, number> = {};
@@ -234,11 +248,10 @@ export const useComboManager = () => {
     selectedNames.forEach((name) => {
       const char = charactersData[name];
       if (!char) return;
-      if (char.rewards?.stats) {
+      if (char.rewards?.stats)
         Object.entries(char.rewards.stats).forEach(([s, v]) => {
           stats[s] = (stats[s] || 0) + (v as number);
         });
-      }
       if (!FIXED_MEMBERS.includes(name)) {
         const pos = char.position?.trim();
         if (pos === 'マ') mCount++;
@@ -257,18 +270,13 @@ export const useComboManager = () => {
         if (!selectedNames.has(c)) missingSet.add(c);
       });
       Object.entries(mapsData).forEach(([mapName, data]) => {
-        if (data.combo_names.some((names: string[]) => names.join('&') === id)) {
+        if (data.combo_names.some((names: string[]) => names.join('&') === id))
           mapCompletion[mapName].selected++;
-        }
       });
     });
 
     const sortedSkills = Object.entries(skillsMap)
-      .map(([name, level]) => ({
-        name,
-        level,
-        type: skillsData[name]?.type || 'normal',
-      }))
+      .map(([name, level]) => ({ name, level, type: skillsData[name]?.type || 'normal' }))
       .sort((a, b) => {
         if (a.type === 'gold' && b.type !== 'gold') return -1;
         if (a.type !== 'gold' && b.type === 'gold') return 1;
@@ -281,7 +289,6 @@ export const useComboManager = () => {
       manager: mCount > 3,
       total: pCount + fCount > 23,
     };
-
     return {
       stats,
       skills: sortedSkills,
@@ -304,7 +311,6 @@ export const useComboManager = () => {
     const noC: string[] = [];
     const search = searchTerm.toLowerCase().trim();
     const participants = new Set(Object.values(combosData).flatMap((c) => c.characters));
-
     Object.keys(charactersData).forEach((name) => {
       if (FIXED_MEMBERS.includes(name)) return;
       if (search && !name.toLowerCase().includes(search)) return;
@@ -322,6 +328,7 @@ export const useComboManager = () => {
     setGoldFilter(null);
     setTypeFilter(null);
     setActiveSkillFilters([]);
+    setIsGoldMenuOpen(false);
   }, []);
 
   return {
@@ -334,7 +341,9 @@ export const useComboManager = () => {
     filterNoKanji,
     toggleKanjiFilter,
     goldFilter,
+    isGoldMenuOpen,
     toggleGoldFilter,
+    closeGoldMenu,
     typeFilter,
     toggleAllByType: toggleTypeFilter,
     activeSkillFilters,

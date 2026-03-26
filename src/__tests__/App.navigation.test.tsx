@@ -40,14 +40,16 @@ describe('App Integration - Map Expansion', () => {
 
   it('should expand and collapse sections using Header buttons', async () => {
     render(<App />);
-    expect(screen.queryByTestId('combo-card-パワプロ&矢部明雄')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('combo-card-container-パワプロ&矢部明雄')).not.toBeInTheDocument();
 
     await user.click(screen.getByTestId('expand-collapse-toggle-btn'));
-    expect(await screen.findByTestId('combo-card-パワプロ&矢部明雄')).toBeInTheDocument();
+    expect(await screen.findByTestId('combo-card-container-パワプロ&矢部明雄')).toBeInTheDocument();
 
     await user.click(screen.getByTestId('expand-collapse-toggle-btn'));
     await waitFor(() => {
-      expect(screen.queryByTestId('combo-card-パワプロ&矢部明雄')).not.toBeInTheDocument();
+      expect(
+        screen.queryByTestId('combo-card-container-パワプロ&矢部明雄'),
+      ).not.toBeInTheDocument();
     });
   });
 
@@ -56,7 +58,7 @@ describe('App Integration - Map Expansion', () => {
     const sidebarBtn = screen.getAllByText('スカウ島')[0];
     await user.click(sidebarBtn);
 
-    expect(await screen.findByTestId('combo-card-パワプロ&矢部明雄')).toBeInTheDocument();
+    expect(await screen.findByTestId('combo-card-container-パワプロ&矢部明雄')).toBeInTheDocument();
   });
 
   it('sidebar collapse button updates layout classes to mini-sidebar mode', async () => {

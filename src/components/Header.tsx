@@ -23,7 +23,9 @@ interface HeaderProps {
   isSyncing: boolean;
   handleSave: () => void;
   goldFilter: 'pitcher' | 'fielder' | null;
-  toggleGoldFilter: (type: 'pitcher' | 'fielder') => void;
+  toggleGoldFilter: (type: 'pitcher' | 'fielder' | null) => void;
+  closeGoldMenu: () => void;
+  isGoldMenuOpen: boolean;
   activeSkillFilters: string[];
   onToggleSkillFilter: (skill: string | null) => void;
 }
@@ -44,6 +46,8 @@ export const Header: React.FC<HeaderProps> = ({
   handleSave,
   goldFilter,
   toggleGoldFilter,
+  closeGoldMenu,
+  isGoldMenuOpen,
   activeSkillFilters,
   onToggleSkillFilter,
 }) => {
@@ -60,9 +64,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-30 w-full bg-white border-b border-slate-200 px-4 pt-4 pb-8 shadow-sm overflow-visible">
-      {/* Top Row: Save/Auth on left, Skills & Clear on right */}
       <div className="flex items-center justify-between gap-1 mb-4">
-        {/* Left Side: Save and Auth */}
         <div className="flex items-center gap-1">
           <div className="flex lg:hidden items-center gap-1">
             <button
@@ -79,10 +81,8 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        {/* Spacer to push everything else to the right */}
         <div className="flex-1" />
 
-        {/* Right Side: Gold Skills and Clear grouped together */}
         <div className="flex items-center gap-1">
           <button
             data-testid="filter-pitcher-btn"
@@ -121,8 +121,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* Middle Section: Gold Skill List (Enhanced Scrollbar) */}
-      {goldFilter && (
+      {isGoldMenuOpen && goldFilter && (
         <div className="mb-4 animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="relative bg-slate-50 rounded-xl border-2 border-amber-100 shadow-inner overflow-hidden">
             <div
@@ -135,7 +134,7 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <button
                 data-testid="all-combos-btn"
-                onClick={() => onToggleSkillFilter(null)}
+                onClick={() => toggleGoldFilter(null)}
                 style={{ fontSize: `${baseButtonSize * fontScale * 0.8}rem` }}
                 className={cn(
                   'px-2 py-1.5 rounded-lg font-bold transition-all border-2 uppercase',
@@ -149,6 +148,7 @@ export const Header: React.FC<HeaderProps> = ({
               {availableGoldSkills.map((skill) => (
                 <button
                   key={skill}
+                  data-testid={`gold-combo-btn-${skill}`}
                   onClick={() => onToggleSkillFilter(skill)}
                   style={{ fontSize: `${baseButtonSize * fontScale * 0.8}rem` }}
                   className={cn(
@@ -166,7 +166,6 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       )}
 
-      {/* Bottom Row: Controls */}
       <div className="flex flex-nowrap items-center pt-3 border-t border-slate-200/60 gap-2 overflow-visible">
         <button
           data-testid="toggle-position-number-icon-btn"
