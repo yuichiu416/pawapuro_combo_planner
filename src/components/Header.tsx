@@ -46,8 +46,6 @@ export const Header: React.FC<HeaderProps> = ({
   handleSave,
   goldFilter,
   toggleGoldFilter,
-  closeGoldMenu,
-  isGoldMenuOpen,
   activeSkillFilters,
   onToggleSkillFilter,
 }) => {
@@ -63,84 +61,93 @@ export const Header: React.FC<HeaderProps> = ({
   }, [goldFilter]);
 
   return (
-    <header className="sticky top-0 z-30 w-full bg-white border-b border-slate-200 px-4 pt-4 pb-8 shadow-sm overflow-visible">
-      <div className="flex items-center justify-between gap-1 mb-4">
-        <div className="flex items-center gap-1">
-          <div className="flex lg:hidden items-center gap-1">
+    <header className="sticky top-0 z-30 w-full bg-[#E6F0FF] border-b-4 border-blue-900/10 p-3 md:px-4 md:pt-4 md:pb-6 shadow-sm overflow-visible">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
+        {/* Mobile Top Row: Save, Auth & Branding */}
+        <div className="flex lg:hidden items-center justify-between w-full border-b border-blue-900/5 pb-2">
+          <div className="flex items-center gap-2">
             <button
               onClick={handleSave}
               disabled={isSyncing}
               className={cn(
-                'flex items-center justify-center w-10 h-10 rounded-xl transition-all active:scale-95 disabled:opacity-50 shadow-sm',
-                isLoggedIn ? 'bg-blue-600 text-white' : 'bg-slate-800 text-white',
+                'flex items-center justify-center w-10 h-10 rounded-xl border-2 border-white transition-all active:scale-95 disabled:opacity-50 shadow-sm shrink-0',
+                isLoggedIn ? 'bg-[#0059C1] text-white' : 'bg-slate-800 text-white',
               )}
             >
               {isSyncing ? <Loader2 className="animate-spin" size={18} /> : <Save size={18} />}
             </button>
             <AuthButton />
           </div>
+          <span className="text-[10px] font-black text-blue-900/30 uppercase tracking-tighter">
+            Planner v2.0
+          </span>
         </div>
 
-        <div className="flex-1" />
-
-        <div className="flex items-center gap-1">
+        {/* Gold Skill Filter Buttons: Scrollable on small screens */}
+        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 -mx-1 px-1">
           <button
             data-testid="filter-pitcher-btn"
             onClick={() => toggleGoldFilter('pitcher')}
-            style={{ fontSize: `${baseButtonSize * fontScale * 0.9}rem` }}
+            style={{ fontSize: `${baseButtonSize * fontScale * 0.8}rem` }}
             className={cn(
-              'flex items-center gap-1.5 px-3 py-2 border-2 rounded-xl font-black transition-all uppercase whitespace-nowrap',
+              'flex items-center gap-1.5 px-3 py-2 border-2 rounded-xl font-black transition-all uppercase whitespace-nowrap shadow-sm shrink-0',
               goldFilter === 'pitcher'
-                ? 'bg-amber-500 border-amber-500 text-white'
-                : 'bg-white border-slate-200 text-black',
+                ? 'bg-[#FF9E00] border-white text-black ring-2 ring-[#FF9E00]'
+                : 'bg-white border-blue-200 text-[#0059C1] hover:border-blue-400',
             )}
           >
-            <Star size={14} fill={goldFilter === 'pitcher' ? 'white' : 'transparent'} /> 投手金特
+            <Star
+              size={12}
+              fill={goldFilter === 'pitcher' ? 'black' : 'transparent'}
+              strokeWidth={3}
+            />
+            投手金特
           </button>
+
           <button
             data-testid="filter-fielder-btn"
             onClick={() => toggleGoldFilter('fielder')}
-            style={{ fontSize: `${baseButtonSize * fontScale * 0.9}rem` }}
+            style={{ fontSize: `${baseButtonSize * fontScale * 0.8}rem` }}
             className={cn(
-              'flex items-center gap-1.5 px-3 py-2 border-2 rounded-xl font-black transition-all uppercase whitespace-nowrap',
+              'flex items-center gap-1.5 px-3 py-2 border-2 rounded-xl font-black transition-all uppercase whitespace-nowrap shadow-sm shrink-0',
               goldFilter === 'fielder'
-                ? 'bg-amber-500 border-amber-500 text-white'
-                : 'bg-white border-slate-200 text-black',
+                ? 'bg-[#FF9E00] border-white text-black ring-2 ring-[#FF9E00]'
+                : 'bg-white border-blue-200 text-[#0059C1] hover:border-blue-400',
             )}
           >
-            <Star size={14} fill={goldFilter === 'fielder' ? 'white' : 'transparent'} /> 野手金特
+            <Star
+              size={12}
+              fill={goldFilter === 'fielder' ? 'black' : 'transparent'}
+              strokeWidth={3}
+            />
+            野手金特
           </button>
+
           <button
             data-testid="filter-clear-btn"
             onClick={clearAll}
-            style={{ fontSize: `${baseButtonSize * fontScale * 0.9}rem` }}
-            className="flex items-center justify-center gap-2 px-3 py-2 bg-rose-500 text-white rounded-xl font-black uppercase hover:bg-rose-600 transition-all shadow-md active:scale-95 whitespace-nowrap"
+            style={{ fontSize: `${baseButtonSize * fontScale * 0.8}rem` }}
+            className="flex items-center justify-center gap-1.5 px-3 py-2 bg-[#FF2D55] border-2 border-white text-white rounded-xl font-black uppercase hover:bg-[#E60039] transition-all shadow-md active:scale-95 whitespace-nowrap shrink-0"
           >
-            <XCircle size={14} /> CLEAR
+            <XCircle size={14} strokeWidth={3} /> CLEAR
           </button>
         </div>
       </div>
 
-      {isGoldMenuOpen && goldFilter && (
-        <div className="mb-4 animate-in fade-in slide-in-from-top-2 duration-200">
-          <div className="relative bg-slate-50 rounded-xl border-2 border-amber-100 shadow-inner overflow-hidden">
-            <div
-              className="flex flex-wrap gap-2 p-3 overflow-y-auto max-h-32 
-              [&::-webkit-scrollbar]:w-2 
-              [&::-webkit-scrollbar-track]:bg-slate-200 
-              [&::-webkit-scrollbar-thumb]:bg-slate-400 
-              [&::-webkit-scrollbar-thumb]:rounded-full 
-              hover:[&::-webkit-scrollbar-thumb]:bg-slate-500"
-            >
+      {/* Gold Skill Selection Menu */}
+      {goldFilter && (
+        <div className="mb-4 animate-in fade-in zoom-in-95 duration-200">
+          <div className="relative bg-[#003D87] rounded-2xl border-4 border-white shadow-xl overflow-hidden">
+            <div className="flex flex-wrap gap-2 p-3 overflow-y-auto max-h-40 custom-scrollbar-pawa">
               <button
                 data-testid="all-combos-btn"
                 onClick={() => toggleGoldFilter(null)}
                 style={{ fontSize: `${baseButtonSize * fontScale * 0.8}rem` }}
                 className={cn(
-                  'px-2 py-1.5 rounded-lg font-bold transition-all border-2 uppercase',
+                  'px-3 py-1.5 rounded-lg font-black transition-all border-2 uppercase',
                   activeSkillFilters.length === 0
-                    ? 'bg-amber-500 border-amber-500 text-white shadow-sm'
-                    : 'bg-white border-slate-200 text-slate-500',
+                    ? 'bg-[#FFF200] border-white text-black'
+                    : 'bg-white/10 border-white/20 text-blue-200 hover:bg-white/20',
                 )}
               >
                 ALL
@@ -152,10 +159,10 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => onToggleSkillFilter(skill)}
                   style={{ fontSize: `${baseButtonSize * fontScale * 0.8}rem` }}
                   className={cn(
-                    'px-2 py-1.5 rounded-lg font-bold transition-all border-2',
+                    'px-3 py-1.5 rounded-lg font-black transition-all border-2',
                     activeSkillFilters.includes(skill)
-                      ? 'bg-blue-600 border-blue-600 text-white shadow-sm'
-                      : 'bg-white border-slate-100 text-slate-600',
+                      ? 'bg-[#FFF200] border-white text-black shadow-[0_0_10px_rgba(255,242,0,0.5)]'
+                      : 'bg-white border-blue-100 text-[#003D87] hover:bg-blue-50',
                   )}
                 >
                   {skill}
@@ -166,16 +173,17 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       )}
 
-      <div className="flex flex-nowrap items-center pt-3 border-t border-slate-200/60 gap-2 overflow-visible">
+      {/* Secondary Controls Bar */}
+      <div className="flex flex-wrap items-center gap-2 pt-2 border-t-2 border-blue-900/5">
         <button
           data-testid="toggle-position-number-icon-btn"
           onClick={() => setShowPositionIcon(!showPositionIcon)}
-          style={{ fontSize: `${baseButtonSize * fontScale * 0.8}rem` }}
+          style={{ fontSize: `${baseButtonSize * fontScale * 0.75}rem` }}
           className={cn(
-            'flex-shrink-0 px-2 py-2 border-2 rounded-xl font-black transition-all uppercase whitespace-nowrap',
+            'px-3 py-2 border-2 rounded-xl font-black transition-all uppercase whitespace-nowrap shadow-sm flex-1 md:flex-none text-center',
             showPositionIcon
-              ? 'bg-white border-slate-200 text-black'
-              : 'bg-blue-600 border-blue-600 text-white',
+              ? 'bg-white border-blue-100 text-[#0059C1]'
+              : 'bg-[#0059C1] border-white text-white',
           )}
         >
           {showPositionIcon ? 'POS ICON' : '# Icon'}
@@ -184,27 +192,28 @@ export const Header: React.FC<HeaderProps> = ({
         <button
           data-testid="owned-or-all-characters-combo-btn"
           onClick={toggleRelatedFilter}
-          style={{ fontSize: `${baseButtonSize * fontScale * 0.8}rem` }}
+          style={{ fontSize: `${baseButtonSize * fontScale * 0.75}rem` }}
           className={cn(
-            'flex-shrink-0 px-2 py-2 border-2 rounded-xl font-black transition-all uppercase whitespace-nowrap',
+            'px-3 py-2 border-2 rounded-xl font-black transition-all uppercase whitespace-nowrap shadow-sm flex-1 md:flex-none text-center',
             filterRelatedOnly
-              ? 'bg-emerald-600 border-emerald-600 text-white'
-              : 'bg-white border-slate-200 text-black',
+              ? 'bg-emerald-500 border-white text-white'
+              : 'bg-white border-blue-100 text-[#0059C1]',
           )}
         >
           {filterRelatedOnly ? 'OWNED' : 'ALL'}
         </button>
 
-        <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 ml-auto flex-shrink-0">
+        {/* Font Control Section */}
+        <div className="flex items-center bg-white p-1 rounded-xl border-2 border-blue-100 shadow-sm shrink-0 ml-auto md:ml-0">
           <button
             data-testid="font-decrease-btn"
             onClick={() => onAdjustFont(-0.1)}
-            className="w-7 h-7 flex items-center justify-center hover:bg-white rounded-lg transition-all"
+            className="w-7 h-7 flex items-center justify-center hover:bg-blue-50 text-[#0059C1] rounded-lg transition-all"
           >
-            <Minus size={12} />
+            <Minus size={12} strokeWidth={3} />
           </button>
           <div
-            className="px-1 font-black text-black text-center min-w-[2.5rem]"
+            className="px-1 font-black text-[#003D87] text-center min-w-[2rem]"
             style={{ fontSize: `${baseLabelSize * fontScale}rem` }}
           >
             {Math.round(fontScale * 100)}%
@@ -212,25 +221,26 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             data-testid="font-increase-btn"
             onClick={() => onAdjustFont(0.1)}
-            className="w-7 h-7 flex items-center justify-center hover:bg-white rounded-lg transition-all"
+            className="w-7 h-7 flex items-center justify-center hover:bg-blue-50 text-[#0059C1] rounded-lg transition-all"
           >
-            <Plus size={12} />
+            <Plus size={12} strokeWidth={3} />
           </button>
         </div>
 
+        {/* Expand/Collapse Toggle */}
         <button
           data-testid="expand-collapse-toggle-btn"
           onClick={allExpanded ? onCollapseAll : onExpandAll}
-          style={{ fontSize: `${baseButtonSize * fontScale * 0.8}rem` }}
-          className="flex-shrink-0 flex items-center gap-1 px-2.5 py-2 bg-slate-100 rounded-xl font-black uppercase text-black hover:bg-slate-200 transition-all whitespace-nowrap"
+          style={{ fontSize: `${baseButtonSize * fontScale * 0.75}rem` }}
+          className="w-full md:w-auto flex items-center justify-center gap-1.5 px-3 py-2 bg-white border-2 border-blue-200 rounded-xl font-black uppercase text-[#0059C1] hover:bg-blue-50 transition-all shadow-sm whitespace-nowrap"
         >
           {allExpanded ? (
             <>
-              <ChevronUp size={14} className="text-blue-600" /> COLLAPSE
+              <ChevronUp size={14} strokeWidth={3} className="text-[#FF9E00]" /> COLLAPSE
             </>
           ) : (
             <>
-              <ChevronDown size={14} /> EXPAND
+              <ChevronDown size={14} strokeWidth={3} /> EXPAND
             </>
           )}
         </button>

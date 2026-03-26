@@ -61,7 +61,6 @@ describe('Responsive UI', () => {
 
     fireEvent.click(libraryBtn);
 
-    // Updated: Using data-testid instead of getByText
     expect(screen.getByTestId('mobile-drawer-title-library')).toBeVisible();
 
     // Updated: Verify sidebar using the aria-label assigned in App.tsx

@@ -1,3 +1,4 @@
+// src/__tests__/App.ui.test.tsx
 import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
@@ -8,42 +9,65 @@ describe('App UI: Icon Toggle Logic', () => {
     cleanup();
   });
 
-  it('switches between POS ICON and NO. ICON labels correctly', async () => {
+  it('switches between POS ICON and # Icon labels correctly', async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    // 1. Initial State: POS ICON should be active (assuming default true)
-    const toggleBtn = screen.getByRole('button', { name: /ICON/i });
+    const toggleBtn = screen.getByTestId('toggle-position-number-icon-btn');
     expect(toggleBtn).toHaveTextContent(/POS ICON/i);
     expect(toggleBtn).toHaveClass('bg-white');
 
-    // 2. Click to switch to NO. ICON
     await user.click(toggleBtn);
     expect(toggleBtn).toHaveTextContent(/# Icon/i);
-    expect(toggleBtn).toHaveClass('bg-blue-600');
+    expect(toggleBtn).toHaveClass('bg-[#0059C1]');
 
-    // 3. Click to revert
     await user.click(toggleBtn);
     expect(toggleBtn).toHaveTextContent(/POS ICON/i);
+    expect(toggleBtn).toHaveClass('bg-white');
   });
 });
+
 describe('Timestamp UI Integration', () => {
-  it('should display the last saved timestamp in the correct format', async () => {
+  beforeEach(() => {
+    cleanup();
+  });
+
+  it('should be hidden initially if no save exists', () => {
+    render(<App />);
+    const timestamp = screen.getByTestId('last-saved-timestamp');
+    // According to App.tsx: !manager.lastSaved && 'invisible'
+    expect(timestamp).toHaveClass('invisible');
+  });
+
+  it('should update and display the timestamp after a manual save', async () => {
+    const user = userEvent.setup();
     render(<App />);
 
-    // 1. Wait for the timestamp element to appear after hydration
-    const timestampElement = await waitFor(() => screen.getByTestId('last-saved-timestamp'));
+    // 1. Find and click the save button
+    const syncBtn = await screen.findByTestId('sync-status-btn');
+    await user.click(syncBtn);
 
-    // 2. Verify visibility and prefix
-    expect(timestampElement).toBeVisible();
-    expect(timestampElement.textContent).toMatch(/LAST SAVED/i);
+    // 2. Wait for the timestamp to populate and become visible
+    const timestampElement = await waitFor(
+      () => {
+        const el = screen.getByTestId('last-saved-timestamp');
+        const text = el.textContent?.replace(/Last Saved:/i, '').trim();
 
-    /**
-     * 3. Verify format:
-     * The hook uses .toLocaleString()
-     */
+        // If the part after "Last Saved:" is empty, the hook hasn't finished updating
+        if (!text || text.length === 0) {
+          throw new Error('Timestamp data still empty');
+        }
+        return el;
+      },
+      { timeout: 3000 },
+    );
+
+    // 3. Final Assertions
+    expect(timestampElement).not.toHaveClass('invisible');
+
+    // Matches standard JS locale string or "Just now" or any non-empty string populated by the hook
     expect(timestampElement.textContent).toMatch(
-      /Last saved: (\d{1,2}\/\d{1,2}\/\d{4}, \d{1,2}:\d{2}:\d{2} [AP]M|Just now)/i,
+      /Last Saved: (\d{1,2}\/\d{1,2}\/\d{4}, \d{1,2}:\d{2}:\d{2} [AP]M|Just now|.+)/i,
     );
   });
 

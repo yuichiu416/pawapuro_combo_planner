@@ -116,20 +116,21 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
     const toastContainer = await screen.findByTestId(`${BASE_ID}-undo-toast`);
     expect(toastContainer).toHaveClass('animate-in', 'fade-in');
 
-    const toastInner = toastContainer.querySelector('.bg-slate-900\\/95');
-    expect(toastInner).toHaveClass('backdrop-blur-md', 'text-white');
+    // Updated to match component color bg-[#1A1C1E]
+    const toastInner = toastContainer.querySelector('.bg-\\[\\#1A1C1E\\]');
+    expect(toastInner).toHaveClass('text-white');
 
     const undoBtn = screen.getByTestId(`${BASE_ID}-undo-button`);
-    expect(undoBtn).toHaveClass('bg-white', 'text-black');
+    expect(undoBtn).toHaveClass('bg-white', 'text-[#1A1C1E]');
   });
 
   it('checks Active Roster slot highlighting', () => {
     const propsWithChar = { ...mockProps, ownedChars: new Set([TEST_CHAR]) };
     render(<CharacterSidebar {...propsWithChar} selectedPreview={TEST_CHAR} />);
 
-    // Updated to match the refined RosterGrid testId pattern
     const slot = screen.getByTestId(`${BASE_ID}-roster-item-${TEST_CHAR}`);
-    expect(slot).toHaveClass('border-blue-400', 'ring-2', 'scale-105');
+    // Updated to match actual component highlight color #FFF200
+    expect(slot).toHaveClass('border-[#FFF200]', 'ring-2', 'scale-105');
   });
 
   it('validates map popover toggle and selection logic', async () => {
@@ -154,7 +155,8 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
     const { rerender } = render(<CharacterSidebar {...mockProps} selectedPreview={UNOWNED_CHAR} />);
 
     const previewBox = screen.getByTestId(`${BASE_ID}-roster-preview-box`);
-    expect(previewBox).toHaveClass('bg-emerald-50');
+    // Updated to match unowned preview state colors
+    expect(previewBox).toHaveClass('bg-white', 'border-[#0059C1]');
     expect(within(previewBox).getByText('ADD')).toBeInTheDocument();
 
     const addBtn = screen.getByTestId(`${BASE_ID}-add-btn-${UNOWNED_CHAR}`);
@@ -182,8 +184,9 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
     const toastContainer = await screen.findByTestId(`${BASE_ID}-undo-toast`);
     expect(toastContainer).toHaveClass('animate-in', 'fade-in');
 
-    const toastInner = toastContainer.querySelector('.bg-slate-900\\/95');
-    expect(toastInner).toHaveClass('backdrop-blur-md', 'text-white');
+    // Updated to match component color bg-[#1A1C1E]
+    const toastInner = toastContainer.querySelector('.bg-\\[\\#1A1C1E\\]');
+    expect(toastInner).toHaveClass('text-white');
   });
 
   it('checks Active Roster slot highlighting when a character is in preview', () => {
@@ -191,7 +194,8 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
     render(<CharacterSidebar {...propsWithChar} selectedPreview={TEST_CHAR} />);
 
     const slot = screen.getByTestId(`${BASE_ID}-roster-item-${TEST_CHAR}`);
-    expect(slot).toHaveClass('border-blue-400', 'ring-2', 'scale-105');
+    // Updated to match actual component highlight color #FFF200
+    expect(slot).toHaveClass('border-[#FFF200]', 'ring-2', 'scale-105');
   });
 
   it('clears Undo toast when a new character is selected for preview', async () => {

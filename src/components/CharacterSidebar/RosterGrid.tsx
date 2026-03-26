@@ -20,55 +20,63 @@ export const RosterGrid: React.FC<RosterGridProps> = ({
   testId,
 }) => (
   <div
-    className="space-y-1.5 bg-slate-900 p-3 rounded-xl shadow-inner border border-slate-800"
-    data-testid={`${testId}-active-roster`} // Updated to use parent testId for consistency
+    className="space-y-2 bg-[#004A99] p-3 rounded-xl shadow-md border border-blue-400/20"
+    data-testid={`${testId}-active-roster`}
   >
     <div className="flex justify-between items-center px-1">
-      <span className="text-xs font-black text-white uppercase tracking-widest">Active Roster</span>
-      <span
-        data-testid={`${testId}-roster-count`}
-        className={cn(
-          'text-sm font-black',
-          ownedChars.size > 25 ? 'text-rose-400' : 'text-emerald-400',
-        )}
-      >
-        {ownedChars.size} / 28
+      <span className="text-xs font-black text-blue-100/80 uppercase tracking-widest leading-none">
+        Active Roster
       </span>
+      <div className="flex items-center gap-1 bg-[#003D87] px-2 py-0.5 rounded-full border border-white/10">
+        <span
+          data-testid={`${testId}-roster-count`}
+          className={cn(
+            'text-xs font-black',
+            ownedChars.size > 25 ? 'text-[#FF4D70]' : 'text-[#FFF200]',
+          )}
+        >
+          {ownedChars.size}
+        </span>
+        <span className="text-xs font-bold text-blue-200/40">/ 28</span>
+      </div>
     </div>
 
-    <div className="grid grid-cols-7 gap-1" data-testid={`${testId}-roster-grid`}>
+    <div className="grid grid-cols-7 gap-1.5" data-testid={`${testId}-roster-grid`}>
       {rosterSlots.map((charName, i) => (
         <button
-          // Ensure empty slots have a predictable ID for testing empty states
           data-testid={
             charName ? `${testId}-roster-item-${charName}` : `${testId}-roster-slot-empty-${i}`
           }
           key={charName ? `slot-${charName}` : `empty-${i}`}
-          // Keep disabled to prevent interaction with empty slots
           disabled={!charName}
           onClick={() =>
             charName && setSelectedPreview(charName === selectedPreview ? null : charName)
           }
           className={cn(
-            'aspect-square rounded-md border flex items-center justify-center overflow-hidden transition-all relative group/slot',
+            'aspect-square rounded-lg border flex items-center justify-center overflow-hidden transition-all relative transform active:scale-95',
             charName
               ? cn(
-                  'bg-slate-800',
+                  'bg-white shadow-sm',
                   selectedPreview === charName
-                    ? 'border-blue-400 ring-2 ring-blue-400/50 scale-105 z-20'
-                    : 'border-slate-600 hover:border-slate-400',
+                    ? 'border-[#FFF200] ring-2 ring-[#FFF200]/40 z-20 scale-105'
+                    : 'border-transparent hover:border-white/30',
                 )
-              : 'border-slate-800/50 bg-slate-900/40',
+              : 'border-white/5 bg-black/10',
           )}
         >
           {charName ? (
             <img
               src={getImagePath(charName, true)}
               alt={charName}
-              className="w-full h-full object-cover z-10"
+              className="w-full h-full object-cover"
             />
           ) : (
-            <div className="w-1 h-1 bg-slate-800 rounded-full" />
+            <div className="w-1 h-1 bg-white/10 rounded-full" />
+          )}
+
+          {/* Soft inner glow for selection instead of a hard outer box */}
+          {charName && selectedPreview === charName && (
+            <div className="absolute inset-0 border-2 border-[#FFF200] rounded-lg z-30 pointer-events-none" />
           )}
         </button>
       ))}

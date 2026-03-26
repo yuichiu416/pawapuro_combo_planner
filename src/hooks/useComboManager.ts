@@ -15,12 +15,26 @@ const skillsData = skillsDataRaw as Record<string, any>;
 const charactersMapping = charactersMappingRaw as any;
 
 const FIXED_MEMBERS = ['パワプロ', '矢部明雄'];
-const LOCAL_STORAGE_KEY = 'パワプロ_planner_local_v1';
+const LOCAL_STORAGE_KEY = 'パワプロ_planner_local_v2';
 const KANJI_REGEX = /[\u4e00-\u9faf]/;
 
 type FilterType = 'pitcher' | 'fielder' | null;
 
+interface SaveSlot {
+  slot_number: number;
+  slot_name: string;
+  selected_characters: string[];
+  selected_combos: string[];
+  is_active: boolean;
+  updated_at?: string;
+}
+
 export const useComboManager = () => {
+  // --- Slot Management State ---
+  const [slots, setSlots] = useState<SaveSlot[]>([]);
+  const [activeSlotNumber, setActiveSlotNumber] = useState<number>(1);
+
+  // --- Original Planner State ---
   const [selectedNames, setSelectedNames] = useState<Set<string>>(new Set(FIXED_MEMBERS));
   const [selectedComboIds, setSelectedComboIds] = useState<Set<string>>(new Set());
   const [searchTerm, setSearchTerm] = useState('');
@@ -34,89 +48,173 @@ export const useComboManager = () => {
   const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [fontScale, setFontScale] = useState(1.0);
 
+  // Handle Global Font Scaling
   useEffect(() => {
     document.documentElement.style.fontSize = `${Math.round(fontScale * 100)}%`;
   }, [fontScale]);
 
-  useEffect(() => {
-    const hydrate = async () => {
-      try {
-        const {
-          data: { session },
-        } = await supabase.auth.getSession();
-        let loadedChars: string[] = [];
-        let loadedCombos: string[] = [];
-
-        if (session?.user) {
-          const { data } = await supabase
-            .from('user_saves')
-            .select('*')
-            .eq('user_id', session.user.id)
-            .maybeSingle();
-          if (data) {
-            loadedChars = data.selected_characters || [];
-            loadedCombos = data.selected_combos || [];
-            if (data.updated_at) {
-              setLastSaved(new Date(data.updated_at).toLocaleString());
-            }
-          }
-        } else {
-          const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
-          if (saved) {
-            try {
-              const parsed = JSON.parse(saved);
-              loadedChars = parsed?.characters || [];
-              loadedCombos = parsed?.combos || [];
-            } catch (parseError) {
-              console.warn('Failed to parse local storage, using defaults');
-            }
-          }
-        }
-        setSelectedNames(new Set([...FIXED_MEMBERS, ...loadedChars]));
-        setSelectedComboIds(new Set(loadedCombos));
-      } catch (e) {
-        console.error('Hydration failed:', e);
-      }
-    };
-    hydrate();
-  }, []);
-
-  const handleSave = useCallback(async () => {
-    setIsSyncing(true);
-    const charArray = Array.from(selectedNames).filter((n) => !FIXED_MEMBERS.includes(n));
-    const comboArray = Array.from(selectedComboIds);
-    const now = new Date().toISOString();
+  // --- Hydration ---
+  const hydrate = useCallback(async () => {
     try {
       const {
         data: { session },
       } = await supabase.auth.getSession();
-      if (session?.user) {
-        await supabase.from('user_saves').upsert({
-          user_id: session.user.id,
-          selected_characters: charArray,
-          selected_combos: comboArray,
-          updated_at: now,
-        });
-      } else {
-        localStorage.setItem(
-          LOCAL_STORAGE_KEY,
-          JSON.stringify({
-            characters: charArray,
-            combos: comboArray,
-            updated_at: now,
-          }),
-        );
-      }
-      setLastSaved(new Date(now).toLocaleString());
-    } catch (err) {
-      console.error('Save failed:', err);
-    } finally {
-      setIsSyncing(false);
-    }
-  }, [selectedNames, selectedComboIds]);
+      let loadedSlots: SaveSlot[] = [];
 
-  // Logic Fix: Only close the visual menu and clear skill sub-filters.
-  // Keep goldFilter so the combo list doesn't jump.
+      if (session?.user) {
+        const { data } = await supabase
+          .from('user_saves')
+          .select('*')
+          .eq('user_id', session.user.id)
+          .order('slot_number', { ascending: true });
+        if (data) loadedSlots = data;
+      } else {
+        const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+        if (saved) loadedSlots = JSON.parse(saved);
+      }
+
+      // Ensure 1-3 slots always exist
+      const finalSlots = [1, 2, 3].map((num) => {
+        const found = loadedSlots.find((s) => s.slot_number === num);
+        return (
+          found || {
+            slot_number: num,
+            slot_name: `Slot 0${num}`,
+            selected_characters: [],
+            selected_combos: [],
+            is_active: num === 1,
+          }
+        );
+      });
+
+      setSlots(finalSlots);
+      const active = finalSlots.find((s) => s.is_active) || finalSlots[0];
+      setActiveSlotNumber(active.slot_number);
+      setSelectedNames(new Set([...FIXED_MEMBERS, ...active.selected_characters]));
+      setSelectedComboIds(new Set(active.selected_combos));
+      if (active.updated_at) setLastSaved(new Date(active.updated_at).toLocaleString());
+    } catch (e) {
+      console.error('Hydration failed:', e);
+    }
+  }, []);
+
+  useEffect(() => {
+    hydrate();
+  }, [hydrate]);
+
+  // --- Slot Logic (Load / Save / Rename) ---
+
+  const switchSlot = useCallback(
+    async (targetSlotNum: number) => {
+      const targetSlot = slots.find((s) => s.slot_number === targetSlotNum);
+      if (!targetSlot) return;
+
+      setIsSyncing(true);
+      setActiveSlotNumber(targetSlotNum);
+      setSelectedNames(new Set([...FIXED_MEMBERS, ...targetSlot.selected_characters]));
+      setSelectedComboIds(new Set(targetSlot.selected_combos));
+
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session?.user) {
+        await supabase
+          .from('user_saves')
+          .update({ is_active: false })
+          .eq('user_id', session.user.id);
+        await supabase
+          .from('user_saves')
+          .update({ is_active: true })
+          .eq('user_id', session.user.id)
+          .eq('slot_number', targetSlotNum);
+      }
+
+      setSlots((prev) => prev.map((s) => ({ ...s, is_active: s.slot_number === targetSlotNum })));
+      setIsSyncing(false);
+    },
+    [slots],
+  );
+
+  const onSaveToSlot = useCallback(
+    async (targetSlotNum: number, newName?: string) => {
+      setIsSyncing(true);
+      const charArray = Array.from(selectedNames).filter((n) => !FIXED_MEMBERS.includes(n));
+      const comboArray = Array.from(selectedComboIds);
+      const now = new Date().toISOString();
+      const existing = slots.find((s) => s.slot_number === targetSlotNum);
+      const finalName = newName || existing?.slot_name || `Slot 0${targetSlotNum}`;
+
+      try {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+        if (session?.user) {
+          await supabase.from('user_saves').upsert({
+            user_id: session.user.id,
+            slot_number: targetSlotNum,
+            slot_name: finalName,
+            selected_characters: charArray,
+            selected_combos: comboArray,
+            is_active: targetSlotNum === activeSlotNumber,
+            updated_at: now,
+          });
+        }
+
+        const updated = slots.map((s) =>
+          s.slot_number === targetSlotNum
+            ? {
+                ...s,
+                slot_name: finalName,
+                selected_characters: charArray,
+                selected_combos: comboArray,
+                updated_at: now,
+              }
+            : s,
+        );
+
+        setSlots(updated);
+        if (!session?.user) localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
+        if (targetSlotNum === activeSlotNumber) setLastSaved(new Date(now).toLocaleString());
+      } catch (err) {
+        console.error('Save failed:', err);
+      } finally {
+        setIsSyncing(false);
+      }
+    },
+    [selectedNames, selectedComboIds, slots, activeSlotNumber],
+  );
+
+  const onRename = useCallback(
+    async (targetSlotNum: number, newName: string) => {
+      if (!newName.trim()) return;
+      setIsSyncing(true);
+      try {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+        if (session?.user) {
+          await supabase
+            .from('user_saves')
+            .update({ slot_name: newName })
+            .eq('user_id', session.user.id)
+            .eq('slot_number', targetSlotNum);
+        }
+        const updated = slots.map((s) =>
+          s.slot_number === targetSlotNum ? { ...s, slot_name: newName } : s,
+        );
+        setSlots(updated);
+        if (!session?.user) localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
+      } catch (err) {
+        console.error('Rename failed:', err);
+      } finally {
+        setIsSyncing(false);
+      }
+    },
+    [slots],
+  );
+
+  // --- Original Toggle & Filter Logic ---
+
   const closeGoldMenu = useCallback(() => {
     setIsGoldMenuOpen(false);
     setActiveSkillFilters([]);
@@ -124,29 +222,23 @@ export const useComboManager = () => {
 
   const toggleGoldFilter = useCallback(
     (type: FilterType) => {
-      // If ALL is clicked (null), we close drawer AND reset filter
       if (type === null) {
         setIsGoldMenuOpen(false);
         setGoldFilter(null);
         setActiveSkillFilters([]);
         return;
       }
-
       setGoldFilter((current) => {
-        // If menu is closed, open it.
         if (!isGoldMenuOpen) {
           setIsGoldMenuOpen(true);
           if (current !== type) setActiveSkillFilters([]);
           return type;
         }
-        // If menu is open and we click the same type, just close the drawer.
-        // We DO NOT set goldFilter to null here so the list stays filtered.
         if (current === type) {
           setIsGoldMenuOpen(false);
           setActiveSkillFilters([]);
           return type;
         }
-        // Switching between Pitcher/Fielder while open
         setActiveSkillFilters([]);
         return type;
       });
@@ -159,6 +251,16 @@ export const useComboManager = () => {
     setSelectedNames((prev) => {
       const next = new Set(prev);
       next.has(name) ? next.delete(name) : next.add(name);
+      return next;
+    });
+  }, []);
+
+  const toggleMultipleCharacters = useCallback((names: string[]) => {
+    setSelectedNames((prev) => {
+      const next = new Set(prev);
+      names.forEach((n) => {
+        if (!FIXED_MEMBERS.includes(n)) next.add(n);
+      });
       return next;
     });
   }, []);
@@ -192,6 +294,8 @@ export const useComboManager = () => {
     setFontScale((prev) => parseFloat(Math.min(Math.max(prev + delta, 0.8), 1.5).toFixed(1)));
   }, []);
 
+  // --- Memoized Data Filtering ---
+
   const filteredComboIds = useMemo(() => {
     const search = searchTerm.toLowerCase().trim();
     return Object.entries(combosData)
@@ -202,6 +306,7 @@ export const useComboManager = () => {
           comboId.toLowerCase().includes(search) ||
           combo.characters.some((c) => c.toLowerCase().includes(search)) ||
           combo.rewards?.skills?.some((s) => s.name.toLowerCase().includes(search));
+
         const passesRelated =
           !filterRelatedOnly || combo.characters.some((char) => selectedNames.has(char));
         const passesGold =
@@ -216,6 +321,7 @@ export const useComboManager = () => {
         const passesSkill =
           activeSkillFilters.length === 0 ||
           combo.rewards?.skills?.some((s) => activeSkillFilters.includes(s.name));
+
         return passesSearch && passesRelated && passesGold && passesType && passesSkill;
       })
       .map(([_, combo]) => {
@@ -231,6 +337,8 @@ export const useComboManager = () => {
         return combo.characters.join('&');
       });
   }, [searchTerm, filterRelatedOnly, selectedNames, goldFilter, typeFilter, activeSkillFilters]);
+
+  // --- Memoized Analysis ---
 
   const analysis = useMemo(() => {
     const stats: Record<string, number> = {};
@@ -248,10 +356,11 @@ export const useComboManager = () => {
     selectedNames.forEach((name) => {
       const char = charactersData[name];
       if (!char) return;
-      if (char.rewards?.stats)
+      if (char.rewards?.stats) {
         Object.entries(char.rewards.stats).forEach(([s, v]) => {
           stats[s] = (stats[s] || 0) + (v as number);
         });
+      }
       if (!FIXED_MEMBERS.includes(name)) {
         const pos = char.position?.trim();
         if (pos === 'マ') mCount++;
@@ -289,6 +398,7 @@ export const useComboManager = () => {
       manager: mCount > 3,
       total: pCount + fCount > 23,
     };
+
     return {
       stats,
       skills: sortedSkills,
@@ -311,6 +421,7 @@ export const useComboManager = () => {
     const noC: string[] = [];
     const search = searchTerm.toLowerCase().trim();
     const participants = new Set(Object.values(combosData).flatMap((c) => c.characters));
+
     Object.keys(charactersData).forEach((name) => {
       if (FIXED_MEMBERS.includes(name)) return;
       if (search && !name.toLowerCase().includes(search)) return;
@@ -332,6 +443,11 @@ export const useComboManager = () => {
   }, []);
 
   return {
+    slots,
+    activeSlotNumber,
+    switchSlot,
+    onSaveToSlot,
+    onRename,
     ownedChars: selectedNames,
     selectedComboIds,
     searchTerm,
@@ -350,10 +466,10 @@ export const useComboManager = () => {
     onToggleSkillFilter: toggleSkillFilter,
     filteredComboIds,
     toggleCharacter,
+    toggleMultipleCharacters,
     toggleCombo,
     isSyncing,
     lastSaved,
-    handleSave,
     analysis,
     fontScale,
     adjustFont,

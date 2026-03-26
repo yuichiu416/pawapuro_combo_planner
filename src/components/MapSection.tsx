@@ -36,44 +36,59 @@ export const MapSection: React.FC<MapSectionProps> = ({
   const isComplete = progress && progress.selected === progress.total && progress.total > 0;
 
   return (
-    <section className="space-y-8" data-testid={`map-section-${mapName}`}>
+    <section className="space-y-6" data-testid={`map-section-${mapName}`}>
       {/* Clickable Header for Toggling Expansion */}
       <div
         onClick={onToggle}
         data-testid={`map-trigger-${mapName}`}
-        className="flex items-center justify-between group cursor-pointer select-none"
+        className={cn(
+          'flex items-center justify-between group cursor-pointer select-none p-4 rounded-2xl transition-all border-2',
+          isExpanded
+            ? 'bg-white border-[#0059C1] shadow-lg'
+            : 'bg-[#F0F7FF] border-transparent hover:bg-white hover:border-blue-200 shadow-sm',
+        )}
       >
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-5">
           <div
             className={cn(
-              'p-3 rounded-2xl transition-colors',
+              'p-3 rounded-xl transition-all shadow-inner border-2',
               isExpanded
-                ? 'bg-blue-100 text-blue-600'
-                : 'bg-slate-200 text-black group-hover:bg-slate-300',
-              isComplete && !isExpanded && 'bg-emerald-100 text-emerald-600',
+                ? 'bg-[#0059C1] text-white border-blue-400'
+                : 'bg-white text-blue-600 border-blue-50 group-hover:border-blue-100',
+              isComplete && !isExpanded && 'bg-[#FFF200] text-[#003D87] border-[#E6D900]',
             )}
           >
-            <MapPin size={28} />
+            <MapPin size={24} strokeWidth={3} />
           </div>
           <div>
-            <h2 className="font-black text-3xl uppercase tracking-tight text-black">{mapName}</h2>
+            <h2
+              className={cn(
+                'font-black text-2xl uppercase tracking-tighter leading-none mb-1',
+                isExpanded ? 'text-[#003D87]' : 'text-slate-900',
+              )}
+            >
+              {mapName}
+            </h2>
             <div className="flex items-center gap-3">
-              <p className="text-sm font-black text-black uppercase tracking-widest">
+              <p className="text-xs font-black text-slate-400 uppercase tracking-[0.15em]">
                 {combos.length} Combos Found
               </p>
 
               {progress && (
-                <span
+                <div
                   data-testid={`map-progress-${mapName}`}
                   className={cn(
-                    'text-sm font-black uppercase tracking-widest px-2 py-0.5 rounded transition-all shadow-sm',
+                    'flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-black uppercase tracking-wider shadow-sm border',
                     isComplete
-                      ? 'bg-emerald-100 text-emerald-700 ring-1 ring-emerald-200'
-                      : 'bg-blue-50 text-blue-600 ring-1 ring-blue-100',
+                      ? 'bg-[#FFF200] text-[#003D87] border-[#E6D900]'
+                      : 'bg-blue-50 text-blue-600 border-blue-100',
                   )}
                 >
-                  Combos: {progress.selected}/{progress.total}
-                </span>
+                  <span className="opacity-60">Combos:</span>
+                  <span>
+                    {progress.selected}/{progress.total}
+                  </span>
+                </div>
               )}
             </div>
           </div>
@@ -81,20 +96,20 @@ export const MapSection: React.FC<MapSectionProps> = ({
 
         <div
           className={cn(
-            'w-12 h-12 flex items-center justify-center rounded-full border-2 transition-all',
+            'w-10 h-10 flex items-center justify-center rounded-full border-2 transition-all',
             isExpanded
-              ? 'border-blue-200 text-blue-600 rotate-180'
-              : 'border-slate-200 text-black group-hover:border-slate-300 group-hover:text-black',
-            isComplete && !isExpanded && 'border-emerald-200 text-emerald-500',
+              ? 'bg-[#0059C1] border-blue-400 text-white rotate-180'
+              : 'bg-white border-slate-100 text-slate-400 group-hover:border-blue-200 group-hover:text-blue-500',
+            isComplete && !isExpanded && 'bg-[#FFF200] border-[#E6D900] text-[#003D87]',
           )}
         >
-          <ChevronDown size={24} />
+          <ChevronDown size={20} strokeWidth={3} />
         </div>
       </div>
 
       {/* Expandable Content Container */}
       {isExpanded && (
-        <div className="grid gap-6 animate-in fade-in slide-in-from-top-4 duration-300">
+        <div className="grid gap-4 px-1 animate-in fade-in slide-in-from-top-2 duration-200">
           {combos.map((comboId) => {
             const fullComboData = combosData[comboId];
             if (!fullComboData) return null;

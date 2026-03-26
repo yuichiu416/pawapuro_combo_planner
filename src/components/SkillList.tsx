@@ -75,7 +75,7 @@ const SkillList: React.FC = () => {
           ))
         ) : (
           <div className="py-20 text-center bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200">
-            <p className="text-black font-bold italic">No matching skills found...</p>
+            <p className="text-black font-bold">No matching skills found...</p>
           </div>
         )}
       </div>

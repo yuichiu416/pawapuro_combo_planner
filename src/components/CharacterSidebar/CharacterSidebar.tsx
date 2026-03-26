@@ -49,7 +49,6 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
   );
   const [showUndo, setShowUndo] = useState(false);
 
-  // Sync internal UI state with external prop changes
   useEffect(() => {
     if (selectedPreview) {
       setShowUndo(false);
@@ -107,10 +106,10 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
 
   return (
     <aside
-      className="w-full bg-slate-50 border-r border-slate-200 flex flex-col h-full overflow-hidden relative"
+      className="w-full bg-[#E6F0FF] border-r-4 border-blue-900/10 flex flex-col h-full overflow-hidden relative"
       data-testid={testId}
     >
-      <div className="shrink-0 bg-white border-b border-slate-200 shadow-sm p-3 space-y-2.5">
+      <div className="shrink-0 bg-white border-b-2 border-blue-100 shadow-sm p-4 space-y-3">
         <RosterGrid
           ownedChars={props.ownedChars}
           rosterSlots={rosterSlots}
@@ -120,19 +119,22 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
           testId={testId}
         />
 
+        {/* Player Preview Card */}
         {selectedPreview && (
           <div
             data-testid={`${testId}-roster-preview-box`}
             className={cn(
-              'border rounded-lg p-2.5 flex items-center justify-between animate-in zoom-in-95 duration-150',
-              isPreviewOwned ? 'bg-blue-50 border-blue-200' : 'bg-emerald-50 border-emerald-200',
+              'border-2 rounded-xl p-3 flex items-center justify-between animate-in zoom-in-95 duration-150 shadow-md',
+              isPreviewOwned
+                ? 'bg-[#003D87] border-white text-white'
+                : 'bg-white border-[#0059C1] text-[#003D87]',
             )}
           >
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <div
                 className={cn(
-                  'w-10 h-10 rounded border overflow-hidden bg-white',
-                  isPreviewOwned ? 'border-blue-300' : 'border-emerald-300',
+                  'w-12 h-12 rounded-lg border-2 overflow-hidden bg-white shadow-inner',
+                  isPreviewOwned ? 'border-blue-400' : 'border-blue-100',
                 )}
               >
                 <img
@@ -141,19 +143,12 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                   alt={selectedPreview}
                 />
               </div>
-              <div>
-                <p
-                  className={cn(
-                    'text-xs font-black leading-none',
-                    isPreviewOwned ? 'text-blue-900' : 'text-emerald-900',
-                  )}
-                >
-                  {selectedPreview}
-                </p>
+              <div className="leading-tight">
+                <p className="text-sm font-black uppercase tracking-tight">{selectedPreview}</p>
                 <p
                   className={cn(
                     'text-xs font-bold uppercase mt-0.5',
-                    isPreviewOwned ? 'text-blue-600' : 'text-emerald-600',
+                    isPreviewOwned ? 'text-blue-300' : 'text-blue-500',
                   )}
                 >
                   {CHAR_DATA[selectedPreview]?.position || 'Manager'}
@@ -167,9 +162,8 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                   key="remove-btn"
                   data-testid={`${testId}-remove-btn-${selectedPreview}`}
                   onClick={() => handleConfirmAction(selectedPreview, 'remove')}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-md text-xs font-black transition-colors"
+                  className="px-4 py-2 bg-[#FF2D55] hover:bg-[#E60039] text-white rounded-lg text-xs font-black transition-all shadow-sm active:scale-95 border-2 border-white/20"
                 >
-                  <X size={12} strokeWidth={3} />
                   REMOVE
                 </button>
               ) : (
@@ -177,7 +171,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                   key="add-btn"
                   data-testid={`${testId}-add-btn-${selectedPreview}`}
                   onClick={() => handleConfirmAction(selectedPreview, 'add')}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md text-xs font-black transition-colors"
+                  className="flex items-center gap-1.5 px-4 py-2 bg-[#0059C1] hover:bg-[#006AEE] text-white rounded-lg text-xs font-black transition-all shadow-sm active:scale-95 border-2 border-white/20"
                 >
                   <Plus size={12} strokeWidth={3} />
                   ADD
@@ -185,29 +179,35 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
               )}
               <button
                 onClick={() => setSelectedPreview(null)}
-                className="p-1.5 hover:bg-slate-200 rounded-md transition-colors text-slate-400"
+                className={cn(
+                  'p-2 rounded-lg transition-colors',
+                  isPreviewOwned
+                    ? 'hover:bg-white/10 text-white/50'
+                    : 'hover:bg-blue-50 text-slate-400',
+                )}
               >
-                <X size={14} />
+                <X size={16} strokeWidth={3} />
               </button>
             </div>
           </div>
         )}
 
+        {/* Undo Toast */}
         {showUndo && !selectedPreview && (
           <div
             data-testid={`${testId}-undo-toast`}
-            className="animate-in fade-in zoom-in-95 duration-300"
+            className="animate-in fade-in slide-in-from-top-4 duration-300"
           >
-            <div className="bg-slate-900/95 backdrop-blur-md text-white rounded-lg shadow-2xl px-3 py-2.5 flex items-center justify-between border border-slate-700/50">
+            <div className="bg-[#1A1C1E] text-white rounded-xl shadow-xl px-4 py-3 flex items-center justify-between border-2 border-white/10">
               <div className="flex items-center gap-3 min-w-0">
-                <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0">
-                  <span className="text-blue-400 font-bold">!</span>
+                <div className="w-8 h-8 rounded-full bg-[#0059C1] flex items-center justify-center shrink-0 border border-white/20">
+                  <RotateCcw size={14} strokeWidth={3} className="text-white" />
                 </div>
-                <div className="flex flex-col min-w-0">
-                  <span className="text-xs font-black text-white uppercase tracking-tighter leading-none">
+                <div className="flex flex-col min-w-0 leading-none">
+                  <span className="text-xs font-black text-blue-400 uppercase tracking-widest mb-1">
                     Roster Updated
                   </span>
-                  <span className="text-xs font-bold tracking-tight truncate">
+                  <span className="text-xs font-bold truncate">
                     {lastAction?.type === 'add' ? 'Added' : 'Removed'} {lastAction?.name}
                   </span>
                 </div>
@@ -215,9 +215,9 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
               <button
                 onClick={handleUndo}
                 data-testid={`${testId}-undo-button`}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-white text-black hover:bg-blue-50 rounded-md text-xs font-black uppercase shadow-sm ml-2"
+                className="flex items-center gap-1.5 px-4 py-2 bg-white text-[#1A1C1E] hover:bg-blue-50 rounded-lg text-xs font-black uppercase shadow-sm ml-4 transition-transform active:scale-95"
               >
-                <RotateCcw size={12} strokeWidth={3} /> Undo
+                Undo
               </button>
             </div>
           </div>
@@ -232,7 +232,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
         />
       </div>
 
-      <div className="flex-1 overflow-y-auto py-3 space-y-6 custom-scrollbar">
+      <div className="flex-1 overflow-y-auto py-4 space-y-8 custom-scrollbar">
         {[
           { names: sortChars(props.groups.withCombo), label: 'Available Combo Partners' },
           { names: sortChars(props.groups.noCombo), label: 'Other Characters' },
@@ -241,18 +241,22 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
             names.length > 0 && (
               <div
                 key={label}
-                className="space-y-1.5"
+                className="space-y-3"
                 data-testid={`${testId}-list-${label.replace(/\s+/g, '-').toLowerCase()}`}
               >
-                <h3 className="text-xs font-black text-black uppercase tracking-widest px-4 leading-none">
-                  {label}
-                </h3>
-                <div className="grid gap-1 px-3">
+                <div className="px-4 flex items-center gap-3">
+                  <div className="h-4 w-1 bg-[#FF9E00] rounded-full" />
+                  <h3 className="text-xs font-black text-[#003D87] uppercase tracking-widest leading-none">
+                    {label}
+                  </h3>
+                </div>
+                <div className="grid gap-1.5 px-3">
                   {names.map((name) => (
                     <CharacterItem
                       key={name}
                       name={name}
                       isOwned={props.ownedChars.has(name)}
+                      isSelected={props.ownedChars.has(name)}
                       onToggle={() => handleSelectPreview(name)}
                       getImagePath={props.getImagePath}
                       data={CHAR_DATA[name]}

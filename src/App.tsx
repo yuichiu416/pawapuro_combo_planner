@@ -10,6 +10,7 @@ import { MapSection } from '@/components/MapSection';
 import { MobileDrawer } from '@/components/MobileDrawer';
 import { MobileNavigation } from '@/components/MobileNavigation';
 import { RewardAnalysis } from '@/components/RewardAnalysis';
+import { SlotSwitcher } from '@/components/SlotSwitcher';
 import characters from '@/data/characters.json';
 import { useComboManager } from '@/hooks/useComboManager';
 import { supabase } from '@/lib/supabase';
@@ -172,11 +173,11 @@ const App: React.FC = () => {
         <main
           data-testid="main-content-area"
           className={cn(
-            'flex-1 overflow-y-auto bg-slate-50 custom-scrollbar transition-all pb-24 lg:pb-10',
+            'flex-1 overflow-y-auto overflow-x-hidden bg-slate-50 custom-scrollbar transition-all pb-24 lg:pb-10',
             activeMobileTab === 'planner' ? 'block' : 'hidden lg:block',
           )}
         >
-          <div className="max-w-7xl mx-auto space-y-8 md:space-y-12 p-4 md:p-8">
+          <div className="max-w-7xl mx-auto md:p-8">
             <Header
               {...manager}
               showPositionIcon={showPositionIcon}
@@ -192,7 +193,7 @@ const App: React.FC = () => {
               onAdjustFont={manager.adjustFont}
             />
 
-            <div className="space-y-12 md:space-y-16">
+            <div className="space-y-12 md:space-y-16 p-4 md:p-0">
               {Object.entries(manager.mapsData).map(([mapName, data]) => {
                 const mapCombos = ((data as any).combo_names || [])
                   .map((names: string[]) => names.join('&'))
@@ -238,6 +239,7 @@ const App: React.FC = () => {
                   />
                 );
               })}
+
               {manager.filterRelatedOnly && manager.filteredComboIds.length === 0 && (
                 <div
                   data-testid="no-results-placeholder"
@@ -266,15 +268,26 @@ const App: React.FC = () => {
             {isAnalysisCollapsed ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
           </button>
           <div className={cn('h-full w-[26rem] flex flex-col', isAnalysisCollapsed && 'hidden')}>
-            <div className="px-6 py-3 space-y-2 bg-slate-50/50 border-b border-slate-200/50">
+            <div className="px-6 py-4 border-b border-slate-200 bg-slate-50">
+              <SlotSwitcher
+                slots={manager.slots}
+                activeSlotNumber={manager.activeSlotNumber}
+                onSwitch={manager.switchSlot}
+                onSaveToSlot={manager.onSaveToSlot}
+                onRename={manager.onRename}
+                isSyncing={manager.isSyncing}
+              />
+
               <div className="flex flex-row items-center gap-3">
                 <button
                   data-testid="sync-status-btn"
-                  onClick={manager.handleSave}
+                  onClick={() => manager.onSaveToSlot(manager.activeSlotNumber)}
                   disabled={manager.isSyncing}
                   className={cn(
                     'flex-1 flex items-center justify-center gap-2 h-11 rounded-xl font-black uppercase text-xs transition-all active:scale-95 disabled:opacity-50 shadow-sm',
-                    isLoggedIn ? 'bg-blue-600 text-white' : 'bg-slate-800 text-white',
+                    isLoggedIn
+                      ? 'bg-blue-600 text-white hover:bg-blue-700'
+                      : 'bg-slate-800 text-white hover:bg-slate-900',
                   )}
                 >
                   {manager.isSyncing ? (
@@ -283,22 +296,24 @@ const App: React.FC = () => {
                     <Save size={16} />
                   )}
                   <span>
-                    {manager.isSyncing ? 'Syncing...' : isLoggedIn ? 'Cloud Sync' : 'Save Locally'}
+                    {manager.isSyncing ? 'Syncing...' : isLoggedIn ? 'Save Team' : 'Save Locally'}
                   </span>
                 </button>
                 <AuthButton />
               </div>
+
               <div
                 data-testid="last-saved-timestamp"
                 className={cn(
-                  'text-xs font-bold text-black text-right uppercase tracking-widest leading-none',
+                  'mt-3 text-xs font-black text-slate-400 text-right uppercase tracking-widest leading-none',
                   !manager.lastSaved && 'invisible',
                 )}
               >
-                <Clock size={8} className="inline mr-1 -mt-0.5" />
-                Last saved: {manager.lastSaved || 'Just now'}
+                <Clock size={10} className="inline mr-1 -mt-0.5" />
+                Last Saved: {manager.lastSaved}
               </div>
             </div>
+
             <div className="flex-1 overflow-y-auto custom-scrollbar">
               <RewardAnalysis
                 {...manager}
@@ -312,10 +327,20 @@ const App: React.FC = () => {
         <MobileDrawer
           isOpen={activeMobileTab === 'analysis'}
           onClose={() => setActiveMobileTab('planner')}
-          title="Reward Analysis"
+          title="Team Analysis"
           side="right"
           testId="mobile-analysis"
         >
+          <div className="px-4 py-2">
+            <SlotSwitcher
+              slots={manager.slots}
+              activeSlotNumber={manager.activeSlotNumber}
+              onSwitch={manager.switchSlot}
+              onSaveToSlot={manager.onSaveToSlot}
+              onRename={manager.onRename}
+              isSyncing={manager.isSyncing}
+            />
+          </div>
           <RewardAnalysis
             {...manager}
             getImagePath={getImagePath}

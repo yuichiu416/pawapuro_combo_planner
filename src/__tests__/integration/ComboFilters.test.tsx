@@ -4,6 +4,9 @@ import { describe, expect, it } from 'vitest';
 import App from '@/App';
 
 describe('Combo Type Filters (Pitcher/Fielder) - Static Data Validation', () => {
+  // Utility to help check for the active orange state
+  const ACTIVE_CLASS = 'bg-[#FF9E00]';
+
   it('verifies exact match counts when PITCHER filter is active', async () => {
     render(<App />);
 
@@ -11,10 +14,11 @@ describe('Combo Type Filters (Pitcher/Fielder) - Static Data Validation', () => 
     const pitcherBtn = screen.getByTestId('filter-pitcher-btn');
     fireEvent.click(pitcherBtn);
 
-    // 2. Verify button state (Active)
-    expect(pitcherBtn).toHaveClass('bg-amber-500');
+    // 2. Verify button state (Active) - Updated to match Pawapuro Orange
+    expect(pitcherBtn).toHaveClass(ACTIVE_CLASS);
+    expect(pitcherBtn).toHaveClass('ring-[#FF9E00]');
 
-    // 3. Verify exact COMBOS FOUND counts (Based on Screenshot 1)
+    // 3. Verify exact COMBOS FOUND counts
     const expectedMatches = [
       { name: 'スカウ島', count: '4 COMBOS FOUND' },
       { name: 'スカウ島東海岸', count: '8 COMBOS FOUND' },
@@ -36,10 +40,10 @@ describe('Combo Type Filters (Pitcher/Fielder) - Static Data Validation', () => 
     const fielderBtn = screen.getByTestId('filter-fielder-btn');
     fireEvent.click(fielderBtn);
 
-    // 2. Verify button state (Active)
-    expect(fielderBtn).toHaveClass('bg-amber-500');
+    // 2. Verify button state (Active) - Updated to match Pawapuro Orange
+    expect(fielderBtn).toHaveClass(ACTIVE_CLASS);
 
-    // 3. Verify exact COMBOS FOUND counts (Based on Screenshot 2)
+    // 3. Verify exact COMBOS FOUND counts
     const expectedMatches = [
       { name: 'スカウ島', count: '8 COMBOS FOUND' },
       { name: 'スカウ島東海岸', count: '11 COMBOS FOUND' },
@@ -62,13 +66,14 @@ describe('Combo Type Filters (Pitcher/Fielder) - Static Data Validation', () => 
 
     // Apply filter
     fireEvent.click(pitcherBtn);
-    expect(pitcherBtn).toHaveClass('bg-amber-500');
+    expect(pitcherBtn).toHaveClass(ACTIVE_CLASS);
 
     // Click Clear
     fireEvent.click(clearBtn);
 
-    // Verify reset
-    expect(pitcherBtn).not.toHaveClass('bg-amber-500');
+    // Verify reset (should return to white background)
+    expect(pitcherBtn).not.toHaveClass(ACTIVE_CLASS);
+    expect(pitcherBtn).toHaveClass('bg-white');
 
     // Verify that the count for Scouter Island is no longer the filtered '4'
     const scouterIsland = screen.getByTestId('map-trigger-スカウ島');

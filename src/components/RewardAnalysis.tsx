@@ -226,7 +226,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
             <div className="flex items-center gap-2">
               <AlertCircle size={14} className="text-rose-500" />
               <span className="text-xs font-black text-rose-600 uppercase">
-                Missing Targets ({missingCharacters.length})
+                Missing Characters ({missingCharacters.length})
               </span>
             </div>
           </div>
@@ -255,7 +255,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
                   className="flex items-center gap-1.5 px-2 py-1 bg-rose-50 rounded-lg border border-rose-100"
                 >
                   <MapPin size={10} className="text-rose-400" />
-                  <span className="text-xs font-black text-rose-500 uppercase italic">
+                  <span className="text-xs font-black text-rose-500 uppercase">
                     {charactersData[char]?.encounter_map || '???'}
                   </span>
                 </div>

@@ -1,5 +1,4 @@
 // src/__tests__/components/Header.test.tsx
-
 import { fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Header } from '@/components/Header';
@@ -20,6 +19,7 @@ describe('Header Component', () => {
     filterRelatedOnly: false,
     toggleRelatedFilter: mockToggleRelatedFilter,
     toggleAllByType: vi.fn(),
+    typeFilter: null as 'pitcher' | 'fielder' | null,
     clearAll: mockClearAll,
     onExpandAll: mockOnExpandAll,
     onCollapseAll: mockOnCollapseAll,
@@ -30,8 +30,9 @@ describe('Header Component', () => {
     isSyncing: false,
     handleSave: vi.fn(),
     goldFilter: null as 'pitcher' | 'fielder' | null,
-    isGoldMenuOpen: false, // Added missing required prop
     toggleGoldFilter: mockToggleGoldFilter,
+    closeGoldMenu: vi.fn(),
+    isGoldMenuOpen: false,
     activeSkillFilters: [] as string[],
     onToggleSkillFilter: mockOnToggleSkillFilter,
   };
@@ -57,20 +58,13 @@ describe('Header Component', () => {
 
     it('renders the bottom row controls correctly using test IDs', () => {
       render(<Header {...mockProps} />);
-
-      // POS ICON button
       expect(screen.getByRole('button', { name: /POS ICON/i })).toBeInTheDocument();
-
-      // Font Scale percentage display
       expect(screen.getByText('100%')).toBeInTheDocument();
-
-      // Expand/Collapse via Test ID
       expect(screen.getByTestId('expand-collapse-toggle-btn')).toBeInTheDocument();
     });
 
     it('calls onAdjustFont when zoom buttons are clicked via test IDs', () => {
       render(<Header {...mockProps} />);
-
       const plusBtn = screen.getByTestId('font-increase-btn');
       const minusBtn = screen.getByTestId('font-decrease-btn');
 
@@ -91,45 +85,47 @@ describe('Header Component', () => {
 
   describe('Gold Skill Filtering', () => {
     it('renders the skill selection list with test IDs when active', () => {
-      // Must set isGoldMenuOpen to true to see the drawer content
-      render(<Header {...mockProps} goldFilter="pitcher" isGoldMenuOpen={true} />);
+      render(<Header {...mockProps} goldFilter="pitcher" />);
 
       const allBtn = screen.getByTestId('all-combos-btn');
       expect(allBtn).toBeInTheDocument();
 
-      // Verify styling for the skill container
       const listContainer = allBtn.parentElement;
-      expect(listContainer).toHaveClass('[&::-webkit-scrollbar]:w-2');
+      // Matches the custom scrollbar class in your component
+      expect(listContainer).toHaveClass('custom-scrollbar-pawa');
     });
 
     it('calls toggleGoldFilter(null) when the ALL button is clicked', () => {
-      render(<Header {...mockProps} goldFilter="pitcher" isGoldMenuOpen={true} />);
+      render(<Header {...mockProps} goldFilter="pitcher" />);
       const allBtn = screen.getByTestId('all-combos-btn');
       fireEvent.click(allBtn);
       expect(mockToggleGoldFilter).toHaveBeenCalledWith(null);
     });
 
     it('calls onToggleSkillFilter when a specific skill is selected', () => {
-      render(<Header {...mockProps} goldFilter="pitcher" isGoldMenuOpen={true} />);
-
-      // Fixed: Removed 'await' and .click() call on the selector, used fireEvent
+      render(<Header {...mockProps} goldFilter="pitcher" />);
       const skillItem = screen.getByTestId(`gold-combo-btn-怪童`);
       fireEvent.click(skillItem);
       expect(mockOnToggleSkillFilter).toHaveBeenCalledWith('怪童');
     });
 
     it('highlights selected skills in the list', () => {
-      render(
-        <Header
-          {...mockProps}
-          goldFilter="pitcher"
-          isGoldMenuOpen={true}
-          activeSkillFilters={['怪童']}
-        />,
-      );
+      render(<Header {...mockProps} goldFilter="pitcher" activeSkillFilters={['怪童']} />);
 
       const skillItem = screen.getByTestId(`gold-combo-btn-怪童`);
-      expect(skillItem).toHaveClass('bg-blue-600');
+      // Updated: Expecting Pawapuro Yellow instead of Blue
+      expect(skillItem).toHaveClass('bg-[#FFF200]');
+      expect(skillItem).toHaveClass('text-black');
+      expect(skillItem).toHaveClass('shadow-[0_0_10px_rgba(255,242,0,0.5)]');
+    });
+
+    it('applies correct styling to the primary filter buttons when active', () => {
+      render(<Header {...mockProps} goldFilter="pitcher" />);
+
+      const pitcherBtn = screen.getByTestId('filter-pitcher-btn');
+      // Matches the orange active state for category buttons: bg-[#FF9E00]
+      expect(pitcherBtn).toHaveClass('bg-[#FF9E00]');
+      expect(pitcherBtn).toHaveClass('ring-2');
     });
   });
 });
