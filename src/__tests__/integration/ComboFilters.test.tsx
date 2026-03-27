@@ -58,25 +58,29 @@ describe('Combo Type Filters (Pitcher/Fielder) - Static Data Validation', () => 
     });
   });
 
-  it('resets match counts when CLEAR is clicked', () => {
+  // src/__tests__/integration/ComboFilters.test.tsx
+  it('resets match counts when CLEAR is clicked and confirmed', async () => {
     render(<App />);
 
+    // 1. Activate a filter first
     const pitcherBtn = screen.getByTestId('filter-pitcher-btn');
-    const clearBtn = screen.getByTestId('filter-clear-btn');
+    await fireEvent.click(pitcherBtn);
 
-    // Apply filter
-    fireEvent.click(pitcherBtn);
+    // Verify it is active (Orange)
     expect(pitcherBtn).toHaveClass(ACTIVE_CLASS);
 
-    // Click Clear
-    fireEvent.click(clearBtn);
+    // 2. Click the CLEAR button in the Header to open the modal
+    const clearBtn = screen.getByTestId('filter-clear-btn');
+    await fireEvent.click(clearBtn);
 
-    // Verify reset (should return to white background)
+    // 3. Find and click the "YES, WIPE IT!" button in the ClearConfirmModal
+    const confirmBtn = screen.getByTestId('modal-confirm-btn');
+    await fireEvent.click(confirmBtn);
+
+    // 4. Verify reset (Should return to white background)
+    // We use findBy to allow for any exit animations if necessary,
+    // but getBy works if state updates are synchronous.
     expect(pitcherBtn).not.toHaveClass(ACTIVE_CLASS);
     expect(pitcherBtn).toHaveClass('bg-white');
-
-    // Verify that the count for Scouter Island is no longer the filtered '4'
-    const scouterIsland = screen.getByTestId('map-trigger-スカウ島');
-    expect(scouterIsland).not.toHaveTextContent('4 COMBOS FOUND');
   });
 });

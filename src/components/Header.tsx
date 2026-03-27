@@ -13,7 +13,7 @@ interface HeaderProps {
   toggleRelatedFilter: () => void;
   toggleAllByType: (type: 'pitcher' | 'fielder') => void;
   typeFilter: 'pitcher' | 'fielder' | null;
-  clearAll: () => void;
+  onOpenClearModal: () => void;
   onExpandAll: () => void;
   onCollapseAll: () => void;
   allExpanded: boolean;
@@ -35,7 +35,7 @@ export const Header: React.FC<HeaderProps> = ({
   setShowPositionIcon,
   filterRelatedOnly,
   toggleRelatedFilter,
-  clearAll,
+  onOpenClearModal,
   onExpandAll,
   onCollapseAll,
   allExpanded,
@@ -46,6 +46,8 @@ export const Header: React.FC<HeaderProps> = ({
   handleSave,
   goldFilter,
   toggleGoldFilter,
+  closeGoldMenu,
+  isGoldMenuOpen,
   activeSkillFilters,
   onToggleSkillFilter,
 }) => {
@@ -59,6 +61,14 @@ export const Header: React.FC<HeaderProps> = ({
       .map((s: any) => s.name)
       .sort((a, b) => a.localeCompare(b));
   }, [goldFilter]);
+
+  const handleCategoryClick = (type: 'pitcher' | 'fielder') => {
+    if (goldFilter === type) {
+      toggleGoldFilter(null);
+    } else {
+      toggleGoldFilter(type);
+    }
+  };
 
   return (
     <header className="sticky top-0 z-30 w-full bg-[#E6F0FF] border-b-4 border-blue-900/10 p-3 md:px-4 md:pt-4 md:pb-6 shadow-sm overflow-visible">
@@ -83,11 +93,11 @@ export const Header: React.FC<HeaderProps> = ({
           </span>
         </div>
 
-        {/* Gold Skill Filter Buttons: Scrollable on small screens */}
+        {/* Gold Skill Filter Buttons */}
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 -mx-1 px-1">
           <button
             data-testid="filter-pitcher-btn"
-            onClick={() => toggleGoldFilter('pitcher')}
+            onClick={() => handleCategoryClick('pitcher')}
             style={{ fontSize: `${baseButtonSize * fontScale * 0.8}rem` }}
             className={cn(
               'flex items-center gap-1.5 px-3 py-2 border-2 rounded-xl font-black transition-all uppercase whitespace-nowrap shadow-sm shrink-0',
@@ -106,7 +116,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           <button
             data-testid="filter-fielder-btn"
-            onClick={() => toggleGoldFilter('fielder')}
+            onClick={() => handleCategoryClick('fielder')}
             style={{ fontSize: `${baseButtonSize * fontScale * 0.8}rem` }}
             className={cn(
               'flex items-center gap-1.5 px-3 py-2 border-2 rounded-xl font-black transition-all uppercase whitespace-nowrap shadow-sm shrink-0',
@@ -125,7 +135,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           <button
             data-testid="filter-clear-btn"
-            onClick={clearAll}
+            onClick={onOpenClearModal}
             style={{ fontSize: `${baseButtonSize * fontScale * 0.8}rem` }}
             className="flex items-center justify-center gap-1.5 px-3 py-2 bg-[#FF2D55] border-2 border-white text-white rounded-xl font-black uppercase hover:bg-[#E60039] transition-all shadow-md active:scale-95 whitespace-nowrap shrink-0"
           >
@@ -135,13 +145,13 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Gold Skill Selection Menu */}
-      {goldFilter && (
+      {isGoldMenuOpen && goldFilter && (
         <div className="mb-4 animate-in fade-in zoom-in-95 duration-200">
           <div className="relative bg-[#003D87] rounded-2xl border-4 border-white shadow-xl overflow-hidden">
             <div className="flex flex-wrap gap-2 p-3 overflow-y-auto max-h-40 custom-scrollbar-pawa">
               <button
                 data-testid="all-combos-btn"
-                onClick={() => toggleGoldFilter(null)}
+                onClick={closeGoldMenu}
                 style={{ fontSize: `${baseButtonSize * fontScale * 0.8}rem` }}
                 className={cn(
                   'px-3 py-1.5 rounded-lg font-black transition-all border-2 uppercase',

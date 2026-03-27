@@ -4,6 +4,7 @@ import type React from 'react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AuthButton } from '@/components/AuthButton';
 import { CharacterSidebar } from '@/components/CharacterSidebar';
+import { ClearConfirmModal } from '@/components/ClearConfirmModal';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { MapSection } from '@/components/MapSection';
@@ -61,6 +62,7 @@ const App: React.FC = () => {
   );
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedPreview, setSelectedPreview] = useState<string | null>(null);
+  const [isClearModalOpen, setIsClearModalOpen] = useState(false);
 
   const handleSetSelectedPreview = useCallback((name: string | null) => {
     setSelectedPreview(name);
@@ -109,6 +111,15 @@ const App: React.FC = () => {
       style={{ fontSize: `${manager.fontScale}rem` }}
       data-testid="app-container"
     >
+      <ClearConfirmModal
+        isOpen={isClearModalOpen}
+        onClose={() => setIsClearModalOpen(false)}
+        onConfirm={() => {
+          manager.clearAll();
+          setIsClearModalOpen(false);
+        }}
+      />
+
       <div className="flex flex-1 overflow-hidden relative">
         <aside
           data-testid="desktop-sidebar-container"
@@ -191,6 +202,7 @@ const App: React.FC = () => {
               allExpanded={allExpanded}
               isLoggedIn={isLoggedIn}
               onAdjustFont={manager.adjustFont}
+              onOpenClearModal={() => setIsClearModalOpen(true)}
             />
 
             <div className="space-y-12 md:space-y-16 p-4 md:p-0">
