@@ -10,13 +10,14 @@ const SIDEBAR_ID = 'desktop-character-sidebar';
 describe('Owned Related Filter - Discovery Flow', () => {
   beforeEach(() => {
     cleanup();
+    localStorage.clear();
   });
 
   it('allows searching, adding a character, and filtering for their combos', async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    // Wait for hydration - correctly using 'roster' instead of 'roaster'
+    // Wait for hydration
     await screen.findByTestId(`${SIDEBAR_ID}-roster-item-パワプロ`);
 
     const desktopSidebar = screen.getByTestId(SIDEBAR_ID);
@@ -26,10 +27,8 @@ describe('Owned Related Filter - Discovery Flow', () => {
     await user.type(searchInput, '御幸');
     const charButton = await within(desktopSidebar).findByTestId(`${SIDEBAR_ID}-char-御幸一也`);
 
-    // Click character first to reveal the UI controls/details
+    // Clicking an unowned character adds immediately — no add-btn step needed
     await user.click(charButton);
-    const addBtn = await within(desktopSidebar).findByTestId(`${SIDEBAR_ID}-add-btn-御幸一也`);
-    await user.click(addBtn);
 
     await user.clear(searchInput);
     await user.click(filterBtn);
@@ -46,6 +45,7 @@ describe('Owned Related Filter - Multi-Character Discovery', () => {
   beforeEach(() => {
     cleanup();
     vi.clearAllMocks();
+    localStorage.clear();
   });
 
   it('displays combos for all owned characters and handles removal', async () => {
@@ -59,20 +59,16 @@ describe('Owned Related Filter - Multi-Character Discovery', () => {
     const searchInput = within(desktopSidebar).getByTestId(`${SIDEBAR_ID}-character-search-input`);
     const filterBtn = screen.getByTestId('owned-or-all-characters-combo-btn');
 
-    // Add 皇帝
+    // Add 皇帝 — clicking unowned character adds immediately
     await user.type(searchInput, '皇帝');
     const charA = await within(desktopSidebar).findByTestId(`${SIDEBAR_ID}-char-皇帝`);
-    await user.click(charA); // Must click character first to render the add-btn
-    const charAAdd = await within(desktopSidebar).findByTestId(`${SIDEBAR_ID}-add-btn-皇帝`);
-    await user.click(charAAdd);
+    await user.click(charA);
     await user.clear(searchInput);
 
-    // Add 成宮
+    // Add 成宮 — clicking unowned character adds immediately
     await user.type(searchInput, '成宮');
     const charC = await within(desktopSidebar).findByTestId(`${SIDEBAR_ID}-char-成宮鳴`);
-    await user.click(charC); // Must click character first to render the add-btn
-    const charCAdd = await within(desktopSidebar).findByTestId(`${SIDEBAR_ID}-add-btn-成宮鳴`);
-    await user.click(charCAdd);
+    await user.click(charC);
     await user.clear(searchInput);
 
     // Switch to Owned Related view
@@ -82,7 +78,7 @@ describe('Owned Related Filter - Multi-Character Discovery', () => {
     expect(await screen.findByTestId('combo-card-container-御幸一也&皇帝')).toBeInTheDocument();
     expect(await screen.findByTestId('combo-card-container-御幸一也&成宮鳴')).toBeInTheDocument();
 
-    // Remove 皇帝 from the active roster
+    // Remove 皇帝 from the active roster — owned chars still use the preview panel
     const charA_toRemove = within(desktopSidebar).getByTestId(`${SIDEBAR_ID}-roster-item-皇帝`);
     await user.click(charA_toRemove);
     const removeButton = within(desktopSidebar).getByTestId(`${SIDEBAR_ID}-remove-btn-皇帝`);

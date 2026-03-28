@@ -85,8 +85,18 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
       .map((_, i) => sorted[i] || null);
   }, [props.ownedChars]);
 
-  const handleSelectPreview = (name: string | null) => {
-    setSelectedPreview(name);
+  const handleSelectPreview = (name: string) => {
+    const isOwned = props.ownedChars.has(name);
+    if (isOwned) {
+      // Owned characters open the preview panel for confirmation before removal
+      setSelectedPreview(name);
+    } else {
+      // Unowned characters are added immediately, bypassing the preview panel
+      props.onToggle(name);
+      setLastAction({ name, type: 'add' });
+      setShowUndo(true);
+      setSelectedPreview(null);
+    }
   };
 
   const handleConfirmAction = (name: string, type: 'add' | 'remove') => {
@@ -114,12 +124,12 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
           ownedChars={props.ownedChars}
           rosterSlots={rosterSlots}
           selectedPreview={selectedPreview}
-          setSelectedPreview={handleSelectPreview}
+          setSelectedPreview={setSelectedPreview}
           getImagePath={props.getImagePath}
           testId={testId}
         />
 
-        {/* Player Preview Card */}
+        {/* Player Preview Card - only shown for owned characters pending removal */}
         {selectedPreview && (
           <div
             data-testid={`${testId}-roster-preview-box`}
@@ -234,8 +244,8 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
 
       <div className="flex-1 overflow-y-auto py-4 space-y-8 custom-scrollbar">
         {[
-          { names: sortChars(props.groups.withCombo), label: 'Available Combo Partners' },
-          { names: sortChars(props.groups.noCombo), label: 'Other Characters' },
+          { names: sortChars(props.groups.withCombo), label: 'WITH combos' },
+          { names: sortChars(props.groups.noCombo), label: 'WITHOUT combos' },
         ].map(
           ({ names, label }) =>
             names.length > 0 && (
@@ -246,7 +256,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
               >
                 <div className="px-4 flex items-center gap-3">
                   <div className="h-4 w-1 bg-[#FF9E00] rounded-full" />
-                  <h3 className="text-xs font-black text-[#003D87] uppercase tracking-widest leading-none">
+                  <h3 className="text-xs font-black text-[#003D87] tracking-widest leading-none">
                     {label}
                   </h3>
                 </div>
@@ -261,6 +271,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                       getImagePath={props.getImagePath}
                       data={CHAR_DATA[name]}
                       testId={`${testId}-char-${name}`}
+                      hasCombo={label === 'WITH combos'}
                     />
                   ))}
                 </div>

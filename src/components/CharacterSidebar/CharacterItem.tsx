@@ -21,6 +21,7 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({
   onToggle,
   getImagePath,
   testId,
+  hasCombo,
 }) => {
   return (
     <button
@@ -71,7 +72,7 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({
               !isOwned && !isSelected && 'text-slate-500',
             )}
           >
-            {name}
+            {`${name}${hasCombo ? '' : '(No Combo)'}`}
           </p>
           <span
             className={cn(

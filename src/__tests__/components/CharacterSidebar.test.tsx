@@ -151,24 +151,53 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
     expect(screen.queryByTestId(`${BASE_ID}-map-filter-popover`)).not.toBeInTheDocument();
   });
 
-  it('shows ADD preview and completes addition flow for unowned characters', async () => {
-    const { rerender } = render(<CharacterSidebar {...mockProps} selectedPreview={UNOWNED_CHAR} />);
+  it('adds unowned characters immediately and bypasses the preview panel', async () => {
+    const onToggleSpy = vi.fn();
+    const setSelectedPreviewSpy = vi.fn();
+
+    render(
+      <CharacterSidebar
+        {...mockProps}
+        ownedChars={new Set([])}
+        onToggle={onToggleSpy}
+        setSelectedPreview={setSelectedPreviewSpy}
+      />,
+    );
+
+    // Click an unowned character item
+    const charItem = screen.getByTestId(`${BASE_ID}-char-${UNOWNED_CHAR}`);
+    fireEvent.click(charItem);
+
+    // Should trigger addition immediately
+    expect(onToggleSpy).toHaveBeenCalledWith(UNOWNED_CHAR);
+    // Preview panel should be nullified (reset)
+    expect(setSelectedPreviewSpy).toHaveBeenCalledWith(null);
+    // Preview box should NOT be rendered
+    expect(screen.queryByTestId(`${BASE_ID}-roster-preview-box`)).not.toBeInTheDocument();
+  });
+
+  it('implements the close (X) button in the preview panel correctly', async () => {
+    const setSelectedPreviewSpy = vi.fn();
+    const propsWithOwned = {
+      ...mockProps,
+      ownedChars: new Set([TEST_CHAR]),
+      selectedPreview: TEST_CHAR,
+      setSelectedPreview: setSelectedPreviewSpy,
+    };
+
+    render(<CharacterSidebar {...propsWithOwned} />);
 
     const previewBox = screen.getByTestId(`${BASE_ID}-roster-preview-box`);
-    // Updated to match unowned preview state colors
-    expect(previewBox).toHaveClass('bg-white', 'border-[#0059C1]');
-    expect(within(previewBox).getByText('ADD')).toBeInTheDocument();
+    expect(previewBox).toBeInTheDocument();
 
-    const addBtn = screen.getByTestId(`${BASE_ID}-add-btn-${UNOWNED_CHAR}`);
-    fireEvent.click(addBtn);
+    // Find the X button (the only button without "REMOVE" text)
+    const buttons = screen.getAllByRole('button');
+    const closeBtn = buttons.find((btn) => !btn.textContent?.includes('REMOVE'));
 
-    expect(mockProps.onToggle).toHaveBeenCalledWith(UNOWNED_CHAR);
+    expect(closeBtn).toBeDefined();
+    if (closeBtn) fireEvent.click(closeBtn);
 
-    // Clear preview to show toast
-    rerender(<CharacterSidebar {...mockProps} selectedPreview={null} />);
-
-    const toast = await screen.findByTestId(`${BASE_ID}-undo-toast`);
-    expect(within(toast).getByText(new RegExp(`Added ${UNOWNED_CHAR}`, 'i'))).toBeInTheDocument();
+    expect(setSelectedPreviewSpy).toHaveBeenCalledWith(null);
   });
 
   // --- UI & STYLING REGRESSION ---
@@ -204,13 +233,13 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
       <CharacterSidebar {...propsWithChar} selectedPreview={TEST_CHAR} />,
     );
 
-    // Trigger toast
+    // Trigger toast by removing an owned character
     fireEvent.click(screen.getByTestId(`${BASE_ID}-remove-btn-${TEST_CHAR}`));
     rerender(<CharacterSidebar {...propsWithChar} selectedPreview={null} />);
     expect(screen.getByTestId(`${BASE_ID}-undo-toast`)).toBeInTheDocument();
 
-    // Start new preview
-    rerender(<CharacterSidebar {...propsWithChar} selectedPreview={UNOWNED_CHAR} />);
+    // Start new preview with an OWNED character (Unowned bypasses preview box)
+    rerender(<CharacterSidebar {...propsWithChar} selectedPreview={TEST_CHAR} />);
 
     // Undo toast should hide to prioritize the new preview box
     expect(screen.queryByTestId(`${BASE_ID}-undo-toast`)).not.toBeInTheDocument();
@@ -222,5 +251,33 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
 
     expect(screen.getByTestId(`${BASE_ID}-char-${TEST_CHAR}`)).toBeInTheDocument();
     expect(screen.getByTestId(`${BASE_ID}-char-${UNOWNED_CHAR}`)).toBeInTheDocument();
+  });
+  // --- COMBO LABEL RENDERING ---
+  it('renders the WITHOUT COMBOS section label correctly', () => {
+    const propsWithNoCombo = {
+      ...mockProps,
+      groups: {
+        withCombo: [],
+        noCombo: ['東條小次郎'],
+      },
+    };
+    render(<CharacterSidebar {...propsWithNoCombo} />);
+
+    const section = screen.getByTestId(`${BASE_ID}-list-without-combos`);
+    expect(within(section).getByText('WITHOUT combos')).toBeInTheDocument();
+  });
+
+  it('renders the (No Combo) suffix on characters in the noCombo group', () => {
+    const propsWithNoCombo = {
+      ...mockProps,
+      groups: {
+        withCombo: [],
+        noCombo: ['東條小次郎'],
+      },
+    };
+    render(<CharacterSidebar {...propsWithNoCombo} />);
+
+    const charItem = screen.getByTestId(`${BASE_ID}-char-東條小次郎`);
+    expect(within(charItem).getByText(/no combo/i)).toBeInTheDocument();
   });
 });

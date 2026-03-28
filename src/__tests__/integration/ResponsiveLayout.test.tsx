@@ -59,24 +59,20 @@ describe('Responsive Layout & Tab Regression', () => {
     expect(screen.getByTestId('mobile-reward-analysis')).toBeInTheDocument();
   });
 
-  it('verifies selected characters have the blue border class after adding to team', () => {
+  it('verifies selected characters have the blue border class after adding to team', async () => {
     render(<App />);
 
     // 1. Open mobile library
     fireEvent.click(screen.getByTestId('mobile-nav-library-btn'));
 
-    // 2. Click character to open the Preview Box
-    // Using a known character name from your data
+    // 2. Click character icon
+    // Since we updated App.tsx logic, clicking an unowned character adds them immediately.
     const characterName = 'アランレイヴン';
     const characterItem = screen.getByTestId(`mobile-character-sidebar-char-${characterName}`);
     fireEvent.click(characterItem);
 
-    // 3. Click the "ADD" button inside the Preview Box to finalize selection
-    // Pattern: data-testid={`${testId}-add-btn-${selectedPreview}`}
-    const addBtn = screen.getByTestId(`mobile-character-sidebar-add-btn-${characterName}`);
-    fireEvent.click(addBtn);
-
-    // 4. Verify the character item now reflects the selected/owned state
+    // 3. Verify the character item now reflects the selected/owned state immediately
+    // The "ADD" button step is removed as the action is now direct.
     // Per CharacterItem.tsx logic: isSelected triggers !border-[#0059C1] and !bg-blue-50
     expect(characterItem).toHaveClass('!border-[#0059C1]');
     expect(characterItem).toHaveClass('!bg-blue-50');

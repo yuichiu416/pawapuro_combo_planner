@@ -64,9 +64,19 @@ const App: React.FC = () => {
   const [selectedPreview, setSelectedPreview] = useState<string | null>(null);
   const [isClearModalOpen, setIsClearModalOpen] = useState(false);
 
-  const handleSetSelectedPreview = useCallback((name: string | null) => {
-    setSelectedPreview(name);
-  }, []);
+  const handleSetSelectedPreview = useCallback(
+    (name: string | null) => {
+      if (name && !manager.ownedChars.has(name)) {
+        manager.toggleCharacter(name);
+        setTimeout(() => {
+          setSelectedPreview(null);
+        }, 0);
+        return;
+      }
+      setSelectedPreview(name);
+    },
+    [manager.ownedChars, manager.toggleCharacter],
+  );
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => setIsLoggedIn(!!session));
@@ -275,7 +285,7 @@ const App: React.FC = () => {
           <button
             data-testid="analysis-collapse-btn"
             onClick={() => setIsAnalysisCollapsed(!isAnalysisCollapsed)}
-            className="absolute top-12 -left-4 z-50 w-8 h-8 flex items-center justify-center bg-slate-800 text-white rounded-full border-2 border-white shadow-md hover:scale-110 transition-transform"
+            className="absolute top-12 -right-4 z-50 w-8 h-8 flex items-center justify-center bg-slate-800 text-white rounded-full border-2 border-white shadow-md hover:scale-110 transition-transform"
           >
             {isAnalysisCollapsed ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
           </button>
@@ -289,7 +299,6 @@ const App: React.FC = () => {
                 onRename={manager.onRename}
                 isSyncing={manager.isSyncing}
               />
-
               <div className="flex flex-row items-center gap-3">
                 <button
                   data-testid="sync-status-btn"
@@ -313,7 +322,6 @@ const App: React.FC = () => {
                 </button>
                 <AuthButton />
               </div>
-
               <div
                 data-testid="last-saved-timestamp"
                 className={cn(
@@ -325,7 +333,6 @@ const App: React.FC = () => {
                 Last Saved: {manager.lastSaved}
               </div>
             </div>
-
             <div className="flex-1 overflow-y-auto custom-scrollbar">
               <RewardAnalysis
                 {...manager}
@@ -342,6 +349,7 @@ const App: React.FC = () => {
           title="Team Analysis"
           side="right"
           testId="mobile-analysis"
+          titleTestId="mobile-drawer-title-analysis"
         >
           <div className="px-4 py-2">
             <SlotSwitcher

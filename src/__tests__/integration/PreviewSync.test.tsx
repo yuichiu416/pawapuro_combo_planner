@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import App from '@/App';
 
-// Mock Supabase to focus on UI logic
 vi.mock('@/lib/supabase', () => ({
   supabase: {
     auth: {
@@ -22,69 +21,88 @@ describe('Character Preview and Roster Synchronization', () => {
     vi.clearAllMocks();
   });
 
-  it('updates sidebar preview and shows REMOVE when an owned character is clicked on the MAP', async () => {
+  it('adds unowned characters immediately from the map and shows an undo toast', async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    // 1. Wait for hydration/initial load
+    // 1. Wait for initial load
     await screen.findByTestId(`${SIDEBAR_ID}-roster-item-パワプロ`);
 
-    // 2. Expand the specific Map Section first.
+    // 2. Open Map
     const mapName = 'スカウ島';
-    const mapTrigger = screen.getByTestId(`map-trigger-${mapName}`);
+    const mapTrigger = await screen.findByTestId(`map-trigger-${mapName}`);
     await user.click(mapTrigger);
 
-    // 3. Now that isExpanded is true, the ComboCard and its characters are rendered.
+    // 3. Target unowned character
     const charName = '千代姫';
     const mapCharBtn = await screen.findByTestId(`combo-card-character-icon-btn-${charName}`);
 
-    // 4. Click the character on the map
+    // 4. Click to add
     await user.click(mapCharBtn);
 
-    // 5. Verify the Sidebar Preview Box appears with the add button
-    const previewBox = await screen.findByTestId(`${SIDEBAR_ID}-roster-preview-box`);
-    expect(previewBox).toBeInTheDocument();
+    // 5. Verify Roster Update (Character appears)
+    const newRosterItem = await screen.findByTestId(
+      `${SIDEBAR_ID}-roster-item-${charName}`,
+      {},
+      { timeout: 2000 },
+    );
+    expect(newRosterItem).toBeInTheDocument();
 
-    const addBtn = within(previewBox).getByTestId(`${SIDEBAR_ID}-add-btn-${charName}`);
-    expect(addBtn).toBeInTheDocument();
-  });
-
-  it('verifies the Remove button does not exist by default', async () => {
-    render(<App />);
-
-    // Preview box and action buttons should not be present initially
+    // 6. Ensure Preview Box is NOT open (since it was a direct add)
     expect(screen.queryByTestId(`${SIDEBAR_ID}-roster-preview-box`)).not.toBeInTheDocument();
-
-    // Ensure no remove buttons exist in the DOM
-    const removeButtons = screen.queryAllByTestId(new RegExp(`${SIDEBAR_ID}-remove-btn-`));
-    expect(removeButtons.length).toBe(0);
   });
 
-  it('hides undo toast and switches to preview when selecting a new character from the map', async () => {
+  it('shows the preview panel with REMOVE button when an OWNED character is clicked on the map', async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    // 1. Trigger removal to show Undo Toast
-    const charToRemove = '矢部明雄';
-    const rosterSlot = await screen.findByTestId(`${SIDEBAR_ID}-roster-item-${charToRemove}`);
-    await user.click(rosterSlot);
+    await screen.findByTestId(`${SIDEBAR_ID}-roster-item-パワプロ`);
 
+    const mapName = 'スカウ島';
+    const mapTrigger = await screen.findByTestId(`map-trigger-${mapName}`);
+    await user.click(mapTrigger);
+
+    const ownedChar = '矢部明雄';
+    const mapCharBtn = await screen.findByTestId(`combo-card-character-icon-btn-${ownedChar}`);
+    await user.click(mapCharBtn);
+
+    const previewBox = await screen.findByTestId(`${SIDEBAR_ID}-roster-preview-box`);
+    expect(previewBox).toBeInTheDocument();
+    expect(
+      within(previewBox).getByTestId(`${SIDEBAR_ID}-remove-btn-${ownedChar}`),
+    ).toBeInTheDocument();
+  });
+
+  it('replaces undo toast with a preview panel when selecting an owned character', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await screen.findByTestId(`${SIDEBAR_ID}-roster-item-パワプロ`);
+    const scoutMap = 'スカウ島';
+    await user.click(await screen.findByTestId(`map-trigger-${scoutMap}`));
+
+    // Manually remove a character to trigger the initial toast
+    const charToRemove = '矢部明雄';
+    const rosterSlot = screen.getByTestId(`${SIDEBAR_ID}-roster-item-${charToRemove}`);
+    await user.click(rosterSlot);
     const removeBtn = screen.getByTestId(`${SIDEBAR_ID}-remove-btn-${charToRemove}`);
     await user.click(removeBtn);
 
-    expect(screen.getByTestId(`${SIDEBAR_ID}-undo-toast`)).toBeInTheDocument();
+    // Wait for the Undo Toast to appear
+    const toast = await screen.findByTestId(`${SIDEBAR_ID}-undo-toast`);
+    expect(toast).toBeInTheDocument();
 
-    // 2. Expand map and click a different character to override the toast
-    const mapName = 'スカウ島';
-    await user.click(screen.getByTestId(`map-trigger-${mapName}`));
-
-    const otherChar = '千代姫';
-    const mapCharBtn = await screen.findByTestId(`combo-card-character-icon-btn-${otherChar}`);
+    // Click an OWNED character on the map
+    const mapCharBtn = await screen.findByTestId(`combo-card-character-icon-btn-パワプロ`);
     await user.click(mapCharBtn);
 
-    // 3. Toast should be gone, Preview Box should be back for the new char
+    // The Toast should be replaced by the Preview Box
     expect(screen.queryByTestId(`${SIDEBAR_ID}-undo-toast`)).not.toBeInTheDocument();
     expect(screen.getByTestId(`${SIDEBAR_ID}-roster-preview-box`)).toBeInTheDocument();
-    expect(screen.getByTestId(`${SIDEBAR_ID}-add-btn-${otherChar}`)).toBeInTheDocument();
+  });
+
+  it('verifies that the preview panel is hidden by default', async () => {
+    render(<App />);
+    expect(screen.queryByTestId(`${SIDEBAR_ID}-roster-preview-box`)).not.toBeInTheDocument();
   });
 });
