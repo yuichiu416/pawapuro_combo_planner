@@ -248,8 +248,7 @@ const App: React.FC = () => {
                       expandedMaps.has(mapName) ||
                       mapFilter === mapName ||
                       !!manager.searchTerm ||
-                      (manager.activeSkillFilters && manager.activeSkillFilters.length > 0) ||
-                      manager.filterRelatedOnly
+                      (manager.activeSkillFilters && manager.activeSkillFilters.length > 0)
                     }
                     onToggle={() =>
                       setExpandedMaps((prev) => {
