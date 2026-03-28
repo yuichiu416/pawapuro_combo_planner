@@ -233,13 +233,22 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                   </span>
                 </div>
               </div>
-              <button
-                onClick={handleUndo}
-                data-testid={`${testId}-undo-button`}
-                className="flex items-center gap-1.5 px-4 py-2 bg-white text-[#1A1C1E] hover:bg-blue-50 rounded-lg text-xs font-black uppercase shadow-sm ml-4 transition-transform active:scale-95"
-              >
-                Undo
-              </button>
+              <div className="flex items-center gap-2 ml-4 shrink-0">
+                <button
+                  onClick={handleUndo}
+                  data-testid={`${testId}-undo-button`}
+                  className="flex items-center gap-1.5 px-4 py-2 bg-white text-[#1A1C1E] hover:bg-blue-50 rounded-lg text-xs font-black uppercase shadow-sm transition-transform active:scale-95"
+                >
+                  Undo
+                </button>
+                <button
+                  data-testid={`${testId}-undo-close`}
+                  onClick={() => setShowUndo(false)}
+                  className="p-2 rounded-lg hover:bg-white/10 text-white/50 transition-colors"
+                >
+                  <X size={16} strokeWidth={3} />
+                </button>
+              </div>
             </div>
           </div>
         )}

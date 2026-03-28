@@ -11,6 +11,15 @@ vi.mock('@/data/characters.json', () => ({
   },
 }));
 
+vi.mock('@/data/character_mapping.json', () => ({
+  default: {
+    by_name: {
+      金丸信二: { id: 390 },
+      東條小次郎: { id: 64 },
+    },
+  },
+}));
+
 const TEST_CHAR = '金丸信二';
 const UNOWNED_CHAR = '東條小次郎';
 const BASE_ID = 'character-sidebar';
@@ -116,7 +125,6 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
     const toastContainer = await screen.findByTestId(`${BASE_ID}-undo-toast`);
     expect(toastContainer).toHaveClass('animate-in', 'fade-in');
 
-    // Updated to match component color bg-[#1A1C1E]
     const toastInner = toastContainer.querySelector('.bg-\\[\\#1A1C1E\\]');
     expect(toastInner).toHaveClass('text-white');
 
@@ -129,7 +137,6 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
     render(<CharacterSidebar {...propsWithChar} selectedPreview={TEST_CHAR} />);
 
     const slot = screen.getByTestId(`${BASE_ID}-roster-item-${TEST_CHAR}`);
-    // Updated to match actual component highlight color #FFF200
     expect(slot).toHaveClass('border-[#FFF200]', 'ring-2', 'scale-105');
   });
 
@@ -147,7 +154,6 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
     fireEvent.click(mapOption);
     expect(mockProps.setMapFilter).toHaveBeenCalledWith(mapName);
 
-    // Popover should close after selection
     expect(screen.queryByTestId(`${BASE_ID}-map-filter-popover`)).not.toBeInTheDocument();
   });
 
@@ -164,15 +170,11 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
       />,
     );
 
-    // Click an unowned character item
     const charItem = screen.getByTestId(`${BASE_ID}-char-${UNOWNED_CHAR}`);
     fireEvent.click(charItem);
 
-    // Should trigger addition immediately
     expect(onToggleSpy).toHaveBeenCalledWith(UNOWNED_CHAR);
-    // Preview panel should be nullified (reset)
     expect(setSelectedPreviewSpy).toHaveBeenCalledWith(null);
-    // Preview box should NOT be rendered
     expect(screen.queryByTestId(`${BASE_ID}-roster-preview-box`)).not.toBeInTheDocument();
   });
 
@@ -190,7 +192,6 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
     const previewBox = screen.getByTestId(`${BASE_ID}-roster-preview-box`);
     expect(previewBox).toBeInTheDocument();
 
-    // Find the X button (the only button without "REMOVE" text)
     const buttons = screen.getAllByRole('button');
     const closeBtn = buttons.find((btn) => !btn.textContent?.includes('REMOVE'));
 
@@ -223,7 +224,6 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
     render(<CharacterSidebar {...propsWithChar} selectedPreview={TEST_CHAR} />);
 
     const slot = screen.getByTestId(`${BASE_ID}-roster-item-${TEST_CHAR}`);
-    // Updated to match actual component highlight color #FFF200
     expect(slot).toHaveClass('border-[#FFF200]', 'ring-2', 'scale-105');
   });
 
@@ -233,15 +233,12 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
       <CharacterSidebar {...propsWithChar} selectedPreview={TEST_CHAR} />,
     );
 
-    // Trigger toast by removing an owned character
     fireEvent.click(screen.getByTestId(`${BASE_ID}-remove-btn-${TEST_CHAR}`));
     rerender(<CharacterSidebar {...propsWithChar} selectedPreview={null} />);
     expect(screen.getByTestId(`${BASE_ID}-undo-toast`)).toBeInTheDocument();
 
-    // Start new preview with an OWNED character (Unowned bypasses preview box)
     rerender(<CharacterSidebar {...propsWithChar} selectedPreview={TEST_CHAR} />);
 
-    // Undo toast should hide to prioritize the new preview box
     expect(screen.queryByTestId(`${BASE_ID}-undo-toast`)).not.toBeInTheDocument();
     expect(screen.getByTestId(`${BASE_ID}-roster-preview-box`)).toBeInTheDocument();
   });
@@ -252,8 +249,9 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
     expect(screen.getByTestId(`${BASE_ID}-char-${TEST_CHAR}`)).toBeInTheDocument();
     expect(screen.getByTestId(`${BASE_ID}-char-${UNOWNED_CHAR}`)).toBeInTheDocument();
   });
+
   // --- COMBO LABEL RENDERING ---
-  it('renders the WITHOUT COMBOS section label correctly', () => {
+  it('renders the WITHOUT COMBOS section when switching to that tab', () => {
     const propsWithNoCombo = {
       ...mockProps,
       groups: {
@@ -263,8 +261,9 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
     };
     render(<CharacterSidebar {...propsWithNoCombo} />);
 
-    const section = screen.getByTestId(`${BASE_ID}-list-without-combos`);
-    expect(within(section).getByText('WITHOUT combos')).toBeInTheDocument();
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-without`));
+
+    expect(screen.getByTestId(`${BASE_ID}-list-without-combos`)).toBeInTheDocument();
   });
 
   it('renders the (No Combo) suffix on characters in the noCombo group', () => {
@@ -277,7 +276,164 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
     };
     render(<CharacterSidebar {...propsWithNoCombo} />);
 
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-without`));
+
     const charItem = screen.getByTestId(`${BASE_ID}-char-東條小次郎`);
     expect(within(charItem).getByText(/no combo/i)).toBeInTheDocument();
+  });
+});
+
+describe('CharacterSidebar - tabbing', () => {
+  beforeEach(() => {
+    cleanup();
+    vi.clearAllMocks();
+  });
+
+  it('renders the WITH combos tab as active by default', () => {
+    render(<CharacterSidebar {...mockProps} />);
+
+    const withTab = screen.getByTestId(`${BASE_ID}-tab-with`);
+    const withoutTab = screen.getByTestId(`${BASE_ID}-tab-without`);
+
+    expect(withTab).toHaveClass('bg-[#0059C1]', 'text-white');
+    expect(withoutTab).not.toHaveClass('bg-[#0059C1]');
+  });
+
+  it('shows WITH combos characters by default and hides WITHOUT combos characters', () => {
+    const mixedProps = {
+      ...mockProps,
+      groups: {
+        withCombo: ['金丸信二'],
+        noCombo: ['東條小次郎'],
+      },
+    };
+    render(<CharacterSidebar {...mixedProps} />);
+
+    expect(screen.getByTestId(`${BASE_ID}-char-金丸信二`)).toBeInTheDocument();
+    expect(screen.queryByTestId(`${BASE_ID}-char-東條小次郎`)).not.toBeInTheDocument();
+  });
+
+  it('switches to WITHOUT combos tab and shows the correct characters', () => {
+    const mixedProps = {
+      ...mockProps,
+      groups: {
+        withCombo: ['金丸信二'],
+        noCombo: ['東條小次郎'],
+      },
+    };
+    render(<CharacterSidebar {...mixedProps} />);
+
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-without`));
+
+    expect(screen.queryByTestId(`${BASE_ID}-char-金丸信二`)).not.toBeInTheDocument();
+    expect(screen.getByTestId(`${BASE_ID}-char-東條小次郎`)).toBeInTheDocument();
+  });
+
+  it('updates active tab styling when switching tabs', () => {
+    render(<CharacterSidebar {...mockProps} />);
+
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-without`));
+
+    const withTab = screen.getByTestId(`${BASE_ID}-tab-with`);
+    const withoutTab = screen.getByTestId(`${BASE_ID}-tab-without`);
+
+    expect(withoutTab).toHaveClass('bg-[#0059C1]', 'text-white');
+    expect(withTab).not.toHaveClass('bg-[#0059C1]');
+  });
+
+  it('renders the correct list testId based on active tab', () => {
+    render(<CharacterSidebar {...mockProps} />);
+
+    expect(screen.getByTestId(`${BASE_ID}-list-with-combos`)).toBeInTheDocument();
+    expect(screen.queryByTestId(`${BASE_ID}-list-without-combos`)).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-without`));
+
+    expect(screen.getByTestId(`${BASE_ID}-list-without-combos`)).toBeInTheDocument();
+    expect(screen.queryByTestId(`${BASE_ID}-list-with-combos`)).not.toBeInTheDocument();
+  });
+
+  it('switches back to WITH combos tab after clicking it again', () => {
+    render(<CharacterSidebar {...mockProps} />);
+
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-without`));
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-with`));
+
+    expect(screen.getByTestId(`${BASE_ID}-tab-with`)).toHaveClass('bg-[#0059C1]', 'text-white');
+    expect(screen.getByTestId(`${BASE_ID}-list-with-combos`)).toBeInTheDocument();
+  });
+
+  it('closes the undo toast when clicking the X button', async () => {
+    const propsWithChar = { ...mockProps, ownedChars: new Set([TEST_CHAR]) };
+    const { rerender } = render(
+      <CharacterSidebar {...propsWithChar} selectedPreview={TEST_CHAR} />,
+    );
+
+    // trigger remove → show toast
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-remove-btn-${TEST_CHAR}`));
+    rerender(<CharacterSidebar {...propsWithChar} selectedPreview={null} />);
+
+    const toast = await screen.findByTestId(`${BASE_ID}-undo-toast`);
+    expect(toast).toBeInTheDocument();
+
+    const closeBtn = screen.getByTestId(`${BASE_ID}-undo-close`);
+    fireEvent.click(closeBtn);
+
+    expect(screen.queryByTestId(`${BASE_ID}-undo-toast`)).not.toBeInTheDocument();
+  });
+  it('removes toast after undo is clicked', async () => {
+    const propsWithChar = { ...mockProps, ownedChars: new Set([TEST_CHAR]) };
+    const { rerender } = render(
+      <CharacterSidebar {...propsWithChar} selectedPreview={TEST_CHAR} />,
+    );
+
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-remove-btn-${TEST_CHAR}`));
+    rerender(<CharacterSidebar {...propsWithChar} selectedPreview={null} />);
+
+    const undoBtn = await screen.findByTestId(`${BASE_ID}-undo-button`);
+    fireEvent.click(undoBtn);
+
+    expect(screen.queryByTestId(`${BASE_ID}-undo-toast`)).not.toBeInTheDocument();
+  });
+  it('replaces previous toast when a new action occurs', async () => {
+    const propsWithChar = { ...mockProps, ownedChars: new Set([TEST_CHAR]) };
+    const { rerender } = render(
+      <CharacterSidebar {...propsWithChar} selectedPreview={TEST_CHAR} />,
+    );
+
+    // first remove
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-remove-btn-${TEST_CHAR}`));
+    rerender(<CharacterSidebar {...propsWithChar} selectedPreview={null} />);
+
+    expect(await screen.findByText(/Removed 金丸信二/i)).toBeInTheDocument();
+
+    // simulate add action (click unowned char)
+    rerender(<CharacterSidebar {...mockProps} ownedChars={new Set([])} selectedPreview={null} />);
+
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-char-${TEST_CHAR}`));
+
+    expect(await screen.findByText(/Added 金丸信二/i)).toBeInTheDocument();
+  });
+  it('opens preview when clicking roster slot and supports remove flow', async () => {
+    const propsWithChar = {
+      ...mockProps,
+      ownedChars: new Set([TEST_CHAR]),
+    };
+
+    const setSelectedPreviewSpy = vi.fn();
+
+    render(
+      <CharacterSidebar
+        {...propsWithChar}
+        selectedPreview={null}
+        setSelectedPreview={setSelectedPreviewSpy}
+      />,
+    );
+
+    // click roster slot
+    const slot = screen.getByTestId(`${BASE_ID}-roster-item-${TEST_CHAR}`);
+    fireEvent.click(slot);
+
+    expect(setSelectedPreviewSpy).toHaveBeenCalledWith(TEST_CHAR);
   });
 });
