@@ -11,6 +11,7 @@ interface CharacterItemProps {
   onToggle: (name: string) => void;
   getImagePath: (name: string, usePos: boolean) => string;
   testId: string;
+  hasCombo?: boolean;
 }
 
 export const CharacterItem: React.FC<CharacterItemProps> = ({
@@ -100,6 +101,19 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({
           >
             {data?.encounter_map || 'Unknown Map'}
           </p>
+
+          {/* Character ID */}
+          {data?.id && (
+            <span
+              data-testid={`${testId}-no`}
+              className={cn(
+                'ml-auto text-xs font-bold tracking-wider flex-shrink-0',
+                isSelected ? 'text-[#0059C1]' : 'text-black', // was /60 and slate-300
+              )}
+            >
+              No.{String(data.id).padStart(3, '0')}
+            </span>
+          )}
         </div>
       </div>
     </button>

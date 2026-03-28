@@ -1,13 +1,16 @@
 // src/components/CharacterSidebar.tsx
-import { Info, Plus, RotateCcw, X } from 'lucide-react';
+import { Plus, RotateCcw, X } from 'lucide-react';
 import type React from 'react';
 import { useEffect, useMemo, useState } from 'react';
+
+import characterMappingRaw from '@/data/character_mapping.json';
 import charactersDataRaw from '@/data/characters.json';
 import { cn } from '@/utils/style';
 import { CharacterItem } from './CharacterItem';
 import { FilterBar } from './FilterBar';
 import { RosterGrid } from './RosterGrid';
 
+const CHAR_MAPPING = (characterMappingRaw as any).by_name as Record<string, { id: number }>;
 const POSITION_ORDER: Record<string, number> = {
   投: 1,
   捕: 2,
@@ -48,6 +51,8 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
     null,
   );
   const [showUndo, setShowUndo] = useState(false);
+  const [sortByNumber, setSortByNumber] = useState(false);
+  const [activeTab, setActiveTab] = useState<'with' | 'without'>('with');
 
   useEffect(() => {
     if (selectedPreview) {
@@ -59,10 +64,13 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
 
   const sortChars = (names: string[]) => {
     return [...names].sort((a, b) => {
+      if (sortByNumber) {
+        return (CHAR_MAPPING[a]?.id || 999) - (CHAR_MAPPING[b]?.id || 999);
+      }
       const pA = POSITION_ORDER[CHAR_DATA[a]?.position?.trim()] || 0;
       const pB = POSITION_ORDER[CHAR_DATA[b]?.position?.trim()] || 0;
       if (pA !== pB) return pA - pB;
-      return (CHAR_DATA[a]?.id || 99) - (CHAR_DATA[b]?.id || 99);
+      return (CHAR_MAPPING[a]?.id || 999) - (CHAR_MAPPING[b]?.id || 999);
     });
   };
 
@@ -83,15 +91,13 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
     return Array(28)
       .fill(null)
       .map((_, i) => sorted[i] || null);
-  }, [props.ownedChars]);
+  }, [props.ownedChars, sortByNumber]);
 
   const handleSelectPreview = (name: string) => {
     const isOwned = props.ownedChars.has(name);
     if (isOwned) {
-      // Owned characters open the preview panel for confirmation before removal
       setSelectedPreview(name);
     } else {
-      // Unowned characters are added immediately, bypassing the preview panel
       props.onToggle(name);
       setLastAction({ name, type: 'add' });
       setShowUndo(true);
@@ -114,6 +120,11 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
     }
   };
 
+  const { names, label } =
+    activeTab === 'with'
+      ? { names: sortChars(props.groups.withCombo), label: 'WITH combos' }
+      : { names: sortChars(props.groups.noCombo), label: 'WITHOUT combos' };
+
   return (
     <aside
       className="w-full bg-[#E6F0FF] border-r-4 border-blue-900/10 flex flex-col h-full overflow-hidden relative"
@@ -129,7 +140,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
           testId={testId}
         />
 
-        {/* Player Preview Card - only shown for owned characters pending removal */}
+        {/* Player Preview Card */}
         {selectedPreview && (
           <div
             data-testid={`${testId}-roster-preview-box`}
@@ -242,42 +253,76 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
         />
       </div>
 
-      <div className="flex-1 overflow-y-auto py-4 space-y-8 custom-scrollbar">
-        {[
-          { names: sortChars(props.groups.withCombo), label: 'WITH combos' },
-          { names: sortChars(props.groups.noCombo), label: 'WITHOUT combos' },
-        ].map(
-          ({ names, label }) =>
-            names.length > 0 && (
-              <div
-                key={label}
-                className="space-y-3"
-                data-testid={`${testId}-list-${label.replace(/\s+/g, '-').toLowerCase()}`}
-              >
-                <div className="px-4 flex items-center gap-3">
-                  <div className="h-4 w-1 bg-[#FF9E00] rounded-full" />
-                  <h3 className="text-xs font-black text-[#003D87] tracking-widest leading-none">
-                    {label}
-                  </h3>
-                </div>
-                <div className="grid gap-1.5 px-3">
-                  {names.map((name) => (
-                    <CharacterItem
-                      key={name}
-                      name={name}
-                      isOwned={props.ownedChars.has(name)}
-                      isSelected={props.ownedChars.has(name)}
-                      onToggle={() => handleSelectPreview(name)}
-                      getImagePath={props.getImagePath}
-                      data={CHAR_DATA[name]}
-                      testId={`${testId}-char-${name}`}
-                      hasCombo={label === 'WITH combos'}
-                    />
-                  ))}
-                </div>
-              </div>
-            ),
-        )}
+      <div className="flex-1 overflow-y-auto py-4 space-y-4 custom-scrollbar">
+        {/* Tabs */}
+        <div className="px-3 flex gap-2">
+          <button
+            data-testid={`${testId}-tab-with`}
+            onClick={() => setActiveTab('with')}
+            className={cn(
+              'flex-1 py-2 text-xs font-black uppercase tracking-wider rounded-lg border transition-colors',
+              activeTab === 'with'
+                ? 'bg-[#0059C1] text-white border-[#00479B]'
+                : 'bg-white text-slate-400 border-slate-200 hover:border-slate-300',
+            )}
+          >
+            With combos
+          </button>
+          <button
+            data-testid={`${testId}-tab-without`}
+            onClick={() => setActiveTab('without')}
+            className={cn(
+              'flex-1 py-2 text-xs font-black uppercase tracking-wider rounded-lg border transition-colors',
+              activeTab === 'without'
+                ? 'bg-[#0059C1] text-white border-[#00479B]'
+                : 'bg-white text-slate-400 border-slate-200 hover:border-slate-300',
+            )}
+          >
+            Without combos
+          </button>
+        </div>
+
+        {/* List */}
+        <div
+          className="space-y-3"
+          data-testid={`${testId}-list-${label.replace(/\s+/g, '-').toLowerCase()}`}
+        >
+          <div className="px-4 flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="h-4 w-1 bg-[#FF9E00] rounded-full" />
+              <h3 className="text-xs font-black text-[#003D87] tracking-widest leading-none">
+                {names.length} characters
+              </h3>
+            </div>
+            <button
+              data-testid={`${testId}-sort-toggle`}
+              onClick={() => setSortByNumber((p) => !p)}
+              className={cn(
+                'text-xs font-black uppercase tracking-wider px-2 py-1 rounded-lg border transition-colors',
+                sortByNumber
+                  ? 'bg-[#0059C1] text-white border-[#00479B]'
+                  : 'bg-white text-slate-400 border-slate-200 hover:border-slate-300',
+              )}
+            >
+              {sortByNumber ? 'No. ↑' : 'Pos. ↑'}
+            </button>
+          </div>
+          <div className="grid gap-1.5 px-3">
+            {names.map((name) => (
+              <CharacterItem
+                key={name}
+                name={name}
+                isOwned={props.ownedChars.has(name)}
+                isSelected={props.ownedChars.has(name)}
+                onToggle={() => handleSelectPreview(name)}
+                getImagePath={props.getImagePath}
+                data={{ ...CHAR_DATA[name], id: CHAR_MAPPING[name]?.id }}
+                testId={`${testId}-char-${name}`}
+                hasCombo={activeTab === 'with'}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </aside>
   );
