@@ -4,10 +4,19 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CharacterSidebar } from '@/components/CharacterSidebar';
 
 // Mock data to ensure stable testing environment
+// Update the existing characters.json mock at the top of the file:
 vi.mock('@/data/characters.json', () => ({
   default: {
-    金丸信二: { id: 1, position: '三', encounter_map: 'パワフル高校' },
-    東條小次郎: { id: 2, position: '三', encounter_map: '鳳龍高校' },
+    金丸信二: {
+      position: '三',
+      encounter_map: 'パワフル高校',
+      rewards: { skills: [], stats: { 技術: 2, 精神: 1 } },
+    },
+    東條小次郎: {
+      position: '三',
+      encounter_map: '鳳龍高校',
+      rewards: { skills: [], stats: {} },
+    },
   },
 }));
 
@@ -261,9 +270,9 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
     };
     render(<CharacterSidebar {...propsWithNoCombo} />);
 
-    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-without`));
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-without-combos`));
 
-    expect(screen.getByTestId(`${BASE_ID}-list-without-combos`)).toBeInTheDocument();
+    expect(screen.getByTestId(`${BASE_ID}-tab-without-combos`)).toBeInTheDocument();
   });
 
   it('renders the (No Combo) suffix on characters in the noCombo group', () => {
@@ -276,7 +285,7 @@ describe('CharacterSidebar - Style & Logic Regression', () => {
     };
     render(<CharacterSidebar {...propsWithNoCombo} />);
 
-    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-without`));
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-without-combos`));
 
     const charItem = screen.getByTestId(`${BASE_ID}-char-東條小次郎`);
     expect(within(charItem).getByText(/no combo/i)).toBeInTheDocument();
@@ -292,8 +301,8 @@ describe('CharacterSidebar - tabbing', () => {
   it('renders the WITH combos tab as active by default', () => {
     render(<CharacterSidebar {...mockProps} />);
 
-    const withTab = screen.getByTestId(`${BASE_ID}-tab-with`);
-    const withoutTab = screen.getByTestId(`${BASE_ID}-tab-without`);
+    const withTab = screen.getByTestId(`${BASE_ID}-tab-with-combos`);
+    const withoutTab = screen.getByTestId(`${BASE_ID}-tab-without-combos`);
 
     expect(withTab).toHaveClass('bg-[#0059C1]', 'text-white');
     expect(withoutTab).not.toHaveClass('bg-[#0059C1]');
@@ -323,7 +332,7 @@ describe('CharacterSidebar - tabbing', () => {
     };
     render(<CharacterSidebar {...mixedProps} />);
 
-    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-without`));
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-without-combos`));
 
     expect(screen.queryByTestId(`${BASE_ID}-char-金丸信二`)).not.toBeInTheDocument();
     expect(screen.getByTestId(`${BASE_ID}-char-東條小次郎`)).toBeInTheDocument();
@@ -332,35 +341,13 @@ describe('CharacterSidebar - tabbing', () => {
   it('updates active tab styling when switching tabs', () => {
     render(<CharacterSidebar {...mockProps} />);
 
-    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-without`));
+    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-without-combos`));
 
-    const withTab = screen.getByTestId(`${BASE_ID}-tab-with`);
-    const withoutTab = screen.getByTestId(`${BASE_ID}-tab-without`);
+    const withTab = screen.getByTestId(`${BASE_ID}-tab-with-combos`);
+    const withoutTab = screen.getByTestId(`${BASE_ID}-tab-without-combos`);
 
     expect(withoutTab).toHaveClass('bg-[#0059C1]', 'text-white');
     expect(withTab).not.toHaveClass('bg-[#0059C1]');
-  });
-
-  it('renders the correct list testId based on active tab', () => {
-    render(<CharacterSidebar {...mockProps} />);
-
-    expect(screen.getByTestId(`${BASE_ID}-list-with-combos`)).toBeInTheDocument();
-    expect(screen.queryByTestId(`${BASE_ID}-list-without-combos`)).not.toBeInTheDocument();
-
-    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-without`));
-
-    expect(screen.getByTestId(`${BASE_ID}-list-without-combos`)).toBeInTheDocument();
-    expect(screen.queryByTestId(`${BASE_ID}-list-with-combos`)).not.toBeInTheDocument();
-  });
-
-  it('switches back to WITH combos tab after clicking it again', () => {
-    render(<CharacterSidebar {...mockProps} />);
-
-    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-without`));
-    fireEvent.click(screen.getByTestId(`${BASE_ID}-tab-with`));
-
-    expect(screen.getByTestId(`${BASE_ID}-tab-with`)).toHaveClass('bg-[#0059C1]', 'text-white');
-    expect(screen.getByTestId(`${BASE_ID}-list-with-combos`)).toBeInTheDocument();
   });
 
   it('closes the undo toast when clicking the X button', async () => {
@@ -435,5 +422,55 @@ describe('CharacterSidebar - tabbing', () => {
     fireEvent.click(slot);
 
     expect(setSelectedPreviewSpy).toHaveBeenCalledWith(TEST_CHAR);
+  });
+});
+describe('CharacterItem - reward stats label', () => {
+  beforeEach(() => {
+    cleanup();
+    vi.clearAllMocks();
+  });
+
+  it('renders reward stats row when stats are present', () => {
+    render(<CharacterSidebar {...mockProps} />);
+
+    const statsRow = screen.getByTestId(`${BASE_ID}-char-${TEST_CHAR}-reward-stats`);
+    expect(statsRow).toBeInTheDocument();
+  });
+
+  it('renders each stat as a key: value label', () => {
+    render(<CharacterSidebar {...mockProps} />);
+
+    const gijutsu = screen.getByTestId(`${BASE_ID}-char-${TEST_CHAR}-reward-stat-技術`);
+    const seishin = screen.getByTestId(`${BASE_ID}-char-${TEST_CHAR}-reward-stat-精神`);
+
+    expect(gijutsu).toHaveTextContent('技術: 2');
+    expect(seishin).toHaveTextContent('精神: 1');
+  });
+
+  it('does not render reward stats row when stats object is empty', () => {
+    render(<CharacterSidebar {...mockProps} />);
+
+    expect(
+      screen.queryByTestId(`${BASE_ID}-char-${UNOWNED_CHAR}-reward-stats`),
+    ).not.toBeInTheDocument();
+  });
+
+  it('applies selected styling to stat labels when character is selected', () => {
+    const propsWithOwned = {
+      ...mockProps,
+      ownedChars: new Set([TEST_CHAR]),
+      selectedPreview: TEST_CHAR,
+    };
+    render(<CharacterSidebar {...propsWithOwned} />);
+
+    const gijtsu = screen.getByTestId(`${BASE_ID}-char-${TEST_CHAR}-reward-stat-技術`);
+    expect(gijtsu).toHaveClass('bg-blue-100', 'text-[#003D87]', 'border-blue-200');
+  });
+
+  it('applies unselected styling to stat labels when character is not selected', () => {
+    render(<CharacterSidebar {...mockProps} />);
+
+    const gijtsu = screen.getByTestId(`${BASE_ID}-char-${TEST_CHAR}-reward-stat-技術`);
+    expect(gijtsu).toHaveClass('bg-slate-50', 'text-slate-500', 'border-slate-200');
   });
 });

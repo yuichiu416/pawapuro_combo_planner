@@ -33,8 +33,6 @@ interface CharacterSidebarProps {
   setPosFilter: (val: string | null) => void;
   mapFilter: string | null;
   setMapFilter: (val: string | null) => void;
-  filterNoKanji: boolean;
-  toggleKanjiFilter: () => void;
   groups: { withCombo: string[]; noCombo: string[] };
   ownedChars: Set<string>;
   onToggle: (name: string) => void;
@@ -86,6 +84,28 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
     [],
   );
 
+  const handleSelectPreview = (name: string) => {
+    if (props.ownedChars.has(name)) {
+      setSelectedPreview(name);
+    } else {
+      handleAdd(name);
+    }
+  };
+
+  const handleAdd = (name: string) => {
+    props.onToggle(name);
+    setLastAction({ name, type: 'add' });
+    setShowUndo(true);
+    setSelectedPreview(null);
+  };
+
+  const handleRemove = (name: string) => {
+    props.onToggle(name);
+    setLastAction({ name, type: 'remove' });
+    setShowUndo(true);
+    setSelectedPreview(null);
+  };
+
   const rosterSlots = useMemo(() => {
     const sorted = sortChars(Array.from(props.ownedChars));
     return Array(28)
@@ -93,28 +113,10 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
       .map((_, i) => sorted[i] || null);
   }, [props.ownedChars, sortByNumber]);
 
-  const handleSelectPreview = (name: string) => {
-    const isOwned = props.ownedChars.has(name);
-    if (isOwned) {
-      setSelectedPreview(name);
-    } else {
-      props.onToggle(name);
-      setLastAction({ name, type: 'add' });
-      setShowUndo(true);
-      setSelectedPreview(null);
-    }
-  };
-
-  const handleConfirmAction = (name: string, type: 'add' | 'remove') => {
-    props.onToggle(name);
-    setLastAction({ name, type });
-    setShowUndo(true);
-    setSelectedPreview(null);
-  };
-
   const handleUndo = () => {
     if (lastAction) {
       props.onToggle(lastAction.name);
+      setSelectedPreview(lastAction.name);
       setShowUndo(false);
       setLastAction(null);
     }
@@ -140,7 +142,6 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
           testId={testId}
         />
 
-        {/* Player Preview Card */}
         {selectedPreview && (
           <div
             data-testid={`${testId}-roster-preview-box`}
@@ -182,7 +183,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                 <button
                   key="remove-btn"
                   data-testid={`${testId}-remove-btn-${selectedPreview}`}
-                  onClick={() => handleConfirmAction(selectedPreview, 'remove')}
+                  onClick={() => handleRemove(selectedPreview)}
                   className="px-4 py-2 bg-[#FF2D55] hover:bg-[#E60039] text-white rounded-lg text-xs font-black transition-all shadow-sm active:scale-95 border-2 border-white/20"
                 >
                   REMOVE
@@ -191,7 +192,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                 <button
                   key="add-btn"
                   data-testid={`${testId}-add-btn-${selectedPreview}`}
-                  onClick={() => handleConfirmAction(selectedPreview, 'add')}
+                  onClick={() => handleAdd(selectedPreview)}
                   className="flex items-center gap-1.5 px-4 py-2 bg-[#0059C1] hover:bg-[#006AEE] text-white rounded-lg text-xs font-black transition-all shadow-sm active:scale-95 border-2 border-white/20"
                 >
                   <Plus size={12} strokeWidth={3} />
@@ -213,7 +214,6 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
           </div>
         )}
 
-        {/* Undo Toast */}
         {showUndo && !selectedPreview && (
           <div
             data-testid={`${testId}-undo-toast`}
@@ -237,7 +237,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                 <button
                   onClick={handleUndo}
                   data-testid={`${testId}-undo-button`}
-                  className="flex items-center gap-1.5 px-4 py-2 bg-white text-[#1A1C1E] hover:bg-blue-50 rounded-lg text-xs font-black uppercase shadow-sm transition-transform active:scale-95"
+                  className="px-4 py-2 bg-white text-[#1A1C1E] hover:bg-blue-50 rounded-lg text-xs font-black uppercase shadow-sm transition-transform active:scale-95"
                 >
                   Undo
                 </button>
@@ -263,10 +263,9 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
       </div>
 
       <div className="flex-1 overflow-y-auto py-4 space-y-4 custom-scrollbar">
-        {/* Tabs */}
         <div className="px-3 flex gap-2">
           <button
-            data-testid={`${testId}-tab-with`}
+            data-testid={`${testId}-tab-with-combos`}
             onClick={() => setActiveTab('with')}
             className={cn(
               'flex-1 py-2 text-xs font-black uppercase tracking-wider rounded-lg border transition-colors',
@@ -278,7 +277,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
             With combos
           </button>
           <button
-            data-testid={`${testId}-tab-without`}
+            data-testid={`${testId}-tab-without-combos`}
             onClick={() => setActiveTab('without')}
             className={cn(
               'flex-1 py-2 text-xs font-black uppercase tracking-wider rounded-lg border transition-colors',
@@ -291,11 +290,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
           </button>
         </div>
 
-        {/* List */}
-        <div
-          className="space-y-3"
-          data-testid={`${testId}-list-${label.replace(/\s+/g, '-').toLowerCase()}`}
-        >
+        <div className="space-y-3">
           <div className="px-4 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <div className="h-4 w-1 bg-[#FF9E00] rounded-full" />
@@ -322,8 +317,9 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                 key={name}
                 name={name}
                 isOwned={props.ownedChars.has(name)}
-                isSelected={props.ownedChars.has(name)}
+                isSelected={selectedPreview === name}
                 onToggle={() => handleSelectPreview(name)}
+                onRemove={(targetName) => handleRemove(targetName)}
                 getImagePath={props.getImagePath}
                 data={{ ...CHAR_DATA[name], id: CHAR_MAPPING[name]?.id }}
                 testId={`${testId}-char-${name}`}

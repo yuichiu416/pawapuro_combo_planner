@@ -3,9 +3,21 @@ import { Compass } from 'lucide-react';
 import type React from 'react';
 import { cn } from '../../utils/style';
 
+interface RewardStats {
+  skills: string[];
+  stats: Record<string, number>;
+}
+
+interface CharacterData {
+  position?: string;
+  encounter_map?: string;
+  id?: number;
+  rewards?: RewardStats;
+}
+
 interface CharacterItemProps {
   name: string;
-  data: any;
+  data: CharacterData;
   isOwned: boolean;
   isSelected: boolean;
   onToggle: (name: string) => void;
@@ -13,6 +25,41 @@ interface CharacterItemProps {
   testId: string;
   hasCombo?: boolean;
 }
+
+type CardState = 'selected' | 'owned' | 'unowned';
+
+const cardStyles = {
+  selected: {
+    root: 'border-[#0059C1] bg-blue-50 shadow-[0_4px_12px_rgba(0,89,193,0.15)] z-10',
+    portrait: 'border-[#0059C1] scale-105 shadow-sm',
+    name: 'text-[#003D87]',
+    position: 'bg-[#0059C1] text-white border-[#00479B]',
+    compass: 'text-[#0059C1]',
+    map: 'text-[#0059C1]/80',
+    id: 'text-[#0059C1]',
+    stat: 'bg-blue-100 text-[#003D87] border-blue-200',
+  },
+  owned: {
+    root: 'border-slate-100 bg-white shadow-sm hover:border-slate-300',
+    portrait: 'border-slate-200 bg-white',
+    name: 'text-slate-900',
+    position: 'bg-[#0059C1] text-white border-[#00479B]',
+    compass: 'text-slate-300',
+    map: 'text-slate-400',
+    id: 'text-black',
+    stat: 'bg-slate-50 text-slate-500 border-slate-200',
+  },
+  unowned: {
+    root: 'border-slate-100 bg-white shadow-sm hover:border-slate-300',
+    portrait: 'border-slate-100 bg-slate-50 opacity-60 group-hover:opacity-100',
+    name: 'text-slate-500',
+    position: 'bg-slate-100 text-slate-400 border-slate-200',
+    compass: 'text-slate-300',
+    map: 'text-slate-400',
+    id: 'text-black',
+    stat: 'bg-slate-50 text-slate-500 border-slate-200',
+  },
+} as const;
 
 export const CharacterItem: React.FC<CharacterItemProps> = ({
   name,
@@ -24,38 +71,31 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({
   testId,
   hasCombo,
 }) => {
+  const cardState: CardState = isSelected ? 'selected' : isOwned ? 'owned' : 'unowned';
+  const styles = cardStyles[cardState];
+
+  const rewardStats = data?.rewards?.stats ? Object.entries(data.rewards.stats) : [];
+
   return (
     <button
       data-testid={testId}
       onClick={() => onToggle(name)}
-      // Using !important modifiers and inline styles as a absolute backup
       className={cn(
         'flex items-center gap-3 p-2.5 rounded-xl transition-all duration-200 group text-left w-full border-2 relative outline-none mb-1',
-        isSelected
-          ? '!border-[#0059C1] !bg-blue-50 shadow-[0_4px_12px_rgba(0,89,193,0.15)] z-10'
-          : 'bg-white border-slate-100 hover:border-slate-300 shadow-sm',
+        styles.root,
       )}
-      style={isSelected ? { borderColor: '#0059C1', backgroundColor: '#eff6ff' } : {}}
     >
-      {/* Indicator Dot - Matches the Preview Box UI */}
+      {/* Indicator dot — in flow as the last flex child so no pr- hack needed */}
       {isSelected && (
-        <div
-          className="absolute right-3 top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-[#0059C1] rounded-full z-20 shadow-sm"
-          style={{ backgroundColor: '#0059C1' }}
-        />
+        <div className="absolute right-3 top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-[#0059C1] rounded-full shrink-0" />
       )}
 
-      {/* Character Portrait */}
+      {/* Character portrait */}
       <div
         className={cn(
           'w-12 h-12 flex-shrink-0 relative rounded-lg overflow-hidden border-2 transition-transform',
-          isSelected
-            ? '!border-[#0059C1] scale-105 shadow-sm'
-            : isOwned
-              ? 'border-slate-200 bg-white'
-              : 'border-slate-100 bg-slate-50 opacity-60 group-hover:opacity-100',
+          styles.portrait,
         )}
-        style={isSelected ? { borderColor: '#0059C1' } : {}}
       >
         <img
           src={getImagePath(name, true)}
@@ -64,57 +104,65 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({
         />
       </div>
 
+      {/* Text content — pr-6 reserves space for the absolute indicator dot */}
       <div className="min-w-0 flex-1 pr-6">
+        {/* Name + position row */}
         <div className="flex items-center justify-between gap-2">
-          <p
-            className={cn(
-              'text-sm font-black tracking-tighter leading-tight flex-1 break-words text-left',
-              isSelected ? 'text-[#003D87]' : 'text-slate-900',
-              !isOwned && !isSelected && 'text-slate-500',
+          <div className="flex items-center gap-1.5 flex-1 min-w-0">
+            <p
+              className={cn(
+                'text-sm font-black tracking-tighter leading-tight break-words',
+                styles.name,
+              )}
+            >
+              {name}
+            </p>
+            {!hasCombo && (
+              <span className="text-xs font-medium text-slate-400 italic flex-shrink-0">
+                (No Combo)
+              </span>
             )}
-          >
-            {`${name}${hasCombo ? '' : '(No Combo)'}`}
-          </p>
+          </div>
           <span
             className={cn(
               'text-xs font-black px-1.5 py-0.5 rounded uppercase flex-shrink-0 border',
-              isSelected || isOwned
-                ? 'bg-[#0059C1] text-white border-[#00479B]'
-                : 'bg-slate-100 text-slate-400 border-slate-200',
+              styles.position,
             )}
           >
             {data?.position || 'MGR'}
           </span>
         </div>
 
-        {/* Map Info */}
+        {/* Map + ID row */}
         <div className="flex items-center gap-1 mt-1.5">
-          <Compass
-            size={11}
-            className={cn('flex-shrink-0', isSelected ? 'text-[#0059C1]' : 'text-slate-300')}
-          />
-          <p
-            className={cn(
-              'text-xs font-bold uppercase tracking-wider truncate',
-              isSelected ? 'text-[#0059C1]/80' : 'text-slate-400',
-            )}
-          >
+          <Compass size={11} className={cn('flex-shrink-0', styles.compass)} />
+          <p className={cn('text-xs font-bold uppercase tracking-wider truncate', styles.map)}>
             {data?.encounter_map || 'Unknown Map'}
           </p>
-
-          {/* Character ID */}
           {data?.id && (
             <span
               data-testid={`${testId}-no`}
-              className={cn(
-                'ml-auto text-xs font-bold tracking-wider flex-shrink-0',
-                isSelected ? 'text-[#0059C1]' : 'text-black', // was /60 and slate-300
-              )}
+              className={cn('ml-auto text-xs font-bold tracking-wider flex-shrink-0', styles.id)}
             >
               No.{String(data.id).padStart(3, '0')}
             </span>
           )}
         </div>
+
+        {/* Reward stats row */}
+        {rewardStats.length > 0 && (
+          <div data-testid={`${testId}-reward-stats`} className="flex flex-wrap gap-1 mt-1.5">
+            {rewardStats.map(([key, value]) => (
+              <span
+                key={key}
+                data-testid={`${testId}-reward-stat-${key}`}
+                className={cn('text-xs font-bold px-1.5 py-0.5 rounded border', styles.stat)}
+              >
+                {key}: {value}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
     </button>
   );
