@@ -473,4 +473,29 @@ describe('CharacterItem - reward stats label', () => {
     const gijtsu = screen.getByTestId(`${BASE_ID}-char-${TEST_CHAR}-reward-stat-技術`);
     expect(gijtsu).toHaveClass('bg-slate-50', 'text-slate-500', 'border-slate-200');
   });
+  it('renders inline remove button when character is selected and owned', () => {
+    const onRemoveSpy = vi.fn();
+    render(
+      <CharacterSidebar
+        {...mockProps}
+        ownedChars={new Set([TEST_CHAR])}
+        selectedPreview={TEST_CHAR}
+        onToggle={onRemoveSpy}
+      />,
+    );
+
+    const inlineRemove = screen.getByTestId(`${BASE_ID}-char-${TEST_CHAR}-inline-remove`);
+    expect(inlineRemove).toBeInTheDocument();
+
+    fireEvent.click(inlineRemove);
+    expect(onRemoveSpy).toHaveBeenCalledWith(TEST_CHAR);
+  });
+
+  it('does not render inline remove when character is unowned', () => {
+    render(<CharacterSidebar {...mockProps} ownedChars={new Set([])} />);
+
+    expect(
+      screen.queryByTestId(`${BASE_ID}-char-${TEST_CHAR}-inline-remove`),
+    ).not.toBeInTheDocument();
+  });
 });

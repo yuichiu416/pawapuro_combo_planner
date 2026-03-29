@@ -21,6 +21,7 @@ interface CharacterItemProps {
   isOwned: boolean;
   isSelected: boolean;
   onToggle: (name: string) => void;
+  onRemove: (name: string) => void;
   getImagePath: (name: string, usePos: boolean) => string;
   testId: string;
   hasCombo?: boolean;
@@ -67,12 +68,14 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({
   isOwned,
   isSelected,
   onToggle,
+  onRemove,
   getImagePath,
   testId,
   hasCombo,
 }) => {
   const cardState: CardState = isSelected ? 'selected' : isOwned ? 'owned' : 'unowned';
   const styles = cardStyles[cardState];
+  const showRemove = isSelected && isOwned;
 
   const rewardStats = data?.rewards?.stats ? Object.entries(data.rewards.stats) : [];
 
@@ -85,8 +88,8 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({
         styles.root,
       )}
     >
-      {/* Indicator dot — in flow as the last flex child so no pr- hack needed */}
-      {isSelected && (
+      {/* Dot — only for unowned-selected; owned-selected gets the remove button instead */}
+      {isSelected && !isOwned && (
         <div className="absolute right-3 top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-[#0059C1] rounded-full shrink-0" />
       )}
 
@@ -104,8 +107,8 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({
         />
       </div>
 
-      {/* Text content — pr-6 reserves space for the absolute indicator dot */}
-      <div className="min-w-0 flex-1 pr-6">
+      {/* Text content — pr-6 only needed when dot is showing */}
+      <div className={cn('min-w-0 flex-1', !showRemove && 'pr-6')}>
         {/* Name + position row */}
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-1.5 flex-1 min-w-0">
@@ -133,19 +136,32 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({
           </span>
         </div>
 
-        {/* Map + ID row */}
+        {/* Map + ID row — REMOVE replaces No.xxx when selected+owned */}
         <div className="flex items-center gap-1 mt-1.5">
           <Compass size={11} className={cn('flex-shrink-0', styles.compass)} />
           <p className={cn('text-xs font-bold uppercase tracking-wider truncate', styles.map)}>
             {data?.encounter_map || 'Unknown Map'}
           </p>
-          {data?.id && (
-            <span
-              data-testid={`${testId}-no`}
-              className={cn('ml-auto text-xs font-bold tracking-wider flex-shrink-0', styles.id)}
+          {showRemove ? (
+            <button
+              data-testid={`${testId}-inline-remove`}
+              onClick={(e) => {
+                e.stopPropagation();
+                onRemove(name);
+              }}
+              className="ml-auto flex-shrink-0 px-2.5 py-1 bg-[#FF2D55] hover:bg-[#E60039] text-white rounded-md text-xs font-black uppercase tracking-wider transition-all active:scale-95"
             >
-              No.{String(data.id).padStart(3, '0')}
-            </span>
+              Remove
+            </button>
+          ) : (
+            data?.id && (
+              <span
+                data-testid={`${testId}-no`}
+                className={cn('ml-auto text-xs font-bold tracking-wider flex-shrink-0', styles.id)}
+              >
+                No.{String(data.id).padStart(3, '0')}
+              </span>
+            )
           )}
         </div>
 
