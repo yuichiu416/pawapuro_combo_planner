@@ -2,10 +2,8 @@
 import { ChevronDown, MapPin } from 'lucide-react';
 import type React from 'react';
 import { ComboCard } from '@/components/ComboCard';
-import combosDataRaw from '@/data/combos.json';
+import { useGameVersion } from '@/contexts/GameVersionContext';
 import { cn } from '@/utils/style';
-
-const combosData = combosDataRaw as Record<string, any>;
 
 interface MapSectionProps {
   mapName: string;
@@ -33,6 +31,8 @@ export const MapSection: React.FC<MapSectionProps> = ({
   progress,
   ...gridProps
 }) => {
+  const { gameData } = useGameVersion();
+  const combosData = gameData.combos as Record<string, any>;
   const isComplete = progress && progress.selected === progress.total && progress.total > 0;
 
   return (

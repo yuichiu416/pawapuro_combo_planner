@@ -1,8 +1,10 @@
 /**
  * @file src/hooks/__tests__/useComboManager.test.ts
  */
+import React from 'react';
 import { act, renderHook, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { GameVersionProvider } from '@/contexts/GameVersionContext';
 import { supabase } from '@/lib/supabase';
 import { useComboManager } from '../../hooks/useComboManager';
 
@@ -41,11 +43,20 @@ const { mockCombos, mockChars, mockMapping, mockSkills } = await vi.hoisted(asyn
 });
 
 // 2. MOCK MODULES
-vi.mock('@/data/characters.json', () => ({ default: mockChars }));
-vi.mock('@/data/combos.json', () => ({ default: mockCombos }));
-vi.mock('@/data/character_mapping.json', () => ({ default: mockMapping }));
+// Both versions point at the same fixtures for these tests - the toggle's
+// version-switching behavior is tested separately, these tests just need a
+// consistent, predictable dataset regardless of which version is "active".
+vi.mock('@/data/2024-2025/characters.json', () => ({ default: mockChars }));
+vi.mock('@/data/2024-2025/combos.json', () => ({ default: mockCombos }));
+vi.mock('@/data/2024-2025/character_mapping.json', () => ({ default: mockMapping }));
+vi.mock('@/data/2024-2025/maps.json', () => ({ default: {} }));
+
+vi.mock('@/data/2026-2027/characters.json', () => ({ default: mockChars }));
+vi.mock('@/data/2026-2027/combos.json', () => ({ default: mockCombos }));
+vi.mock('@/data/2026-2027/character_mapping.json', () => ({ default: mockMapping }));
+vi.mock('@/data/2026-2027/maps.json', () => ({ default: {} }));
+
 vi.mock('@/data/skills.json', () => ({ default: mockSkills }));
-vi.mock('@/data/maps.json', () => ({ default: {} }));
 
 // 3. MOCK SUPABASE (Updated for proper chaining and onSaveToSlot)
 const mockUpsert = vi.fn().mockResolvedValue({ error: null });
@@ -79,7 +90,7 @@ const LOCAL_STORAGE_KEY = 'パワプロ_planner_local_v2';
 
 describe('useComboManager Roster Validation', () => {
   it('should validate the minimum legal roster (6P, 15F scouts)', async () => {
-    const { result } = renderHook(() => useComboManager());
+    const { result } = renderHook(() => useComboManager(), { wrapper: GameVersionProvider });
     await waitFor(() => expect(result.current.slots.length).toBeGreaterThan(0));
 
     act(() => {
@@ -92,7 +103,7 @@ describe('useComboManager Roster Validation', () => {
   });
 
   it('should validate the maximum legal roster (Total 25 characters)', async () => {
-    const { result } = renderHook(() => useComboManager());
+    const { result } = renderHook(() => useComboManager(), { wrapper: GameVersionProvider });
     await waitFor(() => expect(result.current.slots.length).toBeGreaterThan(0));
 
     act(() => {
@@ -105,7 +116,7 @@ describe('useComboManager Roster Validation', () => {
   });
 
   it('should fail if Pitchers are below 6', async () => {
-    const { result } = renderHook(() => useComboManager());
+    const { result } = renderHook(() => useComboManager(), { wrapper: GameVersionProvider });
     await waitFor(() => expect(result.current.slots.length).toBeGreaterThan(0));
 
     act(() => {
@@ -117,7 +128,7 @@ describe('useComboManager Roster Validation', () => {
   });
 
   it('should fail if total character count exceeds 25', async () => {
-    const { result } = renderHook(() => useComboManager());
+    const { result } = renderHook(() => useComboManager(), { wrapper: GameVersionProvider });
     await waitFor(() => expect(result.current.slots.length).toBeGreaterThan(0));
 
     act(() => {
@@ -129,7 +140,7 @@ describe('useComboManager Roster Validation', () => {
   });
 
   it('should treat Managers as a separate independent limit (0-3)', async () => {
-    const { result } = renderHook(() => useComboManager());
+    const { result } = renderHook(() => useComboManager(), { wrapper: GameVersionProvider });
     await waitFor(() => expect(result.current.slots.length).toBeGreaterThan(0));
 
     act(() => {
@@ -151,7 +162,7 @@ describe('useComboManager Roster Validation', () => {
 
 describe('useComboManager Logic - Search & Filtering', () => {
   it('filters by character name', async () => {
-    const { result } = renderHook(() => useComboManager());
+    const { result } = renderHook(() => useComboManager(), { wrapper: GameVersionProvider });
     await waitFor(() => expect(result.current.slots.length).toBeGreaterThan(0));
 
     act(() => {
@@ -161,7 +172,7 @@ describe('useComboManager Logic - Search & Filtering', () => {
   });
 
   it('filters based on skill names deep in rewards', async () => {
-    const { result } = renderHook(() => useComboManager());
+    const { result } = renderHook(() => useComboManager(), { wrapper: GameVersionProvider });
     await waitFor(() => expect(result.current.slots.length).toBeGreaterThan(0));
 
     act(() => {
@@ -171,7 +182,7 @@ describe('useComboManager Logic - Search & Filtering', () => {
   });
 
   it('resets when search term is cleared', () => {
-    const { result } = renderHook(() => useComboManager());
+    const { result } = renderHook(() => useComboManager(), { wrapper: GameVersionProvider });
     const totalCount = Object.keys(mockCombos).length;
     act(() => {
       result.current.setSearchTerm('NON_EXISTENT');
@@ -186,7 +197,7 @@ describe('useComboManager Logic - Search & Filtering', () => {
 
 describe('useComboManager Logic - Gold Skill Selection', () => {
   it('should reset activeSkillFilters when switching goldFilter category', async () => {
-    const { result } = renderHook(() => useComboManager());
+    const { result } = renderHook(() => useComboManager(), { wrapper: GameVersionProvider });
     await waitFor(() => expect(result.current.slots.length).toBeGreaterThan(0));
 
     act(() => {
@@ -205,7 +216,7 @@ describe('useComboManager Logic - Gold Skill Selection', () => {
   });
 
   it('should filter combos correctly when multiple activeSkillFilters are applied (OR logic)', () => {
-    const { result } = renderHook(() => useComboManager());
+    const { result } = renderHook(() => useComboManager(), { wrapper: GameVersionProvider });
     act(() => {
       result.current.onToggleSkillFilter('一球入魂');
       result.current.onToggleSkillFilter('怪童');
@@ -222,7 +233,7 @@ describe('useComboManager Logic - Gold Skill Selection', () => {
 
 describe('useComboManager Analysis Sorting Logic', () => {
   it('strictly groups ALL gold skills above ALL non-gold skills', async () => {
-    const { result } = renderHook(() => useComboManager());
+    const { result } = renderHook(() => useComboManager(), { wrapper: GameVersionProvider });
     await waitFor(() => expect(result.current.slots.length).toBeGreaterThan(0));
 
     act(() => {
@@ -239,7 +250,7 @@ describe('useComboManager Analysis Sorting Logic', () => {
   });
 
   it('sorts by level (descending) within the same color tier', () => {
-    const { result } = renderHook(() => useComboManager());
+    const { result } = renderHook(() => useComboManager(), { wrapper: GameVersionProvider });
     act(() => {
       result.current.toggleCombo('金丸信二&東条秀明'); // 広角打法 LV.5
       result.current.toggleCombo('マキシマム池田クリスティン&エミリ'); // 窮地◯ LV.3
@@ -263,7 +274,7 @@ describe('useComboManager Persistence - Cloud & Local', () => {
 
   it('should save to LocalStorage in Array format when onSaveToSlot is called without a session', async () => {
     (supabase.auth.getSession as any).mockResolvedValue({ data: { session: null } });
-    const { result } = renderHook(() => useComboManager());
+    const { result } = renderHook(() => useComboManager(), { wrapper: GameVersionProvider });
     // Slots are initialized to 3 in the hook
     await waitFor(() => expect(result.current.slots.length).toBe(3));
 
@@ -283,7 +294,7 @@ describe('useComboManager Persistence - Cloud & Local', () => {
     const mockUser = { id: 'test-user-id' };
     (supabase.auth.getSession as any).mockResolvedValue({ data: { session: { user: mockUser } } });
 
-    const { result } = renderHook(() => useComboManager());
+    const { result } = renderHook(() => useComboManager(), { wrapper: GameVersionProvider });
     await waitFor(() => expect(result.current.slots.length).toBe(3));
 
     act(() => {
@@ -306,6 +317,7 @@ describe('useComboManager Persistence - Cloud & Local', () => {
 
   it('should hydrate from LocalStorage for guests using V2 format', async () => {
     (supabase.auth.getSession as any).mockResolvedValue({ data: { session: null } });
+
     const savedData = [
       {
         slot_number: 1,
@@ -313,13 +325,19 @@ describe('useComboManager Persistence - Cloud & Local', () => {
         selected_characters: ['M1'],
         selected_combos: [],
         is_active: true,
+        game_version: '2026-2027',
       },
-      { slot_number: 2, is_active: false, selected_characters: [], selected_combos: [] },
-      { slot_number: 3, is_active: false, selected_characters: [], selected_combos: [] },
+      { slot_number: 2, is_active: false, selected_characters: [], selected_combos: [], game_version: '2026-2027' },
+      { slot_number: 3, is_active: false, selected_characters: [], selected_combos: [], game_version: '2026-2027' },
     ];
     window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(savedData));
 
-    const { result } = renderHook(() => useComboManager());
+    // Pin to 2026-2027 via initialVersion prop so the version is fixed regardless
+    // of what other tests left in localStorage.
+    const Wrapper = ({ children }: { children: React.ReactNode }) =>
+      React.createElement(GameVersionProvider, { initialVersion: '2026-2027' }, children);
+
+    const { result } = renderHook(() => useComboManager(), { wrapper: Wrapper });
 
     await waitFor(() => {
       expect(result.current.ownedChars.has('M1')).toBe(true);
@@ -329,7 +347,7 @@ describe('useComboManager Persistence - Cloud & Local', () => {
 
 describe('useComboManager - Kanji Filtering', () => {
   it('should filter out characters with Kanji when filterNoKanji is active', async () => {
-    const { result } = renderHook(() => useComboManager());
+    const { result } = renderHook(() => useComboManager(), { wrapper: GameVersionProvider });
     await waitFor(() => expect(result.current.slots.length).toBeGreaterThan(0));
 
     act(() => {
@@ -341,7 +359,7 @@ describe('useComboManager - Kanji Filtering', () => {
 });
 
 it('manages owned characters correctly', async () => {
-  const { result } = renderHook(() => useComboManager());
+  const { result } = renderHook(() => useComboManager(), { wrapper: GameVersionProvider });
   await waitFor(() => expect(result.current.slots.length).toBeGreaterThan(0));
 
   act(() => {

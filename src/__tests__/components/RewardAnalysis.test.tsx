@@ -21,6 +21,7 @@ describe('RewardAnalysis UI Logic', () => {
 
   const defaultProps = {
     testId: 'mobile-reward-analysis',
+    charactersData: {} as Record<string, any>,
     getImagePath: mockGetImagePath,
     activeSkillFilter: null,
     onToggleSkillFilter: mockOnToggleSkillFilter,

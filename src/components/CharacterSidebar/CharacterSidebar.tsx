@@ -1,16 +1,14 @@
 // src/components/CharacterSidebar.tsx
 import { Plus, RotateCcw, X } from 'lucide-react';
 import type React from 'react';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import characterMappingRaw from '@/data/character_mapping.json';
-import charactersDataRaw from '@/data/characters.json';
+import { useGameVersion } from '@/contexts/GameVersionContext';
 import { cn } from '@/utils/style';
 import { CharacterItem } from './CharacterItem';
 import { FilterBar } from './FilterBar';
 import { RosterGrid } from './RosterGrid';
 
-const CHAR_MAPPING = (characterMappingRaw as any).by_name as Record<string, { id: number }>;
 const POSITION_ORDER: Record<string, number> = {
   投: 1,
   捕: 2,
@@ -24,7 +22,6 @@ const POSITION_ORDER: Record<string, number> = {
   右: 10,
   マ: 11,
 };
-const CHAR_DATA = charactersDataRaw as Record<string, any>;
 
 interface CharacterSidebarProps {
   searchTerm: string;
@@ -44,6 +41,9 @@ interface CharacterSidebarProps {
 
 export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
   const { testId = 'character-sidebar', selectedPreview, setSelectedPreview } = props;
+  const { gameData } = useGameVersion();
+  const CHAR_MAPPING = gameData.characterMapping.by_name as Record<string, { id: number }>;
+  const CHAR_DATA = gameData.characters as Record<string, any>;
   const [isMapExpanded, setIsMapExpanded] = useState(false);
   const [lastAction, setLastAction] = useState<{ name: string; type: 'add' | 'remove' } | null>(
     null,
@@ -60,17 +60,20 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
 
   const isPreviewOwned = selectedPreview ? props.ownedChars.has(selectedPreview) : false;
 
-  const sortChars = (names: string[]) => {
-    return [...names].sort((a, b) => {
-      if (sortByNumber) {
+  const sortChars = useCallback(
+    (names: string[]) => {
+      return [...names].sort((a, b) => {
+        if (sortByNumber) {
+          return (CHAR_MAPPING[a]?.id || 999) - (CHAR_MAPPING[b]?.id || 999);
+        }
+        const pA = POSITION_ORDER[CHAR_DATA[a]?.position?.trim()] || 0;
+        const pB = POSITION_ORDER[CHAR_DATA[b]?.position?.trim()] || 0;
+        if (pA !== pB) return pA - pB;
         return (CHAR_MAPPING[a]?.id || 999) - (CHAR_MAPPING[b]?.id || 999);
-      }
-      const pA = POSITION_ORDER[CHAR_DATA[a]?.position?.trim()] || 0;
-      const pB = POSITION_ORDER[CHAR_DATA[b]?.position?.trim()] || 0;
-      if (pA !== pB) return pA - pB;
-      return (CHAR_MAPPING[a]?.id || 999) - (CHAR_MAPPING[b]?.id || 999);
-    });
-  };
+      });
+    },
+    [sortByNumber, CHAR_DATA, CHAR_MAPPING],
+  );
 
   const AVAILABLE_MAPS = useMemo(
     () =>
@@ -81,7 +84,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
             .filter(Boolean),
         ),
       ),
-    [],
+    [CHAR_DATA],
   );
 
   const handleSelectPreview = (name: string) => {
@@ -111,7 +114,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
     return Array(28)
       .fill(null)
       .map((_, i) => sorted[i] || null);
-  }, [props.ownedChars, sortByNumber]);
+  }, [props.ownedChars, sortChars]);
 
   const handleUndo = () => {
     if (lastAction) {

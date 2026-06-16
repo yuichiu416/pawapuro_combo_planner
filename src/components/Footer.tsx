@@ -1,5 +1,6 @@
 import { Bug } from 'lucide-react';
 import type React from 'react';
+import { VersionToggle } from './VersionToggle';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -10,7 +11,9 @@ export const Footer: React.FC = () => {
         {/* Left: Branding & Copy */}
         <div className="flex items-center gap-3" data-testid="combo_planner_subtitle">
           <span className="text-sm font-black tracking-tighter text-black uppercase">
-            パワプロ 2024-2025 Combo Planner{' '}
+            パワプロ{' '}
+            <VersionToggle />
+            Combo Planner{' '}
             <span className="text-black ml-1 not-font-bold">v1.2.0</span>
           </span>
           <span className="text-black">|</span>

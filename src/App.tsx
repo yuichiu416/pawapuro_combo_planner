@@ -12,7 +12,8 @@ import { MobileDrawer } from '@/components/MobileDrawer';
 import { MobileNavigation } from '@/components/MobileNavigation';
 import { RewardAnalysis } from '@/components/RewardAnalysis';
 import { SlotSwitcher } from '@/components/SlotSwitcher';
-import characters from '@/data/characters.json';
+import { VersionToggle } from '@/components/VersionToggle';
+import { GameVersionProvider } from '@/contexts/GameVersionContext';
 import { useComboManager } from '@/hooks/useComboManager';
 import { supabase } from '@/lib/supabase';
 import { cn } from '@/utils/style';
@@ -37,9 +38,9 @@ const Logo: React.FC<LogoProps> = ({ isCollapsed }) => (
       <div className="flex flex-col animate-in fade-in slide-in-from-left-2 duration-300">
         <span
           data-testid="pawapuro_title_text"
-          className="font-black text-xl md:text-2xl tracking-tighter text-black uppercase leading-none whitespace-nowrap"
+          className="font-black text-xl md:text-2xl tracking-tighter text-black uppercase leading-none whitespace-nowrap flex items-center gap-1"
         >
-          パワプロ 2024-2025
+          パワプロ <VersionToggle />
         </span>
         <span className="text-xs md:text-sm font-bold text-blue-600 uppercase tracking-widest whitespace-nowrap">
           Combo Planner
@@ -49,7 +50,7 @@ const Logo: React.FC<LogoProps> = ({ isCollapsed }) => (
   </div>
 );
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
   const manager = useComboManager();
   const [posFilter, setPosFilter] = useState<string | null>(null);
   const [mapFilter, setMapFilter] = useState<string | null>(null);
@@ -100,7 +101,7 @@ const App: React.FC = () => {
   const filteredLibrary = useMemo(() => {
     if (!manager.libraryGroups) return { withCombo: [], noCombo: [] };
     const filterFn = (name: string) => {
-      const charData = (characters as any)[name];
+      const charData = (manager.charactersData as any)[name];
       const matchesSearch =
         !manager.searchTerm ||
         name.toLowerCase().includes(manager.searchTerm.toLowerCase()) ||
@@ -119,7 +120,14 @@ const App: React.FC = () => {
       withCombo: (manager.libraryGroups.withCombo || []).filter(filterFn),
       noCombo: (manager.libraryGroups.noCombo || []).filter(filterFn),
     };
-  }, [manager.libraryGroups, manager.searchTerm, posFilter, mapFilter, manager.activeSkillFilters]);
+  }, [
+    manager.libraryGroups,
+    manager.charactersData,
+    manager.searchTerm,
+    posFilter,
+    mapFilter,
+    manager.activeSkillFilters,
+  ]);
 
   const allMapNames = useMemo(() => Object.keys(manager.mapsData), [manager.mapsData]);
   const allExpanded = expandedMaps.size === allMapNames.length && allMapNames.length > 0;
@@ -385,5 +393,11 @@ const App: React.FC = () => {
     </div>
   );
 };
+
+const App: React.FC = () => (
+  <GameVersionProvider>
+    <AppContent />
+  </GameVersionProvider>
+);
 
 export default App;

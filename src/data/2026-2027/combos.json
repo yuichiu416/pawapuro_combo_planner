@@ -1,0 +1,4491 @@
+{
+  "金丸信二&千代姫": {
+    "characters": ["金丸信二", "千代姫"],
+    "map": "スカウ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "一球入魂",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "初球◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "打たれ強さ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "パワーヒッター",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "勝ち運",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "倉持洋一&佐渡摩智": {
+    "characters": ["倉持洋一", "佐渡摩智"],
+    "map": "スカウ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "電光石火",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "盗塁",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "バント◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "内野安打◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "走塁",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "小湊春市&美藤千尋": {
+    "characters": ["小湊春市", "美藤千尋"],
+    "map": "スカウ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "安打製造機",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "アベレージヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "代打の神様",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "代打◯",
+          "level": 5,
+          "verified": true
+        },
+        {
+          "name": "固め打ち",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "チャンスメーカー",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "小湊亮介&往田真威人": {
+    "characters": ["小湊亮介", "往田真威人"],
+    "map": "スカウ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "魔術師",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "守備職人",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "対ピンチ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ハイボールヒッター",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "神谷カルロス俊樹&津乃田梨亜": {
+    "characters": ["神谷カルロス俊樹", "津乃田梨亜"],
+    "map": "スカウ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "高速ベースラン",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "走塁",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "内野安打◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "チャンスメーカー",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "純決太郎&魁竜司": {
+    "characters": ["純決太郎", "魁竜司"],
+    "map": "スカウ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "鉄腕",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "投手調子安定",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ロケットスタート",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "内野安打◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "真っスラ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "対左投手",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "稲穂亜希&香本富久雄": {
+    "characters": ["稲穂亜希", "香本富久雄"],
+    "map": "スカウ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "重戦車",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ホーム突入",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ガソリンタンク",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "回復",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "サブポジ捕手",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "星井スバル&戸井鉄男": {
+    "characters": ["星井スバル", "戸井鉄男"],
+    "map": "スカウ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "高速レーザー",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "レーザービーム",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "変幻自在",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "緩急◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "逃げ球",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "送球",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "アルヴィンロックハート&レッド": {
+    "characters": ["アルヴィンロックハート", "レッド"],
+    "map": "スカウ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "トップギア",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "立ち上がり◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "スタミナ",
+          "level": 5,
+          "verified": true
+        },
+        {
+          "name": "重い球",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "キレ◯",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "実和男&片桐恋": {
+    "characters": ["実和男", "片桐恋"],
+    "map": "スカウ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "固め打ち",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "重い球",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "サブポジ一塁",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "鋼毅&桜沢樹": {
+    "characters": ["鋼毅", "桜沢樹"],
+    "map": "スカウ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "プルヒッター",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "対ピンチ",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "逃げ球",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "悪球打ち",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "小山雅&新庄": {
+    "characters": ["小山雅", "新庄"],
+    "map": "スカウ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "守備",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "捕球",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "コントロール",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ケガしにくさ",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "パワプロ&矢部明雄": {
+    "characters": ["パワプロ", "矢部明雄"],
+    "map": "スカウ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ムード◯",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "御幸一也&成宮鳴": {
+    "characters": ["御幸一也", "成宮鳴"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "球界の頭脳",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "キャッチャー",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ドクターK",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "奪三振",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対エース◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "勝ち運",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "三島優太&ゴウ": {
+    "characters": ["三島優太", "ゴウ"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "アーチスト",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "パワーヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ガソリンタンク",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "回復",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "奪三振",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "満塁男",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "闘志",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "川上憲史&フルハート": {
+    "characters": ["川上憲史", "フルハート"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "不屈の魂",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "打たれ強さ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "低め◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "ムード◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "サヨナラ男",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "多田野樹&水鳥忍": {
+    "characters": ["多田野樹", "水鳥忍"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ささやき戦術",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "選球眼",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "打たれ強さ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "流し打ち",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "増子透&渋谷秀喜": {
+    "characters": ["増子透", "渋谷秀喜"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "伝説のサヨナラ男",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "サヨナラ男",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "パワーヒッター",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "全開",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "パワー",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "前園健太&雷轟遥登": {
+    "characters": ["前園健太", "雷轟遥登"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "引っ張り屋",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "プルヒッター",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "ヘッドスライディング",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "サブポジ一塁",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "鈴島紫音&志藤玲美": {
+    "characters": ["鈴島紫音", "志藤玲美"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "闘魂",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "闘志",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "エースキラー",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対エース◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ヘッスラ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "打たれ強さ",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "橘みずき&花鳥千香": {
+    "characters": ["橘みずき", "花鳥千香"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "精密機械",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "低め◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "対強打者◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "クロスファイアー",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "太刀川広巳&早川あおい": {
+    "characters": ["太刀川広巳", "早川あおい"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ディレイドアーム",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "球持ち◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "キレ◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "シンカー",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "球種シンカー",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ノビ",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "バーリスロセオ&大豪月": {
+    "characters": ["バーリスロセオ", "大豪月"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "怪童",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ノビ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "全開",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "逆境◯",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "DJB-K&NCM-753": {
+    "characters": ["DJB-K", "NCM-753"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ギアチェンジ",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "回復",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ケガしにくさ",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "駒坂瞬&尾崎竜介": {
+    "characters": ["駒坂瞬", "尾崎竜介"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "広角砲",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "広角打法",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "捕球",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "回またぎ◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "守備力",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "リリース◯",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "パワ子&神成尊": {
+    "characters": ["パワ子", "神成尊"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "伝説のサヨナラ男",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "サヨナラ男",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "逆境◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "対エース◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "サブポジ一塁",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "駒坂瞬&中之島幸宏": {
+    "characters": ["駒坂瞬", "中之島幸宏"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "安打製造機",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "アベレージヒッター",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "送球",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "守備職人",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "捕球",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "伍歩倫人&天王寺": {
+    "characters": ["伍歩倫人", "天王寺"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ストライク送球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "送球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "守備職人",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "対ピンチ",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "星空星光&橘みずき": {
+    "characters": ["星空星光", "橘みずき"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "逆襲",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "リベンジ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "代打◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "荒れ球",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "緩急◯",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "鶴屋勝&戸内聖華": {
+    "characters": ["鶴屋勝", "戸内聖華"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "カット打ち",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "要所◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "スライダー",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "大鐘餅太郎&楽垣吾助": {
+    "characters": ["大鐘餅太郎", "楽垣吾助"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "広角打法",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "対左打者",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ダメ押し",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "回復",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "サブポジ外野",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "江守陽&茶来元気": {
+    "characters": ["江守陽", "茶来元気"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "守備職人",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "送球",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "固め打ち",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "チャンス",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "水無月要&乙女": {
+    "characters": ["水無月要", "乙女"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "アウトコースヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "シュート",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "国際大会◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "初球◯",
+          "level": 4,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "オクタヴィア&火野勇太郎": {
+    "characters": ["オクタヴィア", "火野勇太郎"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "アベレージヒッター",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "流し打ち",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "逃げ球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "牽制◯",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "オクタヴィア&矢倍萌雄": {
+    "characters": ["オクタヴィア", "矢倍萌雄"],
+    "map": "スカウ島東海岸",
+    "rewards": {
+      "skills": [
+        {
+          "name": "かく乱",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "低め◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "流し打ち",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "スラーブ",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "御幸一也&皇帝": {
+    "characters": ["御幸一也", "皇帝"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "怪物球威",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "重い球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "バズーカ送球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "キレ◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "意外性",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "キャッチャー",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "奥村光舟&アフロ猪狩": {
+    "characters": ["奥村光舟", "アフロ猪狩"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "怪物球威",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "重い球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "キャッチャー",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "リリース◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "チャンスメーカー",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "丹波光一郎&暮羽鋭次": {
+    "characters": ["丹波光一郎", "暮羽鋭次"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "驚異の切れ味",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "キレ◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "闘志",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "盗塁",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "結城哲也&田中まさる": {
+    "characters": ["結城哲也", "田中まさる"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "大番狂わせ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "意外性",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "アベレージヒッター",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "いぶし銀",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "球速安定",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "塚見リフター&黒沢愛": {
+    "characters": ["塚見リフター", "黒沢愛"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "気迫ヘッド",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ヘッドスライディング",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "強心臓",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対ピンチ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "火事場の馬鹿力",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "逆境◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ド根性",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "根性◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "渾身の決勝打",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "決勝打",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "猪狩守&猪狩進": {
+    "characters": ["猪狩守", "猪狩進"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "怪童",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ノビ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "球界の頭脳",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "キャッチャー",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対ピンチ",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "守備職人",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "戸井鉄男&猪狩守": {
+    "characters": ["戸井鉄男", "猪狩守"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "安打製造機",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "アベレージヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "主砲キラー",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対強打者◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "代打◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "球速安定",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "カーブ",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "青葉春人&番堂長児": {
+    "characters": ["青葉春人", "番堂長児"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "広角砲",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "広角打法",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ドクターK",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "奪三振",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "キレ◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "固め打ち",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "久里武尊&諏訪野聖人": {
+    "characters": ["久里武尊", "諏訪野聖人"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "強心臓",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対ピンチ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "不屈の魂",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "打たれ強さ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "キャッチャー",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "アベレージヒッター",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "意外性",
+          "level": 5,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "阿畑やすし&堺住吉": {
+    "characters": ["阿畑やすし", "堺住吉"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "変幻自在",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "緩急◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "キャッチャー",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "チャンスメーカー",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "サプポジ捕手",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "大西ハリソン筋金&少豪月剛": {
+    "characters": ["大西ハリソン筋金", "少豪月剛"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ハイスピンジャイロ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ジャイロボール",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "スタミナ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対エース◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "クロスファイヤー",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "梶増人&掘杉等": {
+    "characters": ["梶増人", "掘杉等"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "トップギア",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "立ち上がり◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ホーム突入",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "尻上がり",
+          "level": 4,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "織部実留&天宮コノハ": {
+    "characters": ["織部実留", "天宮コノハ"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ささやき戦術",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "バント◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "意外性",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "サブポジ捕手",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "諸井清和&ヌウビス": {
+    "characters": ["諸井清和", "ヌウビス"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "火事場の馬鹿力",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "逆境◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ケガしにくさ",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "ノビ",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "本若春陽&六道聖": {
+    "characters": ["本若春陽", "六道聖"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "切り込み隊長",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "チャンスメーカー",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "捕球コツ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "リベンジ",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "神楽坂光彦&冴木創": {
+    "characters": ["神楽坂光彦", "冴木創"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "トリックスター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "かく乱",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "カーブ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "リリース◯",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "城山剣一&ニャプテト": {
+    "characters": ["城山剣一", "ニャプテト"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "電光石火",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "盗塁",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "逆境◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "対ランナー◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "サブポジ遊撃",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "鬼力剛&紀乃光一": {
+    "characters": ["鬼力剛", "紀乃光一"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "アーチスト",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "パワーヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "粘り打ち",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "低め◯",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "水野魔太郎&雪野楓": {
+    "characters": ["水野魔太郎", "雪野楓"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "魔術師",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "守備職人",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "レーザービーム",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "尻上がり",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "東雲翔也&浪風芽衣香": {
+    "characters": ["東雲翔也", "浪風芽衣香"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "初球◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "球持ち",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "サブポジ遊撃",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "肩力",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "黒衛隆富&鷹野有紀": {
+    "characters": ["黒衛隆富", "鷹野有紀"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "アベレージヒッター",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "サークルチェンジ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対左投手",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "勝ち運",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "猿&須神絵久": {
+    "characters": ["猿", "須神絵久"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "送球",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ノビ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "走力",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "草野剣太郎&三ツ沢環": {
+    "characters": ["草野剣太郎", "三ツ沢環"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ホーム突入",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "ドロップ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "サブポジ三塁",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "カイルモラレス&古長衛士": {
+    "characters": ["カイルモラレス", "古長衛士"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "カット打ち",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "全開",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "弾道",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "尻上がり",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "矢部田亜希子&矢部門竜雄": {
+    "characters": ["矢部田亜希子", "矢部門竜雄"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "盗塁",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "走塁",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "チャンス",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "倉家凪&非道": {
+    "characters": ["倉家凪", "非道"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "プレッシャーラン",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "リリース◯",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "サブポジ捕手",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "勇村武士&番堂長児": {
+    "characters": ["勇村武士", "番堂長児"],
+    "map": "ハナレ島",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ミート",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "Hシンカー",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "いぶし銀",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "重い球",
+          "level": 4,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "沢村栄純&二宮瑞穂": {
+    "characters": ["沢村栄純", "二宮瑞穂"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "不屈の魂",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "打たれ強さ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "鉄の壁",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ホーム死守",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "球持ち◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "キャッチャー",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "東条秀明&松倉宗光": {
+    "characters": ["東条秀明", "松倉宗光"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "大番狂わせ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "意外性",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対強打者◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "リベンジ",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "秋葉一真&才賀侑人": {
+    "characters": ["秋葉一真", "才賀侑人"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "安打製造機",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "アベレージヒッター",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "初球◯",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "送球",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "ノビ",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "伊佐敷純&忠主七緒": {
+    "characters": ["伊佐敷純", "忠主七緒"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "高速レーザー",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "レーザービーム",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ムード◯",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "重い球",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "肩力",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "ジャベリン五十嵐&神成尊": {
+    "characters": ["ジャベリン五十嵐", "神成尊"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ストライク送球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "送球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "内角無双",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "内角攻め",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "マルチ弾",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "クイック",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "捕球",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "城井伯斎&三本松一": {
+    "characters": ["城井伯斎", "三本松一"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "引っ張り屋",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "プルヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "終盤力",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "尻上がり",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "パワーヒッター",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "回またぎ◯",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "友沢亮&山口賢": {
+    "characters": ["友沢亮", "山口賢"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "安打製造機",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "アベレージヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "勝ち運",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "フォーク",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "逆境◯",
+          "level": 4,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "獅乃木琢磨&東條小次郎": {
+    "characters": ["獅乃木琢磨", "東條小次郎"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "広角砲",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "広角打法",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "驚異の切れ味",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "キレ◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "Hスライダー",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "チャンス",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "樽本有太&美一式高伊": {
+    "characters": ["樽本有太", "美一式高伊"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "変幻自在",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "緩急◯",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "怪物球威",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "重い球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ノビ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "尻上がり",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "雲海和也&天城隼": {
+    "characters": ["雲海和也", "天城隼"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "完全燃焼",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "全開",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "プルヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "Vスライダー",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "Vスライダー",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "京野小筆&大西ハリソン筋金": {
+    "characters": ["京野小筆", "大西ハリソン筋金"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "クロスキャノン",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "クロスファイヤー",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "パワーヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ポーカーフェイス",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "対ストレート◯",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "東優&東推八": {
+    "characters": ["東優", "東推八"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "高速ベースラン",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "走塁",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "高球必打",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ハイボールヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "送球",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "守備職人",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "内野安打◯",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "天宮果也乃&軍導英雄": {
+    "characters": ["天宮果也乃", "軍導英雄"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "精神的支柱",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "ムード◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "いぶし銀",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "窮地◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "対エース◯",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "村雨&久方怜": {
+    "characters": ["村雨", "久方怜"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "高速ベースラン",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "走塁",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "守備職人",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対強打者◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "サブポジ外野",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "東推八&大一万大吉": {
+    "characters": ["東推八", "大一万大吉"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "トリックスター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "かく乱",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "レーザービーム",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "キレ◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "固め打ち",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "十六夜満&小石川大太": {
+    "characters": ["十六夜満", "小石川大太"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "安打製造機",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "アベレージヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "走塁",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "粘り打ち",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "猛田慶次&千賀篤志": {
+    "characters": ["猛田慶次", "千賀篤志"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ヒートアップ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "窮地◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "サヨナラ男",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "根性◯",
+          "level": 4,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "我間摩夕&蛇島桐人": {
+    "characters": ["我間摩夕", "蛇島桐人"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ヒートアップ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "窮地◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "プレッシャーラン",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "キレ◯",
+          "level": 4,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "七井アレフト&三森左京": {
+    "characters": ["七井アレフト", "三森左京"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "左腕キラー",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対左投手",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対ピンチ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "対左打者",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "早川あおい&丸餅太": {
+    "characters": ["早川あおい", "丸餅太"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "初球◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "立ち上がり◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "高速チャージ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "内角攻め",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "カーブ",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "青葉春人&武野浩太": {
+    "characters": ["青葉春人", "武野浩太"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ラインドライブ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "固め打ち",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "闘志",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "対強打者◯",
+          "level": 4,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "六本木優希&軽井沢大輝": {
+    "characters": ["六本木優希", "軽井沢大輝"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "送球",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "緩急◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "守備力",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "サブポジ遊撃",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "バット円島&片倉昌行": {
+    "characters": ["バット円島", "片倉昌行"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ダメ押し",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "牽制◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "アウトコースヒッター",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "捕球",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "マキシマム池田クリスティン&エミリ": {
+    "characters": ["マキシマム池田クリスティン", "エミリ"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ハイボールヒッター",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "窮地◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "パワーヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "国際大会◯",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "望戸紅&小田切巧": {
+    "characters": ["望戸紅", "小田切巧"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ダメ押し",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "真っスラ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "盗塁",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "緩急◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "サブポジ三塁",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "沖野海里&浮見葉勘": {
+    "characters": ["沖野海里", "浮見葉勘"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "チャンスメーカー",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "フライボールピッチャー",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "肩力",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "立ち上がり◯",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "東條小次郎&嵐山美鈴": {
+    "characters": ["東條小次郎", "嵐山美鈴"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "対ストレート◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "クイック",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "カット打ち",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "立ち上がり◯",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "八嶋中&武秀英": {
+    "characters": ["八嶋中", "武秀英"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "盗塁",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対ランナー◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "内野安打◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "低め◯",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "九十九宇宙&鴨川しぐれ": {
+    "characters": ["九十九宇宙", "鴨川しぐれ"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "レーザービーム",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "送球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "サブポジ外野",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "木場嵐士&須藤零人": {
+    "characters": ["木場嵐士", "須藤零人"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "球速",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ノビ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ジャイロボール",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "勝ち運",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "新島早紀&七井アレフト": {
+    "characters": ["新島早紀", "七井アレフト"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "パワー",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "意外性",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ハイボールヒッター",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "インコースヒッター",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "真黒綱寛&鮫島粂太郎": {
+    "characters": ["真黒綱寛", "鮫島粂太郎"],
+    "map": "スカウ塔空中庭園",
+    "rewards": {
+      "skills": [
+        {
+          "name": "走力",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "球速",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "走塁",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "対ランナー◯",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "本郷正宗&霧崎礼里": {
+    "characters": ["本郷正宗", "霧崎礼里"],
+    "map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        {
+          "name": "驚異の切れ味",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "キレ◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "低球必打",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ローボールヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対ピンチ",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "盗塁",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "真田俊平&鈴本大輔": {
+    "characters": ["真田俊平", "鈴本大輔"],
+    "map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ギアチェンジ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "打球反応◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "球持ち◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "インコースヒッター",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "由井薫&大空美代子": {
+    "characters": ["由井薫", "大空美代子"],
+    "map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        {
+          "name": "アーチスト",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "パワーヒッター",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "投打躍動",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "広角打法",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "白河勝之&ラミィ": {
+    "characters": ["白河勝之", "ラミィ"],
+    "map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        {
+          "name": "芸術的流し打ち",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "流し打ち",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "バント◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "クイック",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ポーカーフェイス",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "清本和重&アンヌアズナブル": {
+    "characters": ["清本和重", "アンヌアズナブル"],
+    "map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        {
+          "name": "低球必打",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ローボールヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "怪物球威",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "重い球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "パワー",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "フォーク",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "猛田慶次&日輪暁": {
+    "characters": ["猛田慶次", "日輪暁"],
+    "map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ド根性",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "根性◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "勝負師",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "チャンス",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "投打躍動",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "サヨナラ男",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "パピヨン&アランレイヴン": {
+    "characters": ["パピヨン", "アランレイヴン"],
+    "map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        {
+          "name": "超投打躍動",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "投打躍動",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "パワー",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "球速",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "パワーヒッター",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "滝本太郎&須藤零人": {
+    "characters": ["滝本太郎", "須藤零人"],
+    "map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        {
+          "name": "暴れ球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "荒れ球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "根性◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "弾道",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対ストレート◯",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "滝本太郎&福家花男": {
+    "characters": ["滝本太郎", "福家花男"],
+    "map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        {
+          "name": "アーチスト",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "パワーヒッター",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "プルヒ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "チャンス",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "藤堂まひる&九州": {
+    "characters": ["藤堂まひる", "九州"],
+    "map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        {
+          "name": "恐怖の満塁男",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "満塁男",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "アベレージヒッター",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "内野安打◯",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "宝塚月斗&鈴姫健太郎": {
+    "characters": ["宝塚月斗", "鈴姫健太郎"],
+    "map": "スカウ塔空中庭園(空中マップ)",
+    "rewards": {
+      "skills": [
+        {
+          "name": "代打◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "超スローボール",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "流し打ち",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "ゴロピッチャー",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "スロースターター消す",
+          "level": 4,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "沢村栄純&滝川クリス優": {
+    "characters": ["沢村栄純", "滝川クリス優"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "闘魂",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "闘志",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "高速レーザー",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "レーザービーム",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ホーム死守",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "球持ち◯",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "天久光聖&岸田卓": {
+    "characters": ["天久光聖", "岸田卓"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "重戦車",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ホーム突入",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "勝利の星",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "勝ち運",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ローボールヒッター",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "打たれ強さ",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "テリーマイルマン&降谷暁": {
+    "characters": ["テリーマイルマン", "降谷暁"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "闘魂",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "闘志",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "暴れ球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "荒れ球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "重い球",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "緩急◯",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "轟雷市&佐賀巌": {
+    "characters": ["轟雷市", "佐賀巌"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "伝説のサヨナラ男",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "サヨナラ男",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "左腕キラー",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対左投手",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "広角打法",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "パワーヒッター",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "白州健二郎&嶋田栄作": {
+    "characters": ["白州健二郎", "嶋田栄作"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "魔術師",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "守備職人",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "いぶし銀",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ムード◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "根性◯",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "闇野栄剛&阿麻央真": {
+    "characters": ["闇野栄剛", "阿麻央真"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "驚異の切れ味",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "キレ◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "外角必打",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "アウトコースヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "逃げ球",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "逆境◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "勝ち運",
+          "level": 5,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "社長&出井田大輔": {
+    "characters": ["社長", "出井田大輔"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "内角無双",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "内角攻め",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "内角必打",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "インコースヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "荒れ球",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ダメ押し",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "風薙豹&宮田良哉": {
+    "characters": ["風薙豹", "宮田良哉"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "走者釘付",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "クイック",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "芸術的流し打ち",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "流し打ち",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "打たれ強さ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "対変化球◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "守備力",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "アルヴィンロックハート&朱雀南赤": {
+    "characters": ["アルヴィンロックハート", "朱雀南赤"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "高球必打",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ハイボールヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ディレイドアーム",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "球持ち◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "国際大会◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "スタミナ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "寸前×を消す",
+          "level": 4,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "一ノ瀬塔哉&マキシマム池田クリスティン": {
+    "characters": ["一ノ瀬塔哉", "マキシマム池田クリスティン"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "気迫ヘッド",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ヘッドスライディング",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "本塁打厳禁",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "逃げ球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ホーム死守",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "立ち上がり◯",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "金原いずる&ヴィクターコールドバーグ": {
+    "characters": ["金原いずる", "ヴィクターコールドバーグ"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "広角砲",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "広角打法",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "精密機械",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "低め◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "弾道",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "緊急登板◯",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "グラビトン新井&烏丸剛充": {
+    "characters": ["グラビトン新井", "烏丸剛充"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "勝負師",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "チャンス",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "完全燃焼",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "全開",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "粘り打ち",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "根性◯",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "暗黒スバル&黒聖良": {
+    "characters": ["暗黒スバル", "黒聖良"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "本塁打厳禁",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "逃げ球",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ロケットスタート",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "内野安打◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "決勝打",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "尻上がり",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "明神陽&高原曲": {
+    "characters": ["明神陽", "高原曲"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ハイスピンジャイロ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ジャイロボール",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "魔術師",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "チェンジアップ",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "初球◯",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "十六夜瑠菜&神楽坂光彦": {
+    "characters": ["十六夜瑠菜", "神楽坂光彦"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "超投打躍動",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "投打躍動",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "満塁男",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "内角攻め",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ジャイロボール",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "軽い球を消す",
+          "level": 4,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "キリルフォスター&佐菜あゆみ": {
+    "characters": ["キリルフォスター", "佐菜あゆみ"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "精密機械",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "低め◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "コントロール",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "尻上がり",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "ムード◯",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "神童裕二郎&甲斐進撃": {
+    "characters": ["神童裕二郎", "甲斐進撃"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "対左打者",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "流し打ち",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "フライボールピッチャー",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "阿麻央真&伊能麗示": {
+    "characters": ["阿麻央真", "伊能麗示"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "変幻自在",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "緩急◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "Hスライダー",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "対エース◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "キレ◯",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "ランスロット&小山雅": {
+    "characters": ["ランスロット", "小山雅"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "走者釘付",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "クイック",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ムード◯",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "緩急◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "シンカー",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "ロディブライト&虹谷彩理": {
+    "characters": ["ロディブライト", "虹谷彩理"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "不屈の魂",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "打たれ強さ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "Dカーブ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "チャンス",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "光野聖良&兼倉洋平": {
+    "characters": ["光野聖良", "兼倉洋平"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "切り込み隊長",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "チャンスメーカー",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "固め打ち",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "アベレージヒッター",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "大谷美衣&敷上マニィ": {
+    "characters": ["大谷美衣", "敷上マニィ"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "外角必打",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "アウトコースヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "対変化球◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ローボールヒッター",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ダメ押し",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "銀杏力丸&シュバリエ": {
+    "characters": ["銀杏力丸", "シュバリエ"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "メッタ打ち",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "固め打ち",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "チャンス",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "粘り打ち",
+          "level": 5,
+          "verified": true
+        },
+        {
+          "name": "肩力",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "灰塚朔夜&輝星也": {
+    "characters": ["灰塚朔夜", "輝星也"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "電光石火",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "盗塁",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ホーム死守",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "緊急登板◯",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "満塁男",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "ボーマンバンガード&川星ほむら": {
+    "characters": ["ボーマンバンガード", "川星ほむら"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "一球入魂",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "初球◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "パワーヒッター",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "尻上がり",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "サブポジ一塁",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "虹谷誠&花鳥風香": {
+    "characters": ["虹谷誠", "花鳥風香"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ヒートアップ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "窮地◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "奪三振",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "打球反応◯",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "盗塁",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "守神悠羽&佐部利保英": {
+    "characters": ["守神悠羽", "佐部利保英"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "鉄人",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ケガしにくさ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "マルチ弾",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "リベンジ",
+          "level": 2,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "ガジェット落合&井関丹作": {
+    "characters": ["ガジェット落合", "井関丹作"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "弾道",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "ハイボールヒッター",
+          "level": 4,
+          "verified": true
+        },
+        {
+          "name": "立ち上がり◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "悪球打ち",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "七瀬はるか&DJB-78": {
+    "characters": ["七瀬はるか", "DJB-78"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "ラインドライブ",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "フォーク",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "レーザービーム",
+          "level": 1,
+          "verified": true
+        },
+        {
+          "name": "ポーカーフェイス",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "社長&大豪月": {
+    "characters": ["社長", "大豪月"],
+    "map": "月面",
+    "rewards": {
+      "skills": [
+        {
+          "name": "パワー",
+          "level": 3,
+          "verified": true
+        },
+        {
+          "name": "球速",
+          "level": 3,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  },
+  "カグヤ&小井成タマモ": {
+    "characters": ["カグヤ", "小井成タマモ"],
+    "map": "月面-カグヤ城内",
+    "rewards": {
+      "skills": [
+        {
+          "name": "バント◯",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "チャンス",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "闘志",
+          "level": 2,
+          "verified": true
+        },
+        {
+          "name": "ナチュラルシュート",
+          "level": 1,
+          "verified": true
+        }
+      ],
+      "stats": {}
+    }
+  }
+}

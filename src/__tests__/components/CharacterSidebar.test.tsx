@@ -5,29 +5,29 @@ import { CharacterSidebar } from '@/components/CharacterSidebar';
 
 // Mock data to ensure stable testing environment
 // Update the existing characters.json mock at the top of the file:
-vi.mock('@/data/characters.json', () => ({
+vi.mock('@/data/2024-2025/characters.json', () => ({
   default: {
-    金丸信二: {
-      position: '三',
-      encounter_map: 'パワフル高校',
-      rewards: { skills: [], stats: { 技術: 2, 精神: 1 } },
-    },
-    東條小次郎: {
-      position: '三',
-      encounter_map: '鳳龍高校',
-      rewards: { skills: [], stats: {} },
-    },
+    金丸信二: { position: '三', encounter_map: 'パワフル高校', rewards: { skills: [], stats: { 技術: 2, 精神: 1 } } },
+    東條小次郎: { position: '三', encounter_map: '鳳龍高校', rewards: { skills: [], stats: {} } },
   },
 }));
+vi.mock('@/data/2024-2025/character_mapping.json', () => ({
+  default: { by_name: { 金丸信二: { id: 390 }, 東條小次郎: { id: 64 } } },
+}));
+vi.mock('@/data/2024-2025/combos.json', () => ({ default: {} }));
+vi.mock('@/data/2024-2025/maps.json', () => ({ default: {} }));
 
-vi.mock('@/data/character_mapping.json', () => ({
+vi.mock('@/data/2026-2027/characters.json', () => ({
   default: {
-    by_name: {
-      金丸信二: { id: 390 },
-      東條小次郎: { id: 64 },
-    },
+    金丸信二: { position: '三', encounter_map: 'パワフル高校', rewards: { skills: [], stats: { 技術: 2, 精神: 1 } } },
+    東條小次郎: { position: '三', encounter_map: '鳳龍高校', rewards: { skills: [], stats: {} } },
   },
 }));
+vi.mock('@/data/2026-2027/character_mapping.json', () => ({
+  default: { by_name: { 金丸信二: { id: 390 }, 東條小次郎: { id: 64 } } },
+}));
+vi.mock('@/data/2026-2027/combos.json', () => ({ default: {} }));
+vi.mock('@/data/2026-2027/maps.json', () => ({ default: {} }));
 
 const TEST_CHAR = '金丸信二';
 const UNOWNED_CHAR = '東條小次郎';

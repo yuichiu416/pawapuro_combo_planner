@@ -1,18 +1,11 @@
 // src/hooks/useComboManager.ts
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import charactersMappingRaw from '@/data/character_mapping.json';
-import charactersDataRaw from '@/data/characters.json';
-import combosDataRaw from '@/data/combos.json';
-import mapsDataRaw from '@/data/maps.json';
+import { useGameVersion } from '@/contexts/GameVersionContext';
 import skillsDataRaw from '@/data/skills.json';
 import { supabase } from '@/lib/supabase';
 import type { Character, Combo } from '@/types';
 
-const charactersData = charactersDataRaw as Record<string, Character>;
-const combosData = combosDataRaw as Record<string, Combo>;
-const mapsData = mapsDataRaw as Record<string, any>;
 const skillsData = skillsDataRaw as Record<string, any>;
-const charactersMapping = charactersMappingRaw as any;
 
 const FIXED_MEMBERS = ['パワプロ', '矢部明雄'];
 const LOCAL_STORAGE_KEY = 'パワプロ_planner_local_v2';
@@ -27,9 +20,17 @@ interface SaveSlot {
   selected_combos: string[];
   is_active: boolean;
   updated_at?: string;
+  game_version?: string;
 }
 
 export const useComboManager = () => {
+  // --- Game Version (data set) ---
+  const { version, setVersion, versions, gameData } = useGameVersion();
+  const charactersData = gameData.characters as Record<string, Character>;
+  const combosData = gameData.combos as Record<string, Combo>;
+  const mapsData = gameData.maps as Record<string, any>;
+  const charactersMapping = gameData.characterMapping as any;
+
   // --- Slot Management State ---
   const [slots, setSlots] = useState<SaveSlot[]>([]);
   const [activeSlotNumber, setActiveSlotNumber] = useState<number>(1);
@@ -66,11 +67,15 @@ export const useComboManager = () => {
           .from('user_saves')
           .select('*')
           .eq('user_id', session.user.id)
+          .eq('game_version', version)
           .order('slot_number', { ascending: true });
         if (data) loadedSlots = data;
       } else {
         const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
-        if (saved) loadedSlots = JSON.parse(saved);
+        if (saved) {
+          const allSlots: SaveSlot[] = JSON.parse(saved);
+          loadedSlots = allSlots.filter((s) => s.game_version === version);
+        }
       }
 
       // Ensure 1-3 slots always exist
@@ -96,11 +101,11 @@ export const useComboManager = () => {
     } catch (e) {
       console.error('Hydration failed:', e);
     }
-  }, []);
+  }, [version]);
 
   useEffect(() => {
     hydrate();
-  }, [hydrate]);
+  }, [hydrate, version]);
 
   // --- Slot Logic (Load / Save / Rename) ---
 
@@ -157,6 +162,7 @@ export const useComboManager = () => {
             selected_combos: comboArray,
             is_active: targetSlotNum === activeSlotNumber,
             updated_at: now,
+            game_version: version,
           });
         }
 
@@ -168,12 +174,19 @@ export const useComboManager = () => {
                 selected_characters: charArray,
                 selected_combos: comboArray,
                 updated_at: now,
+                game_version: version,
               }
             : s,
         );
 
         setSlots(updated);
-        if (!session?.user) localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
+        if (!session?.user) {
+          // Merge updated slots for this version into the full localStorage record
+          const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+          const allSlots: SaveSlot[] = saved ? JSON.parse(saved) : [];
+          const otherVersionSlots = allSlots.filter((s) => s.game_version !== version);
+          localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([...otherVersionSlots, ...updated]));
+        }
         if (targetSlotNum === activeSlotNumber) setLastSaved(new Date(now).toLocaleString());
       } catch (err) {
         console.error('Save failed:', err);
@@ -336,7 +349,15 @@ export const useComboManager = () => {
         }
         return combo.characters.join('&');
       });
-  }, [searchTerm, filterRelatedOnly, selectedNames, goldFilter, typeFilter, activeSkillFilters]);
+  }, [
+    searchTerm,
+    filterRelatedOnly,
+    selectedNames,
+    goldFilter,
+    typeFilter,
+    activeSkillFilters,
+    combosData,
+  ]);
 
   // --- Memoized Analysis ---
 
@@ -414,7 +435,7 @@ export const useComboManager = () => {
         isValid: !Object.values(rosterErrors).some(Boolean),
       },
     };
-  }, [selectedNames, selectedComboIds]);
+  }, [selectedNames, selectedComboIds, charactersData, mapsData, combosData]);
 
   const libraryGroups = useMemo(() => {
     const withC: string[] = [];
@@ -429,7 +450,7 @@ export const useComboManager = () => {
       participants.has(name) ? withC.push(name) : noC.push(name);
     });
     return { withCombo: withC, noCombo: noC };
-  }, [searchTerm, filterNoKanji]);
+  }, [searchTerm, filterNoKanji, charactersData, combosData]);
 
   const clearAll = useCallback(() => {
     setSelectedNames(new Set(FIXED_MEMBERS));
@@ -443,6 +464,12 @@ export const useComboManager = () => {
   }, []);
 
   return {
+    // --- Game Version ---
+    version,
+    setVersion,
+    versions,
+    charactersData,
+
     slots,
     activeSlotNumber,
     switchSlot,

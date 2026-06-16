@@ -2,12 +2,11 @@
 import { AlertCircle, Award, MapPin, Zap } from 'lucide-react';
 import type React from 'react';
 import { useMemo } from 'react';
-import charactersDataRaw from '@/data/characters.json';
 import skillsDataRaw from '@/data/skills.json';
+import type { Character } from '@/types';
 import { cn } from '@/utils/style';
 
 const skillsData = skillsDataRaw as Record<string, any>;
-const charactersData = charactersDataRaw as Record<string, any>;
 
 interface AnalysisProps {
   analysis: {
@@ -22,6 +21,7 @@ interface AnalysisProps {
       errors: Record<string, boolean>;
     };
   };
+  charactersData: Record<string, Character>;
   getImagePath: (name: string, usePosIcon: boolean) => string;
   testId: string; // This should be "desktop-reward-analysis" or "mobile-reward-analysis"
   activeSkillFilter: string | null;
@@ -30,6 +30,7 @@ interface AnalysisProps {
 
 export const RewardAnalysis: React.FC<AnalysisProps> = ({
   analysis,
+  charactersData,
   getImagePath,
   testId,
   activeSkillFilter,

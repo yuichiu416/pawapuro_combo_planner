@@ -1,8 +1,10 @@
 // src/__tests__/hooks/useComboSorting.test.ts
 
 import { renderHook } from '@testing-library/react';
+import React from 'react';
 import { describe, expect, it, vi } from 'vitest';
-import combosDataRaw from '@/data/combos.json';
+import { GameVersionProvider } from '@/contexts/GameVersionContext';
+import combosDataRaw from '@/data/2024-2025/combos.json';
 import skillsDataRaw from '@/data/skills.json';
 import { useComboManager } from '@/hooks/useComboManager';
 
@@ -18,9 +20,17 @@ vi.mock('@/lib/supabase', () => ({
   },
 }));
 
+// Wrapper that pins the active version to 2024-2025 so the test's combosDataRaw matches
+// what the hook actually loads — without this the hook defaults to the newest version.
+const Wrapper2024 = ({ children }: { children: React.ReactNode }) => {
+  // Seed localStorage so GameVersionProvider initialises to 2024-2025
+  window.localStorage.setItem('パワプロ_planner_game_version', '2024-2025');
+  return React.createElement(GameVersionProvider, null, children);
+};
+
 describe('useComboManager - Skill Sorting Logic', () => {
   it('should verify that filteredComboIds contains combos with sorted skills', () => {
-    const { result } = renderHook(() => useComboManager());
+    const { result } = renderHook(() => useComboManager(), { wrapper: Wrapper2024 });
 
     // We check the first few combos to ensure sorting was applied via the map function
     const comboIds = result.current.filteredComboIds;
