@@ -1,37 +1,54 @@
 import cv2
 import os
-import glob
+import sys
 
-# 使用你之前測試出的「完美座標」
-GRID_START_X = 94 
-GRID_START_Y = 168 
-ICON_W = 102        
-ICON_H = 102        
-GAP_X = 18          
-GAP_Y = 18          
+# Pass the game version as an argument, e.g.: python 22_image_slicer_pos.py 2026-2027
+VERSION = sys.argv[1] if len(sys.argv) > 1 else '2026-2027'
 
-def slice_new_version():
-    input_dir = os.path.join('..', 'raw_data', 'screenshots_pos')
-    output_dir = os.path.join('..', 'raw_data', 'icons_pos_split')
-    
-    if not os.path.exists(output_dir): os.makedirs(output_dir)
-    
-    files = sorted([f for f in os.listdir(input_dir) if f.lower().endswith(('.png', '.jpg'))])
-    
+BASE_DIR   = os.path.dirname(os.path.abspath(__file__))
+INPUT_DIR  = os.path.join(BASE_DIR, '..', 'raw_data', 'screenshots', 'pos_icon')
+OUTPUT_DIR = os.path.join(BASE_DIR, '..', 'raw_data', f'icons_pos_split_{VERSION}')
+
+# Same calibrated coordinates as 21_image_slicer.py
+GRID_START_X = 89
+GRID_START_Y = 153
+ICON_W = 104
+ICON_H = 104
+GAP_X  = 19
+GAP_Y  = 19
+COLS   = 4
+ROWS   = 4
+
+def slice_pos_icons():
+    if not os.path.exists(OUTPUT_DIR):
+        os.makedirs(OUTPUT_DIR)
+
+    files = sorted([f for f in os.listdir(INPUT_DIR) if f.lower().endswith(('.png', '.jpg', '.jpeg'))])
+
+    if not files:
+        print(f"No screenshots found in {INPUT_DIR}")
+        return
+
     total = 0
     for file_idx, filename in enumerate(files):
-        img = cv2.imread(os.path.join(input_dir, filename))
-        if img is None: continue
-        for row in range(4):
-            for col in range(4):
+        img = cv2.imread(os.path.join(INPUT_DIR, filename))
+        if img is None:
+            continue
+
+        if img.shape[1] != 1280:
+            img = cv2.resize(img, (1280, 720))
+
+        for row in range(ROWS):
+            for col in range(COLS):
                 x = GRID_START_X + (col * (ICON_W + GAP_X))
                 y = GRID_START_Y + (row * (ICON_H + GAP_Y))
-                char_id = (file_idx * 16) + (row * 4) + col + 1
-                if char_id > 402: break
+                char_id = (file_idx * COLS * ROWS) + (row * COLS) + col + 1
+
                 crop = img[y:y+ICON_H, x:x+ICON_W]
-                cv2.imwrite(os.path.join(output_dir, f"pos_temp_{char_id:03d}.png"), crop)
+                cv2.imwrite(os.path.join(OUTPUT_DIR, f"pos_temp_{char_id:03d}.png"), crop)
                 total += 1
-    print(f"Sliced {total} new icons into icons_pos_split")
+
+    print(f"[{VERSION}] {total} pos icons sliced → {OUTPUT_DIR}")
 
 if __name__ == "__main__":
-    slice_new_version()
+    slice_pos_icons()

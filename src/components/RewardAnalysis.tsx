@@ -244,7 +244,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
                       src={getImagePath(char, false)}
                       alt={char}
                       className="w-full h-full object-contain"
-                      onError={(e) => (e.currentTarget.src = '/assets/icons_split/placeholder.png')}
+                      onError={(e) => (e.currentTarget.src = '/assets/placeholder.png')}
                     />
                   </div>
                   <span className="text-sm font-black text-slate-800 uppercase truncate">

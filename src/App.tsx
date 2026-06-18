@@ -15,10 +15,10 @@ import { SlotSwitcher } from '@/components/SlotSwitcher';
 import { VersionToggle } from '@/components/VersionToggle';
 import { GameVersionProvider } from '@/contexts/GameVersionContext';
 import { useComboManager } from '@/hooks/useComboManager';
+import { useGameVersion } from '@/contexts/GameVersionContext';
+
 import { supabase } from '@/lib/supabase';
 import { cn } from '@/utils/style';
-
-const BASE_ASSET_PATH = '/assets/icons_split/';
 
 interface LogoProps {
   isCollapsed: boolean;
@@ -52,6 +52,9 @@ const Logo: React.FC<LogoProps> = ({ isCollapsed }) => (
 
 const AppContent: React.FC = () => {
   const manager = useComboManager();
+  const { version } = useGameVersion();
+  const baseAssetPath = `/assets/icons_split_${version}/`;
+
   const [posFilter, setPosFilter] = useState<string | null>(null);
   const [mapFilter, setMapFilter] = useState<string | null>(null);
   const [showPositionIcon, setShowPositionIcon] = useState(true);
@@ -93,7 +96,7 @@ const AppContent: React.FC = () => {
     const charEntry = mapping ? (mapping as any)[name] : null;
     let img = charEntry?.img_standard || 'placeholder.png';
     if (usePosIcon && img !== 'placeholder.png') img = img.replace('.png', '_pos.png');
-    return `${BASE_ASSET_PATH}${img}`;
+    return `${baseAssetPath}${img}`;
   };
 
   // CHANGE 1: added encounter_map to search matching.
