@@ -1,9 +1,10 @@
 import { Bug } from 'lucide-react';
 import type React from 'react';
-import { VersionToggle } from './VersionToggle';
+import { useGameVersion } from '@/contexts/GameVersionContext';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const { version } = useGameVersion();
 
   return (
     <footer className="w-full bg-white border-t border-slate-200 px-6 py-2 shrink-0">
@@ -11,10 +12,8 @@ export const Footer: React.FC = () => {
         {/* Left: Branding & Copy */}
         <div className="flex items-center gap-3" data-testid="combo_planner_subtitle">
           <span className="text-sm font-black tracking-tighter text-black uppercase">
-            パワプロ{' '}
-            <VersionToggle />
-            Combo Planner{' '}
-            <span className="text-black ml-1 not-font-bold">v1.2.0</span>
+            {`パワプロ ${version} Combo Planner`}
+            <span className="text-black ml-1 not-font-bold">v1.2.1</span>
           </span>
           <span className="text-black">|</span>
           <p className="text-sm font-bold text-black uppercase tracking-widest">© {currentYear}</p>

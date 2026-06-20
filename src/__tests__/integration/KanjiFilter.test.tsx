@@ -4,6 +4,10 @@ import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 import App from '@/App';
 
+beforeEach(() => {
+  window.localStorage.setItem('パワプロ_planner_game_version', '2024-2025');
+});
+
 describe('Kanji Filter Regression Test', () => {
   it('hides Kanji characters from sidebar but keeps them in the map planner', async () => {
     const user = userEvent.setup();

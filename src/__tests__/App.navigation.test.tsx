@@ -34,6 +34,7 @@ describe('App Integration - Map Expansion', () => {
   let user: ReturnType<typeof userEvent.setup>;
 
   beforeEach(() => {
+    window.localStorage.setItem('パワプロ_planner_game_version', '2024-2025');
     cleanup();
     user = userEvent.setup();
   });

@@ -9,2408 +9,3226 @@
     "2": {
       "id": 2,
       "name": "矢部明雄",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_002.png",
       "img_pos": "icon_002_pos.png"
     },
     "3": {
       "id": 3,
-      "name": "熱盛宗厚",
+      "name": "則出郁三",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_003.png",
       "img_pos": "icon_003_pos.png"
     },
     "4": {
       "id": 4,
-      "name": "響乃こころ",
+      "name": "熱盛宗厚",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_004.png",
       "img_pos": "icon_004_pos.png"
     },
-    "5": {
-      "id": 5,
-      "name": "轟ハルカ",
-      "img_standard": "icon_005.png",
-      "img_pos": "icon_005_pos.png"
-    },
-    "6": {
-      "id": 6,
-      "name": "ジュリアステノーロ",
-      "img_standard": "icon_006.png",
-      "img_pos": "icon_006_pos.png"
-    },
     "7": {
       "id": 7,
-      "name": "則出郁三",
+      "name": "猪狩守",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_007.png",
       "img_pos": "icon_007_pos.png"
     },
     "8": {
       "id": 8,
-      "name": "ハワードレイヴン",
+      "name": "猪狩進",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_008.png",
       "img_pos": "icon_008_pos.png"
     },
     "9": {
       "id": 9,
-      "name": "猪狩守",
+      "name": "外藤侠二",
+      "position": "一",
+      "mode": "アナウンサー",
       "img_standard": "icon_009.png",
       "img_pos": "icon_009_pos.png"
     },
     "10": {
       "id": 10,
-      "name": "猪狩進",
+      "name": "善斗薫",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_010.png",
       "img_pos": "icon_010_pos.png"
     },
     "11": {
       "id": 11,
-      "name": "外藤侠二",
+      "name": "友沢亮",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_011.png",
       "img_pos": "icon_011_pos.png"
     },
     "12": {
       "id": 12,
-      "name": "善斗薫",
+      "name": "久遠ヒカル",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_012.png",
       "img_pos": "icon_012_pos.png"
     },
     "13": {
       "id": 13,
-      "name": "友沢亮",
+      "name": "猛田慶次",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_013.png",
       "img_pos": "icon_013_pos.png"
     },
     "14": {
       "id": 14,
-      "name": "久遠ヒカル",
+      "name": "蛇島桐人",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_014.png",
       "img_pos": "icon_014_pos.png"
     },
     "15": {
       "id": 15,
-      "name": "猛田慶次",
+      "name": "犬河和音",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_015.png",
       "img_pos": "icon_015_pos.png"
     },
     "16": {
       "id": 16,
-      "name": "蛇島桐人",
+      "name": "猫神優",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_016.png",
       "img_pos": "icon_016_pos.png"
     },
     "17": {
       "id": 17,
-      "name": "犬河和音",
+      "name": "大西ハリソン筋金",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_017.png",
       "img_pos": "icon_017_pos.png"
     },
     "18": {
       "id": 18,
-      "name": "猫神優",
+      "name": "神高龍",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_018.png",
       "img_pos": "icon_018_pos.png"
     },
     "19": {
       "id": 19,
-      "name": "大西ハリソン筋金",
+      "name": "嵐丸士朗",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_019.png",
       "img_pos": "icon_019_pos.png"
     },
     "20": {
       "id": 20,
-      "name": "神高龍",
+      "name": "ガジェット落合",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_020.png",
       "img_pos": "icon_020_pos.png"
     },
     "21": {
       "id": 21,
-      "name": "嵐丸士朗",
+      "name": "ジャベリン五十嵐",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_021.png",
       "img_pos": "icon_021_pos.png"
     },
     "22": {
       "id": 22,
-      "name": "ガジェット落合",
+      "name": "DJB-K",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_022.png",
       "img_pos": "icon_022_pos.png"
     },
     "23": {
       "id": 23,
-      "name": "ジャベリン五十嵐",
+      "name": "松崎トミオ",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_023.png",
       "img_pos": "icon_023_pos.png"
     },
     "24": {
       "id": 24,
-      "name": "松崎トミオ",
+      "name": "大豪月",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_024.png",
       "img_pos": "icon_024_pos.png"
     },
     "25": {
       "id": 25,
-      "name": "大豪月",
+      "name": "非道",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_025.png",
       "img_pos": "icon_025_pos.png"
     },
     "26": {
       "id": 26,
-      "name": "非道",
+      "name": "田中まさる",
+      "position": "一",
+      "mode": "アナウンサー",
       "img_standard": "icon_026.png",
       "img_pos": "icon_026_pos.png"
     },
     "27": {
       "id": 27,
-      "name": "田中まさる",
+      "name": "鮫島粂太郎",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_027.png",
       "img_pos": "icon_027_pos.png"
     },
     "28": {
       "id": 28,
-      "name": "鮫島粂太郎",
+      "name": "乙女",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_028.png",
       "img_pos": "icon_028_pos.png"
     },
     "29": {
       "id": 29,
-      "name": "乙女",
+      "name": "九州",
+      "position": "捕",
+      "mode": "アナウンサー",
       "img_standard": "icon_029.png",
       "img_pos": "icon_029_pos.png"
     },
     "30": {
       "id": 30,
-      "name": "九州",
+      "name": "猿",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_030.png",
       "img_pos": "icon_030_pos.png"
     },
     "31": {
       "id": 31,
-      "name": "猿",
+      "name": "ザンス",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_031.png",
       "img_pos": "icon_031_pos.png"
     },
     "32": {
       "id": 32,
-      "name": "ザンス",
+      "name": "球三郎",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_032.png",
       "img_pos": "icon_032_pos.png"
     },
     "33": {
       "id": 33,
-      "name": "球三郎",
+      "name": "村雨",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_033.png",
       "img_pos": "icon_033_pos.png"
     },
     "34": {
       "id": 34,
-      "name": "村雨",
+      "name": "天王寺",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_034.png",
       "img_pos": "icon_034_pos.png"
     },
     "35": {
       "id": 35,
-      "name": "天王寺",
+      "name": "社長",
+      "position": "三",
+      "mode": "プロデューサー",
       "img_standard": "icon_035.png",
       "img_pos": "icon_035_pos.png"
     },
     "36": {
       "id": 36,
-      "name": "社長",
+      "name": "部長",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_036.png",
       "img_pos": "icon_036_pos.png"
     },
     "37": {
       "id": 37,
-      "name": "部長",
+      "name": "嶋田栄作",
+      "position": "三",
+      "mode": "プロデューサー",
       "img_standard": "icon_037.png",
       "img_pos": "icon_037_pos.png"
     },
     "38": {
       "id": 38,
-      "name": "嶋田栄作",
+      "name": "反町三次",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_038.png",
       "img_pos": "icon_038_pos.png"
     },
     "39": {
       "id": 39,
-      "name": "反町三次",
+      "name": "柴田軍平",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_039.png",
       "img_pos": "icon_039_pos.png"
     },
     "40": {
       "id": 40,
-      "name": "柴田軍平",
+      "name": "松倉宗光",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_040.png",
       "img_pos": "icon_040_pos.png"
     },
     "41": {
       "id": 41,
-      "name": "松倉宗光",
+      "name": "香本富久雄",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_041.png",
       "img_pos": "icon_041_pos.png"
     },
     "42": {
       "id": 42,
-      "name": "香本富久雄",
+      "name": "田村",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_042.png",
       "img_pos": "icon_042_pos.png"
     },
     "43": {
       "id": 43,
-      "name": "田村",
+      "name": "尾崎竜介",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_043.png",
       "img_pos": "icon_043_pos.png"
     },
     "44": {
       "id": 44,
-      "name": "尾崎竜介",
+      "name": "パピヨン",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_044.png",
       "img_pos": "icon_044_pos.png"
     },
     "45": {
       "id": 45,
-      "name": "パピヨン",
+      "name": "ミッキーバーミリオン",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_045.png",
       "img_pos": "icon_045_pos.png"
     },
     "46": {
       "id": 46,
-      "name": "ミッキーバーミリオン",
+      "name": "DJB-78",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_046.png",
       "img_pos": "icon_046_pos.png"
     },
     "47": {
       "id": 47,
-      "name": "DJB-78",
+      "name": "永瀬大河",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_047.png",
       "img_pos": "icon_047_pos.png"
     },
     "48": {
       "id": 48,
-      "name": "永瀬大河",
+      "name": "アダム",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_048.png",
       "img_pos": "icon_048_pos.png"
     },
     "49": {
       "id": 49,
       "name": "早川あおい",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_049.png",
       "img_pos": "icon_049_pos.png"
     },
     "50": {
       "id": 50,
       "name": "一ノ瀬塔哉",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_050.png",
       "img_pos": "icon_050_pos.png"
     },
     "51": {
       "id": 51,
       "name": "二宮瑞穂",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_051.png",
       "img_pos": "icon_051_pos.png"
     },
     "52": {
       "id": 52,
       "name": "三本松一",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_052.png",
       "img_pos": "icon_052_pos.png"
     },
     "53": {
       "id": 53,
       "name": "四条賢二",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_053.png",
       "img_pos": "icon_053_pos.png"
     },
     "54": {
       "id": 54,
       "name": "五十嵐権三",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_054.png",
       "img_pos": "icon_054_pos.png"
     },
     "55": {
       "id": 55,
       "name": "六本木優希",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_055.png",
       "img_pos": "icon_055_pos.png"
     },
     "56": {
       "id": 56,
       "name": "七井アレフト",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_056.png",
       "img_pos": "icon_056_pos.png"
     },
     "57": {
       "id": 57,
       "name": "八嶋中",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_057.png",
       "img_pos": "icon_057_pos.png"
     },
     "58": {
       "id": 58,
       "name": "九十九宇宙",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_058.png",
       "img_pos": "icon_058_pos.png"
     },
     "59": {
       "id": 59,
       "name": "手塚隆文",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_059.png",
       "img_pos": "icon_059_pos.png"
     },
     "60": {
       "id": 60,
       "name": "円谷一義",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_060.png",
       "img_pos": "icon_060_pos.png"
     },
     "61": {
       "id": 61,
       "name": "猿山武",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_061.png",
       "img_pos": "icon_061_pos.png"
     },
     "62": {
       "id": 62,
       "name": "田中山太郎",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_062.png",
       "img_pos": "icon_062_pos.png"
     },
     "63": {
       "id": 63,
       "name": "福家花男",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_063.png",
       "img_pos": "icon_063_pos.png"
     },
     "64": {
       "id": 64,
       "name": "東條小次郎",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_064.png",
       "img_pos": "icon_064_pos.png"
     },
     "65": {
       "id": 65,
       "name": "館西勉",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_065.png",
       "img_pos": "icon_065_pos.png"
     },
     "66": {
       "id": 66,
       "name": "番堂長児",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_066.png",
       "img_pos": "icon_066_pos.png"
     },
     "67": {
       "id": 67,
       "name": "半田小鉄",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_067.png",
       "img_pos": "icon_067_pos.png"
     },
     "68": {
       "id": 68,
       "name": "阿畑やすし",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_068.png",
       "img_pos": "icon_068_pos.png"
     },
     "69": {
       "id": 69,
       "name": "鷹野有紀",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_069.png",
       "img_pos": "icon_069_pos.png"
     },
     "70": {
       "id": 70,
       "name": "神童裕二郎",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_070.png",
       "img_pos": "icon_070_pos.png"
     },
     "71": {
       "id": 71,
       "name": "ボーマンバンガード",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_071.png",
       "img_pos": "icon_071_pos.png"
     },
     "72": {
       "id": 72,
       "name": "テリーマイルマン",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_072.png",
       "img_pos": "icon_072_pos.png"
     },
     "73": {
       "id": 73,
       "name": "橘みずき",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_073.png",
       "img_pos": "icon_073_pos.png"
     },
     "74": {
       "id": 74,
       "name": "仲居三太",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_074.png",
       "img_pos": "icon_074_pos.png"
     },
     "75": {
       "id": 75,
       "name": "軽井沢大輝",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_075.png",
       "img_pos": "icon_075_pos.png"
     },
     "76": {
       "id": 76,
       "name": "石野まさ夫",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_076.png",
       "img_pos": "icon_076_pos.png"
     },
     "77": {
       "id": 77,
       "name": "波佐見駿一",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_077.png",
       "img_pos": "icon_077_pos.png"
     },
     "78": {
       "id": 78,
       "name": "紙山要",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_078.png",
       "img_pos": "icon_078_pos.png"
     },
     "79": {
       "id": 79,
       "name": "滝本太郎",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_079.png",
       "img_pos": "icon_079_pos.png"
     },
     "80": {
       "id": 80,
       "name": "久方怜",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_080.png",
       "img_pos": "icon_080_pos.png"
     },
     "81": {
       "id": 81,
       "name": "城山剣一",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_081.png",
       "img_pos": "icon_081_pos.png"
     },
     "82": {
       "id": 82,
       "name": "清本和重",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_082.png",
       "img_pos": "icon_082_pos.png"
     },
     "83": {
       "id": 83,
       "name": "堺住吉",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_083.png",
       "img_pos": "icon_083_pos.png"
     },
     "84": {
       "id": 84,
       "name": "山口賢",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_084.png",
       "img_pos": "icon_084_pos.png"
     },
     "85": {
       "id": 85,
       "name": "ブロンコリー",
+      "position": "二",
+      "mode": "プロデューサー",
       "img_standard": "icon_085.png",
       "img_pos": "icon_085_pos.png"
     },
     "86": {
       "id": 86,
       "name": "城井伯斎",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_086.png",
       "img_pos": "icon_086_pos.png"
     },
     "87": {
       "id": 87,
       "name": "紀乃光一",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_087.png",
       "img_pos": "icon_087_pos.png"
     },
     "88": {
       "id": 88,
       "name": "武野浩太",
+      "position": "三",
+      "mode": "プロデューサー",
       "img_standard": "icon_088.png",
       "img_pos": "icon_088_pos.png"
     },
     "89": {
       "id": 89,
       "name": "海野幸子",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_089.png",
       "img_pos": "icon_089_pos.png"
     },
     "90": {
       "id": 90,
       "name": "水狐光世",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_090.png",
       "img_pos": "icon_090_pos.png"
     },
     "91": {
       "id": 91,
       "name": "輝星也",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_091.png",
       "img_pos": "icon_091_pos.png"
     },
     "92": {
       "id": 92,
       "name": "ヴィクターコールドバーグ",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_092.png",
       "img_pos": "icon_092_pos.png"
     },
     "93": {
       "id": 93,
       "name": "ロディブライト",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_093.png",
       "img_pos": "icon_093_pos.png"
     },
     "94": {
       "id": 94,
       "name": "アレックス",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_094.png",
       "img_pos": "icon_094_pos.png"
     },
     "95": {
       "id": 95,
       "name": "ゴウ",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_095.png",
       "img_pos": "icon_095_pos.png"
     },
     "96": {
       "id": 96,
       "name": "井筒哀樹",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_096.png",
       "img_pos": "icon_096_pos.png"
     },
     "97": {
       "id": 97,
       "name": "御宝金太郎",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_097.png",
       "img_pos": "icon_097_pos.png"
     },
     "98": {
       "id": 98,
       "name": "怒拳礼次",
+      "position": "捕",
+      "mode": "アナウンサー",
       "img_standard": "icon_098.png",
       "img_pos": "icon_098_pos.png"
     },
     "99": {
       "id": 99,
       "name": "楽垣吾助",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_099.png",
       "img_pos": "icon_099_pos.png"
     },
     "100": {
       "id": 100,
       "name": "鈴本大輔",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_100.png",
       "img_pos": "icon_100_pos.png"
     },
     "101": {
       "id": 101,
       "name": "勇村武士",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_101.png",
       "img_pos": "icon_101_pos.png"
     },
     "102": {
       "id": 102,
       "name": "上野良人",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_102.png",
       "img_pos": "icon_102_pos.png"
     },
     "103": {
       "id": 103,
       "name": "フルハート",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_103.png",
       "img_pos": "icon_103_pos.png"
     },
     "104": {
       "id": 104,
       "name": "神楽坂光彦",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_104.png",
       "img_pos": "icon_104_pos.png"
     },
     "105": {
       "id": 105,
       "name": "六道聖",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_105.png",
       "img_pos": "icon_105_pos.png"
     },
     "106": {
       "id": 106,
       "name": "樽本有太",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_106.png",
       "img_pos": "icon_106_pos.png"
     },
     "107": {
       "id": 107,
       "name": "鈴姫健太郎",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_107.png",
       "img_pos": "icon_107_pos.png"
     },
     "108": {
       "id": 108,
       "name": "渋谷秀喜",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_108.png",
       "img_pos": "icon_108_pos.png"
     },
     "109": {
       "id": 109,
       "name": "グラビトン新井",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_109.png",
       "img_pos": "icon_109_pos.png"
     },
     "110": {
       "id": 110,
       "name": "片倉昌行",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_110.png",
       "img_pos": "icon_110_pos.png"
     },
     "111": {
       "id": 111,
       "name": "丸餅太",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_111.png",
       "img_pos": "icon_111_pos.png"
     },
     "112": {
       "id": 112,
       "name": "甲斐進撃",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_112.png",
       "img_pos": "icon_112_pos.png"
     },
     "113": {
       "id": 113,
       "name": "涼風希望",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_113.png",
       "img_pos": "icon_113_pos.png"
     },
     "114": {
       "id": 114,
       "name": "星空星光",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_114.png",
       "img_pos": "icon_114_pos.png"
     },
     "115": {
       "id": 115,
       "name": "黒珠真",
+      "position": "二",
+      "mode": "プロデューサー",
       "img_standard": "icon_115.png",
       "img_pos": "icon_115_pos.png"
     },
     "116": {
       "id": 116,
       "name": "矢部田亜希子",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_116.png",
       "img_pos": "icon_116_pos.png"
     },
     "117": {
       "id": 117,
       "name": "夏野向日葵",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_117.png",
       "img_pos": "icon_117_pos.png"
     },
     "118": {
       "id": 118,
-      "name": "青葉春人",
+      "name": "パワ子",
+      "position": "一",
+      "mode": "プロデューサー",
       "img_standard": "icon_118.png",
       "img_pos": "icon_118_pos.png"
     },
     "119": {
       "id": 119,
-      "name": "小山雅",
+      "name": "青葉春人",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_119.png",
       "img_pos": "icon_119_pos.png"
     },
     "120": {
       "id": 120,
-      "name": "西郷十三",
+      "name": "小山雅",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_120.png",
       "img_pos": "icon_120_pos.png"
     },
     "121": {
       "id": 121,
-      "name": "茶来元気",
+      "name": "西郷十三",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_121.png",
       "img_pos": "icon_121_pos.png"
     },
     "122": {
       "id": 122,
-      "name": "鬼力剛",
+      "name": "茶来元気",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_122.png",
       "img_pos": "icon_122_pos.png"
     },
     "123": {
       "id": 123,
-      "name": "神宮寺光",
+      "name": "鬼力剛",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_123.png",
       "img_pos": "icon_123_pos.png"
     },
     "124": {
       "id": 124,
-      "name": "稲田吾作",
+      "name": "神宮寺光",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_124.png",
       "img_pos": "icon_124_pos.png"
     },
     "125": {
       "id": 125,
-      "name": "三森右京",
+      "name": "稲田吾作",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_125.png",
       "img_pos": "icon_125_pos.png"
     },
     "126": {
       "id": 126,
-      "name": "三森左京",
+      "name": "三森右京",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_126.png",
       "img_pos": "icon_126_pos.png"
     },
     "127": {
       "id": 127,
-      "name": "朱雀南赤",
+      "name": "三森左京",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_127.png",
       "img_pos": "icon_127_pos.png"
     },
     "128": {
       "id": 128,
-      "name": "火野勇太郎",
+      "name": "朱雀南赤",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_128.png",
       "img_pos": "icon_128_pos.png"
     },
     "129": {
       "id": 129,
-      "name": "水野魔太郎",
+      "name": "火野勇太郎",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_129.png",
       "img_pos": "icon_129_pos.png"
     },
     "130": {
       "id": 130,
-      "name": "草野剣太郎",
+      "name": "水野魔太郎",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_130.png",
       "img_pos": "icon_130_pos.png"
     },
     "131": {
       "id": 131,
-      "name": "鋼毅",
+      "name": "草野剣太郎",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_131.png",
       "img_pos": "icon_131_pos.png"
     },
     "132": {
       "id": 132,
-      "name": "矢部門竜雄",
+      "name": "鋼毅",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_132.png",
       "img_pos": "icon_132_pos.png"
     },
     "133": {
       "id": 133,
-      "name": "鶴屋勝",
+      "name": "矢部門竜雄",
+      "position": "一",
+      "mode": "アナウンサー",
       "img_standard": "icon_133.png",
       "img_pos": "icon_133_pos.png"
     },
     "134": {
       "id": 134,
-      "name": "少豪月剛",
+      "name": "鶴屋勝",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_134.png",
       "img_pos": "icon_134_pos.png"
     },
     "135": {
       "id": 135,
-      "name": "大塔俊二",
+      "name": "少豪月剛",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_135.png",
       "img_pos": "icon_135_pos.png"
     },
     "136": {
       "id": 136,
-      "name": "太刀川広巳",
+      "name": "大塔俊二",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_136.png",
       "img_pos": "icon_136_pos.png"
     },
     "137": {
       "id": 137,
-      "name": "小鷹美麗",
+      "name": "太刀川広巳",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_137.png",
       "img_pos": "icon_137_pos.png"
     },
     "138": {
       "id": 138,
-      "name": "美藤千尋",
+      "name": "小鷹美麗",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_138.png",
       "img_pos": "icon_138_pos.png"
     },
     "139": {
       "id": 139,
-      "name": "大空美代子",
+      "name": "美藤千尋",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_139.png",
       "img_pos": "icon_139_pos.png"
     },
     "140": {
       "id": 140,
-      "name": "川星ほむら",
+      "name": "大空美代子",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_140.png",
       "img_pos": "icon_140_pos.png"
     },
     "141": {
       "id": 141,
-      "name": "武秀英",
+      "name": "川星ほむら",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_141.png",
       "img_pos": "icon_141_pos.png"
     },
     "142": {
       "id": 142,
-      "name": "鎌刈善二",
+      "name": "武秀英",
+      "position": "一",
+      "mode": "アナウンサー",
       "img_standard": "icon_142.png",
       "img_pos": "icon_142_pos.png"
     },
     "143": {
       "id": 143,
-      "name": "古長衛士",
+      "name": "鎌刈善二",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_143.png",
       "img_pos": "icon_143_pos.png"
     },
     "144": {
       "id": 144,
-      "name": "マキシマム池田クリスティン",
+      "name": "古長衛士",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_144.png",
       "img_pos": "icon_144_pos.png"
     },
     "145": {
       "id": 145,
-      "name": "ヤーベンディヤンス",
+      "name": "マキシマム池田クリスティン",
+      "position": "一",
+      "mode": "プロデューサー",
       "img_standard": "icon_145.png",
       "img_pos": "icon_145_pos.png"
     },
     "146": {
       "id": 146,
-      "name": "アルヴィンロックハート",
+      "name": "ヤーベンディヤンス",
+      "position": "二",
+      "mode": "プロデューサー",
       "img_standard": "icon_146.png",
       "img_pos": "icon_146_pos.png"
     },
     "147": {
       "id": 147,
-      "name": "ナヌークアキアック",
+      "name": "アルヴィンロックハート",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_147.png",
       "img_pos": "icon_147_pos.png"
     },
     "148": {
       "id": 148,
-      "name": "ギャネンドラバッタライ",
+      "name": "ナヌークアキアック",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_148.png",
       "img_pos": "icon_148_pos.png"
     },
     "149": {
       "id": 149,
-      "name": "大鐘餅太郎",
+      "name": "ギャネンドラバッタライ",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_149.png",
       "img_pos": "icon_149_pos.png"
     },
     "150": {
       "id": 150,
-      "name": "銭形乱蔵",
+      "name": "大鐘餅太郎",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_150.png",
       "img_pos": "icon_150_pos.png"
     },
     "151": {
       "id": 151,
-      "name": "宝塚月斗",
+      "name": "銭形乱蔵",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_151.png",
       "img_pos": "icon_151_pos.png"
     },
     "152": {
       "id": 152,
-      "name": "祝井幸吉",
+      "name": "宝塚月斗",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_152.png",
       "img_pos": "icon_152_pos.png"
     },
     "153": {
       "id": 153,
-      "name": "雷轟遥登",
+      "name": "祝井幸吉",
+      "position": "三",
+      "mode": "プロデューサー",
       "img_standard": "icon_153.png",
       "img_pos": "icon_153_pos.png"
     },
     "154": {
       "id": 154,
-      "name": "風薙豹",
+      "name": "雷轟遥登",
+      "position": "三",
+      "mode": "プロデューサー",
       "img_standard": "icon_154.png",
       "img_pos": "icon_154_pos.png"
     },
     "155": {
       "id": 155,
-      "name": "暮羽鋭次",
+      "name": "風薙豹",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_155.png",
       "img_pos": "icon_155_pos.png"
     },
     "156": {
       "id": 156,
-      "name": "蝶野半四郎",
+      "name": "暮羽鋭次",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_156.png",
       "img_pos": "icon_156_pos.png"
     },
     "157": {
       "id": 157,
-      "name": "六鹿陸",
+      "name": "蝶野半四郎",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_157.png",
       "img_pos": "icon_157_pos.png"
     },
     "158": {
       "id": 158,
-      "name": "辰猪一八",
+      "name": "六鹿陸",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_158.png",
       "img_pos": "icon_158_pos.png"
     },
     "159": {
       "id": 159,
-      "name": "新島早紀",
+      "name": "辰猪一八",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_159.png",
       "img_pos": "icon_159_pos.png"
     },
     "160": {
       "id": 160,
-      "name": "佐菜あゆみ",
+      "name": "新島早紀",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_160.png",
       "img_pos": "icon_160_pos.png"
     },
     "161": {
       "id": 161,
-      "name": "十六夜瑠菜",
+      "name": "佐菜あゆみ",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_161.png",
       "img_pos": "icon_161_pos.png"
     },
     "162": {
       "id": 162,
-      "name": "実和男",
+      "name": "十六夜瑠菜",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_162.png",
       "img_pos": "icon_162_pos.png"
     },
     "163": {
       "id": 163,
-      "name": "灰谷充",
+      "name": "小石川大太",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_163.png",
       "img_pos": "icon_163_pos.png"
     },
     "164": {
       "id": 164,
-      "name": "純決太郎",
+      "name": "実和男",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_164.png",
       "img_pos": "icon_164_pos.png"
     },
     "165": {
       "id": 165,
-      "name": "出井田大輔",
+      "name": "灰谷充",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_165.png",
       "img_pos": "icon_165_pos.png"
     },
     "166": {
       "id": 166,
-      "name": "雲海和也",
+      "name": "純決太郎",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_166.png",
       "img_pos": "icon_166_pos.png"
     },
     "167": {
       "id": 167,
-      "name": "東推八",
+      "name": "出井田大輔",
+      "position": "捕",
+      "mode": "アナウンサー",
       "img_standard": "icon_167.png",
       "img_pos": "icon_167_pos.png"
     },
     "168": {
       "id": 168,
-      "name": "覆水武明",
+      "name": "雲海和也",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_168.png",
       "img_pos": "icon_168_pos.png"
     },
     "169": {
       "id": 169,
-      "name": "出井田文飛",
+      "name": "東推八",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_169.png",
       "img_pos": "icon_169_pos.png"
     },
     "170": {
       "id": 170,
-      "name": "鞍馬貴史",
+      "name": "覆水武明",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_170.png",
       "img_pos": "icon_170_pos.png"
     },
     "171": {
       "id": 171,
-      "name": "大一万大吉",
+      "name": "出井田文飛",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_171.png",
       "img_pos": "icon_171_pos.png"
     },
     "172": {
       "id": 172,
-      "name": "ホールスアン4世",
+      "name": "鞍馬貴史",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_172.png",
       "img_pos": "icon_172_pos.png"
     },
     "173": {
       "id": 173,
-      "name": "ニャプテト",
+      "name": "大一万大吉",
+      "position": "一",
+      "mode": "プロデューサー",
       "img_standard": "icon_173.png",
       "img_pos": "icon_173_pos.png"
     },
     "174": {
       "id": 174,
-      "name": "ヌウビス",
+      "name": "ホールスアン4世",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_174.png",
       "img_pos": "icon_174_pos.png"
     },
     "175": {
       "id": 175,
-      "name": "セティーヌ",
+      "name": "ニャプテト",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_175.png",
       "img_pos": "icon_175_pos.png"
     },
     "176": {
       "id": 176,
-      "name": "桜沢樹",
+      "name": "ヌウビス",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_176.png",
       "img_pos": "icon_176_pos.png"
     },
     "177": {
       "id": 177,
-      "name": "水無月要",
+      "name": "セティーヌ",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_177.png",
       "img_pos": "icon_177_pos.png"
     },
     "178": {
       "id": 178,
-      "name": "掘杉等",
+      "name": "桜沢樹",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_178.png",
       "img_pos": "icon_178_pos.png"
     },
     "179": {
       "id": 179,
-      "name": "雪野楓",
+      "name": "水無月要",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_179.png",
       "img_pos": "icon_179_pos.png"
     },
     "180": {
       "id": 180,
-      "name": "斬金半馬",
+      "name": "掘杉等",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_180.png",
       "img_pos": "icon_180_pos.png"
     },
     "181": {
       "id": 181,
-      "name": "井関丹作",
+      "name": "雪野楓",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_181.png",
       "img_pos": "icon_181_pos.png"
     },
     "182": {
       "id": 182,
-      "name": "江戸川文楽",
+      "name": "斬金半馬",
+      "position": "一",
+      "mode": "アナウンサー",
       "img_standard": "icon_182.png",
       "img_pos": "icon_182_pos.png"
     },
     "183": {
       "id": 183,
-      "name": "ガルシア世良",
+      "name": "井関丹作",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_183.png",
       "img_pos": "icon_183_pos.png"
     },
     "184": {
       "id": 184,
-      "name": "凡田大介",
+      "name": "江戸川文楽",
+      "position": "一",
+      "mode": "プロデューサー",
       "img_standard": "icon_184.png",
       "img_pos": "icon_184_pos.png"
     },
     "185": {
       "id": 185,
-      "name": "倉刈仁志",
+      "name": "ガルシア世良",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_185.png",
       "img_pos": "icon_185_pos.png"
     },
     "186": {
       "id": 186,
-      "name": "水木卓",
+      "name": "凡田大介",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_186.png",
       "img_pos": "icon_186_pos.png"
     },
     "187": {
       "id": 187,
-      "name": "レッド",
+      "name": "倉刈仁志",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_187.png",
       "img_pos": "icon_187_pos.png"
     },
     "188": {
       "id": 188,
-      "name": "東優",
+      "name": "水木卓",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_188.png",
       "img_pos": "icon_188_pos.png"
     },
     "189": {
       "id": 189,
-      "name": "星井スバル",
+      "name": "レッド",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_189.png",
       "img_pos": "icon_189_pos.png"
     },
     "190": {
       "id": 190,
-      "name": "宇渡幹久",
+      "name": "東優",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_190.png",
       "img_pos": "icon_190_pos.png"
     },
     "191": {
       "id": 191,
-      "name": "小田切巧",
+      "name": "ブラック",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_191.png",
       "img_pos": "icon_191_pos.png"
     },
     "192": {
       "id": 192,
-      "name": "木場嵐士",
+      "name": "ピンク",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_192.png",
       "img_pos": "icon_192_pos.png"
     },
     "193": {
       "id": 193,
-      "name": "金原いずる",
+      "name": "星井スバル",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_193.png",
       "img_pos": "icon_193_pos.png"
     },
     "194": {
       "id": 194,
-      "name": "水鳥忍",
+      "name": "宇渡幹久",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_194.png",
       "img_pos": "icon_194_pos.png"
     },
     "195": {
       "id": 195,
-      "name": "烏丸剛充",
+      "name": "小田切巧",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_195.png",
       "img_pos": "icon_195_pos.png"
     },
     "196": {
       "id": 196,
-      "name": "才賀侑人",
+      "name": "木場嵐士",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_196.png",
       "img_pos": "icon_196_pos.png"
     },
     "197": {
       "id": 197,
-      "name": "小平陽向",
+      "name": "金原いずる",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_197.png",
       "img_pos": "icon_197_pos.png"
     },
     "198": {
       "id": 198,
-      "name": "美園千花",
+      "name": "水鳥忍",
+      "position": "捕",
+      "mode": "アナウンサー",
       "img_standard": "icon_198.png",
       "img_pos": "icon_198_pos.png"
     },
     "199": {
       "id": 199,
-      "name": "小嵐リョウ",
+      "name": "烏丸剛充",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_199.png",
       "img_pos": "icon_199_pos.png"
     },
     "200": {
       "id": 200,
-      "name": "八尺巫女子",
+      "name": "才賀侑人",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_200.png",
       "img_pos": "icon_200_pos.png"
     },
     "201": {
       "id": 201,
-      "name": "北斗八雲",
+      "name": "小平陽向",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_201.png",
       "img_pos": "icon_201_pos.png"
     },
     "202": {
       "id": 202,
-      "name": "桜ノ宮総司",
+      "name": "美園千花",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_202.png",
       "img_pos": "icon_202_pos.png"
     },
     "203": {
       "id": 203,
-      "name": "伊貫大和",
+      "name": "小嵐リョウ",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_203.png",
       "img_pos": "icon_203_pos.png"
     },
     "204": {
       "id": 204,
-      "name": "森河岳",
+      "name": "八尺巫女子",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_204.png",
       "img_pos": "icon_204_pos.png"
     },
     "205": {
       "id": 205,
-      "name": "冴木創",
+      "name": "北斗八雲",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_205.png",
       "img_pos": "icon_205_pos.png"
     },
     "206": {
       "id": 206,
-      "name": "浦賀有也",
+      "name": "鷹栖礼文",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_206.png",
       "img_pos": "icon_206_pos.png"
     },
     "207": {
       "id": 207,
-      "name": "天城隼",
+      "name": "紋別青葉",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_207.png",
       "img_pos": "icon_207_pos.png"
     },
     "208": {
       "id": 208,
-      "name": "諸井清和",
+      "name": "桜ノ宮総司",
+      "position": "捕",
+      "mode": "アナウンサー",
       "img_standard": "icon_208.png",
       "img_pos": "icon_208_pos.png"
     },
     "209": {
       "id": 209,
-      "name": "一条一輝",
+      "name": "伊貫大和",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_209.png",
       "img_pos": "icon_209_pos.png"
     },
     "210": {
       "id": 210,
-      "name": "尾根瑛人",
+      "name": "森河岳",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_210.png",
       "img_pos": "icon_210_pos.png"
     },
     "211": {
       "id": 211,
-      "name": "納見新造",
+      "name": "冴木創",
+      "position": "二",
+      "mode": "プロデューサー",
       "img_standard": "icon_211.png",
       "img_pos": "icon_211_pos.png"
     },
     "212": {
       "id": 212,
-      "name": "須藤零人",
+      "name": "テキートヤールゼン",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_212.png",
       "img_pos": "icon_212_pos.png"
     },
     "213": {
       "id": 213,
-      "name": "バット円島",
+      "name": "宇佐崎詠子",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_213.png",
       "img_pos": "icon_213_pos.png"
     },
     "214": {
       "id": 214,
-      "name": "兼倉洋平",
+      "name": "井伊野嘉元",
+      "position": "",
+      "mode": "プロデューサー",
       "img_standard": "icon_214.png",
       "img_pos": "icon_214_pos.png"
     },
     "215": {
       "id": 215,
-      "name": "灰塚朔夜",
+      "name": "鹿莫翔太",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_215.png",
       "img_pos": "icon_215_pos.png"
     },
     "216": {
       "id": 216,
-      "name": "内藤明瑠",
+      "name": "浦賀有也",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_216.png",
       "img_pos": "icon_216_pos.png"
     },
     "217": {
       "id": 217,
-      "name": "史門泰司",
+      "name": "天城隼",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_217.png",
       "img_pos": "icon_217_pos.png"
     },
     "218": {
       "id": 218,
-      "name": "虹谷誠",
+      "name": "諸井清和",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_218.png",
       "img_pos": "icon_218_pos.png"
     },
     "219": {
       "id": 219,
-      "name": "神成尊",
+      "name": "一条一輝",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_219.png",
       "img_pos": "icon_219_pos.png"
     },
     "220": {
       "id": 220,
-      "name": "東雲翔也",
+      "name": "尾根瑛人",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_220.png",
       "img_pos": "icon_220_pos.png"
     },
     "221": {
       "id": 221,
-      "name": "真黒綱寛",
+      "name": "納見新造",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_221.png",
       "img_pos": "icon_221_pos.png"
     },
     "222": {
       "id": 222,
-      "name": "須々木清吾",
+      "name": "須藤零人",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_222.png",
       "img_pos": "icon_222_pos.png"
     },
     "223": {
       "id": 223,
-      "name": "赤原勘八",
+      "name": "バット円島",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_223.png",
       "img_pos": "icon_223_pos.png"
     },
     "224": {
       "id": 224,
-      "name": "千賀篤志",
+      "name": "兼倉洋平",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_224.png",
       "img_pos": "icon_224_pos.png"
     },
     "225": {
       "id": 225,
-      "name": "魁竜司",
+      "name": "黒聖良",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_225.png",
       "img_pos": "icon_225_pos.png"
     },
     "226": {
       "id": 226,
-      "name": "江暦輝",
+      "name": "灰塚朔夜",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_226.png",
       "img_pos": "icon_226_pos.png"
     },
     "227": {
       "id": 227,
-      "name": "志藤玲美",
+      "name": "内藤明瑠",
+      "position": "一",
+      "mode": "アナウンサー",
       "img_standard": "icon_227.png",
       "img_pos": "icon_227_pos.png"
     },
     "228": {
       "id": 228,
-      "name": "大越清亮",
+      "name": "史門泰司",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_228.png",
       "img_pos": "icon_228_pos.png"
     },
     "229": {
       "id": 229,
-      "name": "伊能麗示",
+      "name": "虹谷誠",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_229.png",
       "img_pos": "icon_229_pos.png"
     },
     "230": {
       "id": 230,
-      "name": "阿麻央真",
+      "name": "神成尊",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_230.png",
       "img_pos": "icon_230_pos.png"
     },
     "231": {
       "id": 231,
-      "name": "ランスロット",
+      "name": "東雲翔也",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_231.png",
       "img_pos": "icon_231_pos.png"
     },
     "232": {
       "id": 232,
-      "name": "望戸紅",
+      "name": "真黒綱寛",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_232.png",
       "img_pos": "icon_232_pos.png"
     },
     "233": {
       "id": 233,
-      "name": "岸田卓",
+      "name": "須々木清吾",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_233.png",
       "img_pos": "icon_233_pos.png"
     },
     "234": {
       "id": 234,
-      "name": "闇野栄剛",
+      "name": "赤原勘八",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_234.png",
       "img_pos": "icon_234_pos.png"
     },
     "235": {
       "id": 235,
-      "name": "往田真威人",
+      "name": "千賀篤志",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_235.png",
       "img_pos": "icon_235_pos.png"
     },
     "236": {
       "id": 236,
-      "name": "霧崎礼里",
+      "name": "魁竜司",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_236.png",
       "img_pos": "icon_236_pos.png"
     },
     "237": {
       "id": 237,
-      "name": "堂江竜河",
+      "name": "江暦輝",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_237.png",
       "img_pos": "icon_237_pos.png"
     },
     "238": {
       "id": 238,
-      "name": "黒衛隆富",
+      "name": "志藤玲美",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_238.png",
       "img_pos": "icon_238_pos.png"
     },
     "239": {
       "id": 239,
-      "name": "伍歩倫人",
+      "name": "大越清亮",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_239.png",
       "img_pos": "icon_239_pos.png"
     },
     "240": {
       "id": 240,
-      "name": "館橋水奈都",
+      "name": "伊能麗示",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_240.png",
       "img_pos": "icon_240_pos.png"
     },
     "241": {
       "id": 241,
-      "name": "沖野海里",
+      "name": "阿麻央真",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_241.png",
       "img_pos": "icon_241_pos.png"
     },
     "242": {
       "id": 242,
-      "name": "梶増人",
+      "name": "ランスロット",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_242.png",
       "img_pos": "icon_242_pos.png"
     },
     "243": {
       "id": 243,
-      "name": "オクタヴィア",
+      "name": "望戸紅",
+      "position": "三",
+      "mode": "プロデューサー",
       "img_standard": "icon_243.png",
       "img_pos": "icon_243_pos.png"
     },
     "244": {
       "id": 244,
-      "name": "塚見巴",
+      "name": "岸田卓",
+      "position": "一",
+      "mode": "プロデューサー",
       "img_standard": "icon_244.png",
       "img_pos": "icon_244_pos.png"
     },
     "245": {
       "id": 245,
-      "name": "塚見リフター",
+      "name": "闇野栄剛",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_245.png",
       "img_pos": "icon_245_pos.png"
     },
     "246": {
       "id": 246,
-      "name": "カイルモラレス",
+      "name": "往田真威人",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_246.png",
       "img_pos": "icon_246_pos.png"
     },
     "247": {
       "id": 247,
-      "name": "ミンミン",
+      "name": "霧崎礼里",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_247.png",
       "img_pos": "icon_247_pos.png"
     },
     "248": {
       "id": 248,
-      "name": "ゼンザイ",
+      "name": "闇野ルミナ",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_248.png",
       "img_pos": "icon_248_pos.png"
     },
     "249": {
       "id": 249,
-      "name": "浮見葉勘",
+      "name": "堂江竜河",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_249.png",
       "img_pos": "icon_249_pos.png"
     },
     "250": {
       "id": 250,
-      "name": "郡司知将",
+      "name": "黒衛隆富",
+      "position": "二",
+      "mode": "プロデューサー",
       "img_standard": "icon_250.png",
       "img_pos": "icon_250_pos.png"
     },
     "251": {
       "id": 251,
-      "name": "千代姫",
+      "name": "伍歩倫人",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_251.png",
       "img_pos": "icon_251_pos.png"
     },
     "252": {
       "id": 252,
-      "name": "柳生鞘花",
+      "name": "館橋水奈都",
+      "position": "二",
+      "mode": "プロデューサー",
       "img_standard": "icon_252.png",
       "img_pos": "icon_252_pos.png"
     },
     "253": {
       "id": 253,
-      "name": "夢城優花",
+      "name": "沖野海里",
+      "position": "一",
+      "mode": "プロデューサー",
       "img_standard": "icon_253.png",
       "img_pos": "icon_253_pos.png"
     },
     "254": {
       "id": 254,
-      "name": "夢城和花",
+      "name": "梶増人",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_254.png",
       "img_pos": "icon_254_pos.png"
     },
     "255": {
       "id": 255,
-      "name": "浪風芽衣香",
+      "name": "オクタヴィア",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_255.png",
       "img_pos": "icon_255_pos.png"
     },
     "256": {
       "id": 256,
-      "name": "泊方明日音",
+      "name": "塚見巴",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_256.png",
       "img_pos": "icon_256_pos.png"
     },
     "257": {
       "id": 257,
-      "name": "戸井鉄男",
+      "name": "塚見リフター",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_257.png",
       "img_pos": "icon_257_pos.png"
     },
     "258": {
       "id": 258,
-      "name": "佐賀巌",
+      "name": "カイルモラレス",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_258.png",
       "img_pos": "icon_258_pos.png"
     },
     "259": {
       "id": 259,
-      "name": "駒坂瞬",
+      "name": "ミンミン",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_259.png",
       "img_pos": "icon_259_pos.png"
     },
     "260": {
       "id": 260,
-      "name": "有村佐治",
+      "name": "ゼンザイ",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_260.png",
       "img_pos": "icon_260_pos.png"
     },
     "261": {
       "id": 261,
-      "name": "獅乃木琢磨",
+      "name": "浮見葉勘",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_261.png",
       "img_pos": "icon_261_pos.png"
     },
     "262": {
       "id": 262,
-      "name": "鳴海悠斗",
+      "name": "郡司知将",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_262.png",
       "img_pos": "icon_262_pos.png"
     },
     "263": {
       "id": 263,
-      "name": "藤堂まひる",
+      "name": "千代姫",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_263.png",
       "img_pos": "icon_263_pos.png"
     },
     "264": {
       "id": 264,
-      "name": "アンヌアズナブル",
+      "name": "柳生鞘花",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_264.png",
       "img_pos": "icon_264_pos.png"
     },
     "265": {
       "id": 265,
-      "name": "皇帝",
+      "name": "夢城優花",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_265.png",
       "img_pos": "icon_265_pos.png"
     },
     "266": {
       "id": 266,
-      "name": "天音姫恋",
+      "name": "夢城和花",
+      "position": "三",
+      "mode": "プロデューサー",
       "img_standard": "icon_266.png",
       "img_pos": "icon_266_pos.png"
     },
     "267": {
       "id": 267,
-      "name": "本場あんこ",
+      "name": "浪風芽衣香",
+      "position": "二",
+      "mode": "プロデューサー",
       "img_standard": "icon_267.png",
       "img_pos": "icon_267_pos.png"
     },
     "268": {
       "id": 268,
-      "name": "菊度アイラ",
+      "name": "泊方明日音",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_268.png",
       "img_pos": "icon_268_pos.png"
     },
     "269": {
       "id": 269,
-      "name": "新庄",
+      "name": "美一式高伊",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_269.png",
       "img_pos": "icon_269_pos.png"
     },
     "270": {
       "id": 270,
-      "name": "花鳥千香",
+      "name": "佐部利保英",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_270.png",
       "img_pos": "icon_270_pos.png"
     },
     "271": {
       "id": 271,
-      "name": "バーリスロセオ",
+      "name": "銀杏力丸",
+      "position": "一",
+      "mode": "アナウンサー",
       "img_standard": "icon_271.png",
       "img_pos": "icon_271_pos.png"
     },
     "272": {
       "id": 272,
-      "name": "キリルフォスター",
+      "name": "八桐優斗",
+      "position": "捕",
+      "mode": "アナウンサー",
       "img_standard": "icon_272.png",
       "img_pos": "icon_272_pos.png"
     },
     "273": {
       "id": 273,
-      "name": "宮田良哉",
+      "name": "江守陽",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_273.png",
       "img_pos": "icon_273_pos.png"
     },
     "274": {
       "id": 274,
-      "name": "佐渡摩智",
+      "name": "六角錬治",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_274.png",
       "img_pos": "icon_274_pos.png"
     },
     "275": {
       "id": 275,
-      "name": "シュバリエ",
+      "name": "田団田ダン",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_275.png",
       "img_pos": "icon_275_pos.png"
     },
     "276": {
       "id": 276,
-      "name": "犬山堅太郎",
+      "name": "淡手蒼太",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_276.png",
       "img_pos": "icon_276_pos.png"
     },
     "277": {
       "id": 277,
-      "name": "猿川捻二",
+      "name": "日輪暁",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_277.png",
       "img_pos": "icon_277_pos.png"
     },
     "278": {
       "id": 278,
-      "name": "久里武尊",
+      "name": "十六夜満",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_278.png",
       "img_pos": "icon_278_pos.png"
     },
     "279": {
       "id": 279,
-      "name": "古羽流登",
+      "name": "キリルフォスター",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_279.png",
       "img_pos": "icon_279_pos.png"
     },
     "280": {
       "id": 280,
-      "name": "織部実留",
+      "name": "宮田良哉",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_280.png",
       "img_pos": "icon_280_pos.png"
     },
     "281": {
       "id": 281,
-      "name": "天宮果也乃",
+      "name": "佐渡摩智",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_281.png",
       "img_pos": "icon_281_pos.png"
     },
     "282": {
       "id": 282,
-      "name": "戸草鏡",
+      "name": "シュバリエ",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_282.png",
       "img_pos": "icon_282_pos.png"
     },
     "283": {
       "id": 283,
-      "name": "高原曲",
+      "name": "久里武尊",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_283.png",
       "img_pos": "icon_283_pos.png"
     },
     "284": {
       "id": 284,
-      "name": "敷上マニィ",
+      "name": "古羽流登",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_284.png",
       "img_pos": "icon_284_pos.png"
     },
     "285": {
       "id": 285,
-      "name": "美一式高伊",
+      "name": "織部実留",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_285.png",
       "img_pos": "icon_285_pos.png"
     },
     "286": {
       "id": 286,
-      "name": "佐部利保英",
+      "name": "天宮果也乃",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_286.png",
       "img_pos": "icon_286_pos.png"
     },
     "287": {
       "id": 287,
-      "name": "銀杏力丸",
+      "name": "戸草鏡",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_287.png",
       "img_pos": "icon_287_pos.png"
     },
     "288": {
       "id": 288,
-      "name": "八桐優斗",
+      "name": "高原曲",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_288.png",
       "img_pos": "icon_288_pos.png"
     },
     "289": {
       "id": 289,
-      "name": "江守陽",
+      "name": "敷上マニィ",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_289.png",
       "img_pos": "icon_289_pos.png"
     },
     "290": {
       "id": 290,
-      "name": "六角錬治",
+      "name": "時任幽平",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_290.png",
       "img_pos": "icon_290_pos.png"
     },
     "291": {
       "id": 291,
-      "name": "田団田ダン",
+      "name": "泉谷未来",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_291.png",
       "img_pos": "icon_291_pos.png"
     },
     "292": {
       "id": 292,
-      "name": "淡手蒼太",
+      "name": "物茂渡",
+      "position": "二",
+      "mode": "プロデューサー",
       "img_standard": "icon_292.png",
       "img_pos": "icon_292_pos.png"
     },
     "293": {
       "id": 293,
-      "name": "日輪暁",
+      "name": "官堂伊春",
+      "position": "三",
+      "mode": "プロデューサー",
       "img_standard": "icon_293.png",
       "img_pos": "icon_293_pos.png"
     },
     "294": {
       "id": 294,
-      "name": "十六夜満",
+      "name": "ルーカスジョンソン",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_294.png",
       "img_pos": "icon_294_pos.png"
     },
     "295": {
       "id": 295,
-      "name": "DJB-K",
+      "name": "夜神極",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_295.png",
       "img_pos": "icon_295_pos.png"
     },
     "296": {
       "id": 296,
-      "name": "黒聖良",
+      "name": "瀧上輝汐",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_296.png",
       "img_pos": "icon_296_pos.png"
     },
     "297": {
       "id": 297,
-      "name": "カグヤ",
+      "name": "尾上亜月",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_297.png",
       "img_pos": "icon_297_pos.png"
     },
     "298": {
       "id": 298,
-      "name": "パワ子",
+      "name": "竹内脅人",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_298.png",
       "img_pos": "icon_298_pos.png"
     },
     "299": {
       "id": 299,
-      "name": "小石川大太",
+      "name": "明神陽",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_299.png",
       "img_pos": "icon_299_pos.png"
     },
     "300": {
       "id": 300,
-      "name": "諏訪野聖人",
+      "name": "休森遊",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_300.png",
       "img_pos": "icon_300_pos.png"
     },
     "301": {
       "id": 301,
-      "name": "アランレイヴン",
+      "name": "東風平晴来",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_301.png",
       "img_pos": "icon_301_pos.png"
     },
     "302": {
       "id": 302,
-      "name": "ニセプロ",
+      "name": "白浜浅海",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_302.png",
       "img_pos": "icon_302_pos.png"
     },
     "303": {
       "id": 303,
-      "name": "矢倍萌雄",
+      "name": "キリヤ",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_303.png",
       "img_pos": "icon_303_pos.png"
     },
     "304": {
       "id": 304,
-      "name": "明神陽",
+      "name": "アオ",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_304.png",
       "img_pos": "icon_304_pos.png"
     },
     "305": {
       "id": 305,
-      "name": "軍導英雄",
+      "name": "ハルキ",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_305.png",
       "img_pos": "icon_305_pos.png"
     },
     "306": {
       "id": 306,
-      "name": "中之島幸宏",
+      "name": "トオル",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_306.png",
       "img_pos": "icon_306_pos.png"
     },
     "307": {
       "id": 307,
-      "name": "男・矢部明雄",
+      "name": "ピグタ",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_307.png",
       "img_pos": "icon_307_pos.png"
     },
     "308": {
       "id": 308,
-      "name": "アフロ猪狩",
+      "name": "ガナル波羅",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_308.png",
       "img_pos": "icon_308_pos.png"
     },
     "309": {
       "id": 309,
-      "name": "野球マン1号",
+      "name": "ゼルヴィーハイゼンベルク",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_309.png",
       "img_pos": "icon_309_pos.png"
     },
     "310": {
       "id": 310,
-      "name": "野球マン2号",
+      "name": "久留米美加",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_310.png",
       "img_pos": "icon_310_pos.png"
     },
     "311": {
       "id": 311,
-      "name": "野球マン3号",
+      "name": "織田信長",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_311.png",
       "img_pos": "icon_311_pos.png"
     },
     "312": {
       "id": 312,
-      "name": "野球マン5号",
+      "name": "伊達政宗",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_312.png",
       "img_pos": "icon_312_pos.png"
     },
     "313": {
       "id": 313,
-      "name": "野球マスク",
+      "name": "武田信玄",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_313.png",
       "img_pos": "icon_313_pos.png"
     },
     "314": {
       "id": 314,
-      "name": "暗黒スバル",
+      "name": "上杉謙信",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_314.png",
       "img_pos": "icon_314_pos.png"
     },
     "315": {
       "id": 315,
-      "name": "佐藤太郎",
+      "name": "徳川家康",
+      "position": "捕",
+      "mode": "アナウンサー",
       "img_standard": "icon_315.png",
       "img_pos": "icon_315_pos.png"
     },
     "316": {
       "id": 316,
-      "name": "クロン",
+      "name": "豊臣秀吉",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_316.png",
       "img_pos": "icon_316_pos.png"
     },
     "317": {
       "id": 317,
-      "name": "加藤京子",
+      "name": "毛利元就",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_317.png",
       "img_pos": "icon_317_pos.png"
     },
     "318": {
       "id": 318,
-      "name": "芹沢茜",
+      "name": "長宗我部元親",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_318.png",
       "img_pos": "icon_318_pos.png"
     },
     "319": {
       "id": 319,
-      "name": "ラミィ",
+      "name": "島津義弘",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_319.png",
       "img_pos": "icon_319_pos.png"
     },
     "320": {
       "id": 320,
-      "name": "黒戸もね",
+      "name": "明智光秀",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_320.png",
       "img_pos": "icon_320_pos.png"
     },
     "321": {
       "id": 321,
-      "name": "戸内聖華",
+      "name": "戸井鉄男",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_321.png",
       "img_pos": "icon_321_pos.png"
     },
     "322": {
       "id": 322,
-      "name": "栗原舞",
+      "name": "佐賀巌",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_322.png",
       "img_pos": "icon_322_pos.png"
     },
     "323": {
       "id": 323,
-      "name": "咲須かのん",
+      "name": "駒坂瞬",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_323.png",
       "img_pos": "icon_323_pos.png"
     },
     "324": {
       "id": 324,
-      "name": "NCM-753",
+      "name": "有村佐治",
+      "position": "捕",
+      "mode": "アナウンサー",
       "img_standard": "icon_324.png",
       "img_pos": "icon_324_pos.png"
     },
     "325": {
       "id": 325,
-      "name": "泡瀬満里南",
+      "name": "鳴海悠斗",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_325.png",
       "img_pos": "icon_325_pos.png"
     },
     "326": {
       "id": 326,
-      "name": "片桐恋",
+      "name": "藤堂まひる",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_326.png",
       "img_pos": "icon_326_pos.png"
     },
     "327": {
       "id": 327,
-      "name": "久根美亜",
+      "name": "アンヌ安生アズナブル",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_327.png",
       "img_pos": "icon_327_pos.png"
     },
     "328": {
       "id": 328,
-      "name": "三ツ沢環",
+      "name": "皇帝",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_328.png",
       "img_pos": "icon_328_pos.png"
     },
     "329": {
       "id": 329,
-      "name": "須神絵久",
+      "name": "天音姫恋",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_329.png",
       "img_pos": "icon_329_pos.png"
     },
     "330": {
       "id": 330,
-      "name": "木場静火",
+      "name": "本場あんこ",
+      "position": "一",
+      "mode": "プロデューサー",
       "img_standard": "icon_330.png",
       "img_pos": "icon_330_pos.png"
     },
     "331": {
       "id": 331,
-      "name": "明星雪華",
+      "name": "菊度アイラ",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_331.png",
       "img_pos": "icon_331_pos.png"
     },
     "332": {
       "id": 332,
-      "name": "エミリ",
+      "name": "ダリア",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_332.png",
       "img_pos": "icon_332_pos.png"
     },
     "333": {
       "id": 333,
-      "name": "氷上聡里",
+      "name": "アイリス",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_333.png",
       "img_pos": "icon_333_pos.png"
     },
     "334": {
       "id": 334,
-      "name": "鴨川しぐれ",
+      "name": "蒼鳥つばさ",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_334.png",
       "img_pos": "icon_334_pos.png"
     },
     "335": {
       "id": 335,
-      "name": "神良美砂",
+      "name": "咲道あかり",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_335.png",
       "img_pos": "icon_335_pos.png"
     },
     "336": {
       "id": 336,
-      "name": "虹谷彩理",
+      "name": "新庄",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_336.png",
       "img_pos": "icon_336_pos.png"
     },
     "337": {
       "id": 337,
-      "name": "倉家凪",
+      "name": "花鳥千香",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_337.png",
       "img_pos": "icon_337_pos.png"
     },
     "338": {
       "id": 338,
-      "name": "姫野カレン",
+      "name": "バーリスロセオ",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_338.png",
       "img_pos": "icon_338_pos.png"
     },
     "339": {
       "id": 339,
-      "name": "紺野美崎",
+      "name": "カグヤ",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_339.png",
       "img_pos": "icon_339_pos.png"
     },
     "340": {
       "id": 340,
-      "name": "黒沢愛",
+      "name": "諏訪野聖人",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_340.png",
       "img_pos": "icon_340_pos.png"
     },
     "341": {
       "id": 341,
-      "name": "嵐山美鈴",
+      "name": "レジェンズ代表",
+      "position": "",
+      "mode": "共通",
       "img_standard": "icon_341.png",
       "img_pos": "icon_341_pos.png"
     },
     "342": {
       "id": 342,
-      "name": "四条澄香",
+      "name": "ニセプロ",
+      "position": "",
+      "mode": "共通",
       "img_standard": "icon_342.png",
       "img_pos": "icon_342_pos.png"
     },
     "343": {
       "id": 343,
-      "name": "七瀬はるか",
+      "name": "矢倍萌雄",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_343.png",
       "img_pos": "icon_343_pos.png"
     },
     "344": {
       "id": 344,
-      "name": "日和ミヨ",
+      "name": "軍導英雄",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_344.png",
       "img_pos": "icon_344_pos.png"
     },
     "345": {
       "id": 345,
-      "name": "我間摩夕",
+      "name": "中之島幸宏",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_345.png",
       "img_pos": "icon_345_pos.png"
     },
     "346": {
       "id": 346,
-      "name": "雉田直実",
+      "name": "獅乃木琢磨",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_346.png",
       "img_pos": "icon_346_pos.png"
     },
     "347": {
       "id": 347,
-      "name": "本若春陽",
+      "name": "男・矢部明雄",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_347.png",
       "img_pos": "icon_347_pos.png"
     },
     "348": {
       "id": 348,
-      "name": "小井成タマモ",
+      "name": "アフロ猪狩",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_348.png",
       "img_pos": "icon_348_pos.png"
     },
     "349": {
       "id": 349,
-      "name": "天宮コノハ",
+      "name": "野球マン1号",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_349.png",
       "img_pos": "icon_349_pos.png"
     },
     "350": {
       "id": 350,
-      "name": "鈴島紫音",
+      "name": "野球マン2号",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_350.png",
       "img_pos": "icon_350_pos.png"
     },
     "351": {
       "id": 351,
-      "name": "忠主七緒",
+      "name": "野球マン3号",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_351.png",
       "img_pos": "icon_351_pos.png"
     },
     "352": {
       "id": 352,
-      "name": "京野小筆",
+      "name": "野球マン5号",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_352.png",
       "img_pos": "icon_352_pos.png"
     },
     "353": {
       "id": 353,
-      "name": "神埼こりす",
+      "name": "野球マスク",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_353.png",
       "img_pos": "icon_353_pos.png"
     },
     "354": {
       "id": 354,
-      "name": "光野聖良",
+      "name": "暗黒スバル",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_354.png",
       "img_pos": "icon_354_pos.png"
     },
     "355": {
       "id": 355,
-      "name": "津乃田梨亜",
+      "name": "奥居紀明",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_355.png",
       "img_pos": "icon_355_pos.png"
     },
     "356": {
       "id": 356,
-      "name": "守神悠羽",
+      "name": "佐藤太郎",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_356.png",
       "img_pos": "icon_356_pos.png"
     },
+    "405": {
+      "id": 405,
+      "name": "赤司勝人",
+      "position": "投",
+      "mode": "共通",
+      "img_standard": "icon_405.png",
+      "img_pos": "icon_405_pos.png"
+    },
+    "5": {
+      "id": 5,
+      "name": "轟ハルカ",
+      "position": "マ",
+      "mode": "",
+      "img_standard": "icon_005.png",
+      "img_pos": "icon_005_pos.png"
+    },
     "357": {
       "id": 357,
-      "name": "大谷美衣",
+      "name": "加藤京子",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_357.png",
       "img_pos": "icon_357_pos.png"
     },
     "358": {
       "id": 358,
-      "name": "花鳥風香",
+      "name": "芹沢茜",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_358.png",
       "img_pos": "icon_358_pos.png"
     },
     "359": {
       "id": 359,
-      "name": "稲穂亜希",
+      "name": "ラミィ",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_359.png",
       "img_pos": "icon_359_pos.png"
     },
     "360": {
       "id": 360,
-      "name": "カリーナ・スリムスカヤ",
+      "name": "黒戸もね",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_360.png",
       "img_pos": "icon_360_pos.png"
     },
     "361": {
       "id": 361,
-      "name": "白ボン",
+      "name": "戸内聖華",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_361.png",
       "img_pos": "icon_361_pos.png"
     },
     "362": {
       "id": 362,
-      "name": "ピラミッドヘッド",
+      "name": "栗原舞",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_362.png",
       "img_pos": "icon_362_pos.png"
     },
     "363": {
       "id": 363,
-      "name": "ゴエモン",
+      "name": "咲須かのん",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_363.png",
       "img_pos": "icon_363_pos.png"
     },
     "364": {
       "id": 364,
-      "name": "ネイキッドスネーク",
+      "name": "NCM-753",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_364.png",
       "img_pos": "icon_364_pos.png"
     },
     "365": {
       "id": 365,
-      "name": "アルカード",
+      "name": "泡瀬満里南",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_365.png",
       "img_pos": "icon_365_pos.png"
     },
     "366": {
       "id": 366,
-      "name": "パステル",
+      "name": "片桐恋",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_366.png",
       "img_pos": "icon_366_pos.png"
     },
     "367": {
       "id": 367,
-      "name": "藤崎詩織",
+      "name": "久根美亜",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_367.png",
       "img_pos": "icon_367_pos.png"
     },
     "368": {
       "id": 368,
-      "name": "ガンダー",
+      "name": "三ツ沢環",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_368.png",
       "img_pos": "icon_368_pos.png"
     },
     "369": {
       "id": 369,
-      "name": "リベンジ熱盛",
+      "name": "須神絵久",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_369.png",
       "img_pos": "icon_369_pos.png"
     },
     "370": {
       "id": 370,
-      "name": "クイーンココロ",
+      "name": "木場静火",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_370.png",
       "img_pos": "icon_370_pos.png"
     },
     "371": {
       "id": 371,
-      "name": "フォイボス",
+      "name": "明星雪華",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_371.png",
       "img_pos": "icon_371_pos.png"
     },
     "372": {
       "id": 372,
-      "name": "零武",
+      "name": "エミリ",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_372.png",
       "img_pos": "icon_372_pos.png"
     },
     "373": {
       "id": 373,
-      "name": "オメガ鳴海悠斗",
+      "name": "氷上聡里",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_373.png",
       "img_pos": "icon_373_pos.png"
     },
     "374": {
       "id": 374,
-      "name": "サッたん",
+      "name": "鴨川しぐれ",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_374.png",
       "img_pos": "icon_374_pos.png"
     },
     "375": {
       "id": 375,
-      "name": "沢村栄純",
+      "name": "神良美砂",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_375.png",
       "img_pos": "icon_375_pos.png"
     },
     "376": {
       "id": 376,
-      "name": "降谷暁",
+      "name": "虹谷彩理",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_376.png",
       "img_pos": "icon_376_pos.png"
     },
     "377": {
       "id": 377,
-      "name": "御幸一也",
+      "name": "倉家凪",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_377.png",
       "img_pos": "icon_377_pos.png"
     },
     "378": {
       "id": 378,
-      "name": "小湊春市",
+      "name": "姫野カレン",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_378.png",
       "img_pos": "icon_378_pos.png"
     },
     "379": {
       "id": 379,
-      "name": "倉持洋一",
+      "name": "紺野美崎",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_379.png",
       "img_pos": "icon_379_pos.png"
     },
     "380": {
       "id": 380,
-      "name": "結城哲也",
+      "name": "黒沢愛",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_380.png",
       "img_pos": "icon_380_pos.png"
     },
     "381": {
       "id": 381,
-      "name": "伊佐敷純",
+      "name": "嵐山美鈴",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_381.png",
       "img_pos": "icon_381_pos.png"
     },
     "382": {
       "id": 382,
-      "name": "小湊亮介",
+      "name": "四条澄香",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_382.png",
       "img_pos": "icon_382_pos.png"
     },
     "383": {
       "id": 383,
-      "name": "増子透",
+      "name": "七瀬はるか",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_383.png",
       "img_pos": "icon_383_pos.png"
     },
     "384": {
       "id": 384,
-      "name": "成宮鳴",
+      "name": "日和ミヨ",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_384.png",
       "img_pos": "icon_384_pos.png"
     },
     "385": {
       "id": 385,
-      "name": "多田野樹",
+      "name": "我間摩夕",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_385.png",
       "img_pos": "icon_385_pos.png"
     },
     "386": {
       "id": 386,
-      "name": "白河勝之",
+      "name": "本若春陽",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_386.png",
       "img_pos": "icon_386_pos.png"
     },
     "387": {
       "id": 387,
-      "name": "神谷カルロス俊樹",
+      "name": "小井成タマモ",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_387.png",
       "img_pos": "icon_387_pos.png"
     },
     "388": {
       "id": 388,
-      "name": "奥村光舟",
+      "name": "天宮コノハ",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_388.png",
       "img_pos": "icon_388_pos.png"
     },
     "389": {
       "id": 389,
-      "name": "由井薫",
+      "name": "鈴島紫音",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_389.png",
       "img_pos": "icon_389_pos.png"
     },
     "390": {
       "id": 390,
-      "name": "金丸信二",
+      "name": "忠主七緒",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_390.png",
       "img_pos": "icon_390_pos.png"
     },
     "391": {
       "id": 391,
-      "name": "東条秀明",
+      "name": "京野小筆",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_391.png",
       "img_pos": "icon_391_pos.png"
     },
     "392": {
       "id": 392,
-      "name": "前園健太",
+      "name": "神埼こりす",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_392.png",
       "img_pos": "icon_392_pos.png"
     },
     "393": {
       "id": 393,
-      "name": "白州健二郎",
+      "name": "光野聖良",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_393.png",
       "img_pos": "icon_393_pos.png"
     },
     "394": {
       "id": 394,
-      "name": "川上憲史",
+      "name": "津乃田梨亜",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_394.png",
       "img_pos": "icon_394_pos.png"
     },
     "395": {
       "id": 395,
-      "name": "丹波光一郎",
+      "name": "守神悠羽",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_395.png",
       "img_pos": "icon_395_pos.png"
     },
     "396": {
       "id": 396,
-      "name": "轟雷市",
+      "name": "大谷美衣",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_396.png",
       "img_pos": "icon_396_pos.png"
     },
     "397": {
       "id": 397,
-      "name": "真田俊平",
+      "name": "花鳥風香",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_397.png",
       "img_pos": "icon_397_pos.png"
     },
     "398": {
       "id": 398,
-      "name": "三島優太",
+      "name": "稲穂亜希",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_398.png",
       "img_pos": "icon_398_pos.png"
     },
     "399": {
       "id": 399,
-      "name": "秋葉一真",
+      "name": "カリーナ・スリムスカヤ",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_399.png",
       "img_pos": "icon_399_pos.png"
     },
     "400": {
       "id": 400,
-      "name": "天久光聖",
+      "name": "蔦枝心音",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_400.png",
       "img_pos": "icon_400_pos.png"
     },
     "401": {
       "id": 401,
-      "name": "本郷正宗",
+      "name": "夏目鳳梨",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_401.png",
       "img_pos": "icon_401_pos.png"
     },
     "402": {
       "id": 402,
-      "name": "滝川クリス優",
+      "name": "羊ヶ丘千歳",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_402.png",
       "img_pos": "icon_402_pos.png"
+    },
+    "403": {
+      "id": 403,
+      "name": "安内なみき",
+      "position": "マ",
+      "mode": "",
+      "img_standard": "icon_403.png",
+      "img_pos": "icon_403_pos.png"
+    },
+    "404": {
+      "id": 404,
+      "name": "咲道しるべ",
+      "position": "マ",
+      "mode": "",
+      "img_standard": "icon_404.png",
+      "img_pos": "icon_404_pos.png"
     }
   },
   "by_name": {
@@ -2423,2408 +3241,3226 @@
     "矢部明雄": {
       "id": 2,
       "name": "矢部明雄",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_002.png",
       "img_pos": "icon_002_pos.png"
     },
-    "熱盛宗厚": {
+    "則出郁三": {
       "id": 3,
-      "name": "熱盛宗厚",
+      "name": "則出郁三",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_003.png",
       "img_pos": "icon_003_pos.png"
     },
-    "響乃こころ": {
+    "熱盛宗厚": {
       "id": 4,
-      "name": "響乃こころ",
+      "name": "熱盛宗厚",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_004.png",
       "img_pos": "icon_004_pos.png"
     },
-    "轟ハルカ": {
-      "id": 5,
-      "name": "轟ハルカ",
-      "img_standard": "icon_005.png",
-      "img_pos": "icon_005_pos.png"
-    },
-    "ジュリアステノーロ": {
-      "id": 6,
-      "name": "ジュリアステノーロ",
-      "img_standard": "icon_006.png",
-      "img_pos": "icon_006_pos.png"
-    },
-    "則出郁三": {
+    "猪狩守": {
       "id": 7,
-      "name": "則出郁三",
+      "name": "猪狩守",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_007.png",
       "img_pos": "icon_007_pos.png"
     },
-    "ハワードレイヴン": {
+    "猪狩進": {
       "id": 8,
-      "name": "ハワードレイヴン",
+      "name": "猪狩進",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_008.png",
       "img_pos": "icon_008_pos.png"
     },
-    "猪狩守": {
+    "外藤侠二": {
       "id": 9,
-      "name": "猪狩守",
+      "name": "外藤侠二",
+      "position": "一",
+      "mode": "アナウンサー",
       "img_standard": "icon_009.png",
       "img_pos": "icon_009_pos.png"
     },
-    "猪狩進": {
+    "善斗薫": {
       "id": 10,
-      "name": "猪狩進",
+      "name": "善斗薫",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_010.png",
       "img_pos": "icon_010_pos.png"
     },
-    "外藤侠二": {
+    "友沢亮": {
       "id": 11,
-      "name": "外藤侠二",
+      "name": "友沢亮",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_011.png",
       "img_pos": "icon_011_pos.png"
     },
-    "善斗薫": {
+    "久遠ヒカル": {
       "id": 12,
-      "name": "善斗薫",
+      "name": "久遠ヒカル",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_012.png",
       "img_pos": "icon_012_pos.png"
     },
-    "友沢亮": {
+    "猛田慶次": {
       "id": 13,
-      "name": "友沢亮",
+      "name": "猛田慶次",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_013.png",
       "img_pos": "icon_013_pos.png"
     },
-    "久遠ヒカル": {
+    "蛇島桐人": {
       "id": 14,
-      "name": "久遠ヒカル",
+      "name": "蛇島桐人",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_014.png",
       "img_pos": "icon_014_pos.png"
     },
-    "猛田慶次": {
+    "犬河和音": {
       "id": 15,
-      "name": "猛田慶次",
+      "name": "犬河和音",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_015.png",
       "img_pos": "icon_015_pos.png"
     },
-    "蛇島桐人": {
+    "猫神優": {
       "id": 16,
-      "name": "蛇島桐人",
+      "name": "猫神優",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_016.png",
       "img_pos": "icon_016_pos.png"
     },
-    "犬河和音": {
+    "大西ハリソン筋金": {
       "id": 17,
-      "name": "犬河和音",
+      "name": "大西ハリソン筋金",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_017.png",
       "img_pos": "icon_017_pos.png"
     },
-    "猫神優": {
+    "神高龍": {
       "id": 18,
-      "name": "猫神優",
+      "name": "神高龍",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_018.png",
       "img_pos": "icon_018_pos.png"
     },
-    "大西ハリソン筋金": {
+    "嵐丸士朗": {
       "id": 19,
-      "name": "大西ハリソン筋金",
+      "name": "嵐丸士朗",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_019.png",
       "img_pos": "icon_019_pos.png"
     },
-    "神高龍": {
+    "ガジェット落合": {
       "id": 20,
-      "name": "神高龍",
+      "name": "ガジェット落合",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_020.png",
       "img_pos": "icon_020_pos.png"
     },
-    "嵐丸士朗": {
+    "ジャベリン五十嵐": {
       "id": 21,
-      "name": "嵐丸士朗",
+      "name": "ジャベリン五十嵐",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_021.png",
       "img_pos": "icon_021_pos.png"
     },
-    "ガジェット落合": {
+    "DJB-K": {
       "id": 22,
-      "name": "ガジェット落合",
+      "name": "DJB-K",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_022.png",
       "img_pos": "icon_022_pos.png"
     },
-    "ジャベリン五十嵐": {
+    "松崎トミオ": {
       "id": 23,
-      "name": "ジャベリン五十嵐",
+      "name": "松崎トミオ",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_023.png",
       "img_pos": "icon_023_pos.png"
     },
-    "松崎トミオ": {
+    "大豪月": {
       "id": 24,
-      "name": "松崎トミオ",
+      "name": "大豪月",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_024.png",
       "img_pos": "icon_024_pos.png"
     },
-    "大豪月": {
+    "非道": {
       "id": 25,
-      "name": "大豪月",
+      "name": "非道",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_025.png",
       "img_pos": "icon_025_pos.png"
     },
-    "非道": {
+    "田中まさる": {
       "id": 26,
-      "name": "非道",
+      "name": "田中まさる",
+      "position": "一",
+      "mode": "アナウンサー",
       "img_standard": "icon_026.png",
       "img_pos": "icon_026_pos.png"
     },
-    "田中まさる": {
+    "鮫島粂太郎": {
       "id": 27,
-      "name": "田中まさる",
+      "name": "鮫島粂太郎",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_027.png",
       "img_pos": "icon_027_pos.png"
     },
-    "鮫島粂太郎": {
+    "乙女": {
       "id": 28,
-      "name": "鮫島粂太郎",
+      "name": "乙女",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_028.png",
       "img_pos": "icon_028_pos.png"
     },
-    "乙女": {
+    "九州": {
       "id": 29,
-      "name": "乙女",
+      "name": "九州",
+      "position": "捕",
+      "mode": "アナウンサー",
       "img_standard": "icon_029.png",
       "img_pos": "icon_029_pos.png"
     },
-    "九州": {
+    "猿": {
       "id": 30,
-      "name": "九州",
+      "name": "猿",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_030.png",
       "img_pos": "icon_030_pos.png"
     },
-    "猿": {
+    "ザンス": {
       "id": 31,
-      "name": "猿",
+      "name": "ザンス",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_031.png",
       "img_pos": "icon_031_pos.png"
     },
-    "ザンス": {
+    "球三郎": {
       "id": 32,
-      "name": "ザンス",
+      "name": "球三郎",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_032.png",
       "img_pos": "icon_032_pos.png"
     },
-    "球三郎": {
+    "村雨": {
       "id": 33,
-      "name": "球三郎",
+      "name": "村雨",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_033.png",
       "img_pos": "icon_033_pos.png"
     },
-    "村雨": {
+    "天王寺": {
       "id": 34,
-      "name": "村雨",
+      "name": "天王寺",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_034.png",
       "img_pos": "icon_034_pos.png"
     },
-    "天王寺": {
+    "社長": {
       "id": 35,
-      "name": "天王寺",
+      "name": "社長",
+      "position": "三",
+      "mode": "プロデューサー",
       "img_standard": "icon_035.png",
       "img_pos": "icon_035_pos.png"
     },
-    "社長": {
+    "部長": {
       "id": 36,
-      "name": "社長",
+      "name": "部長",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_036.png",
       "img_pos": "icon_036_pos.png"
     },
-    "部長": {
+    "嶋田栄作": {
       "id": 37,
-      "name": "部長",
+      "name": "嶋田栄作",
+      "position": "三",
+      "mode": "プロデューサー",
       "img_standard": "icon_037.png",
       "img_pos": "icon_037_pos.png"
     },
-    "嶋田栄作": {
+    "反町三次": {
       "id": 38,
-      "name": "嶋田栄作",
+      "name": "反町三次",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_038.png",
       "img_pos": "icon_038_pos.png"
     },
-    "反町三次": {
+    "柴田軍平": {
       "id": 39,
-      "name": "反町三次",
+      "name": "柴田軍平",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_039.png",
       "img_pos": "icon_039_pos.png"
     },
-    "柴田軍平": {
+    "松倉宗光": {
       "id": 40,
-      "name": "柴田軍平",
+      "name": "松倉宗光",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_040.png",
       "img_pos": "icon_040_pos.png"
     },
-    "松倉宗光": {
+    "香本富久雄": {
       "id": 41,
-      "name": "松倉宗光",
+      "name": "香本富久雄",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_041.png",
       "img_pos": "icon_041_pos.png"
     },
-    "香本富久雄": {
+    "田村": {
       "id": 42,
-      "name": "香本富久雄",
+      "name": "田村",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_042.png",
       "img_pos": "icon_042_pos.png"
     },
-    "田村": {
+    "尾崎竜介": {
       "id": 43,
-      "name": "田村",
+      "name": "尾崎竜介",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_043.png",
       "img_pos": "icon_043_pos.png"
     },
-    "尾崎竜介": {
+    "パピヨン": {
       "id": 44,
-      "name": "尾崎竜介",
+      "name": "パピヨン",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_044.png",
       "img_pos": "icon_044_pos.png"
     },
-    "パピヨン": {
+    "ミッキーバーミリオン": {
       "id": 45,
-      "name": "パピヨン",
+      "name": "ミッキーバーミリオン",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_045.png",
       "img_pos": "icon_045_pos.png"
     },
-    "ミッキーバーミリオン": {
+    "DJB-78": {
       "id": 46,
-      "name": "ミッキーバーミリオン",
+      "name": "DJB-78",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_046.png",
       "img_pos": "icon_046_pos.png"
     },
-    "DJB-78": {
+    "永瀬大河": {
       "id": 47,
-      "name": "DJB-78",
+      "name": "永瀬大河",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_047.png",
       "img_pos": "icon_047_pos.png"
     },
-    "永瀬大河": {
+    "アダム": {
       "id": 48,
-      "name": "永瀬大河",
+      "name": "アダム",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_048.png",
       "img_pos": "icon_048_pos.png"
     },
     "早川あおい": {
       "id": 49,
       "name": "早川あおい",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_049.png",
       "img_pos": "icon_049_pos.png"
     },
     "一ノ瀬塔哉": {
       "id": 50,
       "name": "一ノ瀬塔哉",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_050.png",
       "img_pos": "icon_050_pos.png"
     },
     "二宮瑞穂": {
       "id": 51,
       "name": "二宮瑞穂",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_051.png",
       "img_pos": "icon_051_pos.png"
     },
     "三本松一": {
       "id": 52,
       "name": "三本松一",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_052.png",
       "img_pos": "icon_052_pos.png"
     },
     "四条賢二": {
       "id": 53,
       "name": "四条賢二",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_053.png",
       "img_pos": "icon_053_pos.png"
     },
     "五十嵐権三": {
       "id": 54,
       "name": "五十嵐権三",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_054.png",
       "img_pos": "icon_054_pos.png"
     },
     "六本木優希": {
       "id": 55,
       "name": "六本木優希",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_055.png",
       "img_pos": "icon_055_pos.png"
     },
     "七井アレフト": {
       "id": 56,
       "name": "七井アレフト",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_056.png",
       "img_pos": "icon_056_pos.png"
     },
     "八嶋中": {
       "id": 57,
       "name": "八嶋中",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_057.png",
       "img_pos": "icon_057_pos.png"
     },
     "九十九宇宙": {
       "id": 58,
       "name": "九十九宇宙",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_058.png",
       "img_pos": "icon_058_pos.png"
     },
     "手塚隆文": {
       "id": 59,
       "name": "手塚隆文",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_059.png",
       "img_pos": "icon_059_pos.png"
     },
     "円谷一義": {
       "id": 60,
       "name": "円谷一義",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_060.png",
       "img_pos": "icon_060_pos.png"
     },
     "猿山武": {
       "id": 61,
       "name": "猿山武",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_061.png",
       "img_pos": "icon_061_pos.png"
     },
     "田中山太郎": {
       "id": 62,
       "name": "田中山太郎",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_062.png",
       "img_pos": "icon_062_pos.png"
     },
     "福家花男": {
       "id": 63,
       "name": "福家花男",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_063.png",
       "img_pos": "icon_063_pos.png"
     },
     "東條小次郎": {
       "id": 64,
       "name": "東條小次郎",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_064.png",
       "img_pos": "icon_064_pos.png"
     },
     "館西勉": {
       "id": 65,
       "name": "館西勉",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_065.png",
       "img_pos": "icon_065_pos.png"
     },
     "番堂長児": {
       "id": 66,
       "name": "番堂長児",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_066.png",
       "img_pos": "icon_066_pos.png"
     },
     "半田小鉄": {
       "id": 67,
       "name": "半田小鉄",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_067.png",
       "img_pos": "icon_067_pos.png"
     },
     "阿畑やすし": {
       "id": 68,
       "name": "阿畑やすし",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_068.png",
       "img_pos": "icon_068_pos.png"
     },
     "鷹野有紀": {
       "id": 69,
       "name": "鷹野有紀",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_069.png",
       "img_pos": "icon_069_pos.png"
     },
     "神童裕二郎": {
       "id": 70,
       "name": "神童裕二郎",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_070.png",
       "img_pos": "icon_070_pos.png"
     },
     "ボーマンバンガード": {
       "id": 71,
       "name": "ボーマンバンガード",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_071.png",
       "img_pos": "icon_071_pos.png"
     },
     "テリーマイルマン": {
       "id": 72,
       "name": "テリーマイルマン",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_072.png",
       "img_pos": "icon_072_pos.png"
     },
     "橘みずき": {
       "id": 73,
       "name": "橘みずき",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_073.png",
       "img_pos": "icon_073_pos.png"
     },
     "仲居三太": {
       "id": 74,
       "name": "仲居三太",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_074.png",
       "img_pos": "icon_074_pos.png"
     },
     "軽井沢大輝": {
       "id": 75,
       "name": "軽井沢大輝",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_075.png",
       "img_pos": "icon_075_pos.png"
     },
     "石野まさ夫": {
       "id": 76,
       "name": "石野まさ夫",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_076.png",
       "img_pos": "icon_076_pos.png"
     },
     "波佐見駿一": {
       "id": 77,
       "name": "波佐見駿一",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_077.png",
       "img_pos": "icon_077_pos.png"
     },
     "紙山要": {
       "id": 78,
       "name": "紙山要",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_078.png",
       "img_pos": "icon_078_pos.png"
     },
     "滝本太郎": {
       "id": 79,
       "name": "滝本太郎",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_079.png",
       "img_pos": "icon_079_pos.png"
     },
     "久方怜": {
       "id": 80,
       "name": "久方怜",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_080.png",
       "img_pos": "icon_080_pos.png"
     },
     "城山剣一": {
       "id": 81,
       "name": "城山剣一",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_081.png",
       "img_pos": "icon_081_pos.png"
     },
     "清本和重": {
       "id": 82,
       "name": "清本和重",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_082.png",
       "img_pos": "icon_082_pos.png"
     },
     "堺住吉": {
       "id": 83,
       "name": "堺住吉",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_083.png",
       "img_pos": "icon_083_pos.png"
     },
     "山口賢": {
       "id": 84,
       "name": "山口賢",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_084.png",
       "img_pos": "icon_084_pos.png"
     },
     "ブロンコリー": {
       "id": 85,
       "name": "ブロンコリー",
+      "position": "二",
+      "mode": "プロデューサー",
       "img_standard": "icon_085.png",
       "img_pos": "icon_085_pos.png"
     },
     "城井伯斎": {
       "id": 86,
       "name": "城井伯斎",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_086.png",
       "img_pos": "icon_086_pos.png"
     },
     "紀乃光一": {
       "id": 87,
       "name": "紀乃光一",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_087.png",
       "img_pos": "icon_087_pos.png"
     },
     "武野浩太": {
       "id": 88,
       "name": "武野浩太",
+      "position": "三",
+      "mode": "プロデューサー",
       "img_standard": "icon_088.png",
       "img_pos": "icon_088_pos.png"
     },
     "海野幸子": {
       "id": 89,
       "name": "海野幸子",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_089.png",
       "img_pos": "icon_089_pos.png"
     },
     "水狐光世": {
       "id": 90,
       "name": "水狐光世",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_090.png",
       "img_pos": "icon_090_pos.png"
     },
     "輝星也": {
       "id": 91,
       "name": "輝星也",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_091.png",
       "img_pos": "icon_091_pos.png"
     },
     "ヴィクターコールドバーグ": {
       "id": 92,
       "name": "ヴィクターコールドバーグ",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_092.png",
       "img_pos": "icon_092_pos.png"
     },
     "ロディブライト": {
       "id": 93,
       "name": "ロディブライト",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_093.png",
       "img_pos": "icon_093_pos.png"
     },
     "アレックス": {
       "id": 94,
       "name": "アレックス",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_094.png",
       "img_pos": "icon_094_pos.png"
     },
     "ゴウ": {
       "id": 95,
       "name": "ゴウ",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_095.png",
       "img_pos": "icon_095_pos.png"
     },
     "井筒哀樹": {
       "id": 96,
       "name": "井筒哀樹",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_096.png",
       "img_pos": "icon_096_pos.png"
     },
     "御宝金太郎": {
       "id": 97,
       "name": "御宝金太郎",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_097.png",
       "img_pos": "icon_097_pos.png"
     },
     "怒拳礼次": {
       "id": 98,
       "name": "怒拳礼次",
+      "position": "捕",
+      "mode": "アナウンサー",
       "img_standard": "icon_098.png",
       "img_pos": "icon_098_pos.png"
     },
     "楽垣吾助": {
       "id": 99,
       "name": "楽垣吾助",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_099.png",
       "img_pos": "icon_099_pos.png"
     },
     "鈴本大輔": {
       "id": 100,
       "name": "鈴本大輔",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_100.png",
       "img_pos": "icon_100_pos.png"
     },
     "勇村武士": {
       "id": 101,
       "name": "勇村武士",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_101.png",
       "img_pos": "icon_101_pos.png"
     },
     "上野良人": {
       "id": 102,
       "name": "上野良人",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_102.png",
       "img_pos": "icon_102_pos.png"
     },
     "フルハート": {
       "id": 103,
       "name": "フルハート",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_103.png",
       "img_pos": "icon_103_pos.png"
     },
     "神楽坂光彦": {
       "id": 104,
       "name": "神楽坂光彦",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_104.png",
       "img_pos": "icon_104_pos.png"
     },
     "六道聖": {
       "id": 105,
       "name": "六道聖",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_105.png",
       "img_pos": "icon_105_pos.png"
     },
     "樽本有太": {
       "id": 106,
       "name": "樽本有太",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_106.png",
       "img_pos": "icon_106_pos.png"
     },
     "鈴姫健太郎": {
       "id": 107,
       "name": "鈴姫健太郎",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_107.png",
       "img_pos": "icon_107_pos.png"
     },
     "渋谷秀喜": {
       "id": 108,
       "name": "渋谷秀喜",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_108.png",
       "img_pos": "icon_108_pos.png"
     },
     "グラビトン新井": {
       "id": 109,
       "name": "グラビトン新井",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_109.png",
       "img_pos": "icon_109_pos.png"
     },
     "片倉昌行": {
       "id": 110,
       "name": "片倉昌行",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_110.png",
       "img_pos": "icon_110_pos.png"
     },
     "丸餅太": {
       "id": 111,
       "name": "丸餅太",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_111.png",
       "img_pos": "icon_111_pos.png"
     },
     "甲斐進撃": {
       "id": 112,
       "name": "甲斐進撃",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_112.png",
       "img_pos": "icon_112_pos.png"
     },
     "涼風希望": {
       "id": 113,
       "name": "涼風希望",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_113.png",
       "img_pos": "icon_113_pos.png"
     },
     "星空星光": {
       "id": 114,
       "name": "星空星光",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_114.png",
       "img_pos": "icon_114_pos.png"
     },
     "黒珠真": {
       "id": 115,
       "name": "黒珠真",
+      "position": "二",
+      "mode": "プロデューサー",
       "img_standard": "icon_115.png",
       "img_pos": "icon_115_pos.png"
     },
     "矢部田亜希子": {
       "id": 116,
       "name": "矢部田亜希子",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_116.png",
       "img_pos": "icon_116_pos.png"
     },
     "夏野向日葵": {
       "id": 117,
       "name": "夏野向日葵",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_117.png",
       "img_pos": "icon_117_pos.png"
     },
-    "青葉春人": {
+    "パワ子": {
       "id": 118,
-      "name": "青葉春人",
+      "name": "パワ子",
+      "position": "一",
+      "mode": "プロデューサー",
       "img_standard": "icon_118.png",
       "img_pos": "icon_118_pos.png"
     },
-    "小山雅": {
+    "青葉春人": {
       "id": 119,
-      "name": "小山雅",
+      "name": "青葉春人",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_119.png",
       "img_pos": "icon_119_pos.png"
     },
-    "西郷十三": {
+    "小山雅": {
       "id": 120,
-      "name": "西郷十三",
+      "name": "小山雅",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_120.png",
       "img_pos": "icon_120_pos.png"
     },
-    "茶来元気": {
+    "西郷十三": {
       "id": 121,
-      "name": "茶来元気",
+      "name": "西郷十三",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_121.png",
       "img_pos": "icon_121_pos.png"
     },
-    "鬼力剛": {
+    "茶来元気": {
       "id": 122,
-      "name": "鬼力剛",
+      "name": "茶来元気",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_122.png",
       "img_pos": "icon_122_pos.png"
     },
-    "神宮寺光": {
+    "鬼力剛": {
       "id": 123,
-      "name": "神宮寺光",
+      "name": "鬼力剛",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_123.png",
       "img_pos": "icon_123_pos.png"
     },
-    "稲田吾作": {
+    "神宮寺光": {
       "id": 124,
-      "name": "稲田吾作",
+      "name": "神宮寺光",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_124.png",
       "img_pos": "icon_124_pos.png"
     },
-    "三森右京": {
+    "稲田吾作": {
       "id": 125,
-      "name": "三森右京",
+      "name": "稲田吾作",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_125.png",
       "img_pos": "icon_125_pos.png"
     },
-    "三森左京": {
+    "三森右京": {
       "id": 126,
-      "name": "三森左京",
+      "name": "三森右京",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_126.png",
       "img_pos": "icon_126_pos.png"
     },
-    "朱雀南赤": {
+    "三森左京": {
       "id": 127,
-      "name": "朱雀南赤",
+      "name": "三森左京",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_127.png",
       "img_pos": "icon_127_pos.png"
     },
-    "火野勇太郎": {
+    "朱雀南赤": {
       "id": 128,
-      "name": "火野勇太郎",
+      "name": "朱雀南赤",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_128.png",
       "img_pos": "icon_128_pos.png"
     },
-    "水野魔太郎": {
+    "火野勇太郎": {
       "id": 129,
-      "name": "水野魔太郎",
+      "name": "火野勇太郎",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_129.png",
       "img_pos": "icon_129_pos.png"
     },
-    "草野剣太郎": {
+    "水野魔太郎": {
       "id": 130,
-      "name": "草野剣太郎",
+      "name": "水野魔太郎",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_130.png",
       "img_pos": "icon_130_pos.png"
     },
-    "鋼毅": {
+    "草野剣太郎": {
       "id": 131,
-      "name": "鋼毅",
+      "name": "草野剣太郎",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_131.png",
       "img_pos": "icon_131_pos.png"
     },
-    "矢部門竜雄": {
+    "鋼毅": {
       "id": 132,
-      "name": "矢部門竜雄",
+      "name": "鋼毅",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_132.png",
       "img_pos": "icon_132_pos.png"
     },
-    "鶴屋勝": {
+    "矢部門竜雄": {
       "id": 133,
-      "name": "鶴屋勝",
+      "name": "矢部門竜雄",
+      "position": "一",
+      "mode": "アナウンサー",
       "img_standard": "icon_133.png",
       "img_pos": "icon_133_pos.png"
     },
-    "少豪月剛": {
+    "鶴屋勝": {
       "id": 134,
-      "name": "少豪月剛",
+      "name": "鶴屋勝",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_134.png",
       "img_pos": "icon_134_pos.png"
     },
-    "大塔俊二": {
+    "少豪月剛": {
       "id": 135,
-      "name": "大塔俊二",
+      "name": "少豪月剛",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_135.png",
       "img_pos": "icon_135_pos.png"
     },
-    "太刀川広巳": {
+    "大塔俊二": {
       "id": 136,
-      "name": "太刀川広巳",
+      "name": "大塔俊二",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_136.png",
       "img_pos": "icon_136_pos.png"
     },
-    "小鷹美麗": {
+    "太刀川広巳": {
       "id": 137,
-      "name": "小鷹美麗",
+      "name": "太刀川広巳",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_137.png",
       "img_pos": "icon_137_pos.png"
     },
-    "美藤千尋": {
+    "小鷹美麗": {
       "id": 138,
-      "name": "美藤千尋",
+      "name": "小鷹美麗",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_138.png",
       "img_pos": "icon_138_pos.png"
     },
-    "大空美代子": {
+    "美藤千尋": {
       "id": 139,
-      "name": "大空美代子",
+      "name": "美藤千尋",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_139.png",
       "img_pos": "icon_139_pos.png"
     },
-    "川星ほむら": {
+    "大空美代子": {
       "id": 140,
-      "name": "川星ほむら",
+      "name": "大空美代子",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_140.png",
       "img_pos": "icon_140_pos.png"
     },
-    "武秀英": {
+    "川星ほむら": {
       "id": 141,
-      "name": "武秀英",
+      "name": "川星ほむら",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_141.png",
       "img_pos": "icon_141_pos.png"
     },
-    "鎌刈善二": {
+    "武秀英": {
       "id": 142,
-      "name": "鎌刈善二",
+      "name": "武秀英",
+      "position": "一",
+      "mode": "アナウンサー",
       "img_standard": "icon_142.png",
       "img_pos": "icon_142_pos.png"
     },
-    "古長衛士": {
+    "鎌刈善二": {
       "id": 143,
-      "name": "古長衛士",
+      "name": "鎌刈善二",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_143.png",
       "img_pos": "icon_143_pos.png"
     },
-    "マキシマム池田クリスティン": {
+    "古長衛士": {
       "id": 144,
-      "name": "マキシマム池田クリスティン",
+      "name": "古長衛士",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_144.png",
       "img_pos": "icon_144_pos.png"
     },
-    "ヤーベンディヤンス": {
+    "マキシマム池田クリスティン": {
       "id": 145,
-      "name": "ヤーベンディヤンス",
+      "name": "マキシマム池田クリスティン",
+      "position": "一",
+      "mode": "プロデューサー",
       "img_standard": "icon_145.png",
       "img_pos": "icon_145_pos.png"
     },
-    "アルヴィンロックハート": {
+    "ヤーベンディヤンス": {
       "id": 146,
-      "name": "アルヴィンロックハート",
+      "name": "ヤーベンディヤンス",
+      "position": "二",
+      "mode": "プロデューサー",
       "img_standard": "icon_146.png",
       "img_pos": "icon_146_pos.png"
     },
-    "ナヌークアキアック": {
+    "アルヴィンロックハート": {
       "id": 147,
-      "name": "ナヌークアキアック",
+      "name": "アルヴィンロックハート",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_147.png",
       "img_pos": "icon_147_pos.png"
     },
-    "ギャネンドラバッタライ": {
+    "ナヌークアキアック": {
       "id": 148,
-      "name": "ギャネンドラバッタライ",
+      "name": "ナヌークアキアック",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_148.png",
       "img_pos": "icon_148_pos.png"
     },
-    "大鐘餅太郎": {
+    "ギャネンドラバッタライ": {
       "id": 149,
-      "name": "大鐘餅太郎",
+      "name": "ギャネンドラバッタライ",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_149.png",
       "img_pos": "icon_149_pos.png"
     },
-    "銭形乱蔵": {
+    "大鐘餅太郎": {
       "id": 150,
-      "name": "銭形乱蔵",
+      "name": "大鐘餅太郎",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_150.png",
       "img_pos": "icon_150_pos.png"
     },
-    "宝塚月斗": {
+    "銭形乱蔵": {
       "id": 151,
-      "name": "宝塚月斗",
+      "name": "銭形乱蔵",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_151.png",
       "img_pos": "icon_151_pos.png"
     },
-    "祝井幸吉": {
+    "宝塚月斗": {
       "id": 152,
-      "name": "祝井幸吉",
+      "name": "宝塚月斗",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_152.png",
       "img_pos": "icon_152_pos.png"
     },
-    "雷轟遥登": {
+    "祝井幸吉": {
       "id": 153,
-      "name": "雷轟遥登",
+      "name": "祝井幸吉",
+      "position": "三",
+      "mode": "プロデューサー",
       "img_standard": "icon_153.png",
       "img_pos": "icon_153_pos.png"
     },
-    "風薙豹": {
+    "雷轟遥登": {
       "id": 154,
-      "name": "風薙豹",
+      "name": "雷轟遥登",
+      "position": "三",
+      "mode": "プロデューサー",
       "img_standard": "icon_154.png",
       "img_pos": "icon_154_pos.png"
     },
-    "暮羽鋭次": {
+    "風薙豹": {
       "id": 155,
-      "name": "暮羽鋭次",
+      "name": "風薙豹",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_155.png",
       "img_pos": "icon_155_pos.png"
     },
-    "蝶野半四郎": {
+    "暮羽鋭次": {
       "id": 156,
-      "name": "蝶野半四郎",
+      "name": "暮羽鋭次",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_156.png",
       "img_pos": "icon_156_pos.png"
     },
-    "六鹿陸": {
+    "蝶野半四郎": {
       "id": 157,
-      "name": "六鹿陸",
+      "name": "蝶野半四郎",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_157.png",
       "img_pos": "icon_157_pos.png"
     },
-    "辰猪一八": {
+    "六鹿陸": {
       "id": 158,
-      "name": "辰猪一八",
+      "name": "六鹿陸",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_158.png",
       "img_pos": "icon_158_pos.png"
     },
-    "新島早紀": {
+    "辰猪一八": {
       "id": 159,
-      "name": "新島早紀",
+      "name": "辰猪一八",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_159.png",
       "img_pos": "icon_159_pos.png"
     },
-    "佐菜あゆみ": {
+    "新島早紀": {
       "id": 160,
-      "name": "佐菜あゆみ",
+      "name": "新島早紀",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_160.png",
       "img_pos": "icon_160_pos.png"
     },
-    "十六夜瑠菜": {
+    "佐菜あゆみ": {
       "id": 161,
-      "name": "十六夜瑠菜",
+      "name": "佐菜あゆみ",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_161.png",
       "img_pos": "icon_161_pos.png"
     },
-    "実和男": {
+    "十六夜瑠菜": {
       "id": 162,
-      "name": "実和男",
+      "name": "十六夜瑠菜",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_162.png",
       "img_pos": "icon_162_pos.png"
     },
-    "灰谷充": {
+    "小石川大太": {
       "id": 163,
-      "name": "灰谷充",
+      "name": "小石川大太",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_163.png",
       "img_pos": "icon_163_pos.png"
     },
-    "純決太郎": {
+    "実和男": {
       "id": 164,
-      "name": "純決太郎",
+      "name": "実和男",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_164.png",
       "img_pos": "icon_164_pos.png"
     },
-    "出井田大輔": {
+    "灰谷充": {
       "id": 165,
-      "name": "出井田大輔",
+      "name": "灰谷充",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_165.png",
       "img_pos": "icon_165_pos.png"
     },
-    "雲海和也": {
+    "純決太郎": {
       "id": 166,
-      "name": "雲海和也",
+      "name": "純決太郎",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_166.png",
       "img_pos": "icon_166_pos.png"
     },
-    "東推八": {
+    "出井田大輔": {
       "id": 167,
-      "name": "東推八",
+      "name": "出井田大輔",
+      "position": "捕",
+      "mode": "アナウンサー",
       "img_standard": "icon_167.png",
       "img_pos": "icon_167_pos.png"
     },
-    "覆水武明": {
+    "雲海和也": {
       "id": 168,
-      "name": "覆水武明",
+      "name": "雲海和也",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_168.png",
       "img_pos": "icon_168_pos.png"
     },
-    "出井田文飛": {
+    "東推八": {
       "id": 169,
-      "name": "出井田文飛",
+      "name": "東推八",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_169.png",
       "img_pos": "icon_169_pos.png"
     },
-    "鞍馬貴史": {
+    "覆水武明": {
       "id": 170,
-      "name": "鞍馬貴史",
+      "name": "覆水武明",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_170.png",
       "img_pos": "icon_170_pos.png"
     },
-    "大一万大吉": {
+    "出井田文飛": {
       "id": 171,
-      "name": "大一万大吉",
+      "name": "出井田文飛",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_171.png",
       "img_pos": "icon_171_pos.png"
     },
-    "ホールスアン4世": {
+    "鞍馬貴史": {
       "id": 172,
-      "name": "ホールスアン4世",
+      "name": "鞍馬貴史",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_172.png",
       "img_pos": "icon_172_pos.png"
     },
-    "ニャプテト": {
+    "大一万大吉": {
       "id": 173,
-      "name": "ニャプテト",
+      "name": "大一万大吉",
+      "position": "一",
+      "mode": "プロデューサー",
       "img_standard": "icon_173.png",
       "img_pos": "icon_173_pos.png"
     },
-    "ヌウビス": {
+    "ホールスアン4世": {
       "id": 174,
-      "name": "ヌウビス",
+      "name": "ホールスアン4世",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_174.png",
       "img_pos": "icon_174_pos.png"
     },
-    "セティーヌ": {
+    "ニャプテト": {
       "id": 175,
-      "name": "セティーヌ",
+      "name": "ニャプテト",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_175.png",
       "img_pos": "icon_175_pos.png"
     },
-    "桜沢樹": {
+    "ヌウビス": {
       "id": 176,
-      "name": "桜沢樹",
+      "name": "ヌウビス",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_176.png",
       "img_pos": "icon_176_pos.png"
     },
-    "水無月要": {
+    "セティーヌ": {
       "id": 177,
-      "name": "水無月要",
+      "name": "セティーヌ",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_177.png",
       "img_pos": "icon_177_pos.png"
     },
-    "掘杉等": {
+    "桜沢樹": {
       "id": 178,
-      "name": "掘杉等",
+      "name": "桜沢樹",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_178.png",
       "img_pos": "icon_178_pos.png"
     },
-    "雪野楓": {
+    "水無月要": {
       "id": 179,
-      "name": "雪野楓",
+      "name": "水無月要",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_179.png",
       "img_pos": "icon_179_pos.png"
     },
-    "斬金半馬": {
+    "掘杉等": {
       "id": 180,
-      "name": "斬金半馬",
+      "name": "掘杉等",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_180.png",
       "img_pos": "icon_180_pos.png"
     },
-    "井関丹作": {
+    "雪野楓": {
       "id": 181,
-      "name": "井関丹作",
+      "name": "雪野楓",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_181.png",
       "img_pos": "icon_181_pos.png"
     },
-    "江戸川文楽": {
+    "斬金半馬": {
       "id": 182,
-      "name": "江戸川文楽",
+      "name": "斬金半馬",
+      "position": "一",
+      "mode": "アナウンサー",
       "img_standard": "icon_182.png",
       "img_pos": "icon_182_pos.png"
     },
-    "ガルシア世良": {
+    "井関丹作": {
       "id": 183,
-      "name": "ガルシア世良",
+      "name": "井関丹作",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_183.png",
       "img_pos": "icon_183_pos.png"
     },
-    "凡田大介": {
+    "江戸川文楽": {
       "id": 184,
-      "name": "凡田大介",
+      "name": "江戸川文楽",
+      "position": "一",
+      "mode": "プロデューサー",
       "img_standard": "icon_184.png",
       "img_pos": "icon_184_pos.png"
     },
-    "倉刈仁志": {
+    "ガルシア世良": {
       "id": 185,
-      "name": "倉刈仁志",
+      "name": "ガルシア世良",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_185.png",
       "img_pos": "icon_185_pos.png"
     },
-    "水木卓": {
+    "凡田大介": {
       "id": 186,
-      "name": "水木卓",
+      "name": "凡田大介",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_186.png",
       "img_pos": "icon_186_pos.png"
     },
-    "レッド": {
+    "倉刈仁志": {
       "id": 187,
-      "name": "レッド",
+      "name": "倉刈仁志",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_187.png",
       "img_pos": "icon_187_pos.png"
     },
-    "東優": {
+    "水木卓": {
       "id": 188,
-      "name": "東優",
+      "name": "水木卓",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_188.png",
       "img_pos": "icon_188_pos.png"
     },
-    "星井スバル": {
+    "レッド": {
       "id": 189,
-      "name": "星井スバル",
+      "name": "レッド",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_189.png",
       "img_pos": "icon_189_pos.png"
     },
-    "宇渡幹久": {
+    "東優": {
       "id": 190,
-      "name": "宇渡幹久",
+      "name": "東優",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_190.png",
       "img_pos": "icon_190_pos.png"
     },
-    "小田切巧": {
+    "ブラック": {
       "id": 191,
-      "name": "小田切巧",
+      "name": "ブラック",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_191.png",
       "img_pos": "icon_191_pos.png"
     },
-    "木場嵐士": {
+    "ピンク": {
       "id": 192,
-      "name": "木場嵐士",
+      "name": "ピンク",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_192.png",
       "img_pos": "icon_192_pos.png"
     },
-    "金原いずる": {
+    "星井スバル": {
       "id": 193,
-      "name": "金原いずる",
+      "name": "星井スバル",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_193.png",
       "img_pos": "icon_193_pos.png"
     },
-    "水鳥忍": {
+    "宇渡幹久": {
       "id": 194,
-      "name": "水鳥忍",
+      "name": "宇渡幹久",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_194.png",
       "img_pos": "icon_194_pos.png"
     },
-    "烏丸剛充": {
+    "小田切巧": {
       "id": 195,
-      "name": "烏丸剛充",
+      "name": "小田切巧",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_195.png",
       "img_pos": "icon_195_pos.png"
     },
-    "才賀侑人": {
+    "木場嵐士": {
       "id": 196,
-      "name": "才賀侑人",
+      "name": "木場嵐士",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_196.png",
       "img_pos": "icon_196_pos.png"
     },
-    "小平陽向": {
+    "金原いずる": {
       "id": 197,
-      "name": "小平陽向",
+      "name": "金原いずる",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_197.png",
       "img_pos": "icon_197_pos.png"
     },
-    "美園千花": {
+    "水鳥忍": {
       "id": 198,
-      "name": "美園千花",
+      "name": "水鳥忍",
+      "position": "捕",
+      "mode": "アナウンサー",
       "img_standard": "icon_198.png",
       "img_pos": "icon_198_pos.png"
     },
-    "小嵐リョウ": {
+    "烏丸剛充": {
       "id": 199,
-      "name": "小嵐リョウ",
+      "name": "烏丸剛充",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_199.png",
       "img_pos": "icon_199_pos.png"
     },
-    "八尺巫女子": {
+    "才賀侑人": {
       "id": 200,
-      "name": "八尺巫女子",
+      "name": "才賀侑人",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_200.png",
       "img_pos": "icon_200_pos.png"
     },
-    "北斗八雲": {
+    "小平陽向": {
       "id": 201,
-      "name": "北斗八雲",
+      "name": "小平陽向",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_201.png",
       "img_pos": "icon_201_pos.png"
     },
-    "桜ノ宮総司": {
+    "美園千花": {
       "id": 202,
-      "name": "桜ノ宮総司",
+      "name": "美園千花",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_202.png",
       "img_pos": "icon_202_pos.png"
     },
-    "伊貫大和": {
+    "小嵐リョウ": {
       "id": 203,
-      "name": "伊貫大和",
+      "name": "小嵐リョウ",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_203.png",
       "img_pos": "icon_203_pos.png"
     },
-    "森河岳": {
+    "八尺巫女子": {
       "id": 204,
-      "name": "森河岳",
+      "name": "八尺巫女子",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_204.png",
       "img_pos": "icon_204_pos.png"
     },
-    "冴木創": {
+    "北斗八雲": {
       "id": 205,
-      "name": "冴木創",
+      "name": "北斗八雲",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_205.png",
       "img_pos": "icon_205_pos.png"
     },
-    "浦賀有也": {
+    "鷹栖礼文": {
       "id": 206,
-      "name": "浦賀有也",
+      "name": "鷹栖礼文",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_206.png",
       "img_pos": "icon_206_pos.png"
     },
-    "天城隼": {
+    "紋別青葉": {
       "id": 207,
-      "name": "天城隼",
+      "name": "紋別青葉",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_207.png",
       "img_pos": "icon_207_pos.png"
     },
-    "諸井清和": {
+    "桜ノ宮総司": {
       "id": 208,
-      "name": "諸井清和",
+      "name": "桜ノ宮総司",
+      "position": "捕",
+      "mode": "アナウンサー",
       "img_standard": "icon_208.png",
       "img_pos": "icon_208_pos.png"
     },
-    "一条一輝": {
+    "伊貫大和": {
       "id": 209,
-      "name": "一条一輝",
+      "name": "伊貫大和",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_209.png",
       "img_pos": "icon_209_pos.png"
     },
-    "尾根瑛人": {
+    "森河岳": {
       "id": 210,
-      "name": "尾根瑛人",
+      "name": "森河岳",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_210.png",
       "img_pos": "icon_210_pos.png"
     },
-    "納見新造": {
+    "冴木創": {
       "id": 211,
-      "name": "納見新造",
+      "name": "冴木創",
+      "position": "二",
+      "mode": "プロデューサー",
       "img_standard": "icon_211.png",
       "img_pos": "icon_211_pos.png"
     },
-    "須藤零人": {
+    "テキートヤールゼン": {
       "id": 212,
-      "name": "須藤零人",
+      "name": "テキートヤールゼン",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_212.png",
       "img_pos": "icon_212_pos.png"
     },
-    "バット円島": {
+    "宇佐崎詠子": {
       "id": 213,
-      "name": "バット円島",
+      "name": "宇佐崎詠子",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_213.png",
       "img_pos": "icon_213_pos.png"
     },
-    "兼倉洋平": {
+    "井伊野嘉元": {
       "id": 214,
-      "name": "兼倉洋平",
+      "name": "井伊野嘉元",
+      "position": "",
+      "mode": "プロデューサー",
       "img_standard": "icon_214.png",
       "img_pos": "icon_214_pos.png"
     },
-    "灰塚朔夜": {
+    "鹿莫翔太": {
       "id": 215,
-      "name": "灰塚朔夜",
+      "name": "鹿莫翔太",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_215.png",
       "img_pos": "icon_215_pos.png"
     },
-    "内藤明瑠": {
+    "浦賀有也": {
       "id": 216,
-      "name": "内藤明瑠",
+      "name": "浦賀有也",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_216.png",
       "img_pos": "icon_216_pos.png"
     },
-    "史門泰司": {
+    "天城隼": {
       "id": 217,
-      "name": "史門泰司",
+      "name": "天城隼",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_217.png",
       "img_pos": "icon_217_pos.png"
     },
-    "虹谷誠": {
+    "諸井清和": {
       "id": 218,
-      "name": "虹谷誠",
+      "name": "諸井清和",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_218.png",
       "img_pos": "icon_218_pos.png"
     },
-    "神成尊": {
+    "一条一輝": {
       "id": 219,
-      "name": "神成尊",
+      "name": "一条一輝",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_219.png",
       "img_pos": "icon_219_pos.png"
     },
-    "東雲翔也": {
+    "尾根瑛人": {
       "id": 220,
-      "name": "東雲翔也",
+      "name": "尾根瑛人",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_220.png",
       "img_pos": "icon_220_pos.png"
     },
-    "真黒綱寛": {
+    "納見新造": {
       "id": 221,
-      "name": "真黒綱寛",
+      "name": "納見新造",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_221.png",
       "img_pos": "icon_221_pos.png"
     },
-    "須々木清吾": {
+    "須藤零人": {
       "id": 222,
-      "name": "須々木清吾",
+      "name": "須藤零人",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_222.png",
       "img_pos": "icon_222_pos.png"
     },
-    "赤原勘八": {
+    "バット円島": {
       "id": 223,
-      "name": "赤原勘八",
+      "name": "バット円島",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_223.png",
       "img_pos": "icon_223_pos.png"
     },
-    "千賀篤志": {
+    "兼倉洋平": {
       "id": 224,
-      "name": "千賀篤志",
+      "name": "兼倉洋平",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_224.png",
       "img_pos": "icon_224_pos.png"
     },
-    "魁竜司": {
+    "黒聖良": {
       "id": 225,
-      "name": "魁竜司",
+      "name": "黒聖良",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_225.png",
       "img_pos": "icon_225_pos.png"
     },
-    "江暦輝": {
+    "灰塚朔夜": {
       "id": 226,
-      "name": "江暦輝",
+      "name": "灰塚朔夜",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_226.png",
       "img_pos": "icon_226_pos.png"
     },
-    "志藤玲美": {
+    "内藤明瑠": {
       "id": 227,
-      "name": "志藤玲美",
+      "name": "内藤明瑠",
+      "position": "一",
+      "mode": "アナウンサー",
       "img_standard": "icon_227.png",
       "img_pos": "icon_227_pos.png"
     },
-    "大越清亮": {
+    "史門泰司": {
       "id": 228,
-      "name": "大越清亮",
+      "name": "史門泰司",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_228.png",
       "img_pos": "icon_228_pos.png"
     },
-    "伊能麗示": {
+    "虹谷誠": {
       "id": 229,
-      "name": "伊能麗示",
+      "name": "虹谷誠",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_229.png",
       "img_pos": "icon_229_pos.png"
     },
-    "阿麻央真": {
+    "神成尊": {
       "id": 230,
-      "name": "阿麻央真",
+      "name": "神成尊",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_230.png",
       "img_pos": "icon_230_pos.png"
     },
-    "ランスロット": {
+    "東雲翔也": {
       "id": 231,
-      "name": "ランスロット",
+      "name": "東雲翔也",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_231.png",
       "img_pos": "icon_231_pos.png"
     },
-    "望戸紅": {
+    "真黒綱寛": {
       "id": 232,
-      "name": "望戸紅",
+      "name": "真黒綱寛",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_232.png",
       "img_pos": "icon_232_pos.png"
     },
-    "岸田卓": {
+    "須々木清吾": {
       "id": 233,
-      "name": "岸田卓",
+      "name": "須々木清吾",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_233.png",
       "img_pos": "icon_233_pos.png"
     },
-    "闇野栄剛": {
+    "赤原勘八": {
       "id": 234,
-      "name": "闇野栄剛",
+      "name": "赤原勘八",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_234.png",
       "img_pos": "icon_234_pos.png"
     },
-    "往田真威人": {
+    "千賀篤志": {
       "id": 235,
-      "name": "往田真威人",
+      "name": "千賀篤志",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_235.png",
       "img_pos": "icon_235_pos.png"
     },
-    "霧崎礼里": {
+    "魁竜司": {
       "id": 236,
-      "name": "霧崎礼里",
+      "name": "魁竜司",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_236.png",
       "img_pos": "icon_236_pos.png"
     },
-    "堂江竜河": {
+    "江暦輝": {
       "id": 237,
-      "name": "堂江竜河",
+      "name": "江暦輝",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_237.png",
       "img_pos": "icon_237_pos.png"
     },
-    "黒衛隆富": {
+    "志藤玲美": {
       "id": 238,
-      "name": "黒衛隆富",
+      "name": "志藤玲美",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_238.png",
       "img_pos": "icon_238_pos.png"
     },
-    "伍歩倫人": {
+    "大越清亮": {
       "id": 239,
-      "name": "伍歩倫人",
+      "name": "大越清亮",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_239.png",
       "img_pos": "icon_239_pos.png"
     },
-    "館橋水奈都": {
+    "伊能麗示": {
       "id": 240,
-      "name": "館橋水奈都",
+      "name": "伊能麗示",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_240.png",
       "img_pos": "icon_240_pos.png"
     },
-    "沖野海里": {
+    "阿麻央真": {
       "id": 241,
-      "name": "沖野海里",
+      "name": "阿麻央真",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_241.png",
       "img_pos": "icon_241_pos.png"
     },
-    "梶増人": {
+    "ランスロット": {
       "id": 242,
-      "name": "梶増人",
+      "name": "ランスロット",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_242.png",
       "img_pos": "icon_242_pos.png"
     },
-    "オクタヴィア": {
+    "望戸紅": {
       "id": 243,
-      "name": "オクタヴィア",
+      "name": "望戸紅",
+      "position": "三",
+      "mode": "プロデューサー",
       "img_standard": "icon_243.png",
       "img_pos": "icon_243_pos.png"
     },
-    "塚見巴": {
+    "岸田卓": {
       "id": 244,
-      "name": "塚見巴",
+      "name": "岸田卓",
+      "position": "一",
+      "mode": "プロデューサー",
       "img_standard": "icon_244.png",
       "img_pos": "icon_244_pos.png"
     },
-    "塚見リフター": {
+    "闇野栄剛": {
       "id": 245,
-      "name": "塚見リフター",
+      "name": "闇野栄剛",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_245.png",
       "img_pos": "icon_245_pos.png"
     },
-    "カイルモラレス": {
+    "往田真威人": {
       "id": 246,
-      "name": "カイルモラレス",
+      "name": "往田真威人",
+      "position": "三",
+      "mode": "共通",
       "img_standard": "icon_246.png",
       "img_pos": "icon_246_pos.png"
     },
-    "ミンミン": {
+    "霧崎礼里": {
       "id": 247,
-      "name": "ミンミン",
+      "name": "霧崎礼里",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_247.png",
       "img_pos": "icon_247_pos.png"
     },
-    "ゼンザイ": {
+    "闇野ルミナ": {
       "id": 248,
-      "name": "ゼンザイ",
+      "name": "闇野ルミナ",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_248.png",
       "img_pos": "icon_248_pos.png"
     },
-    "浮見葉勘": {
+    "堂江竜河": {
       "id": 249,
-      "name": "浮見葉勘",
+      "name": "堂江竜河",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_249.png",
       "img_pos": "icon_249_pos.png"
     },
-    "郡司知将": {
+    "黒衛隆富": {
       "id": 250,
-      "name": "郡司知将",
+      "name": "黒衛隆富",
+      "position": "二",
+      "mode": "プロデューサー",
       "img_standard": "icon_250.png",
       "img_pos": "icon_250_pos.png"
     },
-    "千代姫": {
+    "伍歩倫人": {
       "id": 251,
-      "name": "千代姫",
+      "name": "伍歩倫人",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_251.png",
       "img_pos": "icon_251_pos.png"
     },
-    "柳生鞘花": {
+    "館橋水奈都": {
       "id": 252,
-      "name": "柳生鞘花",
+      "name": "館橋水奈都",
+      "position": "二",
+      "mode": "プロデューサー",
       "img_standard": "icon_252.png",
       "img_pos": "icon_252_pos.png"
     },
-    "夢城優花": {
+    "沖野海里": {
       "id": 253,
-      "name": "夢城優花",
+      "name": "沖野海里",
+      "position": "一",
+      "mode": "プロデューサー",
       "img_standard": "icon_253.png",
       "img_pos": "icon_253_pos.png"
     },
-    "夢城和花": {
+    "梶増人": {
       "id": 254,
-      "name": "夢城和花",
+      "name": "梶増人",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_254.png",
       "img_pos": "icon_254_pos.png"
     },
-    "浪風芽衣香": {
+    "オクタヴィア": {
       "id": 255,
-      "name": "浪風芽衣香",
+      "name": "オクタヴィア",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_255.png",
       "img_pos": "icon_255_pos.png"
     },
-    "泊方明日音": {
+    "塚見巴": {
       "id": 256,
-      "name": "泊方明日音",
+      "name": "塚見巴",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_256.png",
       "img_pos": "icon_256_pos.png"
     },
-    "戸井鉄男": {
+    "塚見リフター": {
       "id": 257,
-      "name": "戸井鉄男",
+      "name": "塚見リフター",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_257.png",
       "img_pos": "icon_257_pos.png"
     },
-    "佐賀巌": {
+    "カイルモラレス": {
       "id": 258,
-      "name": "佐賀巌",
+      "name": "カイルモラレス",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_258.png",
       "img_pos": "icon_258_pos.png"
     },
-    "駒坂瞬": {
+    "ミンミン": {
       "id": 259,
-      "name": "駒坂瞬",
+      "name": "ミンミン",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_259.png",
       "img_pos": "icon_259_pos.png"
     },
-    "有村佐治": {
+    "ゼンザイ": {
       "id": 260,
-      "name": "有村佐治",
+      "name": "ゼンザイ",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_260.png",
       "img_pos": "icon_260_pos.png"
     },
-    "獅乃木琢磨": {
+    "浮見葉勘": {
       "id": 261,
-      "name": "獅乃木琢磨",
+      "name": "浮見葉勘",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_261.png",
       "img_pos": "icon_261_pos.png"
     },
-    "鳴海悠斗": {
+    "郡司知将": {
       "id": 262,
-      "name": "鳴海悠斗",
+      "name": "郡司知将",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_262.png",
       "img_pos": "icon_262_pos.png"
     },
-    "藤堂まひる": {
+    "千代姫": {
       "id": 263,
-      "name": "藤堂まひる",
+      "name": "千代姫",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_263.png",
       "img_pos": "icon_263_pos.png"
     },
-    "アンヌアズナブル": {
+    "柳生鞘花": {
       "id": 264,
-      "name": "アンヌアズナブル",
+      "name": "柳生鞘花",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_264.png",
       "img_pos": "icon_264_pos.png"
     },
-    "皇帝": {
+    "夢城優花": {
       "id": 265,
-      "name": "皇帝",
+      "name": "夢城優花",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_265.png",
       "img_pos": "icon_265_pos.png"
     },
-    "天音姫恋": {
+    "夢城和花": {
       "id": 266,
-      "name": "天音姫恋",
+      "name": "夢城和花",
+      "position": "三",
+      "mode": "プロデューサー",
       "img_standard": "icon_266.png",
       "img_pos": "icon_266_pos.png"
     },
-    "本場あんこ": {
+    "浪風芽衣香": {
       "id": 267,
-      "name": "本場あんこ",
+      "name": "浪風芽衣香",
+      "position": "二",
+      "mode": "プロデューサー",
       "img_standard": "icon_267.png",
       "img_pos": "icon_267_pos.png"
     },
-    "菊度アイラ": {
+    "泊方明日音": {
       "id": 268,
-      "name": "菊度アイラ",
+      "name": "泊方明日音",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_268.png",
       "img_pos": "icon_268_pos.png"
     },
-    "新庄": {
+    "美一式高伊": {
       "id": 269,
-      "name": "新庄",
+      "name": "美一式高伊",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_269.png",
       "img_pos": "icon_269_pos.png"
     },
-    "花鳥千香": {
+    "佐部利保英": {
       "id": 270,
-      "name": "花鳥千香",
+      "name": "佐部利保英",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_270.png",
       "img_pos": "icon_270_pos.png"
     },
-    "バーリスロセオ": {
+    "銀杏力丸": {
       "id": 271,
-      "name": "バーリスロセオ",
+      "name": "銀杏力丸",
+      "position": "一",
+      "mode": "アナウンサー",
       "img_standard": "icon_271.png",
       "img_pos": "icon_271_pos.png"
     },
-    "キリルフォスター": {
+    "八桐優斗": {
       "id": 272,
-      "name": "キリルフォスター",
+      "name": "八桐優斗",
+      "position": "捕",
+      "mode": "アナウンサー",
       "img_standard": "icon_272.png",
       "img_pos": "icon_272_pos.png"
     },
-    "宮田良哉": {
+    "江守陽": {
       "id": 273,
-      "name": "宮田良哉",
+      "name": "江守陽",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_273.png",
       "img_pos": "icon_273_pos.png"
     },
-    "佐渡摩智": {
+    "六角錬治": {
       "id": 274,
-      "name": "佐渡摩智",
+      "name": "六角錬治",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_274.png",
       "img_pos": "icon_274_pos.png"
     },
-    "シュバリエ": {
+    "田団田ダン": {
       "id": 275,
-      "name": "シュバリエ",
+      "name": "田団田ダン",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_275.png",
       "img_pos": "icon_275_pos.png"
     },
-    "犬山堅太郎": {
+    "淡手蒼太": {
       "id": 276,
-      "name": "犬山堅太郎",
+      "name": "淡手蒼太",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_276.png",
       "img_pos": "icon_276_pos.png"
     },
-    "猿川捻二": {
+    "日輪暁": {
       "id": 277,
-      "name": "猿川捻二",
+      "name": "日輪暁",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_277.png",
       "img_pos": "icon_277_pos.png"
     },
-    "久里武尊": {
+    "十六夜満": {
       "id": 278,
-      "name": "久里武尊",
+      "name": "十六夜満",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_278.png",
       "img_pos": "icon_278_pos.png"
     },
-    "古羽流登": {
+    "キリルフォスター": {
       "id": 279,
-      "name": "古羽流登",
+      "name": "キリルフォスター",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_279.png",
       "img_pos": "icon_279_pos.png"
     },
-    "織部実留": {
+    "宮田良哉": {
       "id": 280,
-      "name": "織部実留",
+      "name": "宮田良哉",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_280.png",
       "img_pos": "icon_280_pos.png"
     },
-    "天宮果也乃": {
+    "佐渡摩智": {
       "id": 281,
-      "name": "天宮果也乃",
+      "name": "佐渡摩智",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_281.png",
       "img_pos": "icon_281_pos.png"
     },
-    "戸草鏡": {
+    "シュバリエ": {
       "id": 282,
-      "name": "戸草鏡",
+      "name": "シュバリエ",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_282.png",
       "img_pos": "icon_282_pos.png"
     },
-    "高原曲": {
+    "久里武尊": {
       "id": 283,
-      "name": "高原曲",
+      "name": "久里武尊",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_283.png",
       "img_pos": "icon_283_pos.png"
     },
-    "敷上マニィ": {
+    "古羽流登": {
       "id": 284,
-      "name": "敷上マニィ",
+      "name": "古羽流登",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_284.png",
       "img_pos": "icon_284_pos.png"
     },
-    "美一式高伊": {
+    "織部実留": {
       "id": 285,
-      "name": "美一式高伊",
+      "name": "織部実留",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_285.png",
       "img_pos": "icon_285_pos.png"
     },
-    "佐部利保英": {
+    "天宮果也乃": {
       "id": 286,
-      "name": "佐部利保英",
+      "name": "天宮果也乃",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_286.png",
       "img_pos": "icon_286_pos.png"
     },
-    "銀杏力丸": {
+    "戸草鏡": {
       "id": 287,
-      "name": "銀杏力丸",
+      "name": "戸草鏡",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_287.png",
       "img_pos": "icon_287_pos.png"
     },
-    "八桐優斗": {
+    "高原曲": {
       "id": 288,
-      "name": "八桐優斗",
+      "name": "高原曲",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_288.png",
       "img_pos": "icon_288_pos.png"
     },
-    "江守陽": {
+    "敷上マニィ": {
       "id": 289,
-      "name": "江守陽",
+      "name": "敷上マニィ",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_289.png",
       "img_pos": "icon_289_pos.png"
     },
-    "六角錬治": {
+    "時任幽平": {
       "id": 290,
-      "name": "六角錬治",
+      "name": "時任幽平",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_290.png",
       "img_pos": "icon_290_pos.png"
     },
-    "田団田ダン": {
+    "泉谷未来": {
       "id": 291,
-      "name": "田団田ダン",
+      "name": "泉谷未来",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_291.png",
       "img_pos": "icon_291_pos.png"
     },
-    "淡手蒼太": {
+    "物茂渡": {
       "id": 292,
-      "name": "淡手蒼太",
+      "name": "物茂渡",
+      "position": "二",
+      "mode": "プロデューサー",
       "img_standard": "icon_292.png",
       "img_pos": "icon_292_pos.png"
     },
-    "日輪暁": {
+    "官堂伊春": {
       "id": 293,
-      "name": "日輪暁",
+      "name": "官堂伊春",
+      "position": "三",
+      "mode": "プロデューサー",
       "img_standard": "icon_293.png",
       "img_pos": "icon_293_pos.png"
     },
-    "十六夜満": {
+    "ルーカスジョンソン": {
       "id": 294,
-      "name": "十六夜満",
+      "name": "ルーカスジョンソン",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_294.png",
       "img_pos": "icon_294_pos.png"
     },
-    "DJB-K": {
+    "夜神極": {
       "id": 295,
-      "name": "DJB-K",
+      "name": "夜神極",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_295.png",
       "img_pos": "icon_295_pos.png"
     },
-    "黒聖良": {
+    "瀧上輝汐": {
       "id": 296,
-      "name": "黒聖良",
+      "name": "瀧上輝汐",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_296.png",
       "img_pos": "icon_296_pos.png"
     },
-    "カグヤ": {
+    "尾上亜月": {
       "id": 297,
-      "name": "カグヤ",
+      "name": "尾上亜月",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_297.png",
       "img_pos": "icon_297_pos.png"
     },
-    "パワ子": {
+    "竹内脅人": {
       "id": 298,
-      "name": "パワ子",
+      "name": "竹内脅人",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_298.png",
       "img_pos": "icon_298_pos.png"
     },
-    "小石川大太": {
+    "明神陽": {
       "id": 299,
-      "name": "小石川大太",
+      "name": "明神陽",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_299.png",
       "img_pos": "icon_299_pos.png"
     },
-    "諏訪野聖人": {
+    "休森遊": {
       "id": 300,
-      "name": "諏訪野聖人",
+      "name": "休森遊",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_300.png",
       "img_pos": "icon_300_pos.png"
     },
-    "アランレイヴン": {
+    "東風平晴来": {
       "id": 301,
-      "name": "アランレイヴン",
+      "name": "東風平晴来",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_301.png",
       "img_pos": "icon_301_pos.png"
     },
-    "ニセプロ": {
+    "白浜浅海": {
       "id": 302,
-      "name": "ニセプロ",
+      "name": "白浜浅海",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_302.png",
       "img_pos": "icon_302_pos.png"
     },
-    "矢倍萌雄": {
+    "キリヤ": {
       "id": 303,
-      "name": "矢倍萌雄",
+      "name": "キリヤ",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_303.png",
       "img_pos": "icon_303_pos.png"
     },
-    "明神陽": {
+    "アオ": {
       "id": 304,
-      "name": "明神陽",
+      "name": "アオ",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_304.png",
       "img_pos": "icon_304_pos.png"
     },
-    "軍導英雄": {
+    "ハルキ": {
       "id": 305,
-      "name": "軍導英雄",
+      "name": "ハルキ",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_305.png",
       "img_pos": "icon_305_pos.png"
     },
-    "中之島幸宏": {
+    "トオル": {
       "id": 306,
-      "name": "中之島幸宏",
+      "name": "トオル",
+      "position": "外",
+      "mode": "プロデューサー",
       "img_standard": "icon_306.png",
       "img_pos": "icon_306_pos.png"
     },
-    "男・矢部明雄": {
+    "ピグタ": {
       "id": 307,
-      "name": "男・矢部明雄",
+      "name": "ピグタ",
+      "position": "捕",
+      "mode": "プロデューサー",
       "img_standard": "icon_307.png",
       "img_pos": "icon_307_pos.png"
     },
-    "アフロ猪狩": {
+    "ガナル波羅": {
       "id": 308,
-      "name": "アフロ猪狩",
+      "name": "ガナル波羅",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_308.png",
       "img_pos": "icon_308_pos.png"
     },
-    "野球マン1号": {
+    "ゼルヴィーハイゼンベルク": {
       "id": 309,
-      "name": "野球マン1号",
+      "name": "ゼルヴィーハイゼンベルク",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_309.png",
       "img_pos": "icon_309_pos.png"
     },
-    "野球マン2号": {
+    "久留米美加": {
       "id": 310,
-      "name": "野球マン2号",
+      "name": "久留米美加",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_310.png",
       "img_pos": "icon_310_pos.png"
     },
-    "野球マン3号": {
+    "織田信長": {
       "id": 311,
-      "name": "野球マン3号",
+      "name": "織田信長",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_311.png",
       "img_pos": "icon_311_pos.png"
     },
-    "野球マン5号": {
+    "伊達政宗": {
       "id": 312,
-      "name": "野球マン5号",
+      "name": "伊達政宗",
+      "position": "遊",
+      "mode": "アナウンサー",
       "img_standard": "icon_312.png",
       "img_pos": "icon_312_pos.png"
     },
-    "野球マスク": {
+    "武田信玄": {
       "id": 313,
-      "name": "野球マスク",
+      "name": "武田信玄",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_313.png",
       "img_pos": "icon_313_pos.png"
     },
-    "暗黒スバル": {
+    "上杉謙信": {
       "id": 314,
-      "name": "暗黒スバル",
+      "name": "上杉謙信",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_314.png",
       "img_pos": "icon_314_pos.png"
     },
-    "佐藤太郎": {
+    "徳川家康": {
       "id": 315,
-      "name": "佐藤太郎",
+      "name": "徳川家康",
+      "position": "捕",
+      "mode": "アナウンサー",
       "img_standard": "icon_315.png",
       "img_pos": "icon_315_pos.png"
     },
-    "クロン": {
+    "豊臣秀吉": {
       "id": 316,
-      "name": "クロン",
+      "name": "豊臣秀吉",
+      "position": "二",
+      "mode": "アナウンサー",
       "img_standard": "icon_316.png",
       "img_pos": "icon_316_pos.png"
     },
-    "加藤京子": {
+    "毛利元就": {
       "id": 317,
-      "name": "加藤京子",
+      "name": "毛利元就",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_317.png",
       "img_pos": "icon_317_pos.png"
     },
-    "芹沢茜": {
+    "長宗我部元親": {
       "id": 318,
-      "name": "芹沢茜",
+      "name": "長宗我部元親",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_318.png",
       "img_pos": "icon_318_pos.png"
     },
-    "ラミィ": {
+    "島津義弘": {
       "id": 319,
-      "name": "ラミィ",
+      "name": "島津義弘",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_319.png",
       "img_pos": "icon_319_pos.png"
     },
-    "黒戸もね": {
+    "明智光秀": {
       "id": 320,
-      "name": "黒戸もね",
+      "name": "明智光秀",
+      "position": "外",
+      "mode": "アナウンサー",
       "img_standard": "icon_320.png",
       "img_pos": "icon_320_pos.png"
     },
-    "戸内聖華": {
+    "戸井鉄男": {
       "id": 321,
-      "name": "戸内聖華",
+      "name": "戸井鉄男",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_321.png",
       "img_pos": "icon_321_pos.png"
     },
-    "栗原舞": {
+    "佐賀巌": {
       "id": 322,
-      "name": "栗原舞",
+      "name": "佐賀巌",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_322.png",
       "img_pos": "icon_322_pos.png"
     },
-    "咲須かのん": {
+    "駒坂瞬": {
       "id": 323,
-      "name": "咲須かのん",
+      "name": "駒坂瞬",
+      "position": "遊",
+      "mode": "プロデューサー",
       "img_standard": "icon_323.png",
       "img_pos": "icon_323_pos.png"
     },
-    "NCM-753": {
+    "有村佐治": {
       "id": 324,
-      "name": "NCM-753",
+      "name": "有村佐治",
+      "position": "捕",
+      "mode": "アナウンサー",
       "img_standard": "icon_324.png",
       "img_pos": "icon_324_pos.png"
     },
-    "泡瀬満里南": {
+    "鳴海悠斗": {
       "id": 325,
-      "name": "泡瀬満里南",
+      "name": "鳴海悠斗",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_325.png",
       "img_pos": "icon_325_pos.png"
     },
-    "片桐恋": {
+    "藤堂まひる": {
       "id": 326,
-      "name": "片桐恋",
+      "name": "藤堂まひる",
+      "position": "三",
+      "mode": "アナウンサー",
       "img_standard": "icon_326.png",
       "img_pos": "icon_326_pos.png"
     },
-    "久根美亜": {
+    "アンヌ安生アズナブル": {
       "id": 327,
-      "name": "久根美亜",
+      "name": "アンヌ安生アズナブル",
+      "position": "投",
+      "mode": "プロデューサー",
       "img_standard": "icon_327.png",
       "img_pos": "icon_327_pos.png"
     },
-    "三ツ沢環": {
+    "皇帝": {
       "id": 328,
-      "name": "三ツ沢環",
+      "name": "皇帝",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_328.png",
       "img_pos": "icon_328_pos.png"
     },
-    "須神絵久": {
+    "天音姫恋": {
       "id": 329,
-      "name": "須神絵久",
+      "name": "天音姫恋",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_329.png",
       "img_pos": "icon_329_pos.png"
     },
-    "木場静火": {
+    "本場あんこ": {
       "id": 330,
-      "name": "木場静火",
+      "name": "本場あんこ",
+      "position": "一",
+      "mode": "プロデューサー",
       "img_standard": "icon_330.png",
       "img_pos": "icon_330_pos.png"
     },
-    "明星雪華": {
+    "菊度アイラ": {
       "id": 331,
-      "name": "明星雪華",
+      "name": "菊度アイラ",
+      "position": "投",
+      "mode": "アナウンサー",
       "img_standard": "icon_331.png",
       "img_pos": "icon_331_pos.png"
     },
-    "エミリ": {
+    "ダリア": {
       "id": 332,
-      "name": "エミリ",
+      "name": "ダリア",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_332.png",
       "img_pos": "icon_332_pos.png"
     },
-    "氷上聡里": {
+    "アイリス": {
       "id": 333,
-      "name": "氷上聡里",
+      "name": "アイリス",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_333.png",
       "img_pos": "icon_333_pos.png"
     },
-    "鴨川しぐれ": {
+    "蒼鳥つばさ": {
       "id": 334,
-      "name": "鴨川しぐれ",
+      "name": "蒼鳥つばさ",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_334.png",
       "img_pos": "icon_334_pos.png"
     },
-    "神良美砂": {
+    "咲道あかり": {
       "id": 335,
-      "name": "神良美砂",
+      "name": "咲道あかり",
+      "position": "二",
+      "mode": "共通",
       "img_standard": "icon_335.png",
       "img_pos": "icon_335_pos.png"
     },
-    "虹谷彩理": {
+    "新庄": {
       "id": 336,
-      "name": "虹谷彩理",
+      "name": "新庄",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_336.png",
       "img_pos": "icon_336_pos.png"
     },
-    "倉家凪": {
+    "花鳥千香": {
       "id": 337,
-      "name": "倉家凪",
+      "name": "花鳥千香",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_337.png",
       "img_pos": "icon_337_pos.png"
     },
-    "姫野カレン": {
+    "バーリスロセオ": {
       "id": 338,
-      "name": "姫野カレン",
+      "name": "バーリスロセオ",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_338.png",
       "img_pos": "icon_338_pos.png"
     },
-    "紺野美崎": {
+    "カグヤ": {
       "id": 339,
-      "name": "紺野美崎",
+      "name": "カグヤ",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_339.png",
       "img_pos": "icon_339_pos.png"
     },
-    "黒沢愛": {
+    "諏訪野聖人": {
       "id": 340,
-      "name": "黒沢愛",
+      "name": "諏訪野聖人",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_340.png",
       "img_pos": "icon_340_pos.png"
     },
-    "嵐山美鈴": {
+    "レジェンズ代表": {
       "id": 341,
-      "name": "嵐山美鈴",
+      "name": "レジェンズ代表",
+      "position": "",
+      "mode": "共通",
       "img_standard": "icon_341.png",
       "img_pos": "icon_341_pos.png"
     },
-    "四条澄香": {
+    "ニセプロ": {
       "id": 342,
-      "name": "四条澄香",
+      "name": "ニセプロ",
+      "position": "",
+      "mode": "共通",
       "img_standard": "icon_342.png",
       "img_pos": "icon_342_pos.png"
     },
-    "七瀬はるか": {
+    "矢倍萌雄": {
       "id": 343,
-      "name": "七瀬はるか",
+      "name": "矢倍萌雄",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_343.png",
       "img_pos": "icon_343_pos.png"
     },
-    "日和ミヨ": {
+    "軍導英雄": {
       "id": 344,
-      "name": "日和ミヨ",
+      "name": "軍導英雄",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_344.png",
       "img_pos": "icon_344_pos.png"
     },
-    "我間摩夕": {
+    "中之島幸宏": {
       "id": 345,
-      "name": "我間摩夕",
+      "name": "中之島幸宏",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_345.png",
       "img_pos": "icon_345_pos.png"
     },
-    "雉田直実": {
+    "獅乃木琢磨": {
       "id": 346,
-      "name": "雉田直実",
+      "name": "獅乃木琢磨",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_346.png",
       "img_pos": "icon_346_pos.png"
     },
-    "本若春陽": {
+    "男・矢部明雄": {
       "id": 347,
-      "name": "本若春陽",
+      "name": "男・矢部明雄",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_347.png",
       "img_pos": "icon_347_pos.png"
     },
-    "小井成タマモ": {
+    "アフロ猪狩": {
       "id": 348,
-      "name": "小井成タマモ",
+      "name": "アフロ猪狩",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_348.png",
       "img_pos": "icon_348_pos.png"
     },
-    "天宮コノハ": {
+    "野球マン1号": {
       "id": 349,
-      "name": "天宮コノハ",
+      "name": "野球マン1号",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_349.png",
       "img_pos": "icon_349_pos.png"
     },
-    "鈴島紫音": {
+    "野球マン2号": {
       "id": 350,
-      "name": "鈴島紫音",
+      "name": "野球マン2号",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_350.png",
       "img_pos": "icon_350_pos.png"
     },
-    "忠主七緒": {
+    "野球マン3号": {
       "id": 351,
-      "name": "忠主七緒",
+      "name": "野球マン3号",
+      "position": "捕",
+      "mode": "共通",
       "img_standard": "icon_351.png",
       "img_pos": "icon_351_pos.png"
     },
-    "京野小筆": {
+    "野球マン5号": {
       "id": 352,
-      "name": "京野小筆",
+      "name": "野球マン5号",
+      "position": "遊",
+      "mode": "共通",
       "img_standard": "icon_352.png",
       "img_pos": "icon_352_pos.png"
     },
-    "神埼こりす": {
+    "野球マスク": {
       "id": 353,
-      "name": "神埼こりす",
+      "name": "野球マスク",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_353.png",
       "img_pos": "icon_353_pos.png"
     },
-    "光野聖良": {
+    "暗黒スバル": {
       "id": 354,
-      "name": "光野聖良",
+      "name": "暗黒スバル",
+      "position": "投",
+      "mode": "共通",
       "img_standard": "icon_354.png",
       "img_pos": "icon_354_pos.png"
     },
-    "津乃田梨亜": {
+    "奥居紀明": {
       "id": 355,
-      "name": "津乃田梨亜",
+      "name": "奥居紀明",
+      "position": "外",
+      "mode": "共通",
       "img_standard": "icon_355.png",
       "img_pos": "icon_355_pos.png"
     },
-    "守神悠羽": {
+    "佐藤太郎": {
       "id": 356,
-      "name": "守神悠羽",
+      "name": "佐藤太郎",
+      "position": "一",
+      "mode": "共通",
       "img_standard": "icon_356.png",
       "img_pos": "icon_356_pos.png"
     },
-    "大谷美衣": {
+    "赤司勝人": {
+      "id": 405,
+      "name": "赤司勝人",
+      "position": "投",
+      "mode": "共通",
+      "img_standard": "icon_405.png",
+      "img_pos": "icon_405_pos.png"
+    },
+    "轟ハルカ": {
+      "id": 5,
+      "name": "轟ハルカ",
+      "position": "マ",
+      "mode": "",
+      "img_standard": "icon_005.png",
+      "img_pos": "icon_005_pos.png"
+    },
+    "加藤京子": {
       "id": 357,
-      "name": "大谷美衣",
+      "name": "加藤京子",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_357.png",
       "img_pos": "icon_357_pos.png"
     },
-    "花鳥風香": {
+    "芹沢茜": {
       "id": 358,
-      "name": "花鳥風香",
+      "name": "芹沢茜",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_358.png",
       "img_pos": "icon_358_pos.png"
     },
-    "稲穂亜希": {
+    "ラミィ": {
       "id": 359,
-      "name": "稲穂亜希",
+      "name": "ラミィ",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_359.png",
       "img_pos": "icon_359_pos.png"
     },
-    "カリーナ・スリムスカヤ": {
+    "黒戸もね": {
       "id": 360,
-      "name": "カリーナ・スリムスカヤ",
+      "name": "黒戸もね",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_360.png",
       "img_pos": "icon_360_pos.png"
     },
-    "白ボン": {
+    "戸内聖華": {
       "id": 361,
-      "name": "白ボン",
+      "name": "戸内聖華",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_361.png",
       "img_pos": "icon_361_pos.png"
     },
-    "ピラミッドヘッド": {
+    "栗原舞": {
       "id": 362,
-      "name": "ピラミッドヘッド",
+      "name": "栗原舞",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_362.png",
       "img_pos": "icon_362_pos.png"
     },
-    "ゴエモン": {
+    "咲須かのん": {
       "id": 363,
-      "name": "ゴエモン",
+      "name": "咲須かのん",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_363.png",
       "img_pos": "icon_363_pos.png"
     },
-    "ネイキッドスネーク": {
+    "NCM-753": {
       "id": 364,
-      "name": "ネイキッドスネーク",
+      "name": "NCM-753",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_364.png",
       "img_pos": "icon_364_pos.png"
     },
-    "アルカード": {
+    "泡瀬満里南": {
       "id": 365,
-      "name": "アルカード",
+      "name": "泡瀬満里南",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_365.png",
       "img_pos": "icon_365_pos.png"
     },
-    "パステル": {
+    "片桐恋": {
       "id": 366,
-      "name": "パステル",
+      "name": "片桐恋",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_366.png",
       "img_pos": "icon_366_pos.png"
     },
-    "藤崎詩織": {
+    "久根美亜": {
       "id": 367,
-      "name": "藤崎詩織",
+      "name": "久根美亜",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_367.png",
       "img_pos": "icon_367_pos.png"
     },
-    "ガンダー": {
+    "三ツ沢環": {
       "id": 368,
-      "name": "ガンダー",
+      "name": "三ツ沢環",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_368.png",
       "img_pos": "icon_368_pos.png"
     },
-    "リベンジ熱盛": {
+    "須神絵久": {
       "id": 369,
-      "name": "リベンジ熱盛",
+      "name": "須神絵久",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_369.png",
       "img_pos": "icon_369_pos.png"
     },
-    "クイーンココロ": {
+    "木場静火": {
       "id": 370,
-      "name": "クイーンココロ",
+      "name": "木場静火",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_370.png",
       "img_pos": "icon_370_pos.png"
     },
-    "フォイボス": {
+    "明星雪華": {
       "id": 371,
-      "name": "フォイボス",
+      "name": "明星雪華",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_371.png",
       "img_pos": "icon_371_pos.png"
     },
-    "零武": {
+    "エミリ": {
       "id": 372,
-      "name": "零武",
+      "name": "エミリ",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_372.png",
       "img_pos": "icon_372_pos.png"
     },
-    "オメガ鳴海悠斗": {
+    "氷上聡里": {
       "id": 373,
-      "name": "オメガ鳴海悠斗",
+      "name": "氷上聡里",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_373.png",
       "img_pos": "icon_373_pos.png"
     },
-    "サッたん": {
+    "鴨川しぐれ": {
       "id": 374,
-      "name": "サッたん",
+      "name": "鴨川しぐれ",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_374.png",
       "img_pos": "icon_374_pos.png"
     },
-    "沢村栄純": {
+    "神良美砂": {
       "id": 375,
-      "name": "沢村栄純",
+      "name": "神良美砂",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_375.png",
       "img_pos": "icon_375_pos.png"
     },
-    "降谷暁": {
+    "虹谷彩理": {
       "id": 376,
-      "name": "降谷暁",
+      "name": "虹谷彩理",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_376.png",
       "img_pos": "icon_376_pos.png"
     },
-    "御幸一也": {
+    "倉家凪": {
       "id": 377,
-      "name": "御幸一也",
+      "name": "倉家凪",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_377.png",
       "img_pos": "icon_377_pos.png"
     },
-    "小湊春市": {
+    "姫野カレン": {
       "id": 378,
-      "name": "小湊春市",
+      "name": "姫野カレン",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_378.png",
       "img_pos": "icon_378_pos.png"
     },
-    "倉持洋一": {
+    "紺野美崎": {
       "id": 379,
-      "name": "倉持洋一",
+      "name": "紺野美崎",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_379.png",
       "img_pos": "icon_379_pos.png"
     },
-    "結城哲也": {
+    "黒沢愛": {
       "id": 380,
-      "name": "結城哲也",
+      "name": "黒沢愛",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_380.png",
       "img_pos": "icon_380_pos.png"
     },
-    "伊佐敷純": {
+    "嵐山美鈴": {
       "id": 381,
-      "name": "伊佐敷純",
+      "name": "嵐山美鈴",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_381.png",
       "img_pos": "icon_381_pos.png"
     },
-    "小湊亮介": {
+    "四条澄香": {
       "id": 382,
-      "name": "小湊亮介",
+      "name": "四条澄香",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_382.png",
       "img_pos": "icon_382_pos.png"
     },
-    "増子透": {
+    "七瀬はるか": {
       "id": 383,
-      "name": "増子透",
+      "name": "七瀬はるか",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_383.png",
       "img_pos": "icon_383_pos.png"
     },
-    "成宮鳴": {
+    "日和ミヨ": {
       "id": 384,
-      "name": "成宮鳴",
+      "name": "日和ミヨ",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_384.png",
       "img_pos": "icon_384_pos.png"
     },
-    "多田野樹": {
+    "我間摩夕": {
       "id": 385,
-      "name": "多田野樹",
+      "name": "我間摩夕",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_385.png",
       "img_pos": "icon_385_pos.png"
     },
-    "白河勝之": {
+    "本若春陽": {
       "id": 386,
-      "name": "白河勝之",
+      "name": "本若春陽",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_386.png",
       "img_pos": "icon_386_pos.png"
     },
-    "神谷カルロス俊樹": {
+    "小井成タマモ": {
       "id": 387,
-      "name": "神谷カルロス俊樹",
+      "name": "小井成タマモ",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_387.png",
       "img_pos": "icon_387_pos.png"
     },
-    "奥村光舟": {
+    "天宮コノハ": {
       "id": 388,
-      "name": "奥村光舟",
+      "name": "天宮コノハ",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_388.png",
       "img_pos": "icon_388_pos.png"
     },
-    "由井薫": {
+    "鈴島紫音": {
       "id": 389,
-      "name": "由井薫",
+      "name": "鈴島紫音",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_389.png",
       "img_pos": "icon_389_pos.png"
     },
-    "金丸信二": {
+    "忠主七緒": {
       "id": 390,
-      "name": "金丸信二",
+      "name": "忠主七緒",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_390.png",
       "img_pos": "icon_390_pos.png"
     },
-    "東条秀明": {
+    "京野小筆": {
       "id": 391,
-      "name": "東条秀明",
+      "name": "京野小筆",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_391.png",
       "img_pos": "icon_391_pos.png"
     },
-    "前園健太": {
+    "神埼こりす": {
       "id": 392,
-      "name": "前園健太",
+      "name": "神埼こりす",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_392.png",
       "img_pos": "icon_392_pos.png"
     },
-    "白州健二郎": {
+    "光野聖良": {
       "id": 393,
-      "name": "白州健二郎",
+      "name": "光野聖良",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_393.png",
       "img_pos": "icon_393_pos.png"
     },
-    "川上憲史": {
+    "津乃田梨亜": {
       "id": 394,
-      "name": "川上憲史",
+      "name": "津乃田梨亜",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_394.png",
       "img_pos": "icon_394_pos.png"
     },
-    "丹波光一郎": {
+    "守神悠羽": {
       "id": 395,
-      "name": "丹波光一郎",
+      "name": "守神悠羽",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_395.png",
       "img_pos": "icon_395_pos.png"
     },
-    "轟雷市": {
+    "大谷美衣": {
       "id": 396,
-      "name": "轟雷市",
+      "name": "大谷美衣",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_396.png",
       "img_pos": "icon_396_pos.png"
     },
-    "真田俊平": {
+    "花鳥風香": {
       "id": 397,
-      "name": "真田俊平",
+      "name": "花鳥風香",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_397.png",
       "img_pos": "icon_397_pos.png"
     },
-    "三島優太": {
+    "稲穂亜希": {
       "id": 398,
-      "name": "三島優太",
+      "name": "稲穂亜希",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_398.png",
       "img_pos": "icon_398_pos.png"
     },
-    "秋葉一真": {
+    "カリーナ・スリムスカヤ": {
       "id": 399,
-      "name": "秋葉一真",
+      "name": "カリーナ・スリムスカヤ",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_399.png",
       "img_pos": "icon_399_pos.png"
     },
-    "天久光聖": {
+    "蔦枝心音": {
       "id": 400,
-      "name": "天久光聖",
+      "name": "蔦枝心音",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_400.png",
       "img_pos": "icon_400_pos.png"
     },
-    "本郷正宗": {
+    "夏目鳳梨": {
       "id": 401,
-      "name": "本郷正宗",
+      "name": "夏目鳳梨",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_401.png",
       "img_pos": "icon_401_pos.png"
     },
-    "滝川クリス優": {
+    "羊ヶ丘千歳": {
       "id": 402,
-      "name": "滝川クリス優",
+      "name": "羊ヶ丘千歳",
+      "position": "マ",
+      "mode": "",
       "img_standard": "icon_402.png",
       "img_pos": "icon_402_pos.png"
+    },
+    "安内なみき": {
+      "id": 403,
+      "name": "安内なみき",
+      "position": "マ",
+      "mode": "",
+      "img_standard": "icon_403.png",
+      "img_pos": "icon_403_pos.png"
+    },
+    "咲道しるべ": {
+      "id": 404,
+      "name": "咲道しるべ",
+      "position": "マ",
+      "mode": "",
+      "img_standard": "icon_404.png",
+      "img_pos": "icon_404_pos.png"
     }
   }
 }

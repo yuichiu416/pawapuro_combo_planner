@@ -17,6 +17,7 @@ const SIDEBAR_ID = 'desktop-character-sidebar';
 
 describe('Character Preview and Roster Synchronization', () => {
   beforeEach(() => {
+    window.localStorage.setItem('パワプロ_planner_game_version', '2024-2025');
     cleanup();
     vi.clearAllMocks();
   });

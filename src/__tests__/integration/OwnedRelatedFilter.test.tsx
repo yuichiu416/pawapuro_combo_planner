@@ -8,9 +8,10 @@ import App from '@/App';
 const SIDEBAR_ID = 'desktop-character-sidebar';
 
 describe('Owned Related Filter - Discovery Flow', () => {
-  beforeEach(() => {
+    beforeEach(() => {
+    window.localStorage.setItem('パワプロ_planner_game_version', '2024-2025');
     cleanup();
-    localStorage.clear();
+    vi.clearAllMocks();
   });
 
   it('allows searching, adding a character, and filtering for their combos', async () => {

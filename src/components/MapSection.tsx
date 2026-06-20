@@ -86,7 +86,11 @@ export const MapSection: React.FC<MapSectionProps> = ({
                 >
                   <span className="opacity-60">Combos:</span>
                   <span>
-                    {progress.selected}/{progress.total}
+                    {progress.total > 0
+                      ? `${progress.selected}/${progress.total}`
+                      : progress.selected > 0
+                        ? progress.selected
+                        : '-'}
                   </span>
                 </div>
               )}

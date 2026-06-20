@@ -13,10 +13,8 @@ import { MobileNavigation } from '@/components/MobileNavigation';
 import { RewardAnalysis } from '@/components/RewardAnalysis';
 import { SlotSwitcher } from '@/components/SlotSwitcher';
 import { VersionToggle } from '@/components/VersionToggle';
-import { GameVersionProvider } from '@/contexts/GameVersionContext';
+import { GameVersionProvider, useGameVersion } from '@/contexts/GameVersionContext';
 import { useComboManager } from '@/hooks/useComboManager';
-import { useGameVersion } from '@/contexts/GameVersionContext';
-
 import { supabase } from '@/lib/supabase';
 import { cn } from '@/utils/style';
 
@@ -54,7 +52,6 @@ const AppContent: React.FC = () => {
   const manager = useComboManager();
   const { version } = useGameVersion();
   const baseAssetPath = `/assets/icons_split_${version}/`;
-
   const [posFilter, setPosFilter] = useState<string | null>(null);
   const [mapFilter, setMapFilter] = useState<string | null>(null);
   const [showPositionIcon, setShowPositionIcon] = useState(true);

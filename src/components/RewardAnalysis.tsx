@@ -2,6 +2,9 @@
 import { AlertCircle, Award, MapPin, Zap } from 'lucide-react';
 import type React from 'react';
 import { useMemo } from 'react';
+
+import { useGameVersion } from '@/contexts/GameVersionContext';
+
 import skillsDataRaw from '@/data/skills.json';
 import type { Character } from '@/types';
 import { cn } from '@/utils/style';
@@ -37,6 +40,20 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
   onToggleSkillFilter,
 }) => {
   const { stats, skills, missingCharacters, roster } = analysis;
+  const { version } = useGameVersion();
+  let pictuerMax = 0;
+  let fielderMax = 0;
+  let managerMax = 0;
+
+  if (version === '2024-2025') {
+    pictuerMax = 8;
+    fielderMax = 17;
+    managerMax = 3;
+  } else if (version === '2026-2027') {
+    pictuerMax = 14;
+    fielderMax = 14;
+    managerMax = 3;
+  }
 
   const sortedSkills = useMemo(() => {
     return [...skills].sort((a, b) => {
@@ -70,9 +87,9 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
             max: '/28',
             err: roster.errors?.total,
           },
-          { label: 'Pitch', val: roster.pitcher, max: '/6-8', err: roster.errors?.pitcher },
-          { label: 'Field', val: roster.fielder, max: '/15-17', err: roster.errors?.fielder },
-          { label: 'Mgr', val: roster.manager, max: '/3', err: roster.errors?.manager },
+          { label: 'Pitch', val: roster.pitcher, max: `/${pictuerMax}`, err: roster.errors?.pitcher },
+          { label: 'Field', val: roster.fielder, max: `/${fielderMax}`, err: roster.errors?.fielder },
+          { label: 'Mgr', val: roster.manager, max: `/ ${managerMax}`, err: roster.errors?.manager },
         ].map((item) => (
           <div
             key={item.label}

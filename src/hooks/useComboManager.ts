@@ -371,7 +371,10 @@ export const useComboManager = () => {
       mCount = 0;
 
     Object.entries(mapsData).forEach(([mapName, data]) => {
-      mapCompletion[mapName] = { selected: 0, total: data.max_combos || 0 };
+      mapCompletion[mapName] = {
+        selected: 0,
+        total: data.max_combos ?? (data.combo_names?.length || 0),
+      };
     });
 
     selectedNames.forEach((name) => {

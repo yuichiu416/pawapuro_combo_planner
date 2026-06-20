@@ -1,57 +1,48 @@
 {
   "神の子": {
-    "name": "神の子",
     "type": "gold",
-    "category": "pitcher",
-    "description": "登板中、味方打者のミート+5、パワー+5"
+    "effect": "金特 登板中、味方打者のミート+5、パワー+5",
+    "is_new": false
   },
   "ケンカ投法": {
-    "name": "ケンカ投法",
     "type": "gold",
-    "category": "pitcher",
-    "description": "内角への投球時、コントロールが良くなり球威も大きく上がる"
+    "effect": "金特 内角への投球時、コントロールが良くなり球威も大きく上がる",
+    "is_new": false
   },
   "草魂": {
-    "name": "草魂",
     "type": "gold",
-    "category": "pitcher",
-    "description": "動揺状態にほとんどならない"
+    "effect": "金特 動揺状態にほとんどならない",
+    "is_new": false
   },
   "世界の代打王": {
-    "name": "世界の代打王",
     "type": "gold",
-    "category": "fielder",
-    "description": "代打として打席に立ったとき、ミート+25、パワー+20"
+    "effect": "金特 代打として打席に立ったとき、ミート+25、パワー+20",
+    "is_new": false
   },
   "世界の盗塁王": {
-    "name": "世界の盗塁王",
     "type": "gold",
-    "category": "fielder",
-    "description": "盗塁時の走力が大きく上がる。また塁上が一塁または一・三塁の状況で一塁走者のとき、相手投手のコントロール-10、スタミナ消費量増"
+    "effect": "金特 盗塁時の走力が大きく上がる。また塁上が一塁または一・三塁の状況で一塁走者のとき、相手投手のコントロール-10、スタミナ消費量増",
+    "is_new": false
   },
   "牛若丸": {
-    "name": "牛若丸",
     "type": "gold",
-    "category": "fielder",
-    "description": "守備時に送球速度と背走速度が上がり、動き出しも早くなる"
+    "effect": "金特 守備時に送球速度と背走速度が上がり、動き出しも早くなる",
+    "is_new": false
   },
   "忍者": {
-    "name": "忍者",
     "type": "gold",
-    "category": "fielder",
-    "description": "守備時に送球速度と背走速度が上がり、動き出しも早くなる"
+    "effect": "金特 守備時に送球速度と背走速度が上がり、動き出しも早くなる",
+    "is_new": false
   },
   "世界の王": {
-    "name": "世界の王",
     "type": "gold",
-    "category": "fielder",
-    "description": "強振して打つと、ホームラン性の打球がかなり出やすくなる。ラインドライブとは一緒につけられない"
+    "effect": "金特 強振して打つと、ホームラン性の打球がかなり出やすくなる。ラインドライブとは一緒につけられない",
+    "is_new": false
   },
   "打撃の神様": {
-    "name": "打撃の神様",
     "type": "gold",
-    "category": "fielder",
-    "description": "ミート打ちのとき、ヒット性の打球がかなり出やすくなる。"
+    "effect": "金特 ミート打ちのとき、ヒット性の打球がかなり出やすくなる。",
+    "is_new": false
   },
   "小阪ゾーン": {
     "name": "小阪ゾーン",
@@ -60,184 +51,154 @@
     "description": "守備時に送球速度と背走速度が上がり、動き出しも早くなる"
   },
   "炎のストッパー": {
-    "name": "炎のストッパー",
     "type": "blue",
-    "category": "pitcher",
-    "description": "スタミナ切れ状態ではなく、自責点0以下で同点か勝っているときにボールが重くなり、動揺状態になりにくくなる。また、相手打者の威圧感無効化"
+    "effect": "青特 スタミナ切れ状態ではなく、自責点0以下で同点か勝っているときにボールが重くなり、動揺状態になりにくくなる。また、相手打者の威圧感無効化",
+    "is_new": false
   },
   "大魔神": {
-    "name": "大魔神",
     "type": "blue",
-    "category": "pitcher",
-    "description": "2番手以降で登板時、相手打者のミート-20、パワー-20"
+    "effect": "青特 2番手以降で登板時、相手打者のミート-20、パワー-20",
+    "is_new": false
   },
   "ロケットボーイズ": {
-    "name": "ロケットボーイズ",
     "type": "blue",
-    "category": "pitcher",
-    "description": "平均球速+2km/h"
+    "effect": "青特 平均球速+2km/h",
+    "is_new": false
   },
   "幕張の防波堤": {
-    "name": "幕張の防波堤",
     "type": "blue",
-    "category": "pitcher",
-    "description": "試合終盤でリードしており、走者が生還すると同点か逆転の場面で、球速+2km/h、コントロール+5"
+    "effect": "青特 試合終盤でリードしており、走者が生還すると同点か逆転の場面で、球速+2km/h、コントロール+5",
+    "is_new": false
   },
   "負けないエース": {
-    "name": "負けないエース",
     "type": "blue",
-    "category": "pitcher",
-    "description": "登板中、味方打者のパワー+5"
+    "effect": "青特 登板中、味方打者のパワー+5",
+    "is_new": false
   },
   "平成の怪物": {
-    "name": "平成の怪物",
     "type": "blue",
-    "category": "all",
-    "description": "ストレートのノビが良いかどうか、A〜Gまでの7段階ある"
+    "effect": "青特 ストレートのノビが良いかどうか、A〜Gまでの7段階ある",
+    "is_new": false
   },
   "雑草魂": {
-    "name": "雑草魂",
     "type": "blue",
-    "category": "all",
-    "description": "打たれたときに動揺しにくいかどうか、A~Gまでの7段階ある。"
+    "effect": "青特 打たれたときに動揺しにくいかどうか、A~Gまでの7段階ある。",
+    "is_new": false
   },
   "燃える男": {
-    "name": "燃える男",
     "type": "blue",
-    "category": "pitcher",
-    "description": "スタミナ切れ状態ではなく、自責点0以下で同点か勝っているときにボールが重くなり、動揺状態になりにくくなる。また、相手打者の威圧感無効化"
+    "effect": "青特 スタミナ切れ状態ではなく、自責点0以下で同点か勝っているときにボールが重くなり、動揺状態になりにくくなる。また、相手打者の威圧感無効化",
+    "is_new": false
   },
   "小さな大投手": {
-    "name": "小さな大投手",
     "type": "blue",
-    "category": "pitcher",
-    "description": "✕〜◯までの4段階あり、◯、◯は体力消費が軽減される"
+    "effect": "青特 ✕〜◎までの4段階あり、◯、◎は体力消費が軽減される",
+    "is_new": false
   },
   "アニキ": {
-    "name": "アニキ",
     "type": "blue",
-    "category": "fielder",
-    "description": "味方野手のミート+5、パワー+5"
+    "effect": "青特 味方野手のミート+5、パワー+5",
+    "is_new": false
   },
   "Mrブルーウェーブ": {
-    "name": "Mrブルーウェーブ",
     "type": "blue",
-    "category": "fielder",
-    "description": "味方野手のミート+5、パワー+5"
+    "effect": "青特 味方野手のミート+5、パワー+5",
+    "is_new": false
   },
   "Mrドラゴンズ": {
-    "name": "Mrドラゴンズ",
     "type": "blue",
-    "category": "fielder",
-    "description": "味方野手のミート+5、パワー+5"
+    "effect": "青特 味方野手のミート+5、パワー+5",
+    "is_new": false
   },
   "Mrパーフェクト": {
-    "name": "Mrパーフェクト",
     "type": "blue",
-    "category": "fielder",
-    "description": "味方野手のミート+5、パワー+5"
+    "effect": "青特 味方野手のミート+5、パワー+5",
+    "is_new": false
   },
   "Mr赤ヘル": {
-    "name": "Mr赤ヘル",
     "type": "blue",
-    "category": "fielder",
-    "description": "味方野手のミート+5、パワー+5"
+    "effect": "青特 味方野手のミート+5、パワー+5",
+    "is_new": false
   },
   "Mrタイガース": {
-    "name": "Mrタイガース",
     "type": "blue",
-    "category": "fielder",
-    "description": "味方野手のミート+5、パワー+5"
+    "effect": "青特 味方野手のミート+5、パワー+5",
+    "is_new": false
   },
   "Mrイーグルス": {
-    "name": "Mrイーグルス",
     "type": "blue",
-    "category": "fielder",
-    "description": "味方野手のミート+5、パワー+5"
+    "effect": "青特 味方野手のミート+5、パワー+5",
+    "is_new": false
   },
   "Mrスワローズ": {
-    "name": "Mrスワローズ",
     "type": "blue",
-    "category": "fielder",
-    "description": "味方野手のミート+5、パワー+5"
+    "effect": "青特 味方野手のミート+5、パワー+5",
+    "is_new": false
   },
   "Mrホークス": {
-    "name": "Mrホークス",
     "type": "blue",
-    "category": "fielder",
-    "description": "味方野手のミート+5、パワー+5"
+    "effect": "青特 味方野手のミート+5、パワー+5",
+    "is_new": false
   },
   "Mrファイターズ": {
-    "name": "Mrファイターズ",
     "type": "blue",
-    "category": "fielder",
-    "description": "味方野手のミート+5、パワー+5"
+    "effect": "青特 味方野手のミート+5、パワー+5",
+    "is_new": false
   },
   "Mrブレーブス": {
-    "name": "Mrブレーブス",
     "type": "blue",
-    "category": "fielder",
-    "description": "味方野手のミート+5、パワー+5"
+    "effect": "青特 味方野手のミート+5、パワー+5",
+    "is_new": false
   },
   "ミスター": {
-    "name": "ミスター",
     "type": "blue",
-    "category": "fielder",
-    "description": "相手投手の球速-2km/h、コントロール-10、スタミナ消費量+15。自分の前の打者のときは、相手投手の球速-2km/h、コントロール-10、スタミナ消費量+10"
+    "effect": "青特 相手投手の球速-2km/h、コントロール-10、スタミナ消費量+15。自分の前の打者のときは、相手投手の球速-2km/h、コントロール-10、スタミナ消費量+10",
+    "is_new": false
   },
   "絶好調男": {
-    "name": "絶好調男",
     "type": "blue",
-    "category": "fielder",
-    "description": "味方野手のミート+5、パワー+5"
+    "effect": "青特 味方野手のミート+5、パワー+5",
+    "is_new": false
   },
   "若大将": {
-    "name": "若大将",
     "type": "blue",
-    "category": "fielder",
-    "description": "味方野手のミート+5、パワー+5"
+    "effect": "青特 味方野手のミート+5、パワー+5",
+    "is_new": false
   },
   "バックスクリーン男": {
-    "name": "バックスクリーン男",
     "type": "blue",
-    "category": "fielder",
-    "description": "強振して打つとホームラン性の打球が出やすくなる"
+    "effect": "青特 強振して打つとホームラン性の打球が出やすくなる",
+    "is_new": false
   },
   "小さな大打者": {
-    "name": "小さな大打者",
     "type": "blue",
-    "category": "fielder",
-    "description": "ミート打ちのとき、ヒット性の打球が出やすくなる。"
+    "effect": "青特 ミート打ちのとき、ヒット性の打球が出やすくなる。",
+    "is_new": false
   },
   "アライバ": {
-    "name": "アライバ",
     "type": "blue",
-    "category": "fielder",
-    "description": "守備時に、送球速度と背走速度が上がる"
+    "effect": "青特 守備時に、送球速度と背走速度が上がる",
+    "is_new": false
   },
   "おかわり君": {
-    "name": "おかわり君",
     "type": "blue",
-    "category": "fielder",
-    "description": "その試合でホームランを打っているとパワー+10（2本目以降は無効）"
+    "effect": "青特 その試合でホームランを打っているとパワー+10（2本目以降は無効）",
+    "is_new": false
   },
   "不惑の大砲": {
-    "name": "不惑の大砲",
     "type": "blue",
-    "category": "fielder",
-    "description": "強振して打つとホームラン性の打球が出やすくなる"
+    "effect": "青特 強振して打つとホームラン性の打球が出やすくなる",
+    "is_new": false
   },
   "悲劇のエース": {
-    "name": "悲劇のエース",
     "type": "red",
-    "category": "pitcher",
-    "description": "登板中、味方打者のパワー-5"
+    "effect": "赤特 登板中、味方打者のパワー-5",
+    "is_new": false
   },
   "抜け球": {
-    "name": "抜け球",
     "type": "red",
-    "category": "pitcher",
-    "description": "ストレートがときどきシュート方向に曲がる"
+    "effect": "赤特 ストレートがときどきシュート方向に曲がる",
+    "is_new": false
   },
   "サンデー◯": {
     "name": "サンデー◯",
@@ -288,820 +249,684 @@
     "description": "ドーム球場で能力アップ"
   },
   "フライボールピッチャー": {
-    "name": "フライボールピッチャー",
-    "type": "red",
-    "category": "all",
-    "description": "相手バッターの弾道がやや上がる"
+    "type": "normal",
+    "effect": "青赤特 相手バッターの弾道がやや上がる",
+    "is_new": false
   },
   "トップギア": {
-    "name": "トップギア",
     "type": "gold",
-    "category": "pitcher",
-    "description": "先発時の1~2回は球速+4km/h、コントロール+13、変化量+2"
+    "effect": "金特 先発時の1~2回は球速+4km/h、コントロール+13、変化量+2",
+    "is_new": false
   },
   "闘魂": {
-    "name": "闘魂",
     "type": "gold",
-    "category": "pitcher",
-    "description": "スタミナ切れ状態ではなく、リードが2点以内か負けていて自責点2以下の場合、球質が重くなり、動揺状態になりにくくなって打者の威圧感を無効化する"
+    "effect": "金特 スタミナ切れ状態ではなく、リードが2点以内か負けていて自責点2以下の場合、球質が重くなり、動揺状態になりにくくなって打者の威圧感を無効化する",
+    "is_new": false
   },
   "超投打躍動": {
-    "name": "超投打躍動",
     "type": "gold",
-    "category": "pitcher",
-    "description": "投手で出場して2失点以下だとミートとパワーが大きく上がり、1安打以上だとコントロールと変化量が大きく上がる"
+    "effect": "金特 投手で出場して2失点以下だとミートとパワーが大きく上がり、1安打以上だとコントロールと変化量が大きく上がる",
+    "is_new": false
   },
   "完全燃焼": {
-    "name": "完全燃焼",
     "type": "gold",
-    "category": "pitcher",
-    "description": "得点圏に走者がいてスタミナ残量約1/3以上のとき、より球質が重く、ノビがよくなりスタミナ消費量が増える"
+    "effect": "金特 得点圏に走者がいてスタミナ残量約1/3以上のとき、より球質が重く、ノビがよくなりスタミナ消費量が増える",
+    "is_new": false
   },
   "ディレイドアーム": {
-    "name": "ディレイドアーム",
     "type": "gold",
-    "category": "pitcher",
-    "description": "投球時の球持ちがより長くなり、打者からは腕の振りが見えづらく、打ちにくい"
+    "effect": "金特 投球時の球持ちがより長くなり、打者からは腕の振りが見えづらく、打ちにくい",
+    "is_new": false
   },
   "クロスキャノン": {
-    "name": "クロスキャノン",
     "type": "gold",
-    "category": "pitcher",
-    "description": "対角線となるコースに投げたとき、球速よりも速く見える"
+    "effect": "金特 対角線となるコースに投げたとき、球速よりも速く見える",
+    "is_new": false
   },
   "暴れ球": {
-    "name": "暴れ球",
     "type": "gold",
-    "category": "pitcher",
-    "description": "ストレートを投げたとき、よりノビが良くなるが、ブレやすくなる"
+    "effect": "金特 ストレートを投げたとき、よりノビが良くなるが、ブレやすくなる",
+    "is_new": false
   },
   "怪童": {
-    "name": "怪童",
     "type": "gold",
-    "category": "pitcher",
-    "description": "ストレートが球速よりも大幅に速く見える"
+    "effect": "金特 ストレートが球速よりも大幅に速く見える",
+    "is_new": false
   },
   "怪物球威": {
-    "name": "怪物球威",
     "type": "gold",
-    "category": "pitcher",
-    "description": "球質が非常に重くなり、打たれたときの打球が飛びにくくなる"
+    "effect": "金特 球質が非常に重くなり、打たれたときの打球が飛びにくくなる",
+    "is_new": false
   },
   "ガソリンタンク": {
-    "name": "ガソリンタンク",
     "type": "gold",
-    "category": "pitcher",
-    "description": "登板後のスタミナ回復が非常に早い"
+    "effect": "金特 登板後のスタミナ回復が非常に早い",
+    "is_new": false
   },
   "ギアチェンジ": {
-    "name": "ギアチェンジ",
     "type": "gold",
-    "category": "pitcher",
-    "description": "先発時の5回以降、リードが3点以内または同点で走者がいるとき、球速+1km/h、コントロール+10、変化球が打者の近くで変化するようになる"
+    "effect": "金特 先発時の5回以降、リードが3点以内または同点で走者がいるとき、球速+1km/h、コントロール+10、変化球が打者の近くで変化するようになる",
+    "is_new": false
   },
   "強心臓": {
-    "name": "強心臓",
     "type": "gold",
-    "category": "pitcher",
-    "description": "得点圏に走者がいるとき、球速+2km/h、変化量+3"
+    "effect": "金特 得点圏に走者がいるとき、球速+2km/h、変化量+3",
+    "is_new": false
   },
   "驚異の切れ味": {
-    "name": "驚異の切れ味",
     "type": "gold",
-    "category": "pitcher",
-    "description": "変化球の曲がり始めが極端に遅くなり、より打者の近くで変化する"
+    "effect": "金特 変化球の曲がり始めが極端に遅くなり、より打者の近くで変化する",
+    "is_new": false
   },
   "終盤力": {
-    "name": "終盤力",
     "type": "gold",
-    "category": "pitcher",
-    "description": "先発時に勝っているか3点差以内で負けているとき、球速+4km/h、コントロール+10、変化量+2"
+    "effect": "金特 先発時に勝っているか3点差以内で負けているとき、球速+4km/h、コントロール+10、変化量+2",
+    "is_new": false
   },
   "勝利の星": {
-    "name": "勝利の星",
     "type": "gold",
-    "category": "pitcher",
-    "description": "登板中、味方打者のミート+5、パワー+5"
+    "effect": "金特 登板中、味方打者のミート+5、パワー+5",
+    "is_new": false
   },
   "主砲キラー": {
-    "name": "主砲キラー",
     "type": "gold",
-    "category": "pitcher",
-    "description": "ミートB以上かパワーA以上の打者が相手のとき、球速+3km/h、変化量+1km/h、さらに変化球が打者の近くで変化するようになる"
+    "effect": "金特 ミートB以上かパワーA以上の打者が相手のとき、球速+3km/h、変化量+1km/h、さらに変化球が打者の近くで変化するようになる",
+    "is_new": false
   },
   "精密機械": {
-    "name": "精密機械",
     "type": "gold",
-    "category": "pitcher",
-    "description": "ストライクゾーン低めへのコントロールが非常に良くなる。"
+    "effect": "金特 ストライクゾーン低めへのコントロールが非常に良くなる。",
+    "is_new": false
   },
   "走者釘付": {
-    "name": "走者釘付",
     "type": "gold",
-    "category": "pitcher",
-    "description": "投球モーションがより速くなる"
+    "effect": "金特 投球モーションがより速くなる",
+    "is_new": false
   },
   "鉄腕": {
-    "name": "鉄腕",
     "type": "gold",
-    "category": "pitcher",
-    "description": "調子による影響がほとんどない"
+    "effect": "金特 調子による影響がほとんどない",
+    "is_new": false
   },
   "ドクターK": {
-    "name": "ドクターK",
     "type": "gold",
-    "category": "pitcher",
-    "description": "2ストライクに追い込むと、球速+4km/h、変化量+2"
+    "effect": "金特 2ストライクに追い込むと、球速+4km/h、変化量+2",
+    "is_new": false
   },
   "ド根性": {
-    "name": "ド根性",
     "type": "gold",
-    "category": "pitcher",
-    "description": "先発したとき、スタミナ切れになっても能力の減少が早めに止まる"
+    "effect": "金特 先発したとき、スタミナ切れになっても能力の減少が早めに止まる",
+    "is_new": false
   },
   "内角無双": {
-    "name": "内角無双",
     "type": "gold",
-    "category": "pitcher",
-    "description": "内角への投球時、コントロールが良くなり球威も大きく上がる"
+    "effect": "金特 内角への投球時、コントロールが良くなり球威も大きく上がる",
+    "is_new": false
   },
   "ハイスピンジャイロ": {
-    "name": "ハイスピンジャイロ",
     "type": "gold",
-    "category": "pitcher",
-    "description": "ストレートがジャイロ回転し、球速よりも非常に速く見える"
+    "effect": "金特 ストレートがジャイロ回転し、球速よりも非常に速く見える",
+    "is_new": false
   },
   "左キラー": {
-    "name": "左キラー",
     "type": "gold",
-    "category": "pitcher",
-    "description": "左打者が相手のとき、球速+3km/h、コントロール+7、スタミナ消費量増"
+    "effect": "金特 左打者が相手のとき、球速+3km/h、コントロール+7、スタミナ消費量増",
+    "is_new": false
   },
   "不屈の魂": {
-    "name": "不屈の魂",
     "type": "gold",
-    "category": "pitcher",
-    "description": "動揺状態にほとんどならない"
+    "effect": "金特 動揺状態にほとんどならない",
+    "is_new": false
   },
   "変幻自在": {
-    "name": "変幻自在",
     "type": "gold",
-    "category": "pitcher",
-    "description": "速い球のあとに遅い変化球、またはその逆で投球したとき、ストレートは球速よりもかなり速く見え、変化球は曲がり始めがかなり遅くなる"
+    "effect": "金特 速い球のあとに遅い変化球、またはその逆で投球したとき、ストレートは球速よりもかなり速く見え、変化球は曲がり始めがかなり遅くなる",
+    "is_new": false
   },
   "本塁打厳禁": {
-    "name": "本塁打厳禁",
     "type": "gold",
-    "category": "pitcher",
-    "description": "失投時にど真ん中にいく確率がかなり下がる"
+    "effect": "金特 失投時にど真ん中にいく確率がかなり下がる",
+    "is_new": false
   },
   "球界の頭脳": {
-    "name": "球界の頭脳",
     "type": "gold",
-    "category": "fielder",
-    "description": "味方投手のコントロール+15、消費スタミナ-11。味方投手が不調または絶不調の場合、球速+2km/h"
+    "effect": "金特 味方投手のコントロール+15、消費スタミナ-11。味方投手が不調または絶不調の場合、球速+2km/h",
+    "is_new": false
   },
   "ささやき戦術": {
-    "name": "ささやき戦術",
     "type": "gold",
-    "category": "fielder",
-    "description": "捕手のときに得点圏に走者がいると、相手打者のミート-5、パワー-5"
+    "effect": "金特 捕手のときに得点圏に走者がいると、相手打者のミート-5、パワー-5",
+    "is_new": false
   },
   "鉄の壁": {
-    "name": "鉄の壁",
     "type": "gold",
-    "category": "fielder",
-    "description": "捕手のとき、本塁クロスプレイの際に走者の「ホーム突入」「重戦車」の発動確率をかなり下げる"
+    "effect": "金特 捕手のとき、本塁クロスプレイの際に走者の「ホーム突入」「重戦車」の発動確率をかなり下げる",
+    "is_new": false
   },
   "バズーカ送球": {
-    "name": "バズーカ送球",
     "type": "gold",
-    "category": "fielder",
-    "description": "盗塁阻止時の送球がものすごく鋭くなる"
+    "effect": "金特 盗塁阻止時の送球がものすごく鋭くなる",
+    "is_new": false
   },
   "渾身の決勝打": {
-    "name": "渾身の決勝打",
     "type": "gold",
-    "category": "fielder",
-    "description": "同点または負けているときの6回以降、塁上の走者が精悍すれば勝ち越しの場面でミート+12"
+    "effect": "金特 同点または負けているときの6回以降、塁上の走者が精悍すれば勝ち越しの場面でミート+12",
+    "is_new": false
   },
   "ヒートアップ": {
-    "name": "ヒートアップ",
     "type": "gold",
-    "category": "fielder",
-    "description": "ストライクカウントの数ぶん、ミート+8、パワー+8"
+    "effect": "金特 ストライクカウントの数ぶん、ミート+8、パワー+8",
+    "is_new": false
   },
   "逆襲": {
-    "name": "逆襲",
     "type": "gold",
-    "category": "fielder",
-    "description": "前の打席で抑えられた投手が相手のとき、ミート+10、パワー+5"
+    "effect": "金特 前の打席で抑えられた投手が相手のとき、ミート+10、パワー+5",
+    "is_new": false
   },
   "安打製造機": {
-    "name": "安打製造機",
     "type": "gold",
-    "category": "fielder",
-    "description": "ミート打ちのとき、ヒット性の打球がかなり出やすくなる。"
+    "effect": "金特 ミート打ちのとき、ヒット性の打球がかなり出やすくなる。",
+    "is_new": false
   },
   "アーチスト": {
-    "name": "アーチスト",
     "type": "gold",
-    "category": "fielder",
-    "description": "強振して打つと、ホームラン性の打球がかなり出やすくなる。ラインドライブとは一緒につけられない"
+    "effect": "金特 強振して打つと、ホームラン性の打球がかなり出やすくなる。ラインドライブとは一緒につけられない",
+    "is_new": false
   },
   "一球入魂": {
-    "name": "一球入魂",
     "type": "gold",
-    "category": "fielder",
-    "description": "1ストライクを取られるまで、ミート+15、パワー+15"
+    "effect": "金特 1ストライクを取られるまで、ミート+15、パワー+15",
+    "is_new": false
   },
   "エースキラー": {
-    "name": "エースキラー",
     "type": "gold",
-    "category": "fielder",
-    "description": "エース級の投手との対戦時に、ミート+15、パワー+15"
+    "effect": "金特 エース級の投手との対戦時に、ミート+15、パワー+15",
+    "is_new": false
   },
   "大番狂わせ": {
-    "name": "大番狂わせ",
     "type": "gold",
-    "category": "fielder",
-    "description": "スタメン出場し、5回以降で同点か試合終盤で負けているか同点だと、走者がいるときにパワーがSになる（もとがSだと変化なし）"
+    "effect": "金特 スタメン出場し、5回以降で同点か試合終盤で負けているか同点だと、走者がいるときにパワーがSになる（もとがSだと変化なし）",
+    "is_new": false
   },
   "火事場の馬鹿力": {
-    "name": "火事場の馬鹿力",
     "type": "gold",
-    "category": "fielder",
-    "description": "試合終盤で負けているとき、ミート+20、パワー+20"
+    "effect": "金特 試合終盤で負けているとき、ミート+20、パワー+20",
+    "is_new": false
   },
   "外角必打": {
-    "name": "外角必打",
     "type": "gold",
-    "category": "fielder",
-    "description": "アウトコースのボールを打つのがすごく得意になる。インコースヒッター、内角必打とは一緒につけられない。"
+    "effect": "金特 アウトコースのボールを打つのがすごく得意になる。インコースヒッター、内角必打とは一緒につけられない。",
+    "is_new": false
   },
   "気迫ヘッド": {
-    "name": "気迫ヘッド",
     "type": "gold",
-    "category": "fielder",
-    "description": "きわどいときにベースに頭からすべりこむ"
+    "effect": "金特 きわどいときにベースに頭からすべりこむ",
+    "is_new": false
   },
   "恐怖の満塁男": {
-    "name": "恐怖の満塁男",
     "type": "gold",
-    "category": "fielder",
-    "description": "満塁のとき、ミート+20、パワー+20"
+    "effect": "金特 満塁のとき、ミート+20、パワー+20",
+    "is_new": false
   },
   "切り込み隊長": {
-    "name": "切り込み隊長",
     "type": "gold",
-    "category": "fielder",
-    "description": "走者がいないとき、ミート+15、パワー+10"
+    "effect": "金特 走者がいないとき、ミート+15、パワー+10",
+    "is_new": false
   },
   "芸術的流し打ち": {
-    "name": "芸術的流し打ち",
     "type": "gold",
-    "category": "fielder",
-    "description": "ミートで流し打ちをしたとき、打球がヒットになりやすい"
+    "effect": "金特 ミートで流し打ちをしたとき、打球がヒットになりやすい",
+    "is_new": false
   },
   "広角砲": {
-    "name": "広角砲",
     "type": "gold",
-    "category": "fielder",
-    "description": "流し方向にものすごい強い打球が打てるようになる。プルヒッター、引っ張り屋とは一緒につけられない"
+    "effect": "金特 流し方向にものすごい強い打球が打てるようになる。プルヒッター、引っ張り屋とは一緒につけられない",
+    "is_new": false
   },
   "高速レーザー": {
-    "name": "高速レーザー",
     "type": "gold",
-    "category": "fielder",
-    "description": "外野守備時に、軌道が低く非常に速い送球をする"
+    "effect": "金特 外野守備時に、軌道が低く非常に速い送球をする",
+    "is_new": false
   },
   "高速ベースラン": {
-    "name": "高速ベースラン",
     "type": "gold",
-    "category": "fielder",
-    "description": "走塁時（盗塁は除く）の走力が大きく上がり、三塁到達時にヘッドスライディングをしない"
+    "effect": "金特 走塁時（盗塁は除く）の走力が大きく上がり、三塁到達時にヘッドスライディングをしない",
+    "is_new": false
   },
   "高球必打": {
-    "name": "高球必打",
     "type": "gold",
-    "category": "fielder",
-    "description": "高めのボールを打つのがすごく得意になる。ローボールヒッター、低球必打、とは一緒につけられない"
+    "effect": "金特 高めのボールを打つのがすごく得意になる。ローボールヒッター、低球必打、とは一緒につけられない",
+    "is_new": false
   },
   "左腕キラー": {
-    "name": "左腕キラー",
     "type": "gold",
-    "category": "fielder",
-    "description": "左投手が相手のとき、ミート+20、パワー+15"
+    "effect": "金特 左投手が相手のとき、ミート+20、パワー+15",
+    "is_new": false
   },
   "勝負師": {
-    "name": "勝負師",
     "type": "gold",
-    "category": "fielder",
-    "description": "得点圏に走者がいるとき、ミート+20、パワー+15"
+    "effect": "金特 得点圏に走者がいるとき、ミート+20、パワー+15",
+    "is_new": false
   },
   "重戦車": {
-    "name": "重戦車",
     "type": "gold",
-    "category": "fielder",
-    "description": "本塁への激しいスライディングで捕手の捕球ミスを狙う"
+    "effect": "金特 本塁への激しいスライディングで捕手の捕球ミスを狙う",
+    "is_new": false
   },
   "ストライク送球": {
-    "name": "ストライク送球",
     "type": "gold",
-    "category": "fielder",
-    "description": "送球がすごくそれにくくなる"
+    "effect": "金特 送球がすごくそれにくくなる",
+    "is_new": false
   },
   "精神的支柱": {
-    "name": "精神的支柱",
     "type": "gold",
-    "category": "fielder",
-    "description": "味方投手のコントロール+10、味方打者のミート+10、パワー+5"
+    "effect": "金特 味方投手のコントロール+10、味方打者のミート+10、パワー+5",
+    "is_new": false
   },
   "代打の神様": {
-    "name": "代打の神様",
     "type": "gold",
-    "category": "fielder",
-    "description": "代打として打席に立ったとき、ミート+25、パワー+20"
+    "effect": "金特 代打として打席に立ったとき、ミート+25、パワー+20",
+    "is_new": false
   },
   "電光石火": {
-    "name": "電光石火",
     "type": "gold",
-    "category": "fielder",
-    "description": "盗塁時の走力が大きく上がる。また塁上が一塁または一・三塁の状況で一塁走者のとき、相手投手のコントロール-10、スタミナ消費量増"
+    "effect": "金特 盗塁時の走力が大きく上がる。また塁上が一塁または一・三塁の状況で一塁走者のとき、相手投手のコントロール-10、スタミナ消費量増",
+    "is_new": false
   },
   "鉄人": {
-    "name": "鉄人",
     "type": "gold",
-    "category": "fielder",
-    "description": "ものすごくケガをしにくくなる"
+    "effect": "金特 ものすごくケガをしにくくなる",
+    "is_new": false
   },
   "伝説のサヨナラ男": {
-    "name": "伝説のサヨナラ男",
     "type": "gold",
-    "category": "fielder",
-    "description": "サヨナラ勝利になる場面でミート+20、パワー+20"
+    "effect": "金特 サヨナラ勝利になる場面でミート+20、パワー+20",
+    "is_new": false
   },
   "低球必打": {
-    "name": "低球必打",
     "type": "gold",
-    "category": "fielder",
-    "description": "低めのボールを打つのがすごく得意になる。ハイボールヒッター、高球必打とは一緒につけられない"
+    "effect": "金特 低めのボールを打つのがすごく得意になる。ハイボールヒッター、高球必打とは一緒につけられない",
+    "is_new": false
   },
   "トリックスター": {
-    "name": "トリックスター",
     "type": "gold",
-    "category": "fielder",
-    "description": "出塁時、相手投手のスタミナ消費量が上がり、内野の守備力が下がる（塁上にこの能力を持つ走者が増えると効果が高まり、投手のコントロールと変化量も低下）"
+    "effect": "金特 出塁時、相手投手のスタミナ消費量が上がり、内野の守備力が下がる（塁上にこの能力を持つ走者が増えると効果が高まり、投手のコントロールと変化量も低下）",
+    "is_new": false
   },
   "内角必打": {
-    "name": "内角必打",
     "type": "gold",
-    "category": "fielder",
-    "description": "インコースのボールを打つのがすごく得意になる。アウトコースヒッター、外角必打とは一緒につけられない"
+    "effect": "金特 インコースのボールを打つのがすごく得意になる。アウトコースヒッター、外角必打とは一緒につけられない",
+    "is_new": false
   },
   "引っ張り屋": {
-    "name": "引っ張り屋",
     "type": "gold",
-    "category": "fielder",
-    "description": "強振で引っ張るとすごく強い打球が飛ぶようになる。広角打法、広角砲とは一緒につけられない"
+    "effect": "金特 強振で引っ張るとすごく強い打球が飛ぶようになる。広角打法、広角砲とは一緒につけられない",
+    "is_new": false
   },
   "魔術師": {
-    "name": "魔術師",
     "type": "gold",
-    "category": "fielder",
-    "description": "守備時に送球速度と背走速度が上がり、動き出しも早くなる"
+    "effect": "金特 守備時に送球速度と背走速度が上がり、動き出しも早くなる",
+    "is_new": false
   },
   "メッタ打ち": {
-    "name": "メッタ打ち",
     "type": "gold",
-    "category": "fielder",
-    "description": "2安打以上していると3打席目以降はミート+20、パワー+5"
+    "effect": "金特 2安打以上していると3打席目以降はミート+20、パワー+5",
+    "is_new": false
   },
   "ロケットスタート": {
-    "name": "ロケットスタート",
     "type": "gold",
-    "category": "fielder",
-    "description": "打ってからのスタートダッシュがものすごく速くなる"
+    "effect": "金特 打ってからのスタートダッシュがものすごく速くなる",
+    "is_new": false
   },
   "投打躍動": {
-    "name": "投打躍動",
     "type": "blue",
-    "category": "pitcher",
-    "description": "投手で出場し、2失点以下だとミートとパワーが上がり、1安打以上だとコントロールと変化量が上がる"
+    "effect": "青特 投手で出場し、2失点以下だとミートとパワーが上がり、1安打以上だとコントロールと変化量が上がる",
+    "is_new": false
   },
   "立ち上がり◯": {
-    "name": "立ち上がり◯",
     "type": "blue",
-    "category": "pitcher",
-    "description": "先発時の1回は球速+4km/h、コントロール+13、変化量+2。2回は球速+2km/h、コントロール+7、変化量+1"
+    "effect": "青特 先発時の1回は球速+4km/h、コントロール+13、変化量+2。2回は球速+2km/h、コントロール+7、変化量+1",
+    "is_new": false
   },
   "威圧感（投手）": {
-    "name": "威圧感（投手）",
     "type": "blue",
-    "category": "pitcher",
-    "description": "2番手以降で登板時、相手打者のミート-20、パワー-20"
+    "effect": "青特 2番手以降で登板時、相手打者のミート-20、パワー-20",
+    "is_new": true
   },
   "重い球": {
-    "name": "重い球",
     "type": "blue",
-    "category": "pitcher",
-    "description": "打たれても打球が飛びにくくなる"
+    "effect": "青特 打たれても打球が飛びにくくなる",
+    "is_new": false
   },
   "勝ち運": {
-    "name": "勝ち運",
     "type": "blue",
-    "category": "pitcher",
-    "description": "登板中、味方打者のパワー+5"
+    "effect": "青特 登板中、味方打者のパワー+5",
+    "is_new": false
   },
   "回またぎ◯": {
-    "name": "回またぎ◯",
     "type": "blue",
-    "category": "pitcher",
-    "description": "リリーフ登板でイニングをまたいでも疲れにくくなる"
+    "effect": "青特 リリーフ登板でイニングをまたいでも疲れにくくなる",
+    "is_new": false
   },
   "緩急◯": {
-    "name": "緩急◯",
     "type": "blue",
-    "category": "pitcher",
-    "description": "ストレートと遅い変化球を組み合わせて投球すると能力が上がる。"
+    "effect": "青特 ストレートと遅い変化球を組み合わせて投球すると能力が上がる。",
+    "is_new": false
   },
   "キレ◯": {
-    "name": "キレ◯",
     "type": "blue",
-    "category": "pitcher",
-    "description": "変化球のキレが良くなる。"
+    "effect": "青特 変化球のキレが良くなる。",
+    "is_new": false
   },
   "緊急登板◯": {
-    "name": "緊急登板◯",
     "type": "blue",
-    "category": "pitcher",
-    "description": "イニング途中での登板時、コントロール+10"
+    "effect": "青特 イニング途中での登板時、コントロール+10",
+    "is_new": false
   },
   "球速安定": {
-    "name": "球速安定",
     "type": "blue",
-    "category": "pitcher",
-    "description": "平均球速+2km/h"
+    "effect": "青特 平均球速+2km/h",
+    "is_new": false
   },
   "クロスファイヤー": {
-    "name": "クロスファイヤー",
     "type": "blue",
-    "category": "pitcher",
-    "description": "対角線のコースにストレートを投げたとき、球速よりも速く見える"
+    "effect": "青特 対角線のコースにストレートを投げたとき、球速よりも速く見える",
+    "is_new": false
   },
   "牽制◯": {
-    "name": "牽制◯",
     "type": "blue",
-    "category": "pitcher",
-    "description": "牽制球を投げるモーションが少し早くなり、悪送球しにくくなる"
+    "effect": "青特 牽制球を投げるモーションが少し早くなり、悪送球しにくくなる",
+    "is_new": false
   },
   "根性◯": {
-    "name": "根性◯",
     "type": "blue",
-    "category": "pitcher",
-    "description": "先発したとき、スタミナ切れになっても能力の減少がある程度のところで止まる"
+    "effect": "青特 先発したとき、スタミナ切れになっても能力の減少がある程度のところで止まる",
+    "is_new": false
   },
   "ジャイロボール": {
-    "name": "ジャイロボール",
     "type": "blue",
-    "category": "pitcher",
-    "description": "ストレートがジャイロ回転し、球速よりも速く見える"
+    "effect": "青特 ストレートがジャイロ回転し、球速よりも速く見える",
+    "is_new": false
   },
   "尻上がり": {
-    "name": "尻上がり",
     "type": "blue",
-    "category": "pitcher",
-    "description": "先発時、7,8回は球速+2km/h、変化量+1、コントロール+5。9回以降は球速+4km/h、変化量+2、コントロール+10"
+    "effect": "青特 先発時、7,8回は球速+2km/h、変化量+1、コントロール+5。9回以降は球速+4km/h、変化量+2、コントロール+10",
+    "is_new": false
   },
   "対強打者◯": {
-    "name": "対強打者◯",
     "type": "blue",
-    "category": "pitcher",
-    "description": "ミートBまたはパワーAの強打者が相手の時、球速+2km/h、変化量+1"
+    "effect": "青特 ミートBまたはパワーAの強打者が相手の時、球速+2km/h、変化量+1",
+    "is_new": false
   },
   "球持ち◯": {
-    "name": "球持ち◯",
     "type": "blue",
-    "category": "pitcher",
-    "description": "球持ちが良くなり、投球した際の投球地点の表示が遅くなる"
+    "effect": "青特 球持ちが良くなり、投球した際の投球地点の表示が遅くなる",
+    "is_new": false
   },
   "対ランナー◯": {
-    "name": "対ランナー◯",
     "type": "blue",
-    "category": "pitcher",
-    "description": "走者一塁か、一塁・三塁のとき、コントロール+5、スタミナ消費量減"
+    "effect": "青特 走者一塁か、一塁・三塁のとき、コントロール+5、スタミナ消費量減",
+    "is_new": false
   },
   "打球反応◯": {
-    "name": "打球反応◯",
     "type": "blue",
-    "category": "pitcher",
-    "description": "ピッチャー返しをさばくのがうまくなる"
+    "effect": "青特 ピッチャー返しをさばくのがうまくなる",
+    "is_new": false
   },
   "奪三振": {
-    "name": "奪三振",
     "type": "blue",
-    "category": "pitcher",
-    "description": "打者を2ストライクに追い込むと球速+2km/h、変化量+1"
+    "effect": "青特 打者を2ストライクに追い込むと球速+2km/h、変化量+1",
+    "is_new": false
   },
   "闘志": {
-    "name": "闘志",
     "type": "blue",
-    "category": "pitcher",
-    "description": "スタミナ切れ状態ではなく、自責点0以下で同点か勝っているときにボールが重くなり、動揺状態になりにくくなる。また、相手打者の威圧感無効化"
+    "effect": "青特 スタミナ切れ状態ではなく、自責点0以下で同点か勝っているときにボールが重くなり、動揺状態になりにくくなる。また、相手打者の威圧感無効化",
+    "is_new": false
   },
   "ナチュラルシュート": {
-    "name": "ナチュラルシュート",
     "type": "blue",
-    "category": "pitcher",
-    "description": "常にストレートが微妙にシュート変化する"
+    "effect": "青特 常にストレートが微妙にシュート変化する",
+    "is_new": false
   },
   "内角攻め": {
-    "name": "内角攻め",
     "type": "blue",
-    "category": "pitcher",
-    "description": "インコースに投げたときにコントロールが良くなる。"
+    "effect": "青特 インコースに投げたときにコントロールが良くなる。",
+    "is_new": false
   },
   "逃げ球": {
-    "name": "逃げ球",
     "type": "blue",
-    "category": "pitcher",
-    "description": "ピッチャーのすっぽ抜けたボールがど真ん中にいきにくくなる"
+    "effect": "青特 ピッチャーのすっぽ抜けたボールがど真ん中にいきにくくなる",
+    "is_new": false
   },
   "低め◯": {
-    "name": "低め◯",
     "type": "blue",
-    "category": "pitcher",
-    "description": "低めへのコントロールが良くなる。"
+    "effect": "青特 低めへのコントロールが良くなる。",
+    "is_new": false
   },
   "真っスラ": {
-    "name": "真っスラ",
     "type": "blue",
-    "category": "pitcher",
-    "description": "＜まっすら＞と読む。ストレートを投げると自然に利き手と反対方向に曲がる球種のこと"
+    "effect": "青特 ＜まっすら＞と読む。ストレートを投げると自然に利き手と反対方向に曲がる球種のこと",
+    "is_new": false
   },
   "要所◯": {
-    "name": "要所◯",
     "type": "blue",
-    "category": "pitcher",
-    "description": "試合終盤でリードしており、走者が生還すると同点か逆転の場面で、球速+2km/h、コントロール+5"
+    "effect": "青特 試合終盤でリードしており、走者が生還すると同点か逆転の場面で、球速+2km/h、コントロール+5",
+    "is_new": false
   },
   "リリース◯": {
-    "name": "リリース◯",
     "type": "blue",
-    "category": "pitcher",
-    "description": "ストレートと変化球の投球モーションが同じになる。"
+    "effect": "青特 ストレートと変化球の投球モーションが同じになる。",
+    "is_new": false
   },
   "窮地◯": {
-    "name": "窮地◯",
     "type": "blue",
-    "category": "fielder",
-    "description": "ストライクカウントの数のぶん、ミート+4、パワー+4"
+    "effect": "青特 ストライクカウントの数のぶん、ミート+4、パワー+4",
+    "is_new": false
   },
   "リベンジ": {
-    "name": "リベンジ",
     "type": "blue",
-    "category": "fielder",
-    "description": "前の打席で抑えられた投手が相手のとき、ミート+10"
+    "effect": "青特 前の打席で抑えられた投手が相手のとき、ミート+10",
+    "is_new": false
   },
   "マルチ弾": {
-    "name": "マルチ弾",
     "type": "blue",
-    "category": "fielder",
-    "description": "その試合でホームランを打っているとパワー+10（2本目以降は無効）"
+    "effect": "青特 その試合でホームランを打っているとパワー+10（2本目以降は無効）",
+    "is_new": false
   },
   "アベレージヒッター": {
-    "name": "アベレージヒッター",
     "type": "blue",
-    "category": "fielder",
-    "description": "ミート打ちのとき、ヒット性の打球が出やすくなる。"
+    "effect": "青特 ミート打ちのとき、ヒット性の打球が出やすくなる。",
+    "is_new": false
   },
   "アウトコースヒッター": {
-    "name": "アウトコースヒッター",
     "type": "blue",
-    "category": "fielder",
-    "description": "アウトコースのボールを打つのが得意になる。インコースヒッター、内角必打とは一緒につけられない。"
+    "effect": "青特 アウトコースのボールを打つのが得意になる。インコースヒッター、内角必打とは一緒につけられない。",
+    "is_new": false
   },
   "威圧感（野手）": {
-    "name": "威圧感（野手）",
     "type": "blue",
-    "category": "fielder",
-    "description": "相手投手の球速-2km/h、コントロール-10、スタミナ消費量+15。自分の前の打者のときは、相手投手の球速-2km/h、コントロール-10、スタミナ消費量+10"
+    "effect": "青特 相手投手の球速-2km/h、コントロール-10、スタミナ消費量+15。自分の前の打者のときは、相手投手の球速-2km/h、コントロール-10、スタミナ消費量+10",
+    "is_new": true
   },
   "インコースヒッター": {
-    "name": "インコースヒッター",
     "type": "blue",
-    "category": "fielder",
-    "description": "インコースのボールを打つのが得意になる。アウトコースヒッター、外角必打とは一緒につけられない。"
+    "effect": "青特 インコースのボールを打つのが得意になる。アウトコースヒッター、外角必打とは一緒につけられない。",
+    "is_new": false
   },
   "意外性": {
-    "name": "意外性",
     "type": "blue",
-    "category": "fielder",
-    "description": "スタメン出場して5回以降で同点、または試合終盤で負けているか同点だと、走者がいるときにパワーがAになる（もとがA以上だと変化なし）"
+    "effect": "青特 スタメン出場して5回以降で同点、または試合終盤で負けているか同点だと、走者がいるときにパワーがAになる（もとがA以上だと変化なし）",
+    "is_new": false
   },
   "いぶし銀": {
-    "name": "いぶし銀",
     "type": "blue",
-    "category": "fielder",
-    "description": "試合終盤に1点差で負けているか同点で、得点圏に走者がいると、ミート打ちをしたときにヒット性の当たりが出やすい"
+    "effect": "青特 試合終盤に1点差で負けているか同点で、得点圏に走者がいると、ミート打ちをしたときにヒット性の当たりが出やすい",
+    "is_new": false
   },
   "固め打ち": {
-    "name": "固め打ち",
     "type": "blue",
-    "category": "fielder",
-    "description": "2安打以上していると、3打席目以降はミート+10、パワー+5"
+    "effect": "青特 2安打以上していると、3打席目以降はミート+10、パワー+5",
+    "is_new": false
   },
   "カット打ち": {
-    "name": "カット打ち",
     "type": "blue",
-    "category": "fielder",
-    "description": "2ストライク時にミート打ちをすると、少し振り遅れてもバットに当たりやすい"
+    "effect": "青特 2ストライク時にミート打ちをすると、少し振り遅れてもバットに当たりやすい",
+    "is_new": false
   },
   "かく乱": {
-    "name": "かく乱",
     "type": "blue",
-    "category": "fielder",
-    "description": "出塁時、相手投手のスタミナ消費量が上がり、内野の守備力が下がる（塁上にこの能力を持つ走者が増えると効果が高まり、投手のコントロールと変化量も低下）"
+    "effect": "青特 出塁時、相手投手のスタミナ消費量が上がり、内野の守備力が下がる（塁上にこの能力を持つ走者が増えると効果が高まり、投手のコントロールと変化量も低下）",
+    "is_new": false
   },
   "逆境◯": {
-    "name": "逆境◯",
     "type": "blue",
-    "category": "fielder",
-    "description": "試合終盤で負けているとき、ミート+15、パワー+15"
+    "effect": "青特 試合終盤で負けているとき、ミート+15、パワー+15",
+    "is_new": false
   },
   "決勝打": {
-    "name": "決勝打",
     "type": "blue",
-    "category": "fielder",
-    "description": "同点または負けているときの6回以降、塁上の走者が生還すれば勝ち越しの場面で、ミート+5"
+    "effect": "青特 同点または負けているときの6回以降、塁上の走者が生還すれば勝ち越しの場面で、ミート+5",
+    "is_new": false
   },
   "高速チャージ": {
-    "name": "高速チャージ",
     "type": "blue",
-    "category": "fielder",
-    "description": "バント時に早くボールに追いつく"
+    "effect": "青特 バント時に早くボールに追いつく",
+    "is_new": false
   },
   "広角打法": {
-    "name": "広角打法",
     "type": "blue",
-    "category": "fielder",
-    "description": "流し方向に強い打球が打てるようになる。プルヒッター、引っ張り屋とは一緒につけられない。"
+    "effect": "青特 流し方向に強い打球が打てるようになる。プルヒッター、引っ張り屋とは一緒につけられない。",
+    "is_new": false
   },
   "サヨナラ男": {
-    "name": "サヨナラ男",
     "type": "blue",
-    "category": "fielder",
-    "description": "本塁打でサヨナラ勝利の場面でパワー+15、得点圏の走者が精悍すればサヨナラ勝利の場面でミート+15"
+    "effect": "青特 本塁打でサヨナラ勝利の場面でパワー+15、得点圏の走者が精悍すればサヨナラ勝利の場面でミート+15",
+    "is_new": false
   },
   "守備職人": {
-    "name": "守備職人",
     "type": "blue",
-    "category": "fielder",
-    "description": "守備時に、送球速度と背走速度が上がる"
+    "effect": "青特 守備時に、送球速度と背走速度が上がる",
+    "is_new": false
   },
   "初球◯": {
-    "name": "初球◯",
     "type": "blue",
-    "category": "fielder",
-    "description": "1ストライクを取られるまで、ミート+10、パワー+5"
+    "effect": "青特 1ストライクを取られるまで、ミート+10、パワー+5",
+    "is_new": false
   },
   "対エース◯": {
-    "name": "対エース◯",
     "type": "blue",
-    "category": "fielder",
-    "description": "エース級の投手との対戦時に、ミート+10、パワー+10"
+    "effect": "青特 エース級の投手との対戦時に、ミート+10、パワー+10",
+    "is_new": false
   },
   "代打◯": {
-    "name": "代打◯",
     "type": "blue",
-    "category": "fielder",
-    "description": "代打として打席に立ったとき、ミート+15、パワー+15"
+    "effect": "青特 代打として打席に立ったとき、ミート+15、パワー+15",
+    "is_new": false
   },
   "ダメ押し": {
-    "name": "ダメ押し",
     "type": "blue",
-    "category": "fielder",
-    "description": "4点以上リードしていると、終盤にパワー+10"
+    "effect": "青特 4点以上リードしていると、終盤にパワー+10",
+    "is_new": false
   },
   "対ストレート◯": {
-    "name": "対ストレート◯",
     "type": "blue",
-    "category": "fielder",
-    "description": "ストレートを打つのが上手くなる"
+    "effect": "青特 ストレートを打つのが上手くなる",
+    "is_new": false
   },
   "対変化球◯": {
-    "name": "対変化球◯",
     "type": "blue",
-    "category": "fielder",
-    "description": "変化球を打つのがうまくなる"
+    "effect": "青特 変化球を打つのがうまくなる",
+    "is_new": false
   },
   "チャンスメーカー": {
-    "name": "チャンスメーカー",
     "type": "blue",
-    "category": "fielder",
-    "description": "走者がいない時、ミート+10、パワー+5"
+    "effect": "青特 走者がいない時、ミート+10、パワー+5",
+    "is_new": false
   },
   "内野安打◯": {
-    "name": "内野安打◯",
     "type": "blue",
-    "category": "fielder",
-    "description": "打ってからのスタートダッシュが速くなる。"
+    "effect": "青特 打ってからのスタートダッシュが速くなる。",
+    "is_new": false
   },
   "流し打ち": {
-    "name": "流し打ち",
     "type": "blue",
-    "category": "fielder",
-    "description": "ミート打ちで流し打ちをするとヒットになりやすい。"
+    "effect": "青特 ミート打ちで流し打ちをするとヒットになりやすい。",
+    "is_new": false
   },
   "粘り打ち": {
-    "name": "粘り打ち",
     "type": "blue",
-    "category": "fielder",
-    "description": "2ストライクに追い込まれたとき、ミート打ちのミート+10"
+    "effect": "青特 2ストライクに追い込まれたとき、ミート打ちのミート+10",
+    "is_new": false
   },
   "パワーヒッター": {
-    "name": "パワーヒッター",
     "type": "blue",
-    "category": "fielder",
-    "description": "強振して打つとホームラン性の打球が出やすくなる"
+    "effect": "青特 強振して打つとホームラン性の打球が出やすくなる",
+    "is_new": false
   },
   "ハイボールヒッター": {
-    "name": "ハイボールヒッター",
     "type": "blue",
-    "category": "fielder",
-    "description": "高めのボールを打つのが得意になる。ローボールヒッター、低球必打とは一緒につけられない"
+    "effect": "青特 高めのボールを打つのが得意になる。ローボールヒッター、低球必打とは一緒につけられない",
+    "is_new": false
   },
   "バント◯": {
-    "name": "バント◯",
     "type": "blue",
-    "category": "fielder",
-    "description": "バントがゴロになりやすい。"
+    "effect": "青特 バントがゴロになりやすい。",
+    "is_new": false
   },
   "バント職人": {
-    "name": "バント職人",
     "type": "blue",
-    "category": "fielder",
-    "description": "バントが非常にゴロになりやすい。"
+    "effect": "青特 バントが非常にゴロになりやすい。",
+    "is_new": false
   },
   "プレッシャーラン": {
-    "name": "プレッシャーラン",
     "type": "blue",
-    "category": "fielder",
-    "description": "併殺になありそうなタイミングで一塁走者が二塁にスライディングしたとき、相手野手の一塁送球が悪送球になることがある"
+    "effect": "青特 併殺になありそうなタイミングで一塁走者が二塁にスライディングしたとき、相手野手の一塁送球が悪送球になることがある",
+    "is_new": false
   },
   "プルヒッター": {
-    "name": "プルヒッター",
     "type": "blue",
-    "category": "fielder",
-    "description": "強振で引っ張ると強い打球が飛ぶようになる。広角打法、広角砲とは一緒につけられない。"
+    "effect": "青特 強振で引っ張ると強い打球が飛ぶようになる。広角打法、広角砲とは一緒につけられない。",
+    "is_new": false
   },
   "ヘッドスライディング": {
-    "name": "ヘッドスライディング",
     "type": "blue",
-    "category": "fielder",
-    "description": "きわどいときベースに頭からすべり込む"
+    "effect": "青特 きわどいときベースに頭からすべり込む",
+    "is_new": false
   },
   "ホーム突入": {
-    "name": "ホーム突入",
     "type": "blue",
-    "category": "fielder",
-    "description": "走者のとき、本塁でクロスプレイが発生した際、相手捕手がでボールをこぼすことがある"
+    "effect": "青特 走者のとき、本塁でクロスプレイが発生した際、相手捕手がでボールをこぼすことがある",
+    "is_new": false
   },
   "ホーム死守": {
-    "name": "ホーム死守",
     "type": "blue",
-    "category": "fielder",
-    "description": "捕手のとき、相手走者の「ホーム突入」および「重戦車」の発生確率を下げる"
+    "effect": "青特 捕手のとき、相手走者の「ホーム突入」および「重戦車」の発生確率を下げる",
+    "is_new": false
   },
   "満塁男": {
-    "name": "満塁男",
     "type": "blue",
-    "category": "fielder",
-    "description": "満塁のとき、ミート+15、パワー+15"
+    "effect": "青特 満塁のとき、ミート+15、パワー+15",
+    "is_new": false
   },
   "ムード◯": {
-    "name": "ムード◯",
     "type": "blue",
-    "category": "fielder",
-    "description": "味方野手のミート+5、パワー+5"
+    "effect": "青特 味方野手のミート+5、パワー+5",
+    "is_new": false
   },
   "ラインドライブ": {
-    "name": "ラインドライブ",
     "type": "blue",
-    "category": "fielder",
-    "description": "強振で打った際にライナー性の打球が出やすくなる（ゴロは除く）。パワーヒッター、アーチストとは一緒につけられない"
+    "effect": "青特 強振で打った際にライナー性の打球が出やすくなる（ゴロは除く）。パワーヒッター、アーチストとは一緒につけられない",
+    "is_new": false
   },
   "レーザービーム": {
-    "name": "レーザービーム",
     "type": "blue",
-    "category": "fielder",
-    "description": "外野守備時に軌道が低く速い送球をする"
+    "effect": "青特 外野守備時に軌道が低く速い送球をする",
+    "is_new": false
   },
   "ローボールヒッター": {
-    "name": "ローボールヒッター",
     "type": "blue",
-    "category": "fielder",
-    "description": "低めのボールを打つのが得意になる。ハイボールヒッター、高球必打とは一緒につけられない"
+    "effect": "青特 低めのボールを打つのが得意になる。ハイボールヒッター、高球必打とは一緒につけられない",
+    "is_new": false
   },
   "対ランナー×": {
     "name": "対ランナー×",
@@ -1110,219 +935,534 @@
     "description": "ランナーが一塁、または一・三塁にいるときにピッチャーの能力が下がる"
   },
   "一発": {
-    "name": "一発",
     "type": "red",
-    "category": "pitcher",
-    "description": "失投時にど真ん中にいく確率が上がる"
+    "effect": "赤特 失投時にど真ん中にいく確率が上がる",
+    "is_new": false
   },
   "ガラスのハート": {
-    "name": "ガラスのハート",
     "type": "red",
-    "category": "pitcher",
-    "description": "打たれるとものすごく動揺しやすくなる"
+    "effect": "赤特 打たれるとものすごく動揺しやすくなる",
+    "is_new": false
   },
   "軽い球": {
-    "name": "軽い球",
     "type": "red",
-    "category": "pitcher",
-    "description": "打たれると打球が飛びやすくなる"
+    "effect": "赤特 打たれると打球が飛びやすくなる",
+    "is_new": false
   },
   "シュート回転": {
-    "name": "シュート回転",
     "type": "red",
-    "category": "pitcher",
-    "description": "ストレートがときどきシュート方向に曲がる"
+    "effect": "赤特 ストレートがときどきシュート方向に曲がる",
+    "is_new": false
   },
   "四球": {
-    "name": "四球",
     "type": "red",
-    "category": "pitcher",
-    "description": "3ボールになると、コントロール-20"
+    "effect": "赤特 3ボールになると、コントロール-20",
+    "is_new": false
   },
   "スロースターター": {
-    "name": "スロースターター",
     "type": "red",
-    "category": "pitcher",
-    "description": "先発時の1回は球速-4km/h、コントロール-13、変化量-2。2回は球速-2km/h、コントロール-7、変化量-1"
+    "effect": "赤特 先発時の1回は球速-4km/h、コントロール-13、変化量-2。2回は球速-2km/h、コントロール-7、変化量-1",
+    "is_new": false
   },
   "寸前": {
-    "name": "寸前",
     "type": "red",
-    "category": "pitcher",
-    "description": "最終回または先発時の5回でリードしていると、球速-2km/h、コントロール-10"
+    "effect": "赤特 最終回または先発時の5回でリードしていると、球速-2km/h、コントロール-10",
+    "is_new": false
   },
   "短気": {
-    "name": "短気",
     "type": "red",
-    "category": "pitcher",
-    "description": "動揺状態になったとき、コントロール-10"
+    "effect": "赤特 動揺状態になったとき、コントロール-10",
+    "is_new": false
   },
   "ノミの心臓": {
-    "name": "ノミの心臓",
     "type": "red",
-    "category": "pitcher",
-    "description": "得点圏に走者がいるとき、変化量-3"
+    "effect": "赤特 得点圏に走者がいるとき、変化量-3",
+    "is_new": false
   },
   "負け運": {
-    "name": "負け運",
     "type": "red",
-    "category": "pitcher",
-    "description": "登板中、味方打者のパワー-5"
+    "effect": "赤特 登板中、味方打者のパワー-5",
+    "is_new": false
   },
   "乱調": {
-    "name": "乱調",
     "type": "red",
-    "category": "pitcher",
-    "description": "先発登板での3回以降のイニング開始時、確率でコントロール-20"
+    "effect": "赤特 先発登板での3回以降のイニング開始時、確率でコントロール-20",
+    "is_new": false
   },
   "エラー": {
-    "name": "エラー",
     "type": "red",
-    "category": "fielder",
-    "description": "得点圏に走者がいるとき、守備時にエラーしやすくなる"
+    "effect": "赤特 得点圏に走者がいるとき、守備時にエラーしやすくなる",
+    "is_new": false
   },
   "三振": {
-    "name": "三振",
     "type": "red",
-    "category": "fielder",
-    "description": "2ストライクに追い込まれると、ミート-20（フルカウント時を除く）"
+    "effect": "赤特 2ストライクに追い込まれると、ミート-20（フルカウント時を除く）",
+    "is_new": false
   },
   "扇風機": {
-    "name": "扇風機",
     "type": "red",
-    "category": "fielder",
-    "description": "2ストライクに追い込まれると、ミート-30（フルカウント時を除く）"
+    "effect": "赤特 2ストライクに追い込まれると、ミート-30（フルカウント時を除く）",
+    "is_new": false
   },
   "併殺": {
-    "name": "併殺",
     "type": "red",
-    "category": "fielder",
-    "description": "ノーアウトあるいは1アウトで一塁ランナーがいるときにゴロを打ちやすくなる"
+    "effect": "赤特 ノーアウトあるいは1アウトで一塁ランナーがいるときにゴロを打ちやすくなる",
+    "is_new": false
   },
   "ムード✕": {
-    "name": "ムード✕",
     "type": "red",
-    "category": "fielder",
-    "description": "味方野手のミート-5、パワー-5"
+    "effect": "赤特 味方野手のミート-5、パワー-5",
+    "is_new": false
   },
   "全開": {
-    "name": "全開",
-    "type": "red",
-    "category": "all",
-    "description": "得点圏に走者がいてスタミナ残量が約半分以上のとき、球質が重くなりノビがよくなりスタミナ消費量が増える"
+    "type": "normal",
+    "effect": "青赤特 得点圏に走者がいてスタミナ残量が約半分以上のとき、球質が重くなりノビがよくなりスタミナ消費量が増える",
+    "is_new": false
   },
   "悪球打ち": {
-    "name": "悪球打ち",
-    "type": "red",
-    "category": "all",
-    "description": "ストライクゾーンから外れたボール球にも手が出るようになる"
+    "type": "normal",
+    "effect": "青赤特 ストライクゾーンから外れたボール球にも手が出るようになる",
+    "is_new": false
   },
   "荒れ球": {
-    "name": "荒れ球",
-    "type": "red",
-    "category": "all",
-    "description": "ストレートのブレ幅が通常より大きく、ノビが少しつく"
+    "type": "normal",
+    "effect": "青赤特 ストレートのブレ幅が通常より大きく、ノビが少しつく",
+    "is_new": false
   },
   "ゴロピッチャー": {
-    "name": "ゴロピッチャー",
-    "type": "red",
-    "category": "all",
-    "description": "相手バッターの弾道がやや下がる"
+    "type": "normal",
+    "effect": "青赤特 相手バッターの弾道がやや下がる",
+    "is_new": false
   },
   "力配分": {
-    "name": "力配分",
-    "type": "red",
-    "category": "all",
-    "description": "パワーE以下の打者か、得点圏に走者が存在してパワーF以下の打者が相手のとき、球速-2km/h、変化量-1、スタミナ消費量増"
+    "type": "normal",
+    "effect": "青赤特 パワーE以下の打者か、得点圏に走者が存在してパワーF以下の打者が相手のとき、球速-2km/h、変化量-1、スタミナ消費量増",
+    "is_new": false
   },
   "ポーカーフェイス": {
-    "name": "ポーカーフェイス",
-    "type": "red",
-    "category": "all",
-    "description": "疲れや動揺が表情に出なくなる。闘志とは一緒につけられない"
+    "type": "normal",
+    "effect": "青赤特 疲れや動揺が表情に出なくなる。闘志とは一緒につけられない",
+    "is_new": false
   },
   "打たれ強さ": {
-    "name": "打たれ強さ",
     "type": "blue",
-    "category": "all",
-    "description": "打たれたときに動揺しにくいかどうか、A~Gまでの7段階ある。"
+    "effect": "青特 打たれたときに動揺しにくいかどうか、A~Gまでの7段階ある。",
+    "is_new": false
   },
   "回復": {
-    "name": "回復",
     "type": "blue",
-    "category": "all",
-    "description": "疲れがとれやすいかどうか、A〜Gまでの7段階ある"
+    "effect": "青特 疲れがとれやすいかどうか、A〜Gまでの7段階ある",
+    "is_new": false
   },
   "クイック": {
-    "name": "クイック",
     "type": "blue",
-    "category": "all",
-    "description": "クイックがうまく盗塁がされにくいかどうか、A〜Gの7段階ある"
+    "effect": "青特 クイックがうまく盗塁がされにくいかどうか、A〜Gの7段階ある",
+    "is_new": false
   },
   "対ピンチ": {
-    "name": "対ピンチ",
     "type": "blue",
-    "category": "all",
-    "description": "得点圏にランナーがいるときに強いかどうか、A〜Gまでの7段階ある"
+    "effect": "青特 得点圏にランナーがいるときに強いかどうか、A〜Gまでの7段階ある",
+    "is_new": false
   },
   "対左打者": {
-    "name": "対左打者",
     "type": "blue",
-    "category": "all",
-    "description": "左のバッターに対して強いかどうか、A〜Gまでの7段階ある"
+    "effect": "青特 左のバッターに対して強いかどうか、A〜Gまでの7段階ある",
+    "is_new": false
   },
   "ノビ": {
-    "name": "ノビ",
     "type": "blue",
-    "category": "all",
-    "description": "ストレートのノビが良いかどうか、A〜Gまでの7段階ある"
+    "effect": "青特 ストレートのノビが良いかどうか、A〜Gまでの7段階ある",
+    "is_new": false
   },
   "キャッチャー": {
-    "name": "キャッチャー",
     "type": "blue",
-    "category": "all",
-    "description": "ピッチャーの能力をうまく引き出せるかどうか✕〜◯までの4段階ある"
+    "effect": "青特 ピッチャーの能力をうまく引き出せるかどうか✕〜◎までの4段階ある",
+    "is_new": false
   },
   "ケガしにくさ": {
-    "name": "ケガしにくさ",
     "type": "blue",
-    "category": "all",
-    "description": "✕〜◯までの4段階あり、◯、◯は体力消費が軽減される"
+    "effect": "青特 ✕〜◎までの4段階あり、◯、◎は体力消費が軽減される",
+    "is_new": false
   },
   "走塁": {
-    "name": "走塁",
     "type": "blue",
-    "category": "all",
-    "description": "走塁がうまいかどうか、✕〜◯までの4段階ある"
+    "effect": "青特 走塁がうまいかどうか、✕〜◎までの4段階ある",
+    "is_new": false
   },
   "送球": {
-    "name": "送球",
     "type": "blue",
-    "category": "all",
-    "description": "送球がそれにくいかどうか、✕〜◯までの4段階ある"
+    "effect": "青特 送球がそれにくいかどうか、✕〜◎までの4段階ある",
+    "is_new": false
   },
   "対左投手": {
-    "name": "対左投手",
     "type": "blue",
-    "category": "all",
-    "description": "左のピッチャーに対して強いかどうか、✕〜◯までの4段階ある"
+    "effect": "青特 左のピッチャーに対して強いかどうか、✕〜◎までの4段階ある",
+    "is_new": false
   },
   "チャンス": {
-    "name": "チャンス",
     "type": "blue",
-    "category": "all",
-    "description": "チャンスのときの勝負強さ、✕〜◯までの4段階ある"
+    "effect": "青特 チャンスのときの勝負強さ、✕〜◎までの4段階ある",
+    "is_new": false
   },
   "盗塁": {
-    "name": "盗塁",
     "type": "blue",
-    "category": "all",
-    "description": "盗塁がうまいかどうか、✕〜◯までの4段階ある"
+    "effect": "青特 盗塁がうまいかどうか、✕〜◎までの4段階ある",
+    "is_new": false
   },
   "天才": {
     "name": "天才",
     "type": "gold",
     "category": "all",
     "description": "All stats significantly increased."
+  },
+  "小坂ゾーン": {
+    "type": "gold",
+    "effect": "金特 守備時に送球速度と背走速度が上がり、動き出しも早くなる",
+    "is_new": false
+  },
+  "火の玉ストレート": {
+    "type": "gold",
+    "effect": "金特 ストレートのノビがものすごく良い",
+    "is_new": true
+  },
+  "怪物": {
+    "type": "gold",
+    "effect": "金特 ストレートのノビがものすごく良い",
+    "is_new": true
+  },
+  "世界の代打男": {
+    "type": "gold",
+    "effect": "金特 代打のときに打力がすごく上がる",
+    "is_new": true
+  },
+  "レッドスター": {
+    "type": "gold",
+    "effect": "金特 盗塁がものすごくうまく、投手に動揺を与える",
+    "is_new": true
+  },
+  "ゴジラ": {
+    "type": "gold",
+    "effect": "金特 前打者と自身の打席時に威圧感を放ち、投手にプレッシャーを与える",
+    "is_new": true
+  },
+  "SHO-TIME": {
+    "type": "gold",
+    "effect": "金特 投球成績が走塁に、打撃成績がストレートのノビに好影響を与える",
+    "is_new": true
+  },
+  "ID野球の申し子": {
+    "type": "gold",
+    "effect": "金特 球界を代表する捕手",
+    "is_new": true
+  },
+  "Big Fly": {
+    "type": "gold",
+    "effect": "金特 強振時の打球に角度補正が入りホームラン性の打球になりやすくなる",
+    "is_new": true
+  },
+  "秋男": {
+    "type": "blue",
+    "effect": "青特 9~11月の試合でミート+10、パワー+5",
+    "is_new": false
+  },
+  "夏男": {
+    "type": "blue",
+    "effect": "青特 7~8月の試合でミート+10、パワー+5",
+    "is_new": false
+  },
+  "春男": {
+    "type": "blue",
+    "effect": "青特 3~5月の試合でミート+10、パワー+5",
+    "is_new": false
+  },
+  "お祭り男": {
+    "type": "blue",
+    "effect": "青特 特別な試合のときにミート+10、パワー+5",
+    "is_new": false
+  },
+  "△△キラー": {
+    "type": "blue",
+    "effect": "青特 特定の球団と対戦すると、ピッチャーなら相手バッターの打力を下げ、バッターなら自身の打力を上げる",
+    "is_new": false
+  },
+  "国際大会◯": {
+    "type": "blue",
+    "effect": "青特 国際大会の舞台で能力が上がる",
+    "is_new": false
+  },
+  "必殺仕事人": {
+    "type": "blue",
+    "effect": "青特 チャンスでの勝負強さ",
+    "is_new": false
+  },
+  "楽天キラー": {
+    "type": "blue",
+    "effect": "青特 楽天に強い",
+    "is_new": false
+  },
+  "阪神キラー": {
+    "type": "blue",
+    "effect": "青特 阪神に強い",
+    "is_new": false
+  },
+  "西武キラー": {
+    "type": "blue",
+    "effect": "青特 西武に強い",
+    "is_new": false
+  },
+  "広島キラー": {
+    "type": "blue",
+    "effect": "青特 広島に強い",
+    "is_new": false
+  },
+  "巨人キラー": {
+    "type": "blue",
+    "effect": "青特 巨人に強い",
+    "is_new": false
+  },
+  "中日キラー": {
+    "type": "blue",
+    "effect": "青特 中日に強い",
+    "is_new": false
+  },
+  "オリックスキラー": {
+    "type": "blue",
+    "effect": "青特 オリックスに強い",
+    "is_new": false
+  },
+  "DeNAキラー": {
+    "type": "blue",
+    "effect": "青特 DeNAに強い",
+    "is_new": false
+  },
+  "ヤクルトキラー": {
+    "type": "blue",
+    "effect": "青特 ヤクルトに強い",
+    "is_new": false
+  },
+  "ロッテキラー": {
+    "type": "blue",
+    "effect": "青特 ロッテに強い",
+    "is_new": false
+  },
+  "ホークスキラー": {
+    "type": "blue",
+    "effect": "青特 ホークスに強い",
+    "is_new": false
+  },
+  "ファイターズキラー": {
+    "type": "blue",
+    "effect": "青特 ファイターズに強い",
+    "is_new": false
+  },
+  "帳尻合わせ": {
+    "type": "blue",
+    "effect": "青特 自分が無安打且つ大量リード時、3打席目以降ミートが上がる",
+    "is_new": true
+  },
+  "対応変化球◯": {
+    "type": "blue",
+    "effect": "青特 変化球を打つのがうまくなる",
+    "is_new": false
+  },
+  "存在感（野手）": {
+    "type": "blue",
+    "effect": "青特 前打者と自身の打席時に存在感を放ち、相手投手のコントロールと消費スタミナに影響を与える。",
+    "is_new": false
+  },
+  "存在感（投手）": {
+    "type": "blue",
+    "effect": "青特 リリーフ登板時にマウンド上で存在感を放ち、相手打者のミートとパワーに影響を与える",
+    "is_new": false
+  },
+  "三本柱": {
+    "type": "blue",
+    "effect": "青特 登板すると勝ちを呼び込む",
+    "is_new": false
+  },
+  "ブロッキング": {
+    "type": "blue",
+    "effect": "青特 ボールを後ろに逸らしにくい",
+    "is_new": true
+  },
+  "フレーミング◎": {
+    "type": "blue",
+    "effect": "青特 巧みな捕球で投手を助け、コントロールをすごく上げる",
+    "is_new": true
+  },
+  "フレーミング◯": {
+    "type": "blue",
+    "effect": "青特 巧みな捕球で投手を助け、コントロールを上げる",
+    "is_new": true
+  },
+  "ストライク先行": {
+    "type": "blue",
+    "effect": "青特 投げた球がストライクゾーンに行きやすい",
+    "is_new": true
+  },
+  "シュート打ちの名人": {
+    "type": "blue",
+    "effect": "青特 内角のボールを打つのが得意になる",
+    "is_new": false
+  },
+  "ささやき破り": {
+    "type": "blue",
+    "effect": "青特 相手捕手の特殊能力「ささやき戦術」の効果を受けなくする",
+    "is_new": true
+  },
+  "Mrフライヤーズ": {
+    "type": "blue",
+    "effect": "青特 チームのムードを良くする",
+    "is_new": true
+  },
+  "Mrオリオンズ": {
+    "type": "blue",
+    "effect": "青特 チームのムードを良くする",
+    "is_new": true
+  },
+  "100万ドルの内野陣": {
+    "type": "blue",
+    "effect": "青特 守備のとき熟練の技をみせる",
+    "is_new": true
+  },
+  "死球集中": {
+    "type": "normal",
+    "effect": "青赤特 投手が失投したときに死球になりやすい",
+    "is_new": true
+  },
+  "国際大会✕": {
+    "type": "red",
+    "effect": "赤特 国際大会の舞台で能力が下がる",
+    "is_new": false
+  },
+  "対ランナー✕": {
+    "type": "red",
+    "effect": "赤特 ランナーが一塁、または一・三塁にいるときにピッチャーの能力が下がる",
+    "is_new": false
+  },
+  "対ランナー": {
+    "type": "red",
+    "effect": "赤特 ランナーが一塁または一・三塁時に能力が下がる",
+    "is_new": false
+  },
+  "ボール先行": {
+    "type": "red",
+    "effect": "赤特 投げたボールがボールゾーンに行きやすい",
+    "is_new": true
+  },
+  "調子安定": {
+    "type": "green",
+    "effect": "緑特 活躍が調子に影響されにくくなる",
+    "is_new": false
+  },
+  "調子極端": {
+    "type": "green",
+    "effect": "緑特 活躍が調子に影響されやすくなる",
+    "is_new": false
+  },
+  "速球中心": {
+    "type": "green",
+    "effect": "緑特 投球が速球中心になる。変化球中心とは一緒につけられない",
+    "is_new": false
+  },
+  "変化球中心": {
+    "type": "green",
+    "effect": "緑特 投球が変化球中心になる。速球中心とは一緒につけられない",
+    "is_new": false
+  },
+  "投球位置左": {
+    "type": "green",
+    "effect": "緑特 打者から見て投手プレートの左端（三塁側）に立つようになる。投球位置右とは一緒につけられない",
+    "is_new": false
+  },
+  "投球位置右": {
+    "type": "green",
+    "effect": "緑特 打者から見て投手プレートの右端（一塁側）に立つようになる。投球位置左とは一緒につけられない",
+    "is_new": false
+  },
+  "テンポ◯": {
+    "type": "green",
+    "effect": "緑特 COM操作時の投球時の投球間隔が短い",
+    "is_new": false
+  },
+  "野手調子安定": {
+    "type": "green",
+    "effect": "緑特 バッティングが調子に影響されにくくなる。野手調子極端とは一緒につけられない",
+    "is_new": false
+  },
+  "野手調子極端": {
+    "type": "green",
+    "effect": "緑特 バッティングが調子に影響されやすくなる。野手調子安定とは一緒につけられない",
+    "is_new": false
+  },
+  "人気者": {
+    "type": "green",
+    "effect": "緑特 打席に立ったときの歓声が大きい",
+    "is_new": false
+  },
+  "強振多用": {
+    "type": "green",
+    "effect": "緑特 強振をよく使うようになる、ミート多用とは一緒につけられない",
+    "is_new": false
+  },
+  "ミート多用": {
+    "type": "green",
+    "effect": "緑特 ミート打ちをよく使うようになる",
+    "is_new": false
+  },
+  "積極打法": {
+    "type": "green",
+    "effect": "緑特 打撃が積極的になる。慎重打法とは一緒につけられない",
+    "is_new": false
+  },
+  "慎重打法": {
+    "type": "green",
+    "effect": "緑特 打撃が慎重になる。積極打法とは一緒につけられない",
+    "is_new": false
+  },
+  "積極走塁": {
+    "type": "green",
+    "effect": "緑特 走塁が積極的になる",
+    "is_new": false
+  },
+  "積極守備": {
+    "type": "green",
+    "effect": "緑特 守備が積極的になる",
+    "is_new": false
+  },
+  "チームプレイ◯": {
+    "type": "green",
+    "effect": "緑特 COM操作の打撃時に送りバントをしやすい",
+    "is_new": false
+  },
+  "チームプレイ✕": {
+    "type": "green",
+    "effect": "緑特 COM操作の打撃時に送りバントをしにくい",
+    "is_new": false
+  },
+  "選球眼": {
+    "type": "green",
+    "effect": "緑特 ストライクとボールの見極めが良くなる",
+    "is_new": false
+  },
+  "積極盗塁": {
+    "type": "green",
+    "effect": "緑特 盗塁する確率が上がる。慎重盗塁と併用不可。",
+    "is_new": false
+  },
+  "慎重盗塁": {
+    "type": "green",
+    "effect": "緑特 盗塁する確率が下がる。積極盗塁と併用不可。",
+    "is_new": false
+  },
+  "スーパーカートリオ": {
+    "type": "green",
+    "effect": "緑特 盗塁する確率が上がる。慎重盗塁と併用不可。",
+    "is_new": false
+  },
+  "ブンブン丸": {
+    "type": "green",
+    "effect": "緑特 強振をよく使うようになる、ミート多用とは一緒につけられない",
+    "is_new": false
   }
 }

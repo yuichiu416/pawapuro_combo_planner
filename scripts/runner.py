@@ -23,7 +23,7 @@ import re
 import time
 
 # Scripts that require manual setup — exclude from default pipeline run
-AUTO_SKIP = {'11', '21', '22', '23'}
+AUTO_SKIP = {'01', '02', '11', '21', '22', '23'}
 
 def get_all_scripts():
     pattern = re.compile(r'^(\d{2})_.*\.py$')

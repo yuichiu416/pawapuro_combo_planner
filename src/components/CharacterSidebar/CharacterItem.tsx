@@ -132,7 +132,7 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({
               styles.position,
             )}
           >
-            {data?.position || 'MGR'}
+            {data?.position || ''}
           </span>
         </div>
 
