@@ -3,6 +3,14 @@
 import { cleanup, render, screen, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it } from 'vitest';
 import App from '@/App';
+vi.mock('@/lib/supabase', () => ({
+  supabase: {
+    auth: {
+      getSession: vi.fn(() => Promise.resolve({ data: { session: null } })),
+      onAuthStateChange: vi.fn(() => ({ data: { subscription: { unsubscribe: vi.fn() } } })),
+    },
+  },
+}));
 
 // Helper to simulate window width for Tailwind responsive classes
 const setWidth = (width: number) => {
@@ -12,6 +20,7 @@ const setWidth = (width: number) => {
 
 describe('UI text regression', () => {
   beforeEach(() => {
+    localStorage.setItem('パワプロ_planner_game_version', '2024-2025');
     cleanup();
     setWidth(1280); // Default to Desktop
   });

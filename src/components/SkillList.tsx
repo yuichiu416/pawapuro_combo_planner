@@ -20,7 +20,7 @@ const SkillList: React.FC = () => {
 
     return skillEntries.filter((skill) => {
       const name = (skill?.name ?? '').toLowerCase();
-      const description = (skill?.description ?? '').toLowerCase();
+      const description = (skill?.description ?? skill?.effect ?? '').toLowerCase();
       return name.includes(term) || description.includes(term);
     });
   }, [searchTerm]);
@@ -68,7 +68,7 @@ const SkillList: React.FC = () => {
                   <h4 className="font-black text-black text-xl">{skill.name}</h4>
                 </div>
                 <p className="text-base text-black font-medium leading-relaxed mt-1">
-                  {skill.description}
+                  {skill.description || skill.effect?.replace(/^[金青赤緑]特\s*/, '') || ''}
                 </p>
               </div>
             </div>

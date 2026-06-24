@@ -7,7 +7,7 @@ import { useGameVersion } from '@/contexts/GameVersionContext';
 import { cn } from '@/utils/style';
 
 export const VersionToggle: React.FC = () => {
-  const { version, set, versions } = useGameVersion();
+  const { version, setVersion, versions } = useGameVersion();
   const [isOpen, setIsOpen] = useState(false);
   const [menuPos, setMenuPos] = useState<{ top: number; left: number } | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);

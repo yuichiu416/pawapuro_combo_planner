@@ -2,9 +2,18 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import App from '@/App';
+vi.mock('@/lib/supabase', () => ({
+  supabase: {
+    auth: {
+      getSession: vi.fn(() => Promise.resolve({ data: { session: null } })),
+      onAuthStateChange: vi.fn(() => ({ data: { subscription: { unsubscribe: vi.fn() } } })),
+    },
+  },
+}));
 
 describe('Responsive Layout & Tab Regression', () => {
   beforeEach(() => {
+    localStorage.setItem('パワプロ_planner_game_version', '2024-2025');
     // Simulate mobile viewport width
     global.innerWidth = 375;
     window.dispatchEvent(new Event('resize'));

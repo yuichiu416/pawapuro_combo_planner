@@ -4,6 +4,36 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Header } from '@/components/Header';
 
+vi.mock('@/lib/supabase', () => ({
+  supabase: {
+    auth: {
+      getSession: vi.fn(() => Promise.resolve({ data: { session: null } })),
+      onAuthStateChange: vi.fn(() => ({ data: { subscription: { unsubscribe: vi.fn() } } })),
+    },
+  },
+}));
+
+vi.mock('@/data/2024-2025/characters.json', () => ({ default: {} }));
+vi.mock('@/data/2024-2025/combos.json', () => ({ default: {} }));
+vi.mock('@/data/2024-2025/maps.json', () => ({ default: {} }));
+vi.mock('@/data/2024-2025/character_mapping.json', () => ({ default: { by_name: {}, by_id: {} } }));
+vi.mock('@/data/2026-2027/characters.json', () => ({ default: {} }));
+vi.mock('@/data/2026-2027/combos.json', () => ({ default: {} }));
+vi.mock('@/data/2026-2027/maps.json', () => ({ default: {} }));
+vi.mock('@/data/2026-2027/character_mapping.json', () => ({ default: { by_name: {}, by_id: {} } }));
+
+vi.mock('@/data/skills.json', () => ({
+  default: {
+    怪物球威: { name: '怪物球威', type: 'gold', category: 'pitcher', effect: '球質が非常に重くなる' },
+    強心臟: { name: '強心臟', type: 'gold', category: 'pitcher', effect: '強靭な精神力を持つ' },
+    精密機械: { name: '精密機械', type: 'gold', category: 'pitcher', effect: '低めへのコントロールが上がる' },
+    不屈之魂: { name: '不屈之魂', type: 'gold', category: 'pitcher', effect: '根性を持つ' },
+    終結者: { name: '終結者', type: 'gold', category: 'pitcher', effect: 'クローザー適性' },
+    広角打法: { name: '広角打法', type: 'gold', category: 'fielder', effect: '広角に打てる' },
+    '内野安打○': { name: '内野安打○', type: 'gold', category: 'fielder', effect: '内野安打が出やすい' },
+  },
+}));
+
 const MOCK_PITCHER_SKILLS = ['怪物球威', '強心臟', '精密機械', '不屈之魂', '終結者'];
 
 describe('Header Component', () => {
@@ -44,6 +74,7 @@ describe('Header Component', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+    localStorage.setItem('パワプロ_planner_game_version', '2024-2025');
   });
 
   describe('UI Layout & Actions', () => {

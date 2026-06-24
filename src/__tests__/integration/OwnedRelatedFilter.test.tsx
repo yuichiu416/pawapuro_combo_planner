@@ -4,6 +4,14 @@ import { cleanup, getByTestId, render, screen, waitFor, within } from '@testing-
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import App from '@/App';
+vi.mock('@/lib/supabase', () => ({
+  supabase: {
+    auth: {
+      getSession: vi.fn(() => Promise.resolve({ data: { session: null } })),
+      onAuthStateChange: vi.fn(() => ({ data: { subscription: { unsubscribe: vi.fn() } } })),
+    },
+  },
+}));
 
 const SIDEBAR_ID = 'desktop-character-sidebar';
 
@@ -47,6 +55,7 @@ describe('Owned Related Filter - Multi-Character Discovery', () => {
     cleanup();
     vi.clearAllMocks();
     localStorage.clear();
+    localStorage.setItem('パワプロ_planner_game_version', '2024-2025');
   });
 
   it('displays combos for all owned characters and handles removal', async () => {

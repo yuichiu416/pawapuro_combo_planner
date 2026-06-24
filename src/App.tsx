@@ -138,6 +138,14 @@ const AppContent: React.FC = () => {
       style={{ fontSize: `${manager.fontScale}rem` }}
       data-testid="app-container"
     >
+      {manager.isLoading && (
+        <div className="fixed inset-0 z-[9999] bg-white/70 flex items-center justify-center backdrop-blur-sm">
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-10 h-10 border-4 border-blue-200 border-t-[#0059C1] rounded-full animate-spin" />
+            <span className="text-sm font-black text-[#0059C1] tracking-widest uppercase">Loading…</span>
+          </div>
+        </div>
+      )}
       <ClearConfirmModal
         isOpen={isClearModalOpen}
         onClose={() => setIsClearModalOpen(false)}

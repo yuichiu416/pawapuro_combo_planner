@@ -1,6 +1,18 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import App from '@/App';
+vi.mock('@/lib/supabase', () => ({
+  supabase: {
+    auth: {
+      getSession: vi.fn(() => Promise.resolve({ data: { session: null } })),
+      onAuthStateChange: vi.fn(() => ({ data: { subscription: { unsubscribe: vi.fn() } } })),
+    },
+  },
+}));
+
+beforeEach(() => {
+  localStorage.setItem('パワプロ_planner_game_version', '2024-2025');
+});
 
 describe('Font Scaling System', () => {
   it('updates document root font size when scaling buttons are clicked', () => {

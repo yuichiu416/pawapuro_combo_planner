@@ -189,7 +189,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
                     hasHit ? 'text-rose-900' : 'text-slate-500',
                   )}
                 >
-                  {detail?.description || '---'}
+                  {(detail?.description || detail?.effect?.replace(/^[金青赤緑]特\s*/, '') || '---')}
                 </p>
               </div>
             );

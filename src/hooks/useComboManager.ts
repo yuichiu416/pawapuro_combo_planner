@@ -25,7 +25,7 @@ interface SaveSlot {
 
 export const useComboManager = () => {
   // --- Game Version (data set) ---
-  const { version, setVersion, versions, gameData } = useGameVersion();
+  const { version, setVersion, versions, gameData, isLoading } = useGameVersion();
   const charactersData = gameData.characters as Record<string, Character>;
   const combosData = gameData.combos as Record<string, Combo>;
   const mapsData = gameData.maps as Record<string, any>;
@@ -472,6 +472,7 @@ export const useComboManager = () => {
     setVersion,
     versions,
     charactersData,
+    isLoading,
 
     slots,
     activeSlotNumber,

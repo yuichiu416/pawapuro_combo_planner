@@ -10,8 +10,8 @@ import { useComboManager } from '../../hooks/useComboManager';
 
 // 1. HOIST THE DATA
 const { mockCombos, mockChars, mockMapping, mockSkills } = await vi.hoisted(async () => {
-  const combos = await import('../fixtures/combos.mock.json');
-  const mapping = await import('../fixtures/character_mapping.mock.json');
+  const combos = await import('@/__tests__/fixtures/combos.mock.json');
+  const mapping = await import('@/__tests__/fixtures/character_mapping.mock.json');
 
   const skills = {
     パワーヒッター: { name: 'パワーヒッター', type: 'gold', category: 'fielder' },
