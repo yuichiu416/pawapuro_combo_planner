@@ -6,7 +6,7 @@ import { RewardAnalysis } from '@/components/RewardAnalysis';
 /**
  * RewardAnalysis UI Logic Tests
  * * Focuses on verifying:
- * 1. Correct rendering of missing characters and maps.
+ * 1. Correct rendering of 不足しているキャラ and maps.
  * 2. Highlighting and selection logic for skill rewards.
  * 3. Proper application of error styles in the roster section.
  */
@@ -154,8 +154,8 @@ describe('RewardAnalysis UI Logic', () => {
 
     render(<RewardAnalysis {...defaultProps} analysis={mockAnalysis} />);
 
-    const totalCard = screen.getByTestId(`${defaultProps.testId}-roster-card-total`);
-    const pitchCard = screen.getByTestId(`${defaultProps.testId}-roster-card-pitch`);
+    const totalCard = screen.getByTestId(`${defaultProps.testId}-roster-card-合計`);
+    const pitchCard = screen.getByTestId(`${defaultProps.testId}-roster-card-投手`);
 
     // Check for rose/red error classes
     expect(totalCard).toHaveClass('border-rose-300', 'bg-rose-50');

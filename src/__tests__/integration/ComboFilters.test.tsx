@@ -43,7 +43,7 @@ describe('Combo Type Filters (Pitcher/Fielder) - Static Data Validation', () => 
     await waitFor(() => {
       for (const mapName of mapsToCheck) {
         const mapEl = screen.getByTestId(`map-trigger-${mapName}`);
-        expect(mapEl).toHaveTextContent(/combos found/i);
+        expect(mapEl).toHaveTextContent(/個のコンボを発見/i);
       }
     });
   });
@@ -67,13 +67,13 @@ describe('Combo Type Filters (Pitcher/Fielder) - Static Data Validation', () => 
     await waitFor(() => {
       for (const mapName of mapsToCheck) {
         const mapEl = screen.getByTestId(`map-trigger-${mapName}`);
-        expect(mapEl).toHaveTextContent(/combos found/i);
+        expect(mapEl).toHaveTextContent(/個のコンボを発見/i);
       }
     });
   });
 
   // src/__tests__/integration/ComboFilters.test.tsx
-  it('resets match counts when CLEAR is clicked and confirmed', async () => {
+  it('resets match counts when クリア is clicked and confirmed', async () => {
     render(<App />);
 
     // 1. Activate a filter first
@@ -83,7 +83,7 @@ describe('Combo Type Filters (Pitcher/Fielder) - Static Data Validation', () => 
     // Verify it is active (Orange)
     expect(pitcherBtn).toHaveClass(ACTIVE_CLASS);
 
-    // 2. Click the CLEAR button in the Header to open the modal
+    // 2. Click the クリア button in the Header to open the modal
     const clearBtn = screen.getByTestId('filter-clear-btn');
     await fireEvent.click(clearBtn);
 

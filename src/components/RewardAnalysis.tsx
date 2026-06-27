@@ -82,14 +82,14 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
       >
         {[
           {
-            label: 'Total',
+            label: '合計',
             val: roster.total + roster.manager,
             max: '/28',
             err: roster.errors?.total,
           },
-          { label: 'Pitch', val: roster.pitcher, max: `/${pictuerMax}`, err: roster.errors?.pitcher },
-          { label: 'Field', val: roster.fielder, max: `/${fielderMax}`, err: roster.errors?.fielder },
-          { label: 'Mgr', val: roster.manager, max: `/ ${managerMax}`, err: roster.errors?.manager },
+          { label: '投手', val: roster.pitcher, max: `/${pictuerMax}`, err: roster.errors?.pitcher },
+          { label: '野手', val: roster.fielder, max: `/${fielderMax}`, err: roster.errors?.fielder },
+          { label: 'マネージャー', val: roster.manager, max: `/ ${managerMax}`, err: roster.errors?.manager },
         ].map((item) => (
           <div
             key={item.label}
@@ -130,7 +130,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
         <div className="flex items-center gap-2 mb-2.5" data-testid={`${testId}-stats-bonus-title`}>
           <Zap size={12} className="text-blue-400 fill-blue-400" />
           <span className="text-xs font-black uppercase tracking-[0.15em] text-blue-100/80">
-            Total Attribute Exp
+            獲得経験点合計
           </span>
         </div>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -145,13 +145,13 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
             ))
           ) : (
             <p className="text-xs font-black text-white/30 uppercase tracking-widest py-1">
-              No active bonuses
+              発動中のボーナスなし
             </p>
           )}
         </div>
       </section>
 
-      {/* 3. EARNED SKILLS / COMBO REWARDS */}
+      {/* 3. EARNED SKILLS / コンボ効果 */}
       <section
         className="flex-[2] flex flex-col min-h-0 bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden"
         data-testid={`${testId}-combo-reward-section`}
@@ -162,7 +162,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
         >
           <div className="flex items-center">
             <Award size={14} className="text-blue-600 mr-2" />
-            <span className="text-xs font-black text-slate-900 uppercase">Combo rewards</span>
+            <span className="text-xs font-black text-slate-900 uppercase">コンボ効果</span>
           </div>
           <div className="px-2 py-0.5 bg-amber-400 rounded-full shadow-sm shadow-amber-200">
             <span className="text-xs font-black text-amber-950 uppercase leading-none">
@@ -234,7 +234,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
         </div>
       </section>
 
-      {/* 4. MISSING CHARACTERS */}
+      {/* 4. 不足しているキャラ */}
       {missingCharacters.length > 0 && (
         <section
           className="flex-1 flex flex-col min-h-0 bg-rose-50/20 border border-rose-100 rounded-3xl overflow-hidden"
@@ -244,7 +244,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
             <div className="flex items-center gap-2">
               <AlertCircle size={14} className="text-rose-500" />
               <span className="text-xs font-black text-rose-600 uppercase">
-                Missing Characters ({missingCharacters.length})
+                不足しているキャラ ({missingCharacters.length})
               </span>
             </div>
           </div>

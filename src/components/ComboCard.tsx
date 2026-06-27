@@ -117,7 +117,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
               <Star size={14} className="text-[#003D87] fill-[#003D87]" />
             </div>
             <span className="text-sm font-black text-[#003D87] uppercase tracking-[0.2em]">
-              Combo Rewards
+              コンボ効果
             </span>
           </div>
 

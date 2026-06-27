@@ -46,7 +46,7 @@ export const FilterBar: React.FC<FilterBarProps> = (props) => (
             : 'bg-white text-black border-slate-200',
         )}
       >
-        ALL
+        全
       </button>
       {POSITIONS.map((pos) => (
         <button
@@ -77,7 +77,7 @@ export const FilterBar: React.FC<FilterBarProps> = (props) => (
         )}
       >
         <MapPin size={10} className={props.mapFilter ? 'text-blue-400' : ''} />
-        {props.mapFilter || 'ANY MAP'}
+        {props.mapFilter || '指定なし'}
       </button>
 
       <div className="relative flex-1 group">
@@ -88,7 +88,7 @@ export const FilterBar: React.FC<FilterBarProps> = (props) => (
         <input
           data-testid={`${props.testId}-character-search-input`}
           type="text"
-          placeholder="SEARCH A NAME OR SKILL"
+          placeholder="名前・スキルで検索"
           value={props.searchTerm}
           onChange={(e) => props.setSearchTerm(e.target.value)}
           className="w-full pl-8 pr-2 h-8 bg-slate-50 border border-slate-200 rounded-lg font-black text-xs uppercase outline-none focus:border-blue-500 focus:bg-white transition-all shadow-sm"
@@ -112,7 +112,7 @@ export const FilterBar: React.FC<FilterBarProps> = (props) => (
             !props.mapFilter ? 'bg-slate-800 border-slate-800 text-white' : 'bg-white text-black',
           )}
         >
-          ANY MAP
+          指定なし
         </button>
         {props.availableMaps.map((map) => (
           <button

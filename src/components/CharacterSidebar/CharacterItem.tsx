@@ -140,7 +140,7 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({
         <div className="flex items-center gap-1 mt-1.5">
           <Compass size={11} className={cn('flex-shrink-0', styles.compass)} />
           <p className={cn('text-xs font-bold uppercase tracking-wider truncate', styles.map)}>
-            {data?.encounter_map || 'Unknown Map'}
+            {data?.encounter_map || '所属マップ不明'}
           </p>
           {showRemove ? (
             <button

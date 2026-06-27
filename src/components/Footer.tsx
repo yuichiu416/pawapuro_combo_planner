@@ -1,4 +1,4 @@
-import { Bug } from 'lucide-react';
+import { Bug, Heart } from 'lucide-react';
 import type React from 'react';
 import { useGameVersion } from '@/contexts/GameVersionContext';
 
@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
         {/* Left: Branding & Copy */}
         <div className="flex items-center gap-3" data-testid="combo_planner_subtitle">
           <span className="text-sm font-black tracking-tighter text-black uppercase">
-            {`パワプロ ${version} Combo Planner`}
+            {`パワプロ ${version} コンボプランナー`}
             <span className="text-black ml-1 not-font-bold">v1.2.1</span>
           </span>
           <span className="text-black">|</span>
@@ -20,10 +20,34 @@ export const Footer: React.FC = () => {
         </div>
 
         <p
-          className="hidden lg:block text-sm text-black uppercase font-medium tracking-tight"
+          className="hidden lg:flex items-center gap-2 text-sm text-black uppercase font-medium tracking-tight"
           data-testid="footer-disclaimer"
         >
-          Unofficial fan project. Assets property of Konami Digital Entertainment.
+          <span>Unofficial fan project. Assets property of Konami Digital Entertainment.</span>
+          <span className="text-slate-300">|</span>
+          <span className="flex items-center gap-1.5 normal-case">
+            <Heart size={10} className="text-rose-400 fill-rose-400 shrink-0" />
+            <span className="text-slate-400 font-medium text-xs">Special Thanks:</span>
+            <a
+              href="https://www.youtube.com/@dorami24"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-blue-500 transition-colors font-medium text-xs"
+              title="Excel spreadsheet"
+            >
+              ドラミ
+            </a>
+            <span className="text-slate-300 text-xs">·</span>
+            <a
+              href="https://home.gamer.com.tw/black80731"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-blue-500 transition-colors font-medium text-xs"
+              title="Character images"
+            >
+              尼才肆肥熊
+            </a>
+          </span>
         </p>
 
         {/* Right: Actions */}
@@ -35,7 +59,7 @@ export const Footer: React.FC = () => {
             className="flex items-center gap-1.5 text-sm font-black text-black hover:text-rose-500 transition-colors uppercase group"
           >
             <Bug size={12} className="group-hover:animate-bounce" />
-            Report a Bug or Request a Feature
+            不具合報告・機能要望はこちら
           </a>
           <a
             href="https://github.com/your-username/repo"
@@ -45,6 +69,7 @@ export const Footer: React.FC = () => {
           ></a>
         </div>
       </div>
+
     </footer>
   );
 };

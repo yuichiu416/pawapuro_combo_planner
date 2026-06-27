@@ -41,7 +41,7 @@ const Logo: React.FC<LogoProps> = ({ isCollapsed }) => (
           パワプロ <VersionToggle />
         </span>
         <span className="text-xs md:text-sm font-bold text-blue-600 uppercase tracking-widest whitespace-nowrap">
-          Combo Planner
+          コンボプランナー
         </span>
       </div>
     )}
@@ -341,7 +341,7 @@ const AppContent: React.FC = () => {
                       <Save size={16} />
                     )}
                     <span>
-                      {manager.isSyncing ? 'Syncing...' : isLoggedIn ? 'Save Team' : 'Save Locally'}
+                      {manager.isSyncing ? 'Syncing...' : isLoggedIn ? 'チーム保存' : 'ローカルに保存'}
                     </span>
                   </button>
                   <AuthButton />
@@ -354,7 +354,7 @@ const AppContent: React.FC = () => {
                   )}
                 >
                   <Clock size={10} className="inline mr-1 -mt-0.5" />
-                  Last Saved: {manager.lastSaved}
+                  最終保存日時: {manager.lastSaved}
                 </div>
               </div>
               <div className="flex-1 overflow-y-auto custom-scrollbar">

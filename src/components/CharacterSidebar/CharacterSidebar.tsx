@@ -127,8 +127,8 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
 
   const { names, label } =
     activeTab === 'with'
-      ? { names: sortChars(props.groups.withCombo), label: 'WITH combos' }
-      : { names: sortChars(props.groups.noCombo), label: 'WITHOUT combos' };
+      ? { names: sortChars(props.groups.withCombo), label: 'コンボあり' }
+      : { names: sortChars(props.groups.noCombo), label: 'コンボなし' };
 
   return (
     <aside
@@ -277,7 +277,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                 : 'bg-white text-slate-400 border-slate-200 hover:border-slate-300',
             )}
           >
-            With combos
+            コンボあり
           </button>
           <button
             data-testid={`${testId}-tab-without-combos`}
@@ -289,7 +289,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                 : 'bg-white text-slate-400 border-slate-200 hover:border-slate-300',
             )}
           >
-            Without combos
+            コンボなし
           </button>
         </div>
 
@@ -298,7 +298,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
             <div className="flex items-center gap-3">
               <div className="h-4 w-1 bg-[#FF9E00] rounded-full" />
               <h3 className="text-xs font-black text-[#003D87] tracking-widest leading-none">
-                {names.length} characters
+                {names.length} キャラ
               </h3>
             </div>
             <button
@@ -311,7 +311,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                   : 'bg-white text-slate-400 border-slate-200 hover:border-slate-300',
               )}
             >
-              {sortByNumber ? 'No. ↑' : 'Pos. ↑'}
+              {sortByNumber ? '図鑑番号 ↑' : 'ポジション順'}
             </button>
           </div>
           <div className="grid gap-1.5 px-3">

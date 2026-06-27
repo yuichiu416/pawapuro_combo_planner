@@ -111,7 +111,7 @@ export const GameVersionProvider: React.FC<{
   }, []);
 
   useEffect(() => {
-    document.title = `パワプロ ${version} Combo Planner`;
+    document.title = `パワプロ ${version} コンボプランナー`;
   }, [version]);
 
   const value = useMemo<GameVersionContextValue>(

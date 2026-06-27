@@ -49,7 +49,7 @@ export const SlotSwitcher: React.FC<SlotSwitcherProps> = ({
   }, [isSyncing]);
 
   const activeSlot = slots.find((s) => s.slot_number === activeSlotNumber);
-  const activeName = activeSlot?.slot_name || `Slot 0${activeSlotNumber}`;
+  const activeName = activeSlot?.slot_name || `スロット 0${activeSlotNumber}`;
 
   const handleRenameSubmit = (num: number) => {
     if (editValue.trim()) {
@@ -80,7 +80,7 @@ export const SlotSwitcher: React.FC<SlotSwitcherProps> = ({
                 isExpanded ? 'text-blue-300/80' : 'text-slate-400',
               )}
             >
-              Current Team
+              現在のチーム
             </span>
             <span className="text-sm font-black truncate max-w-[140px]">{activeName}</span>
           </div>

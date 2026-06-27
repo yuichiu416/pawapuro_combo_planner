@@ -71,7 +71,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
             </h2>
             <div className="flex items-center gap-3">
               <p className="text-xs font-black text-slate-400 uppercase tracking-[0.15em]">
-                {combos.length} Combos Found
+                {combos.length} 個のコンボを発見
               </p>
 
               {progress && (
@@ -84,7 +84,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
                       : 'bg-blue-50 text-blue-600 border-blue-100',
                   )}
                 >
-                  <span className="opacity-60">Combos:</span>
+                  <span className="opacity-60">コンボ数:</span>
                   <span>
                     {progress.total > 0
                       ? `${progress.selected}/${progress.total}`

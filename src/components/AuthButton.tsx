@@ -103,7 +103,7 @@ export const AuthButton = () => {
       className="h-11 px-4 flex items-center justify-center gap-2 bg-white border border-slate-200 rounded-xl font-bold uppercase text-xs tracking-wider text-black hover:bg-slate-50 hover:border-slate-300 transition-all active:scale-95 shrink-0"
     >
       <LogIn size={14} className="text-blue-600" />
-      Sign In
+      ログイン
     </button>
   );
 };

@@ -139,7 +139,7 @@ export const Header: React.FC<HeaderProps> = ({
             style={{ fontSize: `${baseButtonSize * fontScale * 0.8}rem` }}
             className="flex items-center justify-center gap-1.5 px-3 py-2 bg-[#FF2D55] border-2 border-white text-white rounded-xl font-black uppercase hover:bg-[#E60039] transition-all shadow-md active:scale-95 whitespace-nowrap shrink-0"
           >
-            <XCircle size={14} strokeWidth={3} /> CLEAR
+            <XCircle size={14} strokeWidth={3} /> クリア
           </button>
         </div>
       </div>
@@ -160,7 +160,7 @@ export const Header: React.FC<HeaderProps> = ({
                     : 'bg-white/10 border-white/20 text-blue-200 hover:bg-white/20',
                 )}
               >
-                ALL
+                全
               </button>
               {availableGoldSkills.map((skill) => (
                 <button
@@ -196,7 +196,7 @@ export const Header: React.FC<HeaderProps> = ({
               : 'bg-[#0059C1] border-white text-white',
           )}
         >
-          {showPositionIcon ? 'POS ICON' : '# Icon'}
+          {showPositionIcon ? 'ポジションアイコン' : '図鑑番号アイコン'}
         </button>
 
         <button
@@ -210,7 +210,7 @@ export const Header: React.FC<HeaderProps> = ({
               : 'bg-white border-blue-100 text-[#0059C1]',
           )}
         >
-          {filterRelatedOnly ? 'OWNED' : 'ALL'}
+          {filterRelatedOnly ? 'OWNED' : '全'}
         </button>
 
         {/* Font Control Section */}
@@ -246,11 +246,11 @@ export const Header: React.FC<HeaderProps> = ({
         >
           {allExpanded ? (
             <>
-              <ChevronUp size={14} strokeWidth={3} className="text-[#FF9E00]" /> COLLAPSE
+              <ChevronUp size={14} strokeWidth={3} className="text-[#FF9E00]" /> 全て折りたたむ
             </>
           ) : (
             <>
-              <ChevronDown size={14} strokeWidth={3} /> EXPAND
+              <ChevronDown size={14} strokeWidth={3} /> 全て展開
             </>
           )}
         </button>

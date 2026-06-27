@@ -37,34 +37,34 @@ describe('UI text regression', () => {
     // FIX: Updated to match RosterGrid.tsx `${testId}-active-roster`
     const sidebar = screen.getByTestId(CHARACTER_SIDEBAR_TEST_ID);
     const rosterSection = within(sidebar).getByTestId(`${CHARACTER_SIDEBAR_TEST_ID}-active-roster`);
-    expect(rosterSection).toHaveTextContent(/Active Roster/i);
+    expect(rosterSection).toHaveTextContent(/登録メンバー/i);
 
     // Sidebar - Filter Buttons
     expect(screen.getByTestId(`${CHARACTER_SIDEBAR_TEST_ID}-pos-filter-all`)).toHaveTextContent(
-      'ALL',
+      '全',
     );
 
     // Planner Main Content & Header
-    expect(screen.getByTestId('expand-collapse-toggle-btn')).toHaveTextContent(/EXPAND/i);
+    expect(screen.getByTestId('expand-collapse-toggle-btn')).toHaveTextContent(/全て展開/i);
 
     // Planner Filters/Controls
-    expect(screen.getByTestId('toggle-position-number-icon-btn')).toHaveTextContent(/POS ICON/i);
-    expect(screen.getByTestId('owned-or-all-characters-combo-btn')).toHaveTextContent(/ALL/i);
+    expect(screen.getByTestId('toggle-position-number-icon-btn')).toHaveTextContent(/ポジションアイコン/i);
+    expect(screen.getByTestId('owned-or-all-characters-combo-btn')).toHaveTextContent(/全/i);
     expect(screen.getByTestId('filter-pitcher-btn')).toHaveTextContent('投手金特');
     expect(screen.getByTestId('filter-fielder-btn')).toHaveTextContent('野手金特');
-    expect(screen.getByTestId('filter-clear-btn')).toHaveTextContent('CLEAR');
+    expect(screen.getByTestId('filter-clear-btn')).toHaveTextContent('クリア');
 
     // Right Side Stats/Sync Section
-    expect(screen.getByTestId('sync-status-btn')).toHaveTextContent(/Save Locally/i);
+    expect(screen.getByTestId('sync-status-btn')).toHaveTextContent(/ローカルに保存/i);
 
     // Reward Analysis Header
     expect(screen.getByTestId(`${REWARD_ANALYSIS_TEST_ID}-stats-bonus-title`)).toHaveTextContent(
-      'Total Attribute Exp',
+      '獲得経験点合計',
     );
 
     // Footer
     expect(screen.getByTestId('footer-disclaimer')).toHaveTextContent(/Unofficial fan project/i);
-    expect(screen.getByTestId('footer-report-link')).toHaveTextContent(/Report a Bug/i);
+    expect(screen.getByTestId('footer-report-link')).toHaveTextContent(/不具合報告・機能要望はこちら/i);
   });
 
   it('renders specific combo reward headers on desktop', () => {
@@ -74,7 +74,7 @@ describe('UI text regression', () => {
 
     // Updated to match RewardAnalysis testId pattern
     const rewardBox = screen.getByTestId(`${REWARD_ANALYSIS_TEST_ID}-combo-reward-section`);
-    expect(rewardBox).toHaveTextContent(/Combo rewards/i);
+    expect(rewardBox).toHaveTextContent(/コンボ効果/i);
     expect(rewardBox).toHaveTextContent(/金特/i);
   });
 
@@ -89,7 +89,7 @@ describe('UI text regression', () => {
       const REWARD_ANALYSIS_TEST_ID = 'mobile-reward-analysis';
       const rewardBox = screen.getByTestId(`${REWARD_ANALYSIS_TEST_ID}-combo-reward-section`);
 
-      expect(rewardBox).toHaveTextContent(/Combo rewards/i);
+      expect(rewardBox).toHaveTextContent(/コンボ効果/i);
       expect(rewardBox).toHaveTextContent(/金特/i);
     });
   });

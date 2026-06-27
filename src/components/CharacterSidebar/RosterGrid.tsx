@@ -25,7 +25,7 @@ export const RosterGrid: React.FC<RosterGridProps> = ({
   >
     <div className="flex justify-between items-center px-1">
       <span className="text-xs font-black text-blue-100/80 uppercase tracking-widest leading-none">
-        Active Roster
+        登録メンバー
       </span>
       <div className="flex items-center gap-1 bg-[#003D87] px-2 py-0.5 rounded-full border border-white/10">
         <span

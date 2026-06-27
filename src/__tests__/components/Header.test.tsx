@@ -78,14 +78,14 @@ describe('Header Component', () => {
   });
 
   describe('UI Layout & Actions', () => {
-    it('renders gold skill buttons and CLEAR button using test IDs', () => {
+    it('renders gold skill buttons and クリア button using test IDs', () => {
       render(<Header {...mockProps} />);
       expect(screen.getByTestId('filter-pitcher-btn')).toBeInTheDocument();
       expect(screen.getByTestId('filter-fielder-btn')).toBeInTheDocument();
       expect(screen.getByTestId('filter-clear-btn')).toBeInTheDocument();
     });
 
-    it('calls onOpenClearModal when the CLEAR button is clicked', () => {
+    it('calls onOpenClearModal when the クリア button is clicked', () => {
       render(<Header {...mockProps} />);
       const clearBtn = screen.getByTestId('filter-clear-btn');
       fireEvent.click(clearBtn);
