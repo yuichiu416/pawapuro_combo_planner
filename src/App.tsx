@@ -10,6 +10,7 @@ import { Header } from '@/components/Header';
 import { MapSection } from '@/components/MapSection';
 import { MobileDrawer } from '@/components/MobileDrawer';
 import { MobileNavigation } from '@/components/MobileNavigation';
+import { MatchExpButton, type MatchExpSaveData } from '@/components/MatchExpCalculator';
 import { RewardAnalysis } from '@/components/RewardAnalysis';
 import { SlotSwitcher } from '@/components/SlotSwitcher';
 import { VersionToggle } from '@/components/VersionToggle';
@@ -64,6 +65,7 @@ const AppContent: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedPreview, setSelectedPreview] = useState<string | null>(null);
   const [isClearModalOpen, setIsClearModalOpen] = useState(false);
+  const [matchExpData, setMatchExpData] = useState<Record<number, MatchExpSaveData>>({});
 
   // Unowned chars are added immediately (no preview); owned chars open the preview card.
   const handleSetSelectedPreview = useCallback(
@@ -356,6 +358,13 @@ const AppContent: React.FC = () => {
                   <Clock size={10} className="inline mr-1 -mt-0.5" />
                   最終保存日時: {manager.lastSaved}
                 </div>
+                <div className="mt-2">
+                  <MatchExpButton
+                    slotNumber={manager.activeSlotNumber}
+                    savedData={matchExpData[manager.activeSlotNumber] ?? null}
+                    onSave={(d) => setMatchExpData(prev => ({ ...prev, [manager.activeSlotNumber]: d }))}
+                  />
+                </div>
               </div>
               <div className="flex-1 overflow-y-auto custom-scrollbar">
                 <RewardAnalysis
@@ -385,6 +394,13 @@ const AppContent: React.FC = () => {
               onRename={manager.onRename}
               isSyncing={manager.isSyncing}
             />
+            <div className="mt-2">
+              <MatchExpButton
+                slotNumber={manager.activeSlotNumber}
+                savedData={matchExpData[manager.activeSlotNumber] ?? null}
+                onSave={(d) => setMatchExpData(prev => ({ ...prev, [manager.activeSlotNumber]: d }))}
+              />
+            </div>
           </div>
           <RewardAnalysis
             {...manager}
