@@ -13,6 +13,7 @@ import { MobileNavigation } from '@/components/MobileNavigation';
 import { MatchExpButton, type MatchExpSaveData } from '@/components/MatchExpCalculator';
 import { RewardAnalysis } from '@/components/RewardAnalysis';
 import { SlotSwitcher } from '@/components/SlotSwitcher';
+import { LanguageToggle } from '@/components/LanguageToggle';
 import { VersionToggle } from '@/components/VersionToggle';
 import { GameVersionProvider, useGameVersion } from '@/contexts/GameVersionContext';
 import { useComboManager } from '@/hooks/useComboManager';
@@ -41,9 +42,12 @@ const Logo: React.FC<LogoProps> = ({ isCollapsed }) => (
         >
           パワプロ <VersionToggle />
         </span>
-        <span className="text-xs md:text-sm font-bold text-blue-600 uppercase tracking-widest whitespace-nowrap">
-          コンボプランナー
-        </span>
+        <div className="flex items-center gap-2 mt-0.5">
+          <span className="text-xs md:text-sm font-bold text-blue-600 uppercase tracking-widest whitespace-nowrap">
+            コンボプランナー
+          </span>
+          <LanguageToggle />
+        </div>
       </div>
     )}
   </div>

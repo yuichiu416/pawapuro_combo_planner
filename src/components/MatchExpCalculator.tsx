@@ -122,16 +122,20 @@ function sumStats(games: GameData[], difficulty: number): Record<StatKey, number
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-const Counter: React.FC<{ value: number; onChange: (v: number) => void }> = ({ value, onChange }) => (
+const Counter: React.FC<{ value: number; onChange: (v: number) => void; testId?: string }> = ({ value, onChange, testId }) => (
   <div className="flex items-center gap-1">
     <button
       type="button"
+      aria-label="減らす"
+      data-testid={testId ? `${testId}-decrement` : undefined}
       onClick={() => onChange(Math.max(0, value - 1))}
       className="w-7 h-7 flex items-center justify-center rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 font-medium text-lg leading-none active:scale-95 transition-all"
     >−</button>
-    <span className="w-6 text-center text-sm font-semibold text-slate-800">{value}</span>
+    <span data-testid={testId ? `${testId}-value` : undefined} className="w-6 text-center text-sm font-semibold text-slate-800">{value}</span>
     <button
       type="button"
+      aria-label="増やす"
+      data-testid={testId ? `${testId}-increment` : undefined}
       onClick={() => onChange(value + 1)}
       className="w-7 h-7 flex items-center justify-center rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 font-medium text-lg leading-none active:scale-95 transition-all"
     >+</button>
@@ -139,7 +143,9 @@ const Counter: React.FC<{ value: number; onChange: (v: number) => void }> = ({ v
 );
 
 const StatBadge: React.FC<{ label: string; value: number; highlight?: boolean }> = ({ label, value, highlight }) => (
-  <div className={cn(
+  <div
+    data-testid={`stat-badge-${label}`}
+    className={cn(
     'flex flex-col items-center rounded-xl px-3 py-2 min-w-[3.5rem]',
     highlight ? 'bg-[#0059C1] text-white' : 'bg-slate-100 text-slate-700'
   )}>
@@ -247,18 +253,19 @@ export const MatchExpCalculator: React.FC<MatchExpCalculatorProps> = ({
         <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100">
           <div className="flex items-center gap-2">
             <Calculator size={18} className="text-[#0059C1]" />
-            <span className="font-black text-sm uppercase tracking-wide text-slate-800">獲得經驗值</span>
-            {isDirty && <span className="text-[10px] font-bold text-amber-500 bg-amber-50 px-2 py-0.5 rounded-full uppercase tracking-wide">Unsaved</span>}
+            <span className="font-black text-sm uppercase tracking-wide text-slate-800">獲得経験値計算</span>
+            {isDirty && <span className="text-[10px] font-bold text-amber-500 bg-amber-50 px-2 py-0.5 rounded-full uppercase tracking-wide">未保存</span>}
           </div>
           <div className="flex items-center gap-2">
             <button
               type="button"
+              data-testid="exp-calc-save-btn"
               onClick={handleSave}
               className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0059C1] text-white rounded-lg text-xs font-black uppercase tracking-wide hover:bg-blue-700 active:scale-95 transition-all"
             >
-              <Save size={13} /> Save
+              <Save size={13} />保存
             </button>
-            <button type="button" onClick={handleClose} className="text-slate-400 hover:text-slate-600 transition-colors">
+            <button type="button" data-testid="exp-calc-close-btn" onClick={handleClose} className="text-slate-400 hover:text-slate-600 transition-colors">
               <X size={20} />
             </button>
           </div>
@@ -325,6 +332,7 @@ export const MatchExpCalculator: React.FC<MatchExpCalculatorProps> = ({
           ))}
           <button
             type="button"
+            data-testid="exp-calc-add-game-btn"
             onClick={addGame}
             className="ml-1 p-1 text-slate-400 hover:text-[#0059C1] transition-colors shrink-0"
             title="試合を追加"
@@ -338,11 +346,11 @@ export const MatchExpCalculator: React.FC<MatchExpCalculatorProps> = ({
           <div className="flex gap-4 mb-4">
             <div className="flex-1 bg-slate-50 rounded-xl p-3">
               <p className="text-[10px] font-bold text-slate-400 uppercase mb-2">自チーム得点</p>
-              <Counter value={game.ownScore} onChange={v => updateGame('ownScore', v)} />
+              <Counter testId="exp-calc-own-score" value={game.ownScore} onChange={v => updateGame('ownScore', v)} />
             </div>
             <div className="flex-1 bg-slate-50 rounded-xl p-3">
               <p className="text-[10px] font-bold text-slate-400 uppercase mb-2">失点</p>
-              <Counter value={game.oppScore} onChange={v => updateGame('oppScore', v)} />
+              <Counter testId="exp-calc-opp-score" value={game.oppScore} onChange={v => updateGame('oppScore', v)} />
             </div>
             <div className="flex-1 bg-slate-50 rounded-xl p-3 text-center">
               <p className="text-[10px] font-bold text-slate-400 uppercase mb-1">補正</p>
@@ -370,7 +378,7 @@ export const MatchExpCalculator: React.FC<MatchExpCalculatorProps> = ({
                     <p className="text-sm text-slate-700">{ev.label}</p>
                     {ev.note && <p className="text-[10px] text-slate-400">{ev.note}</p>}
                   </div>
-                  <Counter value={game.counts[ev.id] ?? 0} onChange={v => updateCount(ev.id, v)} />
+                  <Counter testId={`exp-calc-event-${ev.id}`} value={game.counts[ev.id] ?? 0} onChange={v => updateCount(ev.id, v)} />
                 </div>
               ))}
             </div>
@@ -393,14 +401,14 @@ export const MatchExpCalculator: React.FC<MatchExpCalculatorProps> = ({
                     <p className="text-sm text-slate-700">{ev.label}</p>
                     {ev.note && <p className="text-[10px] text-slate-400">{ev.note}</p>}
                   </div>
-                  <Counter value={game.counts[ev.id] ?? 0} onChange={v => updateCount(ev.id, v)} />
+                  <Counter testId={`exp-calc-event-${ev.id}`} value={game.counts[ev.id] ?? 0} onChange={v => updateCount(ev.id, v)} />
                 </div>
               ))}
             </div>
           )}
 
           {/* Per-game result */}
-          <div className="bg-slate-50 rounded-xl p-4 mb-3">
+          <div data-testid="exp-calc-game-result" className="bg-slate-50 rounded-xl p-4 mb-3">
             <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider mb-3">この試合の経験値</p>
             <div className="flex gap-2 flex-wrap">
               {STAT_KEYS.map(k => <StatBadge key={k} label={k} value={gameResult[k]} />)}
@@ -409,7 +417,7 @@ export const MatchExpCalculator: React.FC<MatchExpCalculatorProps> = ({
 
           {/* Total across all games */}
           {data.games.length > 1 && (
-            <div className="bg-[#0059C1]/5 border border-[#0059C1]/20 rounded-xl p-4">
+            <div data-testid="exp-calc-total-result" className="bg-[#0059C1]/5 border border-[#0059C1]/20 rounded-xl p-4">
               <p className="text-[10px] font-black text-[#0059C1] uppercase tracking-wider mb-3">全試合合計</p>
               <div className="flex gap-2 flex-wrap">
                 {STAT_KEYS.map(k => <StatBadge key={k} label={k} value={totalResult[k]} highlight />)}
@@ -420,18 +428,20 @@ export const MatchExpCalculator: React.FC<MatchExpCalculatorProps> = ({
 
         {/* Confirm close dialog */}
         {showConfirmClose && (
-          <div className="absolute inset-0 bg-white/90 flex items-center justify-center rounded-2xl backdrop-blur-sm z-10">
+          <div data-testid="exp-calc-confirm-dialog" className="absolute inset-0 bg-white/90 flex items-center justify-center rounded-2xl backdrop-blur-sm z-10">
             <div className="text-center px-8">
-              <p className="font-black text-slate-800 mb-2">Unsaved changes</p>
-              <p className="text-sm text-slate-500 mb-6">変更が保存されていません。閉じますか？</p>
+              <p className="font-black text-slate-800 mb-2">未保存の変更</p>
+              <p className="text-sm text-slate-500 mb-6">変更が保存されていません。このまま閉じますか？</p>
               <div className="flex gap-3 justify-center">
                 <button
                   type="button"
+                  data-testid="exp-calc-cancel-close-btn"
                   onClick={() => setShowConfirmClose(false)}
                   className="px-5 py-2 border border-slate-200 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-50"
                 >キャンセル</button>
                 <button
                   type="button"
+                  data-testid="exp-calc-confirm-close-btn"
                   onClick={onClose}
                   className="px-5 py-2 bg-red-500 text-white rounded-xl text-sm font-bold hover:bg-red-600"
                 >閉じる</button>
