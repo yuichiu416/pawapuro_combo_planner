@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { AlertCircle, Trash2, X } from 'lucide-react';
 import type React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface ClearConfirmModalProps {
   isOpen: boolean;
@@ -15,6 +16,7 @@ export const ClearConfirmModal: React.FC<ClearConfirmModalProps> = ({
   onClose,
   onConfirm,
 }) => {
+  const { t } = useTranslation();
   return (
     <AnimatePresence>
       {isOpen && (
@@ -46,13 +48,13 @@ export const ClearConfirmModal: React.FC<ClearConfirmModalProps> = ({
                 <div className="bg-[#FFF200] rounded-full p-0.5">
                   <AlertCircle size={18} className="text-[#003D87]" fill="currentColor" />
                 </div>
-                ATTENTION!
+                {t('ui.attention')}
               </div>
               <button
                 data-testid="modal-close-btn"
                 onClick={onClose}
                 className="w-10 h-10 flex items-center justify-center bg-[#3b82f6]/40 rounded-full hover:bg-[#3b82f6]/60 transition-colors"
-                aria-label="Close modal"
+                aria-label={t('ui.close_modal')}
               >
                 <X size={24} className="text-white" strokeWidth={4} />
               </button>
@@ -69,10 +71,10 @@ export const ClearConfirmModal: React.FC<ClearConfirmModalProps> = ({
               </div>
 
               <h3 className="text-[28px] font-black text-[#003D87] uppercase leading-none mb-4 tracking-tighter italic">
-                RESET ROSTER?
+                {t('ui.reset_roster_title')}
               </h3>
               <p className="text-[#475569] font-bold text-center text-lg leading-tight mb-8">
-                This will clear all selected characters. You'll have to scout them all over again!
+                {t('ui.reset_roster_body')}
               </p>
 
               {/* Action Buttons */}
@@ -88,7 +90,7 @@ export const ClearConfirmModal: React.FC<ClearConfirmModalProps> = ({
                 >
                   <span className="absolute inset-0 bg-[#B3002D] rounded-2xl translate-y-2" />
                   <span className="absolute inset-0 bg-[#FF2D55] rounded-2xl flex items-center justify-center text-white font-black text-xl tracking-wider border-2 border-white/20 uppercase italic">
-                    YES, WIPE IT!
+                    {t('ui.confirm_wipe')}
                   </span>
                 </button>
 
@@ -98,7 +100,7 @@ export const ClearConfirmModal: React.FC<ClearConfirmModalProps> = ({
                   onClick={onClose}
                   className="w-full h-14 bg-[#e2e8f0] text-[#64748b] rounded-2xl font-black text-lg tracking-wider border-b-4 border-[#cbd5e1] active:border-b-0 active:translate-y-1 transition-all uppercase italic"
                 >
-                  NO, KEEP IT
+                  {t('ui.cancel_wipe')}
                 </button>
               </div>
             </div>

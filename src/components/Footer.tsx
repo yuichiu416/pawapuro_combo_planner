@@ -1,10 +1,12 @@
 import { Bug, Heart } from 'lucide-react';
 import type React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGameVersion } from '@/contexts/GameVersionContext';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   const { version } = useGameVersion();
+  const { t } = useTranslation();
 
   return (
     <footer className="w-full bg-white border-t border-slate-200 px-6 py-2 shrink-0">
@@ -12,7 +14,7 @@ export const Footer: React.FC = () => {
         {/* Left: Branding & Copy */}
         <div className="flex items-center gap-3" data-testid="combo_planner_subtitle">
           <span className="text-sm font-black tracking-tighter text-black uppercase">
-            {`パワプロ ${version} コンボプランナー`}
+            {`パワプロ ${version} ${t('nav.combo_planner')}`}
             <span className="text-black ml-1 not-font-bold">v1.2.3</span>
           </span>
           <span className="text-black">|</span>
@@ -23,11 +25,11 @@ export const Footer: React.FC = () => {
           className="hidden lg:flex items-center gap-2 text-sm text-black uppercase font-medium tracking-tight"
           data-testid="footer-disclaimer"
         >
-          <span>Unofficial fan project. Assets property of Konami Digital Entertainment.</span>
+          <span>{t('ui.unofficial')}</span>
           <span className="text-slate-300">|</span>
           <span className="flex items-center gap-1.5 normal-case">
             <Heart size={10} className="text-rose-400 fill-rose-400 shrink-0" />
-            <span className="text-slate-400 font-medium text-xs">Special Thanks:</span>
+            <span className="text-slate-400 font-medium text-xs">{t('ui.special_thanks')}:</span>
             <a
               href="https://www.youtube.com/@dorami24"
               target="_blank"
@@ -59,7 +61,7 @@ export const Footer: React.FC = () => {
             className="flex items-center gap-1.5 text-sm font-black text-black hover:text-rose-500 transition-colors uppercase group"
           >
             <Bug size={12} className="group-hover:animate-bounce" />
-            不具合報告・機能要望はこちら
+            {t('ui.report_bug')}
           </a>
           <a
             href="https://github.com/your-username/repo"
@@ -69,7 +71,6 @@ export const Footer: React.FC = () => {
           ></a>
         </div>
       </div>
-
     </footer>
   );
 };

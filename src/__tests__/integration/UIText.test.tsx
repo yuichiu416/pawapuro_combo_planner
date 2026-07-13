@@ -3,6 +3,7 @@
 import { cleanup, render, screen, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it } from 'vitest';
 import App from '@/App';
+
 vi.mock('@/lib/supabase', () => ({
   supabase: {
     auth: {
@@ -48,7 +49,9 @@ describe('UI text regression', () => {
     expect(screen.getByTestId('expand-collapse-toggle-btn')).toHaveTextContent(/全て展開/i);
 
     // Planner Filters/Controls
-    expect(screen.getByTestId('toggle-position-number-icon-btn')).toHaveTextContent(/ポジションアイコン/i);
+    expect(screen.getByTestId('toggle-position-number-icon-btn')).toHaveTextContent(
+      /ポジションアイコン/i,
+    );
     expect(screen.getByTestId('owned-or-all-characters-combo-btn')).toHaveTextContent(/全/i);
     expect(screen.getByTestId('filter-pitcher-btn')).toHaveTextContent('投手金特');
     expect(screen.getByTestId('filter-fielder-btn')).toHaveTextContent('野手金特');
@@ -63,8 +66,8 @@ describe('UI text regression', () => {
     );
 
     // Footer
-    expect(screen.getByTestId('footer-disclaimer')).toHaveTextContent(/Unofficial fan project/i);
-    expect(screen.getByTestId('footer-report-link')).toHaveTextContent(/不具合報告・機能要望はこちら/i);
+    expect(screen.getByTestId('footer-disclaimer')).toHaveTextContent(/非公式ファンプロジェクト/i);
+    expect(screen.getByTestId('footer-report-link')).toHaveTextContent(/バグ報告・機能リクエスト/i);
   });
 
   it('renders specific combo reward headers on desktop', () => {

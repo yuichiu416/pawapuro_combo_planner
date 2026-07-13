@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import type React from 'react';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { cn } from '@/utils/style';
 
 interface Slot {
@@ -40,6 +41,7 @@ export const SlotSwitcher: React.FC<SlotSwitcherProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editValue, setEditValue] = useState('');
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (isSyncing) {
@@ -49,7 +51,7 @@ export const SlotSwitcher: React.FC<SlotSwitcherProps> = ({
   }, [isSyncing]);
 
   const activeSlot = slots.find((s) => s.slot_number === activeSlotNumber);
-  const activeName = activeSlot?.slot_name || `スロット 0${activeSlotNumber}`;
+  const activeName = activeSlot?.slot_name || t('ui.slot_number', { num: `0${activeSlotNumber}` });
 
   const handleRenameSubmit = (num: number) => {
     if (editValue.trim()) {
@@ -80,7 +82,7 @@ export const SlotSwitcher: React.FC<SlotSwitcherProps> = ({
                 isExpanded ? 'text-blue-300/80' : 'text-slate-400',
               )}
             >
-              現在のチーム
+              {t('ui.current_team')}
             </span>
             <span className="text-sm font-black truncate max-w-[140px]">{activeName}</span>
           </div>
@@ -96,7 +98,7 @@ export const SlotSwitcher: React.FC<SlotSwitcherProps> = ({
               const slot = slots.find((s) => s.slot_number === num);
               const isActive = activeSlotNumber === num;
               const isEditing = editingId === num;
-              const slotName = slot?.slot_name || `Slot 0${num}`;
+              const slotName = slot?.slot_name || t('ui.slot_number', { num: `0${num}` });
 
               return (
                 <div
@@ -162,7 +164,7 @@ export const SlotSwitcher: React.FC<SlotSwitcherProps> = ({
                       }}
                       className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded bg-[#0059C1] text-white text-[10px] font-black hover:bg-[#003D87] transition-colors"
                     >
-                      <Download size={10} /> LOAD
+                      <Download size={10} /> {t('ui.load')}
                     </button>
                     <button
                       onClick={() => {
@@ -171,7 +173,7 @@ export const SlotSwitcher: React.FC<SlotSwitcherProps> = ({
                       }}
                       className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded border border-blue-200 text-blue-700 text-[10px] font-black hover:bg-blue-50 transition-colors"
                     >
-                      <Save size={10} /> {isActive ? 'SAVE' : 'OVERWRITE'}
+                      <Save size={10} /> {isActive ? t('ui.save') : t('ui.overwrite')}
                     </button>
                   </div>
                 </div>
