@@ -76,25 +76,20 @@ const SkillList: React.FC = () => {
           filteredSkills.map((skill) => (
             <div
               key={skill.key}
-              className="group flex items-start gap-4 p-5 bg-white border-2 border-slate-100 rounded-2xl hover:border-blue-200 hover:shadow-md transition-all duration-200"
+              className="flex items-start gap-4 p-4 bg-white border-2 border-slate-100 rounded-2xl hover:border-blue-200 hover:shadow-md transition-all duration-200"
             >
               <div
                 className={cn(
-                  'mt-1 px-3 py-1 rounded-lg text-sm font-black uppercase whitespace-nowrap',
+                  'shrink-0 mt-0.5 px-4 py-2 rounded-xl border-2 font-black text-base whitespace-nowrap',
                   getSkillTypeStyle(skill.type),
                 )}
               >
-                {skill.type || t('ui.unknown_type')}
+                {skill.name}
               </div>
 
-              <div className="flex-1">
-                <div className="flex items-center gap-2">
-                  <h4 className="font-black text-black text-xl">{skill.name}</h4>
-                </div>
-                <p className="text-base text-black font-medium leading-relaxed mt-1">
-                  {skill.description}
-                </p>
-              </div>
+              <p className="flex-1 text-base text-black font-medium leading-relaxed pt-2.5">
+                {skill.description}
+              </p>
             </div>
           ))
         ) : (
