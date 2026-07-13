@@ -273,4 +273,27 @@ describe('i18n configuration', () => {
     i18n.changeLanguage('zh');
     expect(i18n.t('ui.loading')).toBe('載入中...');
   });
+
+  it('translates SkillList labels', () => {
+    i18n.changeLanguage('ja');
+    expect(i18n.t('ui.skill_list')).toBe('スキル一覧');
+    expect(i18n.t('ui.search_skills_placeholder')).toBe('名前・説明で検索');
+    expect(i18n.t('ui.skills_found_count', { count: 5 })).toBe('5件のスキルが見つかりました');
+    expect(i18n.t('ui.no_skills_found')).toBe('該当するスキルがありません');
+    expect(i18n.t('ui.unknown_type')).toBe('不明');
+
+    i18n.changeLanguage('en');
+    expect(i18n.t('ui.skill_list')).toBe('Skill List');
+    expect(i18n.t('ui.search_skills_placeholder')).toBe('Search by name or description');
+    expect(i18n.t('ui.skills_found_count', { count: 5 })).toBe('Found 5 Skills');
+    expect(i18n.t('ui.no_skills_found')).toBe('No matching skills found');
+    expect(i18n.t('ui.unknown_type')).toBe('Unknown');
+
+    i18n.changeLanguage('zh');
+    expect(i18n.t('ui.skill_list')).toBe('技能列表');
+    expect(i18n.t('ui.search_skills_placeholder')).toBe('以名稱或說明搜尋');
+    expect(i18n.t('ui.skills_found_count', { count: 5 })).toBe('找到 5 個技能');
+    expect(i18n.t('ui.no_skills_found')).toBe('沒有符合的技能');
+    expect(i18n.t('ui.unknown_type')).toBe('未知');
+  });
 });

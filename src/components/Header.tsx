@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import skillsData from '@/data/skills.json';
 import { cn } from '@/utils/style';
 import { AuthButton } from './AuthButton';
+import { SkillListButton } from './SkillListModal';
 
 interface HeaderProps {
   showPositionIcon: boolean;
@@ -108,7 +109,11 @@ export const Header: React.FC<HeaderProps> = ({
                 : 'bg-white border-blue-200 text-[#0059C1] hover:border-blue-400',
             )}
           >
-            <Star size={12} fill={goldFilter === 'pitcher' ? 'black' : 'transparent'} strokeWidth={3} />
+            <Star
+              size={12}
+              fill={goldFilter === 'pitcher' ? 'black' : 'transparent'}
+              strokeWidth={3}
+            />
             {t('filter.gold_pitcher')}
           </button>
 
@@ -123,7 +128,11 @@ export const Header: React.FC<HeaderProps> = ({
                 : 'bg-white border-blue-200 text-[#0059C1] hover:border-blue-400',
             )}
           >
-            <Star size={12} fill={goldFilter === 'fielder' ? 'black' : 'transparent'} strokeWidth={3} />
+            <Star
+              size={12}
+              fill={goldFilter === 'fielder' ? 'black' : 'transparent'}
+              strokeWidth={3}
+            />
             {t('filter.gold_fielder')}
           </button>
 
@@ -239,11 +248,17 @@ export const Header: React.FC<HeaderProps> = ({
           className="w-full md:w-auto flex items-center justify-center gap-1.5 px-3 py-2 bg-white border-2 border-blue-200 rounded-xl font-black uppercase text-[#0059C1] hover:bg-blue-50 transition-all shadow-sm whitespace-nowrap"
         >
           {allExpanded ? (
-            <><ChevronUp size={14} strokeWidth={3} className="text-[#FF9E00]" /> {t('ui.collapse')}</>
+            <>
+              <ChevronUp size={14} strokeWidth={3} className="text-[#FF9E00]" /> {t('ui.collapse')}
+            </>
           ) : (
-            <><ChevronDown size={14} strokeWidth={3} /> {t('ui.expand')}</>
+            <>
+              <ChevronDown size={14} strokeWidth={3} /> {t('ui.expand')}
+            </>
           )}
         </button>
+
+        <SkillListButton />
       </div>
     </header>
   );

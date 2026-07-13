@@ -1,29 +1,53 @@
 import { Search } from 'lucide-react';
 import type React from 'react';
 import { useMemo, useState } from 'react';
-import skillsDataRaw from '../data/skills.json';
+import { useTranslation } from 'react-i18next';
+import skillsDataJa from '../data/skills.json';
+import skillsDataEn from '../data/skills_en.json';
+import skillsDataZh from '../data/skills_zh.json';
 import { cn, getSkillTypeStyle } from '../utils/style';
 
-const skillsData = skillsDataRaw as Record<string, any>;
+const skillsDataJaTyped = skillsDataJa as Record<string, any>;
+
+const LOCALE_SKILLS: Record<string, Record<string, any>> = {
+  ja: skillsDataJa as Record<string, any>,
+  en: skillsDataEn as Record<string, any>,
+  zh: skillsDataZh as Record<string, any>,
+};
 
 const SkillList: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const { t, i18n } = useTranslation();
 
-  // Use Memo for performance and to handle dictionary-to-array conversion
+  // Use Memo for performance and to handle dictionary-to-array conversion.
+  // Each skill's japanese key is the canonical identifier used across all
+  // game data; name/description are localized per current language, falling
+  // back to the Japanese key/description when a translation isn't filled in yet.
   const filteredSkills = useMemo(() => {
-    if (!skillsData) return [];
+    if (!skillsDataJaTyped) return [];
 
-    const skillEntries = Object.entries(skillsData).map(([name, skill]) => ({ name, ...skill }));
+    const localeSkills = LOCALE_SKILLS[i18n.language] ?? skillsDataJaTyped;
+
+    const skillEntries = Object.entries(skillsDataJaTyped).map(([key, jaSkill]) => {
+      const localized = localeSkills[key] ?? {};
+      return {
+        key,
+        name: localized.name || key,
+        description: localized.description || jaSkill.description || jaSkill.effect || '',
+        type: jaSkill.type,
+        category: jaSkill.category,
+      };
+    });
     const term = searchTerm.toLowerCase().trim();
 
     if (!term) return skillEntries;
 
     return skillEntries.filter((skill) => {
-      const name = (skill?.name ?? '').toLowerCase();
-      const description = (skill?.description ?? skill?.effect ?? '').toLowerCase();
+      const name = skill.name.toLowerCase();
+      const description = skill.description.toLowerCase();
       return name.includes(term) || description.includes(term);
     });
-  }, [searchTerm]);
+  }, [searchTerm, i18n.language]);
 
   return (
     <div className="space-y-6">
@@ -32,7 +56,7 @@ const SkillList: React.FC = () => {
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-black" size={20} />
         <input
           type="text"
-          placeholder="Search skills by name or description..."
+          placeholder={t('ui.search_skills_placeholder')}
           className="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-blue-500 focus:bg-white outline-none transition-all font-bold"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -42,16 +66,16 @@ const SkillList: React.FC = () => {
       {/* Results Count */}
       <div className="px-2 flex justify-between items-center">
         <span className="text-sm font-black text-black uppercase tracking-widest">
-          Found {filteredSkills.length} Skills
+          {t('ui.skills_found_count', { count: filteredSkills.length })}
         </span>
       </div>
 
       {/* Skill Cards */}
       <div className="grid grid-cols-1 gap-3">
         {filteredSkills.length > 0 ? (
-          filteredSkills.map((skill, idx) => (
+          filteredSkills.map((skill) => (
             <div
-              key={`${skill.name}-${idx}`}
+              key={skill.key}
               className="group flex items-start gap-4 p-5 bg-white border-2 border-slate-100 rounded-2xl hover:border-blue-200 hover:shadow-md transition-all duration-200"
             >
               <div
@@ -60,7 +84,7 @@ const SkillList: React.FC = () => {
                   getSkillTypeStyle(skill.type),
                 )}
               >
-                {skill.type || 'UNKNOWN'}
+                {skill.type || t('ui.unknown_type')}
               </div>
 
               <div className="flex-1">
@@ -68,14 +92,14 @@ const SkillList: React.FC = () => {
                   <h4 className="font-black text-black text-xl">{skill.name}</h4>
                 </div>
                 <p className="text-base text-black font-medium leading-relaxed mt-1">
-                  {skill.description || skill.effect?.replace(/^[金青赤緑]特\s*/, '') || ''}
+                  {skill.description}
                 </p>
               </div>
             </div>
           ))
         ) : (
           <div className="py-20 text-center bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200">
-            <p className="text-black font-bold">No matching skills found...</p>
+            <p className="text-black font-bold">{t('ui.no_skills_found')}</p>
           </div>
         )}
       </div>
