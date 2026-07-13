@@ -1,7 +1,7 @@
 // src/__tests__/components/Footer.test.tsx
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
 import React from 'react';
+import { describe, expect, it, vi } from 'vitest';
 
 vi.mock('@/lib/supabase', () => ({
   supabase: {
@@ -21,8 +21,9 @@ vi.mock('@/data/2026-2027/combos.json', () => ({ default: {} }));
 vi.mock('@/data/2026-2027/maps.json', () => ({ default: {} }));
 vi.mock('@/data/2026-2027/character_mapping.json', () => ({ default: { by_name: {}, by_id: {} } }));
 
-import { GameVersionProvider } from '@/contexts/GameVersionContext';
 import { Footer } from '@/components/Footer';
+import { GameVersionProvider } from '@/contexts/GameVersionContext';
+import '@/i18n/config';
 
 const Wrapper = ({ children }: { children: React.ReactNode }) =>
   React.createElement(GameVersionProvider, { initialVersion: '2024-2025' }, children);
@@ -49,7 +50,10 @@ describe('Footer', () => {
   it('renders special thanks links', () => {
     render(<Footer />, { wrapper: Wrapper });
     expect(screen.getByText('ドラミ')).toBeInTheDocument();
-    expect(screen.getByText('尼才肆肥熊')).toHaveAttribute('href', 'https://home.gamer.com.tw/black80731');
+    expect(screen.getByText('尼才肆肥熊')).toHaveAttribute(
+      'href',
+      'https://home.gamer.com.tw/black80731',
+    );
   });
 
   it('reflects version change in subtitle', () => {

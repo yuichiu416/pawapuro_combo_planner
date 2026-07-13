@@ -1,6 +1,7 @@
 // src/components/MapSection.tsx
 import { ChevronDown, MapPin } from 'lucide-react';
 import type React from 'react';
+import { useTranslation } from 'react-i18next';
 import { ComboCard } from '@/components/ComboCard';
 import { useGameVersion } from '@/contexts/GameVersionContext';
 import { cn } from '@/utils/style';
@@ -32,6 +33,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
   ...gridProps
 }) => {
   const { gameData } = useGameVersion();
+  const { t } = useTranslation();
   const combosData = gameData.combos as Record<string, any>;
   const isComplete = progress && progress.selected === progress.total && progress.total > 0;
 
@@ -71,7 +73,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
             </h2>
             <div className="flex items-center gap-3">
               <p className="text-xs font-black text-slate-400 uppercase tracking-[0.15em]">
-                {combos.length} 個のコンボを発見
+                {t('ui.combos_discovered_count', { count: combos.length })}
               </p>
 
               {progress && (
@@ -84,7 +86,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
                       : 'bg-blue-50 text-blue-600 border-blue-100',
                   )}
                 >
-                  <span className="opacity-60">コンボ数:</span>
+                  <span className="opacity-60">{t('ui.combos_found')}:</span>
                   <span>
                     {progress.total > 0
                       ? `${progress.selected}/${progress.total}`

@@ -1,10 +1,15 @@
 // src/__tests__/components/MapSection.test.tsx
-import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
+import { describe, expect, it, vi } from 'vitest';
 
 vi.mock('@/lib/supabase', () => ({
-  supabase: { auth: { getSession: vi.fn(() => Promise.resolve({ data: { session: null } })), onAuthStateChange: vi.fn(() => ({ data: { subscription: { unsubscribe: vi.fn() } } })) } },
+  supabase: {
+    auth: {
+      getSession: vi.fn(() => Promise.resolve({ data: { session: null } })),
+      onAuthStateChange: vi.fn(() => ({ data: { subscription: { unsubscribe: vi.fn() } } })),
+    },
+  },
 }));
 vi.mock('@/data/2024-2025/characters.json', () => ({ default: {} }));
 vi.mock('@/data/2024-2025/combos.json', () => ({ default: {} }));
@@ -15,8 +20,9 @@ vi.mock('@/data/2026-2027/combos.json', () => ({ default: {} }));
 vi.mock('@/data/2026-2027/maps.json', () => ({ default: {} }));
 vi.mock('@/data/2026-2027/character_mapping.json', () => ({ default: { by_name: {}, by_id: {} } }));
 
-import { GameVersionProvider } from '@/contexts/GameVersionContext';
 import { MapSection } from '@/components/MapSection';
+import { GameVersionProvider } from '@/contexts/GameVersionContext';
+import '@/i18n/config';
 
 const mockProps = {
   mapName: 'スカウ島',
@@ -59,17 +65,23 @@ describe('MapSection', () => {
   });
 
   it('shows progress badge when progress prop is provided', () => {
-    render(<MapSection {...mockProps} progress={{ selected: 1, total: 4 }} />, { wrapper: Wrapper });
+    render(<MapSection {...mockProps} progress={{ selected: 1, total: 4 }} />, {
+      wrapper: Wrapper,
+    });
     expect(screen.getByTestId('map-progress-スカウ島')).toHaveTextContent('1/4');
   });
 
   it('shows just count when no total (2026-2027 style)', () => {
-    render(<MapSection {...mockProps} progress={{ selected: 2, total: 0 }} />, { wrapper: Wrapper });
+    render(<MapSection {...mockProps} progress={{ selected: 2, total: 0 }} />, {
+      wrapper: Wrapper,
+    });
     expect(screen.getByTestId('map-progress-スカウ島')).toHaveTextContent('2');
   });
 
   it('shows completion styling when all combos selected', () => {
-    render(<MapSection {...mockProps} progress={{ selected: 2, total: 2 }} />, { wrapper: Wrapper });
+    render(<MapSection {...mockProps} progress={{ selected: 2, total: 2 }} />, {
+      wrapper: Wrapper,
+    });
     expect(screen.getByTestId('map-progress-スカウ島')).toHaveTextContent('2/2');
   });
 });

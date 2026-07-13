@@ -3,9 +3,9 @@ import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 
-import en from './locales/en.json';
-import ja from './locales/ja.json';
-import zh from './locales/zh.json';
+import en from './en.json';
+import ja from './ja.json';
+import zh from './zh.json';
 
 const STORAGE_KEY = 'パワプロ_planner_language';
 
@@ -18,9 +18,7 @@ i18n
       en: { translation: en },
       zh: { translation: zh },
     },
-    lng: typeof window !== 'undefined'
-      ? (localStorage.getItem(STORAGE_KEY) ?? 'ja')
-      : 'ja',
+    lng: typeof window !== 'undefined' ? (localStorage.getItem(STORAGE_KEY) ?? 'ja') : 'ja',
     fallbackLng: 'ja',
     supportedLngs: ['ja', 'en', 'zh'],
     interpolation: { escapeValue: false },

@@ -1,7 +1,8 @@
 // src/components/__tests__/ClearConfirmModal.test.tsx
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ClearConfirmModal } from '@/components/ClearConfirmModal';
+import '@/i18n/config';
 
 describe('ClearConfirmModal', () => {
   const defaultProps = {

@@ -154,8 +154,8 @@ describe('RewardAnalysis UI Logic', () => {
 
     render(<RewardAnalysis {...defaultProps} analysis={mockAnalysis} />);
 
-    const totalCard = screen.getByTestId(`${defaultProps.testId}-roster-card-合計`);
-    const pitchCard = screen.getByTestId(`${defaultProps.testId}-roster-card-投手`);
+    const totalCard = screen.getByTestId(`${defaultProps.testId}-roster-card-total`);
+    const pitchCard = screen.getByTestId(`${defaultProps.testId}-roster-card-pitcher`);
 
     // Check for rose/red error classes
     expect(totalCard).toHaveClass('border-rose-300', 'bg-rose-50');

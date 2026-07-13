@@ -1,7 +1,7 @@
 // src/__tests__/components/MatchExpCalculator.test.tsx
 import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import React from 'react';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 vi.mock('@/lib/supabase', () => ({
   supabase: {
@@ -20,8 +20,9 @@ vi.mock('@/data/2026-2027/combos.json', () => ({ default: {} }));
 vi.mock('@/data/2026-2027/maps.json', () => ({ default: {} }));
 vi.mock('@/data/2026-2027/character_mapping.json', () => ({ default: { by_name: {}, by_id: {} } }));
 
-import { GameVersionProvider } from '@/contexts/GameVersionContext';
 import { MatchExpButton } from '@/components/MatchExpCalculator';
+import { GameVersionProvider } from '@/contexts/GameVersionContext';
+import '@/i18n/config';
 
 const Wrapper = ({ children }: { children: React.ReactNode }) =>
   React.createElement(GameVersionProvider, { initialVersion: '2024-2025' }, children);
@@ -150,7 +151,9 @@ describe('MatchExpCalculator modal', () => {
     fireEvent.click(screen.getByTestId('exp-calc-close-btn'));
     await waitFor(() => screen.getByTestId('exp-calc-cancel-close-btn'));
     fireEvent.click(screen.getByTestId('exp-calc-cancel-close-btn'));
-    await waitFor(() => expect(screen.queryByTestId('exp-calc-confirm-dialog')).not.toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.queryByTestId('exp-calc-confirm-dialog')).not.toBeInTheDocument(),
+    );
     expect(screen.getByTestId('exp-calc-save-btn')).toBeInTheDocument();
   });
 

@@ -3,6 +3,7 @@ import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
 import App from '@/App';
+
 vi.mock('@/lib/supabase', () => ({
   supabase: {
     auth: {
@@ -59,9 +60,9 @@ describe('Timestamp UI Integration', () => {
     const timestampElement = await waitFor(
       () => {
         const el = screen.getByTestId('last-saved-timestamp');
-        const text = el.textContent?.replace(/最終保存日時:/i, '').trim();
+        const text = el.textContent?.replace(/最終保存:/i, '').trim();
 
-        // If the part after "最終保存日時:" is empty, the hook hasn't finished updating
+        // If the part after "最終保存:" is empty, the hook hasn't finished updating
         if (!text || text.length === 0) {
           throw new Error('Timestamp data still empty');
         }
@@ -75,7 +76,7 @@ describe('Timestamp UI Integration', () => {
 
     // Matches standard JS locale string or "Just now" or any non-empty string populated by the hook
     expect(timestampElement.textContent).toMatch(
-      /最終保存日時: (\d{1,2}\/\d{1,2}\/\d{4}, \d{1,2}:\d{2}:\d{2} [AP]M|Just now|.+)/i,
+      /最終保存: (\d{1,2}\/\d{1,2}\/\d{4}, \d{1,2}:\d{2}:\d{2} [AP]M|Just now|.+)/i,
     );
   });
 
@@ -92,8 +93,8 @@ describe('Timestamp UI Integration', () => {
       const timestamp = screen.getByTestId('last-saved-timestamp');
       // Verify it doesn't just say 'Just now' if that's your fallback,
       // but actually contains a formatted date string
-      expect(timestamp.textContent).not.toBe('最終保存日時:');
-      expect(timestamp.textContent).toMatch(/最終保存日時: .+/i);
+      expect(timestamp.textContent).not.toBe('最終保存:');
+      expect(timestamp.textContent).toMatch(/最終保存: .+/i);
     });
   });
 });
