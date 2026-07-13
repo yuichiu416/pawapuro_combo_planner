@@ -141,8 +141,8 @@
     "expert": "Expert"
   },
   "filter": {
-    "gold_pitcher": "Gold Pitcher",
-    "gold_fielder": "Gold Fielder",
+    "gold_pitcher": "All Pitcher Gold Skills selected",
+    "gold_fielder": "All Fielder Gold Skills selected",
     "pitcher": "Pitcher",
     "fielder": "Fielder"
   }

@@ -1,1437 +1,1711 @@
 {
   "神の子": {
+    "name": "神之子",
     "type": "gold",
-    "description": "登板中、味方打者のミート+5、パワー+5",
+    "description": "登板中，隊友打者的框+5、力量+5",
     "category": "pitcher"
   },
   "ケンカ投法": {
+    "name": "挑釁投法",
     "type": "gold",
-    "description": "内角への投球時、コントロールが良くなり球威も大きく上がる",
+    "description": "向內角投球時，控球變好且球威大幅提升",
     "category": "pitcher"
   },
   "草魂": {
+    "name": "雜草之魂",
     "type": "gold",
-    "description": "動揺状態にほとんどならない",
+    "description": "幾乎不會陷入動搖狀態",
     "category": "pitcher"
   },
   "世界の代打王": {
+    "name": "世界代打王",
     "type": "gold",
-    "description": "代打として打席に立ったとき、ミート+25、パワー+20",
+    "description": "作為代打站上打擊區時，框+25、力量+20",
     "category": "fielder"
   },
   "世界の盗塁王": {
+    "name": "世界盜壘王",
     "type": "gold",
-    "description": "盗塁時の走力が大きく上がる。また塁上が一塁または一・三塁の状況で一塁走者のとき、相手投手のコントロール-10、スタミナ消費量増",
+    "description": "盜壘時的走力大幅提升。此外，當壘包為一壘或一・三壘且自己為一壘跑者時，對手投手的控球-10，體力消耗量增加",
     "category": "fielder"
   },
   "牛若丸": {
+    "name": "牛若丸",
     "type": "gold",
-    "description": "守備時に送球速度と背走速度が上がり、動き出しも早くなる",
+    "description": "防守時傳球速度和背身奔跑速度提升，且起動變快",
     "category": "fielder"
   },
   "忍者": {
+    "name": "忍者",
     "type": "gold",
-    "description": "守備時に送球速度と背走速度が上がり、動き出しも早くなる",
+    "description": "防守時傳球速度和背身奔跑速度提升，且起動變快",
     "category": "fielder"
   },
   "世界の王": {
+    "name": "世界之王",
     "type": "gold",
-    "description": "強振して打つと、ホームラン性の打球がかなり出やすくなる。ラインドライブとは一緒につけられない",
+    "description": "使用強振擊球時，非常容易打出帶有全壘打性質的飛球。無法與噴射氣流（Line Drive）同時裝備",
     "category": "fielder"
   },
   "打撃の神様": {
+    "name": "打擊之神",
     "type": "gold",
-    "description": "ミート打ちのとき、ヒット性の打球がかなり出やすくなる。",
+    "description": "使用普通擊球時，非常容易打出帶有安打性質的球。",
     "category": "fielder"
   },
   "小阪ゾーン": {
-    "name": "小阪ゾーン",
+    "name": "小阪領域",
     "type": "gold",
     "category": "fielder",
-    "description": "守備時に送球速度と背走速度が上がり、動き出しも早くなる"
+    "description": "防守時傳球速度和背身奔跑速度提升，且起動變快"
   },
   "炎のストッパー": {
+    "name": "烈火終結者",
     "type": "blue",
-    "description": "スタミナ切れ状態ではなく、自責点0以下で同点か勝っているときにボールが重くなり、動揺状態になりにくくなる。また、相手打者の威圧感無効化",
+    "description": "在非體力耗盡狀態、自責分0以下且平手或領先時，球質會變重，且變得不易陷入動搖狀態。此外，使對手打者的威壓感無效化",
     "category": "pitcher"
   },
   "大魔神": {
+    "name": "大魔神",
     "type": "blue",
-    "description": "2番手以降で登板時、相手打者のミート-20、パワー-20",
+    "description": "作為第2任之後的投手登板時，對手打者的框-20、力量-20",
     "category": "pitcher"
   },
   "ロケットボーイズ": {
+    "name": "火箭男孩",
     "type": "blue",
     "description": "平均球速+2km/h",
     "category": "pitcher"
   },
   "幕張の防波堤": {
+    "name": "幕張防波堤",
     "type": "blue",
-    "description": "試合終盤でリードしており、走者が生還すると同点か逆転の場面で、球速+2km/h、コントロール+5",
+    "description": "在比賽後半段且領先，遇到跑者若回本壘就會被追平或逆轉的局面時，球速+2km/h、控球+5",
     "category": "pitcher"
   },
   "負けないエース": {
+    "name": "不敗王牌",
     "type": "blue",
-    "description": "登板中、味方打者のパワー+5",
+    "description": "登板中，隊友打者的力量+5",
     "category": "pitcher"
   },
   "平成の怪物": {
+    "name": "平成怪物",
     "type": "blue",
-    "description": "ストレートのノビが良いかどうか、A〜Gまでの7段階ある",
+    "description": "直球的尾勁好壞，分為從A到G的7個階段",
     "category": "all"
   },
   "雑草魂": {
+    "name": "雜草魂",
     "type": "blue",
-    "description": "打たれたときに動揺しにくいかどうか、A~Gまでの7段階ある。",
+    "description": "被擊出安打時是否不易動搖，分為從A到G的7個階段。",
     "category": "all"
   },
   "燃える男": {
+    "name": "燃燒之男",
     "type": "blue",
-    "description": "スタミナ切れ状態ではなく、自責点0以下で同点か勝っているときにボールが重くなり、動揺状態になりにくくなる。また、相手打者の威圧感無効化",
+    "description": "在非體力耗盡狀態、自責分0以下且平手或領先時，球質會變重，且變得不易陷入動搖狀態。此外，使對手打者的威壓感無效化",
     "category": "pitcher"
   },
   "小さな大投手": {
+    "name": "矮小的大投手",
     "type": "blue",
-    "description": "✕〜◎までの4段階あり、◯、◎は体力消費が軽減される",
+    "description": "分為✕～◎的4個階段，◯、◎會減輕體力消耗",
     "category": "pitcher"
   },
   "アニキ": {
+    "name": "大哥",
     "type": "blue",
-    "description": "味方野手のミート+5、パワー+5",
+    "description": "隊友野手的框+5、力量+5",
     "category": "fielder"
   },
   "Mrブルーウェーブ": {
+    "name": "藍浪先生",
     "type": "blue",
-    "description": "味方野手のミート+5、パワー+5",
+    "description": "隊友野手的框+5、力量+5",
     "category": "fielder"
   },
   "Mrドラゴンズ": {
+    "name": "中日龍先生",
     "type": "blue",
-    "description": "味方野手のミート+5、パワー+5",
+    "description": "隊友野手的框+5、力量+5",
     "category": "fielder"
   },
   "Mrパーフェクト": {
+    "name": "完美先生",
     "type": "blue",
-    "description": "味方野手のミート+5、パワー+5",
+    "description": "隊友野手的框+5、力量+5",
     "category": "fielder"
   },
   "Mr赤ヘル": {
+    "name": "紅帽先生",
     "type": "blue",
-    "description": "味方野手のミート+5、パワー+5",
+    "description": "隊友野手的框+5、力量+5",
     "category": "fielder"
   },
   "Mrタイガース": {
+    "name": "猛虎先生",
     "type": "blue",
-    "description": "味方野手のミート+5、パワー+5",
+    "description": "隊友野手的框+5、力量+5",
     "category": "fielder"
   },
-  "Mrイーグルス": {
+  "Mrイーグルs": {
+    "name": "金鷲先生",
     "type": "blue",
-    "description": "味方野手のミート+5、パワー+5",
+    "description": "隊友野手的框+5、力量+5",
     "category": "fielder"
   },
   "Mrスワローズ": {
+    "name": "燕子先生",
     "type": "blue",
-    "description": "味方野手のミート+5、パワー+5",
+    "description": "隊友野手的框+5、力量+5",
     "category": "fielder"
   },
   "Mrホークス": {
+    "name": "鷹俠先生",
     "type": "blue",
-    "description": "味方野手のミート+5、パワー+5",
+    "description": "隊友野手的框+5、力量+5",
     "category": "fielder"
   },
   "Mrファイターズ": {
+    "name": "戰士先生",
     "type": "blue",
-    "description": "味方野手のミート+5、パワー+5",
+    "description": "隊友野手的框+5、力量+5",
     "category": "fielder"
   },
   "Mrブレーブス": {
+    "name": "勇士先生",
     "type": "blue",
-    "description": "味方野手のミート+5、パワー+5",
+    "description": "隊友野手的框+5、力量+5",
     "category": "fielder"
   },
   "ミスター": {
+    "name": "先生",
     "type": "blue",
-    "description": "相手投手の球速-2km/h、コントロール-10、スタミナ消費量+15。自分の前の打者のときは、相手投手の球速-2km/h、コントロール-10、スタミナ消費量+10",
+    "description": "對手投手的球速-2km/h、控球-10、體力消耗量+15。在自己前一位打者時，對手投手的球速-2km/h、控球-10、體力消耗量+10",
     "category": "fielder"
   },
   "絶好調男": {
+    "name": "絕好調之男",
     "type": "blue",
-    "description": "味方野手のミート+5、パワー+5",
+    "description": "隊友野手的框+5、力量+5",
     "category": "fielder"
   },
-  "若大将": {
+  "若大將": {
+    "name": "若大將",
     "type": "blue",
-    "description": "味方野手のミート+5、パワー+5",
+    "description": "隊友野手的框+5、力量+5",
     "category": "fielder"
   },
   "バックスクリーン男": {
+    "name": "中外野計分板之男",
     "type": "blue",
-    "description": "強振して打つとホームラン性の打球が出やすくなる",
+    "description": "使用強振擊球時，容易打出全壘打性質的飛球",
     "category": "fielder"
   },
   "小さな大打者": {
+    "name": "矮小的大打者",
     "type": "blue",
-    "description": "ミート打ちのとき、ヒット性の打球が出やすくなる。",
+    "description": "使用普通擊球時，容易打出安打性質的球。",
     "category": "fielder"
   },
   "アライバ": {
+    "name": "荒井場組合",
     "type": "blue",
-    "description": "守備時に、送球速度と背走速度が上がる",
+    "description": "防守時，傳球速度和背身奔跑速度提升",
     "category": "fielder"
   },
   "おかわり君": {
+    "name": "再來一碗君",
     "type": "blue",
-    "description": "その試合でホームランを打っているとパワー+10（2本目以降は無効）",
+    "description": "在該場比賽中若已擊出全壘打，則力量+10（第2支之後無效）",
     "category": "fielder"
   },
   "不惑の大砲": {
+    "name": "不惑大砲",
     "type": "blue",
-    "description": "強振して打つとホームラン性の打球が出やすくなる",
+    "description": "使用強振擊球時，容易打出全壘打性質的飛球",
     "category": "fielder"
   },
   "悲劇のエース": {
+    "name": "悲劇王牌",
     "type": "red",
-    "description": "登板中、味方打者のパワー-5",
+    "description": "登板中，隊友打者的力量-5",
     "category": "pitcher"
   },
   "抜け球": {
+    "name": "失控飄球",
     "type": "red",
-    "description": "ストレートがときどきシュート方向に曲がる",
+    "description": "直球有時會往噴射球的方向偏移變化",
     "category": "pitcher"
   },
   "サンデー◯": {
-    "name": "サンデー◯",
+    "name": "星期日◯",
     "type": "blue",
     "category": "all",
-    "description": "日曜日に能力アップ"
+    "description": "在星期日比賽時能力提升"
   },
   "交流戦◯": {
-    "name": "交流戦◯",
+    "name": "交流戰◯",
     "type": "blue",
     "category": "all",
-    "description": "交流戦時に能力アップ"
+    "description": "交流戰期間能力提升"
   },
   "外国人◯": {
-    "name": "外国人◯",
+    "name": "外籍球員◯",
     "type": "blue",
     "category": "all",
-    "description": "外国人が相手のときに能力アップ"
+    "description": "對手為外籍球員時能力提升"
   },
   "ホーム◯": {
-    "name": "ホーム◯",
+    "name": "主場◯",
     "type": "blue",
     "category": "all",
-    "description": "ホームの試合時に能力アップ"
+    "description": "在主場比賽時能力提升"
   },
   "ビジター◯": {
-    "name": "ビジター◯",
+    "name": "客場◯",
     "type": "blue",
     "category": "all",
-    "description": "ビジターでの試合時に能力アップ"
+    "description": "在客場比賽時能力提升"
   },
   "デイゲーム◯": {
-    "name": "デイゲーム◯",
+    "name": "日場比賽◯",
     "type": "blue",
     "category": "all",
-    "description": "デイゲーム時に能力アップ"
+    "description": "在日間比賽時能力提升"
   },
   "ナイトゲーム◯": {
-    "name": "ナイトゲーム◯",
+    "name": "夜場比賽◯",
     "type": "blue",
     "category": "all",
-    "description": "ナイトゲーム時に能力アップ"
+    "description": "在夜間比賽時能力提升"
   },
   "ドーム◯": {
-    "name": "ドーム◯",
+    "name": "巨蛋◯",
     "type": "blue",
     "category": "all",
-    "description": "ドーム球場で能力アップ"
+    "description": "在巨蛋球場時能力提升"
   },
   "フライボールピッチャー": {
+    "name": "飛球型投手",
     "type": "normal",
-    "description": "青赤特 相手バッターの弾道がやや上がる",
+    "description": "雙面特技 對手打者的彈道會稍微上升",
     "category": "all"
   },
   "トップギア": {
+    "name": "最高檔位",
     "type": "gold",
-    "description": "先発時の1~2回は球速+4km/h、コントロール+13、変化量+2",
+    "description": "先發時的第1~2局，球速+4km/h、控球+13、變化量+2",
     "category": "pitcher"
   },
   "闘魂": {
+    "name": "鬥魂",
     "type": "gold",
-    "description": "スタミナ切れ状態ではなく、リードが2点以内か負けていて自責点2以下の場合、球質が重くなり、動揺状態になりにくくなって打者の威圧感を無効化する",
+    "description": "在非體力耗盡狀態下，若落後或領先在2分以內且自責分2以下時，球質會變重，變得不易陷入動搖狀態，並使打者的威壓感無效化",
     "category": "pitcher"
   },
   "超投打躍動": {
+    "name": "超投打躍動",
     "type": "gold",
-    "description": "投手で出場して2失点以下だとミートとパワーが大きく上がり、1安打以上だとコントロールと変化量が大きく上がる",
+    "description": "以投手身分出場且失分在2分以下時，框和力量大幅提升；若擊出1支安打以上，則控球和變化量大幅提升",
     "category": "pitcher"
   },
   "完全燃焼": {
+    "name": "完全燃燒",
     "type": "gold",
-    "description": "得点圏に走者がいてスタミナ残量約1/3以上のとき、より球質が重く、ノビがよくなりスタミナ消費量が増える",
+    "description": "得點圈有跑者且體力殘量在約1/3以上時，球質會更重、尾勁變好，但體力消耗量會增加",
     "category": "pitcher"
   },
   "ディレイドアーム": {
+    "name": "延遲出手",
     "type": "gold",
-    "description": "投球時の球持ちがより長くなり、打者からは腕の振りが見えづらく、打ちにくい",
+    "description": "投球時的藏球時間更長，打者很難看清手臂的擺動，變得難以擊中",
     "category": "pitcher"
   },
   "クロスキャノン": {
+    "name": "交叉加農炮",
     "type": "gold",
-    "description": "対角線となるコースに投げたとき、球速よりも速く見える",
+    "description": "投向對角線的球路時，看起來會比實際球速更快",
     "category": "pitcher"
   },
   "暴れ球": {
+    "name": "狂暴球",
     "type": "gold",
-    "description": "ストレートを投げたとき、よりノビが良くなるが、ブレやすくなる",
+    "description": "投出直球時，尾勁會更好，但容易產生位置偏移",
     "category": "pitcher"
   },
   "怪童": {
+    "name": "怪童",
     "type": "gold",
-    "description": "ストレートが球速よりも大幅に速く見える",
+    "description": "直球看起來會比實際球速大幅加快",
     "category": "pitcher"
   },
   "怪物球威": {
+    "name": "怪物球威",
     "type": "gold",
-    "description": "球質が非常に重くなり、打たれたときの打球が飛びにくくなる",
+    "description": "球質變得非常沉重，被擊中時的打球會變得很難飛遠",
     "category": "pitcher"
   },
   "ガソリンタンク": {
+    "name": "汽油桶",
     "type": "gold",
-    "description": "登板後のスタミナ回復が非常に早い",
+    "description": "登板後的體力恢復速度非常快",
     "category": "pitcher"
   },
   "ギアチェンジ": {
+    "name": "變速變檔",
     "type": "gold",
-    "description": "先発時の5回以降、リードが3点以内または同点で走者がいるとき、球速+1km/h、コントロール+10、変化球が打者の近くで変化するようになる",
+    "description": "先發時的第5局之後，領先在3分以內或平手且壘上有跑者時，球速+1km/h、控球+10，變化球會在更靠近打者的地方開始變化",
     "category": "pitcher"
   },
   "強心臓": {
+    "name": "強心臟",
     "type": "gold",
-    "description": "得点圏に走者がいるとき、球速+2km/h、変化量+3",
+    "description": "得點圈有跑者時，球速+2km/h、變化量+3",
     "category": "pitcher"
   },
   "驚異の切れ味": {
+    "name": "驚異銳利度",
     "type": "gold",
-    "description": "変化球の曲がり始めが極端に遅くなり、より打者の近くで変化する",
+    "description": "變化球的開始變化點變得極其遲滯，會在更靠近打者的地方產生急劇變化",
     "category": "pitcher"
   },
   "終盤力": {
+    "name": "後勁力",
     "type": "gold",
-    "description": "先発時に勝っているか3点差以内で負けているとき、球速+4km/h、コントロール+10、変化量+2",
+    "description": "先發時處於獲勝狀態或在3分差以內落後時，球速+4km/h、控球+10、變化量+2",
     "category": "pitcher"
   },
   "勝利の星": {
+    "name": "勝利之星",
     "type": "gold",
-    "description": "登板中、味方打者のミート+5、パワー+5",
+    "description": "登板中，隊友打者的框+5、力量+5",
     "category": "pitcher"
   },
   "主砲キラー": {
+    "name": "主砲殺手",
     "type": "gold",
-    "description": "ミートB以上かパワーA以上の打者が相手のとき、球速+3km/h、変化量+1km/h、さらに変化球が打者の近くで変化するようになる",
+    "description": "對手為框B以上或力量A以上的打者時，球速+3km/h、變化球速+1km/h，且變化球會在更靠近打者的地方開始變化",
     "category": "pitcher"
   },
   "精密機械": {
+    "name": "精密機械",
     "type": "gold",
-    "description": "ストライクゾーン低めへのコントロールが非常に良くなる。",
+    "description": "對好球帶低空的控球能力會變得非常優秀。",
     "category": "pitcher"
   },
   "走者釘付": {
+    "name": "釘死跑者",
     "type": "gold",
-    "description": "投球モーションがより速くなる",
+    "description": "投球動作的速率變得更快",
     "category": "pitcher"
   },
   "鉄腕": {
+    "name": "鐵腕",
     "type": "gold",
-    "description": "調子による影響がほとんどない",
+    "description": "幾乎不受狀態好壞（箭頭）的影響",
     "category": "pitcher"
   },
   "ドクターK": {
+    "name": "三振大師",
     "type": "gold",
-    "description": "2ストライクに追い込むと、球速+4km/h、変化量+2",
+    "description": "將打者追逼至2好球時，球速+4km/h、變化量+2",
     "category": "pitcher"
   },
   "ド根性": {
+    "name": "大鬥志",
     "type": "gold",
-    "description": "先発したとき、スタミナ切れになっても能力の減少が早めに止まる",
+    "description": "先發時，即使體力耗盡，能力的下降也會比較快停止",
     "category": "pitcher"
   },
   "内角無双": {
+    "name": "內角無雙",
     "type": "gold",
-    "description": "内角への投球時、コントロールが良くなり球威も大きく上がる",
+    "description": "向內角投球時，控球變好且球威大幅提升",
     "category": "pitcher"
   },
   "ハイスピンジャイロ": {
+    "name": "高轉速迴轉球",
     "type": "gold",
-    "description": "ストレートがジャイロ回転し、球速よりも非常に速く見える",
+    "description": "直球會產生螺旋旋轉（Gyrospin），看起來會比實際球速非常快",
     "category": "pitcher"
   },
   "左キラー": {
+    "name": "左打殺手",
     "type": "gold",
-    "description": "左打者が相手のとき、球速+3km/h、コントロール+7、スタミナ消費量増",
+    "description": "對手為左打者時，球速+3km/h、控球+7、體力消耗量增加",
     "category": "pitcher"
   },
   "不屈の魂": {
+    "name": "不屈之魂",
     "type": "gold",
-    "description": "動揺状態にほとんどならない",
+    "description": "幾乎不會陷入動搖狀態",
     "category": "pitcher"
   },
   "変幻自在": {
+    "name": "變幻自在",
     "type": "gold",
-    "description": "速い球のあとに遅い変化球、またはその逆で投球したとき、ストレートは球速よりもかなり速く見え、変化球は曲がり始めがかなり遅くなる",
+    "description": "在快速球後投出慢速變化球，或反過來投球時，直球看起來會比實際球速快很多，而變化球的開始變化點會變得非常遲滯",
     "category": "pitcher"
   },
   "本塁打厳禁": {
+    "name": "嚴禁全壘打",
     "type": "gold",
-    "description": "失投時にど真ん中にいく確率がかなり下がる",
+    "description": "失投時球跑到正中央的機率大幅下降",
     "category": "pitcher"
   },
   "球界の頭脳": {
+    "name": "球界之腦",
     "type": "gold",
-    "description": "味方投手のコントロール+15、消費スタミナ-11。味方投手が不調または絶不調の場合、球速+2km/h",
+    "description": "隊友投手的控球+15、消耗體力-11。若隊友投手為不佳或極差狀態時，球速+2km/h",
     "category": "fielder"
   },
   "ささやき戦術": {
+    "name": "低語戰術",
     "type": "gold",
-    "description": "捕手のときに得点圏に走者がいると、相手打者のミート-5、パワー-5",
+    "description": "作為捕手且得點圈有跑者時，對手打者的框-5、力量-5",
     "category": "fielder"
   },
   "鉄の壁": {
+    "name": "鐵壁",
     "type": "gold",
-    "description": "捕手のとき、本塁クロスプレイの際に走者の「ホーム突入」「重戦車」の発動確率をかなり下げる",
+    "description": "作為捕手時，在本壘攻防戰之際會大幅降低跑者發動「衝撞本壘」與「重戰車」的機率",
     "category": "fielder"
   },
   "バズーカ送球": {
+    "name": "火箭筒傳球",
     "type": "gold",
-    "description": "盗塁阻止時の送球がものすごく鋭くなる",
+    "description": "阻止盜壘時的傳球會變得極其銳利",
     "category": "fielder"
   },
   "渾身の決勝打": {
+    "name": "渾身決勝打",
     "type": "gold",
-    "description": "同点または負けているときの6回以降、塁上の走者が精悍すれば勝ち越しの場面でミート+12",
+    "description": "平手或落後時的第6局之後，若壘上跑者回本壘就能超前的場面下，框+12",
     "category": "fielder"
   },
   "ヒートアップ": {
+    "name": "白熱化",
     "type": "gold",
-    "description": "ストライクカウントの数ぶん、ミート+8、パワー+8",
+    "description": "根據好球數的數量，框+8、力量+8",
     "category": "fielder"
   },
   "逆襲": {
+    "name": "逆襲",
     "type": "gold",
-    "description": "前の打席で抑えられた投手が相手のとき、ミート+10、パワー+5",
+    "description": "對手投手為前一個打席解決自己的投手時，框+10、力量+5",
     "category": "fielder"
   },
   "安打製造機": {
+    "name": "安打製造機",
     "type": "gold",
-    "description": "ミート打ちのとき、ヒット性の打球がかなり出やすくなる。",
+    "description": "使用普通擊球時，非常容易打出安打性質的球。",
     "category": "fielder"
   },
   "アーチスト": {
+    "name": "藝術家",
     "type": "gold",
-    "description": "強振して打つと、ホームラン性の打球がかなり出やすくなる。ラインドライブとは一緒につけられない",
+    "description": "使用強振擊球時，非常容易打出全壘打性質的飛球。無法與噴射氣流（Line Drive）同時裝備",
     "category": "fielder"
   },
   "一球入魂": {
+    "name": "一球入魂",
     "type": "gold",
-    "description": "1ストライクを取られるまで、ミート+15、パワー+15",
+    "description": "在被拿到1個好球之前，框+15、力量+15",
     "category": "fielder"
   },
   "エースキラー": {
+    "name": "王牌殺手",
     "type": "gold",
-    "description": "エース級の投手との対戦時に、ミート+15、パワー+15",
+    "description": "與王牌級投手對戰時，框+15、力量+15",
     "category": "fielder"
   },
   "大番狂わせ": {
+    "name": "大爆冷門",
     "type": "gold",
-    "description": "スタメン出場し、5回以降で同点か試合終盤で負けているか同点だと、走者がいるときにパワーがSになる（もとがSだと変化なし）",
+    "description": "先發出場，且在第5局之後平手，或比賽後半段落後或平手時，若壘上有跑者則力量會變成S（原本就是S則無變化）",
     "category": "fielder"
   },
   "火事場の馬鹿力": {
+    "name": "臨場爆發力",
     "type": "gold",
-    "description": "試合終盤で負けているとき、ミート+20、パワー+20",
+    "description": "比賽後半段且處於落後狀態時，框+20、力量+20",
     "category": "fielder"
   },
   "外角必打": {
+    "name": "外角必打",
     "type": "gold",
-    "description": "アウトコースのボールを打つのがすごく得意になる。インコースヒッター、内角必打とは一緒につけられない。",
+    "description": "變得非常擅長擊打外角球。無法與內角打者、內角必打同時裝備。",
     "category": "fielder"
   },
   "気迫ヘッド": {
+    "name": "氣魄頭部滑壘",
     "type": "gold",
-    "description": "きわどいときにベースに頭からすべりこむ",
+    "description": "在關鍵緊要關頭時，會以頭部朝前滑壘的方式撲向壘包",
     "category": "fielder"
   },
   "恐怖の満塁男": {
+    "name": "恐怖滿壘男",
     "type": "gold",
-    "description": "満塁のとき、ミート+20、パワー+20",
+    "description": "滿壘時，框+20、力量+20",
     "category": "fielder"
   },
   "切り込み隊長": {
+    "name": "開路先鋒",
     "type": "gold",
-    "description": "走者がいないとき、ミート+15、パワー+10",
+    "description": "壘上沒有跑者時，框+15、力量+10",
     "category": "fielder"
   },
   "芸術的流し打ち": {
+    "name": "藝術推打",
     "type": "gold",
-    "description": "ミートで流し打ちをしたとき、打球がヒットになりやすい",
+    "description": "普通擊球進行推打時，球很容易變成安打",
     "category": "fielder"
   },
   "広角砲": {
+    "name": "廣角砲",
     "type": "gold",
-    "description": "流し方向にものすごい強い打球が打てるようになる。プルヒッター、引っ張り屋とは一緒につけられない",
+    "description": "變得能夠朝推打方向擊出非常強勁的球。無法與拉打者、拉打屋同時裝備",
     "category": "fielder"
   },
   "高速レーザー": {
+    "name": "高速雷射",
     "type": "gold",
-    "description": "外野守備時に、軌道が低く非常に速い送球をする",
+    "description": "在外野防守時，會傳出軌道低且速度極快的球",
     "category": "fielder"
   },
   "高速ベースラン": {
+    "name": "高速跑壘",
     "type": "gold",
-    "description": "走塁時（盗塁は除く）の走力が大きく上がり、三塁到達時にヘッドスライディングをしない",
+    "description": "跑壘時（不含盜壘）的走力大幅提升，且到達三壘時不會進行頭部滑壘",
     "category": "fielder"
   },
   "高球必打": {
+    "name": "高球必打",
     "type": "gold",
-    "description": "高めのボールを打つのがすごく得意になる。ローボールヒッター、低球必打、とは一緒につけられない",
+    "description": "變得非常擅長擊打高空球。無法與低球打者、低球必打同時裝備",
     "category": "fielder"
   },
   "左腕キラー": {
+    "name": "左投殺手",
     "type": "gold",
-    "description": "左投手が相手のとき、ミート+20、パワー+15",
+    "description": "對手為左投手時，框+20、力量+15",
     "category": "fielder"
   },
   "勝負師": {
+    "name": "勝負師",
     "type": "gold",
-    "description": "得点圏に走者がいるとき、ミート+20、パワー+15",
+    "description": "得點圈有跑者時，框+20、力量+15",
     "category": "fielder"
   },
   "重戦車": {
+    "name": "重戰車",
     "type": "gold",
-    "description": "本塁への激しいスライディングで捕手の捕球ミスを狙う",
+    "description": "透過向本壘的強力滑壘來試圖讓捕手產生接球失誤",
     "category": "fielder"
   },
   "ストライク送球": {
+    "name": "精準傳球",
     "type": "gold",
-    "description": "送球がすごくそれにくくなる",
+    "description": "傳球變得極其不易傳偏",
     "category": "fielder"
   },
   "精神的支柱": {
+    "name": "精神支柱",
     "type": "gold",
-    "description": "味方投手のコントロール+10、味方打者のミート+10、パワー+5",
+    "description": "隊友投手的控球+10、隊友打者的框+10、力量+5",
     "category": "fielder"
   },
   "代打の神様": {
+    "name": "代打之神",
     "type": "gold",
-    "description": "代打として打席に立ったとき、ミート+25、パワー+20",
+    "description": "作為代打站上打擊區時，框+25、力量+20",
     "category": "fielder"
   },
   "電光石火": {
+    "name": "電光石火",
     "type": "gold",
-    "description": "盗塁時の走力が大きく上がる。また塁上が一塁または一・三塁の状況で一塁走者のとき、相手投手のコントロール-10、スタミナ消費量増",
+    "description": "盜壘時的走力大幅提升。此外，當壘包為一壘或一・三壘且自己為一壘跑者時，對手投手的控球-10，體力消耗量增加",
     "category": "fielder"
   },
   "鉄人": {
+    "name": "鐵人",
     "type": "gold",
-    "description": "ものすごくケガをしにくくなる",
+    "description": "變得極其不易受傷",
     "category": "fielder"
   },
   "伝説のサヨナラ男": {
+    "name": "傳說再見全壘打男",
     "type": "gold",
-    "description": "サヨナラ勝利になる場面でミート+20、パワー+20",
+    "description": "在能打出再見勝利的局面時，框+20、力量+20",
     "category": "fielder"
   },
   "低球必打": {
+    "name": "低球必打",
     "type": "gold",
-    "description": "低めのボールを打つのがすごく得意になる。ハイボールヒッター、高球必打とは一緒につけられない",
+    "description": "變得非常擅長擊打低空球。無法與高球打者、高球必打同時裝備",
     "category": "fielder"
   },
   "トリックスター": {
+    "name": "魔術欺詐師",
     "type": "gold",
-    "description": "出塁時、相手投手のスタミナ消費量が上がり、内野の守備力が下がる（塁上にこの能力を持つ走者が増えると効果が高まり、投手のコントロールと変化量も低下）",
+    "description": "出壘時，對手投手的體力消耗量會提升，且內野的守備力會下降（壘上擁有此能力的跑者增加時效果會提高，投手的控球與變化量也會隨之降低）",
     "category": "fielder"
   },
   "内角必打": {
+    "name": "內角必打",
     "type": "gold",
-    "description": "インコースのボールを打つのがすごく得意になる。アウトコースヒッター、外角必打とは一緒につけられない",
+    "description": "變得非常擅長擊打內角球。無法與外角打者、外角必打同時裝備",
     "category": "fielder"
   },
   "引っ張り屋": {
+    "name": "拉打屋",
     "type": "gold",
-    "description": "強振で引っ張るとすごく強い打球が飛ぶようになる。広角打法、広角砲とは一緒につけられない",
+    "description": "使用強振進行拉打時，會擊出非常強勁的球。無法與廣角打法、廣角砲同時裝備",
     "category": "fielder"
   },
   "魔術師": {
+    "name": "魔術師",
     "type": "gold",
-    "description": "守備時に送球速度と背走速度が上がり、動き出しも早くなる",
+    "description": "防守時傳球速度和背身奔跑速度提升，且起動變快",
     "category": "fielder"
   },
   "メッタ打ち": {
+    "name": "猛烈痛擊",
     "type": "gold",
-    "description": "2安打以上していると3打席目以降はミート+20、パワー+5",
+    "description": "擊出2支安打以上時，第3個打席之後框+20、力量+5",
     "category": "fielder"
   },
   "ロケットスタート": {
+    "name": "火箭起跑",
     "type": "gold",
-    "description": "打ってからのスタートダッシュがものすごく速くなる",
+    "description": "擊球後的起跑衝刺變得極其迅速",
     "category": "fielder"
   },
   "投打躍動": {
+    "name": "投打躍動",
     "type": "blue",
-    "description": "投手で出場し、2失点以下だとミートとパワーが上がり、1安打以上だとコントロールと変化量が上がる",
+    "description": "以投手身分出場且失分在2分以下時，框和力量提升；若擊出1支安打以上，則控球和變化量提升",
     "category": "pitcher"
   },
   "立ち上がり◯": {
+    "name": "開局良好◯",
     "type": "blue",
-    "description": "先発時の1回は球速+4km/h、コントロール+13、変化量+2。2回は球速+2km/h、コントロール+7、変化量+1",
+    "description": "先發時的第1局球速+4km/h、控球+13、變化量+2。第2局球速+2km/h、控球+7、變化量+1",
     "category": "pitcher"
   },
   "威圧感（投手）": {
+    "name": "威壓感（投手）",
     "type": "blue",
-    "description": "2番手以降で登板時、相手打者のミート-20、パワー-20",
+    "description": "作為第2任之後的投手登板時，對手打者的框-20、力量-20",
     "category": "pitcher"
   },
   "重い球": {
+    "name": "沉重球",
     "type": "blue",
-    "description": "打たれても打球が飛びにくくなる",
+    "description": "即使被擊中，球也很難飛遠",
     "category": "pitcher"
   },
   "勝ち運": {
+    "name": "強運",
     "type": "blue",
-    "description": "登板中、味方打者のパワー+5",
+    "description": "登板中，隊友打者的力量+5",
     "category": "pitcher"
   },
   "回またぎ◯": {
+    "name": "跨局投球◯",
     "type": "blue",
-    "description": "リリーフ登板でイニングをまたいでも疲れにくくなる",
+    "description": "後援登板時即使跨局投球也變得不易疲勞",
     "category": "pitcher"
   },
   "緩急◯": {
+    "name": "速差控制◯",
     "type": "blue",
-    "description": "ストレートと遅い変化球を組み合わせて投球すると能力が上がる。",
+    "description": "將直球與慢速變化球組合起來投球時，能力會提升。",
     "category": "pitcher"
   },
   "キレ◯": {
+    "name": "銳利度◯",
     "type": "blue",
-    "description": "変化球のキレが良くなる。",
+    "description": "變化球的銳利度變好。",
     "category": "pitcher"
   },
   "緊急登板◯": {
+    "name": "緊急登板◯",
     "type": "blue",
-    "description": "イニング途中での登板時、コントロール+10",
+    "description": "在局中途登板時，控球+10",
     "category": "pitcher"
   },
   "球速安定": {
+    "name": "球速穩定",
     "type": "blue",
     "description": "平均球速+2km/h",
     "category": "pitcher"
   },
   "クロスファイヤー": {
+    "name": "交叉火線",
     "type": "blue",
-    "description": "対角線のコースにストレートを投げたとき、球速よりも速く見える",
+    "description": "向對角線球路投出直球時，看起來會比實際球速更快",
     "category": "pitcher"
   },
   "牽制◯": {
+    "name": "牽制◯",
     "type": "blue",
-    "description": "牽制球を投げるモーションが少し早くなり、悪送球しにくくなる",
+    "description": "投出牽制球的動作稍微變快，且不易產生惡性傳球失誤",
     "category": "pitcher"
   },
   "根性◯": {
+    "name": "鬥志◯",
     "type": "blue",
-    "description": "先発したとき、スタミナ切れになっても能力の減少がある程度のところで止まる",
+    "description": "先發時，即使體力耗盡，能力的下降也會在一定程度時停止",
     "category": "pitcher"
   },
   "ジャイロボール": {
+    "name": "迴轉球",
     "type": "blue",
-    "description": "ストレートがジャイロ回転し、球速よりも速く見える",
+    "description": "直球會產生螺旋旋轉，看起來會比實際球速更快",
     "category": "pitcher"
   },
   "尻上がり": {
+    "name": "漸入佳境",
     "type": "blue",
-    "description": "先発時、7,8回は球速+2km/h、変化量+1、コントロール+5。9回以降は球速+4km/h、変化量+2、コントロール+10",
+    "description": "先發時，第7、8局球速+2km/h、變化量+1、控球+5。第9局之後球速+4km/h、變化量+2、控球+10",
     "category": "pitcher"
   },
   "対強打者◯": {
+    "name": "對強打者◯",
     "type": "blue",
-    "description": "ミートBまたはパワーAの強打者が相手の時、球速+2km/h、変化量+1",
+    "description": "對手為框B或力量A的強打者時，球速+2km/h、變化量+1",
     "category": "pitcher"
   },
   "球持ち◯": {
+    "name": "藏球好◯",
     "type": "blue",
-    "description": "球持ちが良くなり、投球した際の投球地点の表示が遅くなる",
+    "description": "藏球能力變好，投球時的落點顯示會變遲緩",
     "category": "pitcher"
   },
   "対ランナー◯": {
+    "name": "對跑者◯",
     "type": "blue",
-    "description": "走者一塁か、一塁・三塁のとき、コントロール+5、スタミナ消費量減",
+    "description": "跑者在一一壘或一、三壘時，控球+5、體力消耗量減少",
     "category": "pitcher"
   },
   "打球反応◯": {
+    "name": "打球反應◯",
     "type": "blue",
-    "description": "ピッチャー返しをさばくのがうまくなる",
+    "description": "變得擅長處理迎面飛來的投手方向回擊球",
     "category": "pitcher"
   },
   "奪三振": {
+    "name": "奪三振",
     "type": "blue",
-    "description": "打者を2ストライクに追い込むと球速+2km/h、変化量+1",
+    "description": "將打者追逼至2好球時，球速+2km/h、變化量+1",
     "category": "pitcher"
   },
   "闘志": {
+    "name": "鬥志",
     "type": "blue",
-    "description": "スタミナ切れ状態ではなく、自責点0以下で同点か勝っているときにボールが重くなり、動揺状態になりにくくなる。また、相手打者の威圧感無効化",
+    "description": "在非體力耗盡狀態、自責分0以下且平手或領先時，球質會變重，且變得不易陷入動搖狀態。此外，使對手打者的威壓感無效化",
     "category": "pitcher"
   },
   "ナチュラルシュート": {
+    "name": "自然噴射球",
     "type": "blue",
-    "description": "常にストレートが微妙にシュート変化する",
+    "description": "直球經常會帶有微妙的噴射球方向變化",
     "category": "pitcher"
   },
   "内角攻め": {
+    "name": "內角突擊",
     "type": "blue",
-    "description": "インコースに投げたときにコントロールが良くなる。",
+    "description": "向內角投球時，控球會變好。",
     "category": "pitcher"
   },
   "逃げ球": {
+    "name": "逃脫球",
     "type": "blue",
-    "description": "ピッチャーのすっぽ抜けたボールがど真ん中にいきにくくなる",
+    "description": "投手失控滑手的球會變得不容易跑到正中央",
     "category": "pitcher"
   },
   "低め◯": {
+    "name": "低空球◯",
     "type": "blue",
-    "description": "低めへのコントロールが良くなる。",
+    "description": "對低空的控球能力會變好。",
     "category": "pitcher"
   },
   "真っスラ": {
+    "name": "直卡球",
     "type": "blue",
-    "description": "＜まっすら＞と読む。ストレートを投げると自然に利き手と反対方向に曲がる球種のこと",
+    "description": "讀作＜まっすら＞。投出直球時會自然朝慣用手相反方向變化的球種",
     "category": "pitcher"
   },
   "要所◯": {
+    "name": "關鍵局◯",
     "type": "blue",
-    "description": "試合終盤でリードしており、走者が生還すると同点か逆転の場面で、球速+2km/h、コントロール+5",
+    "description": "在比賽後半段且領先，遇到跑者若回本壘就會被追平或逆轉的局面時，球速+2km/h、控球+5",
     "category": "pitcher"
   },
   "リリース◯": {
+    "name": "出手動作一致◯",
     "type": "blue",
-    "description": "ストレートと変化球の投球モーションが同じになる。",
+    "description": "直球與變化球的投球動作會變得相同。",
     "category": "pitcher"
   },
   "窮地◯": {
+    "name": "絕境◯",
     "type": "blue",
-    "description": "ストライクカウントの数のぶん、ミート+4、パワー+4",
+    "description": "根據好球數的數量，框+4、力量+4",
     "category": "fielder"
   },
   "リベンジ": {
+    "name": "復仇",
     "type": "blue",
-    "description": "前の打席で抑えられた投手が相手のとき、ミート+10",
+    "description": "對手投手為前一個打席解決自己的投手時，框+10",
     "category": "fielder"
   },
   "マルチ弾": {
+    "name": "複數全壘打",
     "type": "blue",
-    "description": "その試合でホームランを打っているとパワー+10（2本目以降は無効）",
+    "description": "在該場比賽中若已擊出全壘打，則力量+10（第2支之後無效）",
     "category": "fielder"
   },
   "アベレージヒッター": {
+    "name": "安打型打者",
     "type": "blue",
-    "description": "ミート打ちのとき、ヒット性の打球が出やすくなる。",
+    "description": "使用普通擊球時，容易打出安打性質的球。",
     "category": "fielder"
   },
   "アウトコースヒッター": {
+    "name": "外角打者",
     "type": "blue",
-    "description": "アウトコースのボールを打つのが得意になる。インコースヒッター、内角必打とは一緒につけられない。",
+    "description": "擅長擊打外角球。無法與內角打者、內角必打同時裝備。",
     "category": "fielder"
   },
   "威圧感（野手）": {
+    "name": "威壓感（野手）",
     "type": "blue",
-    "description": "相手投手の球速-2km/h、コントロール-10、スタミナ消費量+15。自分の前の打者のときは、相手投手の球速-2km/h、コントロール-10、スタミナ消費量+10",
+    "description": "對手投手的球速-2km/h、控球-10、體力消耗量+15。在自己前一位打者時，對手投手的球速-2km/h、控球-10、體力消耗量+10",
     "category": "fielder"
   },
   "インコースヒッター": {
+    "name": "內角打者",
     "type": "blue",
-    "description": "インコースのボールを打つのが得意になる。アウトコースヒッター、外角必打とは一緒につけられない。",
+    "description": "擅長擊打內角球。無法與外角打者、外角必打同時裝備。",
     "category": "fielder"
   },
   "意外性": {
+    "name": "意外性",
     "type": "blue",
-    "description": "スタメン出場して5回以降で同点、または試合終盤で負けているか同点だと、走者がいるときにパワーがAになる（もとがA以上だと変化なし）",
+    "description": "先發出場且在第5局之後平手，或者比賽後半段落後或平手時，若壘上有跑者則力量會變成A（原本就是A以上則無變化）",
     "category": "fielder"
   },
   "いぶし銀": {
+    "name": "老練工匠",
     "type": "blue",
-    "description": "試合終盤に1点差で負けているか同点で、得点圏に走者がいると、ミート打ちをしたときにヒット性の当たりが出やすい",
+    "description": "在比賽後半段落後1分或平手，且得點圈有跑者時，進行普通擊球容易擊出安打性質的球",
     "category": "fielder"
   },
   "固め打ち": {
+    "name": "猛打賞",
     "type": "blue",
-    "description": "2安打以上していると、3打席目以降はミート+10、パワー+5",
+    "description": "擊出2支安打以上時，第3個打席之後框+10、力量+5",
     "category": "fielder"
   },
   "カット打ち": {
+    "name": "破壞球打法",
     "type": "blue",
-    "description": "2ストライク時にミート打ちをすると、少し振り遅れてもバットに当たりやすい",
+    "description": "在2好球時進行普通擊球，即使稍微揮棒落後也很容易讓球碰到球棒（碰成界外）",
     "category": "fielder"
   },
   "かく乱": {
+    "name": "干擾打法",
     "type": "blue",
-    "description": "出塁時、相手投手のスタミナ消費量が上がり、内野の守備力が下がる（塁上にこの能力を持つ走者が増えると効果が高まり、投手のコントロールと変化量も低下）",
+    "description": "出壘時，對手投手的體力消耗量會提升，且內野的守備力會下降（壘上擁有此能力的跑者增加時效果會提高，投手的控球與變化量也會隨之降低）",
     "category": "fielder"
   },
   "逆境◯": {
+    "name": "逆境◯",
     "type": "blue",
-    "description": "試合終盤で負けているとき、ミート+15、パワー+15",
+    "description": "比賽後半段且處於落後狀態時，框+15、力量+15",
     "category": "fielder"
   },
   "決勝打": {
+    "name": "決勝打",
     "type": "blue",
-    "description": "同点または負けているときの6回以降、塁上の走者が生還すれば勝ち越しの場面で、ミート+5",
+    "description": "平手或落後時的第6局之後，若壘上跑者回本壘就能超前的場面下，框+5",
     "category": "fielder"
   },
   "高速チャージ": {
+    "name": "高速衝鋒",
     "type": "blue",
-    "description": "バント時に早くボールに追いつく",
+    "description": "對手短打時能更快追上球",
     "category": "fielder"
   },
   "広角打法": {
+    "name": "廣角打法",
     "type": "blue",
-    "description": "流し方向に強い打球が打てるようになる。プルヒッター、引っ張り屋とは一緒につけられない。",
+    "description": "能夠向推打方向擊出強勁的球。無法與拉打者、拉打屋同時裝備。",
     "category": "fielder"
   },
   "サヨナラ男": {
+    "name": "再見全壘打男",
     "type": "blue",
-    "description": "本塁打でサヨナラ勝利の場面でパワー+15、得点圏の走者が精悍すればサヨナラ勝利の場面でミート+15",
+    "description": "藉由全壘打能達成再見勝利的場面下力量+15；藉由得點圈跑者回本壘能達成再見勝利的場面下框+15",
     "category": "fielder"
   },
   "守備職人": {
+    "name": "守備達人",
     "type": "blue",
-    "description": "守備時に、送球速度と背走速度が上がる",
+    "description": "防守時，傳球速度和背身奔跑速度提升",
     "category": "fielder"
   },
   "初球◯": {
+    "name": "初球◯",
     "type": "blue",
-    "description": "1ストライクを取られるまで、ミート+10、パワー+5",
+    "description": "在被拿到1個好球之前，框+10、力量+5",
     "category": "fielder"
   },
   "対エース◯": {
+    "name": "對王牌◯",
     "type": "blue",
-    "description": "エース級の投手との対戦時に、ミート+10、パワー+10",
+    "description": "與王牌級投手對戰時，框+10、力量+10",
     "category": "fielder"
   },
   "代打◯": {
+    "name": "代打◯",
     "type": "blue",
-    "description": "代打として打席に立ったとき、ミート+15、パワー+15",
+    "description": "作為代打站上打擊區時，框+15、力量+15",
     "category": "fielder"
   },
   "ダメ押し": {
+    "name": "錦上添花",
     "type": "blue",
-    "description": "4点以上リードしていると、終盤にパワー+10",
+    "description": "領先4分以上時，比賽後半段力量+10",
     "category": "fielder"
   },
   "対ストレート◯": {
+    "name": "對直球◯",
     "type": "blue",
-    "description": "ストレートを打つのが上手くなる",
+    "description": "變得擅長擊打直球",
     "category": "fielder"
   },
   "対変化球◯": {
+    "name": "對變化球◯",
     "type": "blue",
-    "description": "変化球を打つのがうまくなる",
+    "description": "變得擅長擊打變化球",
     "category": "fielder"
   },
   "チャンスメーカー": {
+    "name": "機會製造者",
     "type": "blue",
-    "description": "走者がいない時、ミート+10、パワー+5",
+    "description": "壘上沒有跑者時，框+10、力量+5",
     "category": "fielder"
   },
   "内野安打◯": {
+    "name": "內野安打◯",
     "type": "blue",
-    "description": "打ってからのスタートダッシュが速くなる。",
+    "description": "擊球後的起跑衝刺變快。",
     "category": "fielder"
   },
   "流し打ち": {
+    "name": "推打",
     "type": "blue",
-    "description": "ミート打ちで流し打ちをするとヒットになりやすい。",
+    "description": "普通擊球進行推打時很容易變成安打。",
     "category": "fielder"
   },
   "粘り打ち": {
+    "name": "纏鬥打法",
     "type": "blue",
-    "description": "2ストライクに追い込まれたとき、ミート打ちのミート+10",
+    "description": "被追逼至2好球時，普通擊球的框+10",
     "category": "fielder"
   },
   "パワーヒッター": {
+    "name": "力量型打者",
     "type": "blue",
-    "description": "強振して打つとホームラン性の打球が出やすくなる",
+    "description": "使用強振擊球時，容易打出全壘打性質的飛球",
     "category": "fielder"
   },
   "ハイボールヒッター": {
+    "name": "高球打者",
     "type": "blue",
-    "description": "高めのボールを打つのが得意になる。ローボールヒッター、低球必打とは一緒につけられない",
+    "description": "變得擅長擊打高空的球。無法與低球打者、低球必打同時裝備",
     "category": "fielder"
   },
   "バント◯": {
+    "name": "短打◯",
     "type": "blue",
-    "description": "バントがゴロになりやすい。",
+    "description": "短打時球很容易變成滾地球。",
     "category": "fielder"
   },
   "バント職人": {
+    "name": "短打達人",
     "type": "blue",
-    "description": "バントが非常にゴロになりやすい。",
+    "description": "短打時球會變得非常容易變成滾地球。",
     "category": "fielder"
   },
   "プレッシャーラン": {
+    "name": "施壓跑壘",
     "type": "blue",
-    "description": "併殺になありそうなタイミングで一塁走者が二塁にスライディングしたとき、相手野手の一塁送球が悪送球になることがある",
+    "description": "在可能形成雙殺的時間點，一壘跑者向二壘滑壘時，有時會使對手野手向一壘的傳球變成惡性傳球失誤",
     "category": "fielder"
   },
   "プルヒッター": {
+    "name": "拉打者",
     "type": "blue",
-    "description": "強振で引っ張ると強い打球が飛ぶようになる。広角打法、広角砲とは一緒につけられない。",
+    "description": "使用強振進行拉打時會擊出強勁的球。無法與廣角打法、廣角砲同時裝備。",
     "category": "fielder"
   },
   "ヘッドスライディング": {
+    "name": "頭部滑壘",
     "type": "blue",
-    "description": "きわどいときベースに頭からすべり込む",
+    "description": "在關鍵緊要關頭時會以頭部朝前滑壘的方式撲向壘包",
     "category": "fielder"
   },
   "ホーム突入": {
+    "name": "衝撞本壘",
     "type": "blue",
-    "description": "走者のとき、本塁でクロスプレイが発生した際、相手捕手がでボールをこぼすことがある",
+    "description": "作為跑者時，在本壘發生攻防戰之際，有時會使對手捕手漏球",
     "category": "fielder"
   },
   "ホーム死守": {
+    "name": "死守本壘",
     "type": "blue",
-    "description": "捕手のとき、相手走者の「ホーム突入」および「重戦車」の発生確率を下げる",
+    "description": "作為捕手時，會降低對手跑者發動「衝撞本壘」及「重戰車」的機率",
     "category": "fielder"
   },
   "満塁男": {
+    "name": "滿壘男",
     "type": "blue",
-    "description": "満塁のとき、ミート+15、パワー+15",
+    "description": "滿壘時，框+15、力量+15",
     "category": "fielder"
   },
   "ムード◯": {
+    "name": "氣氛◯",
     "type": "blue",
-    "description": "味方野手のミート+5、パワー+5",
+    "description": "隊友野手的框+5、力量+5",
     "category": "fielder"
   },
   "ラインドライブ": {
+    "name": "噴射氣流",
     "type": "blue",
-    "description": "強振で打った際にライナー性の打球が出やすくなる（ゴロは除く）。パワーヒッター、アーチストとは一緒につけられない",
+    "description": "使用強振擊球時容易打出平飛球（滾地球除外）。無法與力量型打者、藝術家同時裝備",
     "category": "fielder"
   },
   "レーザービーム": {
+    "name": "雷射肩",
     "type": "blue",
-    "description": "外野守備時に軌道が低く速い送球をする",
+    "description": "在外野防守時會傳出軌道低且快速的球",
     "category": "fielder"
   },
   "ローボールヒッター": {
+    "name": "低球打者",
     "type": "blue",
-    "description": "低めのボールを打つのが得意になる。ハイボールヒッター、高球必打とは一緒につけられない",
+    "description": "變得擅長擊打低空的球。無法與高球打者、高球必打同時裝備",
     "category": "fielder"
   },
   "対ランナー×": {
-    "name": "対ランナー×",
+    "name": "對跑者×",
     "type": "red",
     "category": "pitcher",
-    "description": "ランナーが一塁、または一・三塁にいるときにピッチャーの能力が下がる"
+    "description": "跑者在一壘或一・三壘時，投手的能力會下降"
   },
   "一発": {
+    "name": "易挨轟",
     "type": "red",
-    "description": "失投時にど真ん中にいく確率が上がる",
+    "description": "失投時球跑到正中央的機率上升",
     "category": "pitcher"
   },
   "ガラスのハート": {
+    "name": "玻璃心",
     "type": "red",
-    "description": "打たれるとものすごく動揺しやすくなる",
+    "description": "一旦被擊出安打就會變得極其容易動搖",
     "category": "pitcher"
   },
   "軽い球": {
+    "name": "輕飄球",
     "type": "red",
-    "description": "打たれると打球が飛びやすくなる",
+    "description": "一旦被擊中，打球就會變得很易飛遠",
     "category": "pitcher"
   },
   "シュート回転": {
+    "name": "噴射旋轉",
     "type": "red",
-    "description": "ストレートがときどきシュート方向に曲がる",
+    "description": "直球有時會往噴射球的方向偏移變化",
     "category": "pitcher"
   },
   "四球": {
+    "name": "四壞球保送面",
     "type": "red",
-    "description": "3ボールになると、コントロール-20",
+    "description": "到3壞球時，控球-20",
     "category": "pitcher"
   },
   "スロースターター": {
+    "name": "慢熱型",
     "type": "red",
-    "description": "先発時の1回は球速-4km/h、コントロール-13、変化量-2。2回は球速-2km/h、コントロール-7、変化量-1",
+    "description": "先發時的第1局球速-4km/h、控球-13、變化量-2。第2局球速-2km/h、控球-7、變化量-1",
     "category": "pitcher"
   },
   "寸前": {
+    "name": "功虧一簣",
     "type": "red",
-    "description": "最終回または先発時の5回でリードしていると、球速-2km/h、コントロール-10",
+    "description": "在最後一局或先發時的第5局且領先時，球速-2km/h、控球-10",
     "category": "pitcher"
   },
   "短気": {
+    "name": "性急易怒",
     "type": "red",
-    "description": "動揺状態になったとき、コントロール-10",
+    "description": "陷入動搖狀態時，控球-10",
     "category": "pitcher"
   },
   "ノミの心臓": {
+    "name": "跳蚤心臟",
     "type": "red",
-    "description": "得点圏に走者がいるとき、変化量-3",
+    "description": "得點圈有跑者時，變化量-3",
     "category": "pitcher"
   },
   "負け運": {
+    "name": "敗運",
     "type": "red",
-    "description": "登板中、味方打者のパワー-5",
+    "description": "登板中，隊友打者的力量-5",
     "category": "pitcher"
   },
   "乱調": {
+    "name": "節奏紊亂",
     "type": "red",
-    "description": "先発登板での3回以降のイニング開始時、確率でコントロール-20",
+    "description": "先發登板在第3局之後的半局開始時，有機率控球-20",
     "category": "pitcher"
   },
   "エラー": {
+    "name": "失誤面",
     "type": "red",
-    "description": "得点圏に走者がいるとき、守備時にエラーしやすくなる",
+    "description": "得點圈有跑者時，防守時容易產生失誤",
     "category": "fielder"
   },
   "三振": {
+    "name": "三振面",
     "type": "red",
-    "description": "2ストライクに追い込まれると、ミート-20（フルカウント時を除く）",
+    "description": "被追逼至2好球時，框-20（滿計數時除外）",
     "category": "fielder"
   },
   "扇風機": {
+    "name": "電風扇",
     "type": "red",
-    "description": "2ストライクに追い込まれると、ミート-30（フルカウント時を除く）",
+    "description": "被追逼至2好球時，框-30（滿計數時除外）",
     "category": "fielder"
   },
   "併殺": {
+    "name": "雙殺打面",
     "type": "red",
-    "description": "ノーアウトあるいは1アウトで一塁ランナーがいるときにゴロを打ちやすくなる",
+    "description": "在無人出局或1人出局且一壘有跑者時，容易擊出滾地球",
     "category": "fielder"
   },
   "ムード✕": {
+    "name": "氣氛✕",
     "type": "red",
-    "description": "味方野手のミート-5、パワー-5",
+    "description": "隊友野手的框-5、力量-5",
     "category": "fielder"
   },
   "全開": {
+    "name": "全開",
     "type": "normal",
-    "description": "青赤特 得点圏に走者がいてスタミナ残量が約半分以上のとき、球質が重くなりノビがよくなりスタミナ消費量が増える",
+    "description": "雙面特技 得點圈有跑者且體力殘量在約一半以上時，球質會變重、尾勁變好，但體力消耗量會增加",
     "category": "all"
   },
   "悪球打ち": {
+    "name": "壞球擊打",
     "type": "normal",
-    "description": "青赤特 ストライクゾーンから外れたボール球にも手が出るようになる",
+    "description": "雙面特技 對於脫離好球帶的壞球也會變得容易出手",
     "category": "all"
   },
   "荒れ球": {
+    "name": "荒野亂飛球",
     "type": "normal",
-    "description": "青赤特 ストレートのブレ幅が通常より大きく、ノビが少しつく",
+    "description": "雙面特技 直球的位置偏移幅度比通常更大，但會稍微附加一點尾勁",
     "category": "all"
   },
   "ゴロピッチャー": {
+    "name": "滾地球型投手",
     "type": "normal",
-    "description": "青赤特 相手バッターの弾道がやや下がる",
+    "description": "雙面特技 對手打者的彈道會稍微下降",
     "category": "all"
   },
   "力配分": {
+    "name": "力量分配",
     "type": "normal",
-    "description": "青赤特 パワーE以下の打者か、得点圏に走者が存在してパワーF以下の打者が相手のとき、球速-2km/h、変化量-1、スタミナ消費量増",
+    "description": "雙面特技 對手為力量E以下的打者，或得點圈有跑者且對手為力量F以下的打者時，球速-2km/h、變化量-1、體力消耗量增加",
     "category": "all"
   },
   "ポーカーフェイス": {
+    "name": "撲克臉",
     "type": "normal",
-    "description": "青赤特 疲れや動揺が表情に出なくなる。闘志とは一緒につけられない",
+    "description": "雙面特技 疲勞或動搖不會顯露在表情上。無法與鬥志同時裝備",
     "category": "all"
   },
   "打たれ強さ": {
+    "name": "抗壓耐打度",
     "type": "blue",
-    "description": "打たれたときに動揺しにくいかどうか、A~Gまでの7段階ある。",
+    "description": "被擊出安打時是否不易動搖，分為從A到G的7個階段。",
     "category": "all"
   },
   "回復": {
+    "name": "恢復力",
     "type": "blue",
-    "description": "疲れがとれやすいかどうか、A〜Gまでの7段階ある",
+    "description": "疲勞是否容易消除，分為從A到G的7個階段",
     "category": "all"
   },
   "クイック": {
+    "name": "快速投球",
     "type": "blue",
-    "description": "クイックがうまく盗塁がされにくいかどうか、A〜Gの7段階ある",
+    "description": "快速投球是否純熟且不易被盜壘，分為從A到G的7個階段",
     "category": "all"
   },
   "対ピンチ": {
+    "name": "危機處理",
     "type": "blue",
-    "description": "得点圏にランナーがいるときに強いかどうか、A〜Gまでの7段階ある",
+    "description": "得點圈有跑者時是否強勢，分為從A到G的7個階段",
     "category": "all"
   },
   "対左打者": {
+    "name": "對左打者",
     "type": "blue",
-    "description": "左のバッターに対して強いかどうか、A〜Gまでの7段階ある",
+    "description": "對上左打者時是否強勢，分為從A到G的7個階段",
     "category": "all"
   },
   "ノビ": {
+    "name": "直球尾勁",
     "type": "blue",
-    "description": "ストレートのノビが良いかどうか、A〜Gまでの7段階ある",
+    "description": "直球的尾勁好壞，分為從A到G的7個階段",
     "category": "all"
   },
   "キャッチャー": {
+    "name": "捕手引導",
     "type": "blue",
-    "description": "ピッチャーの能力をうまく引き出せるかどうか✕〜◎までの4段階ある",
+    "description": "是否能良好引導並發揮投手的潛能，分為✕～◎的4個階段",
     "category": "all"
   },
   "ケガしにくさ": {
+    "name": "不易受傷度",
     "type": "blue",
-    "description": "✕〜◎までの4段階あり、◯、◎は体力消費が軽減される",
+    "description": "分為✕～◎的4個階段，◯、◎會減輕體力消耗",
     "category": "all"
   },
   "走塁": {
+    "name": "跑壘技術",
     "type": "blue",
-    "description": "走塁がうまいかどうか、✕〜◎までの4段階ある",
+    "description": "跑壘是否純熟，分為✕～◎的4個階段",
     "category": "all"
   },
   "送球": {
+    "name": "傳球技術",
     "type": "blue",
-    "description": "送球がそれにくいかどうか、✕〜◎までの4段階ある",
+    "description": "傳球是否不易偏移，分為✕～◎的4個階段",
     "category": "all"
   },
   "対左投手": {
+    "name": "對左投手",
     "type": "blue",
-    "description": "左のピッチャーに対して強いかどうか、✕〜◎までの4段階ある",
+    "description": "對上左投手時是否強勢，分為✕～◎的4個階段",
     "category": "all"
   },
   "チャンス": {
+    "name": "得點圈打擊",
     "type": "blue",
-    "description": "チャンスのときの勝負強さ、✕〜◎までの4段階ある",
+    "description": "處於機會（得點圈有跑者）時的抗壓爆發力，分為✕～◎的4個階段",
     "category": "all"
   },
   "盗塁": {
+    "name": "盜壘技術",
     "type": "blue",
-    "description": "盗塁がうまいかどうか、✕〜◎までの4段階ある",
+    "description": "盜壘是否純熟，分為✕～◎的4個階段",
     "category": "all"
   },
   "天才": {
     "name": "天才",
     "type": "gold",
     "category": "all",
-    "description": "All stats significantly increased."
-  },
-  "小坂ゾーン": {
-    "type": "gold",
-    "description": "守備時に送球速度と背走速度が上がり、動き出しも早くなる",
-    "category": "fielder"
+    "description": "所有能力值大幅提升。"
   },
   "火の玉ストレート": {
+    "name": "火之玉直球",
     "type": "gold",
-    "description": "ストレートのノビがものすごく良い",
+    "description": "直球的尾勁變得極其優秀",
     "category": "pitcher"
   },
   "怪物": {
+    "name": "怪物",
     "type": "gold",
-    "description": "ストレートのノビがものすごく良い",
+    "description": "直球的尾勁變得極其優秀",
     "category": "pitcher"
   },
   "世界の代打男": {
+    "name": "世界代打男",
     "type": "gold",
-    "description": "代打のときに打力がすごく上がる",
+    "description": "代打時打擊能力會大幅提升",
     "category": "fielder"
   },
   "レッドスター": {
+    "name": "紅星",
     "type": "gold",
-    "description": "盗塁がものすごくうまく、投手に動揺を与える"
+    "description": "盜壘變得極其純熟，並會對投手施加動搖影響"
   },
   "ゴジラ": {
+    "name": "哥吉拉",
     "type": "gold",
-    "description": "前打者と自身の打席時に威圧感を放ち、投手にプレッシャーを与える"
+    "description": "在前一位打者及自己打席時散發威壓感，給予投手沉重的壓力"
   },
   "SHO-TIME": {
+    "name": "大谷時間",
     "type": "gold",
-    "description": "投球成績が走塁に、打撃成績がストレートのノビに好影響を与える",
+    "description": "投球成績會對跑壘產生正面影響，打擊成績則會對直球尾勁產生正面影響",
     "category": "pitcher"
   },
   "ID野球の申し子": {
+    "name": "ID棒球之子",
     "type": "gold",
-    "description": "球界を代表する捕手",
+    "description": "代表球界的頂尖捕手",
     "category": "fielder"
   },
   "Big Fly": {
+    "name": "大飛球",
     "type": "gold",
-    "description": "強振時の打球に角度補正が入りホームラン性の打球になりやすくなる",
+    "description": "強振時的打球會加入角度修正，變得更容易形成全壘打性質的飛球",
     "category": "fielder"
   },
   "秋男": {
+    "name": "秋季之男",
     "type": "blue",
-    "description": "9~11月の試合でミート+10、パワー+5",
+    "description": "在9~11月的比賽中，框+10、力量+5",
     "category": "fielder"
   },
   "夏男": {
+    "name": "夏季之男",
     "type": "blue",
-    "description": "7~8月の試合でミート+10、パワー+5",
+    "description": "在7~8月的比賽中，框+10、力量+5",
     "category": "fielder"
   },
   "春男": {
+    "name": "春季之男",
     "type": "blue",
-    "description": "3~5月の試合でミート+10、パワー+5",
+    "description": "在3~5月的比賽中，框+10、力量+5",
     "category": "fielder"
   },
   "お祭り男": {
+    "name": "祭典之男",
     "type": "blue",
-    "description": "特別な試合のときにミート+10、パワー+5",
+    "description": "在特殊比賽時，框+10、力量+5",
     "category": "fielder"
   },
   "△△キラー": {
+    "name": "△△殺手",
     "type": "blue",
-    "description": "特定の球団と対戦すると、ピッチャーなら相手バッターの打力を下げ、バッターなら自身の打力を上げる",
+    "description": "與特定球團對戰時，若為投手則會降低對手打者的打力，若為打者則會提升自身的打力",
     "category": "fielder"
   },
   "国際大会◯": {
+    "name": "國際大賽◯",
     "type": "blue",
-    "description": "国際大会の舞台で能力が上がる"
+    "description": "在國際大賽的舞台上能力會提升"
   },
   "必殺仕事人": {
+    "name": "必殺工作人",
     "type": "blue",
-    "description": "チャンスでの勝負強さ"
+    "description": "在得點圈機會時的抗壓爆發力"
   },
   "楽天キラー": {
+    "name": "樂天殺手",
     "type": "blue",
-    "description": "楽天に強い"
+    "description": "對上樂天金鷲時很強"
   },
   "阪神キラー": {
+    "name": "阪神殺手",
     "type": "blue",
-    "description": "阪神に強い"
+    "description": "對上阪神虎時很強"
   },
   "西武キラー": {
+    "name": "西武殺手",
     "type": "blue",
-    "description": "西武に強い"
+    "description": "對上西武獅時很強"
   },
   "広島キラー": {
+    "name": "廣島殺手",
     "type": "blue",
-    "description": "広島に強い"
+    "description": "對上廣島東洋鯉魚時很強"
   },
   "巨人キラー": {
+    "name": "巨人殺手",
     "type": "blue",
-    "description": "巨人に強い"
+    "description": "對上讀賣巨人時很強"
   },
   "中日キラー": {
+    "name": "中日殺手",
     "type": "blue",
-    "description": "中日に強い"
+    "description": "對上中日龍時很強"
   },
   "オリックスキラー": {
+    "name": "歐力士殺手",
     "type": "blue",
-    "description": "オリックスに強い"
+    "description": "對上歐力士猛牛時很強"
   },
   "DeNAキラー": {
+    "name": "DeNA殺手",
     "type": "blue",
-    "description": "DeNAに強い"
+    "description": "對上橫濱DeNA海灣之星時很強"
   },
   "ヤクルトキラー": {
+    "name": "養樂多殺手",
     "type": "blue",
-    "description": "ヤクルトに強い"
+    "description": "對上東京養樂多燕子時很強"
   },
   "ロッテキラー": {
+    "name": "羅德殺手",
     "type": "blue",
-    "description": "ロッテに強い"
+    "description": "對上千葉羅德海洋時很強"
   },
   "ホークスキラー": {
+    "name": "軟銀殺手",
     "type": "blue",
-    "description": "ホークスに強い"
+    "description": "對上福岡軟銀鷹時很強"
   },
   "ファイターズキラー": {
+    "name": "火腿殺手",
     "type": "blue",
-    "description": "ファイターズに強い"
+    "description": "對上北海道日本火腿鬥士時很強"
   },
   "帳尻合わせ": {
+    "name": "湊數強打",
     "type": "blue",
-    "description": "自分が無安打且つ大量リード時、3打席目以降ミートが上がる",
+    "description": "在自己無安打且隊伍大幅領先時，第3個打席之後框會提升",
     "category": "fielder"
   },
   "対応変化球◯": {
+    "name": "變化球應對◯",
     "type": "blue",
-    "description": "変化球を打つのがうまくなる",
+    "description": "變得擅長擊打變化球",
     "category": "pitcher"
   },
   "存在感（野手）": {
+    "name": "存在感（野手）",
     "type": "blue",
-    "description": "前打者と自身の打席時に存在感を放ち、相手投手のコントロールと消費スタミナに影響を与える。",
+    "description": "在前一位打者及自己的打席時散發存在感，對對手投手的控球與體力消耗產生影響。",
     "category": "pitcher"
   },
   "存在感（投手）": {
+    "name": "存在感（投手）",
     "type": "blue",
-    "description": "リリーフ登板時にマウンド上で存在感を放ち、相手打者のミートとパワーに影響を与える",
+    "description": "後援登板時在投手丘上散發存在感，對對手打者的框與力量產生影響",
     "category": "fielder"
   },
   "三本柱": {
+    "name": "三大支柱",
     "type": "blue",
-    "description": "登板すると勝ちを呼び込む",
+    "description": "一旦登板就能夠喚來勝利",
     "category": "pitcher"
   },
   "ブロッキング": {
+    "name": "擋球技術",
     "type": "blue",
-    "description": "ボールを後ろに逸らしにくい"
+    "description": "不易讓漏接球或暴投球漏到身後"
   },
   "フレーミング◎": {
+    "name": "偷香菇技術◎",
     "type": "blue",
-    "description": "巧みな捕球で投手を助け、コントロールをすごく上げる",
+    "description": "以巧妙的接球（Framing）幫助投手，使控球大幅提升",
     "category": "pitcher"
   },
   "フレーミング◯": {
+    "name": "偷香菇技術◯",
     "type": "blue",
-    "description": "巧みな捕球で投手を助け、コントロールを上げる",
+    "description": "以巧妙的接球（Framing）幫助投手，使控球提升",
     "category": "pitcher"
   },
   "ストライク先行": {
+    "name": "好球搶攻",
     "type": "blue",
-    "description": "投げた球がストライクゾーンに行きやすい"
+    "description": "投出的球很容易進入好球帶"
   },
   "シュート打ちの名人": {
+    "name": "噴射球擊打名人",
     "type": "blue",
-    "description": "内角のボールを打つのが得意になる"
+    "description": "變得擅長擊打內角的球路"
   },
   "ささやき破り": {
+    "name": "破解低語",
     "type": "blue",
-    "description": "相手捕手の特殊能力「ささやき戦術」の効果を受けなくする",
+    "description": "免受對手捕手的特殊能力「低語戰術」的效果影響",
     "category": "fielder"
   },
   "Mrフライヤーズ": {
+    "name": "飛人先生",
     "type": "blue",
-    "description": "チームのムードを良くする"
+    "description": "讓隊伍的氣氛變好"
   },
   "Mrオリオンズ": {
+    "name": "獵戶座先生",
     "type": "blue",
-    "description": "チームのムードを良くする"
+    "description": "讓隊伍的氣氛變好"
   },
   "100万ドルの内野陣": {
+    "name": "百萬美元內野陣",
     "type": "blue",
-    "description": "守備のとき熟練の技をみせる",
+    "description": "防守時展現出熟練老到的技巧",
     "category": "fielder"
   },
   "死球集中": {
+    "name": "觸身球集中",
     "type": "normal",
-    "description": "青赤特 投手が失投したときに死球になりやすい",
+    "description": "雙面特技 投手失投時很容易變成觸身球",
     "category": "pitcher"
   },
   "国際大会✕": {
+    "name": "國際大賽✕",
     "type": "red",
-    "description": "国際大会の舞台で能力が下がる"
+    "description": "在國際大賽的舞台上能力會下降"
   },
   "対ランナー✕": {
+    "name": "對跑者✕",
     "type": "red",
-    "description": "ランナーが一塁、または一・三塁にいるときにピッチャーの能力が下がる"
+    "description": "跑者在一一壘或一、三壘時，投手的能力會下降"
   },
   "対ランナー": {
+    "name": "對跑者落後",
     "type": "red",
-    "description": "ランナーが一塁または一・三塁時に能力が下がる"
+    "description": "跑者在一壘或一、三壘時能力會下降"
   },
   "ボール先行": {
+    "name": "壞球落後",
     "type": "red",
-    "description": "投げたボールがボールゾーンに行きやすい"
+    "description": "投出的球很容易跑到壞球帶"
   },
   "調子安定": {
+    "name": "狀態穩定",
     "type": "green",
-    "description": "活躍が調子に影響されにくくなる"
+    "description": "表現變得不易受到狀態好壞的影響"
   },
   "調子極端": {
+    "name": "狀態極端",
     "type": "green",
-    "description": "活躍が調子に影響されやすくなる"
+    "description": "表現變得極易受到狀態好壞的影響"
   },
   "速球中心": {
+    "name": "速球中心",
     "type": "green",
-    "description": "投球が速球中心になる。変化球中心とは一緒につけられない",
+    "description": "投球會以速球為中心。無法與變化球中心同時裝備",
     "category": "pitcher"
   },
   "変化球中心": {
+    "name": "變化球中心",
     "type": "green",
-    "description": "投球が変化球中心になる。速球中心とは一緒につけられない",
+    "description": "投球會以變化球為中心。無法與速球中心同時裝備",
     "category": "pitcher"
   },
   "投球位置左": {
+    "name": "站在投手板左側",
     "type": "green",
-    "description": "打者から見て投手プレートの左端（三塁側）に立つようになる。投球位置右とは一緒につけられない",
+    "description": "從打者視角來看，投手會站在投手板的左端（三壘側）。無法與投球位置右同時裝備",
     "category": "pitcher"
   },
   "投球位置右": {
+    "name": "站在投手板右側",
     "type": "green",
-    "description": "打者から見て投手プレートの右端（一塁側）に立つようになる。投球位置左とは一緒につけられない",
+    "description": "從打者視角來看，投手會站在投手板的右端（一壘側）。無法與投球位置左同時裝備",
     "category": "pitcher"
   },
   "テンポ◯": {
+    "name": "節奏快◯",
     "type": "green",
-    "description": "COM操作時の投球時の投球間隔が短い",
+    "description": "由電腦（COM）操作時，投球與投球之間的時間間隔很短",
     "category": "pitcher"
   },
   "野手調子安定": {
+    "name": "野手狀態穩定",
     "type": "green",
-    "description": "バッティングが調子に影響されにくくなる。野手調子極端とは一緒につけられない"
+    "description": "打擊表現變得不易受到狀態好壞的影響。無法與野手狀態極端同時裝備"
   },
   "野手調子極端": {
+    "name": "野手狀態極端",
     "type": "green",
-    "description": "バッティングが調子に影響されやすくなる。野手調子安定とは一緒につけられない"
+    "description": "打擊表現變得極易受到狀態好壞的影響。無法與野手狀態穩定同時裝備"
   },
   "人気者": {
+    "name": "人氣王",
     "type": "green",
-    "description": "打席に立ったときの歓声が大きい"
+    "description": "站上打擊區時的歡呼聲很大"
   },
   "強振多用": {
+    "name": "多用強振",
     "type": "green",
-    "description": "強振をよく使うようになる、ミート多用とは一緒につけられない",
+    "description": "變得經常使用強振，無法與多用普通擊球同時裝備",
     "category": "fielder"
   },
   "ミート多用": {
+    "name": "多用普通擊球",
     "type": "green",
-    "description": "ミート打ちをよく使うようになる",
+    "description": "變得經常使用普通擊球（框打）",
     "category": "fielder"
   },
   "積極打法": {
+    "name": "積極打法",
     "type": "green",
-    "description": "打撃が積極的になる。慎重打法とは一緒につけられない",
+    "description": "出棒打擊會變得積極。無法與慎重打法同時裝備",
     "category": "fielder"
   },
   "慎重打法": {
+    "name": "慎重打法",
     "type": "green",
-    "description": "打撃が慎重になる。積極打法とは一緒につけられない",
+    "description": "出棒打擊會變得慎重。無法與積極打法同時裝備",
     "category": "fielder"
   },
   "積極走塁": {
+    "name": "積極跑壘",
     "type": "green",
-    "description": "走塁が積極的になる",
+    "description": "跑壘會變得積極",
     "category": "fielder"
   },
   "積極守備": {
+    "name": "積極防守",
     "type": "green",
-    "description": "守備が積極的になる",
+    "description": "防守會變得積極",
     "category": "fielder"
   },
   "チームプレイ◯": {
+    "name": "團隊作戰◯",
     "type": "green",
-    "description": "COM操作の打撃時に送りバントをしやすい",
+    "description": "由電腦（COM）操作打擊時，容易進行犧牲短打",
     "category": "fielder"
   },
   "チームプレイ✕": {
+    "name": "團隊作戰✕",
     "type": "green",
-    "description": "COM操作の打撃時に送りバントをしにくい",
+    "description": "由電腦（COM）操作打擊時，不容易進行犧牲短打",
     "category": "fielder"
   },
   "選球眼": {
+    "name": "選球眼",
     "type": "green",
-    "description": "ストライクとボールの見極めが良くなる"
+    "description": "對好球與壞球的分辨辨識能力變好"
   },
   "積極盗塁": {
+    "name": "積極盜壘",
     "type": "green",
-    "description": "盗塁する確率が上がる。慎重盗塁と併用不可。",
+    "description": "盜壘的機率會上升。無法與慎重盜壘同時使用。",
     "category": "fielder"
   },
   "慎重盗塁": {
+    "name": "慎重盜壘",
     "type": "green",
-    "description": "盗塁する確率が下がる。積極盗塁と併用不可。",
+    "description": "盜壘的機率會下降。無法與積極盜壘同時使用。",
     "category": "fielder"
   },
   "スーパーカートリオ": {
+    "name": "超級跑車三人組",
     "type": "green",
-    "description": "盗塁する確率が上がる。慎重盗塁と併用不可。",
+    "description": "盜壘的機率會上升。無法與慎重盜壘同時使用。",
     "category": "fielder"
   },
   "ブンブン丸": {
+    "name": "人肉電風扇",
     "type": "green",
-    "description": "強振をよく使うようになる、ミート多用とは一緒につけられない",
+    "description": "變得經常使用強振，無法與多用普通擊球同時裝備",
     "category": "fielder"
   }
 }
