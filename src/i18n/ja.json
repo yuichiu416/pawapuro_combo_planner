@@ -37,7 +37,6 @@
     "search_placeholder": "名前・スキルで検索",
     "active_roster": "選手登録",
     "combos_found": "コンボ数",
-    "combos_discovered_count": "{{count}} 個のコンボを発見",
     "with_combos": "コンボあり",
     "without_combos": "コンボなし",
     "any_map": "全マップ",

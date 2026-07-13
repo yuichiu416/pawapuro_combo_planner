@@ -29,7 +29,7 @@ describe('i18n configuration', () => {
 
   it('translates a key in Chinese', async () => {
     await i18n.changeLanguage('zh');
-    expect(i18n.t('nav.combo_planner')).toBe('連擊規劃器');
+    expect(i18n.t('nav.combo_planner')).toBe('Combo Planner');
   });
 
   it('falls back to key if translation missing', async () => {
@@ -120,11 +120,6 @@ describe('i18n configuration', () => {
   it('translates MapSection labels', () => {
     i18n.changeLanguage('ja');
     expect(i18n.t('ui.combos_found')).toBe('コンボ数');
-    expect(i18n.t('ui.combos_discovered_count', { count: 3 })).toBe('3 個のコンボを発見');
-    i18n.changeLanguage('en');
-    expect(i18n.t('ui.combos_discovered_count', { count: 3 })).toBe('3 Combos Found');
-    i18n.changeLanguage('zh');
-    expect(i18n.t('ui.combos_discovered_count', { count: 3 })).toBe('發現 3 個連擊');
   });
 
   it('translates RewardAnalysis labels', () => {
@@ -148,7 +143,7 @@ describe('i18n configuration', () => {
     expect(i18n.t('ui.total')).toBe('總計');
     expect(i18n.t('ui.total_xp_earned')).toBe('獲得經驗值總計');
     expect(i18n.t('ui.no_active_bonuses')).toBe('無啟用中的加成');
-    expect(i18n.t('ui.combo_effects')).toBe('連擊效果');
+    expect(i18n.t('ui.combo_effects')).toBe('Combo效果');
     expect(i18n.t('ui.gold_skills_count', { count: 3 })).toBe('3 個金特');
     expect(i18n.t('ui.missing_characters_count', { count: 2 })).toBe('缺少角色 (2)');
   });

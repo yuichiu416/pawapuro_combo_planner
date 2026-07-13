@@ -37,7 +37,6 @@
     "search_placeholder": "Search by name or skill",
     "active_roster": "Active Roster",
     "combos_found": "Combos Found",
-    "combos_discovered_count": "{{count}} Combos Found",
     "with_combos": "With Combos",
     "without_combos": "Without Combos",
     "any_map": "Any Map",

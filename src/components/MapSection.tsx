@@ -72,10 +72,6 @@ export const MapSection: React.FC<MapSectionProps> = ({
               {mapName}
             </h2>
             <div className="flex items-center gap-3">
-              <p className="text-xs font-black text-slate-400 uppercase tracking-[0.15em]">
-                {t('ui.combos_discovered_count', { count: combos.length })}
-              </p>
-
               {progress && (
                 <div
                   data-testid={`map-progress-${mapName}`}

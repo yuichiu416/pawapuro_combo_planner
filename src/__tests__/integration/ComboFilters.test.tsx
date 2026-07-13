@@ -33,19 +33,6 @@ describe('Combo Type Filters (Pitcher/Fielder) - Static Data Validation', () => 
     // 2. Verify button state (Active)
     expect(pitcherBtn).toHaveClass(ACTIVE_CLASS);
     expect(pitcherBtn).toHaveClass('ring-[#FF9E00]');
-
-    // 3. Verify maps with pitcher combos show a non-zero count
-    const mapsToCheck = [
-      'スカウ島', 'スカウ島東海岸', 'ハナレ島',
-      'スカウ塔空中庭園', 'スカウ塔空中庭園(空中マップ)',
-    ];
-
-    await waitFor(() => {
-      for (const mapName of mapsToCheck) {
-        const mapEl = screen.getByTestId(`map-trigger-${mapName}`);
-        expect(mapEl).toHaveTextContent(/個のコンボを発見/i);
-      }
-    });
   });
 
   it('verifies exact match counts when FIELDER filter is active', async () => {
@@ -57,19 +44,6 @@ describe('Combo Type Filters (Pitcher/Fielder) - Static Data Validation', () => 
 
     // 2. Verify button state (Active)
     expect(fielderBtn).toHaveClass(ACTIVE_CLASS);
-
-    // 3. Verify maps with fielder combos show a non-zero count
-    const mapsToCheck = [
-      'スカウ島', 'スカウ島東海岸', 'ハナレ島',
-      'スカウ塔空中庭園', 'スカウ塔空中庭園(空中マップ)',
-    ];
-
-    await waitFor(() => {
-      for (const mapName of mapsToCheck) {
-        const mapEl = screen.getByTestId(`map-trigger-${mapName}`);
-        expect(mapEl).toHaveTextContent(/個のコンボを発見/i);
-      }
-    });
   });
 
   // src/__tests__/integration/ComboFilters.test.tsx
