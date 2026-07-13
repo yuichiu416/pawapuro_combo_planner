@@ -258,7 +258,7 @@ export const Header: React.FC<HeaderProps> = ({
           )}
         </button>
 
-        <SkillListButton />
+        <SkillListButton style={{ fontSize: `${baseButtonSize * fontScale * 0.75}rem` }} />
       </div>
     </header>
   );

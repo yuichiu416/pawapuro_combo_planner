@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import SkillList from './SkillList';
 
-export const SkillListButton: React.FC = () => {
+export const SkillListButton: React.FC<{ style?: React.CSSProperties }> = ({ style }) => {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
 
@@ -16,7 +16,8 @@ export const SkillListButton: React.FC = () => {
         type="button"
         data-testid="skill-list-btn"
         onClick={() => setOpen(true)}
-        className="flex items-center justify-center gap-1.5 px-3 py-2 bg-white border-2 border-blue-200 rounded-xl font-black uppercase text-[#0059C1] hover:bg-blue-50 transition-all shadow-sm whitespace-nowrap"
+        style={style}
+        className="w-full md:w-auto flex items-center justify-center gap-1.5 px-3 py-2 bg-white border-2 border-blue-200 rounded-xl font-black uppercase text-[#0059C1] hover:bg-blue-50 transition-all shadow-sm whitespace-nowrap"
       >
         <BookOpen size={14} strokeWidth={3} />
         {t('ui.skill_list')}
