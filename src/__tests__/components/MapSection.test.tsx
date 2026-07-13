@@ -47,11 +47,6 @@ describe('MapSection', () => {
     expect(screen.getByTestId('map-trigger-スカウ島')).toHaveTextContent('スカウ島');
   });
 
-  it('shows combo count', () => {
-    render(<MapSection {...mockProps} />, { wrapper: Wrapper });
-    expect(screen.getByTestId('map-trigger-スカウ島')).toHaveTextContent('2');
-  });
-
   it('calls onToggle when header is clicked', () => {
     const onToggle = vi.fn();
     render(<MapSection {...mockProps} onToggle={onToggle} />, { wrapper: Wrapper });

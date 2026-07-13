@@ -13,7 +13,7 @@ const SkillList: React.FC = () => {
   const filteredSkills = useMemo(() => {
     if (!skillsData) return [];
 
-    const skillEntries = Object.values(skillsData);
+    const skillEntries = Object.entries(skillsData).map(([name, skill]) => ({ name, ...skill }));
     const term = searchTerm.toLowerCase().trim();
 
     if (!term) return skillEntries;

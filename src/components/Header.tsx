@@ -58,9 +58,9 @@ export const Header: React.FC<HeaderProps> = ({
 
   const availableGoldSkills = useMemo(() => {
     if (!goldFilter) return [];
-    return Object.values(skillsData)
-      .filter((s: any) => s.type === 'gold' && s.category === goldFilter)
-      .map((s: any) => s.name)
+    return Object.entries(skillsData)
+      .filter(([, s]: [string, any]) => s.type === 'gold' && s.category === goldFilter)
+      .map(([name]) => name)
       .sort((a, b) => a.localeCompare(b));
   }, [goldFilter]);
 
