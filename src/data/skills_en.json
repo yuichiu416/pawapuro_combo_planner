@@ -1,0 +1,1711 @@
+{
+  "神の子": {
+    "name": "Child of God",
+    "type": "gold",
+    "description": "While on the mound, teammate batters gain Contact +5 and Power +5.",
+    "category": "pitcher"
+  },
+  "ケンカ投法": {
+    "name": "Fighting Pitching Style",
+    "type": "gold",
+    "description": "When pitching inside, Control improves and ball power increases significantly.",
+    "category": "pitcher"
+  },
+  "草魂": {
+    "name": "Weed Spirit",
+    "type": "gold",
+    "description": "Rarely falls into a rattled or shaken state.",
+    "category": "pitcher"
+  },
+  "世界の代打王": {
+    "name": "World Pinch Hitter King",
+    "type": "gold",
+    "description": "When entering the batter's box as a pinch hitter, Contact +25 and Power +20.",
+    "category": "fielder"
+  },
+  "世界の盗塁王": {
+    "name": "World Stolen Base King",
+    "type": "gold",
+    "description": "Greatly increases running speed when stealing bases. Also, when on first base with runners on first or first-and-third, decreases the opposing pitcher's Control by 10 and increases their stamina consumption.",
+    "category": "fielder"
+  },
+  "牛若丸": {
+    "name": "Ushiwakamaru",
+    "type": "gold",
+    "description": "When defending, increases throwing speed and back-pedaling speed, and quickens the initial reaction.",
+    "category": "fielder"
+  },
+  "忍者": {
+    "name": "Ninja",
+    "type": "gold",
+    "description": "When defending, increases throwing speed and back-pedaling speed, and quickens the initial reaction.",
+    "category": "fielder"
+  },
+  "世界の王": {
+    "name": "World King",
+    "type": "gold",
+    "description": "When using Power Swing, makes it very easy to hit fly balls with home run potential. Cannot be equipped together with Line Drive.",
+    "category": "fielder"
+  },
+  "打撃の神様": {
+    "name": "God of Batting",
+    "type": "gold",
+    "description": "When using Regular Swing, makes it very easy to hit balls with base hit potential.",
+    "category": "fielder"
+  },
+  "小阪ゾーン": {
+    "name": "Kosaka Zone",
+    "type": "gold",
+    "category": "fielder",
+    "description": "When defending, increases throwing speed and back-pedaling speed, and quickens the initial reaction."
+  },
+  "炎のストッパー": {
+    "name": "Fiery Stopper",
+    "type": "blue",
+    "description": "When not exhausted, with 0 or fewer earned runs, and the game is tied or leading, the ball quality becomes heavier and it becomes harder to fall into a rattled state. Also, negates the Intimidation effect of opposing batters.",
+    "category": "pitcher"
+  },
+  "大魔神": {
+    "name": "Daimajin",
+    "type": "blue",
+    "description": "When coming on the mound as the second or later pitcher, decreases opposing batters' Contact by 20 and Power by 20.",
+    "category": "pitcher"
+  },
+  "ロケットボーイズ": {
+    "name": "Rocket Boys",
+    "type": "blue",
+    "description": "Average pitch speed +2 km/h.",
+    "category": "pitcher"
+  },
+  "幕張の防波堤": {
+    "name": "Makuhari Breakwater",
+    "type": "blue",
+    "description": "Late in the game while leading, in a situation where a runner scoring would tie or reverse the game, pitch speed +2 km/h and Control +5.",
+    "category": "pitcher"
+  },
+  "負けないエース": {
+    "name": "Unbeatable Ace",
+    "type": "blue",
+    "description": "While on the mound, teammate batters gain Power +5.",
+    "category": "pitcher"
+  },
+  "平成の怪物": {
+    "name": "Heisei Monster",
+    "type": "blue",
+    "description": "The life/movement of the fastball is evaluated on a 7-stage scale from A to G.",
+    "category": "all"
+  },
+  "雑草魂": {
+    "name": "Weed Soul",
+    "type": "blue",
+    "description": "Resistance to becoming rattled after giving up hits is evaluated on a 7-stage scale from A to G.",
+    "category": "all"
+  },
+  "燃える男": {
+    "name": "Burning Man",
+    "type": "blue",
+    "description": "When not exhausted, with 0 or fewer earned runs, and the game is tied or leading, the ball quality becomes heavier and it becomes harder to fall into a rattled state. Also, negates the Intimidation effect of opposing batters.",
+    "category": "pitcher"
+  },
+  "小さな大投手": {
+    "name": "Little Great Pitcher",
+    "type": "blue",
+    "description": "Evaluated on a 4-stage scale from ✕ to ◎; ◯ and ◎ reduce stamina consumption.",
+    "category": "pitcher"
+  },
+  "アニキ": {
+    "name": "Aniki",
+    "type": "blue",
+    "description": "Teammate fielders gain Contact +5 and Power +5.",
+    "category": "fielder"
+  },
+  "Mrブルーウェーブ": {
+    "name": "Mr. Blue Wave",
+    "type": "blue",
+    "description": "Teammate fielders gain Contact +5 and Power +5.",
+    "category": "fielder"
+  },
+  "Mrドラゴンズ": {
+    "name": "Mr. Dragons",
+    "type": "blue",
+    "description": "Teammate fielders gain Contact +5 and Power +5.",
+    "category": "fielder"
+  },
+  "Mrパーフェクト": {
+    "name": "Mr. Perfect",
+    "type": "blue",
+    "description": "Teammate fielders gain Contact +5 and Power +5.",
+    "category": "fielder"
+  },
+  "Mr赤ヘル": {
+    "name": "Mr. Akahel",
+    "type": "blue",
+    "description": "Teammate fielders gain Contact +5 and Power +5.",
+    "category": "fielder"
+  },
+  "Mrタイガース": {
+    "name": "Mr. Tigers",
+    "type": "blue",
+    "description": "Teammate fielders gain Contact +5 and Power +5.",
+    "category": "fielder"
+  },
+  "Mrイーグルs": {
+    "name": "Mr. Eagles",
+    "type": "blue",
+    "description": "Teammate fielders gain Contact +5 and Power +5.",
+    "category": "fielder"
+  },
+  "Mrスワローズ": {
+    "name": "Mr. Swallows",
+    "type": "blue",
+    "description": "Teammate fielders gain Contact +5 and Power +5.",
+    "category": "fielder"
+  },
+  "Mrホークス": {
+    "name": "Mr. Hawks",
+    "type": "blue",
+    "description": "Teammate fielders gain Contact +5 and Power +5.",
+    "category": "fielder"
+  },
+  "Mrファイターズ": {
+    "name": "Mr. Fighters",
+    "type": "blue",
+    "description": "Teammate fielders gain Contact +5 and Power +5.",
+    "category": "fielder"
+  },
+  "Mrブレーブス": {
+    "name": "Mr. Braves",
+    "type": "blue",
+    "description": "Teammate fielders gain Contact +5 and Power +5.",
+    "category": "fielder"
+  },
+  "ミスター": {
+    "name": "Mister",
+    "type": "blue",
+    "description": "Decreases opposing pitcher's speed by 2 km/h, Control by 10, and increases stamina consumption by 15. For the batter right before you, decreases opposing pitcher's speed by 2 km/h, Control by 10, and increases stamina consumption by 10.",
+    "category": "fielder"
+  },
+  "絶好調男": {
+    "name": "In-Form Man",
+    "type": "blue",
+    "description": "Teammate fielders gain Contact +5 and Power +5.",
+    "category": "fielder"
+  },
+  "若大將": {
+    "name": "Young General",
+    "type": "blue",
+    "description": "Teammate fielders gain Contact +5 and Power +5.",
+    "category": "fielder"
+  },
+  "バックスクリーン男": {
+    "name": "Batter's Eye Man",
+    "type": "blue",
+    "description": "When using Power Swing, makes it easy to hit fly balls with home run potential.",
+    "category": "fielder"
+  },
+  "小さな大打者": {
+    "name": "Little Great Batter",
+    "type": "blue",
+    "description": "When using Regular Swing, makes it easy to hit balls with base hit potential.",
+    "category": "fielder"
+  },
+  "アライバ": {
+    "name": "Araiba Combo",
+    "type": "blue",
+    "description": "When defending, increases throwing speed and back-pedaling speed.",
+    "category": "fielder"
+  },
+  "おかわり君": {
+    "name": "Mr. Seconds",
+    "type": "blue",
+    "description": "If a home run has already been hit in the game, Power +10 (ineffective for the 2nd home run and onwards).",
+    "category": "fielder"
+  },
+  "不惑の大砲": {
+    "name": "Unwavering Cannon",
+    "type": "blue",
+    "description": "When using Power Swing, makes it easy to hit fly balls with home run potential.",
+    "category": "fielder"
+  },
+  "悲劇のエース": {
+    "name": "Tragic Ace",
+    "type": "red",
+    "description": "While on the mound, teammate batters suffer Power -5.",
+    "category": "pitcher"
+  },
+  "抜け球": {
+    "name": "Slipping Pitch",
+    "type": "red",
+    "description": "Fastballs sometimes naturally drift or cut in the direction of a shootball.",
+    "category": "pitcher"
+  },
+  "サンデー◯": {
+    "name": "Sunday ◯",
+    "type": "blue",
+    "category": "all",
+    "description": "Abilities increase during games played on Sundays."
+  },
+  "交流戦◯": {
+    "name": "Interleague ◯",
+    "type": "blue",
+    "category": "all",
+    "description": "Abilities increase during Interleague games."
+  },
+  "外国人◯": {
+    "name": "Foreign Player ◯",
+    "type": "blue",
+    "category": "all",
+    "description": "Abilities increase when facing foreign players."
+  },
+  "ホーム◯": {
+    "name": "Home Game ◯",
+    "type": "blue",
+    "category": "all",
+    "description": "Abilities increase during home games."
+  },
+  "ビジター◯": {
+    "name": "Away Game ◯",
+    "type": "blue",
+    "category": "all",
+    "description": "Abilities increase during away games."
+  },
+  "デイゲーム◯": {
+    "name": "Day Game ◯",
+    "type": "blue",
+    "category": "all",
+    "description": "Abilities increase during day games."
+  },
+  "ナイトゲーム◯": {
+    "name": "Night Game ◯",
+    "type": "blue",
+    "category": "all",
+    "description": "Abilities increase during night games."
+  },
+  "ドーム◯": {
+    "name": "Dome ◯",
+    "type": "blue",
+    "category": "all",
+    "description": "Abilities increase when playing in dome stadiums."
+  },
+  "フライボールピッチャー": {
+    "name": "Fly Ball Pitcher",
+    "type": "normal",
+    "description": "Dual-edged trait. Slightly increases the trajectory of opposing batters' hits.",
+    "category": "all"
+  },
+  "トップギア": {
+    "name": "Top Gear",
+    "type": "gold",
+    "description": "In the 1st and 2nd innings when starting, pitch speed +4 km/h, Control +13, and break amount +2.",
+    "category": "pitcher"
+  },
+  "闘魂": {
+    "name": "Fighting Spirit",
+    "type": "gold",
+    "description": "When not exhausted, trailing or leading by 2 runs or less, and with 2 or fewer earned runs, the ball quality becomes heavier, making it harder to become rattled and negating the batter's Intimidation.",
+    "category": "pitcher"
+  },
+  "超投打躍動": {
+    "name": "Super Two-Way Dynamism",
+    "type": "gold",
+    "description": "When playing as a pitcher and allowing 2 or fewer runs, Contact and Power significantly increase; if you get 1 or more hits, Control and break amount significantly increase.",
+    "category": "pitcher"
+  },
+  "完全燃焼": {
+    "name": "Complete Combustion",
+    "type": "gold",
+    "description": "When runners are in scoring position and stamina is above roughly 1/3, the ball quality becomes heavier and fastball life improves, but stamina consumption increases.",
+    "category": "pitcher"
+  },
+  "ディレイドアーム": {
+    "name": "Delayed Arm",
+    "type": "gold",
+    "description": "Hides the ball longer during the delivery, making it harder for the batter to see the arm slot and hit the ball.",
+    "category": "pitcher"
+  },
+  "クロスキャノン": {
+    "name": "Cross Cannon",
+    "type": "gold",
+    "description": "Pitches thrown across the diamond/diagonal zone look faster than their actual speed.",
+    "category": "pitcher"
+  },
+  "暴れ球": {
+    "name": "Wild Pitch",
+    "type": "gold",
+    "description": "When throwing fastballs, the life improves significantly, but the location becomes prone to drifting.",
+    "category": "pitcher"
+  },
+  "怪童": {
+    "name": "Prodigy",
+    "type": "gold",
+    "description": "Fastballs look significantly faster than their actual speed.",
+    "category": "pitcher"
+  },
+  "怪物球威": {
+    "name": "Monster Ball Power",
+    "type": "gold",
+    "description": "Ball quality becomes extremely heavy, making hits very difficult to travel far.",
+    "category": "pitcher"
+  },
+  "ガソリンタンク": {
+    "name": "Gas Tank",
+    "type": "gold",
+    "description": "Stamina recovery speed after a game appearance is extremely fast.",
+    "category": "pitcher"
+  },
+  "ギアチェンジ": {
+    "name": "Gear Change",
+    "type": "gold",
+    "description": "From the 5th inning onwards when starting, leading by 3 runs or less or tied with runners on base, pitch speed +1 km/h, Control +10, and breaking balls start to break closer to the batter.",
+    "category": "pitcher"
+  },
+  "強心臓": {
+    "name": "Strong Heart",
+    "type": "gold",
+    "description": "When runners are in scoring position, pitch speed +2 km/h and break amount +3.",
+    "category": "pitcher"
+  },
+  "驚異の切れ味": {
+    "name": "Astonishing Sharpness",
+    "type": "gold",
+    "description": "The initial break point of breaking balls is delayed significantly, creating a sudden, sharp break right in front of the batter.",
+    "category": "pitcher"
+  },
+  "終盤力": {
+    "name": "Late-Game Strength",
+    "type": "gold",
+    "description": "When starting, in a winning position or trailing within 3 runs, pitch speed +4 km/h, Control +10, and break amount +2.",
+    "category": "pitcher"
+  },
+  "勝利の星": {
+    "name": "Star of Victory",
+    "type": "gold",
+    "description": "While on the mound, teammate batters gain Contact +5 and Power +5.",
+    "category": "pitcher"
+  },
+  "主砲キラー": {
+    "name": "Cleanup Killer",
+    "type": "gold",
+    "description": "When facing batters with Contact B or higher or Power A or higher, pitch speed +3 km/h, breaking ball speed +1 km/h, and breaking balls start to break closer to the batter.",
+    "category": "pitcher"
+  },
+  "精密機械": {
+    "name": "Precision Machinery",
+    "type": "gold",
+    "description": "Control capability at the bottom of the strike zone becomes exceptionally excellent.",
+    "category": "pitcher"
+  },
+  "走者釘付": {
+    "name": "Pinning the Runner",
+    "type": "gold",
+    "description": "The pitching delivery motion becomes significantly faster.",
+    "category": "pitcher"
+  },
+  "鉄腕": {
+    "name": "Iron Arm",
+    "type": "gold",
+    "description": "Hardly affected by daily condition/form fluctuations (arrows).",
+    "category": "pitcher"
+  },
+  "ドクターK": {
+    "name": "Doctor K",
+    "type": "gold",
+    "description": "When the batter is cornered with 2 strikes, pitch speed +4 km/h and break amount +2.",
+    "category": "pitcher"
+  },
+  "ド根性": {
+    "name": "True Grit",
+    "type": "gold",
+    "description": "When starting, even if exhausted, the drop in attributes slows down and stops sooner.",
+    "category": "pitcher"
+  },
+  "内角無双": {
+    "name": "Inside Unrivaled",
+    "type": "gold",
+    "description": "When pitching inside, Control improves and ball power increases significantly.",
+    "category": "pitcher"
+  },
+  "ハイスピンジャイロ": {
+    "name": "High-Spin Gyro",
+    "type": "gold",
+    "description": "Fastballs generate a spiral gyro-spin, appearing significantly faster than their actual speed.",
+    "category": "pitcher"
+  },
+  "左キラー": {
+    "name": "Left-Handed Batter Killer",
+    "type": "gold",
+    "description": "When facing left-handed batters, pitch speed +3 km/h, Control +7, and stamina consumption increases.",
+    "category": "pitcher"
+  },
+  "不屈の魂": {
+    "name": "Indomitable Soul",
+    "type": "gold",
+    "description": "Rarely falls into a rattled or shaken state.",
+    "category": "pitcher"
+  },
+  "変幻自在": {
+    "name": "Ever-Changing",
+    "type": "gold",
+    "description": "When throwing a slow breaking ball after a fastball, or vice versa, the fastball looks much faster than actual speed, and the initial break point of the breaking ball is significantly delayed.",
+    "category": "pitcher"
+  },
+  "本塁打厳禁": {
+    "name": "Home Runs Strictly Prohibited",
+    "type": "gold",
+    "description": "Significantly decreases the chance of a missed pitch hanging right over the heart of the plate.",
+    "category": "pitcher"
+  },
+  "球界の頭脳": {
+    "name": "Brain of the Baseball World",
+    "type": "gold",
+    "description": "Teammate pitcher's Control +15, stamina consumption -11. If teammate pitcher's condition is bad or terrible, pitch speed +2 km/h.",
+    "category": "fielder"
+  },
+  "ささやき戦術": {
+    "name": "Whispering Tactics",
+    "type": "gold",
+    "description": "As a catcher when runners are in scoring position, decreases opposing batters' Contact by 5 and Power by 5.",
+    "category": "fielder"
+  },
+  "鉄の壁": {
+    "name": "Iron Wall",
+    "type": "gold",
+    "description": "As a catcher, significantly reduces the activation rate of runners' Home Charge and Heavy Tank during home plate collisions.",
+    "category": "fielder"
+  },
+  "バズーカ送球": {
+    "name": "Bazooka Throw",
+    "type": "gold",
+    "description": "Throws made to prevent stolen bases become exceptionally sharp and fast.",
+    "category": "fielder"
+  },
+  "渾身の決勝打": {
+    "name": "All-Out Game-Winning Hit",
+    "type": "gold",
+    "description": "From the 6th inning onwards when tied or trailing, in a situation where a base runner scoring would take the lead, Contact +12.",
+    "category": "fielder"
+  },
+  "ヒートアップ": {
+    "name": "Heat Up",
+    "type": "gold",
+    "description": "Contact +8 and Power +8 depending on the number of strikes in the count.",
+    "category": "fielder"
+  },
+  "逆襲": {
+    "name": "Counterattack",
+    "type": "gold",
+    "description": "When facing the pitcher who got you out in the previous plate appearance, Contact +10 and Power +5.",
+    "category": "fielder"
+  },
+  "安打製造機": {
+    "name": "Hit Manufacturing Machine",
+    "type": "gold",
+    "description": "When using Regular Swing, makes it very easy to hit balls with base hit potential.",
+    "category": "fielder"
+  },
+  "アーチスト": {
+    "name": "Artist",
+    "type": "gold",
+    "description": "When using Power Swing, makes it very easy to hit fly balls with home run potential. Cannot be equipped together with Line Drive.",
+    "category": "fielder"
+  },
+  "一球入魂": {
+    "name": "Soul in Every Pitch",
+    "type": "gold",
+    "description": "Before a single strike is recorded, Contact +15 and Power +15.",
+    "category": "fielder"
+  },
+  "エースキラー": {
+    "name": "Ace Killer",
+    "type": "gold",
+    "description": "When facing ace-tier pitchers, Contact +15 and Power +15.",
+    "category": "fielder"
+  },
+  "大番狂わせ": {
+    "name": "Major Upset",
+    "type": "gold",
+    "description": "When starting and tied from the 5th inning onwards, or trailing/tied late in the game, Power becomes S if runners are on base (no change if already S).",
+    "category": "fielder"
+  },
+  "火事場の馬鹿力": {
+    "name": "Incredible Crisis Strength",
+    "type": "gold",
+    "description": "Late in the game while trailing, Contact +20 and Power +20.",
+    "category": "fielder"
+  },
+  "外角必打": {
+    "name": "Outside Edge Strike",
+    "type": "gold",
+    "description": "Becomes exceptionally adept at hitting outside pitches. Cannot be equipped together with Outside Hitter or Inside Edge Strike.",
+    "category": "fielder"
+  },
+  "気迫ヘッド": {
+    "name": "Spirited Head-First Slide",
+    "type": "gold",
+    "description": "Slides head-first into bases during crucial, tight moments.",
+    "category": "fielder"
+  },
+  "恐怖の満塁男": {
+    "name": "Terror of Bases Loaded",
+    "type": "gold",
+    "description": "When bases are loaded, Contact +20 and Power +20.",
+    "category": "fielder"
+  },
+  "切り込み隊長": {
+    "name": "Spearhead Leader",
+    "type": "gold",
+    "description": "When there are no runners on base, Contact +15 and Power +10.",
+    "category": "fielder"
+  },
+  "芸術的流し打ち": {
+    "name": "Artistic Opposite-Field Hit",
+    "type": "gold",
+    "description": "When hitting to the opposite field with a Regular Swing, the ball easily drops for a hit.",
+    "category": "fielder"
+  },
+  "広角砲": {
+    "name": "Wide-Angle Cannon",
+    "type": "gold",
+    "description": "Enables hitting exceptionally powerful balls to the opposite field. Cannot be equipped together with Pull Hitter or Pull Master.",
+    "category": "fielder"
+  },
+  "高速レーザー": {
+    "name": "High-Speed Laser",
+    "type": "gold",
+    "description": "When defending in the outfield, delivers extremely fast throws along a low trajectory.",
+    "category": "fielder"
+  },
+  "高速ベースラン": {
+    "name": "High-Speed Base Running",
+    "type": "gold",
+    "description": "Significantly increases running speed during base running (excluding stealing), and prevents head-first sliding when reaching third base.",
+    "category": "fielder"
+  },
+  "高球必打": {
+    "name": "High Pitch Strike",
+    "type": "gold",
+    "description": "Becomes exceptionally adept at hitting high pitches. Cannot be equipped together with Low Ball Hitter or Low Pitch Strike.",
+    "category": "fielder"
+  },
+  "左腕キラー": {
+    "name": "Left-Handed Pitcher Killer",
+    "type": "gold",
+    "description": "When facing left-handed pitchers, Contact +20 and Power +15.",
+    "category": "fielder"
+  },
+  "勝負師": {
+    "name": "Clutch Master",
+    "type": "gold",
+    "description": "When runners are in scoring position, Contact +20 and Power +15.",
+    "category": "fielder"
+  },
+  "重戦車": {
+    "name": "Heavy Tank",
+    "type": "gold",
+    "description": "Attempts to induce a catching error by sliding powerfully into home plate.",
+    "category": "fielder"
+  },
+  "ストライク送球": {
+    "name": "Strike Throw",
+    "type": "gold",
+    "description": "Throws become exceptionally accurate and resistant to drifting offline.",
+    "category": "fielder"
+  },
+  "精神的支柱": {
+    "name": "Spiritual Pillar",
+    "type": "gold",
+    "description": "Teammate pitcher's Control +10, teammate batter's Contact +10 and Power +5.",
+    "category": "fielder"
+  },
+  "代打の神様": {
+    "name": "God of Pinch Hitting",
+    "type": "gold",
+    "description": "When entering the batter's box as a pinch hitter, Contact +25 and Power +20.",
+    "category": "fielder"
+  },
+  "電光石火": {
+    "name": "Lightning Speed",
+    "type": "gold",
+    "description": "Greatly increases running speed when stealing bases. Also, when on first base with runners on first or first-and-third, decreases the opposing pitcher's Control by 10 and increases their stamina consumption.",
+    "category": "fielder"
+  },
+  "鉄人": {
+    "name": "Iron Man",
+    "type": "gold",
+    "description": "Becomes extremely resistant to sustaining injuries.",
+    "category": "fielder"
+  },
+  "伝説のサヨナラ男": {
+    "name": "Legendary Walk-Off Man",
+    "type": "gold",
+    "description": "In situations where a walk-off victory can be achieved, Contact +20 and Power +20.",
+    "category": "fielder"
+  },
+  "低球必打": {
+    "name": "Low Pitch Strike",
+    "type": "gold",
+    "description": "Becomes exceptionally adept at hitting low pitches. Cannot be equipped together with High Ball Hitter or High Pitch Strike.",
+    "category": "fielder"
+  },
+  "トリックスター": {
+    "name": "Trickster",
+    "type": "gold",
+    "description": "When on base, increases the opposing pitcher's stamina consumption and decreases infield defense (effect increases as more runners with this skill are on base, which also drops the pitcher's Control and break amount).",
+    "category": "fielder"
+  },
+  "内角必打": {
+    "name": "Inside Edge Strike",
+    "type": "gold",
+    "description": "Becomes exceptionally adept at hitting inside pitches. Cannot be equipped together with Outside Hitter or Outside Edge Strike.",
+    "category": "fielder"
+  },
+  "引っ張り屋": {
+    "name": "Pull Master",
+    "type": "gold",
+    "description": "When pulling the ball with a Power Swing, hits an exceptionally powerful ball. Cannot be equipped together with Wide-Angle Hitting or Wide-Angle Cannon.",
+    "category": "fielder"
+  },
+  "魔術師": {
+    "name": "Magician",
+    "type": "gold",
+    "description": "When defending, increases throwing speed and back-pedaling speed, and quickens the initial reaction.",
+    "category": "fielder"
+  },
+  "メッタ打ち": {
+    "name": "Hard Hitter",
+    "type": "gold",
+    "description": "After hitting 2 hits or more, Contact +20 and Power +5 from the 3rd plate appearance onwards.",
+    "category": "fielder"
+  },
+  "ロケットスタート": {
+    "name": "Rocket Start",
+    "type": "gold",
+    "description": "The initial acceleration dash after hitting the ball becomes exceptionally fast.",
+    "category": "fielder"
+  },
+  "投打躍動": {
+    "name": "Two-Way Dynamism",
+    "type": "blue",
+    "description": "When playing as a pitcher and allowing 2 or fewer runs, Contact and Power increase; if you get 1 or more hits, Control and break amount increase.",
+    "category": "pitcher"
+  },
+  "立ち上がり◯": {
+    "name": "Good Start ◯",
+    "type": "blue",
+    "description": "When starting, 1st inning pitch speed +4 km/h, Control +13, break amount +2; 2nd inning pitch speed +2 km/h, Control +7, break amount +1.",
+    "category": "pitcher"
+  },
+  "威圧感（投手）": {
+    "name": "Intimidation (Pitcher)",
+    "type": "blue",
+    "description": "When coming on the mound as the second or later pitcher, decreases opposing batters' Contact by 20 and Power by 20.",
+    "category": "pitcher"
+  },
+  "重い球": {
+    "name": "Heavy Ball",
+    "type": "blue",
+    "description": "Even if hit, makes it harder for the ball to travel far.",
+    "category": "pitcher"
+  },
+  "勝ち運": {
+    "name": "Good Luck",
+    "type": "blue",
+    "description": "While on the mound, teammate batters gain Power +5.",
+    "category": "pitcher"
+  },
+  "回またぎ◯": {
+    "name": "Multiple Innings ◯",
+    "type": "blue",
+    "description": "Reduces fatigue when pitching across multiple innings during relief appearances.",
+    "category": "pitcher"
+  },
+  "緩急◯": {
+    "name": "Pace Control ◯",
+    "type": "blue",
+    "description": "Improves effectiveness when mixing fastballs and slow breaking balls.",
+    "category": "pitcher"
+  },
+  "キレ◯": {
+    "name": "Sharpness ◯",
+    "type": "blue",
+    "description": "Improves the sharpness and bite of breaking balls.",
+    "category": "pitcher"
+  },
+  "緊急登板◯": {
+    "name": "Emergency Appearance ◯",
+    "type": "blue",
+    "description": "When entering the game mid-inning, Control +10.",
+    "category": "pitcher"
+  },
+  "球速安定": {
+    "name": "Stable Pitch Speed",
+    "type": "blue",
+    "description": "Average pitch speed +2 km/h.",
+    "category": "pitcher"
+  },
+  "クロスファイヤー": {
+    "name": "Crossfire",
+    "type": "blue",
+    "description": "Fastballs thrown across the diagonal look faster than their actual speed.",
+    "category": "pitcher"
+  },
+  "牽制◯": {
+    "name": "Pickoff ◯",
+    "type": "blue",
+    "description": "Slightly speeds up the pickoff throw motion and makes wild throwing errors less likely.",
+    "category": "pitcher"
+  },
+  "根性◯": {
+    "name": "Grit ◯",
+    "type": "blue",
+    "description": "When starting, even if exhausted, slows down and caps the drop in attributes to a certain level.",
+    "category": "pitcher"
+  },
+  "ジャイロボール": {
+    "name": "Gyroball",
+    "type": "blue",
+    "description": "Fastballs generate a spiral rotation, appearing faster than actual speed.",
+    "category": "pitcher"
+  },
+  "尻上がり": {
+    "name": "Strong Finish",
+    "type": "blue",
+    "description": "When starting, 7th/8th inning pitch speed +2 km/h, break amount +1, Control +5; 9th inning onwards pitch speed +4 km/h, break amount +2, Control +10.",
+    "category": "pitcher"
+  },
+  "対強打者◯": {
+    "name": "Facing Star Batters ◯",
+    "type": "blue",
+    "description": "When facing dangerous batters with Contact B or Power A, pitch speed +2 km/h and break amount +1.",
+    "category": "pitcher"
+  },
+  "球持ち◯": {
+    "name": "Good Extension ◯",
+    "type": "blue",
+    "description": "Hides the ball better during release, delaying the display of the ball's landing point indicator.",
+    "category": "pitcher"
+  },
+  "対ランナー◯": {
+    "name": "Facing Runners ◯",
+    "type": "blue",
+    "description": "With runners on first or first-and-third, Control +5 and stamina consumption decreases.",
+    "category": "pitcher"
+  },
+  "打球反応◯": {
+    "name": "Comebacker Reaction ◯",
+    "type": "blue",
+    "description": "Improves responsiveness to batted balls hit directly back at the pitcher.",
+    "category": "pitcher"
+  },
+  "奪三振": {
+    "name": "Strikeout Master",
+    "type": "blue",
+    "description": "When the batter is cornered with 2 strikes, pitch speed +2 km/h and break amount +1.",
+    "category": "pitcher"
+  },
+  "闘志": {
+    "name": "Guts",
+    "type": "blue",
+    "description": "When not exhausted, with 0 or fewer earned runs, and the game is tied or leading, the ball quality becomes heavier and it becomes harder to fall into a rattled state. Also, negates the Intimidation effect of opposing batters.",
+    "category": "pitcher"
+  },
+  "ナチュラルシュート": {
+    "name": "Natural Shoot",
+    "type": "blue",
+    "description": "Fastballs often naturally tail slightly in the direction of a shootball.",
+    "category": "pitcher"
+  },
+  "内角攻め": {
+    "name": "Inside Attack",
+    "type": "blue",
+    "description": "Improves Control when pitching to the inside corner.",
+    "category": "pitcher"
+  },
+  "逃げ球": {
+    "name": "Escape Ball",
+    "type": "blue",
+    "description": "Reduces the tendency of missed pitches to float into the center of the zone.",
+    "category": "pitcher"
+  },
+  "低め◯": {
+    "name": "Low Zone ◯",
+    "type": "blue",
+    "description": "Improves Control accuracy at the bottom of the strike zone.",
+    "category": "pitcher"
+  },
+  "真っスラ": {
+    "name": "Massura",
+    "type": "blue",
+    "description": "Pronounced 'Massura'. A fastball type that naturally cuts slightly in the opposite direction of the pitcher's throwing arm.",
+    "category": "pitcher"
+  },
+  "要所◯": {
+    "name": "Key Inning ◯",
+    "type": "blue",
+    "description": "Late in the game while leading, in a situation where a runner scoring would tie or reverse the game, pitch speed +2 km/h and Control +5.",
+    "category": "pitcher"
+  },
+  "リリース◯": {
+    "name": "Consistent Release ◯",
+    "type": "blue",
+    "description": "Ensures that the pitching motion remains identical between fastballs and breaking balls.",
+    "category": "pitcher"
+  },
+  "窮地◯": {
+    "name": "Cornered ◯",
+    "type": "blue",
+    "description": "Contact +4 and Power +4 depending on the number of strikes in the count.",
+    "category": "fielder"
+  },
+  "リベンジ": {
+    "name": "Revenge",
+    "type": "blue",
+    "description": "When facing the pitcher who got you out in the previous plate appearance, Contact +10.",
+    "category": "fielder"
+  },
+  "マルチ弾": {
+    "name": "Multi-HR",
+    "type": "blue",
+    "description": "If a home run has already been hit in the game, Power +10 (ineffective for the 2nd home run and onwards).",
+    "category": "fielder"
+  },
+  "アベレージヒッター": {
+    "name": "Average Hitter",
+    "type": "blue",
+    "description": "When using Regular Swing, makes it easy to hit balls with base hit potential.",
+    "category": "fielder"
+  },
+  "アウトコースヒッター": {
+    "name": "Outside Hitter",
+    "type": "blue",
+    "description": "Adept at hitting outside pitches. Cannot be equipped together with Inside Hitter or Inside Edge Strike.",
+    "category": "fielder"
+  },
+  "威圧感（野手）": {
+    "name": "Intimidation (Fielder)",
+    "type": "blue",
+    "description": "Decreases opposing pitcher's speed by 2 km/h, Control by 10, and increases stamina consumption by 15. For the batter right before you, decreases opposing pitcher's speed by 2 km/h, Control by 10, and increases stamina consumption by 10.",
+    "category": "fielder"
+  },
+  "インコースヒッター": {
+    "name": "Inside Hitter",
+    "type": "blue",
+    "description": "Adept at hitting inside pitches. Cannot be equipped together with Outside Hitter or Outside Edge Strike.",
+    "category": "fielder"
+  },
+  "意外性": {
+    "name": "Unpredictability",
+    "type": "blue",
+    "description": "When starting and tied from the 5th inning onwards, or trailing/tied late in the game, Power becomes A if runners are on base (no change if already A or higher).",
+    "category": "fielder"
+  },
+  "いぶし銀": {
+    "name": "Veteran Craftsmanship",
+    "type": "blue",
+    "description": "Late in the game when trailing by 1 run or tied with runners in scoring position, a Regular Swing easily results in a hit.",
+    "category": "fielder"
+  },
+  "固め打ち": {
+    "name": "Streaky Hitter",
+    "type": "blue",
+    "description": "After hitting 2 hits or more, Contact +10 and Power +5 from the 3rd plate appearance onwards.",
+    "category": "fielder"
+  },
+  "カット打ち": {
+    "name": "Foul Off Hitter",
+    "type": "blue",
+    "description": "With 2 strikes, a Regular Swing easily ticks or fouls off the ball even if the timing is slightly late.",
+    "category": "fielder"
+  },
+  "かく乱": {
+    "name": "Distraction",
+    "type": "blue",
+    "description": "When on base, increases the opposing pitcher's stamina consumption and decreases infield defense (effect increases as more runners with this skill are on base, which also drops the pitcher's Control and break amount).",
+    "category": "fielder"
+  },
+  "逆境◯": {
+    "name": "Adversity ◯",
+    "type": "blue",
+    "description": "Late in the game while trailing, Contact +15 and Power +15.",
+    "category": "fielder"
+  },
+  "決勝打": {
+    "name": "Go-Ahead Hit",
+    "type": "blue",
+    "description": "From the 6th inning onwards when tied or trailing, in a situation where a base runner scoring would take the lead, Contact +5.",
+    "category": "fielder"
+  },
+  "高速チャージ": {
+    "name": "High-Speed Charge",
+    "type": "blue",
+    "description": "Enables faster tracking and fielding against opponent bunts.",
+    "category": "fielder"
+  },
+  "広角打法": {
+    "name": "Wide-Angle Hitting",
+    "type": "blue",
+    "description": "Enables hitting powerful balls to the opposite field. Cannot be equipped together with Pull Hitter or Pull Master.",
+    "category": "fielder"
+  },
+  "サヨナラ男": {
+    "name": "Walk-Off Man",
+    "type": "blue",
+    "description": "Power +15 in a situation where a home run results in a walk-off victory; Contact +15 in a situation where scoring a runner from scoring position results in a walk-off victory.",
+    "category": "fielder"
+  },
+  "守備職人": {
+    "name": "Fielding Craftsman",
+    "type": "blue",
+    "description": "When defending, increases throwing speed and back-pedaling speed.",
+    "category": "fielder"
+  },
+  "初球◯": {
+    "name": "First Pitch ◯",
+    "type": "blue",
+    "description": "Before a single strike is recorded, Contact +10 and Power +5.",
+    "category": "fielder"
+  },
+  "対エース◯": {
+    "name": "Facing Aces ◯",
+    "type": "blue",
+    "description": "When facing ace-tier pitchers, Contact +10 and Power +10.",
+    "category": "fielder"
+  },
+  "代打◯": {
+    "name": "Pinch Hitter ◯",
+    "type": "blue",
+    "description": "When entering the batter's box as a pinch hitter, Contact +15 and Power +15.",
+    "category": "fielder"
+  },
+  "ダメ押し": {
+    "name": "Insurance Run",
+    "type": "blue",
+    "description": "When leading by 4 runs or more, increases Power by 10 late in the game.",
+    "category": "fielder"
+  },
+  "対ストレート◯": {
+    "name": "Facing Fastballs ◯",
+    "type": "blue",
+    "description": "Becomes adept at hitting fastballs.",
+    "category": "fielder"
+  },
+  "対変化球◯": {
+    "name": "Facing Breaking Balls ◯",
+    "type": "blue",
+    "description": "Becomes adept at hitting breaking balls.",
+    "category": "fielder"
+  },
+  "チャンスメーカー": {
+    "name": "Chance Maker",
+    "type": "blue",
+    "description": "When there are no runners on base, Contact +10 and Power +5.",
+    "category": "fielder"
+  },
+  "内野安打◯": {
+    "name": "Infield Hit ◯",
+    "type": "blue",
+    "description": "Speeds up the initial acceleration dash after hitting the ball.",
+    "category": "fielder"
+  },
+  "流し打ち": {
+    "name": "Opposite-Field Hit",
+    "type": "blue",
+    "description": "When hitting to the opposite field with a Regular Swing, the ball easily drops for a hit.",
+    "category": "fielder"
+  },
+  "粘り打ち": {
+    "name": "Battling Style",
+    "type": "blue",
+    "description": "When cornered with 2 strikes, Regular Swing Contact +10.",
+    "category": "fielder"
+  },
+  "パワーヒッター": {
+    "name": "Power Hitter",
+    "type": "blue",
+    "description": "When using Power Swing, makes it easy to hit fly balls with home run potential.",
+    "category": "fielder"
+  },
+  "ハイボールヒッター": {
+    "name": "High Ball Hitter",
+    "type": "blue",
+    "description": "Becomes adept at hitting high pitches. Cannot be equipped together with Low Ball Hitter or Low Pitch Strike.",
+    "category": "fielder"
+  },
+  "バント◯": {
+    "name": "Bunt ◯",
+    "type": "blue",
+    "description": "Bunted balls easily soften and drop cleanly onto the infield ground.",
+    "category": "fielder"
+  },
+  "バント職人": {
+    "name": "Bunt Craftsman",
+    "type": "blue",
+    "description": "Bunted balls become exceptionally easy to safely deaden on the ground.",
+    "category": "fielder"
+  },
+  "プレッシャーラン": {
+    "name": "Pressure Run",
+    "type": "blue",
+    "description": "During potential double-play timings, sliding from first into second base can sometimes cause the opponent fielder's throw to first base to go wild.",
+    "category": "fielder"
+  },
+  "プルヒッター": {
+    "name": "Pull Hitter",
+    "type": "blue",
+    "description": "When pulling the ball with a Power Swing, hits a powerful ball. Cannot be equipped together with Wide-Angle Hitting or Wide-Angle Cannon.",
+    "category": "fielder"
+  },
+  "ヘッドスライディング": {
+    "name": "Head-First Slide",
+    "type": "blue",
+    "description": "Slides head-first into bases during crucial, tight moments.",
+    "category": "fielder"
+  },
+  "ホーム突入": {
+    "name": "Home Charge",
+    "type": "blue",
+    "description": "As a runner during home plate collisions, sometimes causes the opponent catcher to drop the ball.",
+    "category": "fielder"
+  },
+  "ホーム死守": {
+    "name": "Defend Home",
+    "type": "blue",
+    "description": "As a catcher, reduces the activation rate of runners' Home Charge and Heavy Tank.",
+    "category": "fielder"
+  },
+  "満塁男": {
+    "name": "Bases Loaded Man",
+    "type": "blue",
+    "description": "When bases are loaded, Contact +15 and Power +15.",
+    "category": "fielder"
+  },
+  "ムード◯": {
+    "name": "Good Mood ◯",
+    "type": "blue",
+    "description": "Teammate fielders gain Contact +5 and Power +5.",
+    "category": "fielder"
+  },
+  "ラインドライブ": {
+    "name": "Line Drive",
+    "type": "blue",
+    "description": "When using Power Swing, makes it easy to hit sharp line drives (excluding grounders). Cannot be equipped together with Power Hitter or Artist.",
+    "category": "fielder"
+  },
+  "レーザービーム": {
+    "name": "Laser Beam",
+    "type": "blue",
+    "description": "When defending in the outfield, delivers throws along a low, fast trajectory.",
+    "category": "fielder"
+  },
+  "ローボールヒッター": {
+    "name": "Low Ball Hitter",
+    "type": "blue",
+    "description": "Becomes adept at hitting low pitches. Cannot be equipped together with High Ball Hitter or High Pitch Strike.",
+    "category": "fielder"
+  },
+  "対ランナー×": {
+    "name": "Facing Runners ×",
+    "type": "red",
+    "category": "pitcher",
+    "description": "When runners are on first or first-and-third, the pitcher's capabilities decline."
+  },
+  "一発": {
+    "name": "Gopherball",
+    "type": "red",
+    "description": "Increases the chance of a missed pitch hanging right down the middle of the plate.",
+    "category": "pitcher"
+  },
+  "ガラスのハート": {
+    "name": "Glass Heart",
+    "type": "red",
+    "description": "Once a hit is conceded, becomes extremely easy to fall into a rattled state.",
+    "category": "pitcher"
+  },
+  "軽い球": {
+    "name": "Light Ball",
+    "type": "red",
+    "description": "Once hit, makes it very easy for the ball to travel deep or far.",
+    "category": "pitcher"
+  },
+  "シュート回転": {
+    "name": "Shoot Spin",
+    "type": "red",
+    "description": "Fastballs sometimes naturally drift or cut in the direction of a shootball.",
+    "category": "pitcher"
+  },
+  "四球": {
+    "name": "Walk Prone",
+    "type": "red",
+    "description": "When the count reaches 3 balls, Control suffers -20.",
+    "category": "pitcher"
+  },
+  "スロースターター": {
+    "name": "Slow Starter",
+    "type": "red",
+    "description": "When starting, 1st inning pitch speed -4 km/h, Control -13, break amount -2; 2nd inning pitch speed -2 km/h, Control -7, break amount -1.",
+    "category": "pitcher"
+  },
+  "寸前": {
+    "name": "Choke Prone",
+    "type": "red",
+    "description": "In the final inning or in the 5th inning when starting while leading, pitch speed -2 km/h and Control -10.",
+    "category": "pitcher"
+  },
+  "短気": {
+    "name": "Short Temper",
+    "type": "red",
+    "description": "When falling into a rattled state, Control drops by 10.",
+    "category": "pitcher"
+  },
+  "ノミの心臓": {
+    "name": "Flea Heart",
+    "type": "red",
+    "description": "When runners are in scoring position, break amount drops by 3.",
+    "category": "pitcher"
+  },
+  "負け運": {
+    "name": "Bad Luck",
+    "type": "red",
+    "description": "While on the mound, teammate batters suffer Power -5.",
+    "category": "pitcher"
+  },
+  "乱調": {
+    "name": "Control Collapse",
+    "type": "red",
+    "description": "When starting, there is a random chance from the 3rd inning onwards at the beginning of a half-inning to suffer Control -20.",
+    "category": "pitcher"
+  },
+  "エラー": {
+    "name": "Error Prone",
+    "type": "red",
+    "description": "When runners are in scoring position, fielding errors become easy to commit.",
+    "category": "fielder"
+  },
+  "三振": {
+    "name": "Strikeout Prone",
+    "type": "red",
+    "description": "When cornered with 2 strikes, Contact drops by 20 (excluding full counts).",
+    "category": "fielder"
+  },
+  "扇風機": {
+    "name": "Whirlwind Whiffer",
+    "type": "red",
+    "description": "When cornered with 2 strikes, Contact drops by 30 (excluding full counts).",
+    "category": "fielder"
+  },
+  "併殺": {
+    "name": "Grounded into Double Play",
+    "type": "red",
+    "description": "With 0 or 1 out and a runner on first, becomes prone to hitting ground balls.",
+    "category": "fielder"
+  },
+  "ムード✕": {
+    "name": "Bad Mood ✕",
+    "type": "red",
+    "description": "Teammate fielders suffer Contact -5 and Power -5.",
+    "category": "fielder"
+  },
+  "全開": {
+    "name": "Full Open",
+    "type": "normal",
+    "description": "Dual-edged trait. When runners are in scoring position and stamina is above roughly half, ball quality becomes heavier and fastball life improves, but stamina consumption increases.",
+    "category": "all"
+  },
+  "悪球打ち": {
+    "name": "Bad Ball Hitter",
+    "type": "normal",
+    "description": "Dual-edged trait. Becomes prone to swinging at pitches that clearly deviate outside the strike zone.",
+    "category": "all"
+  },
+  "荒れ球": {
+    "name": "Wild Zone Ball",
+    "type": "normal",
+    "description": "Dual-edged trait. Fastball location drifts wider than usual, but a small amount of extra fastball life is added.",
+    "category": "all"
+  },
+  "ゴロピッチャー": {
+    "name": "Ground Ball Pitcher",
+    "type": "normal",
+    "description": "Dual-edged trait. Slightly decreases the trajectory of opposing batters' hits.",
+    "category": "all"
+  },
+  "力配分": {
+    "name": "Effort Allocation",
+    "type": "normal",
+    "description": "Dual-edged trait. Against batters with Power E or lower, or with runners in scoring position against batters with Power F or lower, pitch speed -2 km/h, break amount -1, and stamina consumption increases.",
+    "category": "all"
+  },
+  "ポーカーフェイス": {
+    "name": "Poker Face",
+    "type": "normal",
+    "description": "Dual-edged trait. Fatigue or rattling will not be displayed on the character's facial expressions. Cannot be equipped together with Guts.",
+    "category": "all"
+  },
+  "打たれ強さ": {
+    "name": "Hit Resistance",
+    "type": "blue",
+    "description": "Resistance to becoming rattled after giving up hits is evaluated on a 7-stage scale from A to G.",
+    "category": "all"
+  },
+  "回復": {
+    "name": "Recovery",
+    "type": "blue",
+    "description": "How easily fatigue is recovered is evaluated on a 7-stage scale from A to G.",
+    "category": "all"
+  },
+  "クイック": {
+    "name": "Quick Delivery",
+    "type": "blue",
+    "description": "Proficiency in quick pitching to suppress base stealing is evaluated on a 7-stage scale from A to G.",
+    "category": "all"
+  },
+  "対ピンチ": {
+    "name": "Clutch Pitching",
+    "type": "blue",
+    "description": "Strength when runners are in scoring position is evaluated on a 7-stage scale from A to G.",
+    "category": "all"
+  },
+  "対左打者": {
+    "name": "Facing Lefties (Pitcher)",
+    "type": "blue",
+    "description": "Strength when up against left-handed batters is evaluated on a 7-stage scale from A to G.",
+    "category": "all"
+  },
+  "ノビ": {
+    "name": "Fastball Life",
+    "type": "blue",
+    "description": "The life/movement quality of the fastball is evaluated on a 7-stage scale from A to G.",
+    "category": "all"
+  },
+  "キャッチャー": {
+    "name": "Catcher Lead",
+    "type": "blue",
+    "description": "Ability to guide and unlock the potential of the pitcher is evaluated on a 4-stage scale from ✕ to ◎.",
+    "category": "all"
+  },
+  "ケガしにくさ": {
+    "name": "Injury Resistance",
+    "type": "blue",
+    "description": "Evaluated on a 4-stage scale from ✕ to ◎; ◯ and ◎ reduce stamina consumption.",
+    "category": "all"
+  },
+  "走塁": {
+    "name": "Base Running Tech",
+    "type": "blue",
+    "description": "Base running technique and intelligence are evaluated on a 4-stage scale from ✕ to ◎.",
+    "category": "all"
+  },
+  "送球": {
+    "name": "Throwing Tech",
+    "type": "blue",
+    "description": "Accuracy and resistance to throwing errors are evaluated on a 4-stage scale from ✕ to ◎.",
+    "category": "all"
+  },
+  "対左投手": {
+    "name": "Facing Lefties (Batter)",
+    "type": "blue",
+    "description": "Strength when up against left-handed pitchers is evaluated on a 4-stage scale from ✕ to ◎.",
+    "category": "all"
+  },
+  "チャンス": {
+    "name": "Clutch Batting",
+    "type": "blue",
+    "description": "Batting performance under pressure when runners are in scoring position is evaluated on a 4-stage scale from ✕ to ◎.",
+    "category": "all"
+  },
+  "盗塁": {
+    "name": "Stealing Tech",
+    "type": "blue",
+    "description": "Stealing execution proficiency is evaluated on a 4-stage scale from ✕ to ◎.",
+    "category": "all"
+  },
+  "天才": {
+    "name": "Genius",
+    "type": "gold",
+    "category": "all",
+    "description": "Significantly increases all baseline attributes."
+  },
+  "火の玉ストレート": {
+    "name": "Fireball Fastball",
+    "type": "gold",
+    "description": "The movement and life of the fastball become exceptionally elite.",
+    "category": "pitcher"
+  },
+  "怪物": {
+    "name": "Monster",
+    "type": "gold",
+    "description": "The movement and life of the fastball become exceptionally elite.",
+    "category": "pitcher"
+  },
+  "世界の代打男": {
+    "name": "World Pinch Hitter Man",
+    "type": "gold",
+    "description": "Batting performance increases dramatically when stepping up as a pinch hitter.",
+    "category": "fielder"
+  },
+  "レッドスター": {
+    "name": "Red Star",
+    "type": "gold",
+    "description": "Stealing execution becomes exceptionally masterful and exerts a rattling pressure on the pitcher."
+  },
+  "ゴジラ": {
+    "name": "Godzilla",
+    "type": "gold",
+    "description": "Exudes an aura of intimidation during both the preceding batter's and your own plate appearances, putting heavy pressure on the pitcher."
+  },
+  "SHO-TIME": {
+    "name": "Sho-Time",
+    "type": "gold",
+    "description": "Pitching performance positively affects base running, and batting performance positively affects fastball life.",
+    "category": "pitcher"
+  },
+  "ID野球の申し子": {
+    "name": "Child of ID Baseball",
+    "type": "gold",
+    "description": "A legendary catcher representing the absolute pinnacle of baseball intelligence.",
+    "category": "fielder"
+  },
+  "Big Fly": {
+    "name": "Big Fly",
+    "type": "gold",
+    "description": "Adds an angle correction to power swings, making it easier to generate high-arcing fly balls with home run potential.",
+    "category": "fielder"
+  },
+  "秋男": {
+    "name": "Autumn Man",
+    "type": "blue",
+    "description": "During games played from September to November, Contact +10 and Power +5.",
+    "category": "fielder"
+  },
+  "夏男": {
+    "name": "Summer Man",
+    "type": "blue",
+    "description": "During games played from July to August, Contact +10 and Power +5.",
+    "category": "fielder"
+  },
+  "春男": {
+    "name": "Spring Man",
+    "type": "blue",
+    "description": "During games played from March to May, Contact +10 and Power +5.",
+    "category": "fielder"
+  },
+  "お祭り男": {
+    "name": "Festival Man",
+    "type": "blue",
+    "description": "During special or featured games, Contact +10 and Power +5.",
+    "category": "fielder"
+  },
+  "△△キラー": {
+    "name": "△△ Killer",
+    "type": "blue",
+    "description": "When playing against specific teams, decreases opposing batters' hit power if you are a pitcher, or increases your own hit power if you are a hitter.",
+    "category": "fielder"
+  },
+  "国際大会◯": {
+    "name": "International Tournament ◯",
+    "type": "blue",
+    "description": "Abilities increase when playing on the international tournament stage."
+  },
+  "必殺仕事人": {
+    "name": "Professional Hitman",
+    "type": "blue",
+    "description": "Exceptional clutch execution power when runners are in scoring position."
+  },
+  "楽天キラー": {
+    "name": "Rakuten Killer",
+    "type": "blue",
+    "description": "Highly effective against the Tohoku Rakuten Golden Eagles."
+  },
+  "阪神キラー": {
+    "name": "Hanshin Killer",
+    "type": "blue",
+    "description": "Highly effective against the Hanshin Tigers."
+  },
+  "西武キラー": {
+    "name": "Seibu Killer",
+    "type": "blue",
+    "description": "Highly effective against the Saitama Seibu Lions."
+  },
+  "広島キラー": {
+    "name": "Hiroshima Killer",
+    "type": "blue",
+    "description": "Highly effective against the Hiroshima Toyo Carp."
+  },
+  "巨人キラー": {
+    "name": "Kyojin Killer",
+    "type": "blue",
+    "description": "Highly effective against the Yomiuri Giants."
+  },
+  "中日キラー": {
+    "name": "Chunichi Killer",
+    "type": "blue",
+    "description": "Highly effective against the Chunichi Dragons."
+  },
+  "オリックスキラー": {
+    "name": "Orix Killer",
+    "type": "blue",
+    "description": "Highly effective against the Orix Buffaloes."
+  },
+  "DeNAキラー": {
+    "name": "DeNA Killer",
+    "type": "blue",
+    "description": "Highly effective against the Yokohama DeNA BayStars."
+  },
+  "ヤクルトキラー": {
+    "name": "Yakult Killer",
+    "type": "blue",
+    "description": "Highly effective against the Tokyo Yakult Swallows."
+  },
+  "ロッテキラー": {
+    "name": "Lotte Killer",
+    "type": "blue",
+    "description": "Highly effective against the Chiba Lotte Marines."
+  },
+  "ホークスキラー": {
+    "name": "Hawks Killer",
+    "type": "blue",
+    "description": "Highly effective against the Fukuoka SoftBank Hawks."
+  },
+  "ファイターズキラー": {
+    "name": "Fighters Killer",
+    "type": "blue",
+    "description": "Highly effective against the Hokkaido Nippon-Ham Fighters."
+  },
+  "帳尻合わせ": {
+    "name": "Garbage Time Hitter",
+    "type": "blue",
+    "description": "When you have no hits yet and the team holds a major lead, Contact increases from the 3rd plate appearance onwards.",
+    "category": "fielder"
+  },
+  "対応変化球◯": {
+    "name": "Breaking Ball Adaptation ◯",
+    "type": "blue",
+    "description": "Becomes adept at tracking and hitting breaking balls.",
+    "category": "pitcher"
+  },
+  "存在感（野手）": {
+    "name": "Presence (Fielder)",
+    "type": "blue",
+    "description": "Exudes a heavy presence during both the preceding batter's and your own plate appearances, impacting the opposing pitcher's Control and stamina consumption.",
+    "category": "pitcher"
+  },
+  "存在感（投手）": {
+    "name": "Presence (Pitcher)",
+    "type": "blue",
+    "description": "Exudes presence on the mound during relief appearances, affecting the Contact and Power of opposing batters.",
+    "category": "fielder"
+  },
+  "三本柱": {
+    "name": "Three Pillars",
+    "type": "blue",
+    "description": "Stepping onto the mound immediately rallies the team toward victory.",
+    "category": "pitcher"
+  },
+  "ブロッキング": {
+    "name": "Blocking",
+    "type": "blue",
+    "description": "Resists allowing pitches in the dirt or wild pitches to leak behind the catcher."
+  },
+  "フレーミング◎": {
+    "name": "Framing ◎",
+    "type": "blue",
+    "description": "Aids the pitcher via masterful framing, significantly boosting the pitcher's effective Control.",
+    "category": "pitcher"
+  },
+  "フレーミング◯": {
+    "name": "Framing ◯",
+    "type": "blue",
+    "description": "Aids the pitcher via skillful framing, boosting the pitcher's effective Control.",
+    "category": "pitcher"
+  },
+  "ストライク先行": {
+    "name": "Pounding the Zone",
+    "type": "blue",
+    "description": "Pitches thrown exhibit a strong natural tendency to find the strike zone."
+  },
+  "シュート打ちの名人": {
+    "name": "Shootball Hitting Master",
+    "type": "blue",
+    "description": "Becomes exceptionally skilled at turning on and hitting inside breaks."
+  },
+  "ささやき破り": {
+    "name": "Whisper Breaker",
+    "type": "blue",
+    "description": "Immunizes the batter against the negative effects of the opposing catcher's Whispering Tactics.",
+    "category": "fielder"
+  },
+  "Mrフライヤーズ": {
+    "name": "Mr. Flyers",
+    "type": "blue",
+    "description": "Lifts and dramatically improves the collective morale and atmosphere of the dugout."
+  },
+  "Mrオリオンズ": {
+    "name": "Mr. Orions",
+    "type": "blue",
+    "description": "Lifts and dramatically improves the collective morale and atmosphere of the dugout."
+  },
+  "100万ドルの内野陣": {
+    "name": "Million Dollar Infield",
+    "type": "blue",
+    "description": "Exhibits masterful, flawless coordination and veterancy during defensive infield plays.",
+    "category": "fielder"
+  },
+  "死球集中": {
+    "name": "HBP Prone",
+    "type": "normal",
+    "description": "Dual-edged trait. Missed pitches by the pitcher are highly likely to turn into hit-by-pitch incidents.",
+    "category": "pitcher"
+  },
+  "国際大会✕": {
+    "name": "International Tournament ✕",
+    "type": "red",
+    "description": "Abilities decline when playing on the international tournament stage."
+  },
+  "対ランナー✕": {
+    "name": "Facing Runners ✕",
+    "type": "red",
+    "description": "When runners are on first or first-and-third, the pitcher's capabilities decline."
+  },
+  "対ランナー": {
+    "name": "Base Runner Discomfort",
+    "type": "red",
+    "description": "Capabilities decline whenever any runners occupy first or first-and-third base."
+  },
+  "ボール先行": {
+    "name": "Falling Behind in Count",
+    "type": "red",
+    "description": "Pitches exhibit a natural tendency to wander or miss into the ball zone."
+  },
+  "調子安定": {
+    "name": "Consistent Form",
+    "type": "green",
+    "description": "Performance remains highly stable and resistant to daily condition fluctuations."
+  },
+  "調子極端": {
+    "name": "Volatile Form",
+    "type": "green",
+    "description": "Performance becomes extremely sensitive to daily condition fluctuations."
+  },
+  "速球中心": {
+    "name": "Fastball Centric",
+    "type": "green",
+    "description": "Pitch selection leans heavily toward fastballs. Cannot be equipped together with Breaking Ball Centric.",
+    "category": "pitcher"
+  },
+  "変化球中心": {
+    "name": "Breaking Ball Centric",
+    "type": "green",
+    "description": "Pitch selection leans heavily toward breaking balls. Cannot be equipped together with Fastball Centric.",
+    "category": "pitcher"
+  },
+  "投球位置左": {
+    "name": "Rubber Position Left",
+    "type": "green",
+    "description": "The pitcher stands at the left edge (third-base side) of the rubber from the batter's point of view. Cannot be equipped with Rubber Position Right.",
+    "category": "pitcher"
+  },
+  "投球位置右": {
+    "name": "Rubber Position Right",
+    "type": "green",
+    "description": "The pitcher stands at the right edge (first-base side) of the rubber from the batter's point of view. Cannot be equipped with Rubber Position Left.",
+    "category": "pitcher"
+  },
+  "テンポ◯": {
+    "name": "Fast Tempo ◯",
+    "type": "green",
+    "description": "When controlled by the COM, the time interval between consecutive pitches is short.",
+    "category": "pitcher"
+  },
+  "野手調子安定": {
+    "name": "Consistent Fielder Form",
+    "type": "green",
+    "description": "Batting performance remains highly stable and resistant to condition changes. Cannot be equipped with Volatile Fielder Form."
+  },
+  "野手調子極端": {
+    "name": "Volatile Fielder Form",
+    "type": "green",
+    "description": "Batting performance becomes extremely sensitive to condition changes. Cannot be equipped with Consistent Fielder Form."
+  },
+  "人気者": {
+    "name": "Fan Favorite",
+    "type": "green",
+    "description": "The crowd cheer volume increases dramatically when entering the batter's box."
+  },
+  "強振多用": {
+    "name": "Frequent Power Swing",
+    "type": "green",
+    "description": "Leans heavily toward utilizing Power Swings; cannot be equipped together with Frequent Regular Swing.",
+    "category": "fielder"
+  },
+  "ミート多用": {
+    "name": "Frequent Regular Swing",
+    "type": "green",
+    "description": "Leans heavily toward utilizing Regular Swings (Contact hitting).",
+    "category": "fielder"
+  },
+  "積極打法": {
+    "name": "Aggressive Hitting Style",
+    "type": "green",
+    "description": "Swings aggressively at pitches. Cannot be equipped together with Patient Hitting Style.",
+    "category": "fielder"
+  },
+  "慎重打法": {
+    "name": "Patient Hitting Style",
+    "type": "green",
+    "description": "Takes pitches patiently. Cannot be equipped together with Aggressive Hitting Style.",
+    "category": "fielder"
+  },
+  "積極走塁": {
+    "name": "Aggressive Base Running",
+    "type": "green",
+    "description": "Forces the envelope with aggressive base running choices.",
+    "category": "fielder"
+  },
+  "積極守備": {
+    "name": "Aggressive Defense",
+    "type": "green",
+    "description": "Attacks batted balls with aggressive defensive routing.",
+    "category": "fielder"
+  },
+  "チームプレイ◯": {
+    "name": "Team Player ◯",
+    "type": "green",
+    "description": "When controlled by the COM, actively looks to execute sacrifice bunts.",
+    "category": "fielder"
+  },
+  "チームプレイ✕": {
+    "name": "Individualistic Fielder ✕",
+    "type": "green",
+    "description": "When controlled by the COM, rarely or reluctantly executes sacrifice bunts.",
+    "category": "fielder"
+  },
+  "選球眼": {
+    "name": "Good Eye",
+    "type": "green",
+    "description": "Improves overall vision and judgment to distinguish strikes from balls."
+  },
+  "積極盗塁": {
+    "name": "Aggressive Stealing",
+    "type": "green",
+    "description": "The probability of attempting a steal increases. Cannot be used together with Cautious Stealing.",
+    "category": "fielder"
+  },
+  "慎重盗塁": {
+    "name": "Cautious Stealing",
+    "type": "green",
+    "description": "The probability of attempting a steal decreases. Cannot be used together with Aggressive Stealing.",
+    "category": "fielder"
+  },
+  "スーパーカートリオ": {
+    "name": "Supercar Trio",
+    "type": "green",
+    "description": "The probability of attempting a steal increases. Cannot be used together with Cautious Stealing.",
+    "category": "fielder"
+  },
+  "ブンブン丸": {
+    "name": "Free Swinger",
+    "type": "green",
+    "description": "Leans heavily toward utilizing Power Swings; cannot be equipped together with Frequent Regular Swing.",
+    "category": "fielder"
+  }
+}

@@ -2,6 +2,7 @@
 import { Plus, RotateCcw, X } from 'lucide-react';
 import type React from 'react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { useGameVersion } from '@/contexts/GameVersionContext';
 import { cn } from '@/utils/style';
@@ -41,6 +42,7 @@ interface CharacterSidebarProps {
 
 export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
   const { testId = 'character-sidebar', selectedPreview, setSelectedPreview } = props;
+  const { t } = useTranslation();
   const { gameData } = useGameVersion();
   const CHAR_MAPPING = gameData.characterMapping.by_name as Record<string, { id: number }>;
   const CHAR_DATA = gameData.characters as Record<string, any>;
@@ -125,10 +127,10 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
     }
   };
 
-  const { names, label } =
+  const { names } =
     activeTab === 'with'
-      ? { names: sortChars(props.groups.withCombo), label: 'コンボあり' }
-      : { names: sortChars(props.groups.noCombo), label: 'コンボなし' };
+      ? { names: sortChars(props.groups.withCombo) }
+      : { names: sortChars(props.groups.noCombo) };
 
   return (
     <aside
@@ -176,7 +178,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                     isPreviewOwned ? 'text-blue-300' : 'text-blue-500',
                   )}
                 >
-                  {CHAR_DATA[selectedPreview]?.position || 'Manager'}
+                  {CHAR_DATA[selectedPreview]?.position || t('positions.manager')}
                 </p>
               </div>
             </div>
@@ -189,7 +191,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                   onClick={() => handleRemove(selectedPreview)}
                   className="px-4 py-2 bg-[#FF2D55] hover:bg-[#E60039] text-white rounded-lg text-xs font-black transition-all shadow-sm active:scale-95 border-2 border-white/20"
                 >
-                  REMOVE
+                  {t('ui.remove')}
                 </button>
               ) : (
                 <button
@@ -199,7 +201,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                   className="flex items-center gap-1.5 px-4 py-2 bg-[#0059C1] hover:bg-[#006AEE] text-white rounded-lg text-xs font-black transition-all shadow-sm active:scale-95 border-2 border-white/20"
                 >
                   <Plus size={12} strokeWidth={3} />
-                  ADD
+                  {t('ui.add')}
                 </button>
               )}
               <button
@@ -229,10 +231,11 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                 </div>
                 <div className="flex flex-col min-w-0 leading-none">
                   <span className="text-xs font-black text-blue-400 uppercase tracking-widest mb-1">
-                    Roster Updated
+                    {t('ui.roster_updated')}
                   </span>
                   <span className="text-xs font-bold truncate">
-                    {lastAction?.type === 'add' ? 'Added' : 'Removed'} {lastAction?.name}
+                    {lastAction?.type === 'add' ? t('ui.added') : t('ui.removed')}{' '}
+                    {lastAction?.name}
                   </span>
                 </div>
               </div>
@@ -242,7 +245,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                   data-testid={`${testId}-undo-button`}
                   className="px-4 py-2 bg-white text-[#1A1C1E] hover:bg-blue-50 rounded-lg text-xs font-black uppercase shadow-sm transition-transform active:scale-95"
                 >
-                  Undo
+                  {t('ui.undo')}
                 </button>
                 <button
                   data-testid={`${testId}-undo-close`}
@@ -277,7 +280,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                 : 'bg-white text-slate-400 border-slate-200 hover:border-slate-300',
             )}
           >
-            コンボあり
+            {t('ui.with_combos')}
           </button>
           <button
             data-testid={`${testId}-tab-without-combos`}
@@ -289,7 +292,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                 : 'bg-white text-slate-400 border-slate-200 hover:border-slate-300',
             )}
           >
-            コンボなし
+            {t('ui.without_combos')}
           </button>
         </div>
 
@@ -298,7 +301,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
             <div className="flex items-center gap-3">
               <div className="h-4 w-1 bg-[#FF9E00] rounded-full" />
               <h3 className="text-xs font-black text-[#003D87] tracking-widest leading-none">
-                {names.length} キャラ
+                {t('ui.char_count', { count: names.length })}
               </h3>
             </div>
             <button
@@ -311,7 +314,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                   : 'bg-white text-slate-400 border-slate-200 hover:border-slate-300',
               )}
             >
-              {sortByNumber ? '図鑑番号 ↑' : 'ポジション順'}
+              {sortByNumber ? t('ui.number_sort') : t('ui.pos_sort')}
             </button>
           </div>
           <div className="grid gap-1.5 px-3">

@@ -2,6 +2,7 @@
 import { AlertCircle, Award, MapPin, Zap } from 'lucide-react';
 import type React from 'react';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { useGameVersion } from '@/contexts/GameVersionContext';
 
@@ -41,6 +42,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
 }) => {
   const { stats, skills, missingCharacters, roster } = analysis;
   const { version } = useGameVersion();
+  const { t } = useTranslation();
   let pictuerMax = 0;
   let fielderMax = 0;
   let managerMax = 0;
@@ -82,18 +84,37 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
       >
         {[
           {
-            label: '合計',
+            key: 'total',
+            label: t('ui.total'),
             val: roster.total + roster.manager,
             max: '/28',
             err: roster.errors?.total,
           },
-          { label: '投手', val: roster.pitcher, max: `/${pictuerMax}`, err: roster.errors?.pitcher },
-          { label: '野手', val: roster.fielder, max: `/${fielderMax}`, err: roster.errors?.fielder },
-          { label: 'マネージャー', val: roster.manager, max: `/ ${managerMax}`, err: roster.errors?.manager },
+          {
+            key: 'pitcher',
+            label: t('positions.pitcher'),
+            val: roster.pitcher,
+            max: `/${pictuerMax}`,
+            err: roster.errors?.pitcher,
+          },
+          {
+            key: 'fielder',
+            label: t('filter.fielder'),
+            val: roster.fielder,
+            max: `/${fielderMax}`,
+            err: roster.errors?.fielder,
+          },
+          {
+            key: 'manager',
+            label: t('positions.manager'),
+            val: roster.manager,
+            max: `/ ${managerMax}`,
+            err: roster.errors?.manager,
+          },
         ].map((item) => (
           <div
-            key={item.label}
-            data-testid={`${testId}-roster-card-${item.label.toLowerCase()}`}
+            key={item.key}
+            data-testid={`${testId}-roster-card-${item.key}`}
             className={cn(
               'py-2 rounded-2xl border bg-white flex flex-col items-center justify-center shadow-sm transition-all',
               item.err ? 'border-rose-300 bg-rose-50 ring-2 ring-rose-100' : 'border-slate-100',
@@ -130,7 +151,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
         <div className="flex items-center gap-2 mb-2.5" data-testid={`${testId}-stats-bonus-title`}>
           <Zap size={12} className="text-blue-400 fill-blue-400" />
           <span className="text-xs font-black uppercase tracking-[0.15em] text-blue-100/80">
-            獲得経験点合計
+            {t('ui.total_xp_earned')}
           </span>
         </div>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -145,7 +166,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
             ))
           ) : (
             <p className="text-xs font-black text-white/30 uppercase tracking-widest py-1">
-              発動中のボーナスなし
+              {t('ui.no_active_bonuses')}
             </p>
           )}
         </div>
@@ -162,11 +183,13 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
         >
           <div className="flex items-center">
             <Award size={14} className="text-blue-600 mr-2" />
-            <span className="text-xs font-black text-slate-900 uppercase">コンボ効果</span>
+            <span className="text-xs font-black text-slate-900 uppercase">
+              {t('ui.combo_effects')}
+            </span>
           </div>
           <div className="px-2 py-0.5 bg-amber-400 rounded-full shadow-sm shadow-amber-200">
             <span className="text-xs font-black text-amber-950 uppercase leading-none">
-              {goldSkillsCount} 金特
+              {t('ui.gold_skills_count', { count: goldSkillsCount })}
             </span>
           </div>
         </div>
@@ -244,7 +267,7 @@ export const RewardAnalysis: React.FC<AnalysisProps> = ({
             <div className="flex items-center gap-2">
               <AlertCircle size={14} className="text-rose-500" />
               <span className="text-xs font-black text-rose-600 uppercase">
-                不足しているキャラ ({missingCharacters.length})
+                {t('ui.missing_characters_count', { count: missingCharacters.length })}
               </span>
             </div>
           </div>

@@ -24,13 +24,13 @@ vi.mock('@/data/2026-2027/character_mapping.json', () => ({ default: { by_name: 
 
 vi.mock('@/data/skills.json', () => ({
   default: {
-    怪物球威: { name: '怪物球威', type: 'gold', category: 'pitcher', effect: '球質が非常に重くなる' },
-    強心臟: { name: '強心臟', type: 'gold', category: 'pitcher', effect: '強靭な精神力を持つ' },
-    精密機械: { name: '精密機械', type: 'gold', category: 'pitcher', effect: '低めへのコントロールが上がる' },
-    不屈之魂: { name: '不屈之魂', type: 'gold', category: 'pitcher', effect: '根性を持つ' },
-    終結者: { name: '終結者', type: 'gold', category: 'pitcher', effect: 'クローザー適性' },
-    広角打法: { name: '広角打法', type: 'gold', category: 'fielder', effect: '広角に打てる' },
-    '内野安打○': { name: '内野安打○', type: 'gold', category: 'fielder', effect: '内野安打が出やすい' },
+    怪物球威: { type: 'gold', category: 'pitcher', effect: '球質が非常に重くなる' },
+    強心臟: { type: 'gold', category: 'pitcher', effect: '強靭な精神力を持つ' },
+    精密機械: { type: 'gold', category: 'pitcher', effect: '低めへのコントロールが上がる' },
+    不屈之魂: { type: 'gold', category: 'pitcher', effect: '根性を持つ' },
+    終結者: { type: 'gold', category: 'pitcher', effect: 'クローザー適性' },
+    広角打法: { type: 'gold', category: 'fielder', effect: '広角に打てる' },
+    '内野安打○': { type: 'gold', category: 'fielder', effect: '内野安打が出やすい' },
   },
 }));
 

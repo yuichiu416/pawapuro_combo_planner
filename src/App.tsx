@@ -2,15 +2,17 @@
 import { ChevronLeft, ChevronRight, Clock, Loader2, Save, SearchX } from 'lucide-react';
 import type React from 'react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { AuthButton } from '@/components/AuthButton';
 import { CharacterSidebar } from '@/components/CharacterSidebar';
 import { ClearConfirmModal } from '@/components/ClearConfirmModal';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
+import { LanguageToggle } from '@/components/LanguageToggle';
 import { MapSection } from '@/components/MapSection';
+import { MatchExpButton, type MatchExpSaveData } from '@/components/MatchExpCalculator';
 import { MobileDrawer } from '@/components/MobileDrawer';
 import { MobileNavigation } from '@/components/MobileNavigation';
-import { MatchExpButton, type MatchExpSaveData } from '@/components/MatchExpCalculator';
 import { RewardAnalysis } from '@/components/RewardAnalysis';
 import { SlotSwitcher } from '@/components/SlotSwitcher';
 import { VersionToggle } from '@/components/VersionToggle';
@@ -23,35 +25,42 @@ interface LogoProps {
   isCollapsed: boolean;
 }
 
-const Logo: React.FC<LogoProps> = ({ isCollapsed }) => (
-  <div
-    className={cn(
-      'flex items-center pt-4 pb-2 shrink-0 transition-all duration-300',
-      isCollapsed ? 'justify-center px-0' : 'gap-3 px-6',
-    )}
-  >
-    <div className="w-10 h-10 flex items-center justify-center shrink-0">
-      <img src="/assets/logo.png" alt="Logo" className="w-full h-full object-contain" />
-    </div>
-    {!isCollapsed && (
-      <div className="flex flex-col animate-in fade-in slide-in-from-left-2 duration-300">
-        <span
-          data-testid="pawapuro_title_text"
-          className="font-black text-xl md:text-2xl tracking-tighter text-black uppercase leading-none whitespace-nowrap flex items-center gap-1"
-        >
-          パワプロ <VersionToggle />
-        </span>
-        <span className="text-xs md:text-sm font-bold text-blue-600 uppercase tracking-widest whitespace-nowrap">
-          コンボプランナー
-        </span>
+const Logo: React.FC<LogoProps> = ({ isCollapsed }) => {
+  const { t } = useTranslation();
+  return (
+    <div
+      className={cn(
+        'flex items-center pt-4 pb-2 shrink-0 transition-all duration-300',
+        isCollapsed ? 'justify-center px-0' : 'gap-3 px-6',
+      )}
+    >
+      <div className="w-10 h-10 flex items-center justify-center shrink-0">
+        <img src="/assets/logo.png" alt="Logo" className="w-full h-full object-contain" />
       </div>
-    )}
-  </div>
-);
+      {!isCollapsed && (
+        <div className="flex flex-col animate-in fade-in slide-in-from-left-2 duration-300">
+          <span
+            data-testid="pawapuro_title_text"
+            className="font-black text-xl md:text-2xl tracking-tighter text-black uppercase leading-none whitespace-nowrap flex items-center gap-1"
+          >
+            パワプロ <VersionToggle />
+          </span>
+          <div className="flex items-center gap-2 mt-0.5">
+            <span className="text-xs md:text-sm font-bold text-blue-600 uppercase tracking-widest whitespace-nowrap">
+              {t('nav.combo_planner')}
+            </span>
+            <LanguageToggle />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 const AppContent: React.FC = () => {
   const manager = useComboManager();
   const { version } = useGameVersion();
+  const { t } = useTranslation();
   const baseAssetPath = `/assets/icons_split_${version}/`;
   const [posFilter, setPosFilter] = useState<string | null>(null);
   const [mapFilter, setMapFilter] = useState<string | null>(null);
@@ -144,7 +153,9 @@ const AppContent: React.FC = () => {
         <div className="fixed inset-0 z-[9999] bg-white/70 flex items-center justify-center backdrop-blur-sm">
           <div className="flex flex-col items-center gap-3">
             <div className="w-10 h-10 border-4 border-blue-200 border-t-[#0059C1] rounded-full animate-spin" />
-            <span className="text-sm font-black text-[#0059C1] tracking-widest uppercase">Loading…</span>
+            <span className="text-sm font-black text-[#0059C1] tracking-widest uppercase">
+              {t('ui.loading')}
+            </span>
           </div>
         </div>
       )}
@@ -343,7 +354,11 @@ const AppContent: React.FC = () => {
                       <Save size={16} />
                     )}
                     <span>
-                      {manager.isSyncing ? 'Syncing...' : isLoggedIn ? 'チーム保存' : 'ローカルに保存'}
+                      {manager.isSyncing
+                        ? t('ui.syncing')
+                        : isLoggedIn
+                          ? t('ui.save_team')
+                          : t('ui.save_locally')}
                     </span>
                   </button>
                   <AuthButton />
@@ -356,13 +371,15 @@ const AppContent: React.FC = () => {
                   )}
                 >
                   <Clock size={10} className="inline mr-1 -mt-0.5" />
-                  最終保存日時: {manager.lastSaved}
+                  {t('ui.last_saved')}: {manager.lastSaved}
                 </div>
                 <div className="mt-2">
                   <MatchExpButton
                     slotNumber={manager.activeSlotNumber}
                     savedData={matchExpData[manager.activeSlotNumber] ?? null}
-                    onSave={(d) => setMatchExpData(prev => ({ ...prev, [manager.activeSlotNumber]: d }))}
+                    onSave={(d) =>
+                      setMatchExpData((prev) => ({ ...prev, [manager.activeSlotNumber]: d }))
+                    }
                   />
                 </div>
               </div>
@@ -398,7 +415,9 @@ const AppContent: React.FC = () => {
               <MatchExpButton
                 slotNumber={manager.activeSlotNumber}
                 savedData={matchExpData[manager.activeSlotNumber] ?? null}
-                onSave={(d) => setMatchExpData(prev => ({ ...prev, [manager.activeSlotNumber]: d }))}
+                onSave={(d) =>
+                  setMatchExpData((prev) => ({ ...prev, [manager.activeSlotNumber]: d }))
+                }
               />
             </div>
           </div>
