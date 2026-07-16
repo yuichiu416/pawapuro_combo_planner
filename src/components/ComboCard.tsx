@@ -1,7 +1,9 @@
 // src/components/ComboCard.tsx
 import { BadgeCheck, Star, UserPlus } from 'lucide-react';
 import React from 'react';
+import { CharacterLinkIcon } from '@/components/CharacterLink/CharacterLinkIcon';
 import skillsDataRaw from '@/data/skills.json';
+import type { LinkData } from '@/types';
 import { cn } from '../utils/style';
 
 const skillsData = skillsDataRaw as Record<string, any>;
@@ -17,6 +19,7 @@ interface ComboCardProps {
   getImagePath: (name: string, usePos: boolean) => string;
   showPositionIcon: boolean;
   searchTerm?: string;
+  links?: Record<string, LinkData>;
   rewards?: {
     skills: Array<{ name: string; level: number; verified?: boolean }>;
   };
@@ -33,6 +36,7 @@ export const ComboCard: React.FC<ComboCardProps> = ({
   getImagePath,
   showPositionIcon,
   searchTerm = '',
+  links = {},
   rewards,
 }) => {
   const missingChars = names.filter((name) => !ownedChars.has(name));
@@ -70,25 +74,27 @@ export const ComboCard: React.FC<ComboCardProps> = ({
             return (
               <React.Fragment key={name}>
                 <div className="flex flex-col items-center gap-2 min-w-0 flex-1">
-                  <button
-                    data-testid={`combo-card-character-icon-btn-${name}`}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedPreview(name);
-                    }}
-                    className={cn(
-                      'w-18 h-18 relative rounded-2xl overflow-hidden border-2 transition-all shrink-0 shadow-sm transform hover:scale-110 active:scale-95',
-                      isOwned
-                        ? 'border-[#0059C1] bg-white'
-                        : 'border-slate-200 bg-slate-50 opacity-50 hover:opacity-100',
-                    )}
-                  >
-                    <img
-                      src={getImagePath(name, showPositionIcon)}
-                      className="absolute inset-0 w-full h-full object-cover"
-                      alt={name}
-                    />
-                  </button>
+                  <CharacterLinkIcon name={name} link={links[name]}>
+                    <button
+                      data-testid={`combo-card-character-icon-btn-${name}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedPreview(name);
+                      }}
+                      className={cn(
+                        'w-18 h-18 relative rounded-2xl overflow-hidden border-2 transition-all shrink-0 shadow-sm transform hover:scale-110 active:scale-95',
+                        isOwned
+                          ? 'border-[#0059C1] bg-white'
+                          : 'border-slate-200 bg-slate-50 opacity-50 hover:opacity-100',
+                      )}
+                    >
+                      <img
+                        src={getImagePath(name, showPositionIcon)}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        alt={name}
+                      />
+                    </button>
+                  </CharacterLinkIcon>
                   <p
                     data-testid={`combo-card-p-${name}`}
                     className={cn(

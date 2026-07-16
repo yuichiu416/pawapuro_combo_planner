@@ -1,6 +1,8 @@
 // src/components/CharacterSidebar/CharacterItem.tsx
 import { Compass } from 'lucide-react';
 import type React from 'react';
+import { CharacterLinkIcon } from '@/components/CharacterLink/CharacterLinkIcon';
+import type { LinkData } from '@/types';
 import { cn } from '../../utils/style';
 
 interface RewardStats {
@@ -23,6 +25,7 @@ interface CharacterItemProps {
   onToggle: (name: string) => void;
   onRemove: (name: string) => void;
   getImagePath: (name: string, usePos: boolean) => string;
+  link?: LinkData;
   testId: string;
   hasCombo?: boolean;
 }
@@ -70,6 +73,7 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({
   onToggle,
   onRemove,
   getImagePath,
+  link,
   testId,
   hasCombo,
 }) => {
@@ -94,18 +98,20 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({
       )}
 
       {/* Character portrait */}
-      <div
-        className={cn(
-          'w-12 h-12 flex-shrink-0 relative rounded-lg overflow-hidden border-2 transition-transform',
-          styles.portrait,
-        )}
-      >
-        <img
-          src={getImagePath(name, true)}
-          alt={name}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      </div>
+      <CharacterLinkIcon name={name} link={link} className="w-12 h-12 flex-shrink-0 block">
+        <div
+          className={cn(
+            'w-12 h-12 flex-shrink-0 relative rounded-lg overflow-hidden border-2 transition-transform',
+            styles.portrait,
+          )}
+        >
+          <img
+            src={getImagePath(name, true)}
+            alt={name}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </div>
+      </CharacterLinkIcon>
 
       {/* Text content — pr-6 only needed when dot is showing */}
       <div className={cn('min-w-0 flex-1', !showRemove && 'pr-6')}>

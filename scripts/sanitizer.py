@@ -18,10 +18,16 @@ def standardize_symbols(text):
     """
     if not text: return text
     
-    # 1. Standardize circles (〇, ０, etc -> ◯)
-    symbols_to_fix = ["〇", "0", "０", "O", "○", "◎"]
-    for s in symbols_to_fix:
+    # 1. Standardize circles (〇, ○, ◎ -> ◯). These are always standalone
+    # markers, never part of a number, so unconditional replace is safe.
+    for s in ["〇", "○", "◎"]:
         text = text.replace(s, "◯")
+
+    # "0"/"０"/"O" are ambiguous -- used both as a circle-mark stand-in
+    # (e.g. "対ストレート0") AND as the literal digit zero inside numbers
+    # (e.g. "筋力30"). Only convert when NOT adjacent to another digit, so
+    # multi-digit stat values are left intact.
+    text = re.sub(r"(?<![0-9０-９])[0０O](?![0-9０-９])", "◯", text)
     
     # 2. Fix Kanji variations (e.g., 彈 -> 弾)
     text = text.replace("彈", "弾")

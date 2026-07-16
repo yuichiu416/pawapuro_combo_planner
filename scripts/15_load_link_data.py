@@ -136,37 +136,83 @@ def parse_link_text(raw, skills_db):
         text = text.strip()
         note = note.strip()
 
-    parens = re.findall(r"（([^（）]*)）", text)
-    # A paren with Lv/lv in it is a reward-skill group; one without is a
-    # prereq-skill group. (Reward parens observed to always contain Lv.)
-    prereq_parens = [p for p in parens if not re.search(r"[Ll][Vv]", p)]
-    reward_parens = [p for p in parens if re.search(r"[Ll][Vv]", p)]
+    # Variant B: "（skillA、skillB）、（skillC、skillD）：stats" -- two
+    # adjacent parens with no trigger verb between them at all (verified:
+    # 18 rows, e.g. row 9 松崎トミオ). Neither side reliably has Lv, so this
+    # can't go through the blue-prereq/gold-granted classifier below --
+    # store both groups as-is and flag as a different shape.
+    descriptive_match = re.match(r"^（([^（）]*)）、（([^（）]*)）[：:](.*)$", text)
+    if descriptive_match:
+        group1 = [s.strip() for s in descriptive_match.group(1).split("、") if s.strip()]
+        group2 = [s.strip() for s in descriptive_match.group(2).split("、") if s.strip()]
+        stats = parse_rewards(descriptive_match.group(3), skills_db)["stats"]
+        return {
+            "format": "descriptive",
+            "condition": None,
+            "skill_groups": [group1, group2],
+            "prerequisite_skills": [],
+            "granted_skills": [],
+            "upgrades": [],
+            "stats": stats,
+            "note": note,
+            "raw": str(raw).strip(),
+        }
 
-    prereq_groups = []
-    for p in prereq_parens:
+    parens = re.findall(r"（([^（）]*)）", text)
+    # Paren WITH Lv/lv = the blue skill (+ level) you must already have.
+    # Paren WITHOUT Lv = the gold skill you're granted when the condition is
+    # met. Verified against skills.json's own type field across the whole
+    # sheet: 518/539 no-Lv-paren skills are type=gold, 528/532 Lv-paren
+    # skills are type=blue (the ~4% gap is exactly the variant-B rows above,
+    # now handled separately).
+    prereq_parens = [p for p in parens if re.search(r"[Ll][Vv]", p)]
+    granted_parens = [p for p in parens if not re.search(r"[Ll][Vv]", p)]
+
+    granted_skills = []
+    for p in granted_parens:
         for part in p.split("、"):
             part = part.strip()
             if not part:
                 continue
-            alternatives = [a.strip() for a in re.split(r"\bor\b", part) if a.strip()]
-            prereq_groups.append(alternatives if len(alternatives) > 1 else alternatives[0] if alternatives else part)
+            # NOTE: \bor\b doesn't work here -- Python regex treats CJK
+            # characters as \w, so there's no word boundary between "送球"
+            # and "or" in "バズーカ送球orささやき戦術". Split on the literal
+            # substring instead (safe: "or" doesn't appear inside any real
+            # skill name in skills.json, verified separately).
+            alternatives = [a.strip() for a in part.split("or") if a.strip()]
+            granted_skills.append(alternatives if len(alternatives) > 1 else (alternatives[0] if alternatives else part))
 
-    reward = parse_rewards(text, skills_db)
+    prereq_reward = parse_rewards(text, skills_db)
+    prerequisite_skills = prereq_reward["skills"]
+
+    # Pair granted[i] <-> prerequisite[i] by position when counts line up
+    # (verified against 雪野楓: 内野安打◯Lv2->ロケットスタート,
+    # 緩急◯Lv2->変幻自在, both position-aligned). Flat (non-"or") entries only
+    # -- an "or"-group on the granted side can't be position-paired cleanly.
+    upgrades = []
+    flat_granted = [g for g in granted_skills if isinstance(g, str)]
+    if len(flat_granted) == len(prerequisite_skills):
+        for gold_name, blue in zip(flat_granted, prerequisite_skills):
+            upgrades.append({
+                "from": {"name": blue["name"], "level": blue["level"],
+                         "type": skills_db.get(blue["name"], {}).get("type")},
+                "to": {"name": gold_name, "type": skills_db.get(gold_name, {}).get("type")},
+            })
 
     # Condition text: whatever's left after stripping all parens and the
     # leading/trailing punctuation, plus the "：stats" tail.
     condition = re.sub(r"（[^（）]*）", "", text)
     condition = condition.split("：")[0]
     condition = condition.strip("、 ,　")
-    # if condition is now empty/pure punctuation, there was no free-text
-    # condition in this entry (e.g. 京野小筆-style stats-only rows)
     condition = condition or None
 
     return {
-        "prereq_skills": prereq_groups,
+        "format": "upgrade",
         "condition": condition,
-        "reward_skills": reward["skills"],
-        "stats": reward["stats"],
+        "granted_skills": granted_skills,
+        "prerequisite_skills": prerequisite_skills,
+        "upgrades": upgrades,
+        "stats": prereq_reward["stats"],
         "note": note,
         "raw": str(raw).strip(),
     }

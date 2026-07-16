@@ -1,5 +1,7 @@
 // src/components/CharacterSidebar/RosterGrid.tsx
 import type React from 'react';
+import { CharacterLinkIcon } from '@/components/CharacterLink/CharacterLinkIcon';
+import type { LinkData } from '@/types';
 import { cn } from '../../utils/style';
 
 interface RosterGridProps {
@@ -8,6 +10,7 @@ interface RosterGridProps {
   selectedPreview: string | null;
   setSelectedPreview: (name: string | null) => void;
   getImagePath: (name: string, usePos: boolean) => string;
+  links: Record<string, LinkData>;
   testId: string;
 }
 
@@ -17,6 +20,7 @@ export const RosterGrid: React.FC<RosterGridProps> = ({
   selectedPreview,
   setSelectedPreview,
   getImagePath,
+  links,
   testId,
 }) => (
   <div
@@ -43,42 +47,48 @@ export const RosterGrid: React.FC<RosterGridProps> = ({
 
     <div className="grid grid-cols-7 gap-1.5" data-testid={`${testId}-roster-grid`}>
       {rosterSlots.map((charName, i) => (
-        <button
-          data-testid={
-            charName ? `${testId}-roster-item-${charName}` : `${testId}-roster-slot-empty-${i}`
-          }
+        <CharacterLinkIcon
           key={charName ? `slot-${charName}` : `empty-${i}`}
-          disabled={!charName}
-          onClick={() =>
-            charName && setSelectedPreview(charName === selectedPreview ? null : charName)
-          }
-          className={cn(
-            'aspect-square rounded-lg border flex items-center justify-center overflow-hidden transition-all relative transform active:scale-95',
-            charName
-              ? cn(
-                  'bg-white shadow-sm',
-                  selectedPreview === charName
-                    ? 'border-[#FFF200] ring-2 ring-[#FFF200]/40 z-20 scale-105'
-                    : 'border-transparent hover:border-white/30',
-                )
-              : 'border-white/5 bg-black/10',
-          )}
+          name={charName ?? ''}
+          link={charName ? links[charName] : undefined}
+          className="aspect-square block w-full"
         >
-          {charName ? (
-            <img
-              src={getImagePath(charName, true)}
-              alt={charName}
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <div className="w-1 h-1 bg-white/10 rounded-full" />
-          )}
+          <button
+            data-testid={
+              charName ? `${testId}-roster-item-${charName}` : `${testId}-roster-slot-empty-${i}`
+            }
+            disabled={!charName}
+            onClick={() =>
+              charName && setSelectedPreview(charName === selectedPreview ? null : charName)
+            }
+            className={cn(
+              'w-full h-full rounded-lg border flex items-center justify-center overflow-hidden transition-all relative transform active:scale-95',
+              charName
+                ? cn(
+                    'bg-white shadow-sm',
+                    selectedPreview === charName
+                      ? 'border-[#FFF200] ring-2 ring-[#FFF200]/40 z-20 scale-105'
+                      : 'border-transparent hover:border-white/30',
+                  )
+                : 'border-white/5 bg-black/10',
+            )}
+          >
+            {charName ? (
+              <img
+                src={getImagePath(charName, true)}
+                alt={charName}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-1 h-1 bg-white/10 rounded-full" />
+            )}
 
-          {/* Soft inner glow for selection instead of a hard outer box */}
-          {charName && selectedPreview === charName && (
-            <div className="absolute inset-0 border-2 border-[#FFF200] rounded-lg z-30 pointer-events-none" />
-          )}
-        </button>
+            {/* Soft inner glow for selection instead of a hard outer box */}
+            {charName && selectedPreview === charName && (
+              <div className="absolute inset-0 border-2 border-[#FFF200] rounded-lg z-30 pointer-events-none" />
+            )}
+          </button>
+        </CharacterLinkIcon>
       ))}
     </div>
   </div>
