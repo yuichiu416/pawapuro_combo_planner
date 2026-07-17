@@ -1,6 +1,7 @@
 // src/__tests__/components/CharacterLinkIcon.test.tsx
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import '@/i18n/config';
 import { CharacterLinkIcon } from '@/components/CharacterLink/CharacterLinkIcon';
 import type { LinkData } from '@/types';
 

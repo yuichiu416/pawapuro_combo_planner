@@ -6,10 +6,9 @@ import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { useGameVersion } from '@/contexts/GameVersionContext';
 import { cn } from '@/utils/style';
+import { STAT_I18N_KEY, STAT_KEYS, type StatKey } from '@/utils/stats';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
-
-type StatKey = '筋力' | '敏捷' | '技術' | '変化球' | '精神';
 
 interface EventDef {
   id: string;
@@ -110,7 +109,6 @@ const PITCHING_EVENTS: EventDef[] = [
 ];
 
 const ALL_EVENTS = [...BATTING_EVENTS, ...PITCHING_EVENTS];
-const STAT_KEYS: StatKey[] = ['筋力', '敏捷', '技術', '変化球', '精神'];
 
 const DEFAULT_GAMES: Record<string, { labelKey: string; opponent: string }[]> = {
   '2024-2025': [
@@ -234,14 +232,6 @@ const StatBadge: React.FC<{
     <span className="text-lg font-black leading-tight">+{value}</span>
   </div>
 );
-
-const STAT_I18N_KEY: Record<StatKey, string> = {
-  筋力: 'strength',
-  敏捷: 'speed',
-  技術: 'technique',
-  変化球: 'breaking_ball',
-  精神: 'spirit',
-};
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
