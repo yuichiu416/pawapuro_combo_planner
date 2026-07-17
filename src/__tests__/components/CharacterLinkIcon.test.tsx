@@ -1,7 +1,7 @@
 // src/__tests__/components/CharacterLinkIcon.test.tsx
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import '@/i18n/config';
+import i18n from '@/i18n/config';
 import { CharacterLinkIcon } from '@/components/CharacterLink/CharacterLinkIcon';
 import type { LinkData } from '@/types';
 
@@ -13,8 +13,20 @@ vi.mock('@/data/skills.json', () => ({
     変幻自在: { type: 'gold', description: '', category: 'pitcher' },
   },
 }));
+vi.mock('@/data/skills_en.json', () => ({
+  default: {
+    '根性◯': { name: 'Guts Circle' },
+    ド根性: { name: 'True Grit' },
+  },
+}));
+vi.mock('@/data/skills_zh.json', () => ({
+  default: {},
+}));
 
-afterEach(() => cleanup());
+afterEach(async () => {
+  cleanup();
+  await i18n.changeLanguage('ja'); // reset so language state doesn't bleed into other test files
+});
 
 const upgradeLink: LinkData = {
   format: 'upgrade',
@@ -159,5 +171,95 @@ describe('CharacterLinkIcon', () => {
     expect(groups).toHaveTextContent('怪物球威');
     expect(groups).toHaveTextContent('アウトコースヒッター');
     expect(groups).toHaveTextContent('重い球');
+  });
+
+  describe('tooltip positioning (portal)', () => {
+    it('renders the tooltip as a direct child of document.body, not inside the render container', () => {
+      const { container } = render(
+        <CharacterLinkIcon name="掘杉等" link={upgradeLink}>
+          <img alt="掘杉等" src="test.png" />
+        </CharacterLinkIcon>,
+      );
+      fireEvent.mouseEnter(screen.getByTestId('character-link-icon-掘杉等'));
+
+      const tooltip = screen.getByTestId('link-tooltip-掘杉等');
+      expect(tooltip.parentElement).toBe(document.body);
+      // and therefore NOT a descendant of wherever the component itself rendered
+      expect(within(container).queryByTestId('link-tooltip-掘杉等')).not.toBeInTheDocument();
+    });
+
+    it('does not portal or render anything when there is no link data', () => {
+      render(
+        <CharacterLinkIcon name="宇渡幹久" link={undefined}>
+          <img alt="宇渡幹久" src="test.png" />
+        </CharacterLinkIcon>,
+      );
+      fireEvent.mouseEnter(screen.getByTestId('character-link-icon-宇渡幹久'));
+      // nothing should have been portaled to body for this character
+      expect(document.body.querySelector('[data-testid="link-tooltip-宇渡幹久"]')).toBeNull();
+    });
+  });
+
+  describe('i18n', () => {
+    it('translates the structural labels when the language changes', async () => {
+      await i18n.changeLanguage('en');
+      render(
+        <CharacterLinkIcon name="小田切巧" link={ambiguousLink}>
+          <img alt="小田切巧" src="test.png" />
+        </CharacterLinkIcon>,
+      );
+      fireEvent.mouseEnter(screen.getByTestId('character-link-icon-小田切巧'));
+
+      expect(screen.getByTestId('link-tooltip-小田切巧')).toHaveTextContent('Steady Link');
+      expect(screen.getByTestId('link-tooltip-needed-小田切巧')).toHaveTextContent(
+        'Needed (either)',
+      );
+      expect(screen.getByTestId('link-tooltip-granted-小田切巧')).toHaveTextContent(
+        'Granted (role-dependent)',
+      );
+    });
+
+    it('translates skill chip names using the localized skill data, falling back to the Japanese key when untranslated', async () => {
+      await i18n.changeLanguage('en');
+      render(
+        <CharacterLinkIcon name="掘杉等" link={upgradeLink}>
+          <img alt="掘杉等" src="test.png" />
+        </CharacterLinkIcon>,
+      );
+      fireEvent.mouseEnter(screen.getByTestId('character-link-icon-掘杉等'));
+
+      // 根性◯ has an English name in the mock -> should show it
+      expect(screen.getByTestId('link-upgrade-0-from')).toHaveTextContent('Guts Circle');
+      // 緩急◯ has no English entry in the mock -> falls back to the Japanese key
+      expect(screen.getByTestId('link-upgrade-1-from')).toHaveTextContent('緩急◯');
+    });
+
+    it('translates stat labels using the shared stats i18n mapping', async () => {
+      await i18n.changeLanguage('en');
+      render(
+        <CharacterLinkIcon name="掘杉等" link={upgradeLink}>
+          <img alt="掘杉等" src="test.png" />
+        </CharacterLinkIcon>,
+      );
+      fireEvent.mouseEnter(screen.getByTestId('character-link-icon-掘杉等'));
+
+      const stats = screen.getByTestId('link-tooltip-stats-掘杉等');
+      expect(stats).toHaveTextContent('Strength+30');
+      expect(stats).toHaveTextContent('Spirit+15');
+    });
+
+    it('does not translate the free-form condition text (known gap: no per-language source data)', async () => {
+      await i18n.changeLanguage('en');
+      render(
+        <CharacterLinkIcon name="掘杉等" link={upgradeLink}>
+          <img alt="掘杉等" src="test.png" />
+        </CharacterLinkIcon>,
+      );
+      fireEvent.mouseEnter(screen.getByTestId('character-link-icon-掘杉等'));
+
+      expect(screen.getByTestId('link-tooltip-condition-掘杉等')).toHaveTextContent(
+        '二打席連続で外野に飛ばす',
+      );
+    });
   });
 });
