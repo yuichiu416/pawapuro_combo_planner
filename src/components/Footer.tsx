@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
         <div className="flex items-center gap-3" data-testid="combo_planner_subtitle">
           <span className="text-sm font-black tracking-tighter text-black uppercase">
             {`パワプロ ${version} ${t('nav.combo_planner')}`}
-            <span className="text-black ml-1 not-font-bold">v1.2.3</span>
+            <span className="text-black ml-1 not-font-bold">v1.2.4</span>
           </span>
           <span className="text-black">|</span>
           <p className="text-sm font-bold text-black uppercase tracking-widest">© {currentYear}</p>
