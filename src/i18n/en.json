@@ -145,5 +145,10 @@
     "gold_fielder": "All Fielder Gold Skills selected",
     "pitcher": "Pitcher",
     "fielder": "Fielder"
+  },
+  "link": {
+    "title": "Steady Link",
+    "needed": "Needed (either)",
+    "granted": "Granted (role-dependent)"
   }
 }

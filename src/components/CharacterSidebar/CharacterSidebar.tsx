@@ -144,6 +144,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
           selectedPreview={selectedPreview}
           setSelectedPreview={setSelectedPreview}
           getImagePath={props.getImagePath}
+          links={gameData.links}
           testId={testId}
         />
 
@@ -328,6 +329,7 @@ export const CharacterSidebar: React.FC<CharacterSidebarProps> = (props) => {
                 onRemove={(targetName) => handleRemove(targetName)}
                 getImagePath={props.getImagePath}
                 data={{ ...CHAR_DATA[name], id: CHAR_MAPPING[name]?.id }}
+                link={gameData.links[name]}
                 testId={`${testId}-char-${name}`}
                 hasCombo={activeTab === 'with'}
               />

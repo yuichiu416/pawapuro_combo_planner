@@ -124,6 +124,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
                 isSelected={selectedComboIds.has(comboId)}
                 onToggleCombo={() => toggleCombo(comboId)}
                 setSelectedPreview={onSelectPreview}
+                links={gameData.links}
                 {...gridProps}
               />
             );

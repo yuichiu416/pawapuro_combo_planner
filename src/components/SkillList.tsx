@@ -3,17 +3,10 @@ import type React from 'react';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import skillsDataJa from '../data/skills.json';
-import skillsDataEn from '../data/skills_en.json';
-import skillsDataZh from '../data/skills_zh.json';
+import { getLocalizedSkillDescription, getLocalizedSkillName } from '../utils/skills';
 import { cn, getSkillTypeStyle } from '../utils/style';
 
 const skillsDataJaTyped = skillsDataJa as Record<string, any>;
-
-const LOCALE_SKILLS: Record<string, Record<string, any>> = {
-  ja: skillsDataJa as Record<string, any>,
-  en: skillsDataEn as Record<string, any>,
-  zh: skillsDataZh as Record<string, any>,
-};
 
 const SkillList: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -26,18 +19,13 @@ const SkillList: React.FC = () => {
   const filteredSkills = useMemo(() => {
     if (!skillsDataJaTyped) return [];
 
-    const localeSkills = LOCALE_SKILLS[i18n.language] ?? skillsDataJaTyped;
-
-    const skillEntries = Object.entries(skillsDataJaTyped).map(([key, jaSkill]) => {
-      const localized = localeSkills[key] ?? {};
-      return {
-        key,
-        name: localized.name || key,
-        description: localized.description || jaSkill.description || jaSkill.effect || '',
-        type: jaSkill.type,
-        category: jaSkill.category,
-      };
-    });
+    const skillEntries = Object.entries(skillsDataJaTyped).map(([key, jaSkill]) => ({
+      key,
+      name: getLocalizedSkillName(key, i18n.language),
+      description: getLocalizedSkillDescription(key, i18n.language) || jaSkill.effect || '',
+      type: jaSkill.type,
+      category: jaSkill.category,
+    }));
     const term = searchTerm.toLowerCase().trim();
 
     if (!term) return skillEntries;

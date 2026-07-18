@@ -42,7 +42,50 @@ export interface GameMap {
 
 export interface SkillMetadata {
   name: string;
-  type: 'gold' | 'normal';
-  category: 'pitcher' | 'fielder' | 'common';
+  type: 'gold' | 'blue' | 'red' | 'green' | 'normal';
+  category?: 'pitcher' | 'fielder' | 'all';
   description: string;
+}
+
+export interface LinkPrerequisiteSkill {
+  name: string;
+  level: number;
+  verified: boolean;
+}
+
+export interface LinkUpgrade {
+  from: { name: string; level: number; type: SkillMetadata['type'] | null };
+  to: { name: string; type: SkillMetadata['type'] | null };
+}
+
+/**
+ * コツコツリンク data for a single character. Two shapes, distinguished by
+ * `format`:
+ *  - 'upgrade': the common case -- achieving `condition` upgrades a blue
+ *    prerequisite skill (in `prerequisite_skills`, at a required level) into
+ *    a gold skill (named in `granted_skills`). `upgrades` pairs them up by
+ *    position when the counts line up 1:1; entries with an `or`-alternative
+ *    on the granted side (represented as a nested string[] within
+ *    `granted_skills`) can't be confidently paired and are left out of
+ *    `upgrades`.
+ *  - 'descriptive': no trigger condition at all, just two tagged groups of
+ *    skills the character already has (gold and blue tier). ~18 rows in the
+ *    2026-2027 sheet are this shape; `skill_groups` holds them, everything
+ *    else in the 'upgrade'-only fields is empty.
+ */
+export interface LinkData {
+  format: 'upgrade' | 'descriptive';
+  condition: string | null;
+  granted_skills: (string | string[])[];
+  prerequisite_skills: LinkPrerequisiteSkill[];
+  upgrades: LinkUpgrade[];
+  skill_groups?: string[][];
+  stats: Record<string, number>;
+  note: string | null;
+  raw: string;
+  source: 'tournament' | 'headhunting';
+  round?: string | null;
+  school?: string | null;
+  route?: string | null;
+  location?: string | null;
 }
