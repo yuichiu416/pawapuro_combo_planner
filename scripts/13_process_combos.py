@@ -29,7 +29,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 if current_dir not in sys.path:
     sys.path.append(current_dir)
 
-from sanitizer import sanitize_name
+from sanitizer import sanitize_name, standardize_symbols
 
 VERSION    = '2026-2027'
 RAW_DIR    = os.path.normpath(os.path.join(current_dir, '..', 'raw_data'))
@@ -91,8 +91,10 @@ def parse_rewards(reward_str, skills_db):
     if not reward_str or reward_str in ('経験点不明', '不明'):
         return result
 
+    reward_str = standardize_symbols(reward_str)
+
     # Skills: anything matching "名前Lv数" or "名前lv数"
-    for m in re.finditer(r'([^\d\+\-\s\t,、。！？Ll０-９0-9（）()◯○◎〇×]+)[Ll][Vv](\d+)', reward_str):
+    for m in re.finditer(r'([^\d\+\-\s\t,、。！？Ll０-９0-9（）()]+)[Ll][Vv](\d+)', reward_str):
         skill_name = m.group(1).strip().rstrip('＆&')
         level      = int(m.group(2))
         if skill_name:
@@ -130,27 +132,6 @@ def build_name_resolver(mapping_db):
         return short_name  # no match or ambiguous — leave unchanged
     
     return resolve
-    result = {'skills': [], 'stats': {}, 'is_gold': False}
-    if not reward_str or reward_str in ('経験点不明', '不明'):
-        return result
-
-    # Skills: anything matching "名前Lv数" or "名前lv数"
-    for m in re.finditer(r'([^\d\+\-\s\t,、。！？Ll０-９0-9（）()◯○◎〇×]+)[Ll][Vv](\d+)', reward_str):
-        skill_name = m.group(1).strip().rstrip('＆&')
-        level      = int(m.group(2))
-        if skill_name:
-            is_known = skill_name in skills_db
-            if not is_known:
-                print(f"  🔍 Unknown skill: {skill_name!r}")
-            result['skills'].append({'name': skill_name, 'level': level, 'verified': is_known})
-
-    # Stats: 筋力30 / 敏捷+10 / 技術20 etc.
-    for stat_jp, stat_key in STAT_MAP.items():
-        for m in re.finditer(rf'{stat_jp}\+?(\d+)', reward_str):
-            val = int(m.group(1))
-            result['stats'][stat_key] = result['stats'].get(stat_key, 0) + val
-
-    return result
 
 def parse():
     if not os.path.exists(INPUT_FILE):

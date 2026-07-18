@@ -1,7 +1,7 @@
 // src/contexts/GameVersionContext.tsx
 import type React from 'react';
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import type { Character, Combo, GameMap } from '@/types';
+import type { Character, Combo, GameMap, LinkData } from '@/types';
 
 // Static imports for all current versions. With only 2 versions the bundle
 // overhead is acceptable (~360KB each gzipped ~80KB). When a 3rd version is
@@ -10,11 +10,13 @@ import type { Character, Combo, GameMap } from '@/types';
 import characterMapping_2024_2025 from '@/data/2024-2025/character_mapping.json';
 import characters_2024_2025 from '@/data/2024-2025/characters.json';
 import combos_2024_2025 from '@/data/2024-2025/combos.json';
+import links_2024_2025 from '@/data/2024-2025/links.json';
 import maps_2024_2025 from '@/data/2024-2025/maps.json';
 
 import characterMapping_2026_2027 from '@/data/2026-2027/character_mapping.json';
 import characters_2026_2027 from '@/data/2026-2027/characters.json';
 import combos_2026_2027 from '@/data/2026-2027/combos.json';
+import links_2026_2027 from '@/data/2026-2027/links.json';
 import maps_2026_2027 from '@/data/2026-2027/maps.json';
 
 /**
@@ -32,6 +34,7 @@ export interface VersionGameData {
   combos: Record<string, Combo>;
   maps: Record<string, GameMap>;
   characterMapping: any;
+  links: Record<string, LinkData>;
 }
 
 const STATIC_VERSION_DATA: Record<GameVersion, VersionGameData> = {
@@ -40,12 +43,14 @@ const STATIC_VERSION_DATA: Record<GameVersion, VersionGameData> = {
     combos: combos_2024_2025 as Record<string, Combo>,
     maps: maps_2024_2025 as Record<string, GameMap>,
     characterMapping: characterMapping_2024_2025,
+    links: links_2024_2025 as Record<string, LinkData>,
   },
   '2026-2027': {
     characters: characters_2026_2027 as Record<string, Character>,
     combos: combos_2026_2027 as Record<string, Combo>,
     maps: maps_2026_2027 as Record<string, GameMap>,
     characterMapping: characterMapping_2026_2027,
+    links: links_2026_2027 as Record<string, LinkData>,
   },
 };
 

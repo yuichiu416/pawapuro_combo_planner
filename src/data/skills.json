@@ -1115,11 +1115,6 @@
     "category": "all",
     "description": "All stats significantly increased."
   },
-  "小坂ゾーン": {
-    "type": "gold",
-    "description": "守備時に送球速度と背走速度が上がり、動き出しも早くなる",
-    "category": "fielder"
-  },
   "火の玉ストレート": {
     "type": "gold",
     "description": "ストレートのノビがものすごく良い",

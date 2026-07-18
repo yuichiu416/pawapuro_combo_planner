@@ -145,5 +145,10 @@
     "gold_fielder": "野手金特",
     "pitcher": "投手",
     "fielder": "野手"
+  },
+  "link": {
+    "title": "コツコツリンク",
+    "needed": "必要（いずれか）",
+    "granted": "獲得（役割で決定）"
   }
 }
