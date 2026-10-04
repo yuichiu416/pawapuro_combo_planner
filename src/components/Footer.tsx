@@ -64,11 +64,14 @@ export const Footer: React.FC = () => {
             {t('ui.report_bug')}
           </a>
           <a
-            href="https://github.com/your-username/repo"
+            href="https://como-freelance.yuichiu416.workers.dev/"
             target="_blank"
-            rel="noopener noreferrer"
-            className="text-black hover:text-black transition-colors"
-          ></a>
+            rel="noopener"
+            className="text-xs font-medium text-slate-400 hover:text-blue-500 transition-colors"
+            data-testid="footer-credit"
+          >
+            Built by Roger Kiew
+          </a>
         </div>
       </div>
     </footer>
