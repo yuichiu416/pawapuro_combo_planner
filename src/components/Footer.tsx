@@ -70,7 +70,7 @@ export const Footer: React.FC = () => {
             className="text-xs font-medium text-slate-400 hover:text-blue-500 transition-colors"
             data-testid="footer-credit"
           >
-            Built by Roger Kiew
+            Built by CoMo Web Design
           </a>
         </div>
       </div>
